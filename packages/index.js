@@ -17,3 +17,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
     gird
 }
+
+export default {
+    install,
+    ...components
+}
