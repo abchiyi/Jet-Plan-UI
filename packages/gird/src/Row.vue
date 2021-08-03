@@ -1,11 +1,11 @@
 <script>
 import { h } from "vue";
+
 export default {
   name: "m-row",
   props: {
     X: {
       type: String,
-      default: "start",
       validator: (v) => {
         const value = ["start", "center", "end"];
         return value.indexOf(v.toLowerCase()) !== -1;
@@ -13,9 +13,8 @@ export default {
     },
     Y: {
       type: String,
-      default: "unset",
       validator: (v) => {
-        const value = ["start", "center", "end"];
+        const value = ["top", "center", "bottom"];
         return value.indexOf(v.toLowerCase()) !== -1;
       },
     },
@@ -42,17 +41,20 @@ export default {
   },
   computed: {
     x() {
-      let v;
-      switch (this.X) {
-        case "end":
-          v = "flex-end";
-          break;
-        default:
-          v = this.X;
-          break;
+      if (this.X) {
+        let v;
+        switch (this.X) {
+          case "end":
+            v = "flex-end";
+            break;
+          default:
+            v = this.X;
+            break;
+        }
+        return v;
+      } else {
+        return `space-${this.spaceMode}`;
       }
-
-      return v;
     },
     y() {
       let v;
@@ -69,6 +71,12 @@ export default {
       }
       return v;
     },
+    flexWrap() {
+      return this.overWidthWarp ? "warp" : "nowarp";
+    },
+    flexDirection() {
+      return this.reverse ? "row-reverse" : "row";
+    },
   },
   mounted() {
     this.$nextTick(() => {
@@ -78,25 +86,30 @@ export default {
   render() {
     return h(
       "div",
-      {
-        class: ["m-row"],
-        style: {
-          // 设置文本横向起始位置
-          justifyContent: this.x,
-          alignItems: this.y,
-        },
-      },
+      { class: ["m-row", this.noGap ? "no-gap" : ""] },
       this.$slots
     );
   },
 };
 </script>
 
+
+<style >
+.m-row > .col {
+  padding: 0 4px;
+}
+.m-row.no-gap > .col {
+  padding: unset;
+}
+</style>
 <style scoped>
 .m-row {
-  justify-content: flex-start;
-  flex-direction: row;
-  display: flex;
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: v-bind(y);
+  justify-content: v-bind(x);
+  flex-wrap: v-bind(flexWrap);
+  flex-direction: v-bind(flexDirection);
 }
 </style>
