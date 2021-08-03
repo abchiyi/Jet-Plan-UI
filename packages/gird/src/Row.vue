@@ -40,6 +40,41 @@ export default {
       default: false,
     },
   },
+  computed: {
+    x() {
+      let v;
+      switch (this.X) {
+        case "end":
+          v = "flex-end";
+          break;
+        default:
+          v = this.X;
+          break;
+      }
+
+      return v;
+    },
+    y() {
+      let v;
+      switch (this.Y) {
+        case "top":
+          v = "flex-start";
+          break;
+        case "bottom":
+          v = "flex-end";
+          break;
+        default:
+          v = this.Y;
+          break;
+      }
+      return v;
+    },
+  },
+  mounted() {
+    this.$nextTick(() => {
+      console.log(this.x);
+    });
+  },
   render() {
     return h(
       "div",
@@ -47,7 +82,8 @@ export default {
         class: ["m-row"],
         style: {
           // 设置文本横向起始位置
-          justifyContent: this.start,
+          justifyContent: this.x,
+          alignItems: this.y,
         },
       },
       this.$slots
