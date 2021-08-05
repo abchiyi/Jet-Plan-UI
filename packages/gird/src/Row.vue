@@ -20,13 +20,12 @@ export default {
     },
     spaceMode: {
       type: String,
-      default: undefined,
       validator: (v) => {
         const value = ["around", "between"];
         return value.indexOf(v.toLowerCase()) !== -1;
       },
     },
-    overWidthWarp: {
+    overWidthWrap: {
       type: Boolean,
       default: false,
     },
@@ -41,7 +40,9 @@ export default {
   },
   computed: {
     x() {
-      if (this.X) {
+      if (this.spaceMode) {
+        return `space-${this.spaceMode}`;
+      } else {
         let v;
         switch (this.X) {
           case "end":
@@ -52,8 +53,6 @@ export default {
             break;
         }
         return v;
-      } else {
-        return `space-${this.spaceMode}`;
       }
     },
     y() {
@@ -72,7 +71,7 @@ export default {
       return v;
     },
     flexWrap() {
-      return this.overWidthWarp ? "warp" : "nowarp";
+      return this.overWidthWrap ? "wrap" : "nowrap";
     },
     flexDirection() {
       return this.reverse ? "row-reverse" : "row";
