@@ -2,8 +2,12 @@
   <div>
     <span>基础栅格</span>
     <m-row class="test-background" v-for="n in 4" :key="n">
-      <div :col="n * 4"><div class="test-cube-l"></div></div>
-      <div :col="24 - n * 4"><div class="test-cube-d"></div></div>
+      <m-col :offset-xs="2" :col="n * 4">
+        <div class="test-cube-l"></div>
+      </m-col>
+      <!-- <m-col :col="24 - n * 2">
+        <div class="test-cube-d"></div>
+      </m-col> -->
     </m-row>
   </div>
 </template>

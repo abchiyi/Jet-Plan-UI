@@ -6,37 +6,37 @@ export default {
   props: {
     X: {
       type: String,
-      validator: (v) => {
+      validator: v => {
         const value = ["start", "center", "end"];
         return value.indexOf(v.toLowerCase()) !== -1;
-      },
+      }
     },
     Y: {
       type: String,
-      validator: (v) => {
+      validator: v => {
         const value = ["top", "center", "bottom"];
         return value.indexOf(v.toLowerCase()) !== -1;
-      },
+      }
     },
     spaceMode: {
       type: String,
-      validator: (v) => {
+      validator: v => {
         const value = ["around", "between"];
         return value.indexOf(v.toLowerCase()) !== -1;
-      },
+      }
     },
     overWidthWrap: {
       type: Boolean,
-      default: false,
+      default: false
     },
     reverse: {
       type: Boolean,
-      default: false,
+      default: false
     },
     noGap: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     x() {
@@ -72,32 +72,28 @@ export default {
     },
     flexWrap() {
       return this.overWidthWrap ? "wrap" : "nowrap";
-    },
-    flexDirection() {
-      return this.reverse ? "row-reverse" : "row";
-    },
-  },
-  mounted() {
-    this.$nextTick(() => {
-      console.log(this.x);
-    });
+    }
   },
   render() {
     return h(
       "div",
-      { class: ["m-row", this.noGap ? "no-gap" : ""] },
+      {
+        class: [
+          "m-row",
+          this.noGap ? "no-gap" : "",
+          this.reverse ? "reverse" : ""
+        ]
+      },
       this.$slots
     );
-  },
+  }
 };
 </script>
 
 
 <style >
-.m-row > .col {
-  padding: 0 4px;
-}
-.m-row.no-gap > .col {
+/* 取消子 Col 组件的间隙 */
+.m-row.no-gap > .m-col {
   padding: unset;
 }
 </style>
@@ -109,6 +105,9 @@ export default {
   align-items: v-bind(y);
   justify-content: v-bind(x);
   flex-wrap: v-bind(flexWrap);
-  flex-direction: v-bind(flexDirection);
+}
+
+.m-row.reverse {
+  flex-direction: row-reverse;
 }
 </style>
