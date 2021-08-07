@@ -1,5 +1,5 @@
 <template>
-  <m-row :class="classes" center middle>
+  <m-row :class="classes" X="center" Y="center">
     <slot></slot>
   </m-row>
 </template>
@@ -10,31 +10,31 @@ export default {
   props: {
     dark: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     classes() {
       let classes = ["m-cube"];
       if (this.dark) classes.push("dark");
       return classes;
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style>
 .m-cube {
-  width: 100px !important;
+  width: 100px;
   height: 100px;
   border-radius: 4px;
-  background-color: #1687a7;
+  background-color: #2b91ad;
   /* 文本设置 */
   font-size: 20px;
   color: #fff;
   transition: 0.4s ease-in-out;
 }
 .m-cube.dark {
-  background-color: #0b81a1;
+  background-color: #017fa1;
 }
 </style>
