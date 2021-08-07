@@ -1,4 +1,5 @@
 <script>
+import { h } from "vue";
 function nodeCheck(el, callback) {
   if (el.children.length > 1) {
     console.error(
@@ -18,19 +19,19 @@ export default {
   name: "m-folded-transition",
   data() {
     return {
-      height: undefined,
+      height: undefined
     };
   },
   methods: {
     refresh(el) {
       this.height = el.childNodes[0].offsetHeight + "px";
-    },
+    }
   },
   computed: {
     style() {
       return {
         "--animationTime": this.animationTime,
-        "--height": this.height,
+        "--height": this.height
       };
     },
     animationTime() {
@@ -39,19 +40,19 @@ export default {
       aTime = aTime < 4 ? (aTime = 4) : aTime >= 9 ? 9 : aTime;
       // 两位浮点精度的动画时间
       return parseFloat(aTime * 0.1).toFixed(2) + "s";
-    },
+    }
   },
-  render(ce) {
-    return ce(
+  render() {
+    return h(
       "div",
       { class: "m-folded-transition", style: { ...this.style } },
       [
-        ce(
+        h(
           "transition",
           {
             props: { name: "m-folded-transition" },
             on: {
-              beforeEnter: (el) => {
+              beforeEnter: el => {
                 nodeCheck(el, () => {
                   // 等待子元素绘制完成
                   this.$nextTick(() => {
@@ -59,18 +60,18 @@ export default {
                   });
                 });
               },
-              beforeLeave: (el) => {
+              beforeLeave: el => {
                 nodeCheck(el, () => {
                   this.refresh(el);
                 });
-              },
-            },
+              }
+            }
           },
-          [this.$slots.default]
-        ),
+          this.$slots
+        )
       ]
     );
-  },
+  }
 };
 </script>
 

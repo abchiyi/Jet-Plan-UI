@@ -4,6 +4,7 @@ import SlideOut from "./src/SlideOut.vue"
 
 export {
     FoldedTransition,
+    FadeTransition,
     SlideOut
 }
 

@@ -1,17 +1,18 @@
 <script>
+import { h } from "vue";
 export default {
   name: "m-fade-transition",
-  render(ce) {
-    return ce("div", { class: "m-fade-transition" }, [
-      ce(
+  render() {
+    return h("div", { class: "m-fade-transition" }, [
+      h(
         "transition",
         {
-          props: { name: "m-fade-transition" },
+          props: { name: "m-fade-transition" }
         }
         // [this.$slots.default]
-      ),
+      )
     ]);
-  },
+  }
 };
 </script>
 
