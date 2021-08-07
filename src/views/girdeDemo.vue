@@ -1,6 +1,7 @@
 <template>
   <div>
     <span>基础栅格</span>
+    <div id="absoult"></div>
     <m-row no-gap class="test-background" v-for="n in 4" :key="n">
       <m-col :col="n * 4">
         <div class="test-cube-l"></div>
@@ -31,14 +32,7 @@ export default {
   margin-bottom: 8px;
   border-radius: 4px;
 }
-.test-cube-d,
-.test-cube-l {
-  background-color: #1687a7;
+.girde-cube {
   height: 36px;
-  border-radius: 4px;
-}
-
-.test-cube-d {
-  background-color: #276678;
 }
 </style>
