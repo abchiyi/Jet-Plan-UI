@@ -1,7 +1,9 @@
 import gird from './gird'
+import animationTransitions from './animation'
 
 const components = {
     gird,
+    animationTransitions
 }
 
 function install(Vue) {
@@ -15,7 +17,8 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export {
-    gird
+    gird,
+    animationTransitions
 }
 
 export default {
