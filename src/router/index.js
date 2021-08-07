@@ -11,6 +11,10 @@ const routes = [
     path: '/girdedemo',
     name: 'gird',
     component: () => import('../views/girdeDemo.vue')
+  }, {
+    path: '/animationdemo',
+    name: 'animationdemo',
+    component: () => import('../views/animationDemo')
   },
   {
     path: '/about',
