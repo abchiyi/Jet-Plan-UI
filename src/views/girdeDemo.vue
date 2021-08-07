@@ -1,13 +1,14 @@
 <template>
   <div>
     <span>基础栅格</span>
-    <m-row class="test-background" v-for="n in 4" :key="n">
-      <m-col :offset-xs="2" :col="n * 4">
+    <m-row no-gap class="test-background" v-for="n in 4" :key="n">
+      <m-col :col="n * 4">
         <div class="test-cube-l"></div>
       </m-col>
-      <!-- <m-col :col="24 - n * 2">
+      <!-- <m-col  :col="24 - n * 2"> -->
+      <m-col>
         <div class="test-cube-d"></div>
-      </m-col> -->
+      </m-col>
     </m-row>
   </div>
 </template>

@@ -3,18 +3,13 @@ import { h } from "vue";
 export default {
   name: "m-col",
   props: {
-    col: {
-      type: Number
-    },
+    col: Number,
     xs: Number,
     sm: Number,
     md: Number,
     lg: Number,
     xl: Number,
-    offset: {
-      type: Number,
-      default: 0
-    },
+    offset: Number,
     offsetXs: Number,
     offsetSm: Number,
     offsetMd: Number,
@@ -49,7 +44,7 @@ export default {
     style() {
       return {
         // col
-        col: this.calcWidth(this.col),
+        col: this.col ? this.calcWidth(this.col) : "100%",
         xs: this.calcWidth(this.xs),
         sm: this.calcWidth(this.sm),
         md: this.calcWidth(this.md),
@@ -70,9 +65,6 @@ export default {
         hiddenOnXl: !this.xl && this.xl != undefined ? "none" : ""
       };
     }
-  },
-  mounted() {
-    console.log(this.offsetXs);
   },
   render() {
     return h(
@@ -109,12 +101,12 @@ export default {
 
 /* 偏移 */
 .m-col.offset {
-  /* margin-left: v-bind("style.offset"); */
+  margin-left: v-bind("style.offset");
 }
 
 .m-row.reverse > .offset {
-  /* margin-right: v-bind("style.offset"); */
-  /* margin-left: unset; */
+  margin-right: v-bind("style.offset");
+  margin-left: unset;
 }
 
 /* --响应式-- */
@@ -139,64 +131,64 @@ export default {
 /* sm */
 @media (min-width: 576px) {
   .m-col-sm {
-    width: var(--m-col-sm);
-    display: var(--hidden-sm);
+    width: v-bind("style.sm");
+    display: v-bind("style.hiddenOnSm");
   }
 
-  .offset-sm {
-    margin-left: var(--offset-sm);
+  .m-col.offset-sm {
+    margin-left: v-bind("style.offsetSm");
   }
 
   .row.reverse > .offset-sm {
-    margin-left: var(--offset-sm);
+    margin-right: v-bind("style.offsetSm");
   }
 }
 
 /* md */
 @media (min-width: 768px) {
   .m-col-md {
-    width: var(--m-col-md);
-    display: var(--hidden-md);
+    width: v-bind("style.md");
+    display: v-bind("style.hiddenOnMd");
   }
 
-  .offset-md {
-    margin-left: var(--offset-md);
+  .m-col.offset-md {
+    margin-left: v-bind("style.offsetMd");
   }
 
   .row.reverse > .offset-md {
-    margin-left: var(--offset-md);
+    margin-right: v-bind("style.offsetMd");
   }
 }
 
 /* lg */
 @media (min-width: 992px) {
   .m-col-lg {
-    width: var(--m-col-lg);
-    display: var(--hidden-lg);
+    width: v-bind("style.lg");
+    display: v-bind("style.hiddenOnLg");
   }
 
-  .offset-lg {
-    margin-left: var(--offset-lg);
+  .m-col.offset-lg {
+    margin-left: v-bind("style.offsetLg");
   }
 
   .row.reverse > .offset-lg {
-    margin-left: var(--offset-lg);
+    margin-right: v-bind("style.offsetLg");
   }
 }
 
 /* xl */
 @media (min-width: 1200px) {
   .m-col-xl {
-    width: var(--m-col-xl);
-    display: var(--hidden-lg);
+    width: v-bind("style.xl");
+    display: v-bind("style.hiddenOnXl");
   }
 
-  .offset-xl {
-    margin-left: var(--offset-xl);
+  .m-col.offset-xl {
+    margin-left: v-bind("style.offsetXl");
   }
 
   .row.reverse > .offset-xl {
-    margin-left: var(--offset-xl);
+    margin-right: v-bind("style.offsetXl");
   }
 }
 </style>
