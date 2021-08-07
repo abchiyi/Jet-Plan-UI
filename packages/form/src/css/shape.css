@@ -1,0 +1,28 @@
+/* 公共基础参数 */
+.shape {
+    --SIZE: 30px;
+    --SHAODW: 0.08;
+    --DIAMETER: calc(var(--SIZE) * 0.85);
+    --OFF-SET: calc((var(--SIZE) - var(--DIAMETER)) / 2);
+}
+
+/* switch button 共有参数 */
+.shape.m-button,
+.shape.switch {
+    --HEIGHT: var(--SIZE);
+    --WIDTH: calc(var(--SIZE)*1.65);
+    --MASK-WIDTH: calc(var(--WIDTH) - var(--OFF-SET) * 2);
+    --MASK-HEIGHT: calc(var(--HEIGHT) - var(--OFF-SET) * 2);
+}
+
+/* switch */
+.shape.switch {
+    --LEVER_DIAMETER: var(--DIAMETER);
+    --LEVER-WIDER: calc(var(--LEVER_DIAMETER) * 1.2);
+    --LEVER-SHADOW: calc(var(--LEVER_DIAMETER) * var(--SHAODW));
+}
+
+
+/* button */
+
+.shape.button {}

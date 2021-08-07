@@ -1,8 +1,10 @@
 import gird from './gird'
+import form from './form'
 import animations from './animations'
 
 const components = {
     gird,
+    form,
     animations
 }
 
@@ -18,6 +20,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export {
     gird,
+    form,
     animations
 }
 
