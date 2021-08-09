@@ -50,6 +50,7 @@ export default {
     change: function() {
       if (!this.disabled) {
         this.$emit("change", this.value ? false : true);
+        console.log(this.value);
       }
     },
     toWider() {

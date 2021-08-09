@@ -1,0 +1,43 @@
+/*------------ Default ----------*/
+
+.m-button.text-button {
+    background: unset;
+    color: var(--grey-4);
+    transition: opacity 0.2s cubic-bezier(0.2, 1, 0.5, 1);
+    padding: unset
+}
+
+
+
+/*------------ Active ----------*/
+
+.m-button.text-button:active {
+    opacity: 0.6;
+}
+
+
+
+/*------------ Primary ----------*/
+
+.m-button.text-button.primary {
+    color: var(--main-0);
+}
+
+
+
+/* ------------ disabled ---------- */
+
+.m-button.text-button.disabled:active,
+.m-button.text-button.disabled {
+    color: var(--grey-2);
+}
+
+
+
+/*------------ Disabled Primary  ----------*/
+
+.m-button.text-button.primary.disabled:active,
+.m-button.text-button.primary.disabled {
+    color: var(--bgco-1);
+    opacity: unset;
+}

@@ -1,0 +1,44 @@
+/*------------ Default ----------*/
+/* 基底 */
+.switch {
+    background-color: var(--grey-2);
+}
+
+/* 遮罩 */
+.switch::before {
+    background-color: var(--grey-0);
+}
+
+/* 拨杆 */
+.switch::after {
+    background-color: var(--grey-0);
+}
+
+
+
+/*------------ On ----------*/
+
+/* 遮罩 */
+.switch.on {
+    /* background-color: var(--green-1); */
+    background-color: var(--main-0);
+}
+
+
+
+/*------------ Disabled ----------*/
+
+/* 基底 */
+.switch.on.disabled {
+    background-color: var(--bgco-1);
+}
+
+/* 遮罩 */
+.switch.disabled::before {
+    background-color: var(--grey-1)
+}
+
+/* 拨杆 */
+.switch::after {
+    background-color: var(--grey-0);
+}

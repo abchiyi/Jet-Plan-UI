@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import router from './router'
 import App from './App.vue'
 import ui from '../packages'
+import '../packages/theme-default'
 import common from './common'
 
 
