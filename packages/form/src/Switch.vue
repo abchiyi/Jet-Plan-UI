@@ -3,7 +3,7 @@ import { h } from "vue";
 export default {
   name: "m-switch",
   props: {
-    value: {
+    modelValue: {
       type: Boolean,
       default: false
     },
@@ -24,14 +24,14 @@ export default {
     };
   },
   model: {
-    prop: "value",
-    event: "change"
+    prop: "modeValue",
+    event: "update:modelValue"
   },
   computed: {
     classes() {
       let classes = ["shape switch"];
       if (this.disabled) classes.push("disabled");
-      classes.push(this.value ? "on" : "off");
+      classes.push(this.modelValue ? "on" : "off");
       if (this.wider) classes.push("wider");
       return classes;
     },
@@ -41,16 +41,11 @@ export default {
       return styles;
     }
   },
-  watch: {
-    value() {
-      // this.cancellation();
-    }
-  },
   methods: {
     change: function() {
       if (!this.disabled) {
-        this.$emit("change", this.value ? false : true);
-        console.log(this.value);
+        this.$emit("update:modelValue", this.modelValue ? false : true);
+        console.log(this.modelValue);
       }
     },
     toWider() {
@@ -73,14 +68,13 @@ export default {
     return h("div", {
       class: this.classes,
       style: this.styles,
-      on: {
-        click: this.change,
-        mousedown: this.toWider,
-        touchstart: this.toWider,
-        mouseup: this.cancellation,
-        touchend: this.cancellation,
-        mouseout: this.cancellation
-      }
+      // 事件
+      onClick: this.change,
+      onMousedown: this.toWider,
+      // onTouchstart: this.toWider,
+      onMouseup: this.cancellation,
+      onTouchend: this.cancellation,
+      onMouseout: this.cancellation
     });
   }
 };
