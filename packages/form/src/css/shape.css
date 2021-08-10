@@ -8,7 +8,7 @@
 
 /* switch button 共有参数 */
 .shape.m-button,
-.shape.switch {
+.shape.m-switch {
     --HEIGHT: var(--SIZE);
     --WIDTH: calc(var(--SIZE)*1.65);
     --MASK-WIDTH: calc(var(--WIDTH) - var(--OFF-SET) * 2);
@@ -16,7 +16,7 @@
 }
 
 /* switch */
-.shape.switch {
+.shape.m-switch {
     --LEVER_DIAMETER: var(--DIAMETER);
     --LEVER-WIDER: calc(var(--LEVER_DIAMETER) * 1.2);
     --LEVER-SHADOW: calc(var(--LEVER_DIAMETER) * var(--SHAODW));
