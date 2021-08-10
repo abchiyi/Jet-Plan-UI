@@ -90,7 +90,7 @@ export default {
 }
 
 /* 遮罩 */
-/* .m-switch::before {
+.m-switch::before {
   border-radius: calc(var(--WIDTH) / 2);
   height: var(--MASK-HEIGHT);
   width: var(--MASK-WIDTH);
@@ -98,7 +98,7 @@ export default {
   top: var(--OFF-SET);
   position: absolute;
   content: "";
-} */
+}
 /* 拨杆 */
 .m-switch::after {
   box-shadow: 0 var(--LEVER-SHADOW) calc(var(--LEVER-SHADOW) * 2)
