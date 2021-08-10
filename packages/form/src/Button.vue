@@ -58,9 +58,7 @@ export default {
       "button",
       {
         class: this.classes,
-        on: {
-          click: this.click
-        }
+        onClick: this.click
       },
       this.$slots
     );
