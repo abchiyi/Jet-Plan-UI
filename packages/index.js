@@ -1,10 +1,12 @@
 import gird from './gird'
 import form from './form'
+import card from './card'
 import animations from './animations'
 
 const components = {
     gird,
     form,
+    card,
     animations
 }
 
@@ -21,6 +23,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
     gird,
     form,
+    card,
     animations
 }
 
