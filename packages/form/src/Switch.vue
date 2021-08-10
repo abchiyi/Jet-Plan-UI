@@ -45,7 +45,6 @@ export default {
     change: function() {
       if (!this.disabled) {
         this.$emit("update:modelValue", this.modelValue ? false : true);
-        console.log(this.modelValue);
       }
     },
     toWider() {
