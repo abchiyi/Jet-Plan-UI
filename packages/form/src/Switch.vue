@@ -20,7 +20,7 @@ export default {
     return {
       wider: false,
       intervalCode: [],
-      waitTime: 100
+      first_load: null
     };
   },
   model: {
@@ -28,32 +28,37 @@ export default {
     event: "update:modelValue"
   },
   computed: {
-    classes() {
-      let classes = ["shape m-switch"];
-      if (this.disabled) classes.push("disabled");
-      classes.push(this.modelValue ? "on" : "off");
-      if (this.wider) classes.push("wider");
-      return classes;
+    class() {
+      return [
+        "shape m-switch",
+        this.wider ? "wider" : "",
+        this.disabled ? "disabled" : "",
+        this.modelValue ? "on" : "off",
+        this.first_load ? "first-load" : ""
+      ];
     },
-    styles() {
-      let styles = {};
-      styles["--SIZE"] = this.size + "px";
-      return styles;
+    style() {
+      return {
+        "--SIZE": this.size + "px"
+      };
     }
   },
   methods: {
-    change: function() {
+    change() {
       if (!this.disabled) {
         this.$emit("update:modelValue", this.modelValue ? false : true);
+        if (this.first_load) this.first_load = false;
       }
     },
     toWider() {
+      // 在按下100ms后设置拨杆拉宽参数为true
       let inervalCode = setInterval(() => {
         this.wider = true;
-      }, this.waitTime);
+      }, 100);
       this.intervalCode.push(inervalCode);
     },
     cancellation() {
+      // 在抬起或离开元素后设置拨杆拉宽参数为false
       if (this.intervalCode) {
         this.intervalCode.forEach(code => {
           clearInterval(code);
@@ -63,13 +68,17 @@ export default {
       }
     }
   },
+  created() {
+    this.first_load = true;
+  },
   render() {
     return h("div", {
-      class: this.classes,
-      style: this.styles,
+      class: this.class,
+      style: this.style,
       // 事件
       onClick: this.change,
       onMousedown: this.toWider,
+      // FIXME onTouchstart 不可用
       // onTouchstart: this.toWider,
       onMouseup: this.cancellation,
       onTouchend: this.cancellation,
@@ -115,10 +124,43 @@ export default {
 /* ------------ On ---------- */
 
 /* 移动拨杆 */
+.m-switch.on::after,
+.m-switch.off::after {
+  animation-timing-function: cubic-bezier(0.3, 0.6, 0.15, 1.2);
+  animation-duration: 0.4s;
+}
+/* 第一次加载时不播放动画*/
+.m-switch.first-load.on::after,
+.m-switch.first-load.off::after {
+  animation-duration: unset;
+}
+
 .m-switch.on::after {
-  transform: translateX(
-    calc((var(--WIDTH) - var(--LEVER_DIAMETER) - var(--OFF-SET) * 2))
-  );
+  animation-name: left-to-right;
+}
+.m-switch.off::after {
+  animation-name: right-to-left;
+}
+
+@keyframes left-to-right {
+  0% {
+    transform: translateX(
+      calc(-1 * (var(--WIDTH) - var(--LEVER_DIAMETER) - var(--OFF-SET) * 2))
+    );
+  }
+}
+@keyframes right-to-left {
+  0% {
+    transform: translateX(
+      calc((var(--WIDTH) - var(--LEVER_DIAMETER) - var(--OFF-SET) * 2))
+    );
+  }
+}
+
+/* 移动定位置右侧 */
+.m-switch.on::after {
+  right: var(--OFF-SET);
+  left: unset;
 }
 
 /* 缩放基底遮罩 */
@@ -129,14 +171,6 @@ export default {
 /*------------ Active ----------*/
 /* 拉宽拨杆*/
 .m-switch.wider:active::after {
-  width: var(--LEVER-WIDER);
-}
-
-/* 切换到关闭时需要进行位移 */
-.m-switch.wider.on:active::after {
-  transform: translateX(
-    calc(var(--WIDTH) - var(--LEVER-WIDER) - var(--OFF-SET))
-  );
   width: var(--LEVER-WIDER);
 }
 

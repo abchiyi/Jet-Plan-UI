@@ -2,7 +2,7 @@
 .shape {
     --SIZE: 30px;
     --SHAODW: 0.08;
-    --DIAMETER: calc(var(--SIZE) * 0.85);
+    --DIAMETER: calc(var(--SIZE) * 0.8);
     --OFF-SET: calc((var(--SIZE) - var(--DIAMETER)) / 2);
 }
 
