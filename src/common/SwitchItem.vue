@@ -27,7 +27,6 @@ export default {
   },
   watch: {
     value() {
-      console.log(this.value + ": value");
       this.$emit("update:modelValue", this.value);
     }
   }
