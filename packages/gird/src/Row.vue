@@ -99,7 +99,6 @@ export default {
 </style>
 <style scoped>
 .m-row {
-  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: v-bind(y);
