@@ -1,36 +1,35 @@
 <template>
-  <m-row class="m-switch-item" middle between>
+  <m-row class="m-switch-item" X="center" Y="center" space-mode="between">
     <p><slot></slot></p>
-    <m-switch size="24" v-model="v" />
+    <m-switch size="24" v-model="value" />
   </m-row>
 </template>
 
 <script>
 export default {
   name: "m-switch-item",
-  mounted() {
-    this.v = this.value;
-  },
   props: {
-    value: {
-      type: Boolean,
-      default: false,
-    },
+    modelValue: [Boolean]
   },
   model: {
-    prop: "value",
-    event: "change",
+    model: {
+      prop: "modeValue",
+      event: "update:modelValue"
+    }
+  },
+  created() {
+    this.value = this.modelValue;
   },
   data() {
     return {
-      br: undefined,
-      v: undefined,
+      value: false
     };
   },
   watch: {
-    v() {
-      this.$emit("change", this.v);
-    },
-  },
+    value() {
+      console.log(this.value + ": value");
+      this.$emit("update:modelValue", this.value);
+    }
+  }
 };
 </script>
