@@ -1,5 +1,16 @@
+<template>
+  <div class="m-folded-transition" :style="{ ...this.style }">
+    <transition
+      name="m-folded-transition"
+      @beforeEnter="this.beforeEnter"
+      @beforeLeave="this.beforeLeave"
+    >
+      <div v-show="this.value"><slot /></div>
+    </transition>
+  </div>
+</template>
 <script>
-import { h } from "vue";
+// import { h } from "vue";
 function nodeCheck(el, callback) {
   if (el.children.length > 1) {
     console.error(
@@ -19,19 +30,37 @@ export default {
   name: "m-folded-transition",
   data() {
     return {
-      height: undefined
+      height: null
     };
+  },
+  props: {
+    value: {
+      type: Boolean
+    }
   },
   methods: {
     refresh(el) {
-      this.height = el.childNodes[0].offsetHeight + "px";
+      this.height = el.children[0].offsetHeight;
+    },
+    beforeEnter(el) {
+      nodeCheck(el, () => {
+        // 等待子元素绘制完成
+        this.$nextTick(() => {
+          this.refresh(el);
+        });
+      });
+    },
+    beforeLeave(el) {
+      nodeCheck(el, () => {
+        this.refresh(el);
+      });
     }
   },
   computed: {
     style() {
       return {
         "--animationTime": this.animationTime,
-        "--height": this.height
+        "--height": this.height + "px"
       };
     },
     animationTime() {
@@ -41,36 +70,6 @@ export default {
       // 两位浮点精度的动画时间
       return parseFloat(aTime * 0.1).toFixed(2) + "s";
     }
-  },
-  render() {
-    return h(
-      "div",
-      { class: "m-folded-transition", style: { ...this.style } },
-      [
-        h(
-          "transition",
-          {
-            props: { name: "m-folded-transition" },
-            on: {
-              beforeEnter: el => {
-                nodeCheck(el, () => {
-                  // 等待子元素绘制完成
-                  this.$nextTick(() => {
-                    this.refresh(el);
-                  });
-                });
-              },
-              beforeLeave: el => {
-                nodeCheck(el, () => {
-                  this.refresh(el);
-                });
-              }
-            }
-          },
-          this.$slots
-        )
-      ]
-    );
   }
 };
 </script>
@@ -90,12 +89,12 @@ export default {
 }
 
 .m-folded-transition-leave-to,
-.m-folded-transition-enter {
+.m-folded-transition-enter-from {
   height: 0px;
 }
 
 .m-folded-transition-enter-to,
-.m-folded-transition-leave {
+.m-folded-transition-leave-from {
   height: var(--height);
 }
 </style>

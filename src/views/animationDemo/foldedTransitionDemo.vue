@@ -9,25 +9,23 @@
         {{ v2 ? "大" : "小" }}
       </m-switch-item>
       <hr />
-      <m-folded-transition>
-        <div v-show="v1">
-          <m-row X="center">
-            <div class="demo-item">
-              <m-cube>1</m-cube>
-            </div>
-            <div class="demo-item">
-              <m-cube
-                :style="{
-                  height: this.v2 ? '200px' : '100px'
-                }"
-                >2</m-cube
-              >
-            </div>
-            <div class="demo-item">
-              <m-cube>3</m-cube>
-            </div>
-          </m-row>
-        </div>
+      <m-folded-transition :value="v1">
+        <m-row X="center">
+          <div class="demo-item">
+            <m-cube>1</m-cube>
+          </div>
+          <div class="demo-item">
+            <m-cube
+              :style="{
+                height: this.v2 ? '200px' : '100px'
+              }"
+              >2</m-cube
+            >
+          </div>
+          <div class="demo-item">
+            <m-cube>3</m-cube>
+          </div>
+        </m-row>
       </m-folded-transition>
     </m-card>
   </div>
