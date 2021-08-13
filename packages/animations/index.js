@@ -1,17 +1,17 @@
-import FoldedTransition from './FoldedTransition'
-import FadeTransition from './FadeTransition.vue'
-import SlideOut from "./src/SlideOut.vue"
+import SlideTransition from "./src/SlideTransition.vue"
+import FoldedTransition from './src/FoldedTransition'
+import FadeTransition from './src/FadeTransition.vue'
 
 export {
     FoldedTransition,
+    SlideTransition,
     FadeTransition,
-    SlideOut
 }
 
 export default {
     install(Vue) {
         Vue.component(FoldedTransition.name, FoldedTransition)
+        Vue.component(SlideTransition.name, SlideTransition)
         Vue.component(FadeTransition.name, FadeTransition)
-        Vue.component(SlideOut.name, SlideOut)
     }
 }
