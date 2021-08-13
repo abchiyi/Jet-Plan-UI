@@ -1,17 +1,17 @@
+<template>
+  <transition name="m-fade-transition">
+    <div v-show="value">
+      <slot />
+    </div>
+  </transition>
+</template>
 <script>
-import { h } from "vue";
 export default {
   name: "m-fade-transition",
-  render() {
-    return h("div", { class: "m-fade-transition" }, [
-      h(
-        "transition",
-        {
-          props: { name: "m-fade-transition" }
-        }
-        // [this.$slots.default]
-      )
-    ]);
+  props: {
+    value: {
+      type: Boolean
+    }
   }
 };
 </script>
@@ -21,7 +21,7 @@ export default {
 .m-fade-transition-leave-active {
   transition: opacity 0.6s cubic-bezier(0.2, 0.4, 0.4, 1);
 }
-.m-fade-transition-enter,
+.m-fade-transition-enter-from,
 .m-fade-transition-leave-to {
   opacity: 0;
 }

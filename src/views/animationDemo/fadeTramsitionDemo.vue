@@ -6,8 +6,8 @@
         {{ v1 ? "淡出" : "淡入" }}
       </m-switch-item>
       <hr />
-      <m-fade-transition>
-        <m-row v-show="v1" warp center>
+      <m-fade-transition :value="v1">
+        <m-row X="center">
           <m-cube class="demo-item">Cube 1</m-cube>
         </m-row>
       </m-fade-transition>
@@ -21,9 +21,9 @@ export default {
   components: {},
   data() {
     return {
-      v1: true,
+      v1: true
     };
-  },
+  }
 };
 </script>
 

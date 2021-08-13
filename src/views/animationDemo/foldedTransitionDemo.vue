@@ -3,7 +3,6 @@
     <h2>折叠过渡</h2>
     <m-card class="article-box">
       <m-switch-item v-model="v1">
-        1
         {{ v1 ? "展开" : "收起" }}
       </m-switch-item>
       <m-switch-item v-model="v2">
@@ -12,14 +11,14 @@
       <hr />
       <m-folded-transition>
         <div v-show="v1">
-          <m-row warp center>
+          <m-row X="center">
             <div class="demo-item">
               <m-cube>1</m-cube>
             </div>
             <div class="demo-item">
               <m-cube
                 :style="{
-                  height: this.v2 ? '200px' : '100px',
+                  height: this.v2 ? '200px' : '100px'
                 }"
                 >2</m-cube
               >
@@ -41,9 +40,9 @@ export default {
   data() {
     return {
       v1: true,
-      v2: false,
+      v2: false
     };
-  },
+  }
 };
 </script>
 
