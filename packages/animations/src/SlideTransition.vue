@@ -1,9 +1,14 @@
+<template>
+  <transition name="m-slide-transition">
+    <div :class="classes" v-show="value">
+      <slot />
+    </div>
+  </transition>
+</template>
+
 <script>
 export default {
   name: "m-slide-transition",
-  mounted() {
-    // if (this.$slots.default.length != 1) console.error("子节点数量大于1");
-  },
   props: {
     position: {
       type: String,
@@ -13,61 +18,47 @@ export default {
         return checkout.indexOf(value.toLowerCase()) !== -1;
       }
     },
-    relativeToScreen: {
+
+    value: {
       type: Boolean,
-      default: false
+      required: true
     }
-  },
-  data() {
-    return {
-      height: undefined,
-      width: undefined
-    };
   },
   computed: {
-    moveDistance() {
-      return "translateX(-60px)";
+    classes() {
+      return [this.position];
     }
-  },
-  methods: {
-    sync() {
-      this.display = this.value;
-      this.$emit("input", this.value);
-    }
-  },
-  render(createElement) {
-    return createElement(
-      "transition",
-      {
-        props: { name: "m-slide-transition" },
-        on: {
-          enter: function(el) {
-            el.style.transition = "all 400ms cubic-bezier(0.5, 0, 0, 0.95)";
-          },
-          leave: el => {
-            el.style.transition = "all 400ms cubic-bezier(0.5, 0, 0, 0.95)";
-          },
-
-          beforeEnter: el => {
-            el.style.opacity = 0.5;
-          },
-          afterEnter: el => {
-            el.style.transform = "unset";
-            // el.style.opacity = 1;
-          },
-
-          beforeLeave: el => {
-            el.style.transform = "translateX(-60px)";
-            el.style.opacity = 0;
-          },
-          afterLeave: el => {
-            el.style.transform = "unset";
-            el.style.opacity = 1;
-          }
-        }
-      },
-      this.$slots
-    );
   }
 };
 </script>
+
+<style scoped>
+.m-slide-transition-enter-active,
+.m-slide-transition-leave-active {
+  transition: all 400ms cubic-bezier(0.5, 0, 0, 0.95);
+}
+/* To Right */
+.m-slide-transition-enter-from.right,
+.m-slide-transition-leave-to.right {
+  opacity: 0;
+  transform: translateX(100px);
+}
+/* To Left */
+.m-slide-transition-enter-from.left,
+.m-slide-transition-leave-to.left {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+/* To Top */
+.m-slide-transition-enter-from.top,
+.m-slide-transition-leave-to.top {
+  opacity: 0;
+  transform: translateY(-100px);
+}
+/* To Bottom */
+.m-slide-transition-enter-from.bottom,
+.m-slide-transition-leave-to.bottom {
+  opacity: 0;
+  transform: translateY(100px);
+}
+</style>
