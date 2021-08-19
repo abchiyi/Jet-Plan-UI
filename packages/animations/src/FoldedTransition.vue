@@ -3,14 +3,15 @@
     <transition
       name="m-folded-transition"
       @beforeEnter="this.beforeEnter"
+      @afterEnter="this.clearHeight"
       @beforeLeave="this.beforeLeave"
+      @afterLeave="this.clearHeight"
     >
       <div v-show="this.value"><slot /></div>
     </transition>
   </div>
 </template>
 <script>
-// import { h } from "vue";
 function nodeCheck(el, callback) {
   if (el.children.length > 1) {
     console.error(
@@ -40,7 +41,10 @@ export default {
   },
   methods: {
     refresh(el) {
-      this.height = el.children[0].offsetHeight;
+      this.height = el.children[0].offsetHeight + "px";
+    },
+    clearHeight() {
+      this.height = null;
     },
     beforeEnter(el) {
       nodeCheck(el, () => {
@@ -95,6 +99,7 @@ export default {
 
 .m-folded-transition-enter-to,
 .m-folded-transition-leave-from {
-  height: var(--height);
+  /* height: var(--height); */
+  height: v-bind(height);
 }
 </style>
