@@ -1,5 +1,5 @@
 <script>
-import ripple from "./ripple.vue";
+import ripple from "./ClickFeedback-Ripple.vue";
 
 export default {
   name: "m-click-feedback",
