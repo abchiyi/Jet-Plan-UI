@@ -4,12 +4,13 @@
     :position="right ? 'right' : 'left'"
     :value="expand"
   >
-    <m-background :style="styles" bgBlur>
-      <header></header>
-      <slot name="header"></slot>
-      <slot></slot>
-      <slot name="footer"></slot>
-    </m-background>
+    <div>
+      <header>
+        <slot name="header" />
+      </header>
+      <slot name="default" />
+      <slot name="footer" />
+    </div>
   </m-slide-transition>
 </template>
 
@@ -34,13 +35,6 @@ export default {
       width: undefined,
       syncShow: false
     };
-  },
-  computed: {
-    styles() {
-      let styles = {};
-      styles["--postiton"] = -1 * this.width + "px";
-      return styles;
-    }
   },
   watch: {
     expand() {
