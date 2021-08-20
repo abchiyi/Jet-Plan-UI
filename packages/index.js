@@ -2,12 +2,14 @@ import gird from './gird'
 import form from './form'
 import card from './card'
 import animations from './animations'
+import progress from './progress'
 
 const components = {
     gird,
     form,
     card,
-    animations
+    animations,
+    progress
 }
 
 function install(Vue) {
@@ -24,7 +26,8 @@ export {
     gird,
     form,
     card,
-    animations
+    animations,
+    progress
 }
 
 export default {

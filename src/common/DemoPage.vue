@@ -1,12 +1,12 @@
 <template>
-  <m-row class="demo-page" center>
+  <m-row class="demo-page" X="center">
     <m-col colMd="12" xl="12" sm="20"> </m-col>
   </m-row>
 </template>
 
 <script>
 export default {
-  name: "m-demo-page",
+  name: "m-demo-page"
 };
 </script>
 
