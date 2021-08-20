@@ -1,46 +1,59 @@
 <template>
-  <div ref="self" id="page">
+  <div id="page">
     <!-- 头栏 -->
-    <m-header :class="this.value ? 'is-open' : ''">
-      <slot name="header"></slot>
+    <m-header :class="value ? 'is-open' : ''">
+      <m-row>
+        <m-col class="frosted-glass" v-bind="mainContentWidth" relativeToScreen>
+          <slot name="header"></slot>
+        </m-col>
+      </m-row>
     </m-header>
-    <!-- 主文本内容区 -->
+    <!-- 主文本内容区 控制页面宽度  -->
     <m-row>
-      <m-col v-bind="mainContentWidth" relativeToScreen id="m-main-content">
-        <main>
-          <m-row center>
-            <m-col v-bind="contentBody" id="content-body">
-              <slot></slot>
-            </m-col>
-          </m-row>
-        </main>
+      <m-col
+        v-bind="mainContentWidth"
+        id="m-main-content"
+        relativeToScreen
+        tag="main"
+      >
+        <m-row X="center">
+          <m-col v-bind="contentBody" id="content-body">
+            <slot></slot>
+          </m-col>
+        </m-row>
         <footer>
           <slot name="footer"></slot>
         </footer>
       </m-col>
     </m-row>
+    <!-- 侧栏 -->
+    <m-sidebar :expand="value">
+      <m-row no-gap>
+        <m-col v-bind="sidebarDispaly" relativeToScreen>
+          <slot name="sidebar" />
+        </m-col>
+      </m-row>
+    </m-sidebar>
   </div>
 </template>
 
 <script >
-import size from "./Size";
 export default {
   name: "m-page",
-  mixins: [size],
   props: {
     value: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       sidebarDispaly: {
-        colXs: 15,
-        colSm: 5,
-        colMd: 5,
-        colLg: 5,
-        colXl: 5,
+        xs: 15,
+        sm: 5,
+        md: 5,
+        lg: 4,
+        xl: 4
       },
       contentBody: {
         colXs: 24,
@@ -48,53 +61,40 @@ export default {
         colMd: 24,
         colLg: 16,
         colXl: 16,
-        col: 16,
+        col: 16
       },
-      sidebar: true,
+      sidebar: true
     };
   },
   computed: {
     mainContentWidth() {
       const mainContentWidth = {
-        colXs: 24,
-        colSm: 24,
-        colMd: 21,
-        colLg: 21,
-        colXl: 21,
+        md: 19,
+        lg: 20,
+        xl: 20,
         // offset
-        offsetXs: 0,
-        offsetSm: 0,
-        offsetMd: 3,
-        offsetLg: 3,
-        offsetXl: 3,
+        offsetMd: 4,
+        offsetLg: 4,
+        offsetXl: 4
       };
 
       if (!this.value) {
         mainContentWidth.offsetMd = 0;
         mainContentWidth.offsetLg = 0;
         mainContentWidth.offsetXl = 0;
-        mainContentWidth.colMd = 24;
-        mainContentWidth.colLg = 24;
-        mainContentWidth.colXl = 24;
+        mainContentWidth.md = 24;
+        mainContentWidth.lg = 24;
+        mainContentWidth.xl = 24;
       }
 
       return mainContentWidth;
-    },
-  },
-  methods: {
-    expand() {
-      this.$emit("input", this.value);
-    },
-  },
+    }
+  }
 };
 </script>
 
 <style scoped>
 main {
   margin-top: 100px;
-}
-
-.is-open {
-  left: 12.5vw;
 }
 </style>

@@ -1,15 +1,16 @@
 <script>
+import { h } from "vue";
 export default {
   name: "m-header",
-  render(createElement) {
-    return createElement(
+  render() {
+    return h(
       "header",
       {
-        class: ["m-header", "frosted-glass"],
+        class: ["m-header", ""]
       },
-      this.$slots.default
+      this.$slots
     );
-  },
+  }
 };
 </script>
 
@@ -20,6 +21,5 @@ export default {
   z-index: 90;
   right: 0;
   left: 0;
-  top: 0;
 }
 </style>

@@ -3,6 +3,10 @@ import { h } from "vue";
 export default {
   name: "m-col",
   props: {
+    tag: {
+      type: String,
+      default: "div"
+    },
     col: Number,
     xs: Number,
     sm: Number,
@@ -14,7 +18,8 @@ export default {
     offsetSm: Number,
     offsetMd: Number,
     offsetLg: Number,
-    offsetXl: Number
+    offsetXl: Number,
+    relativeToScreen: { type: Boolean, default: false }
   },
   methods: {
     calcWidth(number) {
@@ -68,7 +73,7 @@ export default {
   },
   render() {
     return h(
-      "div",
+      this.tag,
       {
         class: ["m-col", ...this.class]
       },

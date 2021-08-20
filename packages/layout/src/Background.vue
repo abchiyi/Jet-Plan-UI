@@ -1,4 +1,5 @@
 <script>
+import { h } from "vue";
 export default {
   name: "m-background",
   mounted() {
@@ -52,8 +53,8 @@ export default {
       }
     }
   },
-  render(createElement) {
-    return createElement(
+  render() {
+    return h(
       "div",
       {
         class: this.classes,

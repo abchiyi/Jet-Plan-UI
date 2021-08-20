@@ -1,24 +1,20 @@
 <template>
-  <SlideTransition
-    class="bar"
+  <m-slide-transition
+    class="bar frosted-glass"
     :position="right ? 'right' : 'left'"
-    :value="syncShow"
+    :value="expand"
   >
-    <m-background style="height: 100%" :style="styles" bgBlur>
+    <m-background :style="styles" bgBlur>
       <header></header>
       <slot name="header"></slot>
       <slot></slot>
       <slot name="footer"></slot>
     </m-background>
-  </SlideTransition>
+  </m-slide-transition>
 </template>
 
 <script>
-import { SlideTransition } from "../animations";
 export default {
-  components: {
-    SlideTransition
-  },
   name: "m-sidebar",
   mounted() {
     this.syncShow = this.expand;
@@ -63,6 +59,8 @@ export default {
   height: 100vh;
   z-index: 91;
   top: 0;
+  position: fixed;
+  bottom: 0;
 }
 
 /* Firefox  */
@@ -79,5 +77,17 @@ export default {
 /* IE 10+ */
 .bar {
   -ms-overflow-style: none;
+}
+
+/* 磨砂玻璃 */
+.frosted-glass-night,
+.frosted-glass {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+}
+
+.frosted-glass-night {
+  background-color: rgba(28, 28, 34, 0.7);
+  color: white;
 }
 </style>

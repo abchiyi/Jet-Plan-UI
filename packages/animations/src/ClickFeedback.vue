@@ -1,5 +1,6 @@
 <script>
 import ripple from "./ClickFeedback-Ripple.vue";
+import { h } from "vue";
 
 export default {
   name: "m-click-feedback",
@@ -53,8 +54,8 @@ export default {
       this.masks.pop();
     }
   },
-  render(createElement) {
-    return createElement(
+  render() {
+    return h(
       "div",
       {
         class: "click-feedback",
@@ -73,7 +74,7 @@ export default {
         ...this.masks.map(attrs => {
           // TODO 在这里控制使用的遮罩类型
           // TODO 待添加新类型遮罩
-          return createElement(ripple, { ...attrs });
+          return h(ripple, { ...attrs });
         })
       ]
     );

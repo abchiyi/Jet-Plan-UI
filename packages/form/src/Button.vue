@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     click: function() {
-      if (!this.disabled) this.$emit("click");
+      // if (!this.disabled) this.$emit("click");
     }
   },
 
@@ -57,8 +57,8 @@ export default {
     return h(
       "button",
       {
-        class: this.classes,
-        onClick: this.click
+        class: this.classes
+        // onClick: this.click
       },
       this.$slots
     );
