@@ -3,23 +3,28 @@
     <!-- 头栏 -->
     <m-header :class="value ? 'is-open' : ''">
       <m-row>
-        <m-col class="frosted-glass" v-bind="mainContentWidth" relativeToScreen>
+        <m-col
+          class="frosted-glass"
+          v-bind="width.mainContentWidth"
+          relativeToScreen
+        >
           <slot name="header"></slot>
         </m-col>
       </m-row>
     </m-header>
-    <!-- 主文本内容区 控制页面宽度  -->
+    <!-- 正文内容外壳,主页布局  -->
     <m-row>
       <m-col
-        v-bind="mainContentWidth"
+        v-bind="width.mainContentWidth"
         id="m-main-content"
         relativeToScreen
         tag="main"
       >
+        <!-- 正文内容 -->
         <m-row X="center">
-          <m-col v-bind="contentBody" id="content-body">
+          <div id="content-body">
             <slot></slot>
-          </m-col>
+          </div>
         </m-row>
         <footer>
           <slot name="footer"></slot>
@@ -29,7 +34,7 @@
     <!-- 侧栏 -->
     <m-sidebar :expand="value">
       <m-row no-gap>
-        <m-col v-bind="sidebarDispaly" relativeToScreen>
+        <m-col v-bind="width.sidebarDispaly" relativeToScreen>
           <slot name="sidebar" />
         </m-col>
       </m-row>
@@ -39,6 +44,9 @@
 
 <script >
 export default {
+  mounted() {
+    console.log(this.width);
+  },
   name: "m-page",
   props: {
     value: {
@@ -48,13 +56,6 @@ export default {
   },
   data() {
     return {
-      sidebarDispaly: {
-        xs: 15,
-        sm: 5,
-        md: 5,
-        lg: 4,
-        xl: 4
-      },
       contentBody: {
         colXs: 24,
         colSm: 24,
@@ -67,33 +68,39 @@ export default {
     };
   },
   computed: {
-    mainContentWidth() {
-      const mainContentWidth = {
-        md: 19,
-        lg: 20,
-        xl: 20,
-        // offset
-        offsetMd: 4,
-        offsetLg: 4,
-        offsetXl: 4
+    width() {
+      const sidebarDispaly = {
+        xl: 3,
+        lg: 3,
+        md: 5,
+        sm: 5,
+        xs: 15
       };
 
-      if (!this.value) {
-        mainContentWidth.offsetMd = 0;
-        mainContentWidth.offsetLg = 0;
-        mainContentWidth.offsetXl = 0;
-        mainContentWidth.md = 24;
-        mainContentWidth.lg = 24;
-        mainContentWidth.xl = 24;
-      }
+      const mainContentWidth = {
+        lg: this.value ? 24 - sidebarDispaly.lg : 24,
+        xl: this.value ? 24 - sidebarDispaly.xl : 24,
+        md: this.value ? 24 - sidebarDispaly.md : 24,
+        // offset
+        offsetXl: this.value ? sidebarDispaly.lx : 0,
+        offsetLg: this.value ? sidebarDispaly.lg : 0,
+        offsetMd: this.value ? sidebarDispaly.md : 0
+      };
 
-      return mainContentWidth;
+      return {
+        sidebarDispaly: sidebarDispaly,
+        mainContentWidth: mainContentWidth
+      };
     }
   }
 };
 </script>
 
 <style scoped>
+#content-body {
+  max-width: 768px;
+  width: 100%;
+}
 main {
   margin-top: 100px;
 }
