@@ -9,14 +9,16 @@ export default {
       validator: v => {
         const value = ["start", "center", "end"];
         return value.indexOf(v.toLowerCase()) !== -1;
-      }
+      },
+      default: "start"
     },
     Y: {
       type: String,
       validator: v => {
         const value = ["top", "center", "bottom"];
         return value.indexOf(v.toLowerCase()) !== -1;
-      }
+      },
+      default: "start"
     },
     spaceMode: {
       type: String,
