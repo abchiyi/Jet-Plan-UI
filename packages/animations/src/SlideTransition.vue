@@ -11,7 +11,6 @@
 </template>
 
 <script>
-// TODO 需要自动检测子元素尺寸
 export default {
   name: "m-slide-transition",
   props: {
