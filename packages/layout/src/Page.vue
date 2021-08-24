@@ -44,9 +44,6 @@
 
 <script >
 export default {
-  mounted() {
-    console.log(this.width);
-  },
   name: "m-page",
   props: {
     value: {
