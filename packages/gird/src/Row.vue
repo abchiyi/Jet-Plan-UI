@@ -18,7 +18,7 @@ export default {
         const value = ["top", "center", "bottom"];
         return value.indexOf(v.toLowerCase()) !== -1;
       },
-      default: "start"
+      default: "top"
     },
     spaceMode: {
       type: String,
