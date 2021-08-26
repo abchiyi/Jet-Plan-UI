@@ -95,6 +95,7 @@ export default {
   display: inline-block;
   position: relative;
   user-select: none;
+  cursor: pointer;
   margin: 0 2px;
 }
 
