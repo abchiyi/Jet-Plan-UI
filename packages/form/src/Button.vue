@@ -145,7 +145,6 @@ export default {
   background: unset;
   color: var(--grey-4);
   transition: opacity 0.2s cubic-bezier(0.2, 1, 0.5, 1);
-  padding-right: unset;
 }
 
 /*------------ Active ----------*/
