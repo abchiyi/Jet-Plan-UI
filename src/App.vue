@@ -1,11 +1,21 @@
 <template>
   <body id="app">
     <router-view />
-    <h1>Top page</h1>
   </body>
 </template>
 
 <script>
+window.onresize = function() {
+  var res;
+  if (res) {
+    clearTimeout(res);
+  }
+  res = setTimeout(function() {
+    console.log("resize triggered");
+  }, 20);
+
+  console.log(123);
+};
 export default {
   name: "App",
   data() {

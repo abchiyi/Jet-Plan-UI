@@ -15,6 +15,9 @@
 
 <script>
 export default {
+  mounted() {
+    this.$emit("test", "girade");
+  },
   name: "grid-demo",
   components: {},
   data() {

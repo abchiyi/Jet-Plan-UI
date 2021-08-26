@@ -22,11 +22,12 @@
       <div id="nav">
         <router-link to="/">Home</router-link> <br />
         <router-link to="/about">About</router-link><br />
-        <router-link to="/girdedemo">GirdeDemo</router-link><br />
-        <router-link to="/animationdemo">Animation</router-link><br />
-        <router-link to="/progressbar">progressbar</router-link><br />
+        <router-link to="/get-started">Get started</router-link><br />
       </div>
     </template>
+    <!-- 正文 -->
+
+    TODO 以后这里会写点什么的<br />
     <m-button
       @click="
         () => {
@@ -36,13 +37,13 @@
       >Get Started
       <!-- <router-link to="/get-started">Get Started</router-link><br /> -->
     </m-button>
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
+    <router-view />
   </m-page>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
 
 export default {
   name: "Home",
@@ -52,7 +53,7 @@ export default {
     };
   },
   components: {
-    HelloWorld
+    // HelloWorld
   }
 };
 </script>
