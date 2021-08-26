@@ -1,16 +1,16 @@
 <template>
   <div>
-    <h2>滑入滑出</h2>
-    <m-card style="height: 200px" class="article-box">
+    <h2>淡出淡入</h2>
+    <m-card class="article-box">
       <m-switch-item v-model="v1">
         {{ v1 ? "淡出" : "淡入" }}
       </m-switch-item>
       <hr />
-      <m-row X="center">
-        <m-slide-transition :value="v1" position="right">
+      <m-transition-fade :value="v1">
+        <m-row X="center">
           <m-cube class="demo-item">Cube 1</m-cube>
-        </m-slide-transition>
-      </m-row>
+        </m-row>
+      </m-transition-fade>
     </m-card>
   </div>
 </template>

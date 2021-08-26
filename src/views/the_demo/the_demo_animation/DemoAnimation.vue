@@ -6,9 +6,9 @@
   </div>
 </template>
 <script>
-import DemoAnimationFade from "./DemoAnimationFadeTransition.vue";
-import DemoAnimationSlide from "./DemoAnimationSlideTransition.vue";
-import DemoAnimationFolded from "./DemoAnimationFoldedTransition.vue";
+import DemoAnimationFade from "./DemoAnimationFade.vue";
+import DemoAnimationSlide from "./DemoAnimationSlide.vue";
+import DemoAnimationFolded from "./DemoAnimationFolded.vue";
 
 export default {
   name: "DemoAnimation",

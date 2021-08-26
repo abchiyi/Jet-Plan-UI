@@ -1,5 +1,5 @@
 <template>
-  <m-slide-transition
+  <m-transition-slide
     class="bar frosted-glass"
     :position="right ? 'right' : 'left'"
     :value="expand"
@@ -11,7 +11,7 @@
       <slot name="default" />
       <slot name="footer" />
     </div>
-  </m-slide-transition>
+  </m-transition-slide>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <template>
   <transition
-    name="m-slide-transition"
+    name="m-transition-slide"
     @beforeEnter="beforeEnter"
     @beforeLeave="beforeLeave"
   >
@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: "m-slide-transition",
+  name: "m-transition-slide",
   props: {
     position: {
       type: String,
@@ -66,32 +66,32 @@ export default {
 </script>
 
 <style scoped>
-.m-slide-transition-enter-active,
-.m-slide-transition-leave-active {
+.m-transition-slide-enter-active,
+.m-transition-slide-leave-active {
   transition: all 500ms cubic-bezier(0.5, 0, 0, 0.95);
   transform: translateZ(0);
 }
 /* To Right */
-.m-slide-transition-enter-from.right,
-.m-slide-transition-leave-to.right {
+.m-transition-slide-enter-from.right,
+.m-transition-slide-leave-to.right {
   opacity: 0;
   transform: translateX(var(--migration-distance));
 }
 /* To Left */
-.m-slide-transition-enter-from.left,
-.m-slide-transition-leave-to.left {
+.m-transition-slide-enter-from.left,
+.m-transition-slide-leave-to.left {
   opacity: 0;
   transform: translateX(calc(-1 * var(--migration-distance)));
 }
 /* To Top */
-.m-slide-transition-enter-from.top,
-.m-slide-transition-leave-to.top {
+.m-transition-slide-enter-from.top,
+.m-transition-slide-leave-to.top {
   opacity: 0;
   transform: translateY(calc(-1 * var(--migration-distance)));
 }
 /* To Bottom */
-.m-slide-transition-enter-from.bottom,
-.m-slide-transition-leave-to.bottom {
+.m-transition-slide-enter-from.bottom,
+.m-transition-slide-leave-to.bottom {
   opacity: 0;
   transform: translateY(var(--migration-distance));
 }

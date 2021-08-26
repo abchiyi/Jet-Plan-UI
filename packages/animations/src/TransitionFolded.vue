@@ -1,7 +1,7 @@
 <template>
-  <div class="m-folded-transition" :style="{ ...this.style }">
+  <div class="m-transition-folded" :style="{ ...this.style }">
     <transition
-      name="m-folded-transition"
+      name="m-transition-folded"
       @beforeEnter="this.beforeEnter"
       @afterEnter="this.clearHeight"
       @beforeLeave="this.beforeLeave"
@@ -16,11 +16,11 @@ function nodeCheck(el, callback) {
   if (el.children.length > 1) {
     console.error(
       "childrenNodeError,should be like this:",
-      "\n<m-folded-transition>\n",
+      "\n<m-transition-folded>\n",
       "\t<element v-show/if='value'>\n",
       "\t\t<content></content>\n",
       "\t</element>\n",
-      "<m-folded-transition>\n",
+      "<m-transition-folded>\n",
       el
     );
   } else {
@@ -28,7 +28,7 @@ function nodeCheck(el, callback) {
   }
 }
 export default {
-  name: "m-folded-transition",
+  name: "m-transition-folded",
   data() {
     return {
       height: null
@@ -79,26 +79,26 @@ export default {
 </script>
 
 <style>
-.m-folded-transition * {
+.m-transition-folded * {
   margin-top: unset !important;
   margin-bottom: unset !important;
 }
 
-.m-folded-transition-enter-active,
-.m-folded-transition-leave-active {
+.m-transition-folded-enter-active,
+.m-transition-folded-leave-active {
   transition: var(--animationTime) cubic-bezier(0.2, 0.5, 0, 1);
   transform: translate3d(0, 0, 0);
   height: var(--enter-height);
   overflow: hidden;
 }
 
-.m-folded-transition-leave-to,
-.m-folded-transition-enter-from {
+.m-transition-folded-leave-to,
+.m-transition-folded-enter-from {
   height: 0px;
 }
 
-.m-folded-transition-enter-to,
-.m-folded-transition-leave-from {
+.m-transition-folded-enter-to,
+.m-transition-folded-leave-from {
   /* height: var(--height); */
   height: v-bind(height);
 }
