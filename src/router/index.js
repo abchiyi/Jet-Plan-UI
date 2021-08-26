@@ -4,36 +4,38 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('../Home.vue')
+    component: () => import('../views/Home.vue'),
+    children: [
+      {
+        path: 'about/',
+        name: 'About',
+        component: () => import('../About.vue')
+      }
+    ]
   },
-  // {
-  //   path: '/girdedemo',
-  //   name: 'gird',
-  //   component: () => import('../views/theDemoPages/girdeDemo.vue')
-  // },
   {
-    path: '/get-started/:componentName',
-    name: '',
-    component: () => import('../views/theDemoPages/deomPage.vue')
+    name: 'Demo',
+    path: '/get-started',
+    component: () => import('../views/the-demo/The-demo-animation/deomPage.vue'),
+    children: [
+      {
+        path: "",
+        component: () => import('../views/the-demo/TheDemoGirdeComponent.vue')
+      },
+      {
+        path: "animationdemo/",
+        component: () => import('../views/the-demo/The-demo-animation')
+      },
+      {
+        path: "animationdemo/",
+        component: () => import('../views/the-demo/The-demo-animation')
+      }, {
+        path: 'progressbar/',
+        component: () => import('../views/the-demo/TheDemoProgress.vue')
+      },
+    ]
   },
-  // {
-  //   path: '/animationdemo',
-  //   name: 'animationdemo',
-  //   component: () => import('../views/theDemoPages/animationDemo')
-  // },
-  // {
-  //   path: '/progressbar',
-  //   name: 'progressbar',
-  //   component: () => import('../views/progressDemo')
-  // },
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/theDemoPages/About.vue')
-  // }
+
 ]
 
 const router = createRouter({
