@@ -1,19 +1,19 @@
-import SlideTransition from "./src/SlideTransition.vue"
-import FoldedTransition from './src/FoldedTransition'
-import FadeTransition from './src/FadeTransition.vue'
-import ClickFeedback from "./src/ClickFeedback.vue"
+import TransitionFolded from './src/TransitionFolded.vue'
+import TransitionSlide from './src/TransitionSlide.vue'
+import TransitionFade from './src/TransitionFade.vue'
+import ClickFeedback from './src/ClickFeedback.vue'
 export {
-    FoldedTransition,
-    SlideTransition,
-    FadeTransition,
+    TransitionFolded,
+    TransitionSlide,
+    TransitionFade,
     ClickFeedback
 }
 
 export default {
     install(Vue) {
-        Vue.component(FoldedTransition.name, FoldedTransition)
-        Vue.component(SlideTransition.name, SlideTransition)
-        Vue.component(FadeTransition.name, FadeTransition)
+        Vue.component(TransitionFolded.name, TransitionFolded)
+        Vue.component(TransitionSlide.name, TransitionSlide)
+        Vue.component(TransitionFade.name, TransitionFade)
         Vue.component(ClickFeedback.name, ClickFeedback)
     }
 }
