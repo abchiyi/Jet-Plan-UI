@@ -70,6 +70,7 @@ export default {
 /*------------ Default ----------*/
 
 .m-button {
+  cursor: pointer;
   text-decoration: underline 2px;
   background-color: var(--bgco-0);
   display: inline-block;
