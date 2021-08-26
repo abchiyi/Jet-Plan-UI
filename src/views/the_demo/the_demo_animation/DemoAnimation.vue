@@ -1,16 +1,21 @@
 <template>
-  <div>13</div>
+  <div>
+    <demo-animation-fade></demo-animation-fade>
+    <demo-animation-slide></demo-animation-slide>
+    <demo-animation-folded></demo-animation-folded>
+  </div>
 </template>
 <script>
+import DemoAnimationFade from "./DemoAnimationFadeTransition.vue";
+import DemoAnimationSlide from "./DemoAnimationSlideTransition.vue";
+import DemoAnimationFolded from "./DemoAnimationFoldedTransition.vue";
+
 export default {
-  name: "animationDemo",
-  components: {},
-  mounted() {
-    this.$nextTick(() => {
-      setInterval(() => {
-        if (this.sw) this.r = !this.r;
-      }, 2000);
-    });
+  name: "DemoAnimation",
+  components: {
+    DemoAnimationFade,
+    DemoAnimationSlide,
+    DemoAnimationFolded
   },
   data() {
     return {
