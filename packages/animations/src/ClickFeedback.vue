@@ -1,5 +1,5 @@
 <script>
-import ripple from "./ClickFeedback-Ripple.vue";
+import ripple from "./ClickFeedbackRipple.vue";
 import { h } from "vue";
 
 export default {
