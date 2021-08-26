@@ -4,13 +4,7 @@
     :position="right ? 'right' : 'left'"
     :value="expand"
   >
-    <div>
-      <header>
-        <slot name="header" />
-      </header>
-      <slot name="default" />
-      <slot name="footer" />
-    </div>
+    <slot />
   </m-transition-slide>
 </template>
 
