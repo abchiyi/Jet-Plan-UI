@@ -1,13 +1,18 @@
+<template>
+  <button @mouseenter="enter" @mouseleave="leave" :class="classes">
+    <m-transition-fade :value="show_mask">
+      <div id="mask"></div>
+    </m-transition-fade>
+    <slot />
+  </button>
+</template>
+
 <script>
-import { h } from "vue";
-// import { Background } from "../../layout";
 export default {
-  // mixins: [Background],
   name: "m-button",
   data() {
     return {
-      height: undefined,
-      width: undefined
+      value: false
     };
   },
   props: {
@@ -16,6 +21,10 @@ export default {
       default: false
     },
     text: {
+      type: Boolean,
+      default: false
+    },
+    mask: {
       type: Boolean,
       default: false
     },
@@ -45,23 +54,18 @@ export default {
       classes.push(this.text ? "text-button" : "button");
 
       return classes;
+    },
+    show_mask() {
+      return this.mask && this.value;
     }
   },
   methods: {
-    click: function() {
-      // if (!this.disabled) this.$emit("click");
+    enter() {
+      this.value = true;
+    },
+    leave() {
+      this.value = false;
     }
-  },
-
-  render() {
-    return h(
-      "button",
-      {
-        class: this.classes
-        // onClick: this.click
-      },
-      this.$slots
-    );
   }
 };
 </script>
@@ -70,7 +74,7 @@ export default {
 /*------------ Default ----------*/
 
 .m-button {
-  cursor: pointer;
+  position: relative;
   text-decoration: underline 2px;
   background-color: var(--bgco-0);
   display: inline-block;
@@ -80,6 +84,7 @@ export default {
   user-select: none;
   font-size: 14px;
   margin: 1px 2px;
+  cursor: pointer;
 }
 
 /*------------ Primary ----------*/
@@ -140,7 +145,7 @@ export default {
   background: unset;
   color: var(--grey-4);
   transition: opacity 0.2s cubic-bezier(0.2, 1, 0.5, 1);
-  padding: unset;
+  padding-right: unset;
 }
 
 /*------------ Active ----------*/
@@ -168,5 +173,17 @@ export default {
 .m-button.text-button.primary.disabled {
   color: var(--bgco-1);
   opacity: unset;
+}
+
+/*------------ Mask ----------*/
+#mask {
+  background-color: var(--shadow);
+  opacity: 0.3;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  content: "";
+  top: 0;
+  left: 0;
 }
 </style>
