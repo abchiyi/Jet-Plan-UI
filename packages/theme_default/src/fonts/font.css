@@ -1,0 +1,17 @@
+/* 默认字体 */
+@font-face {
+    font-family: Sarasa;
+    font-weight: normal;
+    src:
+        url('./ui/sarasa-ui-sc-regular.ttf'),
+        local('sarasa-ui-sc-regular.ttf');
+}
+
+/* 粗体字 */
+@font-face {
+    font-family: Sarasa;
+    font-weight: bold;
+    src:
+        url('./ui/sarasa-ui-sc-bold.ttf'),
+        local('sarasa-ui-sc-bold.ttf');
+}

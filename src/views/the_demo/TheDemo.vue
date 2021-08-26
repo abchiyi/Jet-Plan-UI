@@ -26,7 +26,6 @@
         <router-link to="/animationdemo">Animations</router-link> <br />
         <router-link to="/progressbar">Progressbar</router-link> <br />
       </template>
-      <h2>ID:{{ $route.params.rr }}</h2>
       <router-view @test="login" />
     </m-page>
   </div>
