@@ -27,7 +27,7 @@
         <router-link to="/progressbar">Progressbar</router-link> <br />
         <router-link to="/test">Test</router-link> <br />
       </template>
-      <router-view @test="login" />
+      <router-view />
     </m-page>
   </div>
 </template>
@@ -38,11 +38,6 @@ export default {
     return {
       value: true
     };
-  },
-  methods: {
-    login(e) {
-      console.log(e);
-    }
   }
 };
 </script>
