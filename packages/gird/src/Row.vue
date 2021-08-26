@@ -38,6 +38,10 @@ export default {
     noGap: {
       type: Boolean,
       default: false
+    },
+    tag: {
+      type: String,
+      default: "div"
     }
   },
   computed: {
@@ -78,7 +82,7 @@ export default {
   },
   render() {
     return h(
-      "div",
+      this.tag,
       {
         class: [
           "m-row",
