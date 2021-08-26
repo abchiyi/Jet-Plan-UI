@@ -31,6 +31,10 @@ const routes = [
         path: '/progressbar',
         component: () => import('../views/the_demo/TheDemoProgress.vue')
       },
+      {
+        path: '/test',
+        component: () => import('../views/the_demo/TheTest.vue')
+      },
     ]
   },
 

@@ -25,6 +25,7 @@
         <router-link to="/get-started">Girde</router-link> <br />
         <router-link to="/animationdemo">Animations</router-link> <br />
         <router-link to="/progressbar">Progressbar</router-link> <br />
+        <router-link to="/test">Test</router-link> <br />
       </template>
       <router-view @test="login" />
     </m-page>
