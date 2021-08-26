@@ -1,3 +1,3 @@
-import AnimationDemo from './animationDemo.vue';
+import AnimationDemo from './DemoAnimation.vue';
 
 export default AnimationDemo

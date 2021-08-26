@@ -1,21 +1,15 @@
 <template>
   <div>
-    <foldedTransitionDemo></foldedTransitionDemo>
-    <fadeTransitionDemo></fadeTransitionDemo>
-    <slideTransitionDemo></slideTransitionDemo>
+    <the-demo-fade-transition />
   </div>
 </template>
 
 <script>
-import foldedTransitionDemo from "./foldedTransitionDemo.vue";
-import fadeTransitionDemo from "./fadeTramsitionDemo.vue";
-import slideTransitionDemo from "./slideTransitionDemo.vue";
+// import TheDemoFadeTransition from "./DemoAnimationFadeTransition.vue";
 export default {
   name: "animationDemo",
   components: {
-    foldedTransitionDemo,
-    fadeTransitionDemo,
-    slideTransitionDemo,
+    // TheDemoFadeTransition
   },
   mounted() {
     this.$nextTick(() => {
@@ -27,14 +21,14 @@ export default {
   data() {
     return {
       v1: true,
-      v2: false,
+      v2: false
     };
   },
   computed: {
     classes() {
       return ["cube", this.r ? "on" : "off"];
-    },
-  },
+    }
+  }
 };
 </script>
 
