@@ -20,12 +20,26 @@
         </m-row>
       </template>
       <template v-slot:sidebar>
-        <router-link to="/">Home</router-link> <br />
-        <hr />
-        <router-link to="/get-started">Girde</router-link> <br />
-        <router-link to="/animationdemo">Animations</router-link> <br />
-        <router-link to="/progressbar">Progressbar</router-link> <br />
-        <router-link to="/test">Test</router-link> <br />
+        <!-- TODO 可复用的组件 -->
+        <div>
+          <m-row tag="header" X="center" Y="center">
+            <m-button text @click="$router.push('/')">Home</m-button>
+          </m-row>
+          <div class="links">
+            <router-link-button v-model="pageNow" url="/get-started">
+              Girde
+            </router-link-button>
+            <router-link-button v-model="pageNow" url="/animationdemo">
+              Animation
+            </router-link-button>
+            <router-link-button v-model="pageNow" :url="'progressbar'">
+              Progressbar
+            </router-link-button>
+            <router-link-button v-model="pageNow" :url="'/test'">
+              Test
+            </router-link-button>
+          </div>
+        </div>
       </template>
       <router-view />
     </m-page>
@@ -33,14 +47,25 @@
 </template>
 
 <script>
+import RouterLinkButton from "../../common/RouterLinkButton.vue";
 export default {
+  components: { RouterLinkButton },
   data() {
     return {
-      value: true
+      value: true,
+      pageNow: "/get-started"
     };
+  },
+  watch: {
+    pageNow() {
+      console.log("<>" + this.pageNow);
+    }
   }
 };
 </script>
 
 <style>
+.links {
+  padding: 0 16px;
+}
 </style>
