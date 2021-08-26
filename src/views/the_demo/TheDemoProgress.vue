@@ -1,13 +1,13 @@
 <template>
   <div>
-    <m-demo-box>
-      <template v-slot:header>
-        <m-switch-item v-model="failed">失败</m-switch-item>
-        <m-switch-item v-model="success">完成</m-switch-item>
-        <input type="number" v-model="number" />
-      </template>
+    <h2>进度条</h2>
+    <m-card class="article-box">
+      <m-switch-item v-model="failed">失败</m-switch-item>
+      <m-switch-item v-model="success">完成</m-switch-item>
+      <input type="number" v-model="number" />
+      <hr />
       <mo-progress :failed="failed" :value="number"></mo-progress>
-    </m-demo-box>
+    </m-card>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ export default {
       code: undefined,
       success: false,
       failed: false,
-      number: 50,
+      number: 50
     };
   },
   watch: {
@@ -37,7 +37,16 @@ export default {
       if (this.number > 100) {
         clearInterval(this.code);
       }
-    },
-  },
+    }
+  }
 };
 </script>
+
+<style scoped>
+.article-box {
+  background: white;
+  border-radius: 15px;
+  padding: 15px 20px;
+  margin-bottom: 40px;
+}
+</style>
