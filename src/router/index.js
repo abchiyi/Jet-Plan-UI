@@ -16,20 +16,20 @@ const routes = [
   {
     name: 'Demo',
     path: '/get-started',
-    component: () => import('../views/the-demo/TheDemo.vue'),
+    component: () => import('../views/the_demo/TheDemo.vue'),
     children: [
       {
         path: "",
         name: "Girde",
-        component: () => import('../views/the-demo/TheDemoGirde.vue')
+        component: () => import('../views/the_demo/TheDemoGirde.vue')
       },
       {
-        path: "animationdemo/",
-        component: () => import('../views/the-demo/The-demo-animation')
+        path: "/animationdemo",
+        component: () => import('../views/the_demo/the_demo_animation')
       },
       {
-        path: 'progressbar/',
-        component: () => import('../views/the-demo/TheDemoProgress.vue')
+        path: '/progressbar',
+        component: () => import('../views/the_demo/TheDemoProgress.vue')
       },
     ]
   },
