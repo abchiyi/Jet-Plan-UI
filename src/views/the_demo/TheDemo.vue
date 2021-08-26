@@ -20,7 +20,11 @@
         </m-row>
       </template>
       <template v-slot:sidebar>
-        <div id="nav"><router-link to="/">Home</router-link> <br /></div>
+        <router-link to="/">Home</router-link> <br />
+        <hr />
+        <router-link to="/get-started">Girde</router-link> <br />
+        <router-link to="/animationdemo">Animations</router-link> <br />
+        <router-link to="/progressbar">Progressbar</router-link> <br />
       </template>
       <h2>ID:{{ $route.params.rr }}</h2>
       <router-view @test="login" />

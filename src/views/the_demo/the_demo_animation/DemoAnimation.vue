@@ -1,16 +1,10 @@
 <template>
-  <div>
-    <the-demo-fade-transition />
-  </div>
+  <div>13</div>
 </template>
-
 <script>
-// import TheDemoFadeTransition from "./DemoAnimationFadeTransition.vue";
 export default {
   name: "animationDemo",
-  components: {
-    // TheDemoFadeTransition
-  },
+  components: {},
   mounted() {
     this.$nextTick(() => {
       setInterval(() => {
