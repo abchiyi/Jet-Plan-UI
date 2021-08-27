@@ -84,6 +84,7 @@ export default {
   user-select: none;
   font-size: 14px;
   margin: 1px 2px;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   cursor: pointer;
 }
 
