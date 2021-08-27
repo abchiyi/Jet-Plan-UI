@@ -80,8 +80,9 @@ export default {
       onMousedown: this.toWider,
       onTouchstart: this.toWider,
       onMouseup: this.cancellation,
+      onMouseout: this.cancellation,
       onTouchend: this.cancellation,
-      onMouseout: this.cancellation
+      onTouchcancel: this.cancellation
     });
   }
 };
