@@ -17,7 +17,7 @@
           <div class="demo-item">
             <m-cube
               :style="{
-                height: this.v2 ? '200px' : '100px'
+                height: this.v2 ? '150px' : '100px'
               }"
               >2</m-cube
             >
