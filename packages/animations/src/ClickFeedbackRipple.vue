@@ -3,21 +3,20 @@ export default {
   name: "ripple",
   props: {
     event: {
-      type: [MouseEvent, TouchEvent],
-      default: undefined,
+      default: undefined
     },
     color: {
       type: String,
-      default: undefined,
+      default: undefined
     },
     opacity: {
       type: String,
-      default: undefined,
+      default: undefined
     },
     animationTime: {
       type: String,
-      default: undefined,
-    },
+      default: undefined
+    }
   },
   methods: {
     calcDiameter(event) {
@@ -29,9 +28,9 @@ export default {
       // 获取父元素内点击定位
       return {
         left: event.clientX - event.target.offsetLeft + "px",
-        top: event.clientY - event.target.offsetTop + "px",
+        top: event.clientY - event.target.offsetTop + "px"
       };
-    },
+    }
   },
   computed: {
     styles() {
@@ -39,9 +38,9 @@ export default {
         "--diameter": this.calcDiameter(this.event),
         "--animation-time": this.animationTime,
         ...this.getPosition(this.event),
-        backgroundColor: this.color,
+        backgroundColor: this.color
       };
-    },
+    }
   },
   render(h) {
     return h(
@@ -49,16 +48,16 @@ export default {
       {
         props: {
           name: "ripple",
-          appear: true,
-        },
+          appear: true
+        }
       },
       [
         h("span", {
-          style: this.styles,
-        }),
+          style: this.styles
+        })
       ]
     );
-  },
+  }
 };
 </script>
 <style scoped>
