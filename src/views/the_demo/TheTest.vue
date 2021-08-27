@@ -4,16 +4,19 @@
     <m-row
       X="center"
       Y="center"
-      @mousedown="reValue"
-      @mouseup="reValue"
-      @touchstart="reValue"
-      @touchend="reValue"
+      @mousedown="e"
+      @mouseup="o"
+      @touchstart="e"
+      @touchend="o"
+      @touchcancel="o"
       class="test-box"
     >
       <mmm :value="value"></mmm>
       <h3>Push down:</h3>
       <h3>Mask {{ value ? "Active" : "Disabled" }}</h3>
     </m-row>
+    <m-button>123</m-button>
+    <m-switch></m-switch>
   </div>
 </template>
 
@@ -30,6 +33,12 @@ export default {
     };
   },
   methods: {
+    e() {
+      this.value = true;
+    },
+    o() {
+      this.value = false;
+    },
     reValue() {
       this.value = !this.value;
       console.log(this.value);
@@ -45,5 +54,7 @@ export default {
   border: solid 4px var(--grey);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 }
 </style>
