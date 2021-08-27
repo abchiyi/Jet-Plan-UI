@@ -21,7 +21,8 @@ export default {
     },
     styles() {
       let styles = {};
-      styles["--z-depth"] = this.zDepth * 0.1;
+      // FIXME 引发层级bug
+      // styles["--z-depth"] = this.zDepth * 0.1;
       return styles;
     }
   },
