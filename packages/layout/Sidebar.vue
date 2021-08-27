@@ -66,16 +66,4 @@ export default {
 .bar {
   -ms-overflow-style: none;
 }
-
-/* 磨砂玻璃 */
-.frosted-glass-night,
-.frosted-glass {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(15px);
-}
-
-.frosted-glass-night {
-  background-color: rgba(28, 28, 34, 0.7);
-  color: white;
-}
 </style>
