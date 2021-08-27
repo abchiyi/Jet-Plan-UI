@@ -89,7 +89,7 @@ export default {
   transition: var(--animationTime) cubic-bezier(0.2, 0.5, 0, 1);
   transform: translate3d(0, 0, 0);
   height: var(--enter-height);
-  overflow: hidden;
+  overflow-y: hidden;
 }
 
 .m-transition-folded-leave-to,
