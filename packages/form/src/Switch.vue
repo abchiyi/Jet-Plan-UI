@@ -78,8 +78,7 @@ export default {
       // 事件
       onClick: this.change,
       onMousedown: this.toWider,
-      // FIXME onTouchstart 不可用
-      // onTouchstart: this.toWider,
+      onTouchstart: this.toWider,
       onMouseup: this.cancellation,
       onTouchend: this.cancellation,
       onMouseout: this.cancellation
