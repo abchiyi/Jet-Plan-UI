@@ -11,7 +11,7 @@
       @touchcancel="o"
       class="test-box"
     >
-      <mmm :value="value"></mmm>
+      <m-mask :value="value"></m-mask>
       <h3>Push down:</h3>
       <h3>Mask {{ value ? "Active" : "Disabled" }}</h3>
     </m-row>
@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import mmm from "../../../packages/mask/Mask.vue";
+import mMask from "../../../packages/mask";
 export default {
   name: "TheTestPage",
   components: {
-    mmm
+    mMask
   },
   data() {
     return {
