@@ -1,3 +1,3 @@
-import Mask from './mask.vue'
+import Mask from './Mask.vue'
 
 export default Mask

@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import mmm from "../../../packages/mask/mask.vue";
+import mmm from "../../../packages/mask/Mask.vue";
 export default {
   name: "TheTestPage",
   components: {

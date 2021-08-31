@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import fade from "../../packages/animations/src/TransitionFade.vue";
+import fade from "../animations/src/TransitionFade.vue";
 export default {
-  name: "Mask",
+  name: "mMask",
   components: {
     fade
   },
