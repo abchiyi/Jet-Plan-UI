@@ -15,8 +15,6 @@
       <h3>Push down:</h3>
       <h3>Mask {{ value ? "Active" : "Disabled" }}</h3>
     </m-row>
-    <m-button>123</m-button>
-    <m-switch></m-switch>
   </div>
 </template>
 
