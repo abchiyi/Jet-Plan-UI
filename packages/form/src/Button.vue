@@ -1,15 +1,15 @@
 <template>
   <button @mouseenter="enter" @mouseleave="leave" :class="classes">
-    <m-transition-fade :value="show_mask">
-      <div id="mask"></div>
-    </m-transition-fade>
+    <m-mask :value="show_mask"></m-mask>
     <slot />
   </button>
 </template>
 
 <script>
+import mMask from "../../mask";
 export default {
   name: "m-button",
+  components: { mMask },
   data() {
     return {
       value: false
@@ -24,7 +24,11 @@ export default {
       type: Boolean,
       default: false
     },
-    mask: {
+    hoverAnimation: {
+      type: Boolean,
+      default: false
+    },
+    activeAnimation: {
       type: Boolean,
       default: false
     },
@@ -56,7 +60,7 @@ export default {
       return classes;
     },
     show_mask() {
-      return this.mask && this.value;
+      return this.hoverAnimation && this.value && !this.disabled;
     }
   },
   methods: {
@@ -173,17 +177,5 @@ export default {
 .m-button.text-button.primary.disabled {
   color: var(--bgco-1);
   opacity: unset;
-}
-
-/*------------ Mask ----------*/
-#mask {
-  background-color: var(--shadow);
-  opacity: 0.3;
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  content: "";
-  top: 0;
-  left: 0;
 }
 </style>

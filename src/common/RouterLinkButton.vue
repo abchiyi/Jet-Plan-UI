@@ -1,5 +1,5 @@
 <template>
-  <m-button :class="className" @click="click" row text mask>
+  <m-button :class="className" @click="click" row text hoverAnimation>
     <div>
       <slot />
     </div>

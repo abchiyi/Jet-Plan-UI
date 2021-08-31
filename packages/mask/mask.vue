@@ -1,5 +1,5 @@
 <template>
-  <fade>
+  <fade :value="value">
     <div class="mask"></div>
   </fade>
 </template>
@@ -10,6 +10,9 @@ export default {
   name: "Mask",
   components: {
     fade
+  },
+  props: {
+    value: Boolean
   }
 };
 </script>
@@ -17,11 +20,11 @@ export default {
 <style>
 .mask {
   background-color: var(--shadow);
-  opacity: 0.3;
   position: absolute;
-  height: 120%;
-  width: 120%;
-  top: -10%;
-  left: -10%;
+  opacity: 0.3;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
 </style>
