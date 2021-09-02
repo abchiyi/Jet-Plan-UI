@@ -15,15 +15,23 @@
       <h3>Push down:</h3>
       <h3>Mask {{ value ? "Active" : "Disabled" }}</h3>
     </m-row>
+    <div class="t1"><m-input placeholder="Text" /></div>
+    <br />
+    <m-input placeholder="Text" />
+    <br />
+    <br />
+    <m-input disabled placeholder="Text" />
   </div>
 </template>
 
 <script>
 import mMask from "../../../packages/mask";
+import mInput from "../../../packages/form/src/Input.vue";
 export default {
   name: "TheTestPage",
   components: {
-    mMask
+    mMask,
+    mInput
   },
   data() {
     return {
@@ -53,6 +61,9 @@ export default {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.t1 {
+  padding: 10px;
+  background: rgb(78, 201, 180);
 }
 </style>
