@@ -3,7 +3,6 @@ export default {
     created(el, binding) {
         const documentHandler = function (e) {
             binding.value(el.contains(e.target))
-            console.log(el)
         }
         el['$$func'] = {
             documentHandler,
