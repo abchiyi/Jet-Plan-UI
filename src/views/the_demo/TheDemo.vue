@@ -1,6 +1,6 @@
 <template>
   <div>
-    <m-page :value="value">
+    <m-page v-model="value">
       <!--浮动头栏 -->
       <template v-slot:header>
         <m-row class="header" Y="center" X="center" spaceMode="between">
@@ -9,7 +9,7 @@
           <!-- 侧栏开关 -->
           <m-button
             text
-            @click="
+            @click.stop="
               () => {
                 this.value = !this.value;
               }
@@ -48,6 +48,7 @@
 
 <script>
 import RouterLinkButton from "../../common/RouterLinkButton.vue";
+import { Focus } from "../../../packages/tool";
 export default {
   components: { RouterLinkButton },
   data() {
@@ -60,6 +61,9 @@ export default {
     pageNow() {
       console.log("<>" + this.pageNow);
     }
+  },
+  directives: {
+    focus: Focus
   }
 };
 </script>

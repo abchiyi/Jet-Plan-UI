@@ -1,7 +1,7 @@
 <template>
   <div id="page">
     <!-- 头栏 -->
-    <m-header :class="value ? 'is-open' : ''">
+    <m-header :class="modelValue ? 'is-open' : ''">
       <m-row>
         <m-col
           class="frosted-glass"
@@ -32,7 +32,7 @@
       </m-col>
     </m-row>
     <!-- 侧栏 -->
-    <m-sidebar :expand="value">
+    <m-sidebar :expand="modelValue" v-focus="sidebarClose">
       <m-row no-gap>
         <m-col v-bind="width.sidebarDispaly" relativeToScreen>
           <slot name="sidebar" />
@@ -43,13 +43,18 @@
 </template>
 
 <script >
+import { Focus } from "../../tool";
 export default {
   name: "m-page",
   props: {
-    value: {
+    modelValue: {
       type: Boolean,
       default: false
     }
+  },
+  model: {
+    prop: "modeValue",
+    event: "update:modelValue"
   },
   data() {
     return {
@@ -61,8 +66,23 @@ export default {
         colXl: 16,
         col: 16
       },
-      sidebar: true
+      sidebar: false
     };
+  },
+  methods: {
+    sidebarClose(value) {
+      if (this.modelValue && !value) {
+        this.$emit("update:modelValue", false);
+      }
+    }
+  },
+  directives: {
+    focus: Focus
+  },
+  watch: {
+    modelValue(v) {
+      this.sidebar = v;
+    }
   },
   computed: {
     width() {
@@ -75,13 +95,13 @@ export default {
       };
 
       const mainContentWidth = {
-        lg: this.value ? 24 - sidebarDispaly.lg : 24,
-        xl: this.value ? 24 - sidebarDispaly.xl : 24,
-        md: this.value ? 24 - sidebarDispaly.md : 24,
+        lg: this.modelValue ? 24 - sidebarDispaly.lg : 24,
+        xl: this.modelValue ? 24 - sidebarDispaly.xl : 24,
+        md: this.modelValue ? 24 - sidebarDispaly.md : 24,
         // offset
-        offsetXl: this.value ? sidebarDispaly.lx : 0,
-        offsetLg: this.value ? sidebarDispaly.lg : 0,
-        offsetMd: this.value ? sidebarDispaly.md : 0
+        offsetXl: this.modelValue ? sidebarDispaly.lx : 0,
+        offsetLg: this.modelValue ? sidebarDispaly.lg : 0,
+        offsetMd: this.modelValue ? sidebarDispaly.md : 0
       };
 
       return {
