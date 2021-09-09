@@ -5,15 +5,6 @@
 </template>
 
 <script>
-window.onresize = function() {
-  var res;
-  if (res) {
-    clearTimeout(res);
-  }
-  res = setTimeout(function() {
-    console.log("resize triggered");
-  }, 20);
-};
 export default {
   name: "App",
   data() {
