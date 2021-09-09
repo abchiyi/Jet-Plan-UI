@@ -1,4 +1,4 @@
-import Focus from './src/Focus.js'
+import Focus from './directives/src/Focus.js'
 
 export {
     Focus

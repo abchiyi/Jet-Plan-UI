@@ -1,4 +1,4 @@
-import ta from "./TimedActionLimit";
+import ta from "../../src/TimedActionLimit";
 const ReSize = function () {
     let width = window.innerWidth;
     return {
