@@ -1,5 +1,5 @@
 <template>
-  <div id="page">
+  <div id="page" v-rss="reScreenSize">
     <!-- 头栏 -->
     <m-header :class="modelValue ? 'is-open' : ''">
       <m-row>
@@ -44,6 +44,7 @@
 
 <script >
 import { Focus } from "../../tool";
+import rss from "../../tool/directives/src/ReScreenSize";
 export default {
   name: "m-page",
   props: {
@@ -65,8 +66,7 @@ export default {
         colLg: 16,
         colXl: 16,
         col: 16
-      },
-      sidebar: false
+      }
     };
   },
   methods: {
@@ -74,15 +74,18 @@ export default {
       if (this.modelValue && !value) {
         this.$emit("update:modelValue", false);
       }
+    },
+    reScreenSize(v) {
+      if (["xs", "sm"].indexOf(v.activeCol) != -1) {
+        this.$emit("update:modelValue", false);
+      } else {
+        this.$emit("update:modelValue", true);
+      }
     }
   },
   directives: {
-    focus: Focus
-  },
-  watch: {
-    modelValue(v) {
-      this.sidebar = v;
-    }
+    focus: Focus,
+    rss: rss
   },
   computed: {
     width() {
