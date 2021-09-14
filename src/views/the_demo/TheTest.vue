@@ -1,5 +1,5 @@
 <template>
-  <div v-rec="test">
+  <div>
     <h2>This is testing page</h2>
     <m-row
       X="center"
@@ -27,7 +27,6 @@
 <script>
 import mMask from "../../../packages/mask";
 import mInput from "../../../packages/form/src/Input.vue";
-import reScreenSize from "../../../packages/tool/directives/src/ReScreenSize.js";
 export default {
   name: "TheTestPage",
   components: {
@@ -50,9 +49,7 @@ export default {
       console.log(e);
     }
   },
-  directives: {
-    rec: reScreenSize
-  }
+  directives: {}
 };
 </script>
 
