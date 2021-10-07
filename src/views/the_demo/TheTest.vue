@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <background>
     <h2>This is testing page</h2>
     <m-row
       X="center"
@@ -21,17 +21,19 @@
     <br />
     <br />
     <m-input disabled placeholder="Text" />
-  </div>
+  </background>
 </template>
 
 <script>
 import mMask from "../../../packages/mask";
 import mInput from "../../../packages/form/src/Input.vue";
+import background from "../../../packages/theme/Background.vue";
 export default {
   name: "TheTestPage",
   components: {
     mMask,
-    mInput
+    mInput,
+    background
   },
   data() {
     return {
