@@ -212,41 +212,35 @@ export default {
 /*------------ Default ----------*/
 /* 基底 */
 .m-switch {
-  background-color: var(--grey-2);
+  background-color: var(--bg-0);
 }
 
 /* 遮罩 */
 .m-switch::before {
-  background-color: var(--grey-0);
+  background-color: var(--white);
 }
 
 /* 拨杆 */
 .m-switch::after {
-  background-color: var(--grey-0);
+  background-color: var(--white);
 }
 
 /*------------ On ----------*/
 
 /* 遮罩 */
 .m-switch.on {
-  /* background-color: var(--green-1); */
-  background-color: var(--main-0);
+  background-color: var(--primary);
 }
 
 /*------------ Disabled ----------*/
 
 /* 基底 */
 .m-switch.on.disabled {
-  background-color: var(--bgco-1);
+  background-color: var(--secondary);
 }
 
-/* 遮罩 */
-.m-switch.disabled::before {
-  background-color: var(--grey-1);
-}
-
-/* 拨杆 */
-.m-switch::after {
-  background-color: var(--grey-0);
+/* 阴影 */
+.m-switch.disabled::after {
+  box-shadow: unset;
 }
 </style>
