@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div id="the-demo-girde">
     <span>基础栅格</span>
-    <div id="absoult"></div>
-    <m-row class="test-background" v-for="n in 4" :key="n">
+    <m-row class="girde-item" v-for="n in 4" :key="n">
       <m-col :col="n * 4">
         <m-cube class="girde-cube">{{ n * 4 }} Width</m-cube>
       </m-col>
@@ -29,10 +28,13 @@ export default {
 </script>
 
 <style>
-.test-background {
-  background-color: #d3e0ea;
+#the-demo-girde {
+  background: var(--bg-1);
+  border-radius: 8px;
+  padding: 20px;
+}
+.girde-item {
   margin-bottom: 8px;
-  border-radius: 4px;
 }
 .girde-cube {
   height: 36px;
