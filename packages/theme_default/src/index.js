@@ -1,4 +1,4 @@
-import root from './root.css'
+import root from './main.css'
 import fonts from './fonts'
 
 
