@@ -101,7 +101,10 @@ export default {
 
 .m-col {
   width: v-bind("style.col");
-  padding: 0 2px;
+}
+
+.m-col + * {
+  padding-left: 8px;
 }
 
 /* 偏移 */
