@@ -28,13 +28,15 @@ export default {
   width: 100px;
   height: 100px;
   border-radius: 4px;
-  background-color: #2b91ad;
+  background-color: var(--primary);
   /* 文本设置 */
   font-size: 20px;
   color: #fff;
   transition: 0.4s ease-in-out;
 }
 .m-cube.dark {
-  background-color: #017fa1;
+  background-color: var(--secondary);
+  color: inherit;
+  font-weight: bolder;
 }
 </style>
