@@ -28,6 +28,7 @@
 import mMask from "../../../packages/mask";
 import mInput from "../../../packages/form/src/Input.vue";
 import background from "../../../packages/theme/Background.vue";
+
 export default {
   name: "TheTestPage",
   components: {
@@ -47,9 +48,7 @@ export default {
     o() {
       this.value = false;
     },
-    test(e) {
-      console.log(e);
-    }
+    test() {}
   },
   directives: {}
 };

@@ -4,6 +4,7 @@ import card from './card'
 import animations from './animations'
 import progress from './progress'
 import layout from './layout'
+import theme from './theme'
 
 const components = {
     gird,
@@ -11,7 +12,7 @@ const components = {
     card,
     animations,
     progress,
-    layout
+    layout,
 }
 
 function install(Vue) {
@@ -30,10 +31,12 @@ export {
     card,
     animations,
     progress,
-    layout
+    layout,
+    theme
 }
 
 export default {
     install,
+    theme,
     ...components
 }
