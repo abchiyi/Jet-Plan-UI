@@ -1,9 +1,9 @@
-import components from './components'
-import nativeComponents from './nativeComponents'
-import src from './src'
+import './fonts'
+import './css'
+
+import colors from './colors'
+
 
 export default {
-    nativeComponents,
-    components,
-    src
+    colors
 }
