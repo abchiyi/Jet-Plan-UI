@@ -95,7 +95,7 @@ export default {
   display: inline-block;
   position: relative;
   user-select: none;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-tap-highlight-color: #ffffff00;
   cursor: pointer;
   margin: 0 2px;
 }
