@@ -1,14 +1,20 @@
 export default {
+    // basecolor
     primary: "#1687a7",
     secondary: "#dfdfdf;",
     success: "#4cd966",
     warning: "#ecb02c",
     info: "#0d75ec",
     error: "#f33f2e",
-    text_disabled: 'rgba(0, 0, 0, 0.38)',
-    text_hint: 'rgba(0, 0, 0, 0.38)',
-    shadow: '#27272767',
-    paper: " ",
-    chip: " ",
-    background: "#e6e5e5"
+    //text
+    text_disabled: '#00000061',
+    text_hint: '#00000061',
+    text: "#2f2f2f",
+    // others
+    // shadow: '#27272767',
+    shadow: '#00000020',
+    border: "#c2c2c2",
+    // background
+    card: "#fcfcfc",
+    background: "#f1f1f1"
 }

@@ -44,11 +44,12 @@ export default {
 <style scoped>
 .bar {
   overflow-y: scroll;
+  position: fixed;
   height: 100vh;
   z-index: 91;
-  top: 0;
-  position: fixed;
   bottom: 0;
+  top: 0;
+  background: var(--card);
 }
 
 /* Firefox  */

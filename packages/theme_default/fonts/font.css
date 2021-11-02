@@ -15,3 +15,7 @@
         url('./ui/sarasa-ui-sc-bold.ttf'),
         local('sarasa-ui-sc-bold.ttf');
 }
+
+:root {
+    font-family: Sarasa;
+}

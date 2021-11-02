@@ -5,29 +5,22 @@
 
 /* Base Settins */
 :root {
-    --grey-3: #9A9A9A;
-    --grey-4: #6d7171;
-    --text: #6d7171;
-    --dark: #2f2f2f;
-    --grey: #d4d4d4;
-    --white: #ffffff;
-    --disable: var(--grey);
-    font-family: Sarasa;
     font-size: 16px;
 }
 
 
 body {
-    background-color: var(--bg-0);
+    background-color: var(--background);
     min-height: 100vh;
     margin: 0;
     padding: 0;
 }
 
 /* 辅助文本 */
-.fwd {
-    color: var(--grey-3);
-    font-size: 14px;
+.text-hint>*,
+.text-hint {
+    /* color: var(--text_hint); */
+    font-size: 12px;
     margin-block-start: 0.3rem;
     margin-block-end: 0rem;
 }

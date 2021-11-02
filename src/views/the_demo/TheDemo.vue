@@ -38,6 +38,9 @@
             <router-link-button v-model="pageNow" :url="'/test'">
               Test
             </router-link-button>
+            <router-link-button v-model="pageNow" :url="'/colors'">
+              Colors
+            </router-link-button>
           </div>
         </div>
       </template>

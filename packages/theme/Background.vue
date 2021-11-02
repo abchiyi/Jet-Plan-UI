@@ -96,18 +96,18 @@ export default {
 }
 
 /*深色*/
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   .m-background {
     background: rgb(53, 54, 58);
     color: rgba(238, 238, 238, 1);
   }
-}
+} */
 
 /*浅色*/
-@media (prefers-color-scheme: light) {
+/* @media (prefers-color-scheme: light) {
   .m-background {
     background: rgb(255, 255, 255);
     color: rgba(51, 51, 51, 1);
   }
-}
+} */
 </style>
