@@ -6,6 +6,7 @@ export default {
     warning: "#ecb02c",
     info: "#0d75ec",
     error: "#f33f2e",
+    white: '#fff',
     //text
     text_disabled: '#00000061',
     text_hint: '#00000061',
