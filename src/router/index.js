@@ -38,6 +38,10 @@ const routes = [{
         path: '/colors',
         component: () => import('../views/the_demo/TheDemoColors.vue')
       },
+      {
+        path: '/buttons',
+        component: () => import('../views/the_demo/TheDemoButtons.vue')
+      },
     ]
   },
 
