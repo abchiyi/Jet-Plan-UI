@@ -1,7 +1,7 @@
 <template>
   <button @mouseenter="enter" @mouseleave="leave" :class="classes">
     <m-mask :value="show_mask"></m-mask>
-    <slot />
+    <slot> Submit </slot>
   </button>
 </template>
 
