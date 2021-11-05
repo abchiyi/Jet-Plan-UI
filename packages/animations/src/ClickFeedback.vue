@@ -59,15 +59,13 @@ export default {
       "div",
       {
         class: "click-feedback",
-        on: {
-          mousedown: this.startClick,
-          mouseleave: this.end,
-          mouseup: this.end,
+        onmousedown: this.startClick,
+        onmouseleave: this.end,
+        onmouseup: this.end,
 
-          touchstart: this.startTouche,
-          touchcancel: this.end,
-          touchend: this.end
-        }
+        ontouchstart: this.startTouche,
+        ontouchcancel: this.end,
+        ontouchend: this.end
       },
       [
         this.$slots,
