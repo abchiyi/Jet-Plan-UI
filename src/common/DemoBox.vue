@@ -10,9 +10,9 @@
     </div>
     <hr />
 
-    <m-folded title="展开Code">
+    <m-transition-folded title="展开Code">
       <slot name="code"></slot>
-    </m-folded>
+    </m-transition-folded>
   </m-card>
 </template>
 
@@ -21,9 +21,9 @@ export default {
   name: "m-demo-box",
   data() {
     return {
-      code: undefined,
+      code: undefined
     };
-  },
+  }
 };
 </script>
 
