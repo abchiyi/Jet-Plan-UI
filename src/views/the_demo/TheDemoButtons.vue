@@ -6,7 +6,7 @@
     <h2>基本示例</h2>
     <m-demo-box>
       <m-row>
-        <button></button>
+        <m-button></m-button>
       </m-row>
     </m-demo-box>
   </div>
@@ -14,7 +14,8 @@
 
 <script>
 export default {
-  name: "the-demo-buttons"
+  name: "the-demo-buttons",
+  component: {}
 };
 </script>
 
