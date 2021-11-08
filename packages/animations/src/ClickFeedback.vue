@@ -68,8 +68,8 @@ export default {
         ontouchend: this.end
       },
       [
-        this.$slots,
-        ...this.masks.map(attrs => {
+        this.$slots.default(),
+        ...this.masks.map((attrs) => {
           // TODO 在这里控制使用的遮罩类型
           // TODO 待添加新类型遮罩
           return h(ripple, { ...attrs });

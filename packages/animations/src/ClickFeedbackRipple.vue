@@ -1,4 +1,6 @@
 <script>
+import { h } from "vue";
+
 export default {
   name: "ripple",
   props: {
@@ -42,7 +44,7 @@ export default {
       };
     }
   },
-  render(h) {
+  render() {
     return h(
       "transition",
       {
