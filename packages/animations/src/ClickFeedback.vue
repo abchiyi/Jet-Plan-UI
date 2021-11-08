@@ -1,38 +1,40 @@
 <script>
 import ripple from "./ClickFeedbackRipple.vue";
-import { h } from "vue";
+import { h, TransitionGroup } from "vue";
 
 export default {
   name: "m-click-feedback",
   data() {
     return {
       timeOutObj: undefined,
-      AnimationTime: "800ms",
       masks: [],
-      keys: 0
+      key: 0,
     };
+  },
+  components: {
+    ripple,
   },
   props: {
     // TODO 或者透明度曲线
     opacity: {
       type: String,
-      default: "0.5"
+      default: "0.5",
     },
     color: {
       // TODO 验证色彩字符串是否合法
       type: String,
-      default: "rgb(200, 200, 200)"
-    }
+      default: "rgb(200, 200, 200)",
+    },
   },
   methods: {
     createRippleAttrs(event) {
       const ripple = {
         props: {
-          animationTime: this.AnimationTime,
           opacity: this.opacity,
           color: this.color,
-          event: event
-        }
+          event: event,
+        },
+        key: this.key++,
       };
       return ripple;
     },
@@ -41,6 +43,7 @@ export default {
         this.masks.push(this.createRippleAttrs(event));
       }
       if (this.ignoreClick) this.ignoreClick = false;
+      // return false;
     },
     startTouche(event) {
       if (event.touches) {
@@ -52,7 +55,20 @@ export default {
     },
     end() {
       this.masks.pop();
-    }
+    },
+    renderRipples() {
+      let key = 0;
+      return h(
+        TransitionGroup,
+        { name: "ripple" },
+        {
+          default: () =>
+            this.masks.map((attrs) => {
+              return h(ripple, { ...attrs.props, key: key++ });
+            }),
+        }
+      );
+    },
   },
   render() {
     return h(
@@ -65,22 +81,21 @@ export default {
 
         ontouchstart: this.startTouche,
         ontouchcancel: this.end,
-        ontouchend: this.end
+        ontouchend: this.end,
       },
-      [
-        this.$slots.default(),
-        ...this.masks.map((attrs) => {
-          // TODO 在这里控制使用的遮罩类型
-          // TODO 待添加新类型遮罩
-          return h(ripple, { ...attrs });
-        })
-      ]
+      {
+        default: () => [this.$slots.default(), this.renderRipples()],
+      }
     );
-  }
+  },
 };
 </script>
 
 <style >
+.click-feedback > * {
+  transition-duration: 0.8s;
+  pointer-events: none;
+}
 .click-feedback {
   position: relative;
   overflow: hidden;

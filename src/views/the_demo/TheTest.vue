@@ -1,56 +1,33 @@
 <template>
-  <background>
-    <h2>This is testing page</h2>
-    <m-row
-      X="center"
-      Y="center"
-      @mousedown="e"
-      @mouseup="o"
-      @touchstart="e"
-      @touchend="o"
-      @touchcancel="o"
-      class="test-box"
-    >
-      <m-mask :value="value"></m-mask>
-      <h3>Push down:</h3>
-      <h3>Mask {{ value ? "Active" : "Disabled" }}</h3>
-    </m-row>
-    <div class="t1"><m-input placeholder="Text" /></div>
-    <br />
-    <m-input placeholder="Text" />
-    <br />
-    <br />
-    <m-input disabled placeholder="Text" />
-  </background>
+  <div id="the-test-page">
+    <click-feedback>
+      <m-cube />
+    </click-feedback>
+  </div>
 </template>
-
 <script>
-import mMask from "../../../packages/mask";
-import mInput from "../../../packages/form/src/Input.vue";
-import background from "../../../packages/theme/Background.vue";
-
+import { ClickFeedback } from "../../../packages/animations";
 export default {
   name: "TheTestPage",
   components: {
-    mMask,
-    mInput,
-    background
+    ClickFeedback,
   },
   data() {
     return {
-      value: false
+      value: false,
     };
   },
   methods: {
-    e() {
+    on() {
       this.value = true;
     },
-    o() {
+    off() {
       this.value = false;
     },
-    test() {}
+    test(evet) {
+      console.log(evet);
+    },
   },
-  directives: {}
 };
 </script>
 

@@ -1,24 +1,19 @@
 <script>
 import { h } from "vue";
-
 export default {
   name: "ripple",
   props: {
     event: {
-      default: undefined
+      default: undefined,
     },
     color: {
       type: String,
-      default: undefined
+      default: undefined,
     },
     opacity: {
       type: String,
-      default: undefined
+      default: undefined,
     },
-    animationTime: {
-      type: String,
-      default: undefined
-    }
   },
   methods: {
     calcDiameter(event) {
@@ -30,36 +25,24 @@ export default {
       // 获取父元素内点击定位
       return {
         left: event.clientX - event.target.offsetLeft + "px",
-        top: event.clientY - event.target.offsetTop + "px"
+        top: event.clientY - event.target.offsetTop + "px",
       };
-    }
+    },
   },
   computed: {
     styles() {
       return {
         "--diameter": this.calcDiameter(this.event),
-        "--animation-time": this.animationTime,
         ...this.getPosition(this.event),
-        backgroundColor: this.color
+        backgroundColor: this.color,
       };
-    }
+    },
   },
   render() {
-    return h(
-      "transition",
-      {
-        props: {
-          name: "ripple",
-          appear: true
-        }
-      },
-      [
-        h("span", {
-          style: this.styles
-        })
-      ]
-    );
-  }
+    return h("span", {
+      style: this.styles,
+    });
+  },
 };
 </script>
 <style scoped>
@@ -77,12 +60,11 @@ span {
 
 .ripple-enter-active,
 .ripple-leave-active {
-  transition-duration: var(--animation-time);
   transition-property: opacity height width;
   transition-timing-function: ease-out;
 }
 
-.ripple-enter {
+.ripple-enter-from {
   height: 0;
   width: 0;
 }
