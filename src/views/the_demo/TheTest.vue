@@ -1,7 +1,7 @@
 <template>
   <div id="the-test-page">
     <click-feedback>
-      <m-cube />
+      <m-cube style="z-index: 2" />
     </click-feedback>
   </div>
 </template>

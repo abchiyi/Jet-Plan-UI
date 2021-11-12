@@ -23,7 +23,7 @@ export default {
     color: {
       // TODO 验证色彩字符串是否合法
       type: String,
-      default: "rgb(200, 200, 200)",
+      default: "#b3b3b3",
     },
   },
   methods: {
@@ -64,9 +64,23 @@ export default {
         {
           default: () =>
             this.masks.map((attrs) => {
-              return h(ripple, { ...attrs.props, key: key++ });
+              return h(ripple, {
+                ...attrs.props,
+                key: key++,
+              });
             }),
         }
+      );
+    },
+    renderDefault() {
+      return h(
+        "div",
+        {
+          style: {
+
+          },
+        },
+        this.$slots.default()
       );
     },
   },
@@ -84,7 +98,7 @@ export default {
         ontouchend: this.end,
       },
       {
-        default: () => [this.$slots.default(), this.renderRipples()],
+        default: () => [this.renderDefault(), this.renderRipples()],
       }
     );
   },
@@ -97,6 +111,7 @@ export default {
   pointer-events: none;
 }
 .click-feedback {
+  color: #b3b3b3;
   position: relative;
   overflow: hidden;
   height: 100%;
