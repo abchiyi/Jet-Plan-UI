@@ -43,7 +43,7 @@ export default {
         this.masks.push(this.createRippleAttrs(event));
       }
       if (this.ignoreClick) this.ignoreClick = false;
-      // return false;
+      return false;
     },
     startTouche(event) {
       if (event.touches) {
@@ -54,7 +54,12 @@ export default {
       }
     },
     end() {
-      this.masks.pop();
+      // this.masks.pop();
+      this.masks.forEach((ripple, index, masks) => {
+        if (ripple.key != this.key) {
+          masks.splice(index, 1);
+        }
+      });
     },
     renderRipples() {
       let key = 0;
@@ -76,9 +81,7 @@ export default {
       return h(
         "div",
         {
-          style: {
-
-          },
+          style: {},
         },
         this.$slots.default()
       );
@@ -108,12 +111,12 @@ export default {
 <style >
 .click-feedback > * {
   transition-duration: 0.8s;
-  pointer-events: none;
+  /* pointer-0 events: none; */
 }
 .click-feedback {
   color: #b3b3b3;
   position: relative;
-  overflow: hidden;
+  /* overflow: hidden; */
   height: 100%;
   width: 100%;
 }
