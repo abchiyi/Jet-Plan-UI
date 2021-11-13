@@ -42,9 +42,9 @@ export default {
 <style scoped>
 span {
   transform: translate(-50%, -50%);
+  opacity: var(--opacity);
   height: var(--diameter);
   width: var(--diameter);
-  opacity: var(--opacity);
   pointer-events: none;
   border-radius: 50%;
   position: absolute;
