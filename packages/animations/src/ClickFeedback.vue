@@ -29,8 +29,9 @@ export default {
   methods: {
     createRippleAttrs(event) {
       const ripple = {
-        props: {
+        data: {
           opacity: this.opacity,
+          el: this.$refs.self,
           color: this.color,
           event: event,
         },
@@ -54,7 +55,6 @@ export default {
       }
     },
     end() {
-      // this.masks.pop();
       this.masks.forEach((ripple, index, masks) => {
         if (ripple.key != this.key) {
           masks.splice(index, 1);
@@ -70,7 +70,7 @@ export default {
           default: () =>
             this.masks.map((attrs) => {
               return h(ripple, {
-                ...attrs.props,
+                data: attrs.data,
                 key: key++,
               });
             }),
@@ -99,6 +99,7 @@ export default {
         ontouchstart: this.startTouche,
         ontouchcancel: this.end,
         ontouchend: this.end,
+        ref: "self",
       },
       {
         default: () => [this.renderDefault(), this.renderRipples()],
@@ -116,7 +117,7 @@ export default {
 .click-feedback {
   color: #b3b3b3;
   position: relative;
-  /* overflow: hidden; */
+  overflow: hidden;
   height: 100%;
   width: 100%;
 }

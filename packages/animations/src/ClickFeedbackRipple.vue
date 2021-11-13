@@ -3,38 +3,32 @@ import { h } from "vue";
 export default {
   name: "ripple",
   props: {
-    event: {
-      default: undefined,
-    },
-    color: {
-      type: String,
-      default: undefined,
-    },
-    opacity: {
-      type: String,
-      default: undefined,
+    data: {
+      type: Object,
+      required: true,
     },
   },
   methods: {
-    calcDiameter(event) {
-      const width = event.target.offsetWidth;
-      const height = event.target.offsetHeight;
+    calcDiameter() {
+      const width = this.data.el.offsetWidth;
+      const height = this.data.el.offsetHeight;
       return Math.sqrt(width * width + height * height) * 2 + "px";
     },
-    getPosition(event) {
+    getPosition(data) {
       // 获取父元素内点击定位
       return {
-        left: event.clientX - event.target.offsetLeft + "px",
-        top: event.clientY - event.target.offsetTop + "px",
+        left: data.event.clientX - data.el.offsetLeft + "px",
+        top: data.event.clientY - data.el.offsetTop + "px",
       };
     },
   },
   computed: {
     styles() {
       return {
-        "--diameter": this.calcDiameter(this.event),
-        ...this.getPosition(this.event),
-        backgroundColor: this.color,
+        "--diameter": this.calcDiameter(),
+        "--opacity": this.data.opacity,
+        ...this.getPosition(this.data),
+        backgroundColor: this.data.color,
       };
     },
   },
@@ -50,12 +44,12 @@ span {
   transform: translate(-50%, -50%);
   height: var(--diameter);
   width: var(--diameter);
+  opacity: var(--opacity);
   pointer-events: none;
   border-radius: 50%;
   position: absolute;
   user-select: none;
   display: block;
-  opacity: 0.5;
 }
 
 .ripple-enter-active,

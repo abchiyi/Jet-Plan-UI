@@ -3,6 +3,9 @@
     <click-feedback>
       <m-cube style="z-index: 2" />
     </click-feedback>
+    <div class="test-box" @mousedown="clickMove">
+      <m-cube></m-cube>
+    </div>
   </div>
 </template>
 <script>
