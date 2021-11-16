@@ -5,6 +5,7 @@ import animations from './animations'
 import progress from './progress'
 import layout from './layout'
 import theme from './theme'
+import list from './list'
 
 const components = {
     gird,
@@ -13,6 +14,7 @@ const components = {
     animations,
     progress,
     layout,
+    list
 }
 
 function install(Vue) {
@@ -32,7 +34,8 @@ export {
     animations,
     progress,
     layout,
-    theme
+    theme,
+    list
 }
 
 export default {
