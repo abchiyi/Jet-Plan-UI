@@ -38,5 +38,4 @@ export {
 export default {
     install,
     theme,
-    ...components
 }
