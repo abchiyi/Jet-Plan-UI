@@ -1,11 +1,12 @@
 <template>
   <div id="the-test-page">
     <click-feedback>
-      <m-cube style="z-index: 2" />
+      <m-cube />
     </click-feedback>
-    <div class="test-box" @mousedown="clickMove">
-      <m-cube></m-cube>
-    </div>
+    <click-feedback>
+      <p>absdofioabnvdsa</p>
+      <m-cube />
+    </click-feedback>
   </div>
 </template>
 <script>

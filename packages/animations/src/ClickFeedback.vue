@@ -112,7 +112,6 @@ export default {
 <style >
 .click-feedback > * {
   transition-duration: 0.8s;
-  /* pointer-0 events: none; */
 }
 .click-feedback {
   color: #b3b3b3;
@@ -120,10 +119,5 @@ export default {
   overflow: hidden;
   height: 100%;
   width: 100%;
-}
-/* FIXME 使用相对于页面定位的点击坐标算法 */
-/* 禁用组件下元素的点击事件 */
-.click-feedback p {
-  pointer-events: none;
 }
 </style>
