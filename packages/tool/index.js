@@ -1,5 +1,7 @@
-import Focus from './directives/src/Focus.js'
+import ReScreenSize from './directives/ReScreenSize.js'
+import Focus from './directives/Focus.js'
 
 export {
-    Focus
+    ReScreenSize,
+    Focus,
 }

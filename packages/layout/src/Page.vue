@@ -1,7 +1,11 @@
 <template>
-  <div id="page" v-rss="reScreenSize">
+  <div
+    id="page"
+    :class="modelValue ? 'is-open' : 'is-closed'"
+    v-rss="reScreenSize"
+  >
     <!-- 头栏 -->
-    <m-header :class="modelValue ? 'is-open' : ''">
+    <m-header>
       <m-row>
         <m-col
           class="frosted-glass"
@@ -43,19 +47,18 @@
 </template>
 
 <script >
-import { Focus } from "../../tool";
-import rss from "../../tool/directives/src/ReScreenSize";
+import { Focus, ReScreenSize } from "../../tool";
 export default {
   name: "m-page",
   props: {
     modelValue: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   model: {
     prop: "modeValue",
-    event: "update:modelValue"
+    event: "update:modelValue",
   },
   data() {
     return {
@@ -65,14 +68,19 @@ export default {
         colMd: 24,
         colLg: 16,
         colXl: 16,
-        col: 16
-      }
+        col: 16,
+      },
+      sidebarOpenIn: ["xs", "sm"],
     };
   },
   methods: {
     sidebarClose(value) {
       if (this.modelValue && !value) {
-        this.$emit("update:modelValue", false);
+        ReScreenSize.reSize().contains(this.sidebarOpenIn, (bool) => {
+          if (bool) {
+            this.$emit("update:modelValue", false);
+          }
+        });
       }
     },
     reScreenSize(v) {
@@ -81,11 +89,11 @@ export default {
       } else {
         this.$emit("update:modelValue", true);
       }
-    }
+    },
   },
   directives: {
     focus: Focus,
-    rss: rss
+    rss: ReScreenSize,
   },
   computed: {
     width() {
@@ -94,7 +102,7 @@ export default {
         lg: 3,
         md: 5,
         sm: 5,
-        xs: 15
+        xs: 15,
       };
 
       const mainContentWidth = {
@@ -104,15 +112,15 @@ export default {
         // offset
         offsetXl: this.modelValue ? sidebarDispaly.lx : 0,
         offsetLg: this.modelValue ? sidebarDispaly.lg : 0,
-        offsetMd: this.modelValue ? sidebarDispaly.md : 0
+        offsetMd: this.modelValue ? sidebarDispaly.md : 0,
       };
 
       return {
         sidebarDispaly: sidebarDispaly,
-        mainContentWidth: mainContentWidth
+        mainContentWidth: mainContentWidth,
       };
-    }
-  }
+    },
+  },
 };
 </script>
 
