@@ -84,11 +84,13 @@ export default {
       }
     },
     reScreenSize(v) {
-      if (["xs", "sm"].indexOf(v.activeCol) != -1) {
-        this.$emit("update:modelValue", false);
-      } else {
-        this.$emit("update:modelValue", true);
-      }
+      v.contains(this.sidebarOpenIn, (bool) => {
+        if (bool) {
+          this.$emit("update:modelValue", false);
+        } else {
+          this.$emit("update:modelValue", true);
+        }
+      });
     },
   },
   directives: {
