@@ -3,10 +3,11 @@
     <click-feedback>
       <m-cube />
     </click-feedback>
-    <click-feedback>
-      <p>absdofioabnvdsa</p>
-      <m-cube />
-    </click-feedback>
+    <m-card>
+      <click-feedback>
+        <m-cube />
+      </click-feedback>
+    </m-card>
   </div>
 </template>
 <script>

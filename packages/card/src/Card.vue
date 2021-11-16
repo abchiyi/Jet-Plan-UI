@@ -5,13 +5,13 @@ export default {
   props: {
     bgBlur: {
       type: Boolean,
-      default: false
+      default: false,
     },
     zDepth: {
       // TODD 限制范围
       type: Number,
-      default: 2
-    }
+      default: 2,
+    },
   },
   computed: {
     classes() {
@@ -20,22 +20,21 @@ export default {
       return classes;
     },
     styles() {
-      let styles = {};
-      // FIXME 引发层级bug
-      // styles["--z-depth"] = this.zDepth * 0.1;
-      return styles;
-    }
+      return {
+        "--z-depth": this.zDepth * 0.1,
+      };
+    },
   },
   render() {
     return h(
       "div",
       {
         class: this.classes,
-        style: this.styles
+        style: this.styles,
       },
       this.$slots
     );
-  }
+  },
 };
 </script>
 
