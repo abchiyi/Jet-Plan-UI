@@ -1,18 +1,12 @@
-import Li from './src/Li.vue'
-import Ol from './src/Ol.vue'
-import Ul from './src/Ul.vue'
+import List from './src/List.vue'
 
 
 const components = {
-    Li,
-    Ol,
-    Ul
+    List
 }
 
 export {
-    Li,
-    Ol,
-    Ul
+    List
 }
 
 export default {
