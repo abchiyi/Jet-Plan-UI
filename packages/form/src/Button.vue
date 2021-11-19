@@ -94,10 +94,10 @@ export default {
 };
 </script>
 <style scoped>
-/* TODO  迟滞的动画效果 */
 /*------------ Default ----------*/
 
 .m-button {
+  /* TODO 无对应颜色变量 */
   position: relative;
   text-decoration: underline 2px;
   background-color: var(--bgco-0);
