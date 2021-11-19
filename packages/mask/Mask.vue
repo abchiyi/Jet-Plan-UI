@@ -7,13 +7,13 @@
 <script>
 import fade from "../animations/src/TransitionFade.vue";
 export default {
-  name: "mMask",
+  name: "m-mask",
   components: {
-    fade
+    fade,
   },
   props: {
-    value: Boolean
-  }
+    value: Boolean,
+  },
 };
 </script>
 

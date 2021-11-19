@@ -1,3 +1,11 @@
 import Mask from './Mask.vue'
 
-export default Mask
+export default {
+    install(Vue) {
+        Vue.component(Mask.name, Mask)
+    }
+}
+
+export {
+    Mask
+}
