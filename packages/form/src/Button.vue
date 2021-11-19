@@ -75,7 +75,7 @@ export default {
       return "Submit";
     },
     renderMask() {
-      return h(Mask, { value: this.hoverAnimation });
+      return h(Mask, { value: this.value });
     },
   },
   render() {
