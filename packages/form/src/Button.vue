@@ -1,52 +1,49 @@
-<template>
-  <button @mouseenter="enter" @mouseleave="leave" :class="classes">
-    <m-mask :value="show_mask"></m-mask>
-    <slot> Submit </slot>
-  </button>
-</template>
-
 <script>
-import mMask from "../../mask";
+import { h } from "vue";
+import { Mask } from "../../mask";
 export default {
   name: "m-button",
-  components: { mMask },
   data() {
     return {
-      value: false
+      value: false,
     };
   },
   props: {
+    tag: {
+      type: String,
+      default: "button",
+    },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     text: {
       type: Boolean,
-      default: false
+      default: false,
     },
     hoverAnimation: {
       type: Boolean,
-      default: false
+      default: false,
     },
     activeAnimation: {
       type: Boolean,
-      default: false
+      default: false,
     },
     primary: {
       type: Boolean,
-      default: false
+      default: false,
     },
     radius: {
       type: String,
       default: "",
-      validator: function(value) {
+      validator: function (value) {
         return ["sm", "xl", ""].indexOf(value) !== -1;
-      }
+      },
     },
     row: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     classes() {
@@ -61,7 +58,7 @@ export default {
     },
     show_mask() {
       return this.hoverAnimation && this.value && !this.disabled;
-    }
+    },
   },
   methods: {
     enter() {
@@ -69,8 +66,31 @@ export default {
     },
     leave() {
       this.value = false;
-    }
-  }
+    },
+    renderDefault() {
+      let solt = this.$slots.default;
+      if (solt) {
+        return solt();
+      }
+      return "Submit";
+    },
+    renderMask() {
+      return h(Mask, { value: this.hoverAnimation });
+    },
+  },
+  render() {
+    return h(
+      this.tag,
+      {
+        class: this.classes,
+        onmouseenter: this.enter,
+        onmouseleave: this.leave,
+      },
+      {
+        default: () => [this.renderMask(), this.renderDefault()],
+      }
+    );
+  },
 };
 </script>
 <style scoped>
