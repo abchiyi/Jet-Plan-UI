@@ -7,7 +7,7 @@ export default {
       "ol",
       {},
       {
-        default: "",
+        default: () => [this.$slots.default()],
       }
     );
   },

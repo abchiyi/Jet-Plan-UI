@@ -7,7 +7,7 @@ export default {
       "ul",
       {},
       {
-        default: "",
+        default: () => [this.$slots.default()],
       }
     );
   },
