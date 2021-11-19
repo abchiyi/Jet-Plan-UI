@@ -8,8 +8,13 @@
         <m-cube />
       </click-feedback>
     </m-card>
-    <m-list>
-      <p>13</p>
+    <m-list :start="10">
+      <m-list-item>
+        <click-feedback> item1 </click-feedback>
+      </m-list-item>
+      <m-list-item>item2</m-list-item>
+      <m-list-item>item3</m-list-item>
+      <m-list-item>item4</m-list-item>
     </m-list>
   </div>
 </template>

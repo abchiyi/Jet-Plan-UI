@@ -1,12 +1,15 @@
 import List from './src/List.vue'
+import ListItem from './src/ListItem.vue'
 
 
 const components = {
-    List
+    List,
+    ListItem
 }
 
 export {
-    List
+    List,
+    ListItem
 }
 
 export default {

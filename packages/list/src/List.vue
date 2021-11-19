@@ -18,8 +18,8 @@ export default {
   },
   render() {
     return h(
-      this.start ? "ul" : "ol",
-      { class: ["m-list"] },
+      this.start ? "ol" : "ul",
+      { class: ["m-list"], start: this.start },
       {
         default: () => [this.renderDefault()],
       }
@@ -29,4 +29,5 @@ export default {
 </script>
 
 <style>
+/* TODO 有序列表配置等宽字体 */
 </style>
