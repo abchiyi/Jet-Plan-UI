@@ -1,4 +1,5 @@
 <script>
+import { Button } from "../../form";
 import { h } from "vue";
 export default {
   name: "m-list-item",
@@ -13,8 +14,8 @@ export default {
   },
   render() {
     return h(
-      "li",
-      { class: ["m-list"] },
+      Button,
+      { class: ["m-list-item"], tag: "li", hoverAnimation: true, row: true },
       {
         default: () => [this.renderDefault()],
       }
@@ -24,4 +25,15 @@ export default {
 </script>
 
 <style>
+.m-list-item {
+  border-radius: 8px;
+  padding: 10px 5px;
+  list-style-type: none;
+  overflow: hidden;
+  display: block !important;
+}
+
+.m-list-item + .m-list-item {
+  margin-top: 5px;
+}
 </style>
