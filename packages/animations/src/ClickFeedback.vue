@@ -25,6 +25,10 @@ export default {
       type: String,
       default: "#b3b3b3",
     },
+    tag: {
+      type: String,
+      default: "div",
+    },
   },
   methods: {
     createRippleAttrs(event) {
@@ -89,7 +93,7 @@ export default {
   },
   render() {
     return h(
-      "div",
+      this.tag,
       {
         class: "click-feedback",
         onmousedown: this.startClick,
