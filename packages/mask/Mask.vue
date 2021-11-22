@@ -11,13 +11,6 @@ export default {
       type: Boolean,
       default: false,
     },
-    size: {
-      type: Object,
-      default: {
-        bottom: 0,
-        right: 0,
-      },
-    },
   },
   methods: {
     getSize() {
@@ -32,7 +25,7 @@ export default {
         ref: "self",
       },
       {
-        default: () => [h("div", { class: "m-mask", style: this.size })],
+        default: () => [h("div", { class: "m-mask" })],
       }
     );
   },
@@ -44,6 +37,8 @@ export default {
   background-color: var(--shadow);
   position: absolute;
   opacity: 0.3;
+  bottom: 0;
+  right: 0;
   left: 0;
   top: 0;
 }
