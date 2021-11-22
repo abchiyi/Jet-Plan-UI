@@ -30,4 +30,8 @@ export default {
 
 <style>
 /* TODO 有序列表配置等宽字体 */
+.m-list {
+  margin: unset;
+  padding: unset;
+}
 </style>

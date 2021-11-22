@@ -113,7 +113,7 @@ export default {
   /* TODO 无对应颜色变量 */
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-decoration: underline 2px;
-  background-color: var(--bgco-0);
+  background-color: var(--secondary);
   box-sizing: border-box;
   display: inline-block;
   color: var(--grey-4);
@@ -121,9 +121,12 @@ export default {
   padding: 6px 16px;
   user-select: none;
   font-size: 14px;
-  margin: 1px 2px;
   cursor: pointer;
   overflow: hidden;
+}
+
+.m-button + .m-button {
+  margin: 0 0 0 2px;
 }
 
 /*------------ Primary ----------*/
@@ -174,6 +177,10 @@ export default {
 .m-button.row {
   display: block;
   width: 100%;
+}
+
+.m-button.row + .m-button.row {
+  margin: 2px 0 0 0;
 }
 
 /* Text Button */

@@ -15,7 +15,13 @@ export default {
   render() {
     return h(
       Button,
-      { class: ["m-list-item"], tag: "li", hoverAnimation: true, row: true },
+      {
+        class: ["m-list-item"],
+        hoverAnimation: true,
+        text: true,
+        row: true,
+        tag: "li",
+      },
       {
         default: () => [this.renderDefault()],
       }
