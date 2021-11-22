@@ -82,15 +82,6 @@ export default {
         size: this.maskSize,
       });
     },
-    renderActive(vNode) {
-      return h(
-        ClickFeedback,
-        {},
-        {
-          default: () => vNode,
-        }
-      );
-    },
     getSize(el) {
       let bcr = el.getBoundingClientRect();
       return {
@@ -101,7 +92,7 @@ export default {
   },
   render() {
     return h(
-      ClickFeedback,
+      this.activeAnimation ? ClickFeedback : this.tag,
       {
         tag: this.tag,
         class: this.classes,
