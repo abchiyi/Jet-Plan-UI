@@ -37,9 +37,9 @@ export default {
     },
     radius: {
       type: String,
-      default: "",
+      default: "s",
       validator: function (value) {
-        return ["sm", "xl", ""].indexOf(value) !== -1;
+        return ["s", "m", "l"].indexOf(value) !== -1;
       },
     },
     row: {
@@ -165,11 +165,14 @@ export default {
 
 /*------------ Radius ----------*/
 
-.m-button.button.radius-sm {
+.m-button.radius-s {
   border-radius: 4px;
 }
+.m-button.radius-m {
+  border-radius: 8px;
+}
 
-.m-button.button.radius-xl {
+.m-button.radius-l {
   border-radius: 1rem;
 }
 
