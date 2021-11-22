@@ -4,20 +4,19 @@
     <p>m-button 基本按钮组件</p>
 
     <h2>基本示例</h2>
-    <m-click-feedback>
-      <m-demo-box>
-        <m-row>
-          <m-button></m-button>
-        </m-row>
-      </m-demo-box>
-    </m-click-feedback>
+    <m-demo-box>
+      <m-row>
+        <m-button></m-button>
+        <m-button text></m-button>
+      </m-row>
+    </m-demo-box>
   </div>
 </template>
 
 <script>
 export default {
   name: "the-demo-buttons",
-  component: {}
+  component: {},
 };
 </script>
 
