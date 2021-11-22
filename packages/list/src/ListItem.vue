@@ -31,15 +31,4 @@ export default {
 </script>
 
 <style>
-.m-list-item {
-  border-radius: 8px;
-  padding: 10px 5px;
-  list-style-type: none;
-  overflow: hidden;
-  display: block !important;
-}
-
-.m-list-item + .m-list-item {
-  margin-top: 5px;
-}
 </style>

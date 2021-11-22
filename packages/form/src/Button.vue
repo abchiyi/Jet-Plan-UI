@@ -82,6 +82,7 @@ export default {
         size: this.maskSize,
       });
     },
+    renderActive() {},
     getSize(el) {
       let bcr = el.getBoundingClientRect();
       return {
