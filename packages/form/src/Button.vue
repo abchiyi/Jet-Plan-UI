@@ -25,11 +25,11 @@ export default {
     },
     hoverAnimation: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     activeAnimation: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     primary: {
       type: Boolean,
