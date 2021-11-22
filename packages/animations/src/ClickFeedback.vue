@@ -83,7 +83,7 @@ export default {
         {
           style: {},
         },
-        this.$slots.default()
+        this.$slots.default ? this.$slots.default() : ""
       );
     },
   },
@@ -114,10 +114,7 @@ export default {
   transition-duration: 0.8s;
 }
 .click-feedback {
-  color: #b3b3b3;
   position: relative;
   overflow: hidden;
-  height: 100%;
-  width: 100%;
 }
 </style>

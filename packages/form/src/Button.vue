@@ -1,6 +1,7 @@
 <script>
 import { h } from "vue";
 import { Mask } from "../../mask";
+import { ClickFeedback } from "../../animations";
 export default {
   name: "m-button",
   data() {
@@ -63,7 +64,6 @@ export default {
   },
   methods: {
     enter() {
-      this.maskSize = this.getSize(this.$refs.self);
       this.value = true;
     },
     leave() {
@@ -82,7 +82,15 @@ export default {
         size: this.maskSize,
       });
     },
-    renderActive() {},
+    renderActive(vNode) {
+      return h(
+        ClickFeedback,
+        {},
+        {
+          default: () => vNode,
+        }
+      );
+    },
     getSize(el) {
       let bcr = el.getBoundingClientRect();
       return {
@@ -93,12 +101,12 @@ export default {
   },
   render() {
     return h(
-      this.tag,
+      ClickFeedback,
       {
+        tag: this.tag,
         class: this.classes,
         onmouseenter: this.enter,
         onmouseleave: this.leave,
-        ref: "self",
       },
       {
         default: () => [this.renderMask(), this.renderDefault()],
