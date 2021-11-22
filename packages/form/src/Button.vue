@@ -6,6 +6,7 @@ export default {
   data() {
     return {
       value: false,
+      maskSize: null,
     };
   },
   props: {
@@ -62,6 +63,7 @@ export default {
   },
   methods: {
     enter() {
+      this.maskSize = this.getSize(this.$refs.self);
       this.value = true;
     },
     leave() {
@@ -75,7 +77,17 @@ export default {
       return "Submit";
     },
     renderMask() {
-      return h(Mask, { value: this.value });
+      return h(Mask, {
+        value: this.value,
+        size: this.maskSize,
+      });
+    },
+    getSize(el) {
+      let bcr = el.getBoundingClientRect();
+      return {
+        height: bcr.height + "px",
+        width: bcr.width + "px",
+      };
     },
   },
   render() {
@@ -85,6 +97,7 @@ export default {
         class: this.classes,
         onmouseenter: this.enter,
         onmouseleave: this.leave,
+        ref: "self",
       },
       {
         default: () => [this.renderMask(), this.renderDefault()],
@@ -98,18 +111,19 @@ export default {
 
 .m-button {
   /* TODO 无对应颜色变量 */
-  position: relative;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-decoration: underline 2px;
   background-color: var(--bgco-0);
+  box-sizing: border-box;
   display: inline-block;
   color: var(--grey-4);
+  position: relative;
   padding: 6px 16px;
-  font-weight: bold;
   user-select: none;
   font-size: 14px;
   margin: 1px 2px;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   cursor: pointer;
+  overflow: hidden;
 }
 
 /*------------ Primary ----------*/
