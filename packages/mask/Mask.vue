@@ -1,10 +1,5 @@
-<template>
-  <fade :value="value">
-    <div class="mask"></div>
-  </fade>
-</template>
-
 <script>
+import { h } from "vue";
 import fade from "../animations/src/TransitionFade.vue";
 export default {
   name: "m-mask",
@@ -12,18 +7,43 @@ export default {
     fade,
   },
   props: {
-    value: Boolean,
+    value: {
+      type: Boolean,
+      default: false,
+    },
+    size: {
+      type: Object,
+      default: {
+        bottom: 0,
+        right: 0,
+      },
+    },
+  },
+  methods: {
+    getSize() {
+      return {};
+    },
+  },
+  render() {
+    return h(
+      fade,
+      {
+        value: this.value,
+        ref: "self",
+      },
+      {
+        default: () => [h("div", { class: "m-mask", style: this.size })],
+      }
+    );
   },
 };
 </script>
 
 <style>
-.mask {
+.m-mask {
   background-color: var(--shadow);
   position: absolute;
   opacity: 0.3;
-  height: 100%;
-  width: 100%;
   left: 0;
   top: 0;
 }
