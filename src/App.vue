@@ -1,19 +1,19 @@
 <template>
-  <body id="app">
+  <div>
     <router-view />
-  </body>
+  </div>
 </template>
 
 <script>
 export default {
-  name: "App",
+  // name: "App",
   data() {
     return {
       sidebar: true,
-      pageRoute: {}
+      pageRoute: {},
       // 悬浮侧栏宽度定义
     };
-  }
+  },
 };
 </script>
 

@@ -1,8 +1,6 @@
 <template>
   <m-button :class="className" @click="click" row text hoverAnimation>
-    <div>
-      <slot />
-    </div>
+    <slot />
   </m-button>
 </template>
 
@@ -14,24 +12,24 @@ export default {
     modelValue: String,
     active: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
 
   computed: {
     className() {
       return [
         "router-link-button",
-        this.modelValue == this.url ? "active" : ""
+        this.modelValue == this.url ? "active" : "",
       ];
-    }
+    },
   },
   methods: {
     click() {
       this.$router.push(this.url);
       this.$emit("update:modelValue", this.url);
-    }
-  }
+    },
+  },
 };
 </script>
 

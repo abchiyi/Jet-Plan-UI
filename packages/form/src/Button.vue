@@ -112,7 +112,6 @@ export default {
 
 .m-button {
   /* TODO 无对应颜色变量 */
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-decoration: underline 2px;
   background-color: var(--secondary);
   box-sizing: border-box;
@@ -120,10 +119,18 @@ export default {
   color: var(--grey-4);
   position: relative;
   padding: 6px 16px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   font-size: 14px;
   cursor: pointer;
   overflow: hidden;
+}
+
+@supports (-webkit-tap-highlight-color: #ffffff00) {
+  .m-button {
+    -webkit-tap-highlight-color: #ffffff00;
+  }
 }
 
 .m-button + .m-button {

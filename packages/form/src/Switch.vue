@@ -5,27 +5,27 @@ export default {
   props: {
     modelValue: {
       type: Boolean,
-      default: false
+      default: false,
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     size: {
       type: [Number, String],
-      default: 40
-    }
+      default: 40,
+    },
   },
   data() {
     return {
       wider: false,
       intervalCode: [],
-      first_load: null
+      first_load: null,
     };
   },
   model: {
     prop: "modeValue",
-    event: "update:modelValue"
+    event: "update:modelValue",
   },
   computed: {
     class() {
@@ -34,14 +34,14 @@ export default {
         this.wider ? "wider" : "",
         this.disabled ? "disabled" : "",
         this.modelValue ? "on" : "off",
-        this.first_load ? "first-load" : ""
+        this.first_load ? "first-load" : "",
       ];
     },
     style() {
       return {
-        "--SIZE": this.size + "px"
+        "--SIZE": this.size + "px",
       };
-    }
+    },
   },
   methods: {
     change() {
@@ -60,13 +60,13 @@ export default {
     cancellation() {
       // 在抬起或离开元素后设置拨杆拉宽参数为false
       if (this.intervalCode) {
-        this.intervalCode.forEach(code => {
+        this.intervalCode.forEach((code) => {
           clearInterval(code);
         });
         this.intervalCode = [];
         this.wider = false;
       }
-    }
+    },
   },
   created() {
     this.first_load = true;
@@ -82,9 +82,9 @@ export default {
       onMouseup: this.cancellation,
       onMouseout: this.cancellation,
       onTouchend: this.cancellation,
-      onTouchcancel: this.cancellation
+      onTouchcancel: this.cancellation,
     });
-  }
+  },
 };
 </script>
 <style>
@@ -94,10 +94,17 @@ export default {
   width: var(--WIDTH);
   display: inline-block;
   position: relative;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
-  -webkit-tap-highlight-color: #ffffff00;
   cursor: pointer;
   margin: 0 2px;
+}
+
+@supports (-webkit-tap-highlight-color: #ffffff00) {
+  .m-switch {
+    -webkit-tap-highlight-color: #ffffff00;
+  }
 }
 
 /* 遮罩 */

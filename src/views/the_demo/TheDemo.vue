@@ -9,6 +9,7 @@
           <!-- 侧栏开关 -->
           <m-button
             text
+            title="menu"
             @click.stop="
               () => {
                 this.value = !this.value;
@@ -60,17 +61,17 @@ export default {
   data() {
     return {
       value: true,
-      pageNow: "/get-started"
+      pageNow: "/get-started",
     };
   },
   watch: {
     pageNow() {
       console.log("<>" + this.pageNow);
-    }
+    },
   },
   directives: {
-    focus: Focus
-  }
+    focus: Focus,
+  },
 };
 </script>
 

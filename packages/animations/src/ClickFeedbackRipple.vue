@@ -48,6 +48,8 @@ span {
   pointer-events: none;
   border-radius: 50%;
   position: absolute;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   display: block;
 }

@@ -6,13 +6,13 @@
 export default {
   name: "mInput",
   props: {
-    disabled: Boolean
+    disabled: Boolean,
   },
   computed: {
     className() {
       return ["m-input", this.disabled ? "disabled" : ""];
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -33,6 +33,8 @@ export default {
 
 .m-input.disabled {
   cursor: not-allowed;
+  -webkit-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   appearance: unset;
   opacity: 0.3;

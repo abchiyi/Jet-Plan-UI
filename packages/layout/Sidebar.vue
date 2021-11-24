@@ -17,17 +17,17 @@ export default {
   props: {
     expand: {
       type: Boolean,
-      default: false
+      default: false,
     },
     right: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   data() {
     return {
       width: undefined,
-      syncShow: false
+      syncShow: false,
     };
   },
   watch: {
@@ -36,8 +36,8 @@ export default {
     },
     syncShow() {
       this.$emit("expand", this.syncShow);
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -53,9 +53,11 @@ export default {
 }
 
 /* Firefox  */
-.bar {
-  /* overflow: -moz-scrollbars-none; */
-  scrollbar-width: none;
+@supports (scrollbar-width: none;) {
+  .bar {
+    /* overflow: -moz-scrollbars-none; */
+    scrollbar-width: none;
+  }
 }
 
 /* chrome and Safari */
