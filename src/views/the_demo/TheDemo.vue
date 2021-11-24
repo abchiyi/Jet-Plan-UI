@@ -26,27 +26,16 @@
           <m-row tag="header" X="center" Y="center">
             <m-button text @click="$router.push('/')">Home</m-button>
           </m-row>
-          <div class="links">
-            <router-link-button v-model="pageNow" url="/get-started">
-              Girde
-            </router-link-button>
-            <router-link-button v-model="pageNow" url="/animationdemo">
-              Animation
-            </router-link-button>
-            <router-link-button v-model="pageNow" :url="'progressbar'">
-              Progressbar
-            </router-link-button>
-            <router-link-button v-model="pageNow" :url="'/test'">
-              Test
-            </router-link-button>
-            <router-link-button v-model="pageNow" :url="'/colors'">
-              Colors
-            </router-link-button>
-            <router-link-button v-model="pageNow" :url="'/buttons'">
-              Buttons
-            </router-link-button>
-          </div>
-        </div>
+        <m-list id="links">
+          <router-link-a
+            v-model="pageNow"
+            v-for="item in demoLinks"
+            :href="item.href"
+            :key="item.key"
+          >
+            {{ item.name }}
+          </router-link-a>
+        </m-list>
       </template>
       <router-view />
     </m-page>
@@ -54,29 +43,33 @@
 </template>
 
 <script>
-import RouterLinkButton from "../../common/RouterLinkButton.vue";
 import { Focus } from "../../../packages/tool";
+import { TheDemo } from "../../router";
 export default {
-  components: { RouterLinkButton },
   data() {
     return {
       value: true,
       pageNow: "/get-started",
     };
   },
-  watch: {
-    pageNow() {
-      console.log("<>" + this.pageNow);
-    },
-  },
   directives: {
     focus: Focus,
+  },
+  computed: {
+    demoLinks() {
+      return TheDemo.children.map((item) => {
+        return {
+          text: item.name,
+          href: item.path,
+        };
+      });
+    },
   },
 };
 </script>
 
 <style>
-.links {
+#links {
   padding: 0 16px;
 }
 </style>

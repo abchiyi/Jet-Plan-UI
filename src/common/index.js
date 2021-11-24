@@ -1,10 +1,12 @@
+import RouterLinkA from './RouterLinkA.vue'
 import ButtonItem from './ButtonItem.vue'
 import SwitchItem from './SwitchItem.vue'
 import DemoPage from './DemoPage.vue'
 import DemoBox from './DemoBox.vue'
 import Cube from './Cube.vue'
 
-export {
+const components = {
+    RouterLinkA,
     ButtonItem,
     SwitchItem,
     DemoPage,
@@ -13,10 +15,9 @@ export {
 }
 export default {
     install(Vue) {
-        Vue.component(ButtonItem.name, ButtonItem)
-        Vue.component(SwitchItem.name, SwitchItem)
-        Vue.component(DemoPage.name, DemoPage)
-        Vue.component(DemoBox.name, DemoBox)
-        Vue.component(Cube.name, Cube)
-    }
+        Object.keys(components).forEach(key => {
+            let item = components[key]
+            Vue.component(item.name, item)
+        })
+    },
 }

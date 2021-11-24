@@ -53,7 +53,7 @@ export default {
 }
 
 /* Firefox  */
-@supports (scrollbar-width: none;) {
+@supports (scrollbar-width: none) {
   .bar {
     /* overflow: -moz-scrollbars-none; */
     scrollbar-width: none;
