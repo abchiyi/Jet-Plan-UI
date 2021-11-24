@@ -81,15 +81,6 @@ export default {
         }
       );
     },
-    renderDefault() {
-      return h(
-        "div",
-        {
-          style: {},
-        },
-        this.$slots.default ? this.$slots.default() : ""
-      );
-    },
   },
   render() {
     return h(
@@ -106,7 +97,7 @@ export default {
         ref: "self",
       },
       {
-        default: () => [this.renderDefault(), this.renderRipples()],
+        default: () => [this.$slots.default(), this.renderRipples()],
       }
     );
   },
