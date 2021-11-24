@@ -21,11 +21,9 @@
         </m-row>
       </template>
       <template v-slot:sidebar>
-        <!-- TODO 可复用的组件 -->
-        <div>
-          <m-row tag="header" X="center" Y="center">
-            <m-button text @click="$router.push('/')">Home</m-button>
-          </m-row>
+        <m-row tag="header" X="center" Y="center">
+          <m-button text @click="$router.push('/')">Home</m-button>
+        </m-row>
         <m-list id="links">
           <router-link-a
             v-model="pageNow"
@@ -59,7 +57,7 @@ export default {
     demoLinks() {
       return TheDemo.children.map((item) => {
         return {
-          text: item.name,
+          name: item.name,
           href: item.path,
         };
       });
