@@ -6,6 +6,8 @@
 /* Base Settins */
 :root {
     font-size: 16px;
+    /* 可继承属性 */
+    color: inherit;
     font-weight: inherit;
 }
 
