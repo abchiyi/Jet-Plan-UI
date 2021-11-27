@@ -15,27 +15,23 @@ export default {
   components: {
     DemoAnimationFade,
     DemoAnimationSlide,
-    DemoAnimationFolded
+    DemoAnimationFolded,
   },
   data() {
     return {
       v1: true,
-      v2: false
+      v2: false,
     };
   },
   computed: {
     classes() {
       return ["cube", this.r ? "on" : "off"];
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
-.demo-item + .demo-item {
-  margin-left: 5px;
-}
-
 .line-box,
 .line-box-dark {
   border: 3px solid grey;

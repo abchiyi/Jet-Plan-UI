@@ -7,8 +7,9 @@
       </m-switch-item>
       <hr />
       <m-row X="center">
-        <m-transition-slide :value="v1" position="right">
-          <m-cube class="demo-item">Cube 1</m-cube>
+        <!--TODO 切换反向单选框 -->
+        <m-transition-slide position="right">
+          <m-cube v-show="v1">Cube 1</m-cube>
         </m-transition-slide>
       </m-row>
     </m-card>
@@ -21,9 +22,9 @@ export default {
   components: {},
   data() {
     return {
-      v1: true
+      v1: true,
     };
-  }
+  },
 };
 </script>
 

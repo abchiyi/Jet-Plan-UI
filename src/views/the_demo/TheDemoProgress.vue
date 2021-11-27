@@ -19,7 +19,7 @@ export default {
       code: undefined,
       success: false,
       failed: false,
-      number: 50
+      number: 50,
     };
   },
   watch: {
@@ -37,16 +37,7 @@ export default {
       if (this.number > 100) {
         clearInterval(this.code);
       }
-    }
-  }
+    },
+  },
 };
 </script>
-
-<style scoped>
-.article-box {
-  background: white;
-  border-radius: 15px;
-  padding: 15px 20px;
-  margin-bottom: 40px;
-}
-</style>

@@ -1,18 +1,18 @@
-<template>
-  <transition name="m-transition-fade">
-    <div v-show="value">
-      <slot />
-    </div>
-  </transition>
-</template>
 <script>
+import { h, Transition } from "vue";
 export default {
   name: "m-transition-fade",
-  props: {
-    value: {
-      type: Boolean
-    }
-  }
+  render() {
+    return h(
+      Transition,
+      {
+        name: "m-transition-fade",
+      },
+      {
+        default: () => this.$slots.default(),
+      }
+    );
+  },
 };
 </script>
 

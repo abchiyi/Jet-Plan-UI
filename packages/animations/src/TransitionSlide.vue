@@ -1,37 +1,21 @@
-<template>
-  <transition
-    name="m-transition-slide"
-    @beforeEnter="beforeEnter"
-    @beforeLeave="beforeLeave"
-  >
-    <div :class="classes" :style="styles" v-show="value">
-      <slot />
-    </div>
-  </transition>
-</template>
-
 <script>
+import { h, Transition } from "vue";
 export default {
   name: "m-transition-slide",
   props: {
     position: {
       type: String,
       required: true,
-      validator: function(value) {
+      validator: function (value) {
         const checkout = ["left", "right", "top", "bottom"];
         return checkout.indexOf(value.toLowerCase()) !== -1;
-      }
+      },
     },
-
-    value: {
-      type: Boolean,
-      required: true
-    }
   },
   data() {
     return {
       height: null,
-      width: null
+      width: null,
     };
   },
   computed: {
@@ -43,15 +27,15 @@ export default {
         "--migration-distance":
           ["right", "left"].indexOf(this.position) != -1
             ? this.width + "px"
-            : this.height + "px"
+            : this.height + "px",
       };
-    }
+    },
   },
   methods: {
     refresh(el) {
       ["right", "left"].indexOf(this.position) != -1
-        ? (this.width = el.children[0].offsetWidth)
-        : (this.height = el.children[0].offsetHeight);
+        ? (this.width = el.offsetWidth)
+        : (this.height = el.offsetHeight);
     },
     beforeLeave(el) {
       this.refresh(el);
@@ -60,8 +44,23 @@ export default {
       this.$nextTick(() => {
         this.refresh(el);
       });
-    }
-  }
+    },
+  },
+  render() {
+    return h(
+      Transition,
+      {
+        name: "m-transition-slide",
+        class: this.classes,
+        style: this.styles,
+        onBeforeEnter: this.beforeEnter,
+        onBeforeLeave: this.beforeLeave,
+      },
+      {
+        default: () => this.$slots.default(),
+      }
+    );
+  },
 };
 </script>
 

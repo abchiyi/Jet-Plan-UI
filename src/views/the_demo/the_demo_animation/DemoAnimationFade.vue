@@ -6,11 +6,11 @@
         {{ v1 ? "淡出" : "淡入" }}
       </m-switch-item>
       <hr />
-      <m-transition-fade :value="v1">
-        <m-row X="center">
-          <m-cube class="demo-item">Cube 1</m-cube>
-        </m-row>
-      </m-transition-fade>
+      <m-row X="center">
+        <m-transition-fade>
+          <m-cube v-show="v1" class="demo-item">Cube 1</m-cube>
+        </m-transition-fade>
+      </m-row>
     </m-card>
   </div>
 </template>
@@ -21,9 +21,9 @@ export default {
   components: {},
   data() {
     return {
-      v1: true
+      v1: true,
     };
-  }
+  },
 };
 </script>
 
