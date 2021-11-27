@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>折叠过渡</h2>
-    <m-card style="height:300px" class="article-box">
+    <m-card style="height: 300px" class="article-box">
       <m-switch-item v-model="v1">
         {{ v1 ? "展开" : "收起" }}
       </m-switch-item>
@@ -14,7 +14,7 @@
           <div class="demo-item">
             <m-cube
               :style="{
-                height: this.v2 ? '150px' : '100px'
+                height: this.v2 ? '150px' : '100px',
               }"
               >Cube</m-cube
             >
@@ -32,9 +32,9 @@ export default {
   data() {
     return {
       v1: true,
-      v2: false
+      v2: false,
     };
-  }
+  },
 };
 </script>
 

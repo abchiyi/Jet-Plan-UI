@@ -1,15 +1,15 @@
 <template>
-  <div class="m-transition-folded" :style="{ ...this.style }">
-    <transition
-      name="m-transition-folded"
-      @beforeEnter="this.beforeEnter"
-      @afterEnter="this.clearHeight"
-      @beforeLeave="this.beforeLeave"
-      @afterLeave="this.clearHeight"
-    >
-      <div v-show="this.value"><slot /></div>
-    </transition>
-  </div>
+  <transition
+    name="m-transition-folded"
+    class="m-transition-folded"
+    :style="{ ...this.style }"
+    @beforeEnter="this.beforeEnter"
+    @afterEnter="this.clearHeight"
+    @beforeLeave="this.beforeLeave"
+    @afterLeave="this.clearHeight"
+  >
+    <div v-show="this.value"><slot /></div>
+  </transition>
 </template>
 <script>
 function nodeCheck(el, callback) {
