@@ -9,9 +9,9 @@
         {{ v2 ? "大" : "小" }}
       </m-switch-item>
       <hr />
-      <m-transition-folded :value="v1">
-        <m-row X="center">
-          <div class="demo-item">
+      <m-row X="center">
+        <m-transition-folded>
+          <div v-show="v1">
             <m-cube
               :style="{
                 height: this.v2 ? '150px' : '100px',
@@ -19,8 +19,8 @@
               >Cube</m-cube
             >
           </div>
-        </m-row>
-      </m-transition-folded>
+        </m-transition-folded>
+      </m-row>
     </m-card>
   </div>
 </template>
@@ -39,4 +39,6 @@ export default {
 </script>
 
 <style>
+asd {
+}
 </style>

@@ -1,23 +1,10 @@
-<template>
-  <transition
-    name="m-transition-folded"
-    class="m-transition-folded"
-    :style="{ ...this.style }"
-    @beforeEnter="this.beforeEnter"
-    @afterEnter="this.clearHeight"
-    @beforeLeave="this.beforeLeave"
-    @afterLeave="this.clearHeight"
-  >
-    <div v-show="this.value"><slot /></div>
-  </transition>
-</template>
 <script>
 function nodeCheck(el, callback) {
   if (el.children.length > 1) {
     console.error(
       "childrenNodeError,should be like this:",
       "\n<m-transition-folded>\n",
-      "\t<element v-show/if='value'>\n",
+      "\t<element [v-show[v-if]]='value'>\n",
       "\t\t<content></content>\n",
       "\t</element>\n",
       "<m-transition-folded>\n",
@@ -27,17 +14,13 @@ function nodeCheck(el, callback) {
     callback(el);
   }
 }
+import { h, Transition } from "vue";
 export default {
   name: "m-transition-folded",
   data() {
     return {
       height: null,
     };
-  },
-  props: {
-    value: {
-      type: Boolean,
-    },
   },
   methods: {
     refresh(el) {
@@ -74,6 +57,23 @@ export default {
       // 两位浮点精度的动画时间
       return parseFloat(aTime * 0.1).toFixed(2) + "s";
     },
+  },
+  render() {
+    return h(
+      Transition,
+      {
+        name: "m-transition-folded",
+        class: "m-transition-folded",
+        style: this.style,
+        onBeforeEnter: this.beforeEnter,
+        onAfterEnter: this.clearHeight,
+        onBeforeLeave: this.beforeLeave,
+        onAfterLeave: this.clearHeight,
+      },
+      {
+        default: () => this.$slots.default(),
+      }
+    );
   },
 };
 </script>
