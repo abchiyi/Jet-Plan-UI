@@ -31,13 +31,13 @@ export default {
   name: "m-transition-folded",
   data() {
     return {
-      height: null
+      height: null,
     };
   },
   props: {
     value: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   methods: {
     refresh(el) {
@@ -58,13 +58,13 @@ export default {
       nodeCheck(el, () => {
         this.refresh(el);
       });
-    }
+    },
   },
   computed: {
     style() {
       return {
         "--animationTime": this.animationTime,
-        "--height": this.height + "px"
+        "--height": this.height,
       };
     },
     animationTime() {
@@ -73,8 +73,8 @@ export default {
       aTime = aTime < 4 ? (aTime = 4) : aTime >= 9 ? 9 : aTime;
       // 两位浮点精度的动画时间
       return parseFloat(aTime * 0.1).toFixed(2) + "s";
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -88,7 +88,6 @@ export default {
 .m-transition-folded-leave-active {
   transition: var(--animationTime) cubic-bezier(0.2, 0.5, 0, 1);
   transform: translate3d(0, 0, 0);
-  height: var(--enter-height);
   overflow-y: hidden;
 }
 
@@ -99,7 +98,6 @@ export default {
 
 .m-transition-folded-enter-to,
 .m-transition-folded-leave-from {
-  /* height: var(--height); */
-  height: v-bind(height);
+  height: var(--height);
 }
 </style>
