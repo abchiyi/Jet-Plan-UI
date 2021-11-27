@@ -1,16 +1,3 @@
-<template>
-  <div class="m-transition-folded" :style="{ ...this.style }">
-    <transition
-      name="m-transition-folded"
-      @beforeEnter="this.beforeEnter"
-      @afterEnter="this.clearHeight"
-      @beforeLeave="this.beforeLeave"
-      @afterLeave="this.clearHeight"
-    >
-      <div v-show="this.value"><slot /></div>
-    </transition>
-  </div>
-</template>
 <script>
 function nodeCheck(el, callback) {
   if (el.children.length > 1) {
@@ -27,6 +14,7 @@ function nodeCheck(el, callback) {
     callback(el);
   }
 }
+import { h, Transition } from "vue";
 export default {
   name: "m-transition-folded",
   data() {
@@ -74,6 +62,30 @@ export default {
       // 两位浮点精度的动画时间
       return parseFloat(aTime * 0.1).toFixed(2) + "s";
     },
+  },
+  render() {
+    return h(
+      Transition,
+      {
+        name: "m-transition-folded",
+        onBeforeEnter: this.beforeEnter,
+        onBeforeLeave: this.beforeLeave,
+        onAfterEnter: this.clearHeight,
+        onAfterLeave: this.clearHeight,
+      },
+      {
+        default: () =>
+          h(
+            "div",
+            {
+              style: {
+                display: this.value ? "inherit" : "none",
+              },
+            },
+            [this.$slots.default()]
+          ),
+      }
+    );
   },
 };
 </script>
