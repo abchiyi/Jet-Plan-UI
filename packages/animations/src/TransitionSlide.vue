@@ -36,7 +36,6 @@ export default {
       Transition,
       {
         name: "m-transition-slide",
-        class: this.position,
         style: this.style,
       },
       {
