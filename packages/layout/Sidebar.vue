@@ -1,14 +1,14 @@
 <template>
-  <m-transition-slide
-    class="bar frosted-glass"
-    :position="right ? 'right' : 'left'"
-    :value="expand"
-  >
-    <slot />
+  <m-transition-slide :position="right ? 'right' : 'left'">
+    <div v-show="expand" class="bar frosted-glass">
+      <slot />
+    </div>
   </m-transition-slide>
 </template>
 
 <script>
+import { h } from "vue";
+import { TransitionFolded } from "../animations";
 export default {
   name: "m-sidebar",
   mounted() {
@@ -37,6 +37,9 @@ export default {
     syncShow() {
       this.$emit("expand", this.syncShow);
     },
+  },
+  render() {
+    return h(TransitionFolded, {}, {});
   },
 };
 </script>

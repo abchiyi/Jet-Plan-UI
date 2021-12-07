@@ -63,4 +63,8 @@ span {
 h2 {
   font-size: 1.7rem;
 }
+
+.transition-item + .transition-item {
+  margin-left: 10px;
+}
 </style>

@@ -1,61 +1,67 @@
 <script>
-function nodeCheck(el, callback) {
-  if (el.children.length > 1) {
-    console.error(
-      "childrenNodeError,should be like this:",
-      "\n<m-transition-folded>\n",
-      "\t<element [v-show[v-if]]='value'>\n",
-      "\t\t<content></content>\n",
-      "\t</element>\n",
-      "<m-transition-folded>\n",
-      el
-    );
-  } else {
-    callback(el);
-  }
+function getSize(size) {
+  if (!size) return 0;
+  const index = size.indexOf("px");
+  if (index === -1) return 0;
+  return Number(size.substring(0, index));
 }
 import { h, Transition } from "vue";
 export default {
   name: "m-transition-folded",
-  data() {
-    return {
-      height: null,
-    };
-  },
   methods: {
-    refresh(el) {
-      this.height = el.children[0].offsetHeight + "px";
-    },
-    clearHeight() {
-      this.height = null;
-    },
     beforeEnter(el) {
-      nodeCheck(el, () => {
-        // 等待子元素绘制完成
-        this.$nextTick(() => {
-          this.refresh(el);
-        });
-      });
+      el.dataset.oldPaddingTop = el.style.paddingTop;
+      el.dataset.oldPaddingBottom = el.style.paddingBottom;
+      el.dataset.oldOverflow = el.style.overflow;
+      el.style.paddingTop = "0";
+      el.style.paddingBottom = "0";
+      el.style.height = "0";
+    },
+    enter(el) {
+      el.style.display = "block";
+      el.style.overflow = "hidden";
+      el.style.height =
+        el.scrollHeight +
+        getSize(el.dataset.oldPaddingTop) +
+        getSize(el.dataset.oldPaddingBottom) +
+        "px";
+      el.style.paddingTop = el.dataset.oldPaddingTop;
+      el.style.paddingBottom = el.dataset.oldPaddingBottom;
+    },
+    afterEnter(el) {
+      el.style.display = "";
+      // uc浏览器上设置height会闪屏
+      el.style.height = "";
+      el.style.overflow = el.dataset.oldOverflow;
+      el.style.paddingTop = el.dataset.oldPaddingTop;
+      el.style.paddingBottom = el.dataset.oldPaddingBottom;
     },
     beforeLeave(el) {
-      nodeCheck(el, () => {
-        this.refresh(el);
-      });
+      el.dataset.oldPaddingTop = el.style.paddingTop;
+      el.dataset.oldPaddingBottom = el.style.paddingBottom;
+      el.dataset.oldOverflow = el.style.overflow;
+
+      el.style.display = "block";
+      if (el.scrollHeight !== 0) {
+        el.style.height = el.scrollHeight + "px";
+      }
+      el.style.overflow = "hidden";
     },
-  },
-  computed: {
-    style() {
-      return {
-        "--animationTime": this.animationTime,
-        "--height": this.height,
-      };
+    leave(el) {
+      if (el.scrollHeight !== 0) {
+        setTimeout(() => {
+          el.style.height = 0;
+          el.style.paddingTop = 0;
+          el.style.paddingBottom = 0;
+        });
+      }
     },
-    animationTime() {
-      let aTime = parseFloat(this.height) / 50;
-      // 限制动画时间，最大不超过0.9s,最小不低于0.4s
-      aTime = aTime < 4 ? (aTime = 4) : aTime >= 9 ? 9 : aTime;
-      // 两位浮点精度的动画时间
-      return parseFloat(aTime * 0.1).toFixed(2) + "s";
+    afterLeave(el) {
+      el.style.display = "none";
+      el.style.height = "";
+      el.style.overflow = el.dataset.oldOverflow;
+      el.style.paddingTop = el.dataset.oldPaddingTop;
+      el.style.paddingBottom = el.dataset.oldPaddingBottom;
     },
   },
   render() {
@@ -63,12 +69,13 @@ export default {
       Transition,
       {
         name: "m-transition-folded",
-        class: "m-transition-folded",
-        style: this.style,
         onBeforeEnter: this.beforeEnter,
-        onAfterEnter: this.clearHeight,
+        onEnter: this.enter,
+        onAfterEnter: this.afterEnter,
+
         onBeforeLeave: this.beforeLeave,
-        onAfterLeave: this.clearHeight,
+        onLeave: this.leave,
+        onAfterLeave: this.afterLeave,
       },
       {
         default: () => this.$slots.default(),
@@ -78,26 +85,11 @@ export default {
 };
 </script>
 
-<style>
-.m-transition-folded * {
-  margin-top: unset !important;
-  margin-bottom: unset !important;
-}
-
+<style >
 .m-transition-folded-enter-active,
 .m-transition-folded-leave-active {
-  transition: var(--animationTime) cubic-bezier(0.2, 0.5, 0, 1);
+  transition: all 0.45s var(--ease-out);
+  backface-visibility: hidden;
   transform: translate3d(0, 0, 0);
-  overflow-y: hidden;
-}
-
-.m-transition-folded-leave-to,
-.m-transition-folded-enter-from {
-  height: 0px;
-}
-
-.m-transition-folded-enter-to,
-.m-transition-folded-leave-from {
-  height: var(--height);
 }
 </style>

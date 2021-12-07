@@ -9,6 +9,16 @@
     /* 可继承属性 */
     color: inherit;
     font-weight: inherit;
+
+    /* 圆角 */
+    --xm-radius: 4px;
+    --sm-radius: 4px;
+    --md-radius: 8px;
+    --xl-radius: 1rem;
+
+    /* Cubic bezier function */
+    --ease-in-out: cubic-bezier(0.5, 0, 0, 0.95);
+    --ease-out: cubic-bezier(0.2, 0.5, 0, 1)
 }
 
 
@@ -29,14 +39,6 @@ body {
 }
 
 
-/* 圆角 */
-:root {
-    --xm-radius: 4px;
-    --sm-radius: 4px;
-    --md-radius: 8px;
-    --xl-radius: 1rem;
-}
-
 
 .frosted-glass {
     background-color: rgb(255, 255, 255);
@@ -45,7 +47,6 @@ body {
 .frosted-glass-night {
     background-color: rgb(28, 28, 34);
     color: white;
-
 }
 
 @supports (backdrop-filter:blur(15px)) {
@@ -63,16 +64,4 @@ body {
 
     }
 
-}
-
-
-
-.fade-enter-active,
-.fade-leave-active {
-    transition: opacity 0.6s cubic-bezier(0.2, 0.4, 0.4, 1);
-}
-
-.fade-enter-from,
-.fade-leave-to {
-    opacity: 0;
 }
