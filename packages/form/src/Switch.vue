@@ -101,6 +101,7 @@ export default {
   margin: 0 2px;
 }
 
+/* 屏蔽选中框 */
 @supports (-webkit-tap-highlight-color: #ffffff00) {
   .m-switch {
     -webkit-tap-highlight-color: #ffffff00;
