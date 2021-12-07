@@ -5,9 +5,6 @@
       <m-switch-item v-model="v1">
         {{ v1 ? "展开" : "收起" }}
       </m-switch-item>
-      <m-switch-item v-model="v2">
-        {{ v2 ? "大" : "小" }}
-      </m-switch-item>
       <hr />
       <m-row X="center">
         <m-transition-folded>

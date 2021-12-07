@@ -1,15 +1,22 @@
 <template>
   <div>
     <h2>滑入滑出</h2>
-    <m-card style="height: 200px" class="article-box">
+    <m-card style="height: 300px" class="article-box">
       <m-switch-item v-model="v1">
-        {{ v1 ? "淡出" : "淡入" }}
+        {{ v1 ? "展开" : "收起" }}
       </m-switch-item>
       <hr />
       <m-row X="center">
-        <!--TODO 切换反向单选框 -->
-        <m-transition-slide position="right">
-          <m-cube v-show="v1">Cube 1</m-cube>
+        <m-transition-slide position="top">
+          <div v-show="v1">
+            <m-cube
+              :style="{
+                height: this.v2 ? '150px' : '100px',
+              }"
+            >
+              'v-show'
+            </m-cube>
+          </div>
         </m-transition-slide>
       </m-row>
     </m-card>
@@ -22,7 +29,7 @@ export default {
   components: {},
   data() {
     return {
-      v1: true,
+      v1: false,
     };
   },
 };
