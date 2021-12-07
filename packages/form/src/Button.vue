@@ -79,9 +79,6 @@ export default {
     renderMask() {
       return h(Mask, {
         value: this.show_mask,
-        size: this.maskSize,
-        onmouseenter: this.enter,
-        onmouseleave: this.leave,
       });
     },
     getSize(el) {

@@ -1,10 +1,10 @@
 <script>
 import { h } from "vue";
-import fade from "../animations/src/TransitionFade.vue";
+import { TransitionFade } from "../animations";
 export default {
   name: "m-mask",
   components: {
-    fade,
+    TransitionFade,
   },
   props: {
     value: {
@@ -12,22 +12,9 @@ export default {
       default: false,
     },
   },
-  methods: {
-    getSize() {
-      return {};
-    },
-  },
   render() {
-    return h(fade, null, {
-      default: () => [
-        h("div", {
-          class: "m-mask",
-          style: {
-            //   XXX 无法应用过渡
-            display: this.value ? "block" : "none",
-          },
-        }),
-      ],
+    return h(TransitionFade, null, {
+      default: () => [this.value ? h("div", { class: "m-mask" }) : ""],
     });
   },
 };
