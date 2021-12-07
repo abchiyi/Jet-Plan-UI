@@ -78,7 +78,7 @@ export default {
     },
     renderMask() {
       return h(Mask, {
-        value: this.value,
+        value: this.show_mask,
         size: this.maskSize,
         onmouseenter: this.enter,
         onmouseleave: this.leave,
@@ -99,6 +99,7 @@ export default {
         tag: this.tag,
         class: this.classes,
         onmouseenter: this.enter,
+        onmouseleave: this.leave,
       },
       {
         default: () => [this.renderMask(), this.renderDefault()],

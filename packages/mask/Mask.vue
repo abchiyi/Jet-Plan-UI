@@ -18,16 +18,17 @@ export default {
     },
   },
   render() {
-    return h(
-      fade,
-      {
-        value: this.value,
-        ref: "self",
-      },
-      {
-        default: () => [h("div", { class: "m-mask" })],
-      }
-    );
+    return h(fade, null, {
+      default: () => [
+        h("div", {
+          class: "m-mask",
+          style: {
+            //   XXX 无法应用过渡
+            display: this.value ? "block" : "none",
+          },
+        }),
+      ],
+    });
   },
 };
 </script>
