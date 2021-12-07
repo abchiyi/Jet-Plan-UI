@@ -27,7 +27,7 @@ export default {
 .m-cube {
   width: 100px;
   height: 100px;
-  border-radius: 4px;
+  border-radius: var(--s-radius);
   background-color: var(--primary);
   /* 文本设置 */
   font-size: 20px;
