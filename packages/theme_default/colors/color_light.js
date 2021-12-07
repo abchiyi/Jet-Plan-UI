@@ -12,8 +12,8 @@ export default {
     text_hint: '#00000061',
     text: "#2f2f2f",
     // others
-    // shadow: '#27272767',
-    shadow: '#00000020',
+    shadow: '#27272767',
+    // shadow: '#00000030',
     border: "#c2c2c2",
     // background
     card: "#fcfcfc",
