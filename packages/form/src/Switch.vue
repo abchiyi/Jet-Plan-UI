@@ -217,6 +217,7 @@ export default {
 }
 
 /* #Color# */
+/* FIXME 失效的颜色 */
 /*------------ Default ----------*/
 /* 基底 */
 .m-switch {
