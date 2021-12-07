@@ -10,16 +10,16 @@ export default {
   props: {
     dark: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   computed: {
     classes() {
       let classes = ["m-cube"];
       if (this.dark) classes.push("dark");
       return classes;
-    }
-  }
+    },
+  },
 };
 </script>
 
