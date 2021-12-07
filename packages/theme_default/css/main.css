@@ -11,10 +11,10 @@
     font-weight: inherit;
 
     /* 圆角 */
-    --xm-radius: 4px;
-    --sm-radius: 4px;
-    --md-radius: 8px;
-    --xl-radius: 1rem;
+    --s-radius: 4px;
+    --m-radius: 8px;
+    --l-radius: 16px;
+    --p-radius: 1rem;
 
     /* Cubic bezier function */
     --ease-in-out: cubic-bezier(0.5, 0, 0, 0.95);
