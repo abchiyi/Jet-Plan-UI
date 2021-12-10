@@ -120,8 +120,7 @@ export default {
 }
 /* 拨杆 */
 .m-switch::after {
-  box-shadow: 0 var(--LEVER-SHADOW) calc(var(--LEVER-SHADOW) * 2)
-    var(--shadow-1);
+  box-shadow: 0 var(--LEVER-SHADOW) calc(var(--LEVER-SHADOW) * 2) var(--shadow);
   border-radius: calc(var(--LEVER_DIAMETER) / 2);
   height: var(--LEVER_DIAMETER);
   width: var(--LEVER_DIAMETER);
@@ -221,7 +220,7 @@ export default {
 /*------------ Default ----------*/
 /* 基底 */
 .m-switch {
-  background-color: var(--bg-0);
+  background-color: var(--border);
 }
 
 /* 遮罩 */
