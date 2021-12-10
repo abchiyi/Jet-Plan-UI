@@ -113,8 +113,6 @@ export default {
   background-color: var(--secondary);
   box-sizing: border-box;
   display: inline-block;
-  /* FIXME 无对应颜色变量 */
-  /* color: var(--grey-4); */
   position: relative;
   padding: 6px 16px;
   -webkit-user-select: none;
@@ -198,8 +196,6 @@ export default {
 
 .m-button.text-button {
   background: unset;
-  /* FIXME 无对应颜色变量 */
-  /* color: var(--grey-4); */
   transition: opacity 0.2s cubic-bezier(0.2, 1, 0.5, 1);
 }
 
