@@ -8,8 +8,8 @@
 </template>
 <script>
 import { Input } from "../../../packages/form";
-import { colors } from "../../../packages/theme_default";
-import { use } from "../../../packages/theme";
+import ui from "../../../packages";
+import theme from "../../../packages/theme_default";
 export default {
   name: "TheTestPage",
   components: {
@@ -19,6 +19,9 @@ export default {
     return {
       value: false,
     };
+  },
+  mounted() {
+    this.setColor(this.value);
   },
   methods: {
     on() {
@@ -30,10 +33,13 @@ export default {
     test(evet) {
       console.log(evet);
     },
+    setColor(b) {
+      b ? ui.theme.use(theme.colors.Light) : ui.theme.use(theme.colors.Dark);
+    },
   },
   watch: {
     value(v) {
-      v ? use(colors.Light) : use(colors.Dark);
+      this.setColor(v);
     },
   },
 };
