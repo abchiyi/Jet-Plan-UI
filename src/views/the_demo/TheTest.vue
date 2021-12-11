@@ -1,27 +1,17 @@
 <template>
   <div id="the-test-page">
-    <click-feedback>
-      <m-cube />
-    </click-feedback>
-    <m-card>
-      <click-feedback>
-        <m-cube />
-      </click-feedback>
-    </m-card>
-    <m-list>
-      <m-list-item> item1 </m-list-item>
-      <m-list-item> item2 </m-list-item>
-      <m-list-item> item3 </m-list-item>
-      <m-list-item> item4 </m-list-item>
-    </m-list>
+    <div style="background: red; padding: 20px; color: #fff">
+      <Input />
+    </div>
+    <Input />
   </div>
 </template>
 <script>
-import { ClickFeedback } from "../../../packages/animations";
+import { Input } from "../../../packages/form";
 export default {
   name: "TheTestPage",
   components: {
-    ClickFeedback,
+    Input,
   },
   data() {
     return {
