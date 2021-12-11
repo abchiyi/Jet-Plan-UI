@@ -134,7 +134,7 @@ export default {
 }
 
 /*------------ Primary ----------*/
-
+/* FIXME 颜色失效 */
 .m-button.button.primary {
   background-color: var(--main-0);
   color: var(--grey-0);
@@ -196,7 +196,6 @@ export default {
 
 .m-button.text-button {
   background: unset;
-  transition: opacity 0.2s cubic-bezier(0.2, 1, 0.5, 1);
 }
 
 /*------------ Active ----------*/

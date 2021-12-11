@@ -6,8 +6,12 @@
     <h2>基本示例</h2>
     <m-demo-box>
       <m-row>
-        <m-button></m-button>
-        <m-button text></m-button>
+        <m-button :activeAnimation="false" :hoverAnimation="false"></m-button>
+        <m-button
+          text
+          :activeAnimation="false"
+          :hoverAnimation="false"
+        ></m-button>
       </m-row>
     </m-demo-box>
   </div>
