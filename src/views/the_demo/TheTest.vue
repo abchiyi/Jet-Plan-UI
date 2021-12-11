@@ -1,13 +1,15 @@
 <template>
   <div id="the-test-page">
-    <div style="background: red; padding: 20px; color: #fff">
-      <Input />
-    </div>
+    <m-switch-item v-model="value">
+      {{ value ? "light" : "dark" }}
+    </m-switch-item>
     <Input />
   </div>
 </template>
 <script>
 import { Input } from "../../../packages/form";
+import { colors } from "../../../packages/theme_default";
+import { use } from "../../../packages/theme";
 export default {
   name: "TheTestPage",
   components: {
@@ -27,6 +29,11 @@ export default {
     },
     test(evet) {
       console.log(evet);
+    },
+  },
+  watch: {
+    value(v) {
+      v ? use(colors.Light) : use(colors.Dark);
     },
   },
 };

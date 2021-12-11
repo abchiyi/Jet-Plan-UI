@@ -34,7 +34,7 @@ export default {
 <style>
 .line-box,
 .line-box-dark {
-  border: 3px solid grey;
+  /* border: 3px solid grey; */
   display: inline-block;
   border-radius: 10px;
   background: white;
@@ -45,11 +45,11 @@ export default {
 }
 
 .line-box-dark {
-  background: gray;
-  color: white;
+  /* background: gray; */
+  /* color: white; */
 }
 .article-box {
-  background: white;
+  /* background: white; */
   border-radius: 15px;
   padding: 15px 20px;
   margin-bottom: 40px;
@@ -57,7 +57,7 @@ export default {
 
 h2,
 span {
-  color: rgb(104, 104, 104);
+  /* color: rgb(104, 104, 104); */
   font-size: 20px;
 }
 h2 {

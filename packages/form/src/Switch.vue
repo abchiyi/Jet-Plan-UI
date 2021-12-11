@@ -224,12 +224,12 @@ export default {
 
 /* 遮罩 */
 .m-switch::before {
-  background-color: var(--white);
+  background-color: var(--foreground_color);
 }
 
 /* 拨杆 */
 .m-switch::after {
-  background-color: var(--white);
+  background-color: var(--foreground_color);
 }
 
 /*------------ On ----------*/

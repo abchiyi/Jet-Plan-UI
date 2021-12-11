@@ -41,7 +41,7 @@ export default {
 <style>
 .m-card {
   box-shadow: 0 1px 3px 1px rgba(46, 47, 59, var(--z-depth));
-  background: var(--white);
+  background: var(--card);
   border-radius: 14px;
   overflow: hidden;
   margin: 10px 0;
