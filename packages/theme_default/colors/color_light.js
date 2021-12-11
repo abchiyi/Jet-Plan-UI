@@ -8,14 +8,13 @@ export default {
     error: "#f33f2e",
     white: '#fff',
     //text
-    text_disabled: '#00000061',
-    text_hint: '#00000061',
-    text: "#2f2f2f",
+    text_disabled: '#1a1a1a4d',
+    text_hint: '#5C5C5C',
+    text: "#1A1A1A",
     // others
     shadow: '#27272767',
-    // shadow: '#00000030',
-    border: "#c2c2c2",
-    // background
-    card: "#fcfcfc",
-    background: "#f1f1f1"
+    // background color set
+    background: "#F3F3F3",
+    border: "#EAEAEA",
+    card: "#FBFBFB",
 }

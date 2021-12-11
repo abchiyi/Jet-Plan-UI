@@ -23,8 +23,9 @@ export default {
 
 .m-input {
   background-color: rgba(128, 128, 128, 0.9);
-  padding: 0.4em;
   border-radius: 0.28em;
+  padding: 0.4em;
+  color: inherit;
   border: unset;
   opacity: 0.4;
   height: 1em;
