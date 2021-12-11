@@ -105,7 +105,7 @@ export default {
   },
 };
 </script>
-<style scoped>
+<style>
 /*------------ Default ----------*/
 
 .m-button {
@@ -148,7 +148,7 @@ export default {
 /*------------ Animation ----------*/
 
 .m-button {
-  transition: filter 0.1s cubic-bezier(0.2, 1, 0.5, 1), all 0.3s ease-out;
+  transition: all 0.3s var(--ease-out);
 }
 
 /*------------ disabled ----------*/
