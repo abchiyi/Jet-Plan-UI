@@ -15,11 +15,12 @@
 </template>
 
 <script>
+import { getCookie, setCookie } from "../common";
 import { theme, themeDefault } from "../../packages";
 function setColorTheme(b = Boolean()) {
-  let light = themeDefault.colors.Light;
-  let Dark = themeDefault.colors.Dark;
-  b ? theme.use(light) : theme.use(Dark);
+  b
+    ? theme.use(themeDefault.colors.Light)
+    : theme.use(themeDefault.colors.Dark);
 }
 export default {
   name: "demo-header",
@@ -36,9 +37,25 @@ export default {
   },
   methods: {
     click() {
-      console.log(this.modelValue);
       this.$emit("update:modelValue", this.modelValue ? false : true);
     },
+    redColorModeCookie() {
+      /* 从Cookie 加载颜色主题设置,如为'null'则设置为 'true'即'Light Mode' */
+      let colorMode = Boolean(getCookie("colorMode"));
+      if (colorMode === null) {
+        this.setColorModeCookie(true);
+        return true;
+      }
+      return colorMode;
+    },
+    setColorModeCookie(b = Boolean()) {
+      setCookie("colorMode", b ? "1" : "");
+    },
+  },
+  created() {
+    // XXX 组件每被引用一次将执行一次主题初始化设置,可能的性能浪费
+    this.colorMode = this.redColorModeCookie();
+    setColorTheme(this.redColorModeCookie());
   },
   model: {
     prop: "modeValue",
@@ -46,7 +63,8 @@ export default {
   },
   watch: {
     colorMode(b) {
-      // TODO 色彩模式变更后写入cookis
+      // 变更时重设主题'cookie'
+      this.setColorModeCookie(b);
       setColorTheme(b);
     },
   },
