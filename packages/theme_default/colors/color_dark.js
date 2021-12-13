@@ -1,6 +1,7 @@
 // 毛玻璃背景色与background相等并添加'60'透明
 // 半透明背景使用'60',半透明文本使用'b4'
 // secondary = border
+// foreground_color= frosted_glass+'b3',card
 export default {
     // basecolor
     secondary: "#2D2D2D;",
@@ -14,7 +15,7 @@ export default {
     text_hint: '#CCCCCC',
     text: "#FCFCFC",
     // others
-    frosted_glass: '20202060',
+    frosted_glass: '#363636b3',
     shadow: '#16161660',
     card: "#363636",
     // background color set
