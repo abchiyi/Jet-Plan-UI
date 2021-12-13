@@ -131,8 +131,6 @@ export default {
   max-width: 768px;
   width: 100%;
 }
-#content-body {
-}
 main {
   margin-top: 100px;
 }
