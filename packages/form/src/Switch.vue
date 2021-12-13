@@ -11,10 +11,10 @@ export default {
       type: Boolean,
       default: false,
     },
-    size: {
-      type: [Number, String],
-      default: 40,
-    },
+    // size: {
+    //   type: [Number, String],
+    //   default: 40,
+    // },
   },
   data() {
     return {
@@ -39,7 +39,7 @@ export default {
     },
     style() {
       return {
-        "--SIZE": this.size + "px",
+        // "--SIZE": this.size + "px",
       };
     },
   },
