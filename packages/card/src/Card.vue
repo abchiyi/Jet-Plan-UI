@@ -35,7 +35,9 @@ export default {
 
 <style>
 .m-card {
-  box-shadow: 0 1px 3px 1px rgba(46, 47, 59, var(--z-depth));
+  /* TODO 可调的阴影等级 */
+  /* box-shadow: 0 1px 3px 1px rgba(46, 47, 59, var(--z-depth)); */
+  box-shadow: var(--shadow);
   background: var(--card);
   border-radius: 14px;
   overflow: hidden;
