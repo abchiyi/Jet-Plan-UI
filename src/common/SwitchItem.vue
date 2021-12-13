@@ -9,26 +9,24 @@
 export default {
   name: "m-switch-item",
   props: {
-    modelValue: [Boolean]
+    modelValue: [Boolean],
   },
   model: {
-    model: {
-      prop: "modeValue",
-      event: "update:modelValue"
-    }
+    prop: "modeValue",
+    event: "update:modelValue",
   },
   created() {
     this.value = this.modelValue;
   },
   data() {
     return {
-      value: false
+      value: false,
     };
   },
   watch: {
     value() {
       this.$emit("update:modelValue", this.value);
-    }
-  }
+    },
+  },
 };
 </script>

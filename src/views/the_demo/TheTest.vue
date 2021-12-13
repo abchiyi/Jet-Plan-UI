@@ -1,22 +1,18 @@
 <template>
   <div id="the-test-page">
-    <m-card>
-      <m-switch-item v-model="value">
-        {{ value ? "light" : "dark" }}
-      </m-switch-item>
+    <m-card class="demo-box">
       <m-switch v-model="value1"></m-switch>
       <m-switch v-model="value1"></m-switch>
-      <Input />
+      <!-- <Input /> -->
     </m-card>
   </div>
 </template>
 <script>
-import { Input } from "../../../packages/form";
-import { ui } from "../../../packages";
+// import { Input } from "../../../packages";
 export default {
   name: "TheTestPage",
   components: {
-    Input,
+    // Input,
   },
   data() {
     return {
@@ -24,9 +20,7 @@ export default {
       value1: false,
     };
   },
-  mounted() {
-    this.setColor(this.value);
-  },
+  mounted() {},
   methods: {
     on() {
       this.value = true;
@@ -37,17 +31,8 @@ export default {
     test(evet) {
       console.log(evet);
     },
-    setColor(b) {
-      b
-        ? ui.theme.use(ui.themeDefault.colors.Light)
-        : " ui.theme.use(theme.colors.Dark);";
-    },
   },
-  watch: {
-    value(v) {
-      this.setColor(v);
-    },
-  },
+  watch: {},
 };
 </script>
 

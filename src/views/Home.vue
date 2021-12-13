@@ -1,29 +1,17 @@
 <template>
-  <m-page :value="value">
+  <m-page v-model="value">
     <!--浮动头栏 -->
     <template v-slot:header>
-      <m-row class="header" Y="center" X="center" spaceMode="between">
-        <!-- 标题 -->
-        <h1>Mousese UI</h1>
-        <!-- 侧栏开关 -->
-        <m-button
-          text
-          @click="
-            () => {
-              this.value = !this.value;
-            }
-          "
-        >
-          <i style="font-size: 2rem" class="bi bi-list"></i>
-        </m-button>
-      </m-row>
+      <demo-header v-model="value"></demo-header>
     </template>
     <template v-slot:sidebar>
-      <div id="nav">
-        <router-link to="/">Home</router-link> <br />
-        <router-link to="/about">About</router-link><br />
-        <router-link to="/get-started">Get started</router-link><br />
-      </div>
+      <m-row tag="header" X="center" Y="center">
+        <m-button text @click="$router.push('/')">Home</m-button>
+      </m-row>
+      <m-list id="links">
+        <router-link-a>Home </router-link-a>
+        <router-link-a>About </router-link-a>
+      </m-list>
     </template>
     <!-- 正文 -->
 
@@ -35,25 +23,19 @@
         }
       "
       >Get Started
-      <!-- <router-link to="/get-started">Get Started</router-link><br /> -->
     </m-button>
-    <!-- <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <router-view />
   </m-page>
 </template>
 
 <script>
-// import HelloWorld from "@/components/HelloWorld.vue";
-
 export default {
   name: "Home",
   data() {
     return {
-      value: true
+      value: true,
     };
   },
-  components: {
-    // HelloWorld
-  }
+  components: {},
 };
 </script>

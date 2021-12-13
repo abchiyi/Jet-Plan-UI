@@ -1,23 +1,17 @@
 <template>
-  <m-header>
-    <m-row class="header" Y="center" X="center" spaceMode="between">
-      <!-- 标题 -->
-      <h1>Text</h1>
-      <!-- 侧栏开关 -->
-      <m-button
-        text
-        title="menu"
-        @click.stop="
-          () => {
-            this.value = !this.value;
-          }
-        "
-      >
+  <m-row class="header" Y="center" X="center" spaceMode="between">
+    <!-- 标题 -->
+    <slot name="title">
+      <h1>Mousse UI</h1>
+    </slot>
+    <!-- 侧栏开关 -->
+    <div>
+      <m-switch v-model="colorMode" />
+      <m-button text title="menu" @click="click">
         <i style="font-size: 2rem" class="bi bi-list"></i>
       </m-button>
-      <m-switch v-model="colorMode" />
-    </m-row>
-  </m-header>
+    </div>
+  </m-row>
 </template>
 
 <script>
@@ -34,6 +28,21 @@ export default {
       // TODO读取cookis确定值
       colorMode: true,
     };
+  },
+  props: {
+    modelValue: {
+      type: Boolean,
+    },
+  },
+  methods: {
+    click() {
+      console.log(this.modelValue);
+      this.$emit("update:modelValue", this.modelValue ? false : true);
+    },
+  },
+  model: {
+    prop: "modeValue",
+    event: "update:modelValue",
   },
   watch: {
     colorMode(b) {
