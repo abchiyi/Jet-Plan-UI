@@ -1,6 +1,7 @@
 const path = require('path')
+
 function resolve(dir) {
-    return path.join(__dirname, '..', dir)
+    return path.join(__dirname, dir)
 }
 
 module.exports = {
@@ -23,5 +24,7 @@ module.exports = {
             .tap(options => {
                 return options
             })
+        config.resolve.alias
+            .set('@', resolve('./packages'))
     }
 }

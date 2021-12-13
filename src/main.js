@@ -7,7 +7,7 @@ import App from './App.vue'
 
 import common from './common'
 
-import ui from '../packages'
+import ui from '@'
 
 ui.theme.use(ui.themeDefault.colors.Light)
 const app = createApp(App)
