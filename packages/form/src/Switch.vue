@@ -85,6 +85,11 @@ export default {
       onTouchcancel: this.cancellation,
     });
   },
+  watch: {
+    modelValue() {
+      if (this.first_load) this.first_load = false;
+    },
+  },
 };
 </script>
 <style>

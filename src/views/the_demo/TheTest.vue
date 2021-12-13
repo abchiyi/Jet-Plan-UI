@@ -3,7 +3,8 @@
     <m-switch-item v-model="value">
       {{ value ? "light" : "dark" }}
     </m-switch-item>
-    <m-switch v-model="value"></m-switch>
+    <m-switch v-model="value1"></m-switch>
+    <m-switch v-model="value1"></m-switch>
     <Input />
   </div>
 </template>
@@ -19,6 +20,7 @@ export default {
   data() {
     return {
       value: false,
+      value1: false,
     };
   },
   mounted() {
