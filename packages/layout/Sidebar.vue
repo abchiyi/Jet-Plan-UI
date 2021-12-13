@@ -52,7 +52,6 @@ export default {
   z-index: 91;
   bottom: 0;
   top: 0;
-  background: var(--card);
 }
 
 /* Firefox  */
