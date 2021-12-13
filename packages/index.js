@@ -8,15 +8,18 @@ import theme from './theme'
 import list from './list'
 import mask from './mask'
 
+import themeDefault from './theme_default'
+
 const components = {
-    gird,
-    form,
-    card,
+    themeDefault,
     animations,
     progress,
     layout,
     list,
-    mask
+    mask,
+    gird,
+    form,
+    card,
 }
 
 function install(Vue) {
@@ -30,18 +33,20 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export {
-    gird,
-    form,
-    card,
+    themeDefault,
     animations,
     progress,
     layout,
-    theme,
     list,
-    mask
+    mask,
+    gird,
+    form,
+    card,
+    theme
 }
 
 export default {
+    themeDefault,
     install,
     theme,
 }
