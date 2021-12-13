@@ -10,7 +10,6 @@ import common from './common'
 import ui from '../packages'
 import theme from '../packages/theme_default'
 
-// ui.theme.use(theme.colors.Dark)
 ui.theme.use(theme.colors.Light)
 
 const app = createApp(App)
