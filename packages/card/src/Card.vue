@@ -3,10 +3,6 @@ import { h } from "vue";
 export default {
   name: "m-card",
   props: {
-    bgBlur: {
-      type: Boolean,
-      default: false,
-    },
     zDepth: {
       // TODD 限制范围
       type: Number,
@@ -16,7 +12,6 @@ export default {
   computed: {
     classes() {
       let classes = ["m-card"];
-      if (this.bgBlur) classes.push("blur");
       return classes;
     },
     styles() {
@@ -45,12 +40,5 @@ export default {
   border-radius: 14px;
   overflow: hidden;
   margin: 10px 0;
-}
-
-@supports (backdrop-filter: blur()) {
-  .m-card.blur {
-    background: rgba(255, 255, 255, 0.75);
-    backdrop-filter: blur(20px);
-  }
 }
 </style>
