@@ -70,4 +70,10 @@ export default {
 #links {
   padding: 0 16px;
 }
+.demo-box {
+  margin: 40px 60px;
+  border-radius: 15px;
+  padding: 15px 20px;
+  display: block;
+}
 </style>

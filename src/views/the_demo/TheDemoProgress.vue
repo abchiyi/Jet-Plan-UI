@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>进度条</h2>
-    <m-card class="article-box">
+    <m-card class="demo-box">
       <m-switch-item v-model="failed">失败</m-switch-item>
       <m-switch-item v-model="success">完成</m-switch-item>
       <input type="number" v-model="number" />

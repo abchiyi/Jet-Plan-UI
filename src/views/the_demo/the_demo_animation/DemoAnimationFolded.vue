@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>折叠过渡</h2>
-    <m-card class="article-box">
+    <m-card class="demo-box">
       <m-switch-item v-model="v1">
         {{ v1 ? "展开" : "收起" }}
       </m-switch-item>

@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <h2>淡出淡入</h2>
-    <m-card style="height: 200px" class="article-box">
+    <m-card style="height: 200px" class="demo-box">
       <m-switch-item v-model="v1">
         {{ v1 ? "淡出" : "淡入" }}
       </m-switch-item>

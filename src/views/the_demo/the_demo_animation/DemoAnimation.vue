@@ -32,38 +32,6 @@ export default {
 </script>
 
 <style>
-.line-box,
-.line-box-dark {
-  /* border: 3px solid grey; */
-  display: inline-block;
-  border-radius: 10px;
-  background: white;
-  overflow: hidden;
-  height: 200px;
-  width: 200px;
-  margin: 10px;
-}
-
-.line-box-dark {
-  /* background: gray; */
-  /* color: white; */
-}
-.article-box {
-  /* background: white; */
-  border-radius: 15px;
-  padding: 15px 20px;
-  margin-bottom: 40px;
-}
-
-h2,
-span {
-  /* color: rgb(104, 104, 104); */
-  font-size: 20px;
-}
-h2 {
-  font-size: 1.7rem;
-}
-
 .transition-item + .transition-item {
   margin-left: 10px;
 }

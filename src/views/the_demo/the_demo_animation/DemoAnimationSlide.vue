@@ -1,7 +1,7 @@
 <template>
   <div>
     <h2>滑入滑出</h2>
-    <m-card style="height: 300px" class="article-box">
+    <m-card style="height: 300px" class="demo-box">
       <m-switch-item v-model="v1">
         {{ v1 ? "展开" : "收起" }}
       </m-switch-item>
