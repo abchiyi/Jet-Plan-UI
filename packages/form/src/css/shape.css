@@ -21,8 +21,3 @@
     --LEVER-WIDER: calc(var(--LEVER_DIAMETER) * 1.2);
     --LEVER-SHADOW: calc(var(--LEVER_DIAMETER) * var(--SHAODW));
 }
-
-
-/* button */
-
-.shape.button {}
