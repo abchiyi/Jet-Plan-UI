@@ -1,8 +1,8 @@
 /* 公共基础参数 */
 .shape {
-    --SIZE: 30px;
+    --SIZE: 1.4em;
     --SHAODW: 0.08;
-    --DIAMETER: calc(var(--SIZE) * 0.8);
+    --DIAMETER: calc(var(--SIZE) * 0.76);
     --OFF-SET: calc((var(--SIZE) - var(--DIAMETER)) / 2);
 }
 

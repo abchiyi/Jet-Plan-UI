@@ -1,24 +1,24 @@
-// 毛玻璃背景色与background相等并添加'b3'透明
+// 毛玻璃背景色与background相等并添加'60'透明
+// 半透明背景使用'60',半透明文本使用'b4'
 // secondary = border
 export default {
     // basecolor
-    primary: "#1687a7",
     secondary: "#EAEAEA;",
+    primary: "#1687a7",
     success: "#4cd966",
     warning: "#ecb02c",
-    info: "#0d75ec",
     error: "#f33f2e",
-    white: '#fff',
+    info: "#0d75ec",
     //text
-    text_disabled: '#1a1a1a4d',
+    text_disabled: '#5C5C5C4d',
     text_hint: '#5C5C5C',
     text: "#1A1A1A",
     // others
+    frosted_glass: 'F3F3F360',
     shadow: '#27272760',
+    card: "#FBFBFB",
     // background color set
-    frosted_glass: 'F3F3F3b3',
     background: "#F3F3F3",
     border: "#EAEAEA",
     foreground_color: '#FBFBFB',
-    card: "#FBFBFB",
 }
