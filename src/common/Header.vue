@@ -7,7 +7,7 @@
     <!-- 侧栏开关 -->
     <div>
       <m-switch v-model="colorMode" />
-      <m-button text title="menu" @click="click">
+      <m-button text title="menu" @click.stop="click">
         <i style="font-size: 2rem" class="bi bi-list"></i>
       </m-button>
     </div>
