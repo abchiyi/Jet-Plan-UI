@@ -11,7 +11,6 @@ import mask from './mask'
 import themeDefault from './theme_default'
 
 const components = {
-    themeDefault,
     animations,
     progress,
     layout,
