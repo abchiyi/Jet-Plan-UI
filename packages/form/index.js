@@ -1,7 +1,6 @@
 import Button from './src/Button.vue'
 import Switch from './src/Switch.vue'
 import Input from './src/Input.vue'
-import './src/css/shape.css'
 
 export {
     Button,

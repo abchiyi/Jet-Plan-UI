@@ -1,4 +1,5 @@
 <script>
+import "./css/shape.css";
 import { h } from "vue";
 export default {
   name: "m-switch",
@@ -127,10 +128,12 @@ export default {
 .m-switch::after {
   box-shadow: 0 var(--LEVER-SHADOW) calc(var(--LEVER-SHADOW) * 2) var(--shadow);
   border-radius: calc(var(--LEVER_DIAMETER) / 2);
+  border: solid var(--LEVER-BORDER);
   height: var(--LEVER_DIAMETER);
   width: var(--LEVER_DIAMETER);
-  top: var(--OFF-SET);
   left: var(--OFF-SET);
+  top: var(--OFF-SET);
+  box-sizing: border-box;
   position: absolute;
   content: "";
 }
@@ -235,6 +238,7 @@ export default {
 /* 拨杆 */
 .m-switch::after {
   background-color: var(--foreground_color);
+  border-color: var(--border);
 }
 
 /*------------ On ----------*/

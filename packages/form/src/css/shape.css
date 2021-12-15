@@ -19,5 +19,6 @@
 .shape.m-switch {
     --LEVER_DIAMETER: var(--DIAMETER);
     --LEVER-WIDER: calc(var(--LEVER_DIAMETER) * 1.2);
+    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.1);
     --LEVER-SHADOW: calc(var(--LEVER_DIAMETER) * var(--SHAODW));
 }
