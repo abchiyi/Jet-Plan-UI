@@ -11,7 +11,6 @@ const TEXTCOLOR = {
 }
 
 const BASECOLOR = {
-    // secondary: "#2D2D2D;",
     secondary: BACKGROUND.border,
     primary: "#1687a7",
     success: "#4cd966",
@@ -24,7 +23,9 @@ const OTHERS = {
     frosted_glass: BACKGROUND.foreground_color + 'b3',
     card: BACKGROUND.foreground_color,
     shadow: '#16161660',
+    mask: '#85858560'
 }
+
 export default {
     ...BACKGROUND,
     ...TEXTCOLOR,

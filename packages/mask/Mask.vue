@@ -22,9 +22,9 @@ export default {
 
 <style>
 .m-mask {
-  background-color: var(--shadow);
+  background-color: var(--mask);
   position: absolute;
-  opacity: 0.3;
+  opacity: 0.5;
   bottom: 0;
   right: 0;
   left: 0;
