@@ -237,8 +237,8 @@ export default {
 
 /* 拨杆 */
 .m-switch::after {
-  background-color: var(--foreground_color);
-  border-color: var(--border);
+  background-color: var(--border);
+  border-color: white;
 }
 
 /*------------ On ----------*/
