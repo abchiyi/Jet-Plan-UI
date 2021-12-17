@@ -3,6 +3,8 @@
     <m-card class="demo-box">
       <m-switch v-model="value1"></m-switch>
       <m-switch v-model="value1"></m-switch>
+      <m-check-box value="Checkbox Test" v-model="value2" />
+      <p>{{ value2 }}</p>
       <!-- <Input /> -->
     </m-card>
   </div>
@@ -18,6 +20,8 @@ export default {
     return {
       value: false,
       value1: false,
+      //   value2: ['123'],
+      value2: [],
     };
   },
   mounted() {},
@@ -48,5 +52,13 @@ export default {
 .t1 {
   padding: 10px;
   background: rgb(78, 201, 180);
+}
+.path {
+  stroke-width: var(--BORDER-WIDTH);
+  stroke-linecap: round;
+  stroke-dasharray: 30;
+  stroke: #fff;
+  fill: none;
+  animation: path-in 0.3s cubic-bezier(0.3, 0.6, 0.15, 1.3);
 }
 </style>
