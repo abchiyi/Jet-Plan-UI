@@ -88,7 +88,7 @@ export default {
   position: relative;
 }
 .m-check-box.checked {
-  background: var(--info);
+  background: var(--primary);
 }
 .m-check-box .path {
   stroke-dasharray: 30px;
