@@ -1,36 +1,43 @@
 <template>
-  <label for="cc"></label>
-  <span @click="click" :class="classes">
-    <transition name="path">
-      <svg
-        class="img"
-        v-show="localvalue"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 35 35"
-      >
-        <path
-          class="path"
-          transform="translate(-266 -404)"
-          d="M293,416c-13,14-10,15-18,5"
-        />
-      </svg>
-    </transition>
+  <label :for="id">
+    <span @click="click" :class="classes">
+      <transition name="path">
+        <svg
+          class="img"
+          v-show="checked"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 35 35"
+        >
+          <path
+            class="path"
+            transform="translate(-266 -404)"
+            d="M293,416c-13,14-10,15-18,5"
+          />
+        </svg>
+      </transition>
+    </span>
     <input
-      id="cc"
+      :id="id"
       style="display: none"
       v-model="localvalue"
       type="checkbox"
       :value="value"
       :name="name"
     />
-  </span>
+  </label>
 </template>
 <script   >
 export default {
   name: "m-check-box",
   computed: {
+    checked() {
+      if (typeof this.localvalue == "object") {
+        return this.localvalue.indexOf(this.value) !== -1;
+      }
+      return this.localvalue;
+    },
     classes() {
-      return ["shape", "m-check-box", this.localvalue ? "checked" : ""];
+      return ["shape", "m-check-box", this.checked ? "checked" : ""];
     },
   },
   props: {
@@ -39,16 +46,19 @@ export default {
     },
     value: [String, Boolean],
     name: String,
+    id: {
+      required: true,
+    },
   },
   methods: {
     click() {
-      this.localvalue = !this.localvalue;
+      //   this.localvalue = !this.localvalue;
     },
   },
 
   data() {
     return {
-      localvalue: true,
+      localvalue: this.modelValue,
     };
   },
   watch: {

@@ -3,7 +3,9 @@
     <m-card class="demo-box">
       <m-switch v-model="value1"></m-switch>
       <m-switch v-model="value1"></m-switch>
-      <m-check-box value="Checkbox Test" v-model="value2" />
+      <m-check-box id="pp" value="Checkbox Test" v-model="value" />
+      <m-check-box id="va" value="Checkbox Test" v-model="value1" />
+      <m-check-box id="er" value="Checkbox Test" v-model="value2" />
       <p>{{ value2 }}</p>
       <!-- <Input /> -->
     </m-card>
@@ -18,7 +20,7 @@ export default {
   },
   data() {
     return {
-      value: false,
+      value: "",
       value1: false,
       //   value2: ['123'],
       value2: [],
