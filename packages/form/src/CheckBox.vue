@@ -50,12 +50,6 @@ export default {
       required: true,
     },
   },
-  methods: {
-    click() {
-      //   this.localvalue = !this.localvalue;
-    },
-  },
-
   data() {
     return {
       localvalue: this.modelValue,
@@ -86,6 +80,7 @@ export default {
   height: var(--SIZE);
   width: var(--SIZE);
   position: relative;
+  margin: 0 2px;
 }
 .m-check-box.checked {
   background: var(--primary);
@@ -131,14 +126,4 @@ export default {
     stroke-dashoffset: 32;
   }
 }
-/* input[type="checkbox"]:checked + .m-check-box {
-  background: var(--info);
-}
-input[type="checkbox"]:checked + .m-check-box .path {
-  animation: path-in 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.2);
-  display: inherit;
-}
-input[type="checkbox"] + .m-check-box .path {
-  animation: path-out 0.4s var(--ease-out);
-} */
 </style>
