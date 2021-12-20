@@ -100,10 +100,10 @@ export default {
   margin: 0 2px;
 }
 .m-check-box .path {
-  stroke-width: var(--PATH-WIDTH);
   stroke-dasharray: 30px;
   stroke-linecap: round;
   stroke: white;
+  stroke-width: 4;
   fill: none;
 }
 .m-check-box > .img {
