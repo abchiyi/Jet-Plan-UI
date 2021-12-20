@@ -1,7 +1,7 @@
 const BACKGROUND = {
-    foreground_color: '#FBFBFB',
-    border: "#EAEAEA",
-    background: "#F3F3F3",
+    foreground_color: '#ffffff',
+    border: "#e0e0e0",
+    background: "#f3f3f3",
 }
 
 const TEXTCOLOR = {
