@@ -196,6 +196,7 @@ export default {
 
 .m-button.text-button {
   background: unset;
+  padding: 4px 8px;
 }
 
 /*------------ Active ----------*/
