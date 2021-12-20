@@ -4,11 +4,33 @@
       <m-switch size="s" v-model="value1"></m-switch>
       <m-switch size="m" disabled v-model="value1"></m-switch>
       <m-switch size="l" v-model="value1"></m-switch>
-      <m-check-box id="pp" value="Checkbox Test" v-model="value" />
-      <m-check-box id="va" disabled value="Checkbox Test" v-model="value1" />
-      <m-check-box id="er" value="Checkbox Test" v-model="value2" />
+      <m-check-box size="s" id="pp" value="Checkbox Test" v-model="value" />
+      <m-check-box
+        size="m"
+        id="va"
+        disabled
+        value="Checkbox Test"
+        v-model="value1"
+      />
+      <m-check-box size="l" id="er" value="Checkbox Test" v-model="value2" />
       <p>{{ value2 }}</p>
       <!-- <Input /> -->
+      <p>Select a maintenance drone:</p>
+
+      <div>
+        <input type="radio" id="huey" name="drone" value="huey" checked />
+        <label for="huey">Huey</label>
+      </div>
+
+      <div>
+        <input type="radio" id="dewey" name="drone" value="dewey" />
+        <label for="dewey">Dewey</label>
+      </div>
+
+      <div>
+        <input type="radio" id="louie" name="drone" value="louie" />
+        <label for="louie">Louie</label>
+      </div>
     </m-card>
   </div>
 </template>
