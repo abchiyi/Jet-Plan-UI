@@ -88,7 +88,7 @@ export default {
 }
 .m-check-box {
   border: solid var(--OFF-SET) var(--border);
-  background: var(--foreground_color);
+  background: var(--foreground);
   transition: 0.6s var(--ease-out);
   border-radius: var(--s-radius);
   box-sizing: border-box;
@@ -118,13 +118,15 @@ export default {
   background: var(--primary);
 }
 .m-check-box.disabled {
+  background: var(--disabled);
   border-color: var(--border);
-  background: var(--border);
   cursor: not-allowed;
 }
-
+.m-check-box.checked.disabled {
+  background: var(--border);
+}
 .m-check-box.disabled .path {
-  stroke: var(--text_disabled);
+  stroke: var(--text-disabled);
 }
 
 /* Animation */

@@ -1,11 +1,12 @@
 const BACKGROUND = {
-    foreground_color: '#363636',
+    foreground: '#363636',
     border: "#6a6a6a",
     background: "#202020",
+    disabled: '#535353'
 }
 
 const TEXTCOLOR = {
-    text_disabled: '#CCCCCC4d',
+    'text-disabled': '#CCCCCC4d',
     text_hint: '#CCCCCC',
     text: "#FCFCFC",
 }
@@ -20,8 +21,8 @@ const BASECOLOR = {
 }
 
 const OTHERS = {
-    frosted_glass: BACKGROUND.foreground_color + 'b3',
-    card: BACKGROUND.foreground_color,
+    frosted_glass: BACKGROUND.foreground + 'b3',
+    card: BACKGROUND.foreground,
     shadow: '#16161660',
     mask: '#85858560'
 }

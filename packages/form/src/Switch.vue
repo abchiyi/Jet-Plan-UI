@@ -172,6 +172,8 @@ export default {
 /* ------------ On ---------- */
 /* 移动定位置右侧 */
 .m-switch.on::after {
+  background-color: var(--foreground);
+  border-color: var(--border);
   right: var(--OFF-SET);
   left: unset;
 }
@@ -236,8 +238,7 @@ export default {
   transition: 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.2);
 }
 
-/* #Color# */
-/*------------ Default ----------*/
+/*------------ Color ----------*/
 /* 基底 */
 .m-switch {
   background-color: var(--border);
@@ -245,17 +246,18 @@ export default {
 
 /* 遮罩 */
 .m-switch::before {
-  background-color: var(--foreground_color);
+  background-color: var(--foreground);
 }
 
 /* 拨杆 */
 .m-switch::after {
+  border-color: var(--foreground);
   background-color: var(--border);
-  border-color: white;
 }
 
 /*------------ Disabled ----------*/
 
+/* 遮罩 */
 /* 禁用时遮罩不响应动作 */
 .m-switch.disabled:active::before {
   transform: scale(1);
@@ -264,7 +266,13 @@ export default {
   transform: scale(0);
 }
 .m-switch.disabled::before {
-  background: var(--background);
+  background: var(--disabled);
+}
+
+/* 拨杆 */
+.m-switch.disabled::after {
+  background: var(--border);
+  border-color: var(--disabled);
 }
 
 /* 切换指针为禁用 */

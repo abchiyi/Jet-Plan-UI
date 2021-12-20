@@ -15,7 +15,7 @@
     </m-card>
     <h2 class="text-hint">Texts color:</h2>
     <div>
-      <p style="color: var(--text_disabled)">Text disabled</p>
+      <p style="color: var(--text-disabled)">Text disabled</p>
       <p style="color: var(--text)">Text nolmal</p>
       <p class="text-hint" style="color: var(--text_hint)">Text hint</p>
     </div>
