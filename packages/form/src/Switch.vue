@@ -11,7 +11,13 @@
     @touchend="cancellation"
     @touchcancel="cancellation"
   ></label>
-  <input :id="id" v-model="scopedValue" v-show="false" type="checkbox" />
+  <input
+    :id="id"
+    v-show="false"
+    type="checkbox"
+    :disabled="disabled"
+    v-model="scopedValue"
+  />
 </template>
 <script>
 import "./css/shape.css";
@@ -157,21 +163,46 @@ export default {
   position: absolute;
   content: "";
 }
-
-/* ------------ On ---------- */
-
-/* 移动拨杆 */
-.m-switch.on::after,
-.m-switch.off::after {
-  animation-timing-function: cubic-bezier(0.3, 0.6, 0.15, 1.2);
-  animation-duration: 0.4s;
-}
 /* 第一次加载时不播放动画*/
 .m-switch.first-load.on::after,
 .m-switch.first-load.off::after {
   animation-duration: unset;
 }
 
+/* ------------ On ---------- */
+/* 移动定位置右侧 */
+.m-switch.on::after {
+  right: var(--OFF-SET);
+  left: unset;
+}
+
+/* 缩放基底遮罩 */
+.m-switch.on::before {
+  transform: scale(0);
+}
+
+.m-switch.on {
+  background-color: var(--primary);
+}
+
+/*------------ Active ----------*/
+/* 拉宽拨杆*/
+.m-switch.wider:active::after {
+  width: var(--LEVER-WIDER);
+}
+
+/* 缩小基底遮罩 */
+.m-switch:active::before {
+  transform: scale(0);
+}
+
+/*------------ Animation ----------*/
+/* 移动拨杆 */
+.m-switch.on::after,
+.m-switch.off::after {
+  animation-timing-function: cubic-bezier(0.3, 0.6, 0.15, 1.2);
+  animation-duration: 0.4s;
+}
 .m-switch.on::after {
   animation-name: left-to-right;
 }
@@ -193,44 +224,6 @@ export default {
     );
   }
 }
-
-/* 移动定位置右侧 */
-.m-switch.on::after {
-  right: var(--OFF-SET);
-  left: unset;
-}
-
-/* 缩放基底遮罩 */
-.m-switch.on::before {
-  transform: scale(0);
-}
-
-/*------------ Active ----------*/
-/* 拉宽拨杆*/
-.m-switch.wider:active::after {
-  width: var(--LEVER-WIDER);
-}
-
-/* 缩小基底遮罩 */
-.m-switch:active::before {
-  transform: scale(0);
-}
-
-/*------------ Disabled ----------*/
-
-/* 遮罩 */
-.m-switch.disabled::before {
-  /* 收起遮罩 */
-  transform: scale(0);
-}
-
-/* 切换指针为禁用 */
-.m-switch.disabled {
-  cursor: not-allowed;
-}
-
-/*------------ Animation ----------*/
-
 /* 弹性过渡动画 */
 /* .m-switch::after, */
 .m-switch::before,
@@ -261,22 +254,26 @@ export default {
   border-color: white;
 }
 
-/*------------ On ----------*/
-
-/* 遮罩 */
-.m-switch.on {
-  background-color: var(--primary);
-}
-
 /*------------ Disabled ----------*/
 
-/* 基底 */
-.m-switch.on.disabled {
-  background-color: var(--secondary);
+/* 禁用时遮罩不响应动作 */
+.m-switch.disabled:active::before {
+  transform: scale(1);
+}
+.m-switch.disabled.on::before {
+  transform: scale(0);
+}
+.m-switch.disabled::before {
+  background: var(--background);
 }
 
-/* 阴影 */
-.m-switch.disabled::after {
-  box-shadow: unset;
+/* 切换指针为禁用 */
+.m-switch.disabled {
+  cursor: not-allowed;
+}
+
+/* 基底 */
+.m-switch.disabled.on {
+  background-color: var(--secondary);
 }
 </style>
