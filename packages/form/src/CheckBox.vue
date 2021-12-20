@@ -17,11 +17,12 @@
   </label>
   <input
     :id="id"
-    v-model="localvalue"
-    :disabled="disabled"
-    type="checkbox"
-    :value="value"
     :name="name"
+    v-show="false"
+    :value="value"
+    type="checkbox"
+    :disabled="disabled"
+    v-model="localvalue"
   />
 </template>
 <script   >
@@ -113,10 +114,12 @@ export default {
 
 /* Condition */
 .m-check-box.checked {
+  border-color: var(--primary);
   background: var(--primary);
 }
 .m-check-box.disabled {
-  background: var(--background);
+  border-color: var(--border);
+  background: var(--border);
   cursor: not-allowed;
 }
 
