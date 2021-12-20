@@ -72,4 +72,7 @@ export default {
 </script>
 
 <style>
+.header {
+  padding: 0 20px;
+}
 </style>

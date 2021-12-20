@@ -30,7 +30,6 @@ export default {
   border-radius: var(--s-radius);
   background-color: var(--primary);
   /* 文本设置 */
-  font-size: 20px;
   color: #fff;
   transition: 0.4s ease-in-out;
 }

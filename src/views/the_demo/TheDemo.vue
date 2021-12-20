@@ -58,7 +58,7 @@ export default {
   padding: 0 16px;
 }
 .demo-box {
-  margin: 40px 0;
+  margin: 10px 0;
   border-radius: 16px;
   padding: 15px 20px;
   display: block;

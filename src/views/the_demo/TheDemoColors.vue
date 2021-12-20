@@ -1,6 +1,6 @@
 <template>
+  <h2 class="text-hint">Base color:</h2>
   <m-card class="demo-box colors">
-    <h2 class="text-hint">Base color:</h2>
     <m-row class="text-hint" X="center" warp space-mode="around">
       <m-cube style="background: var(--primary)"> primary </m-cube>
       <m-cube style="background: var(--secondary); color: var(--text)">
@@ -12,38 +12,40 @@
       <m-cube style="background: var(--error)"> error </m-cube>
     </m-row>
   </m-card>
+  <h2 class="text-hint">Others:</h2>
+  <m-card class="demo-box colors">
+    <m-row X="center" warp space-mode="around">
+      <m-cube
+        class="text-hint shadow"
+        style="background: var(--card); color: var(--text)"
+      >
+        Shadow
+      </m-cube>
+      <m-cube
+        class="text-hint"
+        style="
+          box-sizing: border-box;
+          border: 2px solid var(--border);
+          background: var(--secondary);
+          color: var(--text);
+        "
+      >
+        border
+      </m-cube>
+      <m-cube
+        class="text-hint shadow"
+        style="background: var(--card); color: var(--text)"
+      >
+        card
+      </m-cube>
+    </m-row>
+  </m-card>
   <h2 class="text-hint">Texts color:</h2>
   <div>
     <p style="color: var(--text-disabled)">Text disabled</p>
     <p style="color: var(--text)">Text nolmal</p>
     <p class="text-hint" style="color: var(--text-hint)">Text hint</p>
   </div>
-  <h2 class="text-hint">Others:</h2>
-  <m-row>
-    <m-cube
-      class="text-hint shadow"
-      style="background: var(--card); color: var(--text)"
-    >
-      Shadow
-    </m-cube>
-    <m-cube
-      class="text-hint"
-      style="
-        box-sizing: border-box;
-        border: 2px solid var(--border);
-        background: var(--secondary);
-        color: var(--text);
-      "
-    >
-      border
-    </m-cube>
-    <m-cube
-      class="text-hint shadow"
-      style="background: var(--card); color: var(--text)"
-    >
-      card
-    </m-cube>
-  </m-row>
 </template>
 
 <script>
