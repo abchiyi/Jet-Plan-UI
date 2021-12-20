@@ -41,7 +41,7 @@ body {
 /* 辅助文本 */
 .text-hint>*,
 .text-hint {
-    /* color: var(--text_hint); */
+    /* color: var(--text-hint); */
     font-size: 12px;
     margin-block-start: 0.3rem;
     margin-block-end: 0rem;

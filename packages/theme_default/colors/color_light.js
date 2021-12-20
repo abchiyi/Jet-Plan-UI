@@ -7,7 +7,7 @@ const BACKGROUND = {
 
 const TEXTCOLOR = {
     'text-disabled': '#5C5C5C4d',
-    text_hint: '#5C5C5C',
+    "text-hint": '#5C5C5C',
     text: "#1A1A1A",
 }
 
