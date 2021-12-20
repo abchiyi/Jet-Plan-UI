@@ -1,30 +1,28 @@
 <template>
-  <label :for="id">
-    <span @click="click" :class="classes">
-      <transition name="path">
-        <svg
-          class="img"
-          v-show="checked"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 35 35"
-        >
-          <path
-            class="path"
-            transform="translate(-266 -404)"
-            d="M293,416c-13,14-10,15-18,5"
-          />
-        </svg>
-      </transition>
-    </span>
-    <input
-      :id="id"
-      style="display: none"
-      v-model="localvalue"
-      type="checkbox"
-      :value="value"
-      :name="name"
-    />
+  <label :for="id" :class="classes">
+    <transition name="path">
+      <svg
+        class="img"
+        v-show="checked"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 35 35"
+      >
+        <path
+          class="path"
+          transform="translate(-266 -404)"
+          d="M293,416c-13,14-10,15-18,5"
+        />
+      </svg>
+    </transition>
   </label>
+  <input
+    :id="id"
+    style="display: none"
+    v-model="localvalue"
+    type="checkbox"
+    :value="value"
+    :name="name"
+  />
 </template>
 <script   >
 export default {
@@ -37,7 +35,7 @@ export default {
       return this.localvalue;
     },
     classes() {
-      return ["shape", "m-check-box", this.checked ? "checked" : ""];
+      return ["shape m-check-box", this.size, this.checked ? "checked" : ""];
     },
   },
   props: {
@@ -48,6 +46,13 @@ export default {
     name: String,
     id: {
       required: true,
+    },
+    size: {
+      type: String,
+      default: "m",
+      validator: (v) => {
+        return ["s", "m", "l"].indexOf(v) !== -1;
+      },
     },
   },
   data() {

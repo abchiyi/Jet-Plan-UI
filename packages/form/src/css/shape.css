@@ -1,11 +1,20 @@
 /* 公共基础参数 */
+.shape.s {
+    --SIZE: 16px;
+}
+
+.shape.m {
+    --SIZE: 24px;
+}
+
+.shape.l {
+    --SIZE: 32px;
+}
+
 .shape {
-    /* height: 1.4em; */
-    --SIZE: 1.4em;
     --SHAODW: 0.08;
-    --DIAMETER: calc(var(--SIZE) * 0.76);
+    --DIAMETER: calc(var(--SIZE) * 0.8);
     --OFF-SET: calc((var(--SIZE) - var(--DIAMETER)) / 2);
-    /* line-height: var(--SIZE); */
 }
 
 /* switch button 共有参数 */

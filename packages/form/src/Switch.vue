@@ -1,6 +1,20 @@
+<template>
+  <label
+    :class="classes"
+    :style="style"
+    :for="id"
+    @click="change"
+    @mousedown="toWider"
+    @touchstart="toWider"
+    @mouseup="cancellation"
+    @mouseout="cancellation"
+    @touchend="cancellation"
+    @touchcancel="cancellation"
+  ></label>
+  <input :id="id" v-model="scopedValue" v-show="false" type="checkbox" />
+</template>
 <script>
 import "./css/shape.css";
-import { h } from "vue";
 export default {
   name: "m-switch",
   props: {
@@ -12,16 +26,23 @@ export default {
       type: Boolean,
       default: false,
     },
-    // size: {
-    //   type: [Number, String],
-    //   default: 40,
-    // },
+    size: {
+      type: String,
+      default: "m",
+      validator: (v) => {
+        return ["s", "m", "l"].indexOf(v) !== -1;
+      },
+    },
+    id: {
+      require: true,
+    },
   },
   data() {
     return {
       wider: false,
       intervalCode: [],
       first_load: null,
+      scopedValue: this.modelValue,
     };
   },
   model: {
@@ -29,9 +50,10 @@ export default {
     event: "update:modelValue",
   },
   computed: {
-    class() {
+    classes() {
       return [
         "shape m-switch",
+        this.size,
         this.wider ? "wider" : "",
         this.disabled ? "disabled" : "",
         this.modelValue ? "on" : "off",
@@ -41,6 +63,17 @@ export default {
     style() {
       return {
         // "--SIZE": this.size + "px",
+      };
+    },
+    events() {
+      return {
+        onClick: this.change,
+        onMousedown: this.toWider,
+        onTouchstart: this.toWider,
+        onMouseup: this.cancellation,
+        onMouseout: this.cancellation,
+        onTouchend: this.cancellation,
+        onTouchcancel: this.cancellation,
       };
     },
   },
@@ -72,23 +105,10 @@ export default {
   created() {
     this.first_load = true;
   },
-  render() {
-    return h("div", {
-      class: this.class,
-      style: this.style,
-      // 事件
-      onClick: this.change,
-      onMousedown: this.toWider,
-      onTouchstart: this.toWider,
-      onMouseup: this.cancellation,
-      onMouseout: this.cancellation,
-      onTouchend: this.cancellation,
-      onTouchcancel: this.cancellation,
-    });
-  },
   watch: {
-    modelValue() {
+    modelValue(v) {
       if (this.first_load) this.first_load = false;
+      this.scopedValue = v;
     },
   },
 };

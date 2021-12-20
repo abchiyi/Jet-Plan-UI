@@ -1,7 +1,7 @@
 <template>
   <m-row class="m-switch-item" X="center" Y="center" space-mode="between">
     <p><slot></slot></p>
-    <m-switch size="24" v-model="value" />
+    <m-switch v-model="value" />
   </m-row>
 </template>
 
