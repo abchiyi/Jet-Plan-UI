@@ -12,26 +12,38 @@
 }
 
 .shape {
+    --BASE-LENGTH: calc(var(--SIZE) / 8);
+    --OFF-SET: var(--BASE-LENGTH);
     --SHAODW: 0.08;
-    --DIAMETER: calc(var(--SIZE) * 0.8);
-    --OFF-SET: calc((var(--SIZE) - var(--DIAMETER)) / 2);
 }
 
 /* switch button 共有参数 */
 .shape.m-button,
 .shape.m-switch {
-    --HEIGHT: var(--SIZE);
-    --WIDTH: calc(var(--SIZE)*1.65);
-    --MASK-WIDTH: calc(var(--WIDTH) - var(--OFF-SET) * 2);
-    --MASK-HEIGHT: calc(var(--HEIGHT) - var(--OFF-SET) * 2);
+    --HEIGHT: calc(var(--BASE-LENGTH) * 8);
+    --WIDTH: calc(var(--BASE-LENGTH) * 13);
+
 }
 
 /* switch */
 .shape.m-switch {
-    --LEVER_DIAMETER: var(--DIAMETER);
+    --MASK-WIDTH: calc(var(--WIDTH) - var(--OFF-SET) * 2);
+    --MASK-HEIGHT: calc(var(--HEIGHT) - var(--OFF-SET) * 2);
+    --LEVER_DIAMETER: var(--MASK-HEIGHT);
     --LEVER-WIDER: calc(var(--LEVER_DIAMETER) * 1.2);
-    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.1);
     --LEVER-SHADOW: calc(var(--LEVER_DIAMETER) * var(--SHAODW));
+}
+
+.shape.m-switch.s {
+    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.15);
+}
+
+.shape.m-switch.m {
+    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.12);
+}
+
+.shape.m-switch.l {
+    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.1);
 }
 
 /* Check box */
