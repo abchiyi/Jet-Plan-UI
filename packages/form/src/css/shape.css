@@ -35,4 +35,6 @@
 }
 
 /* Check box */
-.shape.m-check-box {}
+.shape.m-check-box {
+    --PATH-WIDTH: calc(var(--BASE-LENGTH) * 1.5)
+}

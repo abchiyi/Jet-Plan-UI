@@ -17,8 +17,8 @@
   </label>
   <input
     :id="id"
-    style="display: none"
     v-model="localvalue"
+    :disabled="disabled"
     type="checkbox"
     :value="value"
     :name="name"
@@ -35,7 +35,12 @@ export default {
       return this.localvalue;
     },
     classes() {
-      return ["shape m-check-box", this.size, this.checked ? "checked" : ""];
+      return [
+        "shape m-check-box",
+        this.size,
+        this.checked ? "checked" : "",
+        this.disabled ? "disabled" : "",
+      ];
     },
   },
   props: {
@@ -53,6 +58,10 @@ export default {
       validator: (v) => {
         return ["s", "m", "l"].indexOf(v) !== -1;
       },
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
   data() {
@@ -78,6 +87,7 @@ export default {
 }
 .m-check-box {
   border: solid var(--OFF-SET) var(--border);
+  background: var(--foreground_color);
   transition: 0.6s var(--ease-out);
   border-radius: var(--s-radius);
   box-sizing: border-box;
@@ -85,17 +95,14 @@ export default {
   height: var(--SIZE);
   width: var(--SIZE);
   position: relative;
+  cursor: pointer;
   margin: 0 2px;
 }
-.m-check-box.checked {
-  background: var(--primary);
-}
 .m-check-box .path {
+  stroke-width: var(--PATH-WIDTH);
   stroke-dasharray: 30px;
   stroke-linecap: round;
-  stroke-width: 4;
   stroke: white;
-  z-index: 1;
   fill: none;
 }
 .m-check-box > .img {
@@ -103,6 +110,21 @@ export default {
   left: 0;
   top: 0;
 }
+
+/* Condition */
+.m-check-box.checked {
+  background: var(--primary);
+}
+.m-check-box.disabled {
+  background: var(--background);
+  cursor: not-allowed;
+}
+
+.m-check-box.disabled .path {
+  stroke: var(--text_disabled);
+}
+
+/* Animation */
 .path-enter-active {
   animation: path-in 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.2);
 }
