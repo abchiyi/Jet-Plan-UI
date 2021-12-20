@@ -20,7 +20,9 @@
           </router-link-a>
         </m-list>
       </template>
-      <router-view />
+      <div class="content">
+        <router-view />
+      </div>
     </m-page>
   </div>
 </template>
@@ -56,8 +58,8 @@ export default {
   padding: 0 16px;
 }
 .demo-box {
-  margin: 40px 60px;
-  border-radius: 15px;
+  margin: 40px 0;
+  border-radius: 16px;
   padding: 15px 20px;
   display: block;
 }

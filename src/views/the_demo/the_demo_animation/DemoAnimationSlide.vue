@@ -7,25 +7,25 @@
       </m-switch-item>
       <hr />
       <m-row class="demo-row" X="center">
-        <m-transition-slide class="deom-item" position="top">
-          <div v-show="v1">
+        <m-transition-slide position="top">
+          <div class="deom-item" v-show="v1">
             <m-cube>To top</m-cube>
           </div>
         </m-transition-slide>
-        <m-transition-slide class="deom-item" position="right">
-          <div v-show="v1">
+        <m-transition-slide position="right">
+          <div class="deom-item" v-show="v1">
             <m-cube>To right</m-cube>
           </div>
         </m-transition-slide>
       </m-row>
       <m-row class="demo-row" X="center">
         <m-transition-slide class="deom-item" position="left">
-          <div v-show="v1">
+          <div class="deom-item" v-show="v1">
             <m-cube>To left</m-cube>
           </div>
         </m-transition-slide>
         <m-transition-slide class="deom-item" position="bottom">
-          <div v-show="v1">
+          <div class="deom-item" v-show="v1">
             <m-cube>To bottom</m-cube>
           </div>
         </m-transition-slide>
@@ -48,7 +48,7 @@ export default {
 
 <style>
 .deom-item .m-cube {
-  width: 150px;
+  font-size: 14px;
 }
 .deom-item + .deom-item {
   margin-left: 5px;

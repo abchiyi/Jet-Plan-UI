@@ -129,6 +129,7 @@ export default {
 <style scoped>
 #content-body {
   max-width: 768px;
+  padding: 0 20px;
   width: 100%;
 }
 main {
