@@ -1,10 +1,11 @@
 <template>
   <div id="the-test-page">
     <m-card class="demo-box">
-      <m-switch v-model="value1"></m-switch>
-      <m-switch v-model="value1"></m-switch>
+      <m-switch size="s" v-model="value1"></m-switch>
+      <m-switch size="m" disabled v-model="value1"></m-switch>
+      <m-switch size="l" v-model="value1"></m-switch>
       <m-check-box id="pp" value="Checkbox Test" v-model="value" />
-      <m-check-box id="va" value="Checkbox Test" v-model="value1" />
+      <m-check-box id="va" disabled value="Checkbox Test" v-model="value1" />
       <m-check-box id="er" value="Checkbox Test" v-model="value2" />
       <p>{{ value2 }}</p>
       <!-- <Input /> -->
