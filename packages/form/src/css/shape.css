@@ -18,6 +18,7 @@
 }
 
 /* switch button 共有参数 */
+.shape.m-check-box,
 .shape.m-radio,
 .shape.m-button,
 .shape.m-switch {
@@ -51,6 +52,7 @@
 .shape.m-check-box {}
 
 /* Radio */
+.shape.m-check-box,
 .shape.m-radio {
     --DOT-DIAMETER: calc(var(--HEIGHT) - var(--OFF-SET) * 4);
 }
