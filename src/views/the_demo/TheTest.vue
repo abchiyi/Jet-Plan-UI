@@ -4,6 +4,7 @@
       <m-switch size="s" v-model="value1"></m-switch>
       <m-switch size="m" disabled v-model="value1"></m-switch>
       <m-switch size="l" v-model="value1"></m-switch>
+      <br />
       <m-check-box size="s" id="pp" value="Checkbox Test" v-model="value" />
       <m-check-box
         size="m"
@@ -13,6 +14,10 @@
         v-model="value1"
       />
       <m-check-box size="l" id="er" value="Checkbox Test" v-model="value2" />
+      <br />
+      <m-radio id="masd" size="s" v-model="value1"></m-radio>
+      <m-radio id="masd" disabled size="m" v-model="value1"></m-radio>
+      <m-radio id="masd" size="l" v-model="value1"></m-radio>
       <p>{{ value2 }}</p>
       <!-- <Input /> -->
       <p>Select a maintenance drone:</p>
