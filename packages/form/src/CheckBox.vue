@@ -117,30 +117,36 @@ export default {
     click() {
       // 'disabled' prop 启用时,不响应点击.
       if (!this.disabled) {
-        let array = this.modelValue;
         if (this.handleCheckAll) {
+          // 全选控制
           if (this.checked) {
             this.$emit("update:modelValue", []);
           } else {
-            this.$emit("update:modelValue", this.checkAll(array));
+            this.$emit("update:modelValue", this.checkAll(this.modelValue));
           }
         } else {
-          if (this.checked) {
-            array.splice(array.indexOf(this.value), 1);
-          } else {
-            array.push(this.value);
-          }
-          this.$emit("update:modelValue", array);
+          // 常规选择
+          this.$emit("update:modelValue", this.check(this.modelValue));
         }
       }
     },
     checkAll(array = Array) {
+      let newArray = array;
       for (let key in this.value) {
-        if (array.indexOf(this.value[key]) == -1) {
-          array.push(this.value[key]);
+        if (newArray.indexOf(this.value[key]) == -1) {
+          newArray.push(this.value[key]);
         }
       }
-      return array;
+      return newArray;
+    },
+    check(array) {
+      let newArray = array;
+      if (this.checked) {
+        newArray.splice(newArray.indexOf(this.value), 1);
+      } else {
+        newArray.push(this.value);
+      }
+      return newArray;
     },
     validatIsAArray(v) {
       return typeof v == "object" && typeof v.length == "number";
