@@ -1,41 +1,22 @@
 <template>
   <div id="the-test-page">
-    <m-card class="demo-box">
-      <m-switch size="s" v-model="value1"></m-switch>
-      <m-switch size="m" disabled v-model="value1"></m-switch>
-      <m-switch size="l" v-model="value1"></m-switch>
-      <br />
-      <m-check-box size="s" id="pp" value="Checkbox Test" v-model="value" />
-      <m-check-box
-        size="m"
-        id="va"
-        disabled
-        value="Checkbox Test"
-        v-model="value1"
-      />
-      <m-check-box size="l" id="er" value="Checkbox Test" v-model="value2" />
-      <br />
-      <m-radio id="masd" size="s" v-model="value1"></m-radio>
-      <m-radio id="masd" disabled size="m" v-model="value1"></m-radio>
-      <m-radio id="masd" size="l" v-model="value1"></m-radio>
-      <p>{{ value2 }}</p>
-      <!-- <Input /> -->
-      <p>Select a maintenance drone:</p>
-
-      <div>
-        <input type="radio" id="huey" name="drone" value="huey" checked />
-        <label for="huey">Huey</label>
-      </div>
-
-      <div>
-        <input type="radio" id="dewey" name="drone" value="dewey" />
-        <label for="dewey">Dewey</label>
-      </div>
-
-      <div>
-        <input type="radio" id="louie" name="drone" value="louie" />
-        <label for="louie">Louie</label>
-      </div>
+    <m-card>
+      <form>
+        <input type="submit" name="" id="" />
+        <m-switch size="s" v-model="value1"></m-switch>
+        <m-switch size="m" disabled v-model="value1"></m-switch>
+        <m-switch size="l" v-model="value1"></m-switch>
+        <br />
+        <m-check-box size="s" id="pp" value="Checkbox 1" v-model="value2" />
+        <m-check-box size="m" id="va" value="Checkbox 2" v-model="value2" />
+        <m-check-box size="l" id="er" value="Checkbox 3" v-model="value2" />
+        <br />
+        <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
+        <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
+        <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
+        <p>{{ value2 }}</p>
+        <p>Text: {{ text }}</p>
+      </form>
     </m-card>
   </div>
 </template>
@@ -50,8 +31,8 @@ export default {
     return {
       value: "",
       value1: false,
-      //   value2: ['123'],
       value2: [],
+      text: "",
     };
   },
   mounted() {},

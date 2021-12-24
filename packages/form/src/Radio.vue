@@ -1,5 +1,5 @@
 <template>
-  <div :class="classes"></div>
+  <div @click="click" :class="classes"></div>
   <input
     :id="id"
     :name="name"
@@ -13,18 +13,20 @@
 <script   >
 export default {
   name: "m-radio",
+  methods: {
+    click() {
+      this.$emit("update:modelValue", this.value);
+    },
+  },
   computed: {
-    checked() {
-      if (typeof this.localvalue == "object") {
-        return this.localvalue.indexOf(this.value) !== -1;
-      }
-      return this.localvalue;
+    select() {
+      return this.modelValue === this.value;
     },
     classes() {
       return [
         "shape m-radio",
         this.size,
-        this.checked ? "select" : "",
+        this.select ? "select" : "",
         this.disabled ? "disabled" : "",
       ];
     },
