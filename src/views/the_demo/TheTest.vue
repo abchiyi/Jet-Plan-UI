@@ -7,18 +7,20 @@
         <m-switch size="l" v-model="value1"></m-switch>
         <br />
         <div>
-          <m-check-box id="all" />
+          <m-check-box id="all" :value="checkboxData" v-model="checkbox" />
           <label for="all">Check All</label>
         </div>
-        <m-check-box id="pp" value="Checkbox 1" v-model="value2" />
-        <m-check-box id="va" value="Checkbox 2" v-model="value2" />
-        <m-check-box id="er" value="Checkbox 3" v-model="value2" />
+        <div v-for="value in checkboxData" :key="value">
+          <m-check-box :id="value" :value="value" v-model="checkbox" />
+          <label :for="value">{{ value }}</label>
+        </div>
+
         <br />
 
         <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
         <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
         <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
-        <p>{{ value2 }}</p>
+        <p>Checkbox:{{ checkbox }}</p>
         <p>Text: {{ text }}</p>
       </form>
     </m-card>
@@ -33,15 +35,15 @@ export default {
   },
   data() {
     return {
-      value: "",
+      checkboxCheckAll: true,
+      checkboxData: ["c1", "c2", "c3", "c4"],
+      checkbox: [],
       value1: false,
-      value2: [],
       text: "",
     };
   },
   mounted() {},
   methods: {
-    checkboxData: ["c1", "c2", "c3", "c4"],
     on() {
       this.value = true;
     },
@@ -50,6 +52,9 @@ export default {
     },
     test(v) {
       console.log(v);
+    },
+    hal() {
+      return this.checkboxData.length;
     },
   },
   watch: {},
