@@ -1,5 +1,5 @@
 <template>
-  <label :for="id" :class="classes">
+  <div @click="click" :class="classes">
     <transition name="path">
       <svg
         class="img"
@@ -14,11 +14,16 @@
         />
       </svg>
     </transition>
-  </label>
+    <transition name="dot">
+      <span v-show="sectionSelected" class="dot" />
+    </transition>
+  </div>
   <input
+    v-if="!handleCheckAll"
+    v-show="false"
+    @change.stop
     :id="id"
     :name="name"
-    v-show="false"
     :value="value"
     type="checkbox"
     :disabled="disabled"
@@ -29,26 +34,60 @@
 export default {
   name: "m-check-box",
   computed: {
-    checked() {
-      if (typeof this.localvalue == "object") {
-        return this.localvalue.indexOf(this.value) !== -1;
+    handleCheckAll() {
+      if (
+        this.validatIsAArray(this.value) &&
+        this.validatIsAArray(this.modelValue)
+      ) {
+        return true;
       }
-      return this.localvalue;
+      return false;
+    },
+    sectionSelected() {
+      if (!this.checked) {
+        if (this.handleCheckAll) {
+          for (let key in this.modelValue) {
+            if (this.value.indexOf(this.modelValue[key]) !== -1) {
+              return true;
+            }
+          }
+        }
+      }
+
+      return false;
+    },
+    checked() {
+      //检查所有值是否存在列表中
+      if (this.handleCheckAll) {
+        return this.eq;
+      }
+      // 绑定数组
+      if (this.validatIsAArray(this.modelValue)) {
+        return this.modelValue.indexOf(this.value) !== -1;
+      }
+      // 绑定数值
+      return this.modelValue ? "1" : "-1";
+    },
+    eq() {
+      let modelValue = this.modelValue;
+      let value = this.value;
+      return modelValue.sort().toString() == value.sort().toString();
     },
     classes() {
       return [
         "shape m-check-box",
         this.size,
         this.checked ? "checked" : "",
+        // this.sectionSelected && !this.checked ? "section-selected" : "",
         this.disabled ? "disabled" : "",
       ];
     },
   },
   props: {
     modelValue: {
-      type: [String, Array, Boolean],
+      type: Array,
     },
-    value: [String, Boolean],
+    value: null,
     name: String,
     id: {
       required: true,
@@ -65,23 +104,60 @@ export default {
       default: false,
     },
   },
+  emits: {
+    change: null,
+    "update:modelValue": null,
+  },
   data() {
     return {
       localvalue: this.modelValue,
     };
   },
+  methods: {
+    click() {
+      let array = this.modelValue;
+      if (this.handleCheckAll) {
+        if (this.checked) {
+          this.$emit("update:modelValue", []);
+        } else {
+          this.$emit("update:modelValue", this.checkAll(array));
+        }
+      } else {
+        if (this.checked) {
+          array.splice(array.indexOf(this.value), 1);
+        } else {
+          array.push(this.value);
+        }
+        this.$emit("update:modelValue", array);
+      }
+    },
+    checkAll(array = Array) {
+      for (let key in this.value) {
+        if (array.indexOf(this.value[key]) == -1) {
+          array.push(this.value[key]);
+        }
+      }
+      return array;
+    },
+    validatIsAArray(v) {
+      return typeof v == "object" && typeof v.length == "number";
+    },
+  },
   watch: {
     modelValue(d) {
-      this.localvalue = d;
+      if (!this.handleCheckAll) {
+        this.localvalue = d;
+      }
     },
-    localvalue(d) {
-      this.$emit("update:modelValue", d);
+    localvalue() {
+      this.$emit("change", this.localvalue);
     },
   },
 };
 </script>
 
-<style scoped>
+<style >
+/* 基本样式 */
 .m-check-box,
 .m-check-box > * {
   user-select: none;
@@ -112,7 +188,21 @@ export default {
   top: 0;
 }
 
+.m-check-box .dot {
+  height: var(--DOT-DIAMETER);
+  width: var(--DOT-DIAMETER);
+  background: var(--primary);
+  left: var(--OFF-SET);
+  top: var(--OFF-SET);
+  border-radius: 1px;
+  position: absolute;
+  content: "";
+}
+
 /* Condition */
+.m-check-box.section-selected.disabled .dot {
+  background: var(--border);
+}
 .m-check-box.checked {
   border-color: var(--primary);
   background: var(--primary);
@@ -157,5 +247,20 @@ export default {
   100% {
     stroke-dashoffset: 32;
   }
+}
+
+.dot-leave-active,
+.dot-enter-active {
+  transition: 0.3s cubic-bezier(0.3, 0.6, 0.15, 1.3);
+}
+
+.dot-enter-active {
+  transform: scale(1);
+  opacity: 1;
+}
+.dot-enter-from,
+.dot-leave-active {
+  transform: scale(0);
+  opacity: 0;
 }
 </style>

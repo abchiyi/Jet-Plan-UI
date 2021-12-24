@@ -1,16 +1,20 @@
 <template>
   <div id="the-test-page">
     <m-card>
-      <form>
-        <input type="submit" name="" id="" />
+      <form method="GET" autocomplete="on">
         <m-switch size="s" v-model="value1"></m-switch>
         <m-switch size="m" disabled v-model="value1"></m-switch>
         <m-switch size="l" v-model="value1"></m-switch>
         <br />
-        <m-check-box size="s" id="pp" value="Checkbox 1" v-model="value2" />
-        <m-check-box size="m" id="va" value="Checkbox 2" v-model="value2" />
-        <m-check-box size="l" id="er" value="Checkbox 3" v-model="value2" />
+        <div>
+          <m-check-box id="all" />
+          <label for="all">Check All</label>
+        </div>
+        <m-check-box id="pp" value="Checkbox 1" v-model="value2" />
+        <m-check-box id="va" value="Checkbox 2" v-model="value2" />
+        <m-check-box id="er" value="Checkbox 3" v-model="value2" />
         <br />
+
         <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
         <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
         <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
@@ -37,14 +41,15 @@ export default {
   },
   mounted() {},
   methods: {
+    checkboxData: ["c1", "c2", "c3", "c4"],
     on() {
       this.value = true;
     },
     off() {
       this.value = false;
     },
-    test(evet) {
-      console.log(evet);
+    test(v) {
+      console.log(v);
     },
   },
   watch: {},
