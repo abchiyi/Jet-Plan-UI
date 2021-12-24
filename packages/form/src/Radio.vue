@@ -63,6 +63,7 @@ export default {
     },
     localvalue(d) {
       this.$emit("update:modelValue", d);
+      this.$emit("change", this.select);
     },
   },
 };
