@@ -115,20 +115,23 @@ export default {
   },
   methods: {
     click() {
-      let array = this.modelValue;
-      if (this.handleCheckAll) {
-        if (this.checked) {
-          this.$emit("update:modelValue", []);
+      // 'disabled' prop 启用时,不响应点击.
+      if (!this.disabled) {
+        let array = this.modelValue;
+        if (this.handleCheckAll) {
+          if (this.checked) {
+            this.$emit("update:modelValue", []);
+          } else {
+            this.$emit("update:modelValue", this.checkAll(array));
+          }
         } else {
-          this.$emit("update:modelValue", this.checkAll(array));
+          if (this.checked) {
+            array.splice(array.indexOf(this.value), 1);
+          } else {
+            array.push(this.value);
+          }
+          this.$emit("update:modelValue", array);
         }
-      } else {
-        if (this.checked) {
-          array.splice(array.indexOf(this.value), 1);
-        } else {
-          array.push(this.value);
-        }
-        this.$emit("update:modelValue", array);
       }
     },
     checkAll(array = Array) {
