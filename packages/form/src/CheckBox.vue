@@ -200,7 +200,7 @@ export default {
 }
 
 /* Condition */
-.m-check-box.section-selected.disabled .dot {
+.m-check-box.disabled .dot {
   background: var(--border);
 }
 .m-check-box.checked {
