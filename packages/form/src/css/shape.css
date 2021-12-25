@@ -11,6 +11,14 @@
     --SIZE: 32px;
 }
 
+.shape.em {
+    --SIZE: 1em
+}
+
+.shape.rem {
+    --SIZE: 1rem
+}
+
 .shape {
     --BASE-LENGTH: calc(var(--SIZE) / 8);
     --OFF-SET: var(--BASE-LENGTH);

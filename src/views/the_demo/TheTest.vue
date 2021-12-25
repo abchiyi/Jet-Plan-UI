@@ -1,28 +1,45 @@
 <template>
   <div id="the-test-page">
-    <m-card>
-      <form method="GET" autocomplete="on">
-        <m-switch size="s" v-model="value1"></m-switch>
-        <m-switch size="m" disabled v-model="value1"></m-switch>
-        <m-switch size="l" v-model="value1"></m-switch>
-        <br />
-        <div>
-          <m-check-box id="all" :value="checkboxData" v-model="checkbox" />
-          <label for="all">Check All</label>
-        </div>
-        <div v-for="value in checkboxData" :key="value">
-          <m-check-box :id="value" :value="value" v-model="checkbox" />
-          <label :for="value">{{ value }}</label>
-        </div>
+    <m-card class="test-box">
+      <m-switch size="s" v-model="value1"></m-switch>
+      <m-switch size="m" disabled v-model="value1"></m-switch>
+      <m-switch size="l" v-model="value1"></m-switch>
+      <br />
+      <div>
+        <m-check-box
+          @change="test"
+          id="all"
+          :value="checkboxData"
+          v-model="checkbox"
+        />
+        <label for="all">Check All</label>
+      </div>
+      <div v-for="value in checkboxData" :key="value">
+        <m-check-box
+          @change="test"
+          :id="value"
+          :value="value"
+          v-model="checkbox"
+        />
+        <label :for="value">{{ value }}</label>
+      </div>
 
-        <br />
+      <div>
+        <m-check-box v-model="value1" id="cc"></m-check-box>
+        <label for="cc">CC</label>
+      </div>
 
-        <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
-        <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
-        <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
-        <p>Checkbox:{{ checkbox }}</p>
-        <p>Text: {{ text }}</p>
-      </form>
+      <div>
+        <input type="checkbox" name="" id="asd" />
+        <label for="asd">Asd</label>
+      </div>
+      <br />
+
+      <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
+      <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
+      <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
+      <p>Checkbox:{{ checkbox }}</p>
+      <p>Text: {{ text }}</p>
     </m-card>
   </div>
 </template>
@@ -69,6 +86,7 @@ export default {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  padding: 10px 20px;
 }
 .t1 {
   padding: 10px;

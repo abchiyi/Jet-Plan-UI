@@ -20,7 +20,6 @@
   </div>
   <input
     v-if="!handleCheckAll"
-    v-show="false"
     @change.stop
     :id="id"
     :name="name"
@@ -66,12 +65,16 @@ export default {
         return this.modelValue.indexOf(this.value) !== -1;
       }
       // 绑定数值
-      return this.modelValue ? "1" : "-1";
+      //   XXX --
+      return this.modelValue;
     },
     eq() {
-      let modelValue = this.modelValue;
-      let value = this.value;
-      return modelValue.sort().toString() == value.sort().toString();
+      if (this.handleCheckAll) {
+        let modelValue = this.modelValue;
+        let value = this.value;
+        return modelValue.sort().toString() == value.sort().toString();
+      }
+      return false;
     },
     classes() {
       return [
@@ -85,18 +88,22 @@ export default {
   },
   props: {
     modelValue: {
-      type: Array,
+      type: [Array, Boolean],
+      required: true,
     },
-    value: null,
+    value: {
+      type: [Array, Boolean, String],
+      //   required: true,
+    },
     name: String,
     id: {
       required: true,
     },
     size: {
       type: String,
-      default: "m",
+      default: "em",
       validator: (v) => {
-        return ["s", "m", "l"].indexOf(v) !== -1;
+        return ["s", "m", "l", "em", "rem"].indexOf(v) !== -1;
       },
     },
     disabled: {
@@ -128,6 +135,9 @@ export default {
           // 常规选择
           this.$emit("update:modelValue", this.check(this.modelValue));
         }
+        this.$nextTick(() => {
+          this.$emit("change", this.localvalue);
+        });
       }
     },
     checkAll(array = Array) {
@@ -139,27 +149,25 @@ export default {
       }
       return newArray;
     },
-    check(array) {
-      let newArray = array;
-      if (this.checked) {
-        newArray.splice(newArray.indexOf(this.value), 1);
-      } else {
-        newArray.push(this.value);
+    check(value) {
+      if (this.validatIsAArray(value)) {
+        let newArray = value;
+        if (this.checked) {
+          newArray.splice(newArray.indexOf(this.value), 1);
+        } else {
+          newArray.push(this.value);
+        }
+        return newArray;
       }
-      return newArray;
+      return !value;
     },
     validatIsAArray(v) {
       return typeof v == "object" && typeof v.length == "number";
     },
   },
   watch: {
-    modelValue(d) {
-      if (!this.handleCheckAll) {
-        this.localvalue = d;
-      }
-    },
-    localvalue() {
-      this.$emit("change", this.localvalue);
+    modelValue(v) {
+      this.localvalue = v;
     },
   },
 };
