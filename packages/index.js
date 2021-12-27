@@ -7,12 +7,14 @@ import layout from './layout'
 import theme from './theme'
 import list from './list'
 import mask from './mask'
+import codeBox from "./code_box";
 
 import themeDefault from './theme_default'
 
 const components = {
     animations,
     progress,
+    codeBox,
     layout,
     list,
     mask,
@@ -33,15 +35,16 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 export {
     themeDefault,
+    theme,
     animations,
     progress,
+    codeBox,
     layout,
     list,
     mask,
     gird,
     form,
     card,
-    theme
 }
 
 export default {

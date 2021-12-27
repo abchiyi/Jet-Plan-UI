@@ -6,21 +6,11 @@
       <m-switch size="l" v-model="value1"></m-switch>
       <br />
       <div>
-        <m-check-box
-          @change="test"
-          id="all"
-          :value="checkboxData"
-          v-model="checkbox"
-        />
+        <m-check-box id="all" :value="checkboxData" v-model="checkbox" />
         <label for="all">Check All</label>
       </div>
       <div v-for="value in checkboxData" :key="value">
-        <m-check-box
-          @change="test"
-          :id="value"
-          :value="value"
-          v-model="checkbox"
-        />
+        <m-check-box :id="value" :value="value" v-model="checkbox" />
         <label :for="value">{{ value }}</label>
       </div>
 
@@ -40,26 +30,23 @@
       <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
       <p>Checkbox:{{ checkbox }}</p>
       <p>Text: {{ text }}</p>
+
+      <m-code-box lang="html" />
     </m-card>
   </div>
 </template>
 <script>
-// import { Input } from "../../../packages";
 export default {
   name: "TheTestPage",
-  components: {
-    // Input,
-  },
   data() {
     return {
       checkboxCheckAll: true,
       checkboxData: ["c1", "c2", "c3", "c4"],
       checkbox: [],
       value1: false,
-      text: "",
+      text: '<m-switch size="s" v-model="value1"></m-switch>\n<m-switch size="m" disabled v-model="value1"></m-switch>\n<m-switch size="l"v-model="value1"></m-switch>',
     };
   },
-  mounted() {},
   methods: {
     on() {
       this.value = true;
@@ -75,12 +62,14 @@ export default {
     },
   },
   watch: {},
+  created() {},
+  mounted() {},
 };
 </script>
 
 <style>
 .test-box {
-  height: 300px;
+  min-height: 300px;
   border-radius: 16px;
   border: solid 4px var(--grey);
   position: relative;

@@ -16,6 +16,16 @@
         local('sarasa-ui-sc-bold.ttf');
 }
 
+/* 等宽 */
+@font-face {
+    /* Sarasa Mono sc Semibold */
+    font-family: SarasaMono;
+    font-weight: normal;
+    src:
+        url('./qita/sarasa-mono-sc-semibold.ttf'),
+        local('./qita/sarasa-mono-sc-semibold.ttf');
+}
+
 :root {
     font-family: Sarasa;
 }
