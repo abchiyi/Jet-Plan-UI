@@ -21,6 +21,7 @@
   <input
     v-if="!handleCheckAll"
     @change.stop
+    v-show='false'
     :id="id"
     :name="name"
     :value="value"
