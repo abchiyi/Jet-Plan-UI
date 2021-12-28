@@ -301,6 +301,9 @@ export default {
     transform: scale(0) translate(10%, 10%);
     opacity: 0;
   }
+  30% {
+    opacity: 1;
+  }
   100% {
     transform: scale(1) translate(0, 0);
     opacity: 1;
@@ -310,6 +313,9 @@ export default {
   0% {
     transform: scale(1) translate(0%, 0%);
     opacity: 1;
+  }
+  70% {
+    opacity: 0;
   }
   100% {
     transform: scale(0) translate(10%, 10%);
