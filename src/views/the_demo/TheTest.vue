@@ -35,6 +35,8 @@
 
       <m-code-box lang="html" :code="text" />
     </m-card>
+
+    <m-check-box id="3" size="l" :value="value" v-model="checkbox" />
   </div>
 </template>
 <script>
@@ -71,30 +73,13 @@ export default {
 </script>
 
 <style>
-.cc {
-  height: 16px;
-  width: 16px;
-  display: inline-block;
-  margin: 0 5px;
-}
-
-.cc + .cc {
-  height: 24px;
-  width: 24px;
-}
-
-.cc + .cc + .cc {
-  height: 32px;
-  width: 32px;
-}
-
 .test-box {
   min-height: 300px;
   border-radius: 16px;
   border: solid 4px var(--grey);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
+  /* cursor: pointer; */
   padding: 10px 20px;
 }
 .t1 {
