@@ -1,27 +1,42 @@
 <template>
   <div @click="click" :class="classes">
-    <transition name="path">
-      <svg
-        class="img"
-        v-show="checked"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 35 35"
-      >
-        <path
-          class="path"
-          transform="translate(-266 -404)"
-          d="M293,416c-13,14-10,15-18,5"
-        />
-      </svg>
-    </transition>
-    <transition name="dot">
-      <span v-show="sectionSelected" class="dot" />
-    </transition>
+    <svg id="checkbox" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+      <rect class="background" width="24" height="24" rx="4" />
+      <rect
+        class="mask"
+        width="20"
+        height="20"
+        rx="3"
+        transform="translate(2 2)"
+      />
+      <transition name="dot">
+        <g v-show="sectionSelected" width="24" height="24">
+          <rect
+            class="dot"
+            transform="translate(5 5)"
+            width="14"
+            height="14"
+            rx="2"
+          />
+        </g>
+      </transition>
+
+      <transition name="path">
+        <g v-show="checked">
+          <path
+            id="path"
+            class="path"
+            d="M285.176,416c-7.35,7.915-5.654,8.48-10.176,2.827"
+            transform="translate(-268.114 -406.865)"
+          />
+        </g>
+      </transition>
+    </svg>
   </div>
   <input
     v-if="!handleCheckAll"
     @change.stop
-    v-show='false'
+    v-show="false"
     :id="id"
     :name="name"
     :value="value"
@@ -180,64 +195,66 @@ export default {
 .m-check-box > * {
   user-select: none;
 }
+
 .m-check-box {
-  border: solid var(--OFF-SET) var(--border);
-  background: var(--foreground);
-  transition: 0.6s var(--ease-out);
-  border-radius: var(--s-radius);
-  box-sizing: border-box;
   display: inline-block;
   height: var(--SIZE);
   width: var(--SIZE);
-  position: relative;
   cursor: pointer;
   margin: 0 2px;
 }
+
+.m-check-box .background {
+  fill: var(--border);
+}
+
+.m-check-box .mask {
+  fill: var(--foreground);
+}
+
+.m-check-box .dot {
+  fill: var(--primary);
+}
+
 .m-check-box .path {
   stroke-dasharray: 30px;
   stroke-linecap: round;
   stroke: white;
-  stroke-width: 4;
+  stroke-width: 3;
   fill: none;
 }
-.m-check-box > .img {
-  position: absolute;
-  left: 0;
-  top: 0;
+
+/* Checked */
+.m-check-box.checked .mask,
+.m-check-box.checked .background {
+  fill: var(--primary);
 }
 
-.m-check-box .dot {
-  height: var(--DOT-DIAMETER);
-  width: var(--DOT-DIAMETER);
-  background: var(--primary);
-  left: var(--OFF-SET);
-  top: var(--OFF-SET);
-  border-radius: 1px;
-  position: absolute;
-  content: "";
-}
-
-/* Condition */
-.m-check-box.disabled .dot {
-  background: var(--border);
-}
-.m-check-box.checked {
-  border-color: var(--primary);
-  background: var(--primary);
-}
+/* Disabled */
 .m-check-box.disabled {
-  background: var(--disabled);
-  border-color: var(--border);
   cursor: not-allowed;
 }
-.m-check-box.checked.disabled {
-  background: var(--border);
+.m-check-box.disabled .background {
+  fill: var(--border);
+}
+.m-check-box.disabled .mask {
+  fill: var(--disabled);
+}
+.m-check-box.disabled .dot {
+  fill: var(--border);
 }
 .m-check-box.disabled .path {
   stroke: var(--text-disabled);
 }
 
 /* Animation */
+
+.m-check-box .background,
+.m-check-box .mask,
+.m-check-box .dot {
+  transition: fill 0.3s var(--ease-out);
+}
+
 .path-enter-active {
   animation: path-in 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.2);
 }
@@ -269,16 +286,34 @@ export default {
 
 .dot-leave-active,
 .dot-enter-active {
-  transition: 0.3s cubic-bezier(0.3, 0.6, 0.15, 1.3);
+  transform-origin: center;
 }
 
 .dot-enter-active {
-  transform: scale(1);
-  opacity: 1;
+  animation: dot-in 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.3);
 }
-.dot-enter-from,
 .dot-leave-active {
-  transform: scale(0);
-  opacity: 0;
+  animation: dot-out 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.3);
+}
+
+@keyframes dot-in {
+  0% {
+    transform: scale(0) translate(10%, 10%);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+}
+@keyframes dot-out {
+  0% {
+    transform: scale(1) translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) translate(10%, 10%);
+    opacity: 0;
+  }
 }
 </style>

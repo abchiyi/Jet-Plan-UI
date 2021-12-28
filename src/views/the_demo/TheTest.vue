@@ -5,33 +5,35 @@
       <m-switch size="m" disabled v-model="value1"></m-switch>
       <m-switch size="l" v-model="value1"></m-switch>
       <br />
+      <m-check-box id="1" size="s" :value="value" v-model="checkbox" />
+      <m-check-box id="2" size="m" :value="value" v-model="checkbox" />
+      <m-check-box id="3" size="l" :value="value" v-model="checkbox" />
+      <br />
+      <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
+      <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
+      <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
+      <br />
       <div>
         <m-check-box id="all" :value="checkboxData" v-model="checkbox" />
+        <label for="all">Check All</label>
+      </div>
+      <div>
+        <m-check-box
+          disabled
+          id="all"
+          :value="checkboxData"
+          v-model="checkbox"
+        />
         <label for="all">Check All</label>
       </div>
       <div v-for="value in checkboxData" :key="value">
         <m-check-box :id="value" :value="value" v-model="checkbox" />
         <label :for="value">{{ value }}</label>
       </div>
-
-      <div>
-        <m-check-box v-model="value1" id="cc"></m-check-box>
-        <label for="cc">CC</label>
-      </div>
-
-      <div>
-        <input type="checkbox" name="" id="asd" />
-        <label for="asd">Asd</label>
-      </div>
-      <br />
-
-      <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
-      <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
-      <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
       <p>Checkbox:{{ checkbox }}</p>
       <p>Text: {{ text }}</p>
 
-      <m-code-box lang="html" />
+      <m-code-box lang="html" :code="text" />
     </m-card>
   </div>
 </template>
@@ -44,6 +46,7 @@ export default {
       checkboxData: ["c1", "c2", "c3", "c4"],
       checkbox: [],
       value1: false,
+      value: false,
       text: '<m-switch size="s" v-model="value1"></m-switch>\n<m-switch size="m" disabled v-model="value1"></m-switch>\n<m-switch size="l"v-model="value1"></m-switch>',
     };
   },
@@ -68,6 +71,23 @@ export default {
 </script>
 
 <style>
+.cc {
+  height: 16px;
+  width: 16px;
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.cc + .cc {
+  height: 24px;
+  width: 24px;
+}
+
+.cc + .cc + .cc {
+  height: 32px;
+  width: 32px;
+}
+
 .test-box {
   min-height: 300px;
   border-radius: 16px;
