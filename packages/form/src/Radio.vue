@@ -81,7 +81,7 @@ export default {
 <style >
 /*--------------- Animation --------------- */
 .m-radio * {
-  transition: 3s cubic-bezier(0.3, 0.6, 0.15, 1.4);
+  transition: 0.3s cubic-bezier(0.3, 0.6, 0.15, 1.3);
 }
 
 /*--------------- Default --------------- */
