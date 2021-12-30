@@ -41,8 +41,6 @@
 
       <m-code-box lang="html" :code="text" />
     </m-card>
-
-    <m-check-box id="3" size="l" :value="value" v-model="checkbox" />
   </div>
 </template>
 <script>
