@@ -10,7 +10,13 @@
       <m-check-box id="3" size="l" :value="value" v-model="checkbox" />
       <br />
       <m-radio id="r1" value="r1" size="s" v-model="text"></m-radio>
-      <m-radio id="r2" value="r2" size="m" v-model="text"></m-radio>
+      <m-radio
+        :disabled="value1"
+        id="r2"
+        value="r2"
+        size="m"
+        v-model="text"
+      ></m-radio>
       <m-radio id="r3" value="r3" size="l" v-model="text"></m-radio>
       <br />
       <div>
@@ -49,7 +55,8 @@ export default {
       checkbox: [],
       value1: false,
       value: false,
-      text: '<m-switch size="s" v-model="value1"></m-switch>\n<m-switch size="m" disabled v-model="value1"></m-switch>\n<m-switch size="l"v-model="value1"></m-switch>',
+      text:
+        '<m-switch size="s" v-model="value1"></m-switch>\n<m-switch size="m" disabled v-model="value1"></m-switch>\n<m-switch size="l"v-model="value1"></m-switch>'
     };
   },
   methods: {
@@ -64,11 +71,11 @@ export default {
     },
     hal() {
       return this.checkboxData.length;
-    },
+    }
   },
   watch: {},
   created() {},
-  mounted() {},
+  mounted() {}
 };
 </script>
 
