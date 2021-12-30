@@ -1,16 +1,28 @@
 <template>
-  <label
+  <div
     :class="classes"
-    :style="style"
-    :for="id"
     @click="change"
     @mousedown="toWider"
-    @touchstart="toWider"
     @mouseup="cancellation"
     @mouseout="cancellation"
+    @touchstart="toWider"
     @touchend="cancellation"
     @touchcancel="cancellation"
-  ></label>
+  >
+    <svg ref="self" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 16">
+      <rect class="background" rx="8" />
+      <rect
+        class="mask"
+        width="22"
+        height="12"
+        rx="6"
+        transform="translate(2 2)"
+      />
+      <g class="lever">
+        <rect class="lever-fill" width="10" height="10" rx="5" stroke="none" />
+      </g>
+    </svg>
+  </div>
   <input
     :id="id"
     v-show="false"
@@ -26,34 +38,34 @@ export default {
   props: {
     modelValue: {
       type: Boolean,
-      default: false,
+      default: false
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     size: {
       type: String,
       default: "m",
-      validator: (v) => {
+      validator: v => {
         return ["s", "m", "l"].indexOf(v) !== -1;
-      },
+      }
     },
     id: {
-      require: true,
-    },
+      require: true
+    }
   },
   data() {
     return {
       wider: false,
       intervalCode: [],
       first_load: null,
-      scopedValue: this.modelValue,
+      scopedValue: this.modelValue
     };
   },
   model: {
     prop: "modeValue",
-    event: "update:modelValue",
+    event: "update:modelValue"
   },
   computed: {
     classes() {
@@ -63,25 +75,9 @@ export default {
         this.wider ? "wider" : "",
         this.disabled ? "disabled" : "",
         this.modelValue ? "on" : "off",
-        this.first_load ? "first-load" : "",
+        this.first_load ? "first-load" : ""
       ];
-    },
-    style() {
-      return {
-        // "--SIZE": this.size + "px",
-      };
-    },
-    events() {
-      return {
-        onClick: this.change,
-        onMousedown: this.toWider,
-        onTouchstart: this.toWider,
-        onMouseup: this.cancellation,
-        onMouseout: this.cancellation,
-        onTouchend: this.cancellation,
-        onTouchcancel: this.cancellation,
-      };
-    },
+    }
   },
   methods: {
     change() {
@@ -97,16 +93,18 @@ export default {
       }, 100);
       this.intervalCode.push(inervalCode);
     },
-    cancellation() {
-      // 在抬起或离开元素后设置拨杆拉宽参数为false
-      if (this.intervalCode) {
-        this.intervalCode.forEach((code) => {
-          clearInterval(code);
-        });
-        this.intervalCode = [];
-        this.wider = false;
+    cancellation(e) {
+      if (!this.$refs.self.contains(e.relatedTarget)) {
+        // 在抬起或离开元素后设置拨杆拉宽参数为false
+        if (this.intervalCode) {
+          this.intervalCode.forEach(code => {
+            clearInterval(code);
+          });
+          this.intervalCode = [];
+          this.wider = false;
+        }
       }
-    },
+    }
   },
   created() {
     this.first_load = true;
@@ -115,173 +113,90 @@ export default {
     modelValue(v) {
       if (this.first_load) this.first_load = false;
       this.scopedValue = v;
-    },
-  },
+    }
+  }
 };
 </script>
 <style>
-.m-switch {
-  border-radius: calc(var(--HEIGHT) / 2);
-  height: var(--HEIGHT);
-  width: var(--WIDTH);
-  display: inline-block;
-  position: relative;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  cursor: pointer;
-  margin: 0 2px;
-}
-
-/* 屏蔽选中框 */
+/* 隐藏选中框 */
 @supports (-webkit-tap-highlight-color: #ffffff00) {
   .m-switch {
     -webkit-tap-highlight-color: #ffffff00;
   }
 }
-
-/* 遮罩 */
-.m-switch::before {
-  border-radius: calc(var(--WIDTH) / 2);
-  height: var(--MASK-HEIGHT);
-  width: var(--MASK-WIDTH);
-  left: var(--OFF-SET);
-  top: var(--OFF-SET);
-  position: absolute;
-  content: "";
-}
-/* 拨杆 */
-.m-switch::after {
-  box-shadow: 0 var(--LEVER-SHADOW) calc(var(--LEVER-SHADOW) * 2) var(--shadow);
-  border-radius: calc(var(--LEVER_DIAMETER) / 2);
-  border: solid var(--LEVER-BORDER);
-  height: var(--LEVER_DIAMETER);
-  width: var(--LEVER_DIAMETER);
-  left: var(--OFF-SET);
-  top: var(--OFF-SET);
-  box-sizing: border-box;
-  position: absolute;
-  content: "";
-}
-/* 第一次加载时不播放动画*/
-.m-switch.first-load.on::after,
-.m-switch.first-load.off::after {
-  animation-duration: unset;
+/*--------------- Default --------------- */
+.m-switch {
+  height: var(--HEIGHT);
+  width: var(--WIDTH);
+  display: inline-block;
+  user-select: none;
+  cursor: pointer;
+  margin: 0 2px;
 }
 
-/* ------------ On ---------- */
-/* 移动定位置右侧 */
-.m-switch.on::after {
-  background-color: var(--foreground);
-  border-color: var(--border);
-  right: var(--OFF-SET);
-  left: unset;
+.m-switch .background {
+  fill: var(--border);
+  width: 26px;
+  height: 16px;
 }
 
-/* 缩放基底遮罩 */
-.m-switch.on::before {
-  transform: scale(0);
+.m-switch .mask {
+  fill: var(--foreground);
 }
 
-.m-switch.on {
-  background-color: var(--primary);
+.m-switch .lever {
+  transform: translate(3px, 3px);
+  stroke: var(--foreground);
+  fill: var(--border);
+  stroke-width: 1;
 }
 
-/*------------ Active ----------*/
-/* 拉宽拨杆*/
-.m-switch.wider:active::after {
-  width: var(--LEVER-WIDER);
+/*--------------- Acitive --------------- */
+.m-switch.wider .lever > .lever-fill {
+  width: 15px;
+}
+.m-switch.wider.on .lever > .lever-fill {
+  width: 15px;
+  transform: translate(-5px, 0px);
 }
 
-/* 缩小基底遮罩 */
-.m-switch:active::before {
-  transform: scale(0);
+/*--------------- ON --------------- */
+.m-switch.on .background,
+.m-switch.on .mask {
+  fill: var(--primary);
+}
+.m-switch.on .lever {
+  transform: translate(13px, 3px);
+  opacity: 0.7;
 }
 
 /*------------ Animation ----------*/
-/* 移动拨杆 */
-.m-switch.on::after,
-.m-switch.off::after {
-  animation-timing-function: cubic-bezier(0.3, 0.6, 0.15, 1.2);
-  animation-duration: 0.4s;
-}
-.m-switch.on::after {
-  animation-name: left-to-right;
-}
-.m-switch.off::after {
-  animation-name: right-to-left;
+.m-switch * {
+  transition: 0.3s cubic-bezier(0.3, 0.6, 0.15, 1.2);
 }
 
-@keyframes left-to-right {
-  0% {
-    transform: translateX(
-      calc(-1 * (var(--WIDTH) - var(--LEVER_DIAMETER) - var(--OFF-SET) * 2))
-    );
-  }
-}
-@keyframes right-to-left {
-  0% {
-    transform: translateX(
-      calc((var(--WIDTH) - var(--LEVER_DIAMETER) - var(--OFF-SET) * 2))
-    );
-  }
-}
-/* 弹性过渡动画 */
-/* .m-switch::after, */
-.m-switch::before,
-.m-switch {
-  transition: 0.4s cubic-bezier(0.3, 0.6, 0.15, 1);
+/*--------------- Disabled --------------- */
+
+/*TODO 禁用时遮罩不响应缩放动作 */
+/*TODO 禁用时为 On 收起遮罩，反之展开*/
+
+.m-switch.disabled .background {
+  fill: var(--border);
 }
 
-/* 弹性效果 */
-.m-switch::after {
-  transition: 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.2);
+.m-switch.disabled .mask {
+  fill: var(--disabled);
 }
 
-/*------------ Color ----------*/
-/* 基底 */
-.m-switch {
-  background-color: var(--border);
+.m-switch.disabled.on .mask {
+  fill: var(--border);
 }
-
-/* 遮罩 */
-.m-switch::before {
-  background-color: var(--foreground);
-}
-
-/* 拨杆 */
-.m-switch::after {
-  border-color: var(--foreground);
-  background-color: var(--border);
-}
-
-/*------------ Disabled ----------*/
-
-/* 遮罩 */
-/* 禁用时遮罩不响应动作 */
-.m-switch.disabled:active::before {
-  transform: scale(1);
-}
-.m-switch.disabled.on::before {
-  transform: scale(0);
-}
-.m-switch.disabled::before {
-  background: var(--disabled);
-}
-
-/* 拨杆 */
-.m-switch.disabled::after {
-  background: var(--border);
-  border-color: var(--disabled);
+.m-switch.disabled.on .lever {
+  fill: var(--disabled);
 }
 
 /* 切换指针为禁用 */
 .m-switch.disabled {
   cursor: not-allowed;
-}
-
-/* 基底 */
-.m-switch.disabled.on {
-  background-color: var(--secondary);
 }
 </style>
