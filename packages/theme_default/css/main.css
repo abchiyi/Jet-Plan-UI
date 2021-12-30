@@ -50,7 +50,7 @@ body {
 
 
 .frosted-glass {
-    background-color: var(--background);
+    background-color: var(--foreground);
     /* TODO 添加下阴影 */
 }
 
