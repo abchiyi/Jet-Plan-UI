@@ -24,7 +24,9 @@ export default {
   name: "m-radio",
   methods: {
     click() {
-      this.$emit("update:modelValue", this.value);
+      if (!this.disabled) {
+        this.$emit("update:modelValue", this.value);
+      }
     }
   },
   computed: {
