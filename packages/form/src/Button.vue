@@ -7,45 +7,45 @@ export default {
   data() {
     return {
       value: false,
-      maskSize: null,
+      maskSize: null
     };
   },
   props: {
     tag: {
       type: String,
-      default: "button",
+      default: "button"
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     text: {
       type: Boolean,
-      default: false,
+      default: false
     },
     hoverAnimation: {
       type: Boolean,
-      default: true,
+      default: true
     },
     activeAnimation: {
       type: Boolean,
-      default: true,
+      default: true
     },
     primary: {
       type: Boolean,
-      default: false,
+      default: false
     },
     radius: {
       type: String,
       default: "s",
-      validator: function (value) {
+      validator: function(value) {
         return ["s", "m", "l"].indexOf(value) !== -1;
-      },
+      }
     },
     row: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   computed: {
     classes() {
@@ -60,7 +60,7 @@ export default {
     },
     show_mask() {
       return this.hoverAnimation && this.value && !this.disabled;
-    },
+    }
   },
   methods: {
     enter() {
@@ -78,16 +78,16 @@ export default {
     },
     renderMask() {
       return h(Mask, {
-        value: this.show_mask,
+        value: this.show_mask
       });
     },
     getSize(el) {
       let bcr = el.getBoundingClientRect();
       return {
         height: bcr.height + "px",
-        width: bcr.width + "px",
+        width: bcr.width + "px"
       };
-    },
+    }
   },
   render() {
     return h(
@@ -96,13 +96,13 @@ export default {
         tag: this.tag,
         class: this.classes,
         onmouseenter: this.enter,
-        onmouseleave: this.leave,
+        onmouseleave: this.leave
       },
       {
-        default: () => [this.renderMask(), this.renderDefault()],
+        default: () => [this.renderMask(), this.renderDefault()]
       }
     );
-  },
+  }
 };
 </script>
 <style>
@@ -134,10 +134,9 @@ export default {
 }
 
 /*------------ Primary ----------*/
-/* FIXME 颜色失效 */
 .m-button.button.primary {
-  background-color: var(--main-0);
-  color: var(--grey-0);
+  background-color: var(--primary);
+  color: white;
 }
 
 /*------------ Active ----------*/
