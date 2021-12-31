@@ -193,6 +193,7 @@ export default {
 }
 .m-switch.disabled.on .lever {
   fill: var(--disabled);
+  opacity: 1;
 }
 
 /* 切换指针为禁用 */
