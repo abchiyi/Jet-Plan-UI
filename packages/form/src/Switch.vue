@@ -176,10 +176,6 @@ export default {
 }
 
 /*--------------- Disabled --------------- */
-
-/*TODO 禁用时遮罩不响应缩放动作 */
-/*TODO 禁用时为 On 收起遮罩，反之展开*/
-
 .m-switch.disabled .background {
   fill: var(--border);
 }
