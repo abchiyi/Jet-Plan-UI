@@ -1,4 +1,4 @@
-function shadowPainter(direction, intensity) {
+function shadowPainter(direction, intensity, color) {
     function calcDirection(array) {
         if (array.indexOf(direction) !== -1) {
             return direction == array[1] ?
@@ -16,7 +16,11 @@ function shadowPainter(direction, intensity) {
         return calcDirection(['top', 'bottom'])
     }
     chekcDirection(direction)
-    return `${x()} ${y()} ${2*intensity}px ${1.2*intensity}px var(--shadow)`
+    return `
+    ${x()} ${y()}
+    ${2 * intensity}px
+    ${0.3 * intensity}px
+    ${color?color:'var(--shadow)'}`
 }
 
 class SHADOW_PAINTER_ERROR extends Error {

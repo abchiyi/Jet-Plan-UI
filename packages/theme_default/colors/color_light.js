@@ -23,7 +23,7 @@ const BASECOLOR = {
 const OTHERS = {
     frosted_glass: BACKGROUND.foreground + 'b3',
     card: BACKGROUND.foreground,
-    shadow: '#27272760',
+    shadow: '#27272740',
     mask: '#27272760'
 }
 
