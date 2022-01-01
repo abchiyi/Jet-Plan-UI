@@ -36,7 +36,7 @@
       </m-col>
     </m-row>
     <!-- 侧栏 -->
-    <m-sidebar v-shadow:right="3" :expand="modelValue" v-focus="sidebarClose">
+    <m-sidebar v-shadow:right="2" :expand="modelValue" v-focus="sidebarClose">
       <m-row no-gap>
         <m-col v-bind="width.sidebarDispaly" relativeToScreen>
           <slot name="sidebar" />

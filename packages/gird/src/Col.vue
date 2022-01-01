@@ -92,7 +92,7 @@ export default {
 .m-col-md,
 .m-col-lg,
 .m-col-xl {
-  transition: 0.3s ease-in-out;
+  transition: all 500ms var(--ease-in-out);
   /* 内外边距和变宽将包含在总大小内 */
   box-sizing: border-box;
   display: inline-block;
