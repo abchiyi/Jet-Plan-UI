@@ -43,7 +43,20 @@
     </m-card>
     <m-card>
       <m-row warp class="test-box" X="center" Y="center">
-        <m-cube v-shadow:12112="text"></m-cube>
+        <m-cube
+          @mouseenter="on"
+          @mouseleave="off"
+          v-shadow:bottom="text"
+        ></m-cube>
+
+        <m-shaodw-box
+          @mouseenter="on"
+          @mouseleave="off"
+          direction="bottom"
+          :intensity="text"
+        >
+          <m-cube></m-cube>
+        </m-shaodw-box>
         <!-- <m-cube v-shadow:top="10"></m-cube>
         <m-cube v-shadow:bottom="10"></m-cube>
         <m-cube v-shadow:left="10"></m-cube>
@@ -74,9 +87,11 @@ export default {
   methods: {
     on() {
       this.value = true;
+      this.text = 5;
     },
     off() {
       this.value = false;
+      this.text = 0;
     },
     test(v) {
       console.log(v);

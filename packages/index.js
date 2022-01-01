@@ -8,6 +8,7 @@ import theme from './theme'
 import list from './list'
 import mask from './mask'
 import codeBox from "./code_box";
+import shadowBox from './shaodwBox'
 // 指令&工具函数/类
 import tool from './tool'
 
@@ -15,6 +16,7 @@ import themeDefault from './theme_default'
 
 const components = {
     animations,
+    shadowBox,
     progress,
     codeBox,
     layout,
@@ -39,6 +41,7 @@ export {
     themeDefault,
     theme,
     animations,
+    shadowBox,
     progress,
     codeBox,
     layout,
