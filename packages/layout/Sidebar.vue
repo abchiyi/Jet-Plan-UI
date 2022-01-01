@@ -1,5 +1,5 @@
 <template>
-  <m-transition-slide :position="right ? 'right' : 'left'">
+  <m-transition-slide :opacity="false" :position="right ? 'right' : 'left'">
     <div v-show="expand" class="bar frosted-glass">
       <slot />
     </div>
@@ -17,17 +17,17 @@ export default {
   props: {
     expand: {
       type: Boolean,
-      default: false,
+      default: false
     },
     right: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       width: undefined,
-      syncShow: false,
+      syncShow: false
     };
   },
   watch: {
@@ -36,11 +36,11 @@ export default {
     },
     syncShow() {
       this.$emit("expand", this.syncShow);
-    },
+    }
   },
   render() {
     return h(TransitionFolded, {}, {});
-  },
+  }
 };
 </script>
 
