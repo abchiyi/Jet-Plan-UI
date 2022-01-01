@@ -36,7 +36,7 @@
       </m-col>
     </m-row>
     <!-- 侧栏 -->
-    <m-sidebar :expand="modelValue" v-focus="sidebarClose">
+    <m-sidebar v-shadow:right="3" :expand="modelValue" v-focus="sidebarClose">
       <m-row no-gap>
         <m-col v-bind="width.sidebarDispaly" relativeToScreen>
           <slot name="sidebar" />
@@ -53,12 +53,12 @@ export default {
   props: {
     modelValue: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   model: {
     prop: "modeValue",
-    event: "update:modelValue",
+    event: "update:modelValue"
   },
   data() {
     return {
@@ -68,15 +68,15 @@ export default {
         colMd: 24,
         colLg: 16,
         colXl: 16,
-        col: 16,
+        col: 16
       },
-      sidebarOpenIn: ["xs", "sm"],
+      sidebarOpenIn: ["xs", "sm"]
     };
   },
   methods: {
     sidebarClose(value) {
       if (this.modelValue && !value) {
-        ReScreenSize.reSize().contains(this.sidebarOpenIn, (bool) => {
+        ReScreenSize.reSize().contains(this.sidebarOpenIn, bool => {
           if (bool) {
             this.$emit("update:modelValue", false);
           }
@@ -84,18 +84,18 @@ export default {
       }
     },
     reScreenSize(v) {
-      v.contains(this.sidebarOpenIn, (bool) => {
+      v.contains(this.sidebarOpenIn, bool => {
         if (bool) {
           this.$emit("update:modelValue", false);
         } else {
           this.$emit("update:modelValue", true);
         }
       });
-    },
+    }
   },
   directives: {
     focus: Focus,
-    rss: ReScreenSize,
+    rss: ReScreenSize
   },
   computed: {
     width() {
@@ -104,7 +104,7 @@ export default {
         lg: 3,
         md: 5,
         sm: 5,
-        xs: 15,
+        xs: 15
       };
 
       const mainContentWidth = {
@@ -114,15 +114,15 @@ export default {
         // offset
         offsetXl: this.modelValue ? sidebarDispaly.lx : 0,
         offsetLg: this.modelValue ? sidebarDispaly.lg : 0,
-        offsetMd: this.modelValue ? sidebarDispaly.md : 0,
+        offsetMd: this.modelValue ? sidebarDispaly.md : 0
       };
 
       return {
         sidebarDispaly: sidebarDispaly,
-        mainContentWidth: mainContentWidth,
+        mainContentWidth: mainContentWidth
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

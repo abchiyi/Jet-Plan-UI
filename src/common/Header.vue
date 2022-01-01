@@ -1,5 +1,11 @@
 <template>
-  <m-row class="header" Y="center" X="center" spaceMode="between">
+  <m-row
+    v-shadow:bottom="2"
+    class="header"
+    Y="center"
+    X="center"
+    spaceMode="between"
+  >
     <!-- 标题 -->
     <slot name="title">
       <h1>Mousse UI</h1>
@@ -27,13 +33,13 @@ export default {
   data() {
     return {
       // TODO读取cookis确定值
-      colorMode: true,
+      colorMode: true
     };
   },
   props: {
     modelValue: {
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
   methods: {
     click() {
@@ -50,7 +56,7 @@ export default {
     },
     setColorModeCookie(b = Boolean()) {
       setCookie("colorMode", b ? "1" : "");
-    },
+    }
   },
   created() {
     // XXX 组件每被引用一次将执行一次主题初始化设置,可能的性能浪费
@@ -59,15 +65,15 @@ export default {
   },
   model: {
     prop: "modeValue",
-    event: "update:modelValue",
+    event: "update:modelValue"
   },
   watch: {
     colorMode(b) {
       // 变更时重设主题'cookie'
       this.setColorModeCookie(b);
       setColorTheme(b);
-    },
-  },
+    }
+  }
 };
 </script>
 
