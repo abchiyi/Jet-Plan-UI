@@ -8,6 +8,8 @@ import theme from './theme'
 import list from './list'
 import mask from './mask'
 import codeBox from "./code_box";
+// 指令&工具函数/类
+import tool from './tool'
 
 import themeDefault from './theme_default'
 
@@ -45,6 +47,7 @@ export {
     gird,
     form,
     card,
+    tool
 }
 
 export default {
