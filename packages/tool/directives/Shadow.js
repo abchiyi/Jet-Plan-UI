@@ -1,4 +1,4 @@
-function shadowPainter(direction = String, intensity = Number) {
+function shadowPainter(direction, intensity) {
     function calcDirection(array) {
         if (array.indexOf(direction) !== -1) {
             return direction == array[1] ?
