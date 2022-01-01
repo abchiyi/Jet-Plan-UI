@@ -18,7 +18,7 @@
     --p-radius: 1rem;
 
     /* Cubic bezier function */
-    --ease-in-out: cubic-bezier(0.5, 0, 0.3, 1.2);
+    --ease-in-out: cubic-bezier(0.5, 0, 0.2, 1.2);
     --ease-out: cubic-bezier(0.2, 0.5, 0, 1)
 }
 
