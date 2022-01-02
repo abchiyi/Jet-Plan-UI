@@ -13,13 +13,13 @@ export default {
     code: {
       type: String,
       required: true,
-      default: "-!- Null -!- ",
+      default: "-!- Null -!- "
     },
-    lang: { type: String },
+    lang: { type: String }
   },
   components: {
-    highlightjs: hljsVuePlugin.component,
-  },
+    highlightjs: hljsVuePlugin.component
+  }
 };
 </script>
 <style >
@@ -32,5 +32,10 @@ export default {
 .m-code-box code {
   overflow: hidden;
   border-radius: var(--s-radius);
+}
+
+pre.m-code-box {
+  margin-top: unset;
+  margin-bottom: unset;
 }
 </style>

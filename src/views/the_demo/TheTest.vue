@@ -41,28 +41,12 @@
 
       <m-code-box lang="html" :code="text" />
     </m-card>
-    <m-card>
+    <m-card class="test-box" v-shadow:bottom="5">
       <m-row warp class="test-box" X="center" Y="center">
-        <m-cube
-          @mouseenter="on"
-          @mouseleave="off"
-          v-shadow:bottom="text"
-        ></m-cube>
-
-        <m-shaodw-box
-          @mouseenter="on"
-          @mouseleave="off"
-          direction="bottom"
-          :intensity="text"
-        >
-          <m-cube></m-cube>
-        </m-shaodw-box>
-        <!-- <m-cube v-shadow:top="10"></m-cube>
-        <m-cube v-shadow:bottom="10"></m-cube>
-        <m-cube v-shadow:left="10"></m-cube>
-        <m-cube v-shadow:right="10"></m-cube> -->
-
-        <!-- <m-cube class="shadow1" v-for="n in 12" :key="n" v-shadow="n"></m-cube> -->
+        <transition-group>
+          <m-cube key="0" />
+          <m-cube v-for="n in 4" :key="n" v-shadow:bottom="n" />
+        </transition-group>
       </m-row>
     </m-card>
     <m-card class="test-box"></m-card>
@@ -138,7 +122,7 @@ export default {
   box-shadow: 0px 3px 6px 3px var(--shadow);
 } */
 .m-cube + .m-cube {
-  margin-left: 50px;
+  margin-left: 15px;
 }
 .m-cube {
   /* margin-top: 30px; */

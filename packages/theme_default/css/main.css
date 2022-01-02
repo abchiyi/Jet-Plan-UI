@@ -41,7 +41,8 @@ body {
 /* 辅助文本 */
 .text-hint>*,
 .text-hint {
-    /* color: var(--text-hint); */
+    color: var(--text-hint);
+    font-weight: bolder;
     font-size: 12px;
     margin-block-start: 0.3rem;
     margin-block-end: 0rem;
@@ -61,4 +62,22 @@ body {
         background-color: var(--frosted_glass);
         backdrop-filter: blur(15px);
     }
+}
+
+table {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(130, 130, 130, 0.4)
+}
+
+tr {
+    padding-bottom: 2px;
+    border-bottom: 1px solid rgba(130, 130, 130, 0.2)
+}
+
+tr+tr {
+    margin-top: 20px;
+}
+
+td {
+    width: 100%
 }
