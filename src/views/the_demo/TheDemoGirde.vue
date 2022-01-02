@@ -30,7 +30,7 @@
     </slot>
   </m-demo-box>
   <!-- demo m-row 定位 -->
-  <m-demo-box title="flex 定位" :code="code2" :expand="v1">
+  <m-demo-box title="flex 定位" :code="code3" :expand="v1">
     <m-row space-mode="between">
       <label for="y-top">Y 轴顶部对齐</label>
       <m-radio id="y-top" value="top" v-model="y" />
@@ -58,8 +58,8 @@
     <slot name="demo">
       <m-row class="row girde-item" :Y="y" :X="x">
         <m-col :col="4"><m-cube class="girde-cube"/></m-col>
-        <m-col :col="4"><m-cube class="girde-cube" style="height:72px"/></m-col>
         <m-col :col="4"><m-cube class="girde-cube" style="height:48px"/></m-col>
+        <m-col :col="4"><m-cube class="girde-cube" style="height:72px"/></m-col>
       </m-row>
     </slot>
   </m-demo-box>
@@ -208,6 +208,13 @@ width: 100%;
       code2: `<m-col :col="4" :offset="n * 2">
     <m-cube class="girde-cube">{{ n * 4 }}</m-cube>
 </m-col>`,
+
+      code3: `
+<m-row class="row girde-item" :Y="y" :X="x">
+    <m-col :col="4"><m-cube class="girde-cube"/></m-col>
+    <m-col :col="4"><m-cube class="girde-cube" style="height:48px"/></m-col>
+    <m-col :col="4"><m-cube class="girde-cube" style="height:72px"/></m-col>
+</m-row>`,
       v1: true,
       x: "start",
       y: "top",
