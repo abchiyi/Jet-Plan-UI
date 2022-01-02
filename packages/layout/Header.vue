@@ -18,6 +18,7 @@ export default {
 /* TODO 子元素不能横轴中心对其 */
 .m-header {
   position: fixed;
+  padding: 0 20px;
   z-index: 90;
   right: 0;
   left: 0;

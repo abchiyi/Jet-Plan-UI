@@ -5,13 +5,9 @@
     v-rss="reScreenSize"
   >
     <!-- 头栏 -->
-    <m-header>
-      <m-row>
-        <m-col
-          class="frosted-glass"
-          v-bind="width.mainContentWidth"
-          relativeToScreen
-        >
+    <m-header class="frosted-glass" v-shadow:bottom="2">
+      <m-row Y="center">
+        <m-col v-bind="width.mainContentWidth" relativeToScreen>
           <slot name="header"></slot>
         </m-col>
       </m-row>
@@ -127,6 +123,9 @@ export default {
 </script>
 
 <style scoped>
+.m-header > .m-row {
+  height: 72px;
+}
 #content-body {
   overflow: hidden;
   max-width: 768px;

@@ -34,22 +34,22 @@ export default {
   data() {
     return {
       value: true,
-      pageNow: "/get-started",
+      pageNow: "/get-started"
     };
   },
   directives: {
-    focus: Focus,
+    focus: Focus
   },
   computed: {
     demoLinks() {
-      return TheDemo.children.map((item) => {
+      return TheDemo.children.map(item => {
         return {
           name: item.name,
-          href: item.path,
+          href: item.path
         };
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

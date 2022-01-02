@@ -1,11 +1,5 @@
 <template>
-  <m-row
-    v-shadow:bottom="2"
-    class="header"
-    Y="center"
-    X="center"
-    spaceMode="between"
-  >
+  <m-row class="header" Y="center" X="center" spaceMode="between">
     <!-- 标题 -->
     <slot name="title">
       <h1>Mousse UI</h1>
@@ -76,9 +70,3 @@ export default {
   }
 };
 </script>
-
-<style>
-.header {
-  padding: 0 20px;
-}
-</style>
