@@ -1,8 +1,6 @@
 /* 导入bootstrap-icon */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
-
-
 /* Base Settins */
 *,
 :root {
@@ -66,18 +64,16 @@ body {
 
 table {
     padding: 20px 0;
-    border-bottom: 1px solid rgba(130, 130, 130, 0.4)
+    border-collapse: collapse;
+    word-wrap: break-word
 }
 
-tr {
-    padding-bottom: 2px;
-    border-bottom: 1px solid rgba(130, 130, 130, 0.2)
-}
-
-tr+tr {
+tr+tr>td {
     margin-top: 20px;
 }
 
 td {
-    width: 100%
+    border-bottom: 2px solid rgba(130, 130, 130, 0.2);
+    padding-bottom: 5px;
+    height: 40px;
 }
