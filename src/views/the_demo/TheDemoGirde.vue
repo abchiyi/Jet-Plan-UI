@@ -1,7 +1,6 @@
 <template>
   <h2>基础栅格</h2>
   <p>基于 flexbox 的24栏网格系统</p>
-
   <h2>示例1</h2>
   <p>通过使用使用组件 'm-col' 的 col 属性来组合网格</p>
   <p>这个给示例中使用了组件 'm-row' 和 'm-col'</p>
@@ -63,19 +62,74 @@
       </m-row>
     </slot>
   </m-demo-box>
-
-  <!-- m-col props -->
-  <h2>组件 'm-col' props</h2>
+  <!-- --------------- Row --------------- -->
+  <h2>组件 'm-row' props</h2>
   <div style="overflow-x:scroll">
     <table style="width:768px">
-      <tr tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>名称</td>
         <td>功能</td>
         <td>参数类型</td>
         <td>可选值</td>
         <td>默认</td>
       </tr>
-      <tr title="tag" tag="tr" space-mode="between">
+      <tr space-mode="between">
+        <td>tag</td>
+        <td>指定渲染标签</td>
+        <td>String</td>
+        <td>html标签</td>
+        <td>div</td>
+      </tr>
+      <tr space-mode="between">
+        <td>X</td>
+        <td>设定 X 轴 对齐</td>
+        <td>String</td>
+        <td>["start", "center", "end"]</td>
+        <td>Satrt</td>
+      </tr>
+      <tr space-mode="between">
+        <td>Y</td>
+        <td>设定 Y 轴 对齐</td>
+        <td>String</td>
+        <td>["top", "center", "bottom"]</td>
+        <td>top</td>
+      </tr>
+      <tr space-mode="between">
+        <td>warp</td>
+        <td>控制元素是否换行</td>
+        <td>Boolean</td>
+        <td>true/false</td>
+        <td>false</td>
+      </tr>
+      <tr space-mode="between">
+        <td>reverse</td>
+        <td>反向排列元素</td>
+        <td>Boolean</td>
+        <td>true/false</td>
+        <td>false</td>
+      </tr>
+      <tr space-mode="between">
+        <td>noGap</td>
+        <td>取消 'm-col' 组件间间隙</td>
+        <td>Boolean</td>
+        <td>true/false</td>
+        <td>false</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- m-row props -->
+  <h2>组件 'm-col' props</h2>
+  <div style="overflow-x:scroll">
+    <table style="width:768px">
+      <tr space-mode="between">
+        <td>名称</td>
+        <td>功能</td>
+        <td>参数类型</td>
+        <td>可选值</td>
+        <td>默认</td>
+      </tr>
+      <tr space-mode="between">
         <td>tag</td>
         <td>指定渲染标签</td>
         <td>String</td>
@@ -83,42 +137,42 @@
         <td>div</td>
       </tr>
       <!-- col -->
-      <tr title="col" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>col</td>
         <td>未特定屏幕尺寸宽度定义</td>
         <td>Number</td>
         <td>0~24</td>
         <td>-</td>
       </tr>
-      <tr title="xs" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>xs</td>
         <td>>575px响应</td>
         <td>Number</td>
         <td>0~24</td>
         <td>-</td>
       </tr>
-      <tr title="sm" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>sm</td>
         <td>≤576px响应</td>
         <td>Number</td>
         <td>0~24</td>
         <td>-</td>
       </tr>
-      <tr title="md" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>md</td>
         <td>≤768px响应</td>
         <td>Number</td>
         <td>0~24</td>
         <td>-</td>
       </tr>
-      <tr title="lg" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>lg</td>
         <td>≤992px响应</td>
         <td>Number</td>
         <td>0~24</td>
         <td>-</td>
       </tr>
-      <tr title="xl" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>xl</td>
         <td>≤1200px响应</td>
         <td>Number</td>
@@ -126,49 +180,49 @@
         <td>-</td>
       </tr>
       <!-- col offset -->
-      <tr title="offset" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>offset</td>
         <td>未特定屏幕宽度下设置位移</td>
         <td>Number</td>
         <td>1~24</td>
         <td>-</td>
       </tr>
-      <tr title="offsetXs" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>offsetXs</td>
         <td>>575px响应偏移</td>
         <td>Number</td>
         <td>1~24</td>
         <td>-</td>
       </tr>
-      <tr title="offsetSm" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>offsetSm</td>
         <td>≤576px响应偏移</td>
         <td>Number</td>
         <td>1~24</td>
         <td>-</td>
       </tr>
-      <tr title="offsetMd" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>offsetMd</td>
         <td>≤768px响应偏移</td>
         <td>Number</td>
         <td>1~24</td>
         <td>-</td>
       </tr>
-      <tr title="offsetLg" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>offsetLg</td>
         <td>≤992px响应偏移</td>
         <td>Number</td>
         <td>1~24</td>
         <td>-</td>
       </tr>
-      <tr title="offsetXl" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>offsetXl</td>
         <td>≤1200px响偏移应</td>
         <td>Number</td>
         <td>1~24</td>
         <td>-</td>
       </tr>
-      <tr title="relativeToScreen" tag="tr" space-mode="between">
+      <tr space-mode="between">
         <td>relativeToScreen</td>
         <td>始终相对屏幕计算列宽</td>
         <td>Boolean</td>
@@ -187,7 +241,8 @@ export default {
   name: "grid-demo",
   data() {
     return {
-      code1: `<m-row class="girde-item" v-for="n in 4" :key="n">
+      code1: `
+<m-row class="girde-item" v-for="n in 4" :key="n">
     <m-col :col="n * 4"><m-cube class="girde-cube">{{ n * 4 }}</m-cube></m-col>
     <m-col :col="24 - n * 2">
         <m-cube class="girde-cube" dark> {{ 24 - n * 4 }} </m-cube>
@@ -205,10 +260,10 @@ width: 100%;
 </style>
 `,
 
-      code2: `<m-col :col="4" :offset="n * 2">
+      code2: `
+<m-col :col="4" :offset="n * 2">
     <m-cube class="girde-cube">{{ n * 4 }}</m-cube>
 </m-col>`,
-
       code3: `
 <m-row class="row girde-item" :Y="y" :X="x">
     <m-col :col="4"><m-cube class="girde-cube"/></m-col>

@@ -4,7 +4,7 @@
       <slot name="header">
         <span class="text-hint">{{ title }}</span>
       </slot>
-      <m-button @click="expand_" text>Expand Code</m-button>
+      <m-button @click="expand_" text>View Code</m-button>
     </m-row>
     <hr />
     <div class="demo">
