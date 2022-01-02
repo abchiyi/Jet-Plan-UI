@@ -2,11 +2,11 @@
   <h2>基础栅格</h2>
   <p>基于 flexbox 的24栏网格系统</p>
 
-  <h2>示例</h2>
+  <h2>示例1</h2>
   <p>通过使用使用组件 'm-col' 的 col 属性来组合网格</p>
   <p>这个给示例中使用了组件 'm-row' 和 'm-col'</p>
   <!-- demo 基础栅格 -->
-  <m-demo-box title="基础栅格" :code="code" :expand="v1">
+  <m-demo-box title="基础栅格" :code="code1" :expand="v1">
     <slot name="demo">
       <m-row class="girde-item" v-for="n in 4" :key="n">
         <m-col :col="n * 4">
@@ -18,11 +18,57 @@
       </m-row>
     </slot>
   </m-demo-box>
+  <h2>使用 offset 定位</h2>
+  <!-- demo offset 定位 -->
+  <m-demo-box title="flex 定位" :code="code2" :expand="v1">
+    <slot name="demo">
+      <m-row class="girde-item" v-for="n in 4" :key="n">
+        <m-col :col="4" :offset="n * 2">
+          <m-cube class="girde-cube">{{ n * 4 }}</m-cube>
+        </m-col>
+      </m-row>
+    </slot>
+  </m-demo-box>
+  <!-- demo m-row 定位 -->
+  <m-demo-box title="flex 定位" :code="code2" :expand="v1">
+    <m-row space-mode="between">
+      <label for="y-top">Y 轴顶部对齐</label>
+      <m-radio id="y-top" value="top" v-model="y" />
+    </m-row>
+    <m-row space-mode="between">
+      <label for="y-center">Y 轴居中</label>
+      <m-radio id="y-center" value="center" v-model="y" />
+    </m-row>
+    <m-row space-mode="between">
+      <label for="y-bottom">Y 轴底部对齐</label>
+      <m-radio id="y-bottom" value="bottom" v-model="y" />
+    </m-row>
+    <m-row space-mode="between">
+      <label for="x-start">X 轴顶部对齐</label>
+      <m-radio id="x-start" value="start" v-model="x" />
+    </m-row>
+    <m-row space-mode="between">
+      <label for="x-center">X 轴居中</label>
+      <m-radio id="x-center" value="center" v-model="x" />
+    </m-row>
+    <m-row space-mode="between">
+      <label for="x-end">X 轴末尾对齐</label>
+      <m-radio id="x-end" value="end" v-model="x" />
+    </m-row>
+    <slot name="demo">
+      <m-row class="row girde-item" :Y="y" :X="x">
+        <m-col :col="4"><m-cube class="girde-cube"/></m-col>
+        <m-col :col="4"><m-cube class="girde-cube" style="height:72px"/></m-col>
+        <m-col :col="4"><m-cube class="girde-cube" style="height:48px"/></m-col>
+      </m-row>
+    </slot>
+  </m-demo-box>
+
   <!-- m-col props -->
-  <div style="overflow-x:scroll;">
-    <table style="width:100%">
-      <h2>组件 M-COl props</h2>
-      <tr tag="tr" space-mode="between" border="2px solid #ccc">
+  <h2>组件 'm-col' props</h2>
+  <div style="overflow-x:scroll">
+    <table style="width:768px">
+      <tr tag="tr" space-mode="between">
         <td>名称</td>
         <td>功能</td>
         <td>参数类型</td>
@@ -122,6 +168,13 @@
         <td>1~24</td>
         <td>-</td>
       </tr>
+      <tr title="relativeToScreen" tag="tr" space-mode="between">
+        <td>relativeToScreen</td>
+        <td>始终相对屏幕计算列宽</td>
+        <td>Boolean</td>
+        <td>false/true</td>
+        <td>false</td>
+      </tr>
     </table>
   </div>
 </template>
@@ -132,10 +185,9 @@ export default {
     this.$emit("test", "girade");
   },
   name: "grid-demo",
-  components: {},
   data() {
     return {
-      code: `<m-row class="girde-item" v-for="n in 4" :key="n">
+      code1: `<m-row class="girde-item" v-for="n in 4" :key="n">
     <m-col :col="n * 4"><m-cube class="girde-cube">{{ n * 4 }}</m-cube></m-col>
     <m-col :col="24 - n * 2">
         <m-cube class="girde-cube" dark> {{ 24 - n * 4 }} </m-cube>
@@ -152,7 +204,13 @@ width: 100%;
 }
 </style>
 `,
+
+      code2: `<m-col :col="4" :offset="n * 2">
+    <m-cube class="girde-cube">{{ n * 4 }}</m-cube>
+</m-col>`,
       v1: true,
+      x: "start",
+      y: "top",
       position: ["start", "center", "end", "around", "between"]
     };
   }
@@ -161,7 +219,12 @@ width: 100%;
 
 <style>
 tr td:nth-child(2) {
-  /* min-width: 150px; */
+  width: 200px;
+}
+.row.girde-item {
+  background: rgb(235, 235, 235);
+  border-radius: var(--m-radius);
+  height: 100px;
 }
 .girde-item {
   margin-bottom: 8px;

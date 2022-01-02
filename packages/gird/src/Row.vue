@@ -6,43 +6,43 @@ export default {
   props: {
     X: {
       type: String,
-      validator: (v) => {
+      validator: v => {
         const value = ["start", "center", "end"];
         return value.indexOf(v.toLowerCase()) !== -1;
       },
-      default: "start",
+      default: "start"
     },
     Y: {
       type: String,
-      validator: (v) => {
+      validator: v => {
         const value = ["top", "center", "bottom"];
         return value.indexOf(v.toLowerCase()) !== -1;
       },
-      default: "top",
+      default: "top"
     },
     spaceMode: {
       type: String,
-      validator: (v) => {
+      validator: v => {
         const value = ["around", "between"];
         return value.indexOf(v.toLowerCase()) !== -1;
-      },
+      }
     },
     warp: {
       type: Boolean,
-      default: false,
+      default: false
     },
     reverse: {
       type: Boolean,
-      default: false,
+      default: false
     },
     noGap: {
       type: Boolean,
-      default: false,
+      default: false
     },
     tag: {
       type: String,
-      default: "div",
-    },
+      default: "div"
+    }
   },
   computed: {
     x() {
@@ -78,7 +78,7 @@ export default {
     },
     flexWrap() {
       return this.warp ? "wrap" : "nowrap";
-    },
+    }
   },
   render() {
     return h(
@@ -87,12 +87,12 @@ export default {
         class: [
           "m-row",
           this.noGap ? "no-gap" : "",
-          this.reverse ? "reverse" : "",
-        ],
+          this.reverse ? "reverse" : ""
+        ]
       },
       this.$slots
     );
-  },
+  }
 };
 </script>
 
