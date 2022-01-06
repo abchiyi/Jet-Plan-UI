@@ -1,18 +1,18 @@
 <template>
   <div id="the-test-page">
-    <m-control-bar reverse for-id="aa">
+    <m-control-bar :reverse="value1" for-id="aa">
       <template v-slot:text>text control</template>
       <template v-slot:control>
         <m-switch id="aa" size="s" v-model="value1"></m-switch>
       </template>
     </m-control-bar>
-    <m-control-bar for-id="a">
+    <m-control-bar :reverse="value1" for-id="a">
       <template v-slot:text>text control</template>
       <template v-slot:control>
         <m-check-box size="m" id="a" :value="checkboxData" v-model="checkbox" />
       </template>
     </m-control-bar>
-    <m-control-bar for-id="r4">
+    <m-control-bar :reverse="value1" for-id="r4">
       <template v-slot:text>text control</template>
       <template v-slot:control>
         <m-radio id="r4" value="5" size="l" v-model="text"></m-radio>
