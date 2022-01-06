@@ -52,7 +52,7 @@ export default {
       }
     },
     id: {
-      require: true
+      required: true
     }
   },
   data() {
@@ -113,6 +113,10 @@ export default {
     modelValue(v) {
       if (this.first_load) this.first_load = false;
       this.scopedValue = v;
+    },
+    scopedValue(v) {
+      console.log(v);
+      this.$emit("update:modelValue", v);
     }
   }
 };
