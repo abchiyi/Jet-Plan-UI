@@ -32,7 +32,7 @@
       </m-col>
     </m-row>
     <!-- 侧栏 -->
-    <m-sidebar v-shadow:right="2" :expand="modelValue" v-focus="sidebarClose">
+    <m-sidebar v-shadow:right="2" :dock="sidebarDock" v-model="sidebarExpand">
       <m-row no-gap>
         <m-col v-bind="width.sidebarDispaly" relativeToScreen>
           <slot name="sidebar" />
@@ -66,21 +66,15 @@ export default {
         colXl: 16,
         col: 16
       },
-      sidebarOpenIn: ["xs", "sm"]
+      sidebarOpenIn: ["xs", "sm"],
+      sidebarExpand: true,
+      sidebarDock: undefined
     };
   },
   methods: {
-    sidebarClose(value) {
-      if (this.modelValue && !value) {
-        ReScreenSize.reSize().contains(this.sidebarOpenIn, bool => {
-          if (bool) {
-            this.$emit("update:modelValue", false);
-          }
-        });
-      }
-    },
     reScreenSize(v) {
       v.contains(this.sidebarOpenIn, bool => {
+        this.sidebarDock = !bool;
         if (bool) {
           this.$emit("update:modelValue", false);
         } else {
@@ -96,27 +90,34 @@ export default {
   computed: {
     width() {
       const sidebarDispaly = {
-        xl: 3,
-        lg: 3,
-        md: 5,
-        sm: 5,
+        col: 3,
+        lg: 5,
+        sm: 10,
         xs: 15
       };
 
       const mainContentWidth = {
-        xl: this.modelValue ? 24 - sidebarDispaly.xl : 24,
+        col: this.modelValue ? 24 - sidebarDispaly.col : 24,
         lg: this.modelValue ? 24 - sidebarDispaly.lg : 24,
-        md: this.modelValue ? 24 - sidebarDispaly.md : 24,
+        sm: 24,
         // offset
-        offsetXl: this.modelValue ? sidebarDispaly.xl : 0,
+        offset: this.modelValue ? sidebarDispaly.col : 0,
         offsetLg: this.modelValue ? sidebarDispaly.lg : 0,
-        offsetMd: this.modelValue ? sidebarDispaly.md : 0
+        offsetSm: 0
       };
 
       return {
         sidebarDispaly: sidebarDispaly,
         mainContentWidth: mainContentWidth
       };
+    }
+  },
+  watch: {
+    modelValue(v) {
+      this.sidebarExpand = v;
+    },
+    sidebarExpand(v) {
+      this.$emit("update:modelValue", v);
     }
   }
 };
