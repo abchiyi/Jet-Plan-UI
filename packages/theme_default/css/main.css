@@ -2,13 +2,15 @@
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
 /* Base Settins */
-*,
-:root {
-    font-size: 16px;
+* {
     /* 可继承属性 */
     color: inherit;
     font-weight: inherit;
 
+}
+
+:root {
+    font-size: 16px;
     /* 圆角 */
     --s-radius: 4px;
     --m-radius: 8px;
@@ -80,4 +82,9 @@ td {
     border-bottom: 2px solid rgba(130, 130, 130, 0.2);
     padding-bottom: 5px;
     height: 40px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: medium;
 }
