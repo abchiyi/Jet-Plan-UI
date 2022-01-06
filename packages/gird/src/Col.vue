@@ -1,6 +1,18 @@
 // TODO 支持在各个宽度下自定义css
 <script>
 import { h } from "vue";
+function notUndefined(value, string) {
+  if (value !== undefined) {
+    return string;
+  }
+}
+
+function ifHidden(value) {
+  if (value == 0) {
+    return "none";
+  }
+  return "";
+}
 export default {
   name: "m-col",
   props: {
@@ -13,38 +25,31 @@ export default {
     sm: Number,
     md: Number,
     lg: Number,
-    xl: Number,
     offset: Number,
     offsetXs: Number,
     offsetSm: Number,
     offsetMd: Number,
     offsetLg: Number,
-    offsetXl: Number,
     relativeToScreen: { type: Boolean, default: false }
   },
   methods: {
     calcWidth(number) {
       let num = (number * 100) / 24;
-      // 在相对父元素和相对于屏幕尺寸间切换
-      //   return number ? (this.relativeToScreen ? num + "vw" : num + "%") : "";
-      return number ? (this.relativeToScreen ? num + "vw" : num + "%") : "";
-      //   return this.relativeToScreen ? num + "vw" : num + "%";
+      return number ? `${num}${this.relativeToScreen ? "vw" : "%"}` : "";
     }
   },
   computed: {
     class() {
       return [
-        this.xs != undefined ? "m-col-xs" : "",
-        this.sm != undefined ? "m-col-sm" : "",
-        this.md != undefined ? "m-col-md" : "",
-        this.lg != undefined ? "m-col-lg" : "",
-        this.xl != undefined ? "m-col-xl" : "",
-        this.offset != undefined ? "offset" : "",
-        this.offsetXs != undefined ? "offset-xs" : "",
-        this.offsetSm != undefined ? "offset-sm" : "",
-        this.offsetMd != undefined ? "offset-md" : "",
-        this.offsetLg != undefined ? "offset-lg" : "",
-        this.offsetXl != undefined ? "offset-xl" : ""
+        notUndefined(this.xs, "m-col-xs"),
+        notUndefined(this.sm, "m-col-sm"),
+        notUndefined(this.md, "m-col-md"),
+        notUndefined(this.lg, "m-col-lg"),
+        notUndefined(this.offset, "offset"),
+        notUndefined(this.offsetXs, "offset-xs"),
+        notUndefined(this.offsetSm, "offset-sm"),
+        notUndefined(this.offsetMd, "offset-md"),
+        notUndefined(this.offsetLg, "offset-lg")
       ];
     },
     style() {
@@ -55,20 +60,17 @@ export default {
         sm: this.calcWidth(this.sm),
         md: this.calcWidth(this.md),
         lg: this.calcWidth(this.lg),
-        xl: this.calcWidth(this.xl),
         // offset
         offset: this.calcWidth(this.offset),
         offsetXs: this.calcWidth(this.offsetXs),
         offsetSm: this.calcWidth(this.offsetSm),
         offsetMd: this.calcWidth(this.offsetMd),
         offsetLg: this.calcWidth(this.offsetLg),
-        offsetXl: this.calcWidth(this.offsetXl),
         // hidden
-        hiddenOnXs: !this.xs && this.xs != undefined ? "none" : "",
-        hiddenOnSm: !this.sm && this.sm != undefined ? "none" : "",
-        hiddenOnMd: !this.md && this.md != undefined ? "none" : "",
-        hiddenOnLg: !this.lg && this.lg != undefined ? "none" : "",
-        hiddenOnXl: !this.xl && this.xl != undefined ? "none" : ""
+        hiddenOnXs: ifHidden(this.xs),
+        hiddenOnSm: ifHidden(this.sm),
+        hiddenOnMd: ifHidden(this.md),
+        hiddenOnLg: ifHidden(this.lg)
       };
     }
   },
@@ -91,8 +93,7 @@ export default {
 .m-col-xs,
 .m-col-sm,
 .m-col-md,
-.m-col-lg,
-.m-col-xl {
+.m-col-lg {
   transition: 500ms var(--ease-in-out), color 0s;
   /* 内外边距和变宽将包含在总大小内 */
   box-sizing: border-box;
@@ -119,22 +120,6 @@ export default {
 }
 
 /* --响应式-- */
-
-/* xl */
-@media (min-width: 1200px) {
-  .m-col-xl {
-    width: v-bind("style.xl");
-    display: v-bind("style.hiddenOnXl");
-  }
-
-  .m-col.offset-xl {
-    margin-left: v-bind("style.offsetXl");
-  }
-
-  .row.reverse > .offset-xl {
-    margin-right: v-bind("style.offsetXl");
-  }
-}
 
 /* lg */
 @media (max-width: 1200px) {
@@ -185,7 +170,7 @@ export default {
 }
 
 /* xs */
-@media (max-width: 575px) {
+@media (max-width: 577px) {
   .m-col-xs {
     width: v-bind("style.xs");
     display: v-bind("style.hiddenOnXs");
