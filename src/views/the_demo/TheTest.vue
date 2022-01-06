@@ -6,10 +6,15 @@
         <m-switch id="aa" size="s" v-model="value1"></m-switch>
       </template>
     </m-control-bar>
-    <m-control-bar :reverse="value1" for-id="a">
+    <m-control-bar :reverse="value1" for-id="rs">
       <template v-slot:text>text control</template>
       <template v-slot:control>
-        <m-check-box size="m" id="a" :value="checkboxData" v-model="checkbox" />
+        <m-check-box
+          size="m"
+          id="rs"
+          :value="checkboxData"
+          v-model="checkbox"
+        />
       </template>
     </m-control-bar>
     <m-control-bar :reverse="value1" for-id="r4">
@@ -26,6 +31,7 @@
       <m-check-box id="1" size="s" :value="value" v-model="checkbox" />
       <m-check-box id="2" size="m" :value="value" v-model="checkbox" />
       <m-check-box id="3" size="l" :value="value" v-model="checkbox" />
+      <m-check-box id="4" size="l" v-model="value1" />
       <br />
       <m-radio id="r1" value="1" size="s" v-model="text"></m-radio>
       <m-radio

@@ -34,7 +34,6 @@
     </svg>
   </div>
   <input
-    v-if="!handleCheckAll"
     @change.stop
     v-show="false"
     :id="id"
@@ -132,7 +131,7 @@ export default {
   },
   data() {
     return {
-      localvalue: this.modelValue
+      localvalue: undefined
     };
   },
   methods: {
@@ -150,9 +149,6 @@ export default {
           // 常规选择
           this.$emit("update:modelValue", this.check(this.modelValue));
         }
-        this.$nextTick(() => {
-          this.$emit("change", this.localvalue);
-        });
       }
     },
     checkAll(array = Array) {
@@ -181,8 +177,8 @@ export default {
     }
   },
   watch: {
-    modelValue(v) {
-      this.localvalue = v;
+    localvalue() {
+      this.click();
     }
   }
 };
