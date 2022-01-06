@@ -115,7 +115,6 @@ export default {
       this.scopedValue = v;
     },
     scopedValue(v) {
-      console.log(v);
       this.$emit("update:modelValue", v);
     }
   }
