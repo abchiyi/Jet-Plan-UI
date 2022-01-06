@@ -120,52 +120,19 @@ export default {
 
 /* --响应式-- */
 
-/* xs */
-@media (max-width: 575px) {
-  .m-col-xs {
-    width: v-bind("style.xs");
-    display: v-bind("style.hiddenOnXs");
+/* xl */
+@media (min-width: 1200px) {
+  .m-col-xl {
+    width: v-bind("style.xl");
+    display: v-bind("style.hiddenOnXl");
   }
 
-  .m-col.offset-xs {
-    margin-left: v-bind("style.offsetXs");
+  .m-col.offset-xl {
+    margin-left: v-bind("style.offsetXl");
   }
 
-  .row.reverse > .offset-xs {
-    margin-right: v-bind("style.offsetXs");
-    margin-left: unset;
-  }
-}
-
-/* sm */
-@media (max-width: 768px) {
-  .m-col-sm {
-    width: v-bind("style.sm");
-    display: v-bind("style.hiddenOnSm");
-  }
-
-  .m-col.offset-sm {
-    margin-left: v-bind("style.offsetSm");
-  }
-
-  .row.reverse > .offset-sm {
-    margin-right: v-bind("style.offsetSm");
-  }
-}
-
-/* md */
-@media (max-width: 992px) {
-  .m-col-md {
-    width: v-bind("style.md");
-    display: v-bind("style.hiddenOnMd");
-  }
-
-  .m-col.offset-md {
-    margin-left: v-bind("style.offsetMd");
-  }
-
-  .row.reverse > .offset-md {
-    margin-right: v-bind("style.offsetMd");
+  .row.reverse > .offset-xl {
+    margin-right: v-bind("style.offsetXl");
   }
 }
 
@@ -185,19 +152,52 @@ export default {
   }
 }
 
-/* xl */
-@media (min-width: 1200px) {
-  .m-col-xl {
-    width: v-bind("style.xl");
-    display: v-bind("style.hiddenOnXl");
+/* md */
+@media (max-width: 992px) {
+  .m-col-md {
+    width: v-bind("style.md");
+    display: v-bind("style.hiddenOnMd");
   }
 
-  .m-col.offset-xl {
-    margin-left: v-bind("style.offsetXl");
+  .m-col.offset-md {
+    margin-left: v-bind("style.offsetMd");
   }
 
-  .row.reverse > .offset-xl {
-    margin-right: v-bind("style.offsetXl");
+  .row.reverse > .offset-md {
+    margin-right: v-bind("style.offsetMd");
+  }
+}
+
+/* sm */
+@media (max-width: 768px) {
+  .m-col-sm {
+    width: v-bind("style.sm");
+    display: v-bind("style.hiddenOnSm");
+  }
+
+  .m-col.offset-sm {
+    margin-left: v-bind("style.offsetSm");
+  }
+
+  .row.reverse > .offset-sm {
+    margin-right: v-bind("style.offsetSm");
+  }
+}
+
+/* xs */
+@media (max-width: 575px) {
+  .m-col-xs {
+    width: v-bind("style.xs");
+    display: v-bind("style.hiddenOnXs");
+  }
+
+  .m-col.offset-xs {
+    margin-left: v-bind("style.offsetXs");
+  }
+
+  .row.reverse > .offset-xs {
+    margin-right: v-bind("style.offsetXs");
+    margin-left: unset;
   }
 }
 </style>
