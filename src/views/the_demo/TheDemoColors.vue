@@ -35,7 +35,7 @@
       </div>
     </m-col>
     <m-col id="theme" :sm="24" :col="12">
-      <h2>基础色</h2>
+      <h2>Base Color:</h2>
       <m-row id="colors" class="demo-box" space-mode="around" X="center" warp>
         <div
           class="color-box"
@@ -198,7 +198,6 @@ export default {
   display: inline-block;
 }
 .color-box p {
-  color: #505050;
   font-size: 19px;
 }
 
