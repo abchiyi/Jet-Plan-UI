@@ -30,8 +30,11 @@ const timeout = new ta(100)
 export default {
     name: 're-screen-size',
     created() {
+        const binding = arguments[1]
+        binding.value(
+            ReSize()
+        )
         window.addEventListener('resize', () => {
-            const binding = arguments[1]
             timeout.action(() => {
                 binding.value(
                     ReSize()
