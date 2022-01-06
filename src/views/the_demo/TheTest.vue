@@ -1,9 +1,27 @@
 <template>
   <div id="the-test-page">
+    <m-control-bar for-id="aa">
+      <template v-slot:text>text control</template>
+      <template v-slot:control>
+        <m-switch id="aa" size="s" v-model="value1"></m-switch>
+      </template>
+    </m-control-bar>
+    <m-control-bar for-id="a">
+      <template v-slot:text>text control</template>
+      <template v-slot:control>
+        <m-check-box size="m" id="a" :value="checkboxData" v-model="checkbox" />
+      </template>
+    </m-control-bar>
+    <m-control-bar for-id="r4">
+      <template v-slot:text>text control</template>
+      <template v-slot:control>
+        <m-radio id="r4" value="5" size="l" v-model="text"></m-radio>
+      </template>
+    </m-control-bar>
     <m-card class="test-box">
-      <m-switch size="s" v-model="value1"></m-switch>
-      <m-switch size="m" disabled v-model="value1"></m-switch>
-      <m-switch size="l" v-model="value1"></m-switch>
+      <m-switch id="s" size="s" v-model="value1"></m-switch>
+      <m-switch id="m" size="m" disabled v-model="value1"></m-switch>
+      <m-switch id="l" size="l" v-model="value1"></m-switch>
       <br />
       <m-check-box id="1" size="s" :value="value" v-model="checkbox" />
       <m-check-box id="2" size="m" :value="value" v-model="checkbox" />
@@ -123,8 +141,5 @@ export default {
 } */
 .m-cube + .m-cube {
   margin-left: 15px;
-}
-.m-cube {
-  /* margin-top: 30px; */
 }
 </style>
