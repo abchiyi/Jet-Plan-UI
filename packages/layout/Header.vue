@@ -15,7 +15,6 @@ export default {
 </script>
 
 <style>
-/* TODO 子元素不能横轴中心对其 */
 .m-header {
   position: fixed;
   padding: 0 20px;

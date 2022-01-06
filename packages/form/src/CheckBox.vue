@@ -81,7 +81,6 @@ export default {
         return this.modelValue.indexOf(this.value) !== -1;
       }
       // 绑定数值
-      //   XXX --
       return this.modelValue;
     },
     eq() {
@@ -98,42 +97,42 @@ export default {
         this.size,
         this.checked ? "checked" : "",
         // this.sectionSelected && !this.checked ? "section-selected" : "",
-        this.disabled ? "disabled" : "",
+        this.disabled ? "disabled" : ""
       ];
-    },
+    }
   },
   props: {
     modelValue: {
       type: [Array, Boolean],
-      required: true,
+      required: true
     },
     value: {
-      type: [Array, Boolean, String],
+      type: [Array, Boolean, String]
       //   required: true,
     },
     name: String,
     id: {
-      required: true,
+      required: true
     },
     size: {
       type: String,
       default: "em",
-      validator: (v) => {
+      validator: v => {
         return ["s", "m", "l", "em", "rem"].indexOf(v) !== -1;
-      },
+      }
     },
     disabled: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   emits: {
     change: null,
-    "update:modelValue": null,
+    "update:modelValue": null
   },
   data() {
     return {
-      localvalue: this.modelValue,
+      localvalue: this.modelValue
     };
   },
   methods: {
@@ -179,13 +178,13 @@ export default {
     },
     validatIsAArray(v) {
       return typeof v == "object" && typeof v.length == "number";
-    },
+    }
   },
   watch: {
     modelValue(v) {
       this.localvalue = v;
-    },
-  },
+    }
+  }
 };
 </script>
 
