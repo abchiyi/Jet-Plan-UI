@@ -1,21 +1,27 @@
 <template>
-  <m-transition-slide :opacity="false" :position="right ? 'right' : 'left'">
-    <div v-show="expand" class="bar frosted-glass">
+  <m-transition-slide
+    v-focus="onblurClose"
+    :opacity="false"
+    :position="right ? 'right' : 'left'"
+  >
+    <div v-show="show" class="bar frosted-glass">
       <slot />
     </div>
   </m-transition-slide>
 </template>
 
 <script>
-import { h } from "vue";
-import { TransitionFolded } from "../animations";
 export default {
   name: "m-sidebar",
   mounted() {
-    this.syncShow = this.expand;
+    this.show = this.modelValue;
   },
   props: {
-    expand: {
+    modelValue: {
+      type: Boolean,
+      default: false
+    },
+    dock: {
       type: Boolean,
       default: false
     },
@@ -24,22 +30,28 @@ export default {
       default: false
     }
   },
+  model: {
+    prop: "modeValue",
+    event: "update:modelValue"
+  },
   data() {
     return {
       width: undefined,
-      syncShow: false
+      show: false
     };
   },
   watch: {
-    expand() {
-      this.syncShow = this.expand;
+    modelValue() {
+      this.show = this.modelValue;
     },
-    syncShow() {
-      this.$emit("expand", this.syncShow);
+    show() {
+      this.$emit("update:modelValue", this.show);
     }
   },
-  render() {
-    return h(TransitionFolded, {}, {});
+  methods: {
+    onblurClose(v) {
+      if (!v && !this.dock) this.show = false;
+    }
   }
 };
 </script>
