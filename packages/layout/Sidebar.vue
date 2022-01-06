@@ -11,10 +11,14 @@
 </template>
 
 <script>
+import { Focus } from "../tool";
 export default {
   name: "m-sidebar",
   mounted() {
     this.show = this.modelValue;
+  },
+  directives: {
+    focus: Focus
   },
   props: {
     modelValue: {
