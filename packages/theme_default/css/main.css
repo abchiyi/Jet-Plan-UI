@@ -119,3 +119,11 @@ h6 {
     font-weight: bold;
     margin: 1rem 0;
 }
+
+/* 隐藏选中框 */
+@supports (-webkit-tap-highlight-color: #ffffff00) {
+
+    label {
+        -webkit-tap-highlight-color: #ffffff00;
+    }
+}
