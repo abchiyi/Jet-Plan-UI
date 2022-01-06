@@ -104,11 +104,11 @@ export default {
       };
 
       const mainContentWidth = {
-        lg: this.modelValue ? 24 - sidebarDispaly.lg : 24,
         xl: this.modelValue ? 24 - sidebarDispaly.xl : 24,
+        lg: this.modelValue ? 24 - sidebarDispaly.lg : 24,
         md: this.modelValue ? 24 - sidebarDispaly.md : 24,
         // offset
-        offsetXl: this.modelValue ? sidebarDispaly.lx : 0,
+        offsetXl: this.modelValue ? sidebarDispaly.xl : 0,
         offsetLg: this.modelValue ? sidebarDispaly.lg : 0,
         offsetMd: this.modelValue ? sidebarDispaly.md : 0
       };
@@ -128,7 +128,7 @@ export default {
 }
 #content-body {
   overflow: hidden;
-  max-width: 768px;
+  max-width: 960px;
   padding: 0 20px;
   width: 100%;
 }

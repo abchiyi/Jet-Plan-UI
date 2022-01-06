@@ -138,7 +138,7 @@ export default {
 }
 
 /* sm */
-@media (min-width: 576px) {
+@media (max-width: 768px) {
   .m-col-sm {
     width: v-bind("style.sm");
     display: v-bind("style.hiddenOnSm");
@@ -154,7 +154,7 @@ export default {
 }
 
 /* md */
-@media (min-width: 768px) {
+@media (max-width: 992px) {
   .m-col-md {
     width: v-bind("style.md");
     display: v-bind("style.hiddenOnMd");
@@ -170,7 +170,7 @@ export default {
 }
 
 /* lg */
-@media (min-width: 992px) {
+@media (max-width: 1200px) {
   .m-col-lg {
     width: v-bind("style.lg");
     display: v-bind("style.hiddenOnLg");
