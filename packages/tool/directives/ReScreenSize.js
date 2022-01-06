@@ -1,4 +1,3 @@
-// TODO 更改名称为主动控制
 import ta from "../src/TimedActionLimit";
 
 function ReSize() {
