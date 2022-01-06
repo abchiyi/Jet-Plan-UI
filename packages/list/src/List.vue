@@ -5,8 +5,8 @@ export default {
   props: {
     start: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
   methods: {
     renderDefault() {
@@ -14,24 +14,24 @@ export default {
       if (solt) {
         return solt();
       }
-    },
+    }
   },
   render() {
     return h(
       this.start ? "ol" : "ul",
       { class: ["m-list"], start: this.start },
       {
-        default: () => [this.renderDefault()],
+        default: () => [this.renderDefault()]
       }
     );
-  },
+  }
 };
 </script>
 
 <style>
-/* TODO 有序列表配置等宽字体 */
 .m-list {
   margin: unset;
   padding: unset;
+  font-family: SarasaMono;
 }
 </style>
