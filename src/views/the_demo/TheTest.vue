@@ -1,6 +1,6 @@
 <template>
   <div id="the-test-page">
-    <m-control-bar for-id="aa">
+    <m-control-bar reverse for-id="aa">
       <template v-slot:text>text control</template>
       <template v-slot:control>
         <m-switch id="aa" size="s" v-model="value1"></m-switch>

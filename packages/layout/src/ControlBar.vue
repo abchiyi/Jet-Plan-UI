@@ -1,9 +1,16 @@
 <template>
-  <m-row class="m-control-bar" space-mode="between">
-    <m-row class="control-label" :for="forId" tag="label" Y="center">
+  <m-row :reverse="reverse" class="m-control-bar" space-mode="between">
+    <m-row
+      class="control-label"
+      :for="forId"
+      tag="label"
+      Y="center"
+      :X="reverse ? 'end' : 'start'"
+      style="text-align:start"
+    >
       <slot name="text"><p>Display text</p> </slot>
     </m-row>
-    <m-row class="control-comp" Y="center">
+    <m-row :reverse="reverse" class="control-comp" Y="center">
       <slot name="control"><p>Control</p></slot>
     </m-row>
   </m-row>
@@ -17,7 +24,8 @@ export default {
     "m-row": Row
   },
   props: {
-    forId: { type: String, required: true }
+    forId: { type: String, required: true },
+    reverse: { type: Boolean, default: false }
   }
 };
 </script>
@@ -33,7 +41,6 @@ export default {
 .m-control-bar > * {
   height: 1.8em;
 }
-
 .control-comp,
 .control-label {
   margin: 8px 0;
@@ -46,5 +53,15 @@ export default {
 
 .control-comp {
   margin-right: 10px;
+}
+
+.reverse .control-comp {
+  margin-left: 10px;
+  margin-right: unset;
+}
+
+.reverse .control-label {
+  margin-right: 10px;
+  margin-left: unset;
 }
 </style>
