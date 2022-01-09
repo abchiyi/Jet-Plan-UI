@@ -198,6 +198,7 @@
 
 <script>
 import { theme, themeDefault } from "@";
+import { redColorModeCookie, setColorModeCookie } from "../../common";
 export default {
   name: "the-demo-style",
   data() {
@@ -206,11 +207,18 @@ export default {
       autoDarkMode: false
     };
   },
+  created() {
+    let cookies = redColorModeCookie();
+    this.autoDarkMode = cookies[0];
+    this.darkMode = cookies[1];
+  },
   watch: {
     darkMode(b) {
+      setColorModeCookie(this.autoDarkMode, this.darkMode);
       theme.use(themeDefault, null, b);
     },
     autoDarkMode(b) {
+      setColorModeCookie(this.autoDarkMode, this.darkMode);
       theme.use(themeDefault, b, this.darkMode);
     }
   }

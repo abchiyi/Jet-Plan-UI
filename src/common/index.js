@@ -23,6 +23,22 @@ function getCookie(name) {
         return null;
     }
 }
+
+function redColorModeCookie() {
+    /* 从Cookie 加载颜色主题设置,如为'null'则设置为 'true'即'Light Mode' */
+    let colorMode = Boolean(getCookie("colorMode"));
+    let autoColor = Boolean(getCookie("autoColor"));
+    if (colorMode === null) {
+        this.setColorModeCookie(true);
+        return true;
+    }
+    return [autoColor, colorMode];
+}
+
+function setColorModeCookie(color, auto) {
+    setCookie("colorMode", color ? "1" : "");
+    setCookie("autoColor", auto ? "1" : "");
+}
 const components = {
     RouterLinkA,
     ButtonItem,
@@ -33,6 +49,8 @@ const components = {
     Cube
 }
 export {
+    redColorModeCookie,
+    setColorModeCookie,
     setCookie,
     getCookie,
     // 组件

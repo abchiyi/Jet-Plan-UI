@@ -8,8 +8,17 @@ import App from './App.vue'
 import common from './common'
 import ui from '@'
 import {
-    tool
+    tool,
+    theme,
+    themeDefault
 } from '@'
+
+import {
+    redColorModeCookie,
+} from './common'
+
+
+theme.use(themeDefault, ...redColorModeCookie())
 
 createApp(App)
     .use(common)
