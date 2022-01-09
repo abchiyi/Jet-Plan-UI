@@ -28,9 +28,9 @@
       <m-switch id="m" size="m" disabled v-model="value1"></m-switch>
       <m-switch id="l" size="l" v-model="value1"></m-switch>
       <br />
-      <m-check-box id="1" size="s" :value="value" v-model="checkbox" />
-      <m-check-box id="2" size="m" :value="value" v-model="checkbox" />
-      <m-check-box id="3" size="l" :value="value" v-model="checkbox" />
+      <m-check-box id="1" size="s" :value="value" v-model="value" />
+      <m-check-box id="2" size="m" :value="value" v-model="value" />
+      <m-check-box id="3" size="l" :value="value" v-model="value" />
       <m-check-box id="4" size="l" v-model="value1" />
       <br />
       <m-radio id="r1" value="1" size="s" v-model="text"></m-radio>
