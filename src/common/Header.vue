@@ -19,8 +19,8 @@ import { getCookie, setCookie } from "../common";
 import { theme, themeDefault } from "../../packages";
 function setColorTheme(b = Boolean()) {
   b
-    ? theme.use(themeDefault.colors.Light)
-    : theme.use(themeDefault.colors.Dark);
+    ? theme.use(themeDefault, false, false)
+    : theme.use(themeDefault, false, true);
 }
 export default {
   name: "demo-header",

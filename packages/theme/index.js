@@ -7,10 +7,16 @@ function getThemeStyleEl(elId) {
     return styleEl
 }
 
+function setTheme(el, colotString) {
+    if (el.innerHTML != colotString) {
+        el.innerHTML = colotString
+    }
+
+}
 
 export default {
     use(themes, auto, darkMode) {
-        const themeEl = getThemeStyleEl("mousse-ui-theme-color");
+        const EL = getThemeStyleEl("mousse-ui-theme-color");
 
         function themToString(colors) {
             let themeStringArry = Object.keys(colors).map(key => {
@@ -38,12 +44,10 @@ export default {
         }
 
         //兼容序列与单个对象
-        if (themes.length != undefined) {
-            themeEl.innerHTML = themes.map(theme => {
+        themes.length != undefined ?
+            setTheme(EL, themes.map(theme => {
                 return themeSwitch(theme)
-            }).join('\n')
-        } else {
-            themeEl.innerHTML = themeSwitch(themes)
-        }
+            }).join('\n')) :
+            setTheme(EL, themeSwitch(themes))
     }
 }
