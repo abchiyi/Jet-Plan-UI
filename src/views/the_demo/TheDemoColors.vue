@@ -176,11 +176,44 @@
       </div>
     </m-col>
   </m-row>
+  <!-- Switch theme -->
+  <m-control-bar for-id="dark-mode">
+    <template v-slot:text>
+      开启深色模式
+    </template>
+    <template v-slot:control>
+      <m-switch id="dark-mode" :disabled="autoDarkMode" v-model="darkMode" />
+    </template>
+  </m-control-bar>
+  <!-- Auto dark mode -->
+  <m-control-bar for-id="auto-dark-mode">
+    <template v-slot:text>
+      跟随系统
+    </template>
+    <template v-slot:control>
+      <m-switch id="auto-dark-mode" v-model="autoDarkMode" />
+    </template>
+  </m-control-bar>
 </template>
 
 <script>
+import { theme, themeDefault } from "@";
 export default {
-  name: "the-demo-style"
+  name: "the-demo-style",
+  data() {
+    return {
+      darkMode: false,
+      autoDarkMode: false
+    };
+  },
+  watch: {
+    darkMode(b) {
+      theme.use(themeDefault, null, b);
+    },
+    autoDarkMode(b) {
+      theme.use(themeDefault, b, this.darkMode);
+    }
+  }
 };
 </script>
 
