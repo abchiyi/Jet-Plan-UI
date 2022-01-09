@@ -73,7 +73,6 @@ export default {
     },
     unmounted(el) {
         el.style.boxShadow = el._oldStyle.boxShadow
-        console.log('unShadow');
     },
 }
 

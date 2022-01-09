@@ -1,9 +1,14 @@
 import './fonts'
 import './css'
 
-import colors from './colors'
-
+import light from './lightMode'
+import dark from './darkMode'
 
 export default {
-    colors
+    light: {
+        ...light
+    },
+    dark: {
+        ...dark
+    },
 }

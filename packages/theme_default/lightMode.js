@@ -28,6 +28,7 @@ const OTHERS = {
 }
 
 export default {
+    name: "Mousse-UI-Light",
     ...BACKGROUND,
     ...TEXTCOLOR,
     ...BASECOLOR,

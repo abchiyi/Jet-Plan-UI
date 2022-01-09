@@ -9,14 +9,41 @@ function getThemeStyleEl(elId) {
 
 
 export default {
-    use(theme) {
-        const themeEl = getThemeStyleEl('test-color')
-        const innerHTML = [];
-        for (const key in theme) {
-            if (Object.hasOwnProperty.call(theme, key)) {
-                innerHTML.push(`--${key}:${theme[key]}`)
+    use(themes, auto, darkMode) {
+        const themeEl = getThemeStyleEl("mousse-ui-theme-color");
+
+        function themToString(colors) {
+            let themeStringArry = Object.keys(colors).map(key => {
+                if (Object.hasOwnProperty.call(colors, key)) {
+                    return `--${key}:${colors[key]}`;
+                }
+            });
+            return `:root{${themeStringArry.join(";")}}`;
+        }
+
+        function themeSwitch(theme) {
+            if (!auto) {
+                // 常规切换主题
+                let colors = darkMode ? theme.dark : theme.light
+                return themToString(colors);
+            } else {
+                // 自动黑暗主题
+                if (theme.dark) {
+                    const light = themToString(theme.light)
+                    const dark = themToString(theme.dark)
+                    return `
+                    ${light}\n@media (prefers-color-scheme: dark) {${dark}}`
+                }
             }
         }
-        themeEl.innerHTML = `:root{${innerHTML.join(';')}}`
+
+        //兼容序列与单个对象
+        if (themes.length != undefined) {
+            themeEl.innerHTML = themes.map(theme => {
+                return themeSwitch(theme)
+            }).join('\n')
+        } else {
+            themeEl.innerHTML = themeSwitch(themes)
+        }
     }
 }
