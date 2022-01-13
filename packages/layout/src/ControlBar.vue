@@ -34,16 +34,14 @@ export default {
 .m-control-bar {
   border-radius: var(--m-radius);
   background: var(--foreground);
+  font-size: 1rem;
   display: block;
   margin: 1rem 0;
 }
 
-.m-control-bar > * {
-  height: 1.8em;
-}
 .control-comp,
 .control-label {
-  margin: 8px 0;
+  height: 2.7rem;
 }
 
 .control-label {

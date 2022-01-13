@@ -209,8 +209,8 @@ export default {
   },
   created() {
     let cookies = redColorModeCookie();
-    this.autoDarkMode = cookies[0];
     this.darkMode = cookies[1];
+    this.autoDarkMode = cookies[0];
   },
   watch: {
     darkMode(b) {
