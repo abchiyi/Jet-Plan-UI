@@ -1,19 +1,17 @@
 <template>
-  <div>
-    <h2>动画组件</h2>
-    <p>
-      使用动画组件可以快速使自定义组件拥有与设计风格统一的风格。
-    </p>
-    <p>
-      使用前请参考官方
-      <!-- TODO 指向 Vue3 官方文档 -->
-      <m-button text tag="a">Transition 文档</m-button>。
-    </p>
-    <br />
-    <demo-animation-fade></demo-animation-fade>
-    <demo-animation-slide></demo-animation-slide>
-    <demo-animation-folded></demo-animation-folded>
-  </div>
+  <h2>动画组件</h2>
+  <p>
+    使用动画组件可以快速使自定义组件拥有与设计风格统一的风格。
+  </p>
+  <p>
+    使用前请参考官方
+    <!-- TODO 指向 Vue3 官方文档 -->
+    <m-button text tag="a">Transition 文档</m-button>。
+  </p>
+  <br />
+  <demo-animation-fade></demo-animation-fade>
+  <demo-animation-slide></demo-animation-slide>
+  <demo-animation-folded></demo-animation-folded>
 </template>
 <script>
 import DemoAnimationFade from "./DemoAnimationFade.vue";
