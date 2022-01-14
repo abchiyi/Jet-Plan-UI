@@ -1,6 +1,4 @@
 import RouterLinkA from './RouterLinkA.vue'
-import ButtonItem from './ButtonItem.vue'
-import SwitchItem from './SwitchItem.vue'
 import DemoPage from './DemoPage.vue'
 import DemoBox from './DemoBox.vue'
 import Header from './Header.vue'
@@ -41,8 +39,6 @@ function setColorModeCookie(color, auto) {
 }
 const components = {
     RouterLinkA,
-    ButtonItem,
-    SwitchItem,
     DemoPage,
     DemoBox,
     Header,
@@ -55,8 +51,6 @@ export {
     getCookie,
     // 组件
     RouterLinkA,
-    ButtonItem,
-    SwitchItem,
     DemoPage,
     DemoBox,
     Header,
