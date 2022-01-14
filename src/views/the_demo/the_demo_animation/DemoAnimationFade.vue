@@ -1,33 +1,46 @@
 <template>
-  <div class="">
-    <h2>淡出淡入</h2>
-    <m-card style="height: 200px" class="demo-box">
-      <m-switch-item v-model="v1">
-        {{ v1 ? "淡出" : "淡入" }}
-      </m-switch-item>
-      <hr />
-      <m-row X="center">
-        <m-transition-fade class=".transition-item">
-          <m-cube v-show="v1">
-            <p>Fade</p>
-          </m-cube>
-        </m-transition-fade>
-      </m-row>
-    </m-card>
-  </div>
+  <h2>淡出淡入</h2>
+  <m-control-bar for-id="re-fade-value">
+    <template v-slot:text>
+      {{ value ? "淡出" : "淡入" }}
+    </template>
+    <template v-slot:control>
+      <m-button
+        id="re-fade-value"
+        @click="
+          () => {
+            value = !value;
+          }
+        "
+        >ClickMe</m-button
+      >
+    </template>
+  </m-control-bar>
+  <demo-box id="fade">
+    <m-row class="animation-box" X="center">
+      <m-transition-fade>
+        <m-cube v-show="value">
+          <p>Fade</p>
+        </m-cube>
+      </m-transition-fade>
+    </m-row>
+  </demo-box>
 </template>
 
 <script>
 export default {
-  name: "TestPage",
-  components: {},
+  name: "animation-fade",
   data() {
     return {
-      v1: true,
+      value: true,
+      code: `#TODO当前页面示例代码`
     };
-  },
+  }
 };
 </script>
 
 <style>
+#fade .animation-box {
+  height: 100px;
+}
 </style>

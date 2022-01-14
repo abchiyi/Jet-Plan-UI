@@ -1,36 +1,42 @@
 <template>
-  <div>
-    <h2>折叠过渡</h2>
-    <m-card class="demo-box">
-      <m-switch-item v-model="v1">
-        {{ v1 ? "展开" : "收起" }}
-      </m-switch-item>
-      <hr />
-      <m-row X="center">
-        <m-transition-folded>
-          <div v-show="v1">
-            <m-cube
-              :style="{
-                height: this.v2 ? '150px' : '100px',
-              }"
-              >Folded</m-cube
-            >
-          </div>
-        </m-transition-folded>
-      </m-row>
-    </m-card>
-  </div>
+  <h2>折叠展开</h2>
+  <m-control-bar for-id="re-folded-value">
+    <template v-slot:text>
+      {{ value ? "折叠" : "展开" }}
+    </template>
+    <template v-slot:control>
+      <m-button
+        id="re-folded-value"
+        @click="
+          () => {
+            value = !value;
+          }
+        "
+        >ClickMe</m-button
+      >
+    </template>
+  </m-control-bar>
+  <demo-box id="folded">
+    <m-row class="animation-box" X="center">
+      <m-transition-folded>
+        <div v-show="value">
+          <m-cube>
+            <p>Folded</p>
+          </m-cube>
+        </div>
+      </m-transition-folded>
+    </m-row>
+  </demo-box>
 </template>
 
 <script>
 export default {
-  name: "TestPage",
-  components: {},
+  name: "animation-folded",
   data() {
     return {
-      v1: true,
-      v2: false,
+      value: true,
+      code: `#TODO当前页面示例代码`
     };
-  },
+  }
 };
 </script>

@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: "m-demo-box",
+  name: "demo-box",
   props: {
     expand: {
       type: Boolean,
