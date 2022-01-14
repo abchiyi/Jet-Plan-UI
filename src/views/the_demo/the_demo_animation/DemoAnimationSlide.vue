@@ -59,8 +59,8 @@
         </m-transition-slide>
       </m-row>
     </demo-box>
-    <p>Transition-Slide 组件接口</p>
     <p>禁用透明效果适用于元素在屏幕或其他元素边缘进出可视范围使用</p>
+    <p>Transition-Slide 组件接口:</p>
     <div style="overflow-x:scroll">
       <table style="width:768px">
         <tr space-mode="between">
