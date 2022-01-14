@@ -5,7 +5,7 @@
   <p>通过使用使用组件 'm-col' 的 col 属性来组合网格</p>
   <p>这个给示例中使用了组件 'm-row' 和 'm-col'</p>
   <!-- demo 基础栅格 -->
-  <m-demo-box title="基础栅格" :code="code1" :expand="v1">
+  <demo-box title="基础栅格" :code="code1" :expand="v1">
     <slot name="demo">
       <m-row class="girde-item" v-for="n in 4" :key="n">
         <m-col :col="n * 4">
@@ -16,10 +16,10 @@
         </m-col>
       </m-row>
     </slot>
-  </m-demo-box>
+  </demo-box>
   <h2>使用 offset 定位</h2>
   <!-- demo offset 定位 -->
-  <m-demo-box title="flex 定位" :code="code2" :expand="v1">
+  <demo-box title="flex 定位" :code="code2" :expand="v1">
     <slot name="demo">
       <m-row class="girde-item" v-for="n in 4" :key="n">
         <m-col :col="4" :offset="n * 2">
@@ -27,9 +27,9 @@
         </m-col>
       </m-row>
     </slot>
-  </m-demo-box>
+  </demo-box>
   <!-- demo m-row 定位 -->
-  <m-demo-box title="flex 定位" :code="code3" :expand="v1">
+  <demo-box title="flex 定位" :code="code3" :expand="v1">
     <m-row space-mode="between">
       <label for="y-top">Y 轴顶部对齐</label>
       <m-radio id="y-top" value="top" v-model="y" />
@@ -61,7 +61,7 @@
         <m-col :col="4"><m-cube class="girde-cube" style="height:72px"/></m-col>
       </m-row>
     </slot>
-  </m-demo-box>
+  </demo-box>
   <!-- --------------- Row --------------- -->
   <h2>组件 'm-row' props</h2>
   <div style="overflow-x:scroll">
