@@ -5,7 +5,9 @@
   <p>使用前请参考官方<m-button text tag="a">Transition 文档</m-button>。</p>
   <br />
   <demo-animation-fade></demo-animation-fade>
+  <br />
   <demo-animation-slide></demo-animation-slide>
+  <br />
   <demo-animation-folded></demo-animation-folded>
 </template>
 <script>

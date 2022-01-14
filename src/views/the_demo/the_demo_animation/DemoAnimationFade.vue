@@ -16,7 +16,7 @@
       >
     </template>
   </m-control-bar>
-  <demo-box :code="code" id="fade">
+  <demo-box title="淡出淡入" :code="code" id="fade">
     <m-row class="animation-box" X="center">
       <m-transition-fade>
         <m-cube v-show="value">

@@ -16,7 +16,7 @@
       >
     </template>
   </m-control-bar>
-  <demo-box :code="code" id="folded">
+  <demo-box title="折叠展开" :code="code" id="folded">
     <m-row class="animation-box" X="center">
       <m-transition-folded>
         <div v-show="value">
