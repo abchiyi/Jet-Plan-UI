@@ -16,7 +16,7 @@
       >
     </template>
   </m-control-bar>
-  <demo-box id="fade">
+  <demo-box :code="code" id="fade">
     <m-row class="animation-box" X="center">
       <m-transition-fade>
         <m-cube v-show="value">
@@ -33,7 +33,11 @@ export default {
   data() {
     return {
       value: true,
-      code: `#TODO当前页面示例代码`
+      code: `<m-transition-fade>
+    <m-cube v-show="value">
+        <p>Fade</p>
+    </m-cube>
+</m-transition-fade>`
     };
   }
 };

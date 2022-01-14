@@ -16,7 +16,7 @@
       >
     </template>
   </m-control-bar>
-  <demo-box id="folded">
+  <demo-box :code="code" id="folded">
     <m-row class="animation-box" X="center">
       <m-transition-folded>
         <div v-show="value">
@@ -35,7 +35,13 @@ export default {
   data() {
     return {
       value: true,
-      code: `#TODO当前页面示例代码`
+      code: `<m-transition-folded>
+    <div v-show="value">
+        <m-cube>
+        <p>Folded</p>
+        </m-cube>
+    </div>
+</m-transition-folded>`
     };
   }
 };
