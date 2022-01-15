@@ -58,7 +58,11 @@ span {
 .ripple-enter-active,
 .ripple-leave-active {
   transition-property: opacity height width;
-  transition-timing-function: ease-out;
+  transition-timing-function: var(--ease-out);
+}
+
+.ripple-enter-active {
+  transition-timing-function: cubic-bezier(0.7, 0.6, 0.4, 1);
 }
 
 .ripple-enter-from {
