@@ -8,27 +8,27 @@ export default {
     return {
       timeOutObj: undefined,
       masks: [],
-      key: 0,
+      key: 0
     };
   },
   components: {
-    ripple,
+    ripple
   },
   props: {
     // TODO 或者透明度曲线
     opacity: {
       type: String,
-      default: "0.5",
+      default: "0.5"
     },
     color: {
       // TODO 验证色彩字符串是否合法
       type: String,
-      default: "#b3b3b3",
+      default: "#b3b3b3"
     },
     tag: {
       type: String,
-      default: "div",
-    },
+      default: "div"
+    }
   },
   methods: {
     createRippleAttrs(event) {
@@ -37,9 +37,9 @@ export default {
           opacity: this.opacity,
           el: this.$refs.self,
           color: this.color,
-          event: event,
+          event: event
         },
-        key: this.key++,
+        key: this.key++
       };
       return ripple;
     },
@@ -72,15 +72,15 @@ export default {
         { name: "ripple" },
         {
           default: () =>
-            this.masks.map((attrs) => {
+            this.masks.map(attrs => {
               return h(ripple, {
                 data: attrs.data,
-                key: key++,
+                key: key++
               });
-            }),
+            })
         }
       );
-    },
+    }
   },
   render() {
     return h(
@@ -94,19 +94,20 @@ export default {
         ontouchstart: this.startTouche,
         ontouchcancel: this.end,
         ontouchend: this.end,
-        ref: "self",
+        ref: "self"
       },
       {
-        default: () => [this.$slots.default(), this.renderRipples()],
+        default: () => [this.$slots.default(), this.renderRipples()]
       }
     );
-  },
+  }
 };
 </script>
 
 <style >
 .click-feedback > * {
-  transition-duration: 0.8s;
+  /* TODO 定制 bz 曲线 */
+  transition: 1.2s var(--ease-out);
 }
 .click-feedback {
   position: relative;

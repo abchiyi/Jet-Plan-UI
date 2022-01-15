@@ -1,12 +1,13 @@
 <script>
+import { getOffset } from "../../tool/src/dom";
 import { h } from "vue";
 export default {
   name: "ripple",
   props: {
     data: {
       type: Object,
-      required: true,
-    },
+      required: true
+    }
   },
   methods: {
     calcDiameter() {
@@ -16,11 +17,12 @@ export default {
     },
     getPosition(data) {
       // 获取父元素内点击定位
+      const offset = getOffset(data.el);
       return {
-        left: data.event.clientX - data.el.offsetLeft + "px",
-        top: data.event.clientY - data.el.offsetTop + "px",
+        left: data.event.pageX - offset.x + "px",
+        top: data.event.pageY - offset.y + "px"
       };
-    },
+    }
   },
   computed: {
     styles() {
@@ -28,15 +30,16 @@ export default {
         "--diameter": this.calcDiameter(),
         "--opacity": this.data.opacity,
         ...this.getPosition(this.data),
-        backgroundColor: this.data.color,
+        backgroundColor: this.data.color
       };
-    },
+    }
   },
   render() {
     return h("span", {
-      style: this.styles,
+      class: "m-raipple",
+      style: this.styles
     });
-  },
+  }
 };
 </script>
 <style scoped>
@@ -48,8 +51,6 @@ span {
   pointer-events: none;
   border-radius: 50%;
   position: absolute;
-  -webkit-user-select: none;
-  -ms-user-select: none;
   user-select: none;
   display: block;
 }
@@ -61,8 +62,10 @@ span {
 }
 
 .ripple-enter-from {
-  height: 0;
-  width: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+.ripple-enter-to {
+  transform: translate(-50%, -50%) scale(1);
 }
 
 .ripple-leave-to {
