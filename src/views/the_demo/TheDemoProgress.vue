@@ -2,8 +2,8 @@
   <div>
     <h2>进度条</h2>
     <m-card class="demo-box">
-      <m-switch-item v-model="failed">失败</m-switch-item>
-      <m-switch-item v-model="success">完成</m-switch-item>
+      <!-- <m-switch-item v-model="failed">失败</m-switch-item> -->
+      <!-- <m-switch-item v-model="success">完成</m-switch-item> -->
       <input type="number" v-model="number" />
       <hr />
       <mo-progress :failed="failed" :value="number"></mo-progress>
@@ -19,7 +19,7 @@ export default {
       code: undefined,
       success: false,
       failed: false,
-      number: 50,
+      number: 50
     };
   },
   watch: {
@@ -37,7 +37,7 @@ export default {
       if (this.number > 100) {
         clearInterval(this.code);
       }
-    },
-  },
+    }
+  }
 };
 </script>
