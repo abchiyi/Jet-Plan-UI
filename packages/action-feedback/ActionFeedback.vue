@@ -104,7 +104,6 @@ export default {
       }
     },
     endClick() {
-      if (this.data_touch) this.leave();
       //   this.data_active = false;
       this.removeRipple();
     },
