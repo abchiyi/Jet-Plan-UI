@@ -10,23 +10,23 @@ export default {
       if (solt) {
         return solt();
       }
-    },
+    }
   },
   render() {
     return h(
       Button,
       {
         class: ["m-list-item"],
-        hoverAnimation: true,
+        hover: true,
         text: true,
         row: true,
-        tag: "li",
+        tag: "li"
       },
       {
-        default: () => [this.renderDefault()],
+        default: () => [this.renderDefault()]
       }
     );
-  },
+  }
 };
 </script>
 
