@@ -21,6 +21,7 @@ export default {
   },
   data() {
     return {
+      data_hover: false,
       data_touch: false,
       masks: [],
       key: 0
@@ -28,7 +29,10 @@ export default {
   },
   computed: {
     classes() {
-      return ["m-action-feedback", this.hover ? "hover" : ""];
+      return [
+        "m-action-feedback",
+        this.hover && this.data_hover ? "hover" : ""
+      ];
     }
   },
   methods: {
@@ -81,8 +85,11 @@ export default {
       return [this.renderDefault(), this.renderRipples()];
     },
     // Hover
-    enter() {},
+    enter() {
+      if (this.hover) this.data_hover = true;
+    },
     leave() {
+      if (this.hover) this.data_hover = false;
       this.removeRipple();
     },
     // Click

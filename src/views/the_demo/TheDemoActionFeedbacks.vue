@@ -20,9 +20,17 @@
       <m-switch id="re-hover" v-model="hover" />
     </template>
   </m-control-bar>
+  <m-control-bar for-id="re-ripple">
+    <template v-slot:text>
+      启用 Ripple 效果
+    </template>
+    <template v-slot:control>
+      <m-switch :disabled="active" id="re-ripple" v-model="ripple" />
+    </template>
+  </m-control-bar>
   <demo-box title="点击反馈" :code="code" id="fade">
     <m-row class="animation-box" X="center">
-      <m-action-feedback :active="active" :hover="hover" ripple>
+      <m-action-feedback :active="active" :hover="hover" :ripple="ripple">
         <m-cube>ClickMe</m-cube>
       </m-action-feedback>
     </m-row>
@@ -36,8 +44,14 @@ export default {
     return {
       active: false,
       hover: false,
+      ripple: false,
       code: ``
     };
+  },
+  watch: {
+    active(v) {
+      if (v) this.ripple = false;
+    }
   }
 };
 </script>
