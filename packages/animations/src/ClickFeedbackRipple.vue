@@ -62,7 +62,7 @@ span {
 }
 
 .ripple-enter-active {
-  transition-timing-function: cubic-bezier(0.7, 0.6, 0.4, 1);
+  transition-timing-function: cubic-bezier(0.6, 0.6, 0.4, 1);
 }
 
 .ripple-enter-from {
