@@ -21,6 +21,7 @@ export default {
   },
   data() {
     return {
+      data_active: this.active,
       data_hover: false,
       data_touch: false,
       masks: [],
@@ -44,7 +45,7 @@ export default {
           el: this.$refs.self,
           color: this.color,
           event: event,
-          ripple: !this.active
+          ripple: !this.data_active
         },
         key: this.key++
       };
@@ -82,11 +83,20 @@ export default {
       );
     },
     render() {
-      return [this.renderDefault(), this.renderRipples(), `${this.data_touch}`];
+      return [
+        this.renderDefault(),
+        this.renderRipples(),
+        `ac:${this.data_active};rr:${this.ripple};hv:${this.data_hover}`
+      ];
     },
     // Hover
     enter() {
-      if (this.hover) this.data_hover = true;
+      if (this.hover && !this.data_touch) this.data_hover = true;
+      // 移动端触摸事件响应 hover 非常缓慢，主动切换 active 反馈
+      if (this.hover && this.data_touch) {
+        this.data_hover = false;
+        this.data_active = true;
+      }
     },
     leave() {
       if (this.hover) this.data_hover = false;
@@ -96,7 +106,7 @@ export default {
     startClick(event) {
       //   this.data_active = true;
       // Ripple
-      if (this.ripple || this.active) {
+      if (this.ripple || this.data_active) {
         if (event.button === 0 && !this.ignoreClick) {
           this.masks.push(this.createRippleAttrs(event));
         }
@@ -113,7 +123,7 @@ export default {
       this.enter();
 
       // Ripple
-      if ((event.touches && this.ripple) || this.active) {
+      if ((event.touches && this.ripple) || this.data_active) {
         this.masks.push(this.createRippleAttrs(event.touches[0]));
         // 触发"touche"事件时会在之后触发"click"事件
         // 此变量改变下一次"click"回调函数的运行结果
@@ -125,7 +135,11 @@ export default {
       this.removeRipple();
     }
   },
-  watch: {},
+  watch: {
+    active(v) {
+      this.data_active = v;
+    }
+  },
   render() {
     return h(
       this.tag,
