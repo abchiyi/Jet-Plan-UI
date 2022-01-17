@@ -37,7 +37,6 @@ export default {
 .m-card {
   box-shadow: var(--shadow);
   background: var(--card);
-  overflow: hidden;
   margin: 10px 0;
 }
 </style>
