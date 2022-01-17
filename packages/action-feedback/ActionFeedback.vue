@@ -42,7 +42,8 @@ export default {
           opacity: this.opacity,
           el: this.$refs.self,
           color: this.color,
-          event: event
+          event: event,
+          ripple: !this.active
         },
         key: this.key++
       };
@@ -70,7 +71,7 @@ export default {
       let key = 0;
       return h(
         TransitionGroup,
-        { name: "ripple" },
+        { name: "mask" },
         {
           default: () =>
             this.masks.map(attrs => {
@@ -158,16 +159,6 @@ export default {
 </script>
 <style >
 .m-action-feedback {
-  position: relative;
-  overflow: hidden;
-}
-
-.m-action-feedback > * {
-  /* TODO 定制 bz 曲线 */
-  transition: 1.2s var(--ease-out);
-}
-.m-action-feedback,
-.click-feedback {
   position: relative;
   overflow: hidden;
 }

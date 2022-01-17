@@ -2,7 +2,7 @@
 import { getOffset } from "../tool/src/dom";
 import { h } from "vue";
 export default {
-  name: "ripple",
+  name: "m-mask",
   props: {
     data: {
       type: Object,
@@ -36,7 +36,7 @@ export default {
   },
   render() {
     return h("span", {
-      class: "m-raipple",
+      class: ["m-mask", this.data.ripple ? "ripple" : ""],
       style: this.styles
     });
   }
@@ -45,6 +45,7 @@ export default {
 <style scoped>
 span {
   transform: translate(-50%, -50%);
+  transition: 1.2s var(--ease-out);
   opacity: var(--opacity);
   height: var(--diameter);
   width: var(--diameter);
@@ -55,24 +56,21 @@ span {
   display: block;
 }
 
-.ripple-enter-active,
-.ripple-leave-active {
-  transition-property: opacity height width;
-  transition-timing-function: var(--ease-out);
-}
-
-.ripple-enter-active {
+.mask-enter-active {
   transition-timing-function: cubic-bezier(0.6, 0.6, 0.4, 1);
 }
 
-.ripple-enter-from {
+.mask-enter-from {
+  transform: translate3d(0, 0, 0) translate(-50%, -50%) scale(1);
+}
+.mask-enter-from.ripple {
   transform: translate3d(0, 0, 0) translate(-50%, -50%) scale(0);
 }
-.ripple-enter-to {
+.mask-enter-to {
   transform: translate3d(0, 0, 0) translate(-50%, -50%) scale(1);
 }
 
-.ripple-leave-to {
+.mask-leave-to {
   opacity: 0;
 }
 </style>

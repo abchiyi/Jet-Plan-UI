@@ -4,15 +4,21 @@
     使用动作反馈组件以获得和 UI 风格统一的动作反馈样式。例如‘点击’，‘悬停’等动作
   </p>
   <p>'m-action-feedback'组件：</p>
-  <demo-box v-show="value" title="点击波纹反馈" :code="code" id="fade">
+  <m-control-bar for-id="re-active">
+    <template v-slot:text>
+      启用 Active 效果
+    </template>
+    <template v-slot:control>
+      <m-switch id="re-active" v-model="active" />
+    </template>
+  </m-control-bar>
+  <demo-box title="点击反馈" :code="code" id="fade">
     <m-row class="animation-box" X="center">
-      <m-click-feedback>
-        <m-cube v-show="value"> </m-cube>
-      </m-click-feedback>
+      <m-action-feedback :active="active" ripple>
+        <m-cube>ClickMe</m-cube>
+      </m-action-feedback>
     </m-row>
   </demo-box>
-
-  <m-action-feedback class="box"> </m-action-feedback>
 </template>
 
 <script>
@@ -20,7 +26,7 @@ export default {
   name: "the-demo-action-feedbacks",
   data() {
     return {
-      value: true,
+      active: false,
       code: ``
     };
   }
