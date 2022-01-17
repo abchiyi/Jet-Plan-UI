@@ -31,7 +31,7 @@ export default {
   },
   computed: {
     classes() {
-      return ["m-action-feedback", this.active ? "active" : ""];
+      return ["m-action-feedback"];
     }
   },
   methods: {

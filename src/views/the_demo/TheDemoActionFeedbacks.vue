@@ -12,9 +12,17 @@
       <m-switch id="re-active" v-model="active" />
     </template>
   </m-control-bar>
+  <m-control-bar for-id="re-hover">
+    <template v-slot:text>
+      启用 Hover 效果
+    </template>
+    <template v-slot:control>
+      <m-switch id="re-hover" v-model="hover" />
+    </template>
+  </m-control-bar>
   <demo-box title="点击反馈" :code="code" id="fade">
     <m-row class="animation-box" X="center">
-      <m-action-feedback :active="active" ripple>
+      <m-action-feedback :active="active" :hover="hover" ripple>
         <m-cube>ClickMe</m-cube>
       </m-action-feedback>
     </m-row>
@@ -27,6 +35,7 @@ export default {
   data() {
     return {
       active: false,
+      hover: false,
       code: ``
     };
   }

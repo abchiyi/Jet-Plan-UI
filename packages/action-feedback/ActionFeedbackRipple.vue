@@ -57,8 +57,7 @@ span {
 }
 
 span.mask {
-  backdrop-filter: brightness(2) saturate(20%);
-  /* backdrop-filter: opacity(20%); */
+  backdrop-filter: brightness(0.8) saturate(0) grayscale(0);
   background: unset !important;
 }
 
