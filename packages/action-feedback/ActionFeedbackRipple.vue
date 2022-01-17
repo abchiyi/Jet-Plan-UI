@@ -36,7 +36,7 @@ export default {
   },
   render() {
     return h("span", {
-      class: ["m-mask", this.data.ripple ? "ripple" : ""],
+      class: ["m-mask", this.data.ripple ? "ripple" : "mask"],
       style: this.styles
     });
   }
@@ -54,6 +54,12 @@ span {
   position: absolute;
   user-select: none;
   display: block;
+}
+
+span.mask {
+  backdrop-filter: brightness(2) saturate(20%);
+  /* backdrop-filter: opacity(20%); */
+  background: unset !important;
 }
 
 .mask-enter-active {

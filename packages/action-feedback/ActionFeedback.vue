@@ -98,7 +98,7 @@ export default {
     startClick(event) {
       //   this.data_active = true;
       // Ripple
-      if (this.ripple) {
+      if (this.ripple || this.active) {
         if (event.button === 0 && !this.ignoreClick) {
           this.masks.push(this.createRippleAttrs(event));
         }
@@ -117,7 +117,7 @@ export default {
       this.enter();
 
       // Ripple
-      if (event.touches && this.ripple) {
+      if ((event.touches && this.ripple) || this.active) {
         this.masks.push(this.createRippleAttrs(event.touches[0]));
         // 触发"touche"事件时会在之后触发"click"事件
         // 此变量改变下一次"click"回调函数的运行结果
