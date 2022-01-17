@@ -83,11 +83,7 @@ export default {
       );
     },
     render() {
-      return [
-        this.renderDefault(),
-        this.renderRipples(),
-        `ac:${this.data_active};rr:${this.ripple};hv:${this.data_hover}`
-      ];
+      return [this.renderDefault(), this.renderRipples()];
     },
     // Hover
     enter() {
