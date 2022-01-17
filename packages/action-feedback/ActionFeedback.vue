@@ -5,7 +5,7 @@ function propInit(_type, _default) {
     default: _default || false
   };
 }
-import ripple from "./ClickFeedbackRipple.vue";
+import ripple from "./ActionFeedbackRipple.vue";
 import { Mask } from "../mask";
 import { h, TransitionGroup } from "vue";
 export default {
@@ -17,7 +17,8 @@ export default {
     opacity: propInit(String, "0.5"),
     tag: propInit(String, "div"),
     active: propInit(),
-    hover: propInit()
+    hover: propInit(),
+    ripple: propInit()
   },
   data() {
     return {
@@ -96,11 +97,12 @@ export default {
     startClick(event) {
       //   this.data_active = true;
       // Ripple
-      if (event.button === 0 && !this.ignoreClick) {
-        this.masks.push(this.createRippleAttrs(event));
+      if (this.ripple) {
+        if (event.button === 0 && !this.ignoreClick) {
+          this.masks.push(this.createRippleAttrs(event));
+        }
+        if (this.ignoreClick) this.ignoreClick = false;
       }
-      if (this.ignoreClick) this.ignoreClick = false;
-      return false;
     },
     endClick() {
       if (this.data_touch) this.leave();
@@ -114,7 +116,7 @@ export default {
       this.enter();
 
       // Ripple
-      if (event.touches) {
+      if (event.touches && this.ripple) {
         this.masks.push(this.createRippleAttrs(event.touches[0]));
         // 触发"touche"事件时会在之后触发"click"事件
         // 此变量改变下一次"click"回调函数的运行结果

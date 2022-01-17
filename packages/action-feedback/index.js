@@ -1,5 +1,4 @@
 import ActionFeedback from './ActionFeedback.vue'
-import ClickFeedback from './ClickFeedback.vue'
 
 import {
     installComponent,
@@ -7,10 +6,9 @@ import {
 
 export {
     ActionFeedback,
-    ClickFeedback
 }
 
-const components = [ActionFeedback, ClickFeedback]
+const components = [ActionFeedback]
 
 export default {
     install(Vue) {

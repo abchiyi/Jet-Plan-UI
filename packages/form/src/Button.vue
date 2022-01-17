@@ -1,7 +1,6 @@
 <script>
 import { h } from "vue";
 import { Mask } from "../../mask";
-// import ClickFeedback from "../../action-feedback/ClickFeedback.vue";
 import { ActionFeedback } from "../../action-feedback";
 export default {
   name: "m-button",
