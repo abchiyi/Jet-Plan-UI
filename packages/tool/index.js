@@ -8,6 +8,12 @@ export {
     Focus,
 }
 
+export function installComponent(Vue, array) {
+    array.forEach(component => {
+        Vue.component(component.name, component)
+    })
+}
+
 export default {
     install(Vue) {
         Vue.directive(ReScreenSize.name, ReScreenSize)

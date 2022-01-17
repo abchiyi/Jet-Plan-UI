@@ -9,12 +9,14 @@ import list from './list'
 import mask from './mask'
 import codeBox from "./code_box";
 import shadowBox from './shaodwBox'
+import ActionFeedback from './action-feedback'
 // 指令&工具函数/类
 import tool from './tool'
 
 import themeDefault from './theme_default'
 
 const components = {
+    ActionFeedback,
     animations,
     shadowBox,
     progress,
@@ -38,6 +40,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export {
+    ActionFeedback,
     themeDefault,
     theme,
     animations,
