@@ -1,7 +1,8 @@
 <script>
 import { h } from "vue";
 import { Mask } from "../../mask";
-import { ClickFeedback } from "../../animations";
+// import ClickFeedback from "../../action-feedback/ClickFeedback.vue";
+import { ActionFeedback } from "../../action-feedback";
 export default {
   name: "m-button",
   data() {
@@ -91,7 +92,7 @@ export default {
   },
   render() {
     return h(
-      this.activeAnimation ? ClickFeedback : this.tag,
+      this.activeAnimation ? ActionFeedback : this.tag,
       {
         tag: this.tag,
         class: this.classes,

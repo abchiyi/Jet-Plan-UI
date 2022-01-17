@@ -1,5 +1,5 @@
 <script>
-import { getOffset } from "../../tool/src/dom";
+import { getOffset } from "../tool/src/dom";
 import { h } from "vue";
 export default {
   name: "ripple",
@@ -66,10 +66,10 @@ span {
 }
 
 .ripple-enter-from {
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate3d(0, 0, 0) translate(-50%, -50%) scale(0);
 }
 .ripple-enter-to {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate3d(0, 0, 0) translate(-50%, -50%) scale(1);
 }
 
 .ripple-leave-to {

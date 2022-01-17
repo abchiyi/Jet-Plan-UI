@@ -4,15 +4,15 @@
     使用动作反馈组件以获得和 UI 风格统一的动作反馈样式。例如‘点击’，‘悬停’等动作
   </p>
   <p>'m-action-feedback'组件：</p>
-  <demo-box title="点击波纹反馈" :code="code" id="fade">
+  <demo-box v-show="value" title="点击波纹反馈" :code="code" id="fade">
     <m-row class="animation-box" X="center">
       <m-click-feedback>
-        <m-cube v-show="value">
-          <p>ClickMe</p>
-        </m-cube>
+        <m-cube v-show="value"> </m-cube>
       </m-click-feedback>
     </m-row>
   </demo-box>
+
+  <m-action-feedback class="box"> </m-action-feedback>
 </template>
 
 <script>
@@ -33,5 +33,12 @@ export default {
   background: var(--foreground);
   box-sizing: border-box;
   color: var(--text);
+}
+
+.box {
+  border: 3px solid var(--border);
+  border-radius: var(--s-radius);
+  height: 200px;
+  width: 300px;
 }
 </style>
