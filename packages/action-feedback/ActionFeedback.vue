@@ -1,5 +1,4 @@
 <script>
-import { mouseInElement } from "../tool/src/dom";
 function propInit(_type, _default) {
   return {
     type: _type || Boolean,
