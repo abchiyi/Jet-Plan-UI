@@ -1,19 +1,21 @@
 <template>
-  <m-row :reverse="reverse" class="m-control-bar" space-mode="between">
-    <m-row
-      class="control-label"
-      :for="forId"
-      tag="label"
-      Y="center"
-      :X="reverse ? 'end' : 'start'"
-      style="text-align:start"
-    >
-      <slot name="text"><p>Display text</p> </slot>
+  <m-action-feedback class="m-control-bar" active>
+    <m-row :reverse="reverse" space-mode="between">
+      <m-row
+        class="control-label"
+        :for="forId"
+        tag="label"
+        Y="center"
+        :X="reverse ? 'end' : 'start'"
+        style="text-align:start"
+      >
+        <slot name="text"><p>Display text</p> </slot>
+      </m-row>
+      <m-row :reverse="reverse" class="control-comp" Y="center">
+        <slot name="control"><p>Control</p></slot>
+      </m-row>
     </m-row>
-    <m-row :reverse="reverse" class="control-comp" Y="center">
-      <slot name="control"><p>Control</p></slot>
-    </m-row>
-  </m-row>
+  </m-action-feedback>
 </template>
 
 <script>
