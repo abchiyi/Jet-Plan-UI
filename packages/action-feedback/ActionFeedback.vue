@@ -1,4 +1,5 @@
 <script>
+import { mouseInElement } from "../tool/src/dom";
 function propInit(_type, _default) {
   return {
     type: _type || Boolean,
@@ -6,7 +7,6 @@ function propInit(_type, _default) {
   };
 }
 import ripple from "./ActionFeedbackRipple.vue";
-import { Mask } from "../mask";
 import { h, TransitionGroup } from "vue";
 export default {
   name: "m-action-feedback",
@@ -22,8 +22,6 @@ export default {
   },
   data() {
     return {
-      //   data_active: this.active,
-      data_hover: false,
       data_touch: false,
       masks: [],
       key: 0
@@ -31,7 +29,7 @@ export default {
   },
   computed: {
     classes() {
-      return ["m-action-feedback"];
+      return ["m-action-feedback", this.hover ? "hover" : ""];
     }
   },
   methods: {
@@ -64,9 +62,6 @@ export default {
       }
       return "Submit";
     },
-    renderMask() {
-      return h(Mask, { value: this.data_hover && this.hover });
-    },
     renderRipples() {
       let key = 0;
       return h(
@@ -84,14 +79,11 @@ export default {
       );
     },
     render() {
-      return [this.renderMask(), this.renderDefault(), this.renderRipples()];
+      return [this.renderDefault(), this.renderRipples()];
     },
     // Hover
-    enter() {
-      if (this.hover) this.data_hover = true;
-    },
+    enter() {},
     leave() {
-      if (this.hover) this.data_hover = false;
       this.removeRipple();
     },
     // Click
@@ -129,11 +121,7 @@ export default {
       this.removeRipple();
     }
   },
-  watch: {
-    data_hover(v) {
-      this.$emit("mhover", v);
-    }
-  },
+  watch: {},
   render() {
     return h(
       this.tag,
@@ -161,5 +149,21 @@ export default {
 .m-action-feedback {
   position: relative;
   overflow: hidden;
+}
+
+.m-action-feedback.hover::before {
+  transition: 0.3s var(--ease-out-slow);
+  background-color: var(--mask);
+  position: absolute;
+  content: "";
+  opacity: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+}
+
+.m-action-feedback.hover:hover::before {
+  opacity: 0.5;
 }
 </style>

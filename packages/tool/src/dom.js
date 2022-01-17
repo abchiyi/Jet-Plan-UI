@@ -28,6 +28,8 @@ export function getOffset(el) {
     const scrollLeft = windowScrool.x || el.scrollLeft
 
     return {
+        size: elScreenBounding,
+        // XXX不适合的属性名称
         y: elScreenBounding.top + scrollTop - el.clientTop,
         x: elScreenBounding.left + scrollLeft - el.clientLeft
     }
