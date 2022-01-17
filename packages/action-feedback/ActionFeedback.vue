@@ -82,7 +82,7 @@ export default {
       );
     },
     render() {
-      return [this.renderDefault(), this.renderRipples()];
+      return [this.renderDefault(), this.renderRipples(), `${this.data_touch}`];
     },
     // Hover
     enter() {
@@ -104,7 +104,6 @@ export default {
       }
     },
     endClick() {
-      //   this.data_active = false;
       this.removeRipple();
     },
     // Touch
