@@ -56,9 +56,11 @@ span {
   display: block;
 }
 
-span.mask {
-  backdrop-filter: brightness(0.8) saturate(0) grayscale(0);
-  background: unset !important;
+@supports (backdrop-filter: brightness(0.8) saturate(0) grayscale(0)) {
+  span.mask {
+    backdrop-filter: brightness(0.8) saturate(0) grayscale(0);
+    background: unset !important;
+  }
 }
 
 .mask-enter-active {
