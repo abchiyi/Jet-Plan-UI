@@ -160,6 +160,7 @@ export default {
 .m-action-feedback::before {
   transition: 0.3s var(--ease-out-slow);
   background-color: var(--mask);
+  pointer-events: none;
   position: absolute;
   content: "";
   opacity: 0;
