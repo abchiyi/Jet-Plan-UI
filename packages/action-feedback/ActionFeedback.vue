@@ -157,7 +157,7 @@ export default {
   overflow: hidden;
 }
 
-.m-action-feedback.hover::before {
+.m-action-feedback::before {
   transition: 0.3s var(--ease-out-slow);
   background-color: var(--mask);
   position: absolute;
