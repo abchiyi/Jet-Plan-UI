@@ -3,6 +3,7 @@ import DemoPage from './DemoPage.vue'
 import DemoBox from './DemoBox.vue'
 import Header from './Header.vue'
 import Cube from './Cube.vue'
+import InlineCode from './inlineCode.vue'
 
 function setCookie(name, value) {
     let Days = 30;
@@ -39,6 +40,7 @@ function setColorModeCookie(color, auto) {
 }
 const components = {
     RouterLinkA,
+    InlineCode,
     DemoPage,
     DemoBox,
     Header,
@@ -47,6 +49,7 @@ const components = {
 export {
     redColorModeCookie,
     setColorModeCookie,
+    InlineCode,
     setCookie,
     getCookie,
     // 组件
