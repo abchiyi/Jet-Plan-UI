@@ -12,7 +12,7 @@ import {
     theme,
     themeDefault
 } from '@'
-
+import './css/main.css'
 import {
     redColorModeCookie,
 } from './common'
