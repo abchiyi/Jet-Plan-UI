@@ -3,7 +3,7 @@
   <p>
     使用动作反馈组件以获得和 UI 风格统一的动作反馈样式。例如‘点击’，‘悬停’等动作
   </p>
-  <p>'m-action-feedback'组件：</p>
+  <strong>如何使用：</strong>
   <m-control-bar for-id="re-active">
     <template v-slot:text>
       启用 Active 效果
@@ -35,10 +35,61 @@
       </m-action-feedback>
     </m-row>
   </demo-box>
+
+  <article class="props">
+    <strong>Props:</strong>
+    <ul class="doc">
+      <li id="prop-color">
+        <inline-code>color - String</inline-code>用于设置
+        <inline-code>active</inline-code>,
+        <inline-code>ripple</inline-code>
+        效果遮罩色彩,支持 css 原生色彩格式&css变量.默认为
+        <inline-code> "var(--mask)"</inline-code>
+      </li>
+      <li id="prop-opacity">
+        <inline-code>opacity - String</inline-code>用于设置遮罩不透明度,默认为
+        <inline-code>"0.5"</inline-code>
+      </li>
+      <li id="prop-tag">
+        <inline-code>tag - String</inline-code>设置组件最终渲染标签。默认为
+        <inline-code> "div"</inline-code>
+      </li>
+      <li id="prop-active">
+        <inline-code>active - Boolean</inline-code>
+        开启关闭 active 效果,等效 css 伪类
+        <inline-code>:active</inline-code>
+        。默认为
+        <inline-code> false</inline-code>
+      </li>
+      <li id="prop-hover">
+        <inline-code>hover - Boolean</inline-code>
+        开启关闭 hover 效果,等效 css 伪类
+        <inline-code>:hover</inline-code>
+        。 默认为
+        <inline-code> false</inline-code>
+      </li>
+      <li id="prop-ripple">
+        <inline-code>ripple - Boolean</inline-code>
+        开启关闭 ripple 效果 。 默认为
+        <inline-code> false</inline-code>
+        。
+        <warning-text>
+          注意:
+          <inline-code>ripple</inline-code>
+          会被
+          <inline-code>active</inline-code>
+          效果覆盖。两种效果不可同时开启
+        </warning-text>
+      </li>
+    </ul>
+  </article>
 </template>
 
 <script>
+import inlineCode from "../../common/inlineCode.vue";
+import WarningText from "../../common/Warning-text.vue";
 export default {
+  components: { inlineCode, WarningText },
   name: "the-demo-action-feedbacks",
   data() {
     return {
