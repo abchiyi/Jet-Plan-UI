@@ -5,13 +5,14 @@ function propInit(_type, _default) {
     default: _default || false
   };
 }
+// FIXME Ripple 渲染逻辑导致性能低下，有新 rippl 加入或移除时的全部过渡过渡动画
 import ripple from "./ActionFeedbackRipple.vue";
 import { h, TransitionGroup } from "vue";
 export default {
   name: "m-action-feedback",
   props: {
     // TODO 验证色彩字符串是否合法
-    color: propInit(String, "#b3b3b3"),
+    color: propInit(String, "var(--mask)"),
     // TODO 或者透明度曲线
     opacity: propInit(String, "0.5"),
     tag: propInit(String, "div"),
