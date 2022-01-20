@@ -124,6 +124,7 @@ h6 {
 /* 隐藏选中框 */
 @supports (-webkit-tap-highlight-color: #ffffff00) {
 
+    .m-radio,
     label {
         -webkit-tap-highlight-color: #ffffff00;
     }
@@ -132,4 +133,9 @@ h6 {
 p {
     display: flex;
     align-items: center
+}
+
+strong {
+    font-size: 1.2em;
+    font-weight: bold;
 }
