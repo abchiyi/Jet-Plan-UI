@@ -93,6 +93,7 @@ export default {
   name: "the-demo-action-feedbacks",
   data() {
     return {
+      oldRipple: false,
       active: false,
       hover: false,
       ripple: false,
@@ -101,7 +102,13 @@ export default {
   },
   watch: {
     active(v) {
-      if (v) this.ripple = false;
+      if (v) {
+        // 关闭开启的ripple效果，并记录状态，以便在active关闭时恢复开启状态
+        this.oldRipple = this.ripple;
+        this.ripple = false;
+      } else {
+        this.ripple = this.oldRipple;
+      }
     }
   }
 };
