@@ -4,6 +4,7 @@
     使用动作反馈组件以获得和 UI 风格统一的动作反馈样式。例如‘点击’，‘悬停’等动作
   </p>
   <strong>如何使用：</strong>
+  <!-- Control -->
   <m-control-bar for-id="re-active">
     <template v-slot:text>
       启用 Active 效果
@@ -28,6 +29,7 @@
       <m-switch :disabled="active" id="re-ripple" v-model="ripple" />
     </template>
   </m-control-bar>
+  <!-- Demo -->
   <demo-box title="点击反馈" :code="code" id="fade">
     <m-row class="animation-box" X="center">
       <m-action-feedback :active="active" :hover="hover" :ripple="ripple">
@@ -35,7 +37,7 @@
       </m-action-feedback>
     </m-row>
   </demo-box>
-
+  <!-- Doc -->
   <article class="props">
     <strong>Props:</strong>
     <ul class="doc">
@@ -83,6 +85,21 @@
       </li>
     </ul>
   </article>
+  <article class="events">
+    <strong>Event:</strong>
+    <ul class="doc">
+      <li>--None--</li>
+    </ul>
+  </article>
+  <article class="slot">
+    <strong>Slot:</strong>
+    <ul class="doc">
+      <li>
+        <inline-code>default</inline-code>
+        组件仅有一个默认插槽
+      </li>
+    </ul>
+  </article>
 </template>
 
 <script>
@@ -97,7 +114,9 @@ export default {
       active: false,
       hover: false,
       ripple: false,
-      code: ``
+      code: `<m-action-feedback :active="boolenValue1" :hover="boolenValue2" :ripple="boolenValue3">
+    <m-cube>ClickMe</m-cube>
+</m-action-feedback>`
     };
   },
   watch: {
