@@ -20,9 +20,9 @@
           </router-link-a>
         </m-list>
       </template>
-      <div class="content">
+      <template v-slot:default>
         <router-view />
-      </div>
+      </template>
       <template v-slot:footer>
         <p>Footer</p>
       </template>

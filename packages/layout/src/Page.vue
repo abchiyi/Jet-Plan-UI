@@ -12,19 +12,19 @@
         </m-col>
       </m-row>
     </m-header>
-    <!-- 正文内容外壳,主页布局  -->
+    <!-- 侧栏开启位移文档  -->
     <m-row>
       <m-col v-bind="width.mainContentWidth" relativeToScreen>
-        <!-- 正文内容 -->
-        <m-row tag="main" X="center">
-          <div id="content-body">
-            <slot></slot>
-          </div>
-        </m-row>
-        <m-row tag="footer" X="center">
+        <!-- 文档宽度控制 -->
+        <m-row X="center">
           <m-col class="content">
-            <hr />
-            <slot name="footer"></slot>
+            <main>
+              <slot></slot>
+            </main>
+            <footer>
+              <hr />
+              <slot name="footer"></slot>
+            </footer>
           </m-col>
         </m-row>
       </m-col>
@@ -122,38 +122,32 @@ export default {
 </script>
 
 <style scoped>
-#content-body,
+.content,
 main,
 footer {
-  --MIN-HEIGHT-CONTENT: 100vh;
   --HEIGHT-FOOTER: 150px;
   --HEIGHT-HEADER: 72px;
   --TOP-MARGIN: 100px;
 }
+
 .m-header > .m-row {
   height: 72px;
+}
+
+.content {
+  max-width: 960px;
+  padding: 0 20px;
+  height: 100vh;
 }
 
 main {
   margin-top: var(--TOP-MARGIN);
 }
 
-main > #content-body {
-  min-height: var(--MIN-HEIGHT-CONTENT);
-  overflow: hidden;
-  padding: 0 20px;
-  width: 100%;
-}
-
-main > #content-body,
-footer .content {
-  max-width: 960px;
-}
-
-footer .content {
+footer {
   height: var(--HEIGHT-FOOTER);
   box-sizing: border-box;
-  margin-top: 20px;
-  width: 100%;
+  position: sticky;
+  top: 100vh;
 }
 </style>
