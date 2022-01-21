@@ -6,11 +6,9 @@
       </slot>
       <m-button @click="expand_" text>View Code</m-button>
     </m-row>
-    <hr />
     <div class="demo">
       <slot></slot>
     </div>
-    <hr />
     <m-transition-folded title="展开Code">
       <m-code-box :code="code" v-show="value" />
     </m-transition-folded>
@@ -51,5 +49,8 @@ export default {
 .m-demo-box {
   border-radius: var(--m-radius);
   padding: 20px;
+}
+.demo {
+  padding: 1rem 0;
 }
 </style>
