@@ -23,6 +23,9 @@
       <div class="content">
         <router-view />
       </div>
+      <template v-slot:footer>
+        <p>Footer</p>
+      </template>
     </m-page>
   </div>
 </template>
