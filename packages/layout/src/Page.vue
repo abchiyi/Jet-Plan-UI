@@ -14,21 +14,17 @@
     </m-header>
     <!-- 正文内容外壳,主页布局  -->
     <m-row>
-      <m-col
-        v-bind="width.mainContentWidth"
-        id="m-main-content"
-        relativeToScreen
-        tag="main"
-      >
+      <m-col v-bind="width.mainContentWidth" relativeToScreen>
         <!-- 正文内容 -->
-        <m-row X="center">
+        <m-row tag="main" X="center">
           <div id="content-body">
             <slot></slot>
           </div>
         </m-row>
-        <footer>
+        <hr />
+        <m-row tag="footer" X="center">
           <slot name="footer"></slot>
-        </footer>
+        </m-row>
       </m-col>
     </m-row>
     <!-- 侧栏 -->
@@ -124,16 +120,32 @@ export default {
 </script>
 
 <style scoped>
+#content-body,
+main,
+footer {
+  --MIN-HEIGHT-CONTENT: 100vh;
+  --HEIGHT-FOOTER: 150px;
+  --HEIGHT-HEADER: 72px;
+  --TOP-MARGIN: 100px;
+}
 .m-header > .m-row {
   height: 72px;
 }
-#content-body {
+
+main {
+  margin-top: var(--TOP-MARGIN);
+}
+
+main > #content-body {
+  min-height: var(--MIN-HEIGHT-CONTENT);
   overflow: hidden;
   max-width: 960px;
   padding: 0 20px;
   width: 100%;
 }
-main {
-  margin-top: 100px;
+footer {
+  height: var(--HEIGHT-FOOTER);
+  box-sizing: border-box;
+  margin-top: 20px;
 }
 </style>
