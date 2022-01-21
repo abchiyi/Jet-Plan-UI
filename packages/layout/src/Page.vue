@@ -21,9 +21,11 @@
             <slot></slot>
           </div>
         </m-row>
-        <hr />
         <m-row tag="footer" X="center">
-          <slot name="footer"></slot>
+          <m-col class="content">
+            <hr />
+            <slot name="footer"></slot>
+          </m-col>
         </m-row>
       </m-col>
     </m-row>
@@ -139,13 +141,19 @@ main {
 main > #content-body {
   min-height: var(--MIN-HEIGHT-CONTENT);
   overflow: hidden;
-  max-width: 960px;
   padding: 0 20px;
   width: 100%;
 }
-footer {
+
+main > #content-body,
+footer .content {
+  max-width: 960px;
+}
+
+footer .content {
   height: var(--HEIGHT-FOOTER);
   box-sizing: border-box;
   margin-top: 20px;
+  width: 100%;
 }
 </style>
