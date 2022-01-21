@@ -1,6 +1,7 @@
 hr {
-    border: unset;
-    margin: 1rem 1em;
-    border-radius: 1px;
     border-bottom: 1px solid var(--border);
+    border-radius: 1px;
+    margin: 1rem 1em;
+    border: unset;
+    opacity: 0.8;
 }
