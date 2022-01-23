@@ -35,6 +35,7 @@ export default {
 
 <style>
 .m-card {
+  border-radius: var(--s-radius);
   box-shadow: var(--shadow);
   background: var(--card);
   margin: 10px 0;

@@ -51,6 +51,9 @@ export default {
   padding: 20px;
 }
 .demo {
-  padding: 1rem 0;
+  background-color: var(--background);
+  border-radius: var(--m-radius);
+  padding: 1rem 2rem;
+  margin: 20px;
 }
 </style>
