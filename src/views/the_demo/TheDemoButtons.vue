@@ -1,33 +1,76 @@
 <template>
-  <div>
-    <h1>按钮</h1>
-    <p>m-button 基本按钮组件</p>
-
-    <h2>基本示例</h2>
-    <m-row>
-      <m-button tag="a" primary>Primary</m-button>
-      <m-button Primary disabled>primary Disabled</m-button>
+  <h1>按钮</h1>
+  <p>基本按钮组件</p>
+  <!-- Demo -->
+  <demo-box title="点击反馈" :code="code" id="fade">
+    <m-row X="center">
+      <m-button Primary>primary</m-button>
       <m-button>Button</m-button>
       <m-button disabled>Button disabled</m-button>
-      <m-button row style="width:300px">Button</m-button>
+    </m-row>
+    <m-row X="center">
+      <m-button primary text>Text Button Primary</m-button>
+      <m-button text>Text Button</m-button>
+      <m-button text disabled>Text Button Disabled</m-button>
     </m-row>
     <br />
-    <m-row> <m-button class="aa" row>Button</m-button></m-row>
+    <div>
+      <m-button row>Button One Row</m-button>
+      <m-button text row>Text Button One Row </m-button>
+    </div>
+  </demo-box>
+  <demo-doc>
+    <template v-slot:prop>
+      <li>
+        <inline-code>text - Boolean</inline-code>
+        按钮外观切换，使用常规按钮还是文本按钮
+        <inline-code>default - false</inline-code>
+      </li>
+      <li>
+        <inline-code>primary - Boolean</inline-code>
+        按钮外观切换，按钮外观展示为带主题色的主要按钮
+        <inline-code>default - false</inline-code>
+      </li>
+      <li>
+        <inline-code>row - Boolean</inline-code>
+        使按钮占据一行
+        <inline-code>default - false</inline-code>
+      </li>
+      <li>
+        <inline-code>disabled - Boolean</inline-code>
+        禁用按钮
+        <inline-code>default - false</inline-code>
+      </li>
+      <li>
+        按钮组件外层使用<inline-code>m-action-feedback</inline-code>组件渲染，其余<inline-code>Prop</inline-code>参考
+        <!-- <m-button text teg="a">m-action-feedback 组件</m-button> -->
+        <m-button>Prop</m-button> aa
+      </li></template
+    >
 
-    <m-row>
-      <m-button primary text></m-button>
-      <m-button primary disabled text></m-button>
-      <m-button text></m-button>
-      <m-button text disabled></m-button>
-    </m-row>
-    <m-button text row v-for="i in 10" :key="i"></m-button>
-  </div>
+    <template v-slot:slot>
+      <li>默认插槽</li>
+    </template>
+  </demo-doc>
 </template>
 
 <script>
+import inlineCode from "../../common/inlineCode.vue";
 export default {
+  components: { inlineCode },
   name: "the-demo-buttons",
-  component: {}
+  data() {
+    return {
+      code: `<m-button Primary>primary</m-button>
+<m-button>Button</m-button>
+<m-button disabled>Button disabled</m-button>
+<m-button primary text>Text Button Primary</m-button>
+<m-button text>Text Button</m-button>
+<m-button text disabled>Text Button Disabled</m-button>
+<m-button row>Button One Row</m-button>
+<m-button text row>Text Button One Row </m-button>`
+    };
+  }
 };
 </script>
 

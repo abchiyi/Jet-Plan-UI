@@ -10,7 +10,7 @@
       <slot></slot>
     </div>
     <m-transition-folded title="展开Code">
-      <m-code-box :code="code" v-show="value" />
+      <m-code-box :code="code" v-show="value" lang="html" />
     </m-transition-folded>
   </m-card>
 </template>

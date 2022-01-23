@@ -79,13 +79,12 @@ export default {
   box-sizing: border-box;
   display: inline-block;
   position: relative;
-  padding: 6px 16px;
+  padding: 5px 10px;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-size: 14px;
+  font-size: 0.8em;
   cursor: pointer;
-  overflow: hidden;
 }
 
 @supports (-webkit-tap-highlight-color: #ffffff00) {
