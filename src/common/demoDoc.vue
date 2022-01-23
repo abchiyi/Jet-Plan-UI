@@ -2,27 +2,27 @@
   <!-- Doc -->
   <article class="prop">
     <strong>Props:</strong>
-    <slot name="prop">
-      <ul class="doc">
+    <ul class="doc">
+      <slot name="prop">
         <li>无任何接口。</li>
-      </ul>
-    </slot>
+      </slot>
+    </ul>
   </article>
   <article class="slot">
     <strong>Props:</strong>
-    <slot name="slot">
-      <ul class="doc">
+    <ul class="doc">
+      <slot name="slot">
         <li>无插槽，任何组件或HTML&文本都将被忽略</li>
-      </ul>
-    </slot>
+      </slot>
+    </ul>
   </article>
   <article class="Event">
     <strong>Event:</strong>
-    <slot name="event">
-      <ul class="event">
+    <ul class="event">
+      <slot name="event">
         <li>仅有原生事件</li>
-      </ul>
-    </slot>
+      </slot>
+    </ul>
   </article>
 </template>
 <script>
