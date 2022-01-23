@@ -4,6 +4,7 @@ import DemoBox from './DemoBox.vue'
 import Header from './Header.vue'
 import Cube from './Cube.vue'
 import InlineCode from './inlineCode.vue'
+import DemoDoc from './DemoDoc.vue'
 
 function setCookie(name, value) {
     let Days = 30;
@@ -43,6 +44,7 @@ const components = {
     InlineCode,
     DemoPage,
     DemoBox,
+    DemoDoc,
     Header,
     Cube
 }
@@ -56,6 +58,7 @@ export {
     RouterLinkA,
     DemoPage,
     DemoBox,
+    DemoDoc,
     Header,
     Cube
 }
