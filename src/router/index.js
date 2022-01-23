@@ -29,6 +29,12 @@ const TheDemo = {
                 '../views/the_demo/TheDemoCard.vue')
         },
         {
+            name: "codebox",
+            path: "/codebox",
+            component: () => import(
+                '../views/the_demo/TheDemoCodebox.vue')
+        },
+        {
             name: 'Progressbar',
             path: '/progressbar',
             component: () => import('../views/the_demo/TheDemoProgress.vue')
