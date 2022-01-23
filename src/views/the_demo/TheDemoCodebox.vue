@@ -2,7 +2,7 @@
   <h2>Code box</h2>
   <p>用于展示各种代码</p>
   <!-- Demo -->
-  <demo-box title="点击反馈" :code="code" id="fade">
+  <demo-box title="点击反馈" :code="code">
     <m-row class="animation-box" X="center">
       <m-code-box code="conosle.log('Hello world')" />
     </m-row>

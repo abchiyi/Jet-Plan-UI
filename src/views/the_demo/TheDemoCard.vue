@@ -2,7 +2,7 @@
   <h2>Card组件</h2>
   <p>卡片容器</p>
   <!-- Demo -->
-  <demo-box title="卡片" :code="code" id="fade">
+  <demo-box title="卡片" :code="code">
     <m-card style="height:200px"></m-card>
   </demo-box>
 </template>
