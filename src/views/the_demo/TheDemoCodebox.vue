@@ -28,7 +28,7 @@ export default {
   name: "the-demo-code-box",
   data() {
     return {
-      code: ``
+      code: `<m-code-box code="conosle.log('Hello world')"  lang="javascript" />`
     };
   }
 };
