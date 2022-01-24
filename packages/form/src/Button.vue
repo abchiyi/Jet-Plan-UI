@@ -18,14 +18,6 @@ export default {
       type: Boolean,
       default: false
     },
-    hoverAnimation: {
-      type: Boolean,
-      default: true
-    },
-    activeAnimation: {
-      type: Boolean,
-      default: true
-    },
     primary: {
       type: Boolean,
       default: false
@@ -121,7 +113,7 @@ export default {
 .m-button.text-button {
   font-weight: bold;
   background: unset;
-  padding: 4px 8px;
+  padding: 6px 8px;
 }
 /*------------ Primary ----------*/
 .m-button.text-button.primary {
