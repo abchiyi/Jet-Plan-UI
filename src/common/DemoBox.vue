@@ -47,7 +47,6 @@ export default {
 
 <style>
 .m-demo-box {
-  border-radius: var(--m-radius);
   padding: 20px;
 }
 .demo {
