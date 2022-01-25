@@ -54,6 +54,11 @@ const TheDemo = {
             path: '/buttons',
             component: () => import('../views/the_demo/TheDemoButtons.vue')
         },
+        {
+            name: 'Inputs',
+            path: '/inputs',
+            component: () => import('../views/the_demo/the_demo_inputs/TheDemoInputs.vue')
+        },
     ]
 }
 const routes = [{
