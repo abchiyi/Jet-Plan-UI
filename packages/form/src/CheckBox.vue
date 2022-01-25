@@ -47,7 +47,7 @@
 </template>
 <script   >
 export default {
-  name: "m-check-box",
+  name: "m-checkbox",
   computed: {
     handleCheckAll() {
       if (
