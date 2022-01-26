@@ -58,6 +58,7 @@
       </div>
       <div v-for="value in checkboxData" :key="value">
         <m-check-box :id="value" :value="value" v-model="checkbox" />
+
         <label :for="value">{{ value }}</label>
       </div>
       <p>Checkbox:{{ checkbox }}</p>

@@ -1,5 +1,6 @@
 <template>
   <strong>Checkbox</strong>
+  <!-- Demo -->
   <demo-box title="Checkbox" :code="code">
     <p>Data:{{ showData }}</p>
     <div id="check-all-group">
@@ -13,9 +14,16 @@
       </div>
     </div>
   </demo-box>
+  <demo-doc>
+    <template v-slot:prop>
+      <inline-code> &lt;!-- TODO 组件接口 --&gt; </inline-code>
+    </template>
+  </demo-doc>
 </template>
 <script>
+import inlineCode from "../../../common/inlineCode.vue";
 export default {
+  components: { inlineCode },
   name: "inputs-checkbox",
   data: () => {
     return {
@@ -24,6 +32,11 @@ export default {
       data: ["Checkbox1", "Checkbox2", "Checkbox3"],
       showData: []
     };
+  },
+  methods: {
+    log() {
+      console.log("123");
+    }
   }
 };
 </script>
