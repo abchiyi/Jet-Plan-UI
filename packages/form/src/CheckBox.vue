@@ -1,6 +1,16 @@
 // TODO 点击反馈
 <template>
-  <div @click="click" :class="classes">
+  <input
+    v-show="false"
+    :id="this.id"
+    :name="name"
+    :value="value"
+    type="checkbox"
+    :disabled="disabled"
+    v-model="localvalue"
+    @click="click"
+  />
+  <label :for="id" :class="classes">
     <svg id="checkbox" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <rect class="background" width="24" height="24" rx="4" />
       <rect
@@ -33,17 +43,7 @@
         </g>
       </transition>
     </svg>
-  </div>
-  <input
-    @change.stop
-    v-show="false"
-    :id="id"
-    :name="name"
-    :value="value"
-    type="checkbox"
-    :disabled="disabled"
-    v-model="localvalue"
-  />
+  </label>
 </template>
 <script   >
 export default {
@@ -132,7 +132,7 @@ export default {
   },
   data() {
     return {
-      localvalue: undefined
+      localvalue: []
     };
   },
   methods: {
@@ -178,8 +178,8 @@ export default {
     }
   },
   watch: {
-    localvalue() {
-      this.click();
+    checked(v) {
+      v ? this.localvalue.push(this.value) : (this.localvalue = []);
     }
   }
 };
