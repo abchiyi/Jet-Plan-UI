@@ -5,6 +5,9 @@
     <inline-code>&lt;input&gt;</inline-code>
     标签的衍生组件，使用它们以获得统一的样式风格
   </p>
+  <the-inputs-input />
+  <br />
+  <hr />
   <theinputs-checkbox />
   <br />
   <hr />
@@ -63,13 +66,15 @@ import InlineCode from "../../../common/inlineCode.vue";
 import TheinputsCheckbox from "./TheInputs-Checkbox.vue";
 import TheinputsSwitch from "./TheInputs-Switch.vue";
 import TheinputsRadio from "./TheInputs-Radio.vue";
+import TheInputsInput from "./TheInputs-input.vue";
 export default {
   name: "the-demo-inputs",
   components: {
+    InlineCode,
     TheinputsCheckbox,
     TheinputsSwitch,
     TheinputsRadio,
-    InlineCode
+    TheInputsInput
   }
 };
 </script>
