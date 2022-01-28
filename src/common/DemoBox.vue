@@ -1,12 +1,13 @@
 <template>
   <m-card class="m-demo-box">
     <m-row Y="center" space-mode="between">
-      <slot name="header">
-        <span class="text-hint">{{ title }}</span>
-      </slot>
+      <span class="text-hint">{{ title }}</span>
       <m-button @click="expand_" text>View Code</m-button>
     </m-row>
-    <div class="demo">
+    <div class="demo-box-header">
+      <slot name="header"></slot>
+    </div>
+    <div class="demo-box-show-demo">
       <slot></slot>
     </div>
     <m-transition-folded title="展开Code">
@@ -49,10 +50,10 @@ export default {
 .m-demo-box {
   padding: 20px;
 }
-.demo {
+.demo-box-show-demo {
   background-color: var(--background);
   border-radius: var(--m-radius);
   padding: 1rem 2rem;
-  margin: 20px;
+  margin: 20px 0;
 }
 </style>
