@@ -15,14 +15,19 @@ function scroll(elID, toTop) {
     let position;
     if (ELHEIGHT <= SCREENHEIGHT) {
         // 当元素接近屏幕高度时
-        position = !ELHEIGHT >= SCREENHEIGHT * 0.75 ?
-            TOP - (SCREENHEIGHT - ELHEIGHT) / 2 :
-            TOP - toTop
+        position = ELHEIGHT >= SCREENHEIGHT * 0.75 ?
+            TOP - toTop :
+            TOP - (SCREENHEIGHT - ELHEIGHT) / 2
     } else {
         position = TOP - toTop
     }
 
     position = position < 1 ? 0 : position // 元素在顶部时,设置为0
+
+    console.log(SCREENHEIGHT, ELHEIGHT);
+    console.log(position);
+    console.log(TOP);
+
 
     $('html, body').animate({
         scrollTop: position
