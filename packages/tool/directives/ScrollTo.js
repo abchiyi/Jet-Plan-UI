@@ -5,6 +5,7 @@ function scroll(elID) {
     $('html, body').animate({
         scrollTop: $(elID).offset().top
     }, {
+        // TODO 使用UI 定义的缓动函数,和根据元素滚动距离定义的动画时间
         duration: 500,
         easing: 'swing'
     })
