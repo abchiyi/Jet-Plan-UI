@@ -1,12 +1,8 @@
 <template>
-  <div id="container">
-    <p v-scroll-to="`#div1`" id="p1">div1</p>
-    <p v-scroll-to="`#div2`" id="p2">div2</p>
-    <p v-scroll-to="`#div3`" id="p2">div2</p>
-  </div>
-  <div id="div1">div1</div>
-  <div id="div2">div2</div>
-  <div id="div3">div3</div>
+  <div id="div1" style="background:red">div1</div>
+  <div id="div2" style="background:greey;height:200px">div2</div>
+  <div id="div3" style="background:blue">div3</div>
+  <div id="div4" style="background:blue;height:600px">div4</div>
 </template>
 <script>
 import ScrollTo from "../../../packages/tool/directives/ScrollTo";
@@ -52,7 +48,8 @@ export default {
 
 <style scoped>
 div {
-  height: 800px;
+  box-sizing: border-box;
+  height: 900px;
   width: 400px;
   border: 2px solid black;
 }

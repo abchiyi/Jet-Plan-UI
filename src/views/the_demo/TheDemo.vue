@@ -20,6 +20,10 @@
             {{ item.name }}
           </router-link-a>
         </m-list>
+        <m-button text row v-scroll-to:120="`#div1`">To div1</m-button>
+        <m-button text row v-scroll-to:120="`#div2`">To div2</m-button>
+        <m-button text row v-scroll-to:120="`#div3`">To div3</m-button>
+        <m-button text row v-scroll-to:120="`#div4`">To div4</m-button>
       </template>
       <template v-slot:default>
         <router-view />
