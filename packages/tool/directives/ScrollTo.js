@@ -4,7 +4,6 @@ import {
     getOffset
 } from '../src/dom'
 
-// FIXME 不能滚动元素到屏幕中央
 function scroll(elID) {
     const SCREENHEIGHT = getOffset($('body')[0]).size.height
     const ELHEIGHT = getOffset($(elID)[0]).size.height

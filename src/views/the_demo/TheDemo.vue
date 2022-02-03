@@ -5,6 +5,7 @@
       <template v-slot:header>
         <demo-header v-model="value"></demo-header>
       </template>
+      <!-- 浮动侧栏 -->
       <template v-slot:sidebar>
         <m-row tag="header" X="center" Y="center">
           <m-button text @click="$router.push('/')">Home</m-button>
@@ -19,6 +20,8 @@
             {{ item.name }}
           </router-link-a>
         </m-list>
+        <m-button row v-scroll-to="`#input`">Input</m-button>
+        <m-button row v-scroll-to="`#checkbox`">Checkbox</m-button>
       </template>
       <template v-slot:default>
         <router-view />
@@ -31,6 +34,7 @@
 </template>
 
 <script>
+import ScrollTo from "../../../packages/tool/directives/ScrollTo";
 import { Focus } from "../../../packages/tool";
 import { TheDemo } from "../../router";
 export default {
@@ -41,7 +45,8 @@ export default {
     };
   },
   directives: {
-    focus: Focus
+    focus: Focus,
+    scrollTo: ScrollTo
   },
   computed: {
     demoLinks() {
