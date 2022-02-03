@@ -24,11 +24,6 @@ function scroll(elID, toTop) {
 
     position = position < 1 ? 0 : position // 元素在顶部时,设置为0
 
-    console.log(SCREENHEIGHT, ELHEIGHT);
-    console.log(position);
-    console.log(TOP);
-
-
     $('html, body').animate({
         scrollTop: position
     }, {
