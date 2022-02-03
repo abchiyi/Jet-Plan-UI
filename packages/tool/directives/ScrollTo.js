@@ -4,10 +4,15 @@ import {
     getOffset
 } from '../src/dom'
 
-function scroll(elID) {
+function scroll(elID, toTop) {
     const SCREENHEIGHT = getOffset($('body')[0]).size.height
     const ELHEIGHT = getOffset($(elID)[0]).size.height
-    let position = $(elID).offset().top - (SCREENHEIGHT - ELHEIGHT) / 2
+    const TOP = $(elID).offset().top
+
+    let position = ELHEIGHT > SCREENHEIGHT ?
+        TOP - (SCREENHEIGHT - ELHEIGHT) / 2 :
+        TOP - toTop
+
     position = position < 1 ? 0 : position // 元素在顶部时,设置为0
 
     $('html, body').animate({
@@ -25,8 +30,7 @@ export default {
     mounted(el, binding) {
         el.addEventListener(
             'click', () => {
-
-                scroll(binding.value)
+                scroll(binding.value, binding.arg)
             }
         )
     },
