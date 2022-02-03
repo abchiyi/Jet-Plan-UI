@@ -9,9 +9,18 @@ function scroll(elID, toTop) {
     const ELHEIGHT = getOffset($(elID)[0]).size.height
     const TOP = $(elID).offset().top
 
-    let position = ELHEIGHT > SCREENHEIGHT ?
-        TOP - (SCREENHEIGHT - ELHEIGHT) / 2 :
-        TOP - toTop
+    // 设置 toTop 的默认值
+    toTop = toTop ? Math.round(toTop) : 200
+
+    let position;
+    if (ELHEIGHT <= SCREENHEIGHT) {
+        // 当元素接近屏幕高度时
+        position = !ELHEIGHT >= SCREENHEIGHT * 0.75 ?
+            TOP - (SCREENHEIGHT - ELHEIGHT) / 2 :
+            TOP - toTop
+    } else {
+        position = TOP - toTop
+    }
 
     position = position < 1 ? 0 : position // 元素在顶部时,设置为0
 
@@ -37,7 +46,7 @@ export default {
     unmounted(el, binding) {
         el.removeEventListener(
             'click', () => {
-                scroll(binding.value)
+                scroll(binding.value, binding.arg)
             }
         )
     },
