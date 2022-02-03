@@ -5,19 +5,15 @@
     <inline-code>&lt;input&gt;</inline-code>
     标签的衍生组件，使用它们以获得统一的样式风格
   </p>
-  <a id="input">input</a>
   <the-inputs-input />
   <br />
   <hr />
-  <a id="checkbox">Checkbox</a>
   <theinputs-checkbox />
   <br />
   <hr />
-  <a id="radio"></a>
   <theinputs-radio />
   <br />
   <hr />
-  <a name="switch"></a>
   <theinputs-switch />
   <br />
   <hr />

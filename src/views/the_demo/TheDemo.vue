@@ -20,8 +20,6 @@
             {{ item.name }}
           </router-link-a>
         </m-list>
-        <m-button row v-scroll-to="`#input`">Input</m-button>
-        <m-button row v-scroll-to="`#checkbox`">Checkbox</m-button>
       </template>
       <template v-slot:default>
         <router-view />
