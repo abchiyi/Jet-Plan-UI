@@ -1,19 +1,21 @@
 <template>
-  <h3>Switch</h3>
-  <demo-box title="Switch" :code="code">
-    <div>
-      <m-switch id="demo-switch" v-model="value" />
-      <label for="demo-switch">
-        {{ value ? "on" : "off" }}
-      </label>
-    </div>
-    <div>
-      <m-switch id="demo-switch-disabled" disabled v-model="value" />
-      <labed for="demo-switch-disabled">
-        disabled-{{ value ? "on" : "off" }}
-      </labed>
-    </div>
-  </demo-box>
+  <div>
+    <h3>Switch</h3>
+    <demo-box title="Switch" :code="code">
+      <div>
+        <m-switch id="demo-switch" v-model="value" />
+        <label for="demo-switch">
+          {{ value ? "on" : "off" }}
+        </label>
+      </div>
+      <div>
+        <m-switch id="demo-switch-disabled" disabled v-model="value" />
+        <label for="demo-switch-disabled">
+          disabled-{{ value ? "on" : "off" }}
+        </label>
+      </div>
+    </demo-box>
+  </div>
 </template>
 <script>
 export default {
@@ -37,9 +39,9 @@ let value = false;
     disabled-{{ value ? "on" : "off" }}
     </labed>
 </div>
-      `
+      `,
     };
-  }
+  },
 };
 </script>
 <style>

@@ -5,16 +5,16 @@
     <inline-code>&lt;input&gt;</inline-code>
     标签的衍生组件，使用它们以获得统一的样式风格
   </p>
-  <the-inputs-input />
+  <the-inputs-input id="input" />
   <br />
   <hr />
-  <theinputs-checkbox />
+  <theinputs-checkbox id="checkbox" />
   <br />
   <hr />
-  <theinputs-radio />
+  <theinputs-radio id="radio" />
   <br />
   <hr />
-  <theinputs-switch />
+  <theinputs-switch id="switch" />
   <br />
   <hr />
   <!-- Doc -->
@@ -74,8 +74,8 @@ export default {
     TheinputsCheckbox,
     TheinputsSwitch,
     TheinputsRadio,
-    TheInputsInput
-  }
+    TheInputsInput,
+  },
 };
 </script>
 <style>

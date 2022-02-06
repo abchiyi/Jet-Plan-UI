@@ -1,8 +1,10 @@
 <template>
-  <h3>Input</h3>
-  <demo-box title="input" :code="code">
-    <m-input />
-  </demo-box>
+  <div>
+    <h3>Input</h3>
+    <demo-box title="input" :code="code">
+      <m-input />
+    </demo-box>
+  </div>
 </template>
 <script>
 export default {
@@ -10,9 +12,9 @@ export default {
   data: () => {
     return {
       //TODO示例代码
-      code: undefined
+      code: `<m-input />`,
     };
-  }
+  },
 };
 </script>
 <style>

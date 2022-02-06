@@ -20,11 +20,25 @@
             {{ item.name }}
           </router-link-a>
         </m-list>
-        <m-button text row v-scroll-to="`Top`">Top</m-button>
-        <m-button text row v-scroll-to:120="`#div1`">To div1</m-button>
-        <m-button text row v-scroll-to:120="`#div2`">To div2</m-button>
-        <m-button text row v-scroll-to:120="`#div3`">To div3</m-button>
-        <m-button text row v-scroll-to:120="`#div4`">To div4</m-button>
+        <m-list>
+          <!--  -->
+          <div>
+            <router-link-a v-model="pageNow" href="/inputs">
+              InputsOfTest
+            </router-link-a>
+            <m-transition-folded>
+              <div v-show="pageNow == '/inputs'">
+                <m-button text row v-scroll-to:120="`#input`">Input</m-button>
+                <m-button text row v-scroll-to:120="`#checkbox`">
+                  checkbox
+                </m-button>
+                <m-button text row v-scroll-to:120="`#radio`">Radio</m-button>
+                <m-button text row v-scroll-to:120="`#switch`">Switch</m-button>
+              </div>
+            </m-transition-folded>
+          </div>
+          <!--  -->
+        </m-list>
       </template>
       <template v-slot:default>
         <router-view />
@@ -44,23 +58,23 @@ export default {
   data() {
     return {
       value: true,
-      pageNow: "/get-started"
+      pageNow: "/get-started",
     };
   },
   directives: {
     focus: Focus,
-    scrollTo: ScrollTo
+    scrollTo: ScrollTo,
   },
   computed: {
     demoLinks() {
-      return TheDemo.children.map(item => {
+      return TheDemo.children.map((item) => {
         return {
           name: item.name,
-          href: item.path
+          href: item.path,
         };
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

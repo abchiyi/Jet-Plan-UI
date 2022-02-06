@@ -1,26 +1,28 @@
 <template>
-  <h3>Radio</h3>
-  <demo-box title="Radio" :code="code">
-    <template v-slot:header>
-      <m-control-bar for-id="disabled-radio">
-        <template v-slot:text>禁用组件</template>
-        <template v-slot:control>
-          <m-switch v-model="disabled" id="disabled-radio" />
-        </template>
-      </m-control-bar>
-    </template>
-    <p>Data:{{ radioData }}</p>
-    <div v-for="v in data" :key="v">
-      <m-radio
-        :disabled="disabled"
-        :id="v"
-        name="radioData"
-        v-model="radioData"
-        :value="v"
-      />
-      <label :for="v">{{ v }}</label>
-    </div>
-  </demo-box>
+  <div>
+    <h3>Radio</h3>
+    <demo-box title="Radio" :code="code">
+      <template v-slot:header>
+        <m-control-bar for-id="disabled-radio">
+          <template v-slot:text>禁用组件</template>
+          <template v-slot:control>
+            <m-switch v-model="disabled" id="disabled-radio" />
+          </template>
+        </m-control-bar>
+      </template>
+      <p>Data:{{ radioData }}</p>
+      <div v-for="v in data" :key="v">
+        <m-radio
+          :disabled="disabled"
+          :id="v"
+          name="radioData"
+          v-model="radioData"
+          :value="v"
+        />
+        <label :for="v">{{ v }}</label>
+      </div>
+    </demo-box>
+  </div>
 </template>
 <script>
 export default {
@@ -41,9 +43,9 @@ let radioData;
         <m-radio :id="v" name="radioData" v-model="radioData" :value="v" />
         <label :for="v">{{ v }}</label>
     </div>
-</body>`
+</body>`,
     };
-  }
+  },
 };
 </script>
 <style>

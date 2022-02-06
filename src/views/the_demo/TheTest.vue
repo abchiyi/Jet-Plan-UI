@@ -1,15 +1,31 @@
 <template>
-  <div id="div1" style="background:red">div1</div>
-  <div id="div2" style="background:greey;height:200px">div2</div>
-  <div id="div3" style="background:blue">div3</div>
-  <div id="div4" style="background:blue;height:600px">div4</div>
+  <m-row X="center">
+    <m-cube id="div1" style="background: var(--primary); height: 900px">
+      <strong>Primary</strong>
+    </m-cube>
+  </m-row>
+  <m-row X="center">
+    <m-cube id="div2" style="background: var(--warning); height: 200px">
+      <strong>Waring</strong>
+    </m-cube>
+  </m-row>
+  <m-row X="center">
+    <m-cube id="div3" style="background: var(--error); height: 900px">
+      <strong>Error</strong>
+    </m-cube>
+  </m-row>
+  <m-row X="center">
+    <m-cube id="div4" style="background: var(--info); height: 600px">
+      <strong>Innfo</strong>
+    </m-cube>
+  </m-row>
 </template>
 <script>
 import ScrollTo from "../../../packages/tool/directives/ScrollTo";
 export default {
   name: "TheTestPage",
   directives: {
-    scrollTo: ScrollTo
+    scrollTo: ScrollTo,
   },
   data() {
     return {
@@ -21,7 +37,7 @@ export default {
       value: false,
       //   text:
       //     '<m-switch size="s" v-model="value1"></m-switch>\n<m-switch size="m" disabled v-model="value1"></m-switch>\n<m-switch size="l"v-model="value1"></m-switch>'
-      text: "1"
+      text: "1",
     };
   },
   methods: {
@@ -38,24 +54,13 @@ export default {
     },
     hal() {
       return this.checkboxData.length;
-    }
+    },
   },
   watch: {},
   created() {},
-  mounted() {}
+  mounted() {},
 };
 </script>
 
-<style scoped>
-div {
-  box-sizing: border-box;
-  height: 900px;
-  width: 400px;
-  border: 2px solid black;
-}
-
-#container {
-  position: fixed;
-  margin: 50px 500px;
-}
+<style >
 </style>
