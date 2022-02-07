@@ -17,9 +17,9 @@
             <template v-slot:text> 开始 </template>
             <m-transition-folded>
               <div v-show="expand.start">
-                <m-button row text>Test1</m-button>
-                <m-button row text>Test2</m-button>
-                <m-button row text>Test3</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
               </div>
             </m-transition-folded>
           </expand-menu>
@@ -28,9 +28,20 @@
             <template v-slot:text> 样式 </template>
             <m-transition-folded>
               <div v-show="expand.style">
-                <m-button row text>Test1</m-button>
-                <m-button row text>Test2</m-button>
-                <m-button row text>Test3</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+              </div>
+            </m-transition-folded>
+          </expand-menu>
+          <!-- tools -->
+          <expand-menu v-model="expand.tools">
+            <template v-slot:text> 工具 </template>
+            <m-transition-folded>
+              <div v-show="expand.tools">
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
               </div>
             </m-transition-folded>
           </expand-menu>
@@ -44,24 +55,14 @@
                   v-for="item in demoLinks"
                   :href="item.href"
                   :key="item.key"
-                  style="padding-left: 2em"
+                  style="padding-left: 1.5rem"
                 >
                   {{ item.name }}
                 </router-link-a>
               </div>
             </m-transition-folded>
           </expand-menu>
-          <!-- tools -->
-          <expand-menu v-model="expand.tools">
-            <template v-slot:text> 工具 </template>
-            <m-transition-folded>
-              <div v-show="expand.tools">
-                <m-button row text>Test1</m-button>
-                <m-button row text>Test2</m-button>
-                <m-button row text>Test3</m-button>
-              </div>
-            </m-transition-folded>
-          </expand-menu>
+
           <!--  -->
           <div>
             <router-link-a v-model="pageNow" href="/inputs">
