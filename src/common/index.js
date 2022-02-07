@@ -5,6 +5,7 @@ import Header from './Header.vue'
 import Cube from './Cube.vue'
 import InlineCode from './inlineCode.vue'
 import DemoDoc from './DemoDoc.vue'
+import ExpandMennu from './ExpandMenu.vue'
 
 function setCookie(name, value) {
     let Days = 30;
@@ -46,7 +47,8 @@ const components = {
     DemoBox,
     DemoDoc,
     Header,
-    Cube
+    Cube,
+    ExpandMennu
 }
 export {
     redColorModeCookie,
@@ -60,7 +62,8 @@ export {
     DemoBox,
     DemoDoc,
     Header,
-    Cube
+    Cube,
+    ExpandMennu
 }
 export default {
     install(Vue) {
