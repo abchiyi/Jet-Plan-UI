@@ -40,7 +40,6 @@ export default {
   transform: rotate(90deg);
 }
 .more-content {
-  margin-left: 1em;
   margin-bottom: 0.5em;
 }
 .expand-hr {

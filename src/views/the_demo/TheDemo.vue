@@ -10,17 +10,58 @@
         <m-row tag="header" X="center" Y="center">
           <m-button text @click="$router.push('/')">Home</m-button>
         </m-row>
-        <m-list id="links">
-          <router-link-a
-            v-model="pageNow"
-            v-for="item in demoLinks"
-            :href="item.href"
-            :key="item.key"
-          >
-            {{ item.name }}
-          </router-link-a>
-        </m-list>
+        <m-list id="links"> </m-list>
         <m-list>
+          <!-- Start -->
+          <expand-menu v-model="expand.start">
+            <template v-slot:text> 开始 </template>
+            <m-transition-folded>
+              <div v-show="expand.start">
+                <m-button row text>Test1</m-button>
+                <m-button row text>Test2</m-button>
+                <m-button row text>Test3</m-button>
+              </div>
+            </m-transition-folded>
+          </expand-menu>
+          <!-- Style -->
+          <expand-menu v-model="expand.style">
+            <template v-slot:text> 样式 </template>
+            <m-transition-folded>
+              <div v-show="expand.style">
+                <m-button row text>Test1</m-button>
+                <m-button row text>Test2</m-button>
+                <m-button row text>Test3</m-button>
+              </div>
+            </m-transition-folded>
+          </expand-menu>
+          <!-- components -->
+          <expand-menu v-model="expand.components">
+            <template v-slot:text> 组件 </template>
+            <m-transition-folded>
+              <div v-show="expand.components">
+                <router-link-a
+                  v-model="pageNow"
+                  v-for="item in demoLinks"
+                  :href="item.href"
+                  :key="item.key"
+                  style="padding-left: 2em"
+                >
+                  {{ item.name }}
+                </router-link-a>
+              </div>
+            </m-transition-folded>
+          </expand-menu>
+          <!-- tools -->
+          <expand-menu v-model="expand.tools">
+            <template v-slot:text> 工具 </template>
+            <m-transition-folded>
+              <div v-show="expand.tools">
+                <m-button row text>Test1</m-button>
+                <m-button row text>Test2</m-button>
+                <m-button row text>Test3</m-button>
+              </div>
+            </m-transition-folded>
+          </expand-menu>
           <!--  -->
           <div>
             <router-link-a v-model="pageNow" href="/inputs">
@@ -59,6 +100,12 @@ export default {
     return {
       value: true,
       pageNow: "/get-started",
+      expand: {
+        start: true,
+        style: true,
+        components: true,
+        tools: true,
+      },
     };
   },
   directives: {
