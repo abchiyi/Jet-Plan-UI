@@ -49,9 +49,12 @@
           <expand-menu v-model="expand.components">
             <template v-slot:text> 组件 </template>
             <m-transition-folded>
-              <div v-show="expand.components">
-                <!--  -->
-                <div v-for="item in demoLinks" :key="item.key">
+              <ul class="components-container" v-show="expand.components">
+                <li
+                  class="components-item"
+                  v-for="item in demoLinks"
+                  :key="item.key"
+                >
                   <router-link-a
                     v-model="pageNow"
                     :href="item.href"
@@ -75,10 +78,8 @@
                       </m-button>
                     </div>
                   </m-transition-folded>
-                </div>
-
-                <!--  -->
-              </div>
+                </li>
+              </ul>
             </m-transition-folded>
           </expand-menu>
         </m-list>
@@ -137,5 +138,12 @@ export default {
   border-radius: 16px;
   padding: 15px 20px;
   display: block;
+}
+.components-item::marker {
+  font-size: 0;
+}
+
+.components-container {
+  padding: unset;
 }
 </style>
