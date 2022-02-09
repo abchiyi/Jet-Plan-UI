@@ -23,8 +23,10 @@ export default {
   },
   methods: {
     click() {
-      this.$router.push(this.href);
-      this.$emit("update:modelValue", this.href);
+      if (this.href) {
+        this.$router.push(this.href);
+        this.$emit("update:modelValue", this.href);
+      }
     },
   },
 };
