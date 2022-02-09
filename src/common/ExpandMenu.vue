@@ -1,5 +1,5 @@
 <template >
-  <m-button row text hover @click="click">
+  <m-button :style="styles" row text hover @click="click">
     <m-row space-mode="between">
       <strong>
         <slot name="text">ShowMenu</slot>
@@ -19,10 +19,19 @@ export default {
     modelValue: {
       type: Boolean,
     },
+    indentation: {
+      type: [Number, String],
+      default: 0,
+    },
   },
   computed: {
     iconClass() {
       return ["bi bi-chevron-right", this.modelValue ? "expand" : ""];
+    },
+    styles() {
+      return {
+        paddingLeft: this.indentation ? this.indentation + "rem" : "",
+      };
     },
   },
   methods: {

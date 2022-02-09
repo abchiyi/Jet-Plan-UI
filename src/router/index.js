@@ -57,6 +57,22 @@ const TheDemo = {
         {
             name: 'Inputs',
             path: '/inputs',
+            index: [{
+                    name: 'Input',
+                    to: "#input"
+                },
+                {
+                    name: 'Checkbox',
+                    to: "#checkbox"
+                },
+                {
+                    name: 'Radio',
+                    to: "#radio"
+                }, {
+                    name: 'Switch',
+                    to: "#switch"
+                }
+            ],
             component: () => import('../views/the_demo/the_demo_inputs/TheDemoInputs.vue')
         },
     ]

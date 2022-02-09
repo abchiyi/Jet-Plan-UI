@@ -50,36 +50,37 @@
             <template v-slot:text> 组件 </template>
             <m-transition-folded>
               <div v-show="expand.components">
-                <router-link-a
-                  v-model="pageNow"
-                  v-for="item in demoLinks"
-                  :href="item.href"
-                  :key="item.key"
-                  style="padding-left: 1.5rem"
-                >
-                  {{ item.name }}
-                </router-link-a>
+                <!--  -->
+                <div v-for="item in demoLinks" :key="item.key">
+                  <router-link-a
+                    v-model="pageNow"
+                    :href="item.href"
+                    indentation="1"
+                    style="padding-left: 1.5rem"
+                  >
+                    {{ item.name }}
+                  </router-link-a>
+
+                  <m-transition-folded>
+                    <div class="page-index" v-show="pageNow == item.href">
+                      <m-button
+                        style="padding-left: 2.5rem"
+                        v-scroll-to:120="i.to"
+                        v-for="i in item.index"
+                        :key="i"
+                        text
+                        row
+                      >
+                        {{ i.name }}
+                      </m-button>
+                    </div>
+                  </m-transition-folded>
+                </div>
+
+                <!--  -->
               </div>
             </m-transition-folded>
           </expand-menu>
-
-          <!--  -->
-          <div>
-            <router-link-a v-model="pageNow" href="/inputs">
-              InputsOfTest
-            </router-link-a>
-            <m-transition-folded>
-              <div v-show="pageNow == '/inputs'">
-                <m-button text row v-scroll-to:120="`#input`">Input</m-button>
-                <m-button text row v-scroll-to:120="`#checkbox`">
-                  checkbox
-                </m-button>
-                <m-button text row v-scroll-to:120="`#radio`">Radio</m-button>
-                <m-button text row v-scroll-to:120="`#switch`">Switch</m-button>
-              </div>
-            </m-transition-folded>
-          </div>
-          <!--  -->
         </m-list>
       </template>
       <template v-slot:default>
@@ -119,6 +120,7 @@ export default {
         return {
           name: item.name,
           href: item.path,
+          index: item.index ? item.index : [],
         };
       });
     },
