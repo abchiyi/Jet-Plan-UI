@@ -5,7 +5,6 @@ import animations from './animations'
 import progress from './progress'
 import layout from './layout'
 import theme from './theme'
-import list from './list'
 import mask from './mask'
 import codeBox from "./code_box";
 import shadowBox from './shaodwBox'
@@ -22,7 +21,6 @@ const components = {
     progress,
     codeBox,
     layout,
-    list,
     mask,
     gird,
     form,
@@ -48,7 +46,6 @@ export {
     progress,
     codeBox,
     layout,
-    list,
     mask,
     gird,
     form,
