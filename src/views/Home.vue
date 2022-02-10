@@ -8,10 +8,10 @@
       <m-row tag="header" X="center" Y="center">
         <m-button text @click="$router.push('/')">Home</m-button>
       </m-row>
-      <m-list id="links">
+      <ol id="links">
         <router-link-a>Home </router-link-a>
         <router-link-a>About </router-link-a>
-      </m-list>
+      </ol>
     </template>
     <!-- 正文 -->
 

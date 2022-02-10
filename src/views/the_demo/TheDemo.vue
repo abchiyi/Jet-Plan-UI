@@ -10,8 +10,7 @@
         <m-row tag="header" X="center" Y="center">
           <m-button text @click="$router.push('/')">Home</m-button>
         </m-row>
-        <m-list id="links"> </m-list>
-        <m-list>
+        <ol id="links">
           <!-- Start -->
           <expand-menu v-model="expand.start">
             <template v-slot:text> 开始 </template>
@@ -82,7 +81,7 @@
               </ul>
             </m-transition-folded>
           </expand-menu>
-        </m-list>
+        </ol>
       </template>
       <template v-slot:default>
         <router-view />
@@ -143,6 +142,7 @@ export default {
   font-size: 0;
 }
 
+#links,
 .components-container {
   padding: unset;
 }
