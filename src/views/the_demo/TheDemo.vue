@@ -7,8 +7,15 @@
       </template>
       <!-- 浮动侧栏 -->
       <template v-slot:sidebar>
-        <m-row tag="header" X="center" Y="center">
-          <m-button text @click="$router.push('/')">Home</m-button>
+        <m-row
+          tag="header"
+          X="center"
+          Y="center"
+        >
+          <m-button
+            text
+            @click="$router.push('/')"
+          >Home</m-button>
         </m-row>
         <ol id="links">
           <!-- Start -->
@@ -16,9 +23,21 @@
             <template v-slot:text> 开始 </template>
             <m-transition-folded>
               <div v-show="expand.start">
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
               </div>
             </m-transition-folded>
           </expand-menu>
@@ -27,9 +46,21 @@
             <template v-slot:text> 样式 </template>
             <m-transition-folded>
               <div v-show="expand.style">
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
               </div>
             </m-transition-folded>
           </expand-menu>
@@ -38,9 +69,21 @@
             <template v-slot:text> 工具 </template>
             <m-transition-folded>
               <div v-show="expand.tools">
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
-                <m-button row text style="padding-left: 1.5rem">Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
+                <m-button
+                  row
+                  text
+                  style="padding-left: 1.5rem"
+                >Test1</m-button>
               </div>
             </m-transition-folded>
           </expand-menu>
@@ -48,7 +91,10 @@
           <expand-menu v-model="expand.components">
             <template v-slot:text> 组件 </template>
             <m-transition-folded>
-              <ul class="components-container" v-show="expand.components">
+              <ul
+                class="components-container"
+                v-show="expand.components"
+              >
                 <li
                   class="components-item"
                   v-for="item in demoLinks"
@@ -64,7 +110,10 @@
                   </router-link-a>
 
                   <m-transition-folded>
-                    <div class="page-index" v-show="pageNow == item.href">
+                    <div
+                      class="page-index"
+                      v-show="pageNow == item.href"
+                    >
                       <m-button
                         style="padding-left: 2.5rem"
                         v-scroll-to:120="i.to"
@@ -96,9 +145,9 @@
 <script>
 import ScrollTo from "../../../packages/tool/directives/ScrollTo";
 import { Focus } from "../../../packages/tool";
-import { TheDemo } from "../../router";
+import { TheDemoCompontentsRouter } from "../../router";
 export default {
-  data() {
+  data () {
     return {
       value: true,
       pageNow: "/get-started",
@@ -115,8 +164,8 @@ export default {
     scrollTo: ScrollTo,
   },
   computed: {
-    demoLinks() {
-      return TheDemo.children.map((item) => {
+    demoLinks () {
+      return TheDemoCompontentsRouter.map((item) => {
         return {
           name: item.name,
           href: item.path,
