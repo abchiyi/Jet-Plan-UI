@@ -169,7 +169,7 @@
 <script>
 import ScrollTo from "../../../packages/tool/directives/ScrollTo";
 import { Focus } from "../../../packages/tool";
-import { TheDemoCompontentsRouter, TheDemoStart } from "../../router";
+import { TheDemoCompontentsRouter, TheDemoStart, TheDemoStyle, TheDemoTool } from "../../router";
 
 function toLinks (routerConf) {
   return routerConf.map(item => {
@@ -202,7 +202,9 @@ export default {
     links () {
       return {
         start: toLinks(TheDemoStart),
-        components: toLinks(TheDemoCompontentsRouter)
+        components: toLinks(TheDemoCompontentsRouter),
+        tools: toLinks(TheDemoTool),
+        styles: toLinks(TheDemoStyle)
       }
     }
   },

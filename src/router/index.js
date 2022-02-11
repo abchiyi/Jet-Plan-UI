@@ -6,6 +6,8 @@ import {
 // TheDemo page 中的内容
 import TheDemoCompontentsRouter from './TheDemoCompontentsRouter'
 import TheDemoStart from './TheDemoStart'
+import TheDemoStyle from './TheDemoStyle'
+import TheDemoTool from './TheDemoTool'
 
 const routes = [{
     path: '/',
@@ -19,11 +21,14 @@ const routes = [{
 },
 {
     name: "Demo",
+    // DefaultPage
     path: TheDemoCompontentsRouter[0].path,
     component: () => import('../views/the_demo/TheDemo.vue'),
     children: [
         ...TheDemoCompontentsRouter,
-        ...TheDemoStart
+        ...TheDemoStart,
+        ...TheDemoStyle,
+        ...TheDemoTool,
     ]
 }
 ]
@@ -36,6 +41,8 @@ const router = createRouter({
 export {
     TheDemoCompontentsRouter,
     TheDemoStart,
+    TheDemoStyle,
+    TheDemoTool
 }
 
 export default router
