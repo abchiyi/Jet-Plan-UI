@@ -3,8 +3,9 @@ import {
     createWebHashHistory
 } from 'vue-router'
 
-
+// TheDemo page 中的内容
 import TheDemoCompontentsRouter from './TheDemoCompontentsRouter'
+import TheDemoStart from './TheDemoStart'
 
 const routes = [{
     path: '/',
@@ -21,7 +22,8 @@ const routes = [{
     path: TheDemoCompontentsRouter[0].path,
     component: () => import('../views/the_demo/TheDemo.vue'),
     children: [
-        ...TheDemoCompontentsRouter
+        ...TheDemoCompontentsRouter,
+        ...TheDemoStart
     ]
 }
 ]
@@ -32,7 +34,8 @@ const router = createRouter({
 })
 
 export {
-    TheDemoCompontentsRouter
+    TheDemoCompontentsRouter,
+    TheDemoStart,
 }
 
 export default router

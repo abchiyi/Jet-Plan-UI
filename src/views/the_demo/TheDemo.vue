@@ -23,21 +23,45 @@
             <template v-slot:text> 开始 </template>
             <m-transition-folded>
               <div v-show="expand.start">
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
+
+                <ul
+                  class="components-container"
+                  v-show="expand.components"
+                >
+                  <li
+                    class="components-item"
+                    v-for="item in links.start"
+                    :key="item.key"
+                  >
+                    <router-link-a
+                      v-model="pageNow"
+                      :href="item.href"
+                      indentation="1"
+                      style="padding-left: 1.5rem"
+                    >
+                      {{ item.name }}
+                    </router-link-a>
+
+                    <m-transition-folded>
+                      <div
+                        class="page-index"
+                        v-show="pageNow == item.href"
+                      >
+                        <m-button
+                          style="padding-left: 2.5rem"
+                          v-scroll-to:120="i.to"
+                          v-for="i in item.index"
+                          :key="i"
+                          text
+                          row
+                        >
+                          {{ i.name }}
+                        </m-button>
+                      </div>
+                    </m-transition-folded>
+                  </li>
+                </ul>
+
               </div>
             </m-transition-folded>
           </expand-menu>
@@ -97,7 +121,7 @@
               >
                 <li
                   class="components-item"
-                  v-for="item in demoLinks"
+                  v-for="item in links.components  "
                   :key="item.key"
                 >
                   <router-link-a
@@ -145,7 +169,18 @@
 <script>
 import ScrollTo from "../../../packages/tool/directives/ScrollTo";
 import { Focus } from "../../../packages/tool";
-import { TheDemoCompontentsRouter } from "../../router";
+import { TheDemoCompontentsRouter, TheDemoStart } from "../../router";
+
+function toLinks (routerConf) {
+  return routerConf.map(item => {
+    return {
+      name: item.name,
+      href: item.path,
+      index: item.index ? item.index : [],
+    }
+  })
+}
+
 export default {
   data () {
     return {
@@ -164,15 +199,12 @@ export default {
     scrollTo: ScrollTo,
   },
   computed: {
-    demoLinks () {
-      return TheDemoCompontentsRouter.map((item) => {
-        return {
-          name: item.name,
-          href: item.path,
-          index: item.index ? item.index : [],
-        };
-      });
-    },
+    links () {
+      return {
+        start: toLinks(TheDemoStart),
+        components: toLinks(TheDemoCompontentsRouter)
+      }
+    }
   },
 };
 </script>
