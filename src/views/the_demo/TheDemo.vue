@@ -22,47 +22,11 @@
           <expand-menu v-model="expand.start">
             <template v-slot:text> 开始 </template>
             <m-transition-folded>
-              <div v-show="expand.start">
-
-                <ul
-                  class="components-container"
-                  v-show="expand.components"
-                >
-                  <li
-                    class="components-item"
-                    v-for="item in links.start"
-                    :key="item.key"
-                  >
-                    <router-link-a
-                      v-model="pageNow"
-                      :href="item.href"
-                      indentation="1"
-                      style="padding-left: 1.5rem"
-                    >
-                      {{ item.name }}
-                    </router-link-a>
-
-                    <m-transition-folded>
-                      <div
-                        class="page-index"
-                        v-show="pageNow == item.href"
-                      >
-                        <m-button
-                          style="padding-left: 2.5rem"
-                          v-scroll-to:120="i.to"
-                          v-for="i in item.index"
-                          :key="i"
-                          text
-                          row
-                        >
-                          {{ i.name }}
-                        </m-button>
-                      </div>
-                    </m-transition-folded>
-                  </li>
-                </ul>
-
-              </div>
+              <demo-page-have-index
+                v-show="expand.start"
+                :paths="links.start"
+                v-model="pageNow"
+              />
             </m-transition-folded>
           </expand-menu>
           <!-- Style -->
@@ -72,7 +36,7 @@
               <demo-page-have-index
                 v-show="expand.style"
                 :paths="links.styles"
-                v-model="pageNow"
+                v-model:pageNow="pageNow"
               />
             </m-transition-folded>
           </expand-menu>
@@ -80,66 +44,22 @@
           <expand-menu v-model="expand.tools">
             <template v-slot:text> 工具 </template>
             <m-transition-folded>
-              <div v-show="expand.tools">
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-              </div>
+              <demo-page-have-index
+                v-show="expand.tools"
+                :paths="links.tools"
+                v-model:pageNow="pageNow"
+              />
             </m-transition-folded>
           </expand-menu>
           <!-- components -->
           <expand-menu v-model="expand.components">
             <template v-slot:text> 组件 </template>
             <m-transition-folded>
-              <ul
-                class="components-container"
+              <demo-page-have-index
                 v-show="expand.components"
-              >
-                <li
-                  class="components-item"
-                  v-for="item in links.components  "
-                  :key="item.key"
-                >
-                  <router-link-a
-                    v-model="pageNow"
-                    :href="item.href"
-                    indentation="1"
-                    style="padding-left: 1.5rem"
-                  >
-                    {{ item.name }}
-                  </router-link-a>
-
-                  <m-transition-folded>
-                    <div
-                      class="page-index"
-                      v-show="pageNow == item.href"
-                    >
-                      <m-button
-                        style="padding-left: 2.5rem"
-                        v-scroll-to:120="i.to"
-                        v-for="i in item.index"
-                        :key="i"
-                        text
-                        row
-                      >
-                        {{ i.name }}
-                      </m-button>
-                    </div>
-                  </m-transition-folded>
-                </li>
-              </ul>
+                :paths="links.components"
+                v-model:pageNow="pageNow"
+              />
             </m-transition-folded>
           </expand-menu>
         </ol>

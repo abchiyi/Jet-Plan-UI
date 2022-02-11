@@ -10,7 +10,6 @@
         <router-link-a
           v-model="path"
           :href="item.href"
-          indentation="1"
           style="padding-left: 1.5rem"
         >
           {{ item.name }}
@@ -41,11 +40,6 @@
 import ScrollTo from '../../packages/tool/directives/ScrollTo'
 export default {
   name: "demo-page-have-index",
-  computed: {
-    activeLink () {
-      return this.pageNow == this.path
-    }
-  },
   directives: {
     scrollTo: ScrollTo,
   },
@@ -58,18 +52,13 @@ export default {
     pageNow: String,
     paths: Object,
   },
-  methods: {
-    updatedPath (path) {
-      this.$emit("update:pageNow", path)
-    },
-  },
   emits: ["update:pageNow"],
   watch: {
     pageNow (v) {
       this.path = v
     },
     path (v) {
-      this.updatedPath(v)
+      this.$emit("update:pageNow", v)
     }
   }
 }

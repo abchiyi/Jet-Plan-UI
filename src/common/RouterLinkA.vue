@@ -1,5 +1,11 @@
 <template>
-  <m-button text hover row :class="className" @click="click">
+  <m-button
+    text
+    hover
+    row
+    :class="className"
+    @click="click"
+  >
     <slot />
   </m-button>
 </template>
@@ -15,14 +21,13 @@ export default {
       default: false,
     },
   },
-
   computed: {
-    className() {
-      return ["router-link-a", this.modelValue == this.href ? "active" : ""];
+    className () {
+      return ["router-link-a", this.$route.path == this.href ? "active" : ""];
     },
   },
   methods: {
-    click() {
+    click () {
       if (this.href) {
         this.$router.push(this.href);
         this.$emit("update:modelValue", this.href);
