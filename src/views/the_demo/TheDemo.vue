@@ -68,24 +68,12 @@
           <!-- Style -->
           <expand-menu v-model="expand.style">
             <template v-slot:text> 样式 </template>
-            <m-transition-folded>
-              <div v-show="expand.style">
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-                <m-button
-                  row
-                  text
-                  style="padding-left: 1.5rem"
-                >Test1</m-button>
-              </div>
+            <m-transition-folded v-model:pageNow="pageNow">
+              <demo-page-have-index
+                v-show="expand.style"
+                :paths="links.styles"
+                v-model="pageNow"
+              />
             </m-transition-folded>
           </expand-menu>
           <!-- tools -->
@@ -220,13 +208,5 @@ export default {
   border-radius: 16px;
   padding: 15px 20px;
   display: block;
-}
-.components-item::marker {
-  font-size: 0;
-}
-
-#links,
-.components-container {
-  padding: unset;
 }
 </style>

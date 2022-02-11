@@ -12,6 +12,20 @@ export default [
     {
         name: "主题",
         path: '/theme',
+        index: [
+            {
+                name: 'test',
+                to: "#test"
+            },
+            {
+                name: 'test',
+                to: "#test"
+            },
+            {
+                name: 'test',
+                to: "#test"
+            },
+        ],
         component: () => import('../views/the_demo/TheDemoTODO.vue')
     }
 ]

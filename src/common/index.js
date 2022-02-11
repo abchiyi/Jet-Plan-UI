@@ -6,8 +6,9 @@ import Cube from './Cube.vue'
 import InlineCode from './inlineCode.vue'
 import DemoDoc from './DemoDoc.vue'
 import ExpandMennu from './ExpandMenu.vue'
+import DemoPageHaveIndex from './DemoPageHaveIndex.vue'
 
-function setCookie(name, value) {
+function setCookie (name, value) {
     let Days = 30;
     let exp = new Date();
     exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
@@ -15,7 +16,7 @@ function setCookie(name, value) {
         name + "=" + escape(value) + ";expires=" + exp.toGMTString();
 }
 
-function getCookie(name) {
+function getCookie (name) {
     var arr,
         reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)"); //正则匹配
     if ((arr = document.cookie.match(reg))) {
@@ -25,7 +26,7 @@ function getCookie(name) {
     }
 }
 
-function redColorModeCookie() {
+function redColorModeCookie () {
     /* 从Cookie 加载颜色主题设置,如为'null'则设置为 'true'即'Light Mode' */
     let colorMode = Boolean(getCookie("colorMode"));
     let autoColor = Boolean(getCookie("autoColor"));
@@ -36,7 +37,7 @@ function redColorModeCookie() {
     return [autoColor, colorMode];
 }
 
-function setColorModeCookie(color, auto) {
+function setColorModeCookie (color, auto) {
     setCookie("colorMode", color ? "1" : "");
     setCookie("autoColor", auto ? "1" : "");
 }
@@ -48,7 +49,8 @@ const components = {
     DemoDoc,
     Header,
     Cube,
-    ExpandMennu
+    ExpandMennu,
+    DemoPageHaveIndex
 }
 export {
     redColorModeCookie,
@@ -63,10 +65,11 @@ export {
     DemoDoc,
     Header,
     Cube,
-    ExpandMennu
+    ExpandMennu,
+    DemoPageHaveIndex
 }
 export default {
-    install(Vue) {
+    install (Vue) {
         Object.keys(components).forEach(key => {
             let item = components[key]
             Vue.component(item.name, item)
