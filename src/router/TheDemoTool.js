@@ -7,7 +7,16 @@ export default [
     {
         name: "ActionFeedback",
         path: "/action-feedback",
-        component: () => import(
-            '../views/the_demo/TheDemoActionFeedbacks.vue')
-    },
+        component: () => import('../views/the_demo/TheDemoActionFeedbacks.vue')
+    }, {
+        name: "Directives",
+        path: '/directives',
+        component: () => import('../views/the_demo/TheDemoTODO.vue'),
+        index: [
+            {
+                name: 'test',
+                to: '#test'
+            }
+        ]
+    }
 ]
