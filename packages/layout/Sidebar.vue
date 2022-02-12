@@ -4,21 +4,21 @@
     :opacity="false"
     :position="right ? 'right' : 'left'"
   >
-    <div v-show="show" class="bar frosted-glass">
+    <div
+      v-show="show"
+      class="bar frosted-glass"
+    >
       <slot />
     </div>
   </m-transition-slide>
 </template>
 
 <script>
-import { Focus } from "../tool";
+import { Focus } from "../tool/directives"
 export default {
   name: "m-sidebar",
-  mounted() {
+  mounted () {
     this.show = this.modelValue;
-  },
-  directives: {
-    focus: Focus
   },
   props: {
     modelValue: {
@@ -34,26 +34,29 @@ export default {
       default: false
     }
   },
+  directives: {
+    focus: Focus
+  },
   model: {
     prop: "modeValue",
     event: "update:modelValue"
   },
-  data() {
+  data () {
     return {
       width: undefined,
       show: false
     };
   },
   watch: {
-    modelValue() {
+    modelValue () {
       this.show = this.modelValue;
     },
-    show() {
+    show () {
       this.$emit("update:modelValue", this.show);
     }
   },
   methods: {
-    onblurClose(v) {
+    onblurClose (v) {
       if (!v && !this.dock) this.show = false;
     }
   }

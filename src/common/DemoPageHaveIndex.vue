@@ -21,8 +21,8 @@
             v-show="pageNow == item.href"
           >
             <m-button
-              style="padding-left: 2.5rem"
               v-scroll-to:120="i.to"
+              style="padding-left: 2.5rem"
               v-for="i in item.index"
               :key="i"
               text
@@ -37,12 +37,10 @@
   </div>
 </template>
 <script>
-import ScrollTo from '../../packages/tool/directives/ScrollTo'
+//   v-scroll-to:120="i.to"
+
 export default {
   name: "demo-page-have-index",
-  directives: {
-    scrollTo: ScrollTo,
-  },
   data () {
     return {
       path: undefined

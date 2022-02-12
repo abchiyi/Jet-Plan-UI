@@ -1,33 +1,41 @@
 <template>
   <m-row X="center">
-    <m-cube id="div1" style="background: var(--primary); height: 900px">
+    <m-cube
+      id="div1"
+      style="background: var(--primary); height: 900px"
+    >
       <strong>Primary</strong>
     </m-cube>
   </m-row>
   <m-row X="center">
-    <m-cube id="div2" style="background: var(--warning); height: 200px">
+    <m-cube
+      id="div2"
+      style="background: var(--warning); height: 200px"
+    >
       <strong>Waring</strong>
     </m-cube>
   </m-row>
   <m-row X="center">
-    <m-cube id="div3" style="background: var(--error); height: 900px">
+    <m-cube
+      id="div3"
+      style="background: var(--error); height: 900px"
+    >
       <strong>Error</strong>
     </m-cube>
   </m-row>
   <m-row X="center">
-    <m-cube id="div4" style="background: var(--info); height: 600px">
+    <m-cube
+      id="div4"
+      style="background: var(--info); height: 600px"
+    >
       <strong>Innfo</strong>
     </m-cube>
   </m-row>
 </template>
 <script>
-import ScrollTo from "../../../packages/tool/directives/ScrollTo";
 export default {
   name: "TheTestPage",
-  directives: {
-    scrollTo: ScrollTo,
-  },
-  data() {
+  data () {
     return {
       checkboxCheckAll: true,
       checkboxData: ["c1", "c2", "c3", "c4"],
@@ -41,24 +49,24 @@ export default {
     };
   },
   methods: {
-    on() {
+    on () {
       this.value = true;
       this.text = 5;
     },
-    off() {
+    off () {
       this.value = false;
       this.text = 0;
     },
-    test() {
+    test () {
       this.value = !this.value;
     },
-    hal() {
+    hal () {
       return this.checkboxData.length;
     },
   },
   watch: {},
-  created() {},
-  mounted() {},
+  created () { },
+  mounted () { },
 };
 </script>
 

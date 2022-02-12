@@ -10,12 +10,13 @@ import codeBox from "./code_box";
 import shadowBox from './shaodwBox'
 import ActionFeedback from './action-feedback'
 // 指令&工具函数/类
-import tool from './tool'
+import directives from './tool/directives'
 
 import themeDefault from './theme_default'
 
 const components = {
     ActionFeedback,
+    directives,
     animations,
     shadowBox,
     progress,
@@ -27,7 +28,7 @@ const components = {
     card,
 }
 
-function install(Vue) {
+function install (Vue) {
     Object.keys(components).forEach(key => {
         Vue.use(components[key])
     })
@@ -40,17 +41,17 @@ if (typeof window !== 'undefined' && window.Vue) {
 export {
     ActionFeedback,
     themeDefault,
-    theme,
     animations,
+    directives,
     shadowBox,
     progress,
     codeBox,
     layout,
+    theme,
     mask,
     gird,
     form,
     card,
-    tool
 }
 
 export default {

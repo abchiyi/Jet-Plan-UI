@@ -1,10 +1,11 @@
 <script>
 import { h } from "vue";
+
 import {
   SHADOW_PAINTER_ERROR,
   chekcDirection,
-  shadowPainter
-} from "../../tool/directives/Shadow";
+  shadowPainter,
+} from "../../tool/lib/inedx"
 
 export default {
   name: "m-shaodw-box",
@@ -12,7 +13,7 @@ export default {
     tag: { default: "div" },
     direction: {
       type: String,
-      validator(v) {
+      validator (v) {
         try {
           chekcDirection(v);
         } catch (error) {
@@ -28,7 +29,7 @@ export default {
     },
     intensity: { default: 1 }
   },
-  render() {
+  render () {
     return h(
       this.tag,
       {

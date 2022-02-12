@@ -1,5 +1,5 @@
 <script>
-import { getOffset } from "../tool/src/dom";
+import { getOffset } from "../tool/lib/dom";
 import { h } from "vue";
 export default {
   name: "m-mask",
@@ -10,12 +10,12 @@ export default {
     }
   },
   methods: {
-    calcDiameter() {
+    calcDiameter () {
       const width = this.data.el.offsetWidth;
       const height = this.data.el.offsetHeight;
       return Math.sqrt(width * width + height * height) * 2 + "px";
     },
-    getPosition(data) {
+    getPosition (data) {
       // 获取父元素内点击定位
       const offset = getOffset(data.el);
       return {
@@ -25,7 +25,7 @@ export default {
     }
   },
   computed: {
-    styles() {
+    styles () {
       return {
         "--diameter": this.calcDiameter(),
         "--opacity": this.data.opacity,
@@ -34,7 +34,7 @@ export default {
       };
     }
   },
-  render() {
+  render () {
     return h("span", {
       class: ["m-mask", this.data.ripple ? "ripple" : "mask"],
       style: this.styles

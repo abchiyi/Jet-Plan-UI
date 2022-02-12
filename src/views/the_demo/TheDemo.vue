@@ -75,10 +75,7 @@
 </template>
 
 <script>
-import ScrollTo from "../../../packages/tool/directives/ScrollTo";
-import { Focus } from "../../../packages/tool";
 import { TheDemoCompontentsRouter, TheDemoStart, TheDemoStyle, TheDemoTool } from "../../router";
-
 function toLinks (routerConf) {
   return routerConf.map(item => {
     return {
@@ -88,7 +85,6 @@ function toLinks (routerConf) {
     }
   })
 }
-
 export default {
   data () {
     return {
@@ -101,10 +97,6 @@ export default {
         tools: true,
       },
     };
-  },
-  directives: {
-    focus: Focus,
-    scrollTo: ScrollTo,
   },
   computed: {
     links () {

@@ -2,7 +2,7 @@ import ActionFeedback from './ActionFeedback.vue'
 
 import {
     installComponent,
-} from '../tool'
+} from '../tool/lib/inedx'
 
 export {
     ActionFeedback,
@@ -11,7 +11,7 @@ export {
 const components = [ActionFeedback]
 
 export default {
-    install(Vue) {
+    install (Vue) {
         installComponent(Vue, components)
     }
 }
