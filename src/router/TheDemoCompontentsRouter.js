@@ -1,5 +1,5 @@
 export default [{
-    path: "/get-started",
+    path: "/gride",
     name: "Gride",
     component: () => import('../views/the_demo/TheDemoGirde.vue')
 },

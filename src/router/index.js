@@ -9,6 +9,9 @@ import TheDemoStart from './TheDemoStart'
 import TheDemoStyle from './TheDemoStyle'
 import TheDemoTool from './TheDemoTool'
 
+
+const defaultPage = TheDemoStart[0].path
+
 const routes = [{
     path: '/',
     name: 'Home',
@@ -21,8 +24,9 @@ const routes = [{
 },
 {
     name: "Demo",
-    // DefaultPage
-    path: TheDemoCompontentsRouter[0].path,
+    path: '/get-started',
+    // Demo default page
+    redirect: defaultPage,
     component: () => import('../views/the_demo/TheDemo.vue'),
     children: [
         ...TheDemoCompontentsRouter,
