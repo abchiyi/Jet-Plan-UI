@@ -1,5 +1,10 @@
 export default [
     {
+        name: "主题",
+        path: '/theme',
+        component: () => import('../views/the_demo/TheDemoColors.vue')
+    },
+    {
         name: '色彩',
         path: '/color',
         component: () => import('../views/the_demo/TheDemoTODO.vue')
@@ -9,23 +14,4 @@ export default [
         path: '/fonts',
         component: () => import('../views/the_demo/TheDemoTODO.vue')
     },
-    {
-        name: "主题",
-        path: '/theme',
-        index: [
-            {
-                name: 'test',
-                to: "#test"
-            },
-            {
-                name: 'test',
-                to: "#test"
-            },
-            {
-                name: 'test',
-                to: "#test"
-            },
-        ],
-        component: () => import('../views/the_demo/TheDemoTODO.vue')
-    }
 ]

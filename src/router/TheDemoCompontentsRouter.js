@@ -3,17 +3,7 @@ export default [{
     name: "Gride",
     component: () => import('../views/the_demo/TheDemoGirde.vue')
 },
-{
-    name: "AnimationDemo",
-    path: "/animationdemo",
-    component: () => import('../views/the_demo/the_demo_animation')
-},
-{
-    name: "ActionFeedback",
-    path: "/action-feedback",
-    component: () => import(
-        '../views/the_demo/TheDemoActionFeedbacks.vue')
-},
+
 {
     name: "Card",
     path: "/card",
@@ -35,11 +25,6 @@ export default [{
     name: 'Test',
     path: '/test',
     component: () => import('../views/the_demo/TheTest.vue')
-},
-{
-    name: 'Colors',
-    path: '/colors',
-    component: () => import('../views/the_demo/TheDemoColors.vue')
 },
 {
     name: 'Buttons',
