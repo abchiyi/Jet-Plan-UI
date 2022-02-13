@@ -34,7 +34,29 @@ export default {
   data: () => {
     return {
       //TODO示例代码
-      code: undefined,
+      code: `// Script
+function onblur (v) {
+    this.value = v;
+};
+
+
+// Style
+<style>
+    .demo-cube{
+        style="width:150px;
+        padding:0 10px;
+    }
+</style>
+
+
+//Html
+<body>
+    <div class="demo-cube" v-focus="onblur">
+        {{value?'NowClickOutside':"NowClickMe"}}
+    </div>
+</body>
+
+`,
       value: false
     }
   },
