@@ -1,4 +1,4 @@
-<template>
+=;<template>
   <m-transition-slide
     v-focus="onblurClose"
     :opacity="false"

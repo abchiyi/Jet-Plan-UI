@@ -7,6 +7,7 @@ import InlineCode from './inlineCode.vue'
 import DemoDoc from './DemoDoc.vue'
 import ExpandMennu from './ExpandMenu.vue'
 import DemoPageHaveIndex from './DemoPageHaveIndex.vue'
+import DocDirective from './DocDirective.vue'
 
 function setCookie (name, value) {
     let Days = 30;
@@ -50,7 +51,8 @@ const components = {
     Header,
     Cube,
     ExpandMennu,
-    DemoPageHaveIndex
+    DemoPageHaveIndex,
+    DocDirective
 }
 export {
     redColorModeCookie,
@@ -66,7 +68,8 @@ export {
     Header,
     Cube,
     ExpandMennu,
-    DemoPageHaveIndex
+    DemoPageHaveIndex,
+    DocDirective
 }
 export default {
     install (Vue) {

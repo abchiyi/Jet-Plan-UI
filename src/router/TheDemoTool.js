@@ -12,11 +12,11 @@ export default [
     {
         name: "Directives",
         path: '/directives',
-        component: () => import('../views/the_demo/TheDemoTODO.vue'),
+        component: () => import('../views/the_demo/the_demo_directives/DemoDirectives.vue'),
         index: [
             {
-                name: 'test',
-                to: '#test'
+                name: 'focus',
+                to: '#focus'
             }
         ]
     },
