@@ -24,6 +24,8 @@
               style="padding-left: 2.5rem"
               v-for="i in item.index"
               :key="i"
+              active
+              hover
               text
               row
             >
