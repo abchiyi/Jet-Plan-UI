@@ -25,18 +25,16 @@
               <demo-page-have-index
                 v-show="expand.start"
                 :paths="links.start"
-                v-model="pageNow"
               />
             </m-transition-folded>
           </expand-menu>
           <!-- Style -->
           <expand-menu v-model="expand.style">
             <template v-slot:text> 样式 </template>
-            <m-transition-folded v-model:pageNow="pageNow">
+            <m-transition-folded>
               <demo-page-have-index
                 v-show="expand.style"
                 :paths="links.styles"
-                v-model:pageNow="pageNow"
               />
             </m-transition-folded>
           </expand-menu>
@@ -47,7 +45,6 @@
               <demo-page-have-index
                 v-show="expand.tools"
                 :paths="links.tools"
-                v-model:pageNow="pageNow"
               />
             </m-transition-folded>
           </expand-menu>
@@ -58,7 +55,6 @@
               <demo-page-have-index
                 v-show="expand.components"
                 :paths="links.components"
-                v-model:pageNow="pageNow"
               />
             </m-transition-folded>
           </expand-menu>
@@ -89,7 +85,6 @@ export default {
   data () {
     return {
       value: true,
-      pageNow: "/get-started",
       expand: {
         start: true,
         style: true,
