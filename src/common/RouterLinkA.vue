@@ -15,7 +15,6 @@ export default {
   name: "router-link-a",
   props: {
     href: String,
-    modelValue: String,
     active: {
       type: Boolean,
       default: false,
@@ -30,7 +29,6 @@ export default {
     click () {
       if (this.href) {
         this.$router.push(this.href);
-        this.$emit("update:modelValue", this.href);
       }
     },
   },
