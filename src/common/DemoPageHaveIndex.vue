@@ -8,7 +8,6 @@
       >
         <!-- Link -->
         <router-link-a
-          v-model="path"
           :href="item.href"
           style="padding-left: 1.5rem"
         >
@@ -18,7 +17,7 @@
         <m-transition-folded>
           <div
             class="page-index"
-            v-show="pageNow == item.href"
+            v-show="$route.path == item.href"
           >
             <m-button
               v-scroll-to:120="i.to"
@@ -47,17 +46,7 @@ export default {
     }
   },
   props: {
-    pageNow: String,
     paths: Object,
-  },
-  emits: ["update:pageNow"],
-  watch: {
-    pageNow (v) {
-      this.path = v
-    },
-    path (v) {
-      this.$emit("update:pageNow", v)
-    }
   }
 }
 </script>
