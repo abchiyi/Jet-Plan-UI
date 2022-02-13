@@ -17,6 +17,19 @@ export default [
             {
                 name: 'focus',
                 to: '#focus'
+            },
+            // TODO▾ 未完成的指令示例
+            {
+                name: 'ScrollTo',
+                to: '#scroll-to'
+            },
+            {
+                name: 'shadow',
+                to: '#shadow'
+            },
+            {
+                name: 'ReScreenSize',
+                to: '#re-screen-size'
             }
         ]
     },
