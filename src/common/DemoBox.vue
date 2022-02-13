@@ -1,8 +1,14 @@
 <template>
   <m-card class="m-demo-box">
-    <m-row Y="center" space-mode="between">
+    <m-row
+      Y="center"
+      space-mode="between"
+    >
       <span class="text-hint">{{ title }}</span>
-      <m-button @click="expand_" text>View Code</m-button>
+      <m-button
+        @click="expand_"
+        text
+      >View Code</m-button>
     </m-row>
     <div class="demo-box-header">
       <slot name="header"></slot>
@@ -11,7 +17,11 @@
       <slot></slot>
     </div>
     <m-transition-folded title="展开Code">
-      <m-code-box :code="code" v-show="value" lang="html" />
+      <m-code-box
+        :code="code"
+        v-show="value"
+        lang="javascript"
+      />
     </m-transition-folded>
   </m-card>
 </template>
@@ -33,13 +43,13 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       value: false
     };
   },
   methods: {
-    expand_() {
+    expand_ () {
       this.value = !this.value;
     }
   }

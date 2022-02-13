@@ -1,5 +1,10 @@
 <template>
-  <highlightjs class="m-code-box" :langeage="lang" :code="code" />
+  <highlightjs
+    class="m-code-box"
+    :autodetect="lang?false:true"
+    :language="lang"
+    :code="code"
+  />
 </template>
 
 <script>
