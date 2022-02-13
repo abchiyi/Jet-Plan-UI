@@ -33,7 +33,6 @@ export default {
   name: 'demo-directives-focus',
   data: () => {
     return {
-      //TODO示例代码
       code: `// Script
 function onblur (v) {
     this.value = v;
