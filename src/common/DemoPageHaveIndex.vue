@@ -38,8 +38,6 @@
   </div>
 </template>
 <script>
-//   v-scroll-to:120="i.to"
-
 export default {
   name: "demo-page-have-index",
   data () {
