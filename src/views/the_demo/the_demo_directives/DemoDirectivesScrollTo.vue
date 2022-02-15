@@ -58,7 +58,7 @@
 </template>
 <script>
 export default {
-  name: '',
+  name: 'the-demo-directives-scroll-to',
   data: () => {
     return {
       //TODO示例代码
