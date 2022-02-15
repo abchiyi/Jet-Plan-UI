@@ -24,7 +24,25 @@ export default [{
 {
     name: 'Test',
     path: '/test',
-    component: () => import('../views/the_demo/TheTest.vue')
+    component: () => import('../views/the_demo/TheTest.vue'),
+    index: [
+        {
+            name: 'div1',
+            to: "#div1"
+        },
+        {
+            name: 'div2',
+            to: "#div2"
+        },
+        {
+            name: 'div3',
+            to: "#div3"
+        },
+        {
+            name: 'div4',
+            to: "#div4"
+        },
+    ]
 },
 {
     name: 'Buttons',
