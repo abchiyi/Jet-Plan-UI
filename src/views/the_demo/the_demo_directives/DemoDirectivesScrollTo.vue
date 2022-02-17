@@ -61,8 +61,25 @@ export default {
   name: 'the-demo-directives-scroll-to',
   data: () => {
     return {
-      //TODO示例代码
-      code: undefined
+      code: `// HTML
+<body>
+    <m-button tag='a' v-scroll-to:120="'#cube1'">
+        滚动至大于屏幕高度元素,定义顶部距离视窗200px
+    </m-button>
+    <m-button tag='a' v-scroll-to="#cube2'">
+        滚动至小于屏幕高度元素
+    </m-button>
+    <m-button tag='a' v-scroll-to="'#cube3'">
+        滚动至大于屏幕高度元素,未定义顶部距离视窗位置
+    </m-button>
+    <m-row X='center'>
+        <m-col style="width:100px">
+            <m-cube id="cube1" style="height:120vh">120vh</m-cube>
+            <m-cube id="cube2" style="height:100px">100px</m-cube>
+            <m-cube id="cube3" style="height:120vh">120vh</m-cube>
+        </m-col>
+    </m-row>
+</body>`
     }
   }
 };
