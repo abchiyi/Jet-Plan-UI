@@ -10,6 +10,9 @@
     <hr>
     <br>
     <demo-directives-shadow />
+    <hr>
+    <br>
+    <demo-directives-re-screen-size />
   </div>
 
 </template>
@@ -17,12 +20,14 @@
 import DemoDirectivesFocus from './DemoDirectivesFocus.vue'
 import DemoDirectivesScrollTo from './DemoDirectivesScrollTo.vue'
 import DemoDirectivesShadow from "./DemoDirectivesShadow.vue"
+import DemoDirectivesReScreenSize from './DemoDirectivesReScreenSize.vue'
 export default {
   name: 'the-demo-directives',
   components: {
     DemoDirectivesFocus,
     DemoDirectivesScrollTo,
-    DemoDirectivesShadow
+    DemoDirectivesShadow,
+    DemoDirectivesReScreenSize
   },
   data: () => {
     return {
