@@ -14,7 +14,11 @@
       <slot name="header"></slot>
     </div>
     <div class="demo-box-show-demo">
-      <slot></slot>
+      <slot>
+        <m-row X="center">
+          <span class="text-hint">无可视示例</span>
+        </m-row>
+      </slot>
     </div>
     <m-transition-folded title="展开Code">
       <m-code-box
@@ -47,7 +51,7 @@ export default {
   },
   data () {
     return {
-      value: false
+      value: this.expand
     };
   },
   methods: {
