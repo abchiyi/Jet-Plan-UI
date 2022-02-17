@@ -5,18 +5,23 @@
       title='v-shaow'
       :code='code'
     >
-      <m-row
-        Y=center
-        X=start
-        warp
-        space-mode="between"
-      >
+      <template v-slot:header>
+        <p>
+          <label for="shadow-intensity">阴影强度</label>
+          <input
+            id="shadow-intensity"
+            type="number"
+            v-model="value"
+          />
+        </p>
+      </template>
+      <m-row X=center>
         <m-cube
-          v-for="n in 20"
-          :key="n"
-          v-shadow="n"
-          :intensity="n"
-        >Test{{ n }}</m-cube>
+          class="demo-box"
+          v-shadow:bottom="value"
+        >
+          Intensity:{{value}}
+        </m-cube>
       </m-row>
     </demo-box>
   </article>
@@ -26,11 +31,35 @@ export default {
   name: 'v-shaow',
   data: () => {
     return {
-      //TODO示例代码
-      code: undefined
+      code: `
+// Javascript
+let value = 10;
+// HTML
+<body>
+    <style>
+        .demo-box {
+            background: var(--foreground) !important;
+            color: var(--text) !important;
+            height: 200px;
+            width: 150px;
+            border: unset;
+        }
+    </style>
+    <m-cube class="demo-box" v-shadow:bottom="value" >
+        Intensity:{{value}}
+    </m-cube>
+</body>`,
+      value: '10'
     }
   }
 };
 </script>
 <style>
+.demo-box {
+  background: var(--foreground) !important;
+  color: var(--text) !important;
+  height: 200px;
+  width: 150px;
+  border: unset;
+}
 </style>
