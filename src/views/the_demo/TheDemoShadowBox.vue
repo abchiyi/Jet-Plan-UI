@@ -1,22 +1,25 @@
 <template>
-  <strong>ShadowBox</strong>
-  <demo-box
-    title="ShadowBox"
-    :code="code"
-  >
-    <m-row
-      Y=center
-      style="height:150px"
-      space-mode="between"
+  <div>
+    <strong>ShadowBox</strong>
+    <demo-box
+      title="ShadowBox"
+      :code="code"
     >
-      <m-shaodw-box
-        class="demo"
-        v-for="n in 5"
-        :key="n"
-        :intensity="n"
-      >Test{{ n }}</m-shaodw-box>
-    </m-row>
-  </demo-box>
+      <m-row
+        Y=center
+        style="height:150px"
+        space-mode="between"
+      >
+        <m-shaodw-box
+          class="demo"
+          v-for="n in 5"
+          :key="n"
+          :intensity="n"
+        >Test{{ n }}</m-shaodw-box>
+      </m-row>
+    </demo-box>
+  </div>
+
 </template>
 <script>
 export default {

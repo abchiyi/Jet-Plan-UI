@@ -1,16 +1,22 @@
 <template>
-  <h2>Card组件</h2>
-  <p>卡片容器</p>
-  <!-- Demo -->
-  <demo-box title="卡片" :code="code">
-    <m-card style="height:200px"></m-card>
-  </demo-box>
+  <div>
+    <h2>Card组件</h2>
+    <p>卡片容器</p>
+    <!-- Demo -->
+    <demo-box
+      title="卡片"
+      :code="code"
+    >
+      <m-card style="height:200px"></m-card>
+    </demo-box>
+  </div>
+
 </template>
 
 <script>
 export default {
   name: "the-demo-card",
-  data() {
+  data () {
     return {
       code: ``
     };

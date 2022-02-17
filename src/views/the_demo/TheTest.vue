@@ -1,36 +1,39 @@
 <template>
-  <m-row X="center">
-    <m-cube
-      id="div1"
-      style="background: var(--primary); height: 900px"
-    >
-      <strong>Primary</strong>
-    </m-cube>
-  </m-row>
-  <m-row X="center">
-    <m-cube
-      id="div2"
-      style="background: var(--warning); height: 200px"
-    >
-      <strong>Waring</strong>
-    </m-cube>
-  </m-row>
-  <m-row X="center">
-    <m-cube
-      id="div3"
-      style="background: var(--error); height: 900px"
-    >
-      <strong>Error</strong>
-    </m-cube>
-  </m-row>
-  <m-row X="center">
-    <m-cube
-      id="div4"
-      style="background: var(--info); height: 600px"
-    >
-      <strong>Innfo</strong>
-    </m-cube>
-  </m-row>
+  <div>
+    <m-row X="center">
+      <m-cube
+        id="div1"
+        style="background: var(--primary); height: 900px"
+      >
+        <strong>Primary</strong>
+      </m-cube>
+    </m-row>
+    <m-row X="center">
+      <m-cube
+        id="div2"
+        style="background: var(--warning); height: 200px"
+      >
+        <strong>Waring</strong>
+      </m-cube>
+    </m-row>
+    <m-row X="center">
+      <m-cube
+        id="div3"
+        style="background: var(--error); height: 900px"
+      >
+        <strong>Error</strong>
+      </m-cube>
+    </m-row>
+    <m-row X="center">
+      <m-cube
+        id="div4"
+        style="background: var(--info); height: 600px"
+      >
+        <strong>Innfo</strong>
+      </m-cube>
+    </m-row>
+  </div>
+
 </template>
 <script>
 export default {

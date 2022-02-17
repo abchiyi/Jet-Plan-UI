@@ -12,12 +12,18 @@
             value = !value;
           }
         "
-        >ClickMe</m-button
-      >
+      >ClickMe</m-button>
     </template>
   </m-control-bar>
-  <demo-box title="淡出淡入" :code="code" id="fade">
-    <m-row class="animation-box" X="center">
+  <demo-box
+    title="淡出淡入"
+    :code="code"
+    id="fade"
+  >
+    <m-row
+      class="animation-box"
+      X="center"
+    >
       <m-transition-fade>
         <m-cube v-show="value">
           <p>Fade</p>
@@ -30,7 +36,7 @@
 <script>
 export default {
   name: "animation-fade",
-  data() {
+  data () {
     return {
       value: true,
       code: `<m-transition-fade>
