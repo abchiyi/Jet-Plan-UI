@@ -7,7 +7,7 @@
       tag="a"
       active
       hover
-    >arg</m-button> :
+    >arg</m-button> =
     <m-button
       v-scroll-to:120="`#${ids.value}`"
       active
