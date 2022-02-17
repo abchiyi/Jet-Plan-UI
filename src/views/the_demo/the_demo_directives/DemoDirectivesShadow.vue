@@ -24,6 +24,15 @@
         </m-cube>
       </m-row>
     </demo-box>
+
+    <doc-directive directive="shadow">
+      <template v-slot:arg>
+        <li>默认未 'center', 可选 top', 'bottom', 'left', 'right',设置阴影方向。</li>
+      </template>
+      <template v-slot:value>
+        <li>设置阴影强度，建议1~30的数字。</li>
+      </template>
+    </doc-directive>
   </article>
 </template>
 <script>
