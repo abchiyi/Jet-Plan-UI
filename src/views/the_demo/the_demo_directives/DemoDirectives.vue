@@ -6,15 +6,20 @@
   <hr>
   <br>
   <demo-directives-scroll-to />
+  <hr>
+  <br>
+  <demo-directives-shadow />
 </template>
 <script>
 import DemoDirectivesFocus from './DemoDirectivesFocus.vue'
 import DemoDirectivesScrollTo from './DemoDirectivesScrollTo.vue'
+import DemoDirectivesShadow from "./DemoDirectivesShadow.vue"
 export default {
   name: 'the-demo-directives',
   components: {
     DemoDirectivesFocus,
-    DemoDirectivesScrollTo
+    DemoDirectivesScrollTo,
+    DemoDirectivesShadow
   },
   data: () => {
     return {
