@@ -10,9 +10,21 @@
     v-model="localvalue"
     @click="click"
   />
-  <label :for="id" :class="classes">
-    <svg id="checkbox" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-      <rect class="background" width="24" height="24" rx="4" />
+  <label
+    :for="id"
+    :class="classes"
+  >
+    <svg
+      id="checkbox"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <rect
+        class="background"
+        width="24"
+        height="24"
+        rx="4"
+      />
       <rect
         class="mask"
         width="20"
@@ -21,7 +33,11 @@
         transform="translate(2 2)"
       />
       <transition name="dot">
-        <g v-show="sectionSelected" width="24" height="24">
+        <g
+          v-show="sectionSelected"
+          width="24"
+          height="24"
+        >
           <rect
             class="dot"
             transform="translate(5 5)"
@@ -49,7 +65,7 @@
 export default {
   name: "m-checkbox",
   computed: {
-    handleCheckAll() {
+    handleCheckAll () {
       if (
         this.validatIsAArray(this.value) &&
         this.validatIsAArray(this.modelValue)
@@ -58,7 +74,7 @@ export default {
       }
       return false;
     },
-    sectionSelected() {
+    sectionSelected () {
       if (!this.checked) {
         if (this.handleCheckAll) {
           for (let key in this.modelValue) {
@@ -71,7 +87,7 @@ export default {
 
       return false;
     },
-    checked() {
+    checked () {
       //检查所有值是否存在列表中
       if (this.handleCheckAll) {
         return this.eq;
@@ -83,15 +99,29 @@ export default {
       // 绑定数值
       return this.modelValue;
     },
-    eq() {
-      if (this.handleCheckAll) {
-        let modelValue = this.modelValue;
-        let value = this.value;
-        return modelValue.sort().toString() == value.sort().toString();
+    eq () {
+      let BASE = this.value;
+      function allIn (array, base) {
+
+        let conter = 0;
+        for (let i in array) {
+          conter++
+          if (array.indexOf(base[i]) == -1) {
+            return false;
+          }
+        }
+
+        if (conter < base.length) {
+          return false;
+        }
+
+        return true
+
       }
-      return false;
+
+      return allIn(this.modelValue, BASE)
     },
-    classes() {
+    classes () {
       return [
         "shape m-check-box",
         this.size,
@@ -130,13 +160,13 @@ export default {
     change: null,
     "update:modelValue": null
   },
-  data() {
+  data () {
     return {
       localvalue: []
     };
   },
   methods: {
-    click() {
+    click () {
       // 'disabled' prop 启用时,不响应点击.
       if (!this.disabled) {
         if (this.handleCheckAll) {
@@ -152,7 +182,7 @@ export default {
         }
       }
     },
-    checkAll(array = Array) {
+    checkAll (array = Array) {
       let newArray = array;
       for (let key in this.value) {
         if (newArray.indexOf(this.value[key]) == -1) {
@@ -161,7 +191,7 @@ export default {
       }
       return newArray;
     },
-    check(value) {
+    check (value) {
       if (this.validatIsAArray(value)) {
         let newArray = value;
         if (this.checked) {
@@ -173,12 +203,12 @@ export default {
       }
       return !value;
     },
-    validatIsAArray(v) {
+    validatIsAArray (v) {
       return typeof v == "object" && typeof v.length == "number";
     }
   },
   watch: {
-    checked(v) {
+    checked (v) {
       v ? this.localvalue.push(this.value) : (this.localvalue = []);
     }
   }
