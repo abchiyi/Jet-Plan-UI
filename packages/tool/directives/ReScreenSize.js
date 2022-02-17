@@ -28,14 +28,16 @@ function ReSize () {
 const timeout = new TimedActionLimit(100)
 export default {
     name: 're-screen-size',
-    created () {
-        const binding = arguments[1]
+    created (el, binding) {
+        // const binding = arguments[1]
         binding.value(
+            el,
             ReSize()
         )
         window.addEventListener('resize', () => {
             timeout.action(() => {
                 binding.value(
+                    el,
                     ReSize()
                 )
             })

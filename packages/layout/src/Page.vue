@@ -86,7 +86,8 @@ export default {
     };
   },
   methods: {
-    reScreenSize (v) {
+    reScreenSize (el, v) {
+      el
       v.contains(this.sidebarOpenIn, bool => {
         this.sidebarDock = !bool;
         if (bool) {
