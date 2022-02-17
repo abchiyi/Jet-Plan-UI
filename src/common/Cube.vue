@@ -1,5 +1,9 @@
 <template>
-  <m-row :class="classes" X="center" Y="center">
+  <m-row
+    :class="classes"
+    X="center"
+    Y="center"
+  >
     <slot></slot>
   </m-row>
 </template>
@@ -14,7 +18,7 @@ export default {
     },
   },
   computed: {
-    classes() {
+    classes () {
       let classes = ["m-cube"];
       if (this.dark) classes.push("dark");
       return classes;
@@ -27,7 +31,7 @@ export default {
 .m-cube {
   width: 100px;
   height: 100px;
-  border-radius: var(--s-radius);
+  border-radius: var(--m-radius);
   background-color: var(--primary);
   /* 文本设置 */
   color: #fff;
