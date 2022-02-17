@@ -18,6 +18,7 @@
     </div>
     <m-transition-folded title="展开Code">
       <m-code-box
+        :id="codeID"
         :code="code"
         v-show="value"
         lang="javascript"
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import { scrollTo } from '../../packages/tool/lib/inedx'
 export default {
   name: "demo-box",
   props: {
@@ -51,6 +53,19 @@ export default {
   methods: {
     expand_ () {
       this.value = !this.value;
+    }
+  },
+  computed: {
+    codeID () {
+      return this.title + '-code'
+    }
+  },
+  watch: {
+    value (v) {
+      v
+      setTimeout(() => {
+        scrollTo(`#${this.codeID}`, 200)
+      }, 300)
     }
   }
 };
