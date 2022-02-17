@@ -1,10 +1,23 @@
 <template>
   <article id='shadow'>
-    <article>Shadow</article>
+    <strong>Shadow</strong>
     <demo-box
       title='v-shaow'
       :code='code'
     >
+      <m-row
+        Y=center
+        X=start
+        warp
+        space-mode="between"
+      >
+        <m-cube
+          v-for="n in 20"
+          :key="n"
+          v-shadow="n"
+          :intensity="n"
+        >Test{{ n }}</m-cube>
+      </m-row>
     </demo-box>
   </article>
 </template>

@@ -68,7 +68,7 @@ export function shadowPainter (direction, intensity, color) {
     chekcDirection(direction)
     return `
     ${x()} ${y()}
-    ${2 * intensity}px
+    ${1.5 * intensity}px
     ${0.3 * intensity}px
     ${color ? color : 'var(--shadow)'}`
 }
