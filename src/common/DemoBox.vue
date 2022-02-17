@@ -62,9 +62,8 @@ export default {
   },
   watch: {
     value (v) {
-      v
       setTimeout(() => {
-        scrollTo(`#${this.codeID}`, 200)
+        if (v) scrollTo(`#${this.codeID}`, 200)
       }, 300)
     }
   }
