@@ -103,8 +103,6 @@ export function shadowPainter (direction, intensity, color) {
     ${0.3 * intensity}px
     ${color ? color : 'var(--shadow)'}`
 }
-
-
 export class SHADOW_PAINTER_ERROR extends Error {
     constructor (message) {
         super(message);
