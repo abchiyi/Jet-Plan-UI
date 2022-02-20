@@ -36,7 +36,7 @@ export default [
     {
         name: "ToolFunction",
         path: '/tool-function',
-        component: () => import('../views/the_demo/TheDemoTODO.vue'),
+        component: () => import('../views/the_demo/the_demo_tools/DemoTools.vue'),
         index: [
             {
                 name: 'test',
