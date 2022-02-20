@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { scrollTo } from '../../packages/tool/lib/inedx'
+import { scrollTo } from '../../packages/tool/lib'
 export default {
   name: "demo-box",
   props: {

@@ -2,7 +2,7 @@ import ActionFeedback from './ActionFeedback.vue'
 
 import {
     installComponent,
-} from '../tool/lib/inedx'
+} from '../tool/lib'
 
 export {
     ActionFeedback,

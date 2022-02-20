@@ -1,4 +1,4 @@
-import { scrollTo } from '../lib/inedx'
+import { scrollTo } from '../lib'
 
 export default {
     name: 'scroll-to',

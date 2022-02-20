@@ -3,7 +3,7 @@ import ScrollTo from './ScrollTo.js'
 import Shadow from "./Shadow.js";
 import Focus from './Focus.js'
 
-import { installDirective } from '../lib/inedx.js';
+import { installDirective } from '../lib';
 
 export {
     ReScreenSize,

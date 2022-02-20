@@ -1,4 +1,4 @@
-import { shadowPainter, SHADOW_PAINTER_ERROR } from '../lib/inedx'
+import { shadowPainter, SHADOW_PAINTER_ERROR } from '../lib'
 
 function setSahdow (el, binding) {
     let direction = binding.arg ? binding.arg : 'center'

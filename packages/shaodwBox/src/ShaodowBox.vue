@@ -5,7 +5,7 @@ import {
   SHADOW_PAINTER_ERROR,
   chekcDirection,
   shadowPainter,
-} from "../../tool/lib/inedx"
+} from "../../tool/lib"
 
 export default {
   name: "m-shaodw-box",

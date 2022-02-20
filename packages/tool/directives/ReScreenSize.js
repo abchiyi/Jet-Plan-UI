@@ -1,4 +1,4 @@
-import { TimedActionLimit } from '../lib/inedx'
+import { TimedActionLimit } from '../lib'
 
 function ReSize () {
     let width = window.innerWidth;
