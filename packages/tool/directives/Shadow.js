@@ -1,4 +1,4 @@
-import { shadowPainter, SHADOW_PAINTER_ERROR } from '../lib'
+import { shadowPainter, SHADOW_PAINTER_ERROR } from '../lib/dom'
 
 function setSahdow (el, binding) {
     let direction = binding.arg ? binding.arg : 'center'

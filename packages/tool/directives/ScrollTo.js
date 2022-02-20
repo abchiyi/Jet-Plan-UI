@@ -1,4 +1,4 @@
-import { scrollTo } from '../lib'
+import { scrollTo } from '../lib/dom'
 
 export default {
     name: 'scroll-to',

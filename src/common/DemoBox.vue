@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { scrollTo } from '../../packages/tool/lib'
+import { scrollTo } from '../../packages/tool/lib/dom'
 export default {
   name: "demo-box",
   props: {
