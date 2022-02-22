@@ -38,9 +38,10 @@ export default {
   name: "demo-box",
   mounted () {
     if (this.$refs.showDemo.children.length > 1) {
-      throw SyntaxError(`
-<Demo-box> slot --> "default"
+      console.error(`<Demo-box> slot --> "default"
 Only one child node is allowed !
+
+${this.$refs.showDemo.innerHTML}
         `)
     }
 
