@@ -8,30 +8,39 @@
       :code="code"
       id="fade"
     >
-      <m-row X="center">
-        <m-button Primary>primary</m-button>
-        <m-button>Button</m-button>
-        <m-button disabled>Button disabled</m-button>
-      </m-row>
-      <m-row X="center">
-        <m-button
-          primary
-          text
-        >Text Button Primary</m-button>
-        <m-button text>Text Button</m-button>
-        <m-button
-          text
-          disabled
-        >Text Button Disabled</m-button>
-      </m-row>
-      <br />
       <div>
-        <m-button row>Button One Row</m-button>
-        <m-button
-          text
-          row
-        >Text Button One Row </m-button>
+        <m-row
+          id="buttons-button"
+          X="center"
+        >
+          <m-button Primary>primary</m-button>
+          <m-button>Button</m-button>
+          <m-button disabled>Button disabled</m-button>
+        </m-row>
+        <m-row
+          id="buttons-button-text"
+          X="center"
+        >
+          <m-button
+            primary
+            text
+          >Text Button Primary</m-button>
+          <m-button text>Text Button</m-button>
+          <m-button
+            text
+            disabled
+          >Text Button Disabled</m-button>
+        </m-row>
+        <br />
+        <div id="buttons-row">
+          <m-button row>Button One Row</m-button>
+          <m-button
+            text
+            row
+          >Text Button One Row </m-button>
+        </div>
       </div>
+
     </demo-box>
     <demo-doc>
       <template v-slot:prop>

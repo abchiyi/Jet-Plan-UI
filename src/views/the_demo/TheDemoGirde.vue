@@ -11,7 +11,7 @@
       :code="code1"
       :expand="v1"
     >
-      <slot name="demo">
+      <div id="base-gired">
         <m-row
           class="girde-item"
           v-for="n in 4"
@@ -27,7 +27,7 @@
             > {{ 24 - n * 4 }} </m-cube>
           </m-col>
         </m-row>
-      </slot>
+      </div>
     </demo-box>
     <h2>使用 offset 定位</h2>
     <!-- demo offset 定位 -->
@@ -36,7 +36,7 @@
       :code="code2"
       :expand="v1"
     >
-      <slot name="demo">
+      <div id="gired-flex">
         <m-row
           class="girde-item"
           v-for="n in 4"
@@ -49,7 +49,7 @@
             <m-cube class="girde-cube">{{ n * 4 }}</m-cube>
           </m-col>
         </m-row>
-      </slot>
+      </div>
     </demo-box>
     <!-- demo m-row 定位 -->
     <demo-box
@@ -57,57 +57,60 @@
       :code="code3"
       :expand="v1"
     >
-      <m-row space-mode="between">
-        <label for="y-top">Y 轴顶部对齐</label>
-        <m-radio
-          id="y-top"
-          value="top"
-          v-model="y"
-        />
-      </m-row>
-      <m-row space-mode="between">
-        <label for="y-center">Y 轴居中</label>
-        <m-radio
-          id="y-center"
-          value="center"
-          v-model="y"
-        />
-      </m-row>
-      <m-row space-mode="between">
-        <label for="y-bottom">Y 轴底部对齐</label>
-        <m-radio
-          id="y-bottom"
-          value="bottom"
-          v-model="y"
-        />
-      </m-row>
-      <m-row space-mode="between">
-        <label for="x-start">X 轴顶部对齐</label>
-        <m-radio
-          id="x-start"
-          value="start"
-          v-model="x"
-        />
-      </m-row>
-      <m-row space-mode="between">
-        <label for="x-center">X 轴居中</label>
-        <m-radio
-          id="x-center"
-          value="center"
-          v-model="x"
-        />
-      </m-row>
-      <m-row space-mode="between">
-        <label for="x-end">X 轴末尾对齐</label>
-        <m-radio
-          id="x-end"
-          value="end"
-          v-model="x"
-        />
-      </m-row>
-      <slot name="demo">
+      <template v-slot:header>
+        <m-row space-mode="between">
+          <label for="y-top">Y 轴顶部对齐</label>
+          <m-radio
+            id="y-top"
+            value="top"
+            v-model="y"
+          />
+        </m-row>
+        <m-row space-mode="between">
+          <label for="y-center">Y 轴居中</label>
+          <m-radio
+            id="y-center"
+            value="center"
+            v-model="y"
+          />
+        </m-row>
+        <m-row space-mode="between">
+          <label for="y-bottom">Y 轴底部对齐</label>
+          <m-radio
+            id="y-bottom"
+            value="bottom"
+            v-model="y"
+          />
+        </m-row>
+        <m-row space-mode="between">
+          <label for="x-start">X 轴顶部对齐</label>
+          <m-radio
+            id="x-start"
+            value="start"
+            v-model="x"
+          />
+        </m-row>
+        <m-row space-mode="between">
+          <label for="x-center">X 轴居中</label>
+          <m-radio
+            id="x-center"
+            value="center"
+            v-model="x"
+          />
+        </m-row>
+        <m-row space-mode="between">
+          <label for="x-end">X 轴末尾对齐</label>
+          <m-radio
+            id="x-end"
+            value="end"
+            v-model="x"
+          />
+        </m-row>
+      </template>
+      <div>
         <m-row
-          class="row girde-item"
+          class="girde-item"
+          style="height:100px"
           :Y="y"
           :X="x"
         >
@@ -127,7 +130,7 @@
             />
           </m-col>
         </m-row>
-      </slot>
+      </div>
     </demo-box>
     <!-- --------------- Row --------------- -->
     <h2>组件 'm-row' props</h2>
@@ -352,13 +355,8 @@ width: 100%;
 tr td:nth-child(2) {
   width: 200px;
 }
-.row.girde-item {
-  background: rgb(235, 235, 235);
-  border-radius: var(--m-radius);
-  height: 100px;
-}
-.girde-item {
-  margin-bottom: 8px;
+.girde-item + .girde-item {
+  margin-top: 8px;
 }
 .girde-cube {
   height: 36px;

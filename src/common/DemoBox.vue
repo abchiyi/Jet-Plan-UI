@@ -1,6 +1,7 @@
 <template>
   <m-card class="m-demo-box">
     <m-row
+      v-if="codeControl"
       Y="center"
       space-mode="between"
     >
@@ -13,11 +14,11 @@
     <div class="demo-box-header">
       <slot name="header"></slot>
     </div>
-    <div class="demo-box-show-demo">
+    <div
+      ref="showDemo"
+      class="demo-box-show-demo"
+    >
       <slot>
-        <m-row X="center">
-          <span class="text-hint">无可视示例</span>
-        </m-row>
       </slot>
     </div>
     <m-transition-folded title="展开Code">
@@ -35,6 +36,20 @@
 import { scrollTo } from '../../packages/tool/lib/dom'
 export default {
   name: "demo-box",
+  mounted () {
+    if (this.$refs.showDemo.children.length > 1) {
+      throw SyntaxError(`
+<Demo-box> slot --> "default"
+Only one child node is allowed !
+        `)
+    }
+
+    if (!this.showDemoHaveContent) {
+      this.codeControl = false
+      this.value = true
+    }
+
+  },
   props: {
     expand: {
       type: Boolean,
@@ -51,7 +66,8 @@ export default {
   },
   data () {
     return {
-      value: this.expand
+      value: this.expand,
+      codeControl: true
     };
   },
   methods: {
@@ -62,6 +78,9 @@ export default {
   computed: {
     codeID () {
       return this.title + '-code'
+    },
+    showDemoHaveContent () {
+      return this.$refs.showDemo.children.length > 0
     }
   },
   watch: {
@@ -78,7 +97,7 @@ export default {
 .m-demo-box {
   padding: 20px;
 }
-.demo-box-show-demo {
+.demo-box-show-demo > *:nth-child(1) {
   background-color: var(--background);
   border-radius: var(--m-radius);
   padding: 1rem 2rem;

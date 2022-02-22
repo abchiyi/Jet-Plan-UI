@@ -1,26 +1,38 @@
 <template>
   <div>
     <h3>Radio</h3>
-    <demo-box title="Radio" :code="code">
+    <demo-box
+      title="Radio"
+      :code="code"
+    >
       <template v-slot:header>
         <m-control-bar for-id="disabled-radio">
           <template v-slot:text>禁用组件</template>
           <template v-slot:control>
-            <m-switch v-model="disabled" id="disabled-radio" />
+            <m-switch
+              v-model="disabled"
+              id="disabled-radio"
+            />
           </template>
         </m-control-bar>
+        <p>Data:{{ radioData }}</p>
       </template>
-      <p>Data:{{ radioData }}</p>
-      <div v-for="v in data" :key="v">
-        <m-radio
-          :disabled="disabled"
-          :id="v"
-          name="radioData"
-          v-model="radioData"
-          :value="v"
-        />
-        <label :for="v">{{ v }}</label>
-      </div>
+      <ul id="demo-radio-group">
+        <li
+          v-for="v in data"
+          :key="v"
+        >
+          <m-radio
+            :disabled="disabled"
+            :id="v"
+            name="radioData"
+            v-model="radioData"
+            :value="v"
+          />
+          <label :for="v">{{ v }}</label>
+        </li>
+      </ul>
+
     </demo-box>
   </div>
 </template>

@@ -1,19 +1,32 @@
 <template>
   <div>
     <h3>Switch</h3>
-    <demo-box title="Switch" :code="code">
-      <div>
-        <m-switch id="demo-switch" v-model="value" />
-        <label for="demo-switch">
-          {{ value ? "on" : "off" }}
-        </label>
+    <demo-box
+      title="Switch"
+      :code="code"
+    >
+      <div id="demo-switch-group">
+        <div>
+          <m-switch
+            id="demo-switch"
+            v-model="value"
+          />
+          <label for="demo-switch">
+            {{ value ? "on" : "off" }}
+          </label>
+        </div>
+        <div>
+          <m-switch
+            id="demo-switch-disabled"
+            disabled
+            v-model="value"
+          />
+          <label for="demo-switch-disabled">
+            disabled-{{ value ? "on" : "off" }}
+          </label>
+        </div>
       </div>
-      <div>
-        <m-switch id="demo-switch-disabled" disabled v-model="value" />
-        <label for="demo-switch-disabled">
-          disabled-{{ value ? "on" : "off" }}
-        </label>
-      </div>
+
     </demo-box>
   </div>
 </template>
