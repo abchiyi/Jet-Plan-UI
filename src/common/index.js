@@ -8,6 +8,7 @@ import DemoDoc from './DemoDoc.vue'
 import ExpandMennu from './ExpandMenu.vue'
 import DemoPageHaveIndex from './DemoPageHaveIndex.vue'
 import DocDirective from './DocDirective.vue'
+import DocOfClass from './DocOfClass.vue'
 
 function setCookie (name, value) {
     let Days = 30;
@@ -52,7 +53,8 @@ const components = {
     Cube,
     ExpandMennu,
     DemoPageHaveIndex,
-    DocDirective
+    DocDirective,
+    DocOfClass
 }
 export {
     redColorModeCookie,
@@ -69,7 +71,8 @@ export {
     Cube,
     ExpandMennu,
     DemoPageHaveIndex,
-    DocDirective
+    DocDirective,
+    DocOfClass
 }
 export default {
     install (Vue) {
