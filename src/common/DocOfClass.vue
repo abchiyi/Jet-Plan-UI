@@ -1,52 +1,20 @@
 <template>
-  <!-- Doc -->
-  <strong :id="ids.directiveDoc">v-
-    {{directive}}:
-    <m-button
-      v-scroll-to:120="`#${ids.arg}`"
-      tag="a"
-      active
-      hover
-    >arg</m-button> =
-    <m-button
-      v-scroll-to:120="`#${ids.value}`"
-      active
-      hover
-      tag="a"
-    >value</m-button>
-  </strong>
-  <br>
-  <div class="doc">
-    <div
-      :id="ids.arg"
-      class="arg"
-    >
-      <strong>arg:</strong>
-      <ul class="arg">
-        <slot name="arg">
-          <li>无可选参数</li>
-        </slot>
-      </ul>
-    </div>
-    <!-- value -->
-    <div
-      :id="ids.value"
-      class="value"
-    >
-      <strong>value:</strong>
-      <ul class="value">
-        <slot name="value">
-          <li>无需传入参数</li>
-        </slot>
-      </ul>
-    </div>
-  </div>
-  <!-- arg -->
+  <div class="doc class">
 
-  <!-- TODO 仅在文档说明超出屏幕长度显示 ‘返回文档顶部按钮’-->
-  <m-button v-scroll-to:120px="`#${ids.directiveDoc}`">
-    返回至 v-{{directive}} 文档头部
-  </m-button>
+    <strong>参数：</strong>
+    <ul class="arg">
+      <slot name="arg">
+        <li>无可选参数</li>
+      </slot>
+    </ul>
+
+    <strong>方法：</strong>
+    <ul class="value">
+      <slot name="methos">
+        <li>无可用方法</li>
+      </slot>
+    </ul>
+  </div>
 </template>
 <script>
 export default {
