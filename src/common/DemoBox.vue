@@ -74,6 +74,11 @@ ${this.$refs.showDemo.innerHTML}
   methods: {
     expand_ () {
       this.value = !this.value;
+      if (this.value) {
+        setTimeout(() => {
+          scrollTo(`#${this.codeID}`, 200)
+        }, 300)
+      }
     }
   },
   computed: {
@@ -84,13 +89,6 @@ ${this.$refs.showDemo.innerHTML}
       return this.$refs.showDemo.children.length > 0
     }
   },
-  watch: {
-    value (v) {
-      setTimeout(() => {
-        if (v) scrollTo(`#${this.codeID}`, 200)
-      }, 300)
-    }
-  }
 };
 </script>
 
