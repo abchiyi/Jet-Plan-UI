@@ -19,21 +19,6 @@
 <script>
 export default {
   name: "doc-of-class",
-  props: {
-    directive: {
-      type: String,
-      required: true
-    }
-  },
-  computed: {
-    ids () {
-      return {
-        arg: `${this.directive}_arg`,
-        value: `${this.directive}_value`,
-        directiveDoc: `${this.directive}_doc`
-      }
-    }
-  }
 };
 </script>
 
