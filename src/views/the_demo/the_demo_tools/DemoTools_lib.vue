@@ -112,7 +112,7 @@ function click() {
     cooldownProgressClass () {
       return [
         this.overheat ? 'overheat' : '',
-        !this.overheat && this.clickConter ? 'cooling' : ''
+        !this.overheat && this.clickConter > 1 ? 'cooling' : ''
       ]
     }
   }
