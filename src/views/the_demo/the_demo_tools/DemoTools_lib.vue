@@ -54,7 +54,49 @@
           </m-cube>
         </div>
       </demo-box>
-      <doc-of-class></doc-of-class>
+      <doc-of-class>
+        <template v-slot:arg>
+          <li>
+            <inline-code>timeout:Number</inline-code>
+            动作等待时间，单位为ms。
+            <strong style="font-size:1em;">这个值是必须的</strong>
+          </li>
+          <li>
+            <inline-code>limt:Number</inline-code>
+            设定过热前可执行动作次数。
+            <inline-code>default:1</inline-code>
+          </li>
+          <li>
+            <inline-code>waitCoolingDown:Boolean</inline-code>
+            是否要求完全冷却后方可执行动作。如设定为‘true’时，在冷却完成前执行动作则会重置冷却时间。
+            <inline-code>default:true</inline-code>
+          </li>
+        </template>
+        <template v-slot:methos>
+          <li>
+            <inline-code>.action(callback)</inline-code>
+            将需要执行的函数作为参数传入，即可对该函数进行单位时间执行次数限制。
+          </li>
+          <li>
+            <inline-code>.setCooledAlarm(callback)</inline-code>
+            通知外部程序已冷却完成。
+          </li>
+          <li>
+            <inline-code>.setOverheatAlarm(callback)</inline-code>
+            通知外部程序已过热。
+          </li>
+        </template>
+        <template v-slot:use>
+          <li>
+            <!-- XXX 可能变更的包名  mousse-ui -->
+            <m-code-box
+              style="display:inline-block"
+              code='import { TimedActionLimit } from mousse-ui/tool/lib'
+            />
+            导入路径
+          </li>
+        </template>
+      </doc-of-class>
     </article>
   </div>
 </template>
