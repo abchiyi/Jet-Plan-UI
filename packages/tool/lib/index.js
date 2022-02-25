@@ -1,5 +1,15 @@
 export class TimedActionLimit {
-    constructor (timeout, limit = 1) {
+    constructor (timeout, limit = 1, waitCoolingDown = true) {
+        if (!timeout) {
+            throw SyntaxError(
+                `
+Class TimedActionLimit([timeout,[limit,waitCoolingDown]])
+Missing Value "timeout"
+Missing values ‘timeout’ are required
+`
+            )
+        }
+        this.waitCoolingDown = waitCoolingDown;
         this.limit = limit;
         this.timeout = timeout;
         this.timeoutID = [];
@@ -17,25 +27,36 @@ export class TimedActionLimit {
         }
 
         if (this.overheat) {
-            // 未冷却状态再次执行动作，重置冷却时间
-
             // 通知外部程序已过热
             if (this.overheatAlarm) this.overheatAlarm()
-
-            // 清除冷却动作
-            this.timeoutID.forEach((timeoutID) => {
-                clearTimeout(timeoutID)
-            })
-            this.timeoutID = []
-
             // 设置冷却动作
-            let timeoutID = setTimeout(() => {
-                this.overheat = false
-                this.conter = this.limit
-                // 通知外部程序已冷却
-                if (this.cooledAlarm) this.cooledAlarm()
-            }, this.timeout)
-            this.timeoutID.push(timeoutID)
+            this.__setCooling()
+            // 清除冷却动作
+            this.__waitControl()
+        }
+    }
+
+    __setCooling () {
+        // 设置冷却动作
+        this.timeoutID.push(
+            setTimeout(
+                () => {
+                    this.overheat = false
+                    // 通知外部程序已冷却
+                    if (this.cooledAlarm) this.cooledAlarm()
+                    this.timeoutID = []
+                },
+                this.timeout
+            ))
+        this.conter = this.limit
+    }
+
+    __waitControl () {
+        if (this.timeoutID.length > 1) {
+            const clId = this.waitCoolingDown
+                ? this.timeoutID.shift()
+                : this.timeoutID.pop()
+            clearTimeout(clId)
         }
     }
 

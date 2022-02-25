@@ -14,11 +14,27 @@
         <inline-code>TimedActionLimit</inline-code> 作用为限制单位时间内所能执行操作的次数。
       </p>
       <p>在下方 Demo 中限制为 2s内可执行2次操作</p>
-      <!-- Demo -->
+      <!-- Demo box -->
       <demo-box
         title='TimedActionLimit'
         :code='code'
       >
+        <!-- control -->
+        <template v-slot:header>
+          <m-control-bar for-id="demo-wcd-control">
+            <template v-slot:text>
+              {{wcd?'阻塞式等待':'动态等待'}}
+            </template>
+            <template v-slot:control>
+              <m-switch
+                id="demo-wcd-control"
+                v-model="wcd"
+              />
+            </template>
+          </m-control-bar>
+        </template>
+
+        <!-- Demo -->
         <div>
           <!-- 冷却进度条 -->
           <div
@@ -44,7 +60,7 @@
 <script>
 import inlineCode from '../../../common/inlineCode.vue';
 import { TimedActionLimit } from '@/tool/lib'
-const tal = new TimedActionLimit(2000, 2);
+// const tal = new TimedActionLimit(2000, 2);
 export default {
   components: { inlineCode },
   name: 'the-tool-lib',
@@ -53,7 +69,9 @@ export default {
       code: `//注意！code 示例为 demo 的简化版本
 //JavaScript
 let clickConter = 0;
-const tal = new TimedActionLimit(2000,2);
+// 控制是否等待冷却完成
+let wcd = true;
+const tal = new TimedActionLimit(2000,2,wcl);
 
 tal.setCooledAlarm(() => {
     alert('Cooled!')
@@ -75,21 +93,12 @@ function click() {
       `,
       clickConter: 0,
       overheat: false,
-      text: "Cooled!"
+      text: "Cooled!",
+      wcd: true,
     }
   },
   mounted () {
-    tal.setCooledAlarm(
-      () => {
-        this.text = 'Cooled!'
-      }
-    )
-    tal.setOverheatAlarm(
-      () => {
-        this.overheat = true
-        this.text = 'Overheat!'
-      }
-    )
+
   },
   watch: {
     overheat (v) {
@@ -103,7 +112,7 @@ function click() {
   },
   methods: {
     click () {
-      tal.action(() => {
+      this.tal.action(() => {
         this.clickConter++
       })
     }
@@ -114,6 +123,21 @@ function click() {
         this.overheat ? 'overheat' : '',
         !this.overheat && this.clickConter > 1 ? 'cooling' : ''
       ]
+    },
+    tal () {
+      let tal = new TimedActionLimit(2000, 2, this.wcd)
+      tal.setCooledAlarm(
+        () => {
+          this.text = 'Cooled!'
+        }
+      )
+      tal.setOverheatAlarm(
+        () => {
+          this.overheat = true
+          this.text = 'Overheat!'
+        }
+      )
+      return tal
     }
   }
 };
