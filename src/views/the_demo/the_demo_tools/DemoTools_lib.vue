@@ -89,12 +89,10 @@
         <template v-slot:use>
           <li>
             <!-- XXX 可能变更的包名  mousse-ui -->
-            <m-code-box
-              style="display:inline-block"
-              code='import { TimedActionLimit } from mousse-ui/tool/lib'
-            />
-            导入路径
+            导入路径:
           </li>
+          <m-code-box
+            code='import { TimedActionLimit } from mousse-ui/tool/lib' />
         </template>
       </doc-of-class>
     </article>
