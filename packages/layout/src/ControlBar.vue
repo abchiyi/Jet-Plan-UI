@@ -1,6 +1,12 @@
 <template>
-  <m-action-feedback class="m-control-bar" active>
-    <m-row :reverse="reverse" space-mode="between">
+  <m-action-feedback
+    class="m-control-bar"
+    active
+  >
+    <m-row
+      :reverse="reverse"
+      space-mode="between"
+    >
       <m-row
         class="control-label"
         :for="forId"
@@ -9,10 +15,18 @@
         :X="reverse ? 'end' : 'start'"
         style="text-align:start"
       >
-        <slot name="text"><p>Display text</p> </slot>
+        <slot name="text">
+          <p>Display text</p>
+        </slot>
       </m-row>
-      <m-row :reverse="reverse" class="control-comp" Y="center">
-        <slot name="control"><p>Control</p></slot>
+      <m-row
+        :reverse="reverse"
+        class="control-comp"
+        Y="center"
+      >
+        <slot name="control">
+          <p>Control</p>
+        </slot>
       </m-row>
     </m-row>
   </m-action-feedback>
@@ -33,6 +47,9 @@ export default {
 </script>
 
 <style>
+.control-label {
+  user-select: none;
+}
 .m-control-bar {
   border-radius: var(--m-radius);
   background: var(--foreground);
