@@ -130,8 +130,8 @@ strong {
 }
 
 /* XXX 文本居中反效果 */
-/* strong > *,
+strong > *,
 li > *,
 p > * {
 	vertical-align: middle;
-} */
+}
