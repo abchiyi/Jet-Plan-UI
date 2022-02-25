@@ -154,6 +154,7 @@ function click() {
   font-family: SarasaMono;
   display: inline-block;
   margin-bottom: 1em;
+  color: white;
   padding: 5px;
   height: 1em;
   width: 90px;
