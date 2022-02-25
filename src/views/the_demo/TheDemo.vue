@@ -64,7 +64,6 @@
         <!-- <router-view /> -->
 
         <router-view v-slot="{ Component }">
-          <!-- <transition :name="$router.customRouterData.transitionName"> -->
           <transition
             mode="out-in"
             name="m-transition-fade"
@@ -128,11 +127,6 @@ export default {
   display: block;
 }
 
-#app {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
 .slide_left-enter-active,
 .slide_left-leave-active,
 .slide_right-enter-active,
