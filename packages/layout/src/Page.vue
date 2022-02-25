@@ -10,23 +10,17 @@
       v-shadow:bottom="2"
     >
       <m-row Y="center">
-        <m-col
-          v-bind="width.mainContentWidth"
-          relativeToScreen
-        >
+        <m-col v-bind="width.mainContentWidth">
           <slot name="header"></slot>
         </m-col>
       </m-row>
     </m-header>
     <!-- 侧栏开启位移文档  -->
     <m-row>
-      <m-col
-        v-bind="width.mainContentWidth"
-        relativeToScreen
-      >
+      <m-col v-bind="width.mainContentWidth">
         <!-- 文档宽度控制 -->
         <m-row X="center">
-          <m-col class="content">
+          <m-col id="content">
             <main>
               <slot></slot>
             </main>
@@ -139,6 +133,11 @@ export default {
 </script>
 
 <style scoped>
+#page {
+  /* height: 100vh !important; */
+  /* width: 100vw !important; */
+  /* overflow-y: hidden; */
+}
 .content,
 main,
 footer {
@@ -151,9 +150,13 @@ footer {
   height: 72px;
 }
 
-.content {
-  max-width: 960px;
+.m-header > *,
+#content {
   padding: 0 20px;
+}
+
+#content {
+  max-width: 960px;
   height: 100vh;
 }
 

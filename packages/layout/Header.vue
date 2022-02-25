@@ -2,7 +2,7 @@
 import { h } from "vue";
 export default {
   name: "m-header",
-  render() {
+  render () {
     return h(
       "header",
       {
@@ -17,7 +17,6 @@ export default {
 <style>
 .m-header {
   position: fixed;
-  padding: 0 20px;
   z-index: 90;
   right: 0;
   left: 0;
