@@ -14,6 +14,13 @@
         <li>无可用方法</li>
       </slot>
     </ul>
+
+    <strong>使用：</strong>
+    <ul class="use">
+      <slot name="use">
+        <li style="color:var(--error);"><strong>Unknown</strong></li>
+      </slot>
+    </ul>
   </div>
 </template>
 <script>
