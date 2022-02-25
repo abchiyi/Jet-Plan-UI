@@ -47,6 +47,7 @@
           <m-cube
             id="demo-show-click-conter"
             @click="click"
+            style="user-select:none"
             :style="{fontSize:clickConter==0?'1em':''}"
           >
             {{ clickConter == 0? 'ClickMe!!':clickConter}}
