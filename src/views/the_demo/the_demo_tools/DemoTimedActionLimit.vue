@@ -1,5 +1,5 @@
 <template>
-  <div id="too-lib">
+  <div id="time-action-limit">
     <p>
       工具存放以下路径中
       <inline-code>tool/lib</inline-code>

@@ -39,8 +39,8 @@ export default [
         component: () => import('../views/the_demo/the_demo_tools/DemoTools.vue'),
         index: [
             {
-                name: 'test',
-                to: '#test'
+                name: 'TimeActionLimit',
+                to: '#time-action-limit'
             }
         ]
     }
