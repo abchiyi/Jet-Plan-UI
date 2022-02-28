@@ -68,12 +68,14 @@
 
 </template>
 <script>
+import pdn from '../../../common/mix/popDemoName'
 import InlineCode from "../../../common/inlineCode.vue";
 import TheinputsCheckbox from "./TheInputs-Checkbox.vue";
 import TheinputsSwitch from "./TheInputs-Switch.vue";
 import TheinputsRadio from "./TheInputs-Radio.vue";
 import TheInputsInput from "./TheInputs-input.vue";
 export default {
+  mixins: [pdn],
   name: "the-demo-inputs",
   components: {
     InlineCode,

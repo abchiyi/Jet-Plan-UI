@@ -28,14 +28,19 @@
 </template>
 
 <script>
+import pdn from '../../common/mix/popDemoName'
 import inlineCode from "../../common/inlineCode.vue";
 export default {
+  mixins: [pdn],
   components: { inlineCode },
   name: "the-demo-code-box",
   data () {
     return {
       code: `<m-code-box code="conosle.log('Hello world')"  lang="javascript" />`
     };
+  },
+  mounted () {
+    console.log(this.$route);
   }
 };
 </script>

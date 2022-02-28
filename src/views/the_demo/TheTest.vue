@@ -36,7 +36,9 @@
 
 </template>
 <script>
+import pdn from '../../common/mix/popDemoName'
 export default {
+  mixins: [pdn],
   name: "TheTestPage",
   data () {
     return {

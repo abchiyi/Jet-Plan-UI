@@ -17,11 +17,13 @@
 
 </template>
 <script>
+import pdn from '../../../common/mix/popDemoName'
 import DemoAnimationFade from "./DemoAnimationFade.vue";
 import DemoAnimationSlide from "./DemoAnimationSlide.vue";
 import DemoAnimationFolded from "./DemoAnimationFolded.vue";
 
 export default {
+  mixins: [pdn],
   name: "DemoAnimation",
   components: {
     DemoAnimationFade,

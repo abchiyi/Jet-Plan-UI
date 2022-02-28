@@ -3,7 +3,10 @@
     <m-page v-model="value">
       <!--浮动头栏 -->
       <template v-slot:header>
-        <demo-header v-model="value"></demo-header>
+        <demo-header
+          :title=title
+          v-model="value"
+        ></demo-header>
       </template>
       <!-- 浮动侧栏 -->
       <template v-slot:sidebar>
@@ -63,7 +66,10 @@
       <template v-slot:default>
         <!-- <router-view /> -->
 
-        <router-view v-slot="{ Component }">
+        <router-view
+          @md-title="(v)=>{title = v}"
+          v-slot="{ Component }"
+        >
           <transition
             mode="out-in"
             name="m-transition-fade"
@@ -95,6 +101,7 @@ export default {
   data () {
     return {
       value: true,
+      title: null,
       expand: {
         start: true,
         style: true,

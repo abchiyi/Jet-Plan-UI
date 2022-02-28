@@ -17,11 +17,13 @@
 
 </template>
 <script>
+import pdn from '../../../common/mix/popDemoName'
 import DemoDirectivesFocus from './DemoDirectivesFocus.vue'
 import DemoDirectivesScrollTo from './DemoDirectivesScrollTo.vue'
 import DemoDirectivesShadow from "./DemoDirectivesShadow.vue"
 import DemoDirectivesReScreenSize from './DemoDirectivesReScreenSize.vue'
 export default {
+  mixins: [pdn],
   name: 'the-demo-directives',
   components: {
     DemoDirectivesFocus,

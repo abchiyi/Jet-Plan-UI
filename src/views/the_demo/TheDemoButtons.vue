@@ -84,8 +84,10 @@
 </template>
 
 <script>
+import pdn from '../../common/mix/popDemoName'
 import inlineCode from "../../common/inlineCode.vue";
 export default {
+  mixins: [pdn],
   components: { inlineCode },
   name: "the-demo-buttons",
   data () {

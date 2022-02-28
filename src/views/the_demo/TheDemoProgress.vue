@@ -4,17 +4,25 @@
     <m-card class="demo-box">
       <!-- <m-switch-item v-model="failed">失败</m-switch-item> -->
       <!-- <m-switch-item v-model="success">完成</m-switch-item> -->
-      <input type="number" v-model="number" />
+      <input
+        type="number"
+        v-model="number"
+      />
       <hr />
-      <mo-progress :failed="failed" :value="number"></mo-progress>
+      <mo-progress
+        :failed="failed"
+        :value="number"
+      ></mo-progress>
     </m-card>
   </div>
 </template>
 
 <script>
+import pdn from '../../common/mix/popDemoName'
 export default {
+  mixins: [pdn],
   name: "m-progress-demo",
-  data() {
+  data () {
     return {
       code: undefined,
       success: false,
@@ -23,7 +31,7 @@ export default {
     };
   },
   watch: {
-    success() {
+    success () {
       if (this.success) {
         this.code = setInterval(() => {
           this.number++;
@@ -33,7 +41,7 @@ export default {
         clearInterval(this.code);
       }
     },
-    number() {
+    number () {
       if (this.number > 100) {
         clearInterval(this.code);
       }

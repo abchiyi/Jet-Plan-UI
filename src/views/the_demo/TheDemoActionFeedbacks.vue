@@ -138,9 +138,11 @@
 </template>
 
 <script>
+import pdn from '../../common/mix/popDemoName'
 import inlineCode from "../../common/inlineCode.vue";
 import WarningText from "../../common/Warning-text.vue";
 export default {
+  mixins: [pdn],
   components: { inlineCode, WarningText },
   name: "the-demo-action-feedbacks",
   data () {

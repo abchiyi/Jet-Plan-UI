@@ -306,11 +306,10 @@
 </template>
 
 <script>
+import pdn from '../../common/mix/popDemoName'
 export default {
-  mounted () {
-    this.$emit("test", "girade");
-  },
   name: "grid-demo",
+  mixins: [pdn],
   data () {
     return {
       code1: `

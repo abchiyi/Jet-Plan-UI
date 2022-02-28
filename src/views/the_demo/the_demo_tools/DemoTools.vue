@@ -6,8 +6,10 @@
   </div>
 </template>
 <script>
+import pdn from '../../../common/mix/popDemoName'
 import demoTal from './DemoTimedActionLimit.vue'
 export default {
+  mixins: [pdn],
   name: 'the-demo-tools',
   components: {
     demoTal
