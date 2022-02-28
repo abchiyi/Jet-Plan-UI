@@ -6,9 +6,7 @@
     </p>
     <!--TimeActionLimit -->
     <article id='time-action-limit'>
-      <h2>Class
-        <inline-code class="">TimedActionLimit</inline-code>
-      </h2>
+      <h3> TimedActionLimit </h3>
 
       <p>
         <inline-code>TimedActionLimit</inline-code> 作用为限制单位时间内所能执行操作的次数。
