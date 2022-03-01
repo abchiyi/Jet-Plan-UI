@@ -41,6 +41,10 @@ export default [
             {
                 name: 'TimeActionLimit',
                 to: '#time-action-limit'
+            },
+            {
+                name: 'scrollTo',
+                to: '#demo-scroll-to'
             }
         ]
     }
