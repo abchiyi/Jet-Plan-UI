@@ -69,9 +69,5 @@ export default [{
     }
     ],
     component: () => import('../views/the_demo/the_demo_inputs/TheDemoInputs.vue')
-}, {
-    name: "ShadowBox",
-    path: "/shadow-box",
-    component: () => import('../views/the_demo/TheDemoShadowBox.vue')
 }
 ]
