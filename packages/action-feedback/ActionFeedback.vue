@@ -1,11 +1,11 @@
 <script>
-function propInit(_type, _default) {
+function propInit (_type, _default) {
   return {
     type: _type || Boolean,
     default: _default || false
   };
 }
-// FIXME Ripple 渲染逻辑导致性能低下，有新 rippl 加入或移除时的全部过渡过渡动画
+// TODO 移除ripple， Ripple 渲染逻辑导致性能低下，有新 rippl 加入或移除时的全部过渡过渡动画
 import ripple from "./ActionFeedbackRipple.vue";
 import { h, TransitionGroup } from "vue";
 export default {
@@ -20,7 +20,7 @@ export default {
     hover: propInit(),
     ripple: propInit()
   },
-  data() {
+  data () {
     return {
       data_active: this.active,
       data_hover: false,
@@ -30,7 +30,7 @@ export default {
     };
   },
   computed: {
-    classes() {
+    classes () {
       return [
         "m-action-feedback",
         this.hover && this.data_hover ? "hover" : ""
@@ -39,7 +39,7 @@ export default {
   },
   methods: {
     // Ripple
-    createRippleAttrs(event) {
+    createRippleAttrs (event) {
       const ripple = {
         data: {
           opacity: this.opacity,
@@ -52,7 +52,7 @@ export default {
       };
       return ripple;
     },
-    removeRipple() {
+    removeRipple () {
       this.masks.forEach((ripple, index, masks) => {
         if (ripple.key != this.key) {
           masks.splice(index, 1);
@@ -60,14 +60,14 @@ export default {
       });
     },
     // Render
-    renderDefault() {
+    renderDefault () {
       const solt = this.$slots.default;
       if (solt) {
         return solt();
       }
       return "Submit";
     },
-    renderRipples() {
+    renderRipples () {
       let key = 0;
       return h(
         TransitionGroup,
@@ -83,11 +83,11 @@ export default {
         }
       );
     },
-    render() {
+    render () {
       return [this.renderDefault(), this.renderRipples()];
     },
     // Hover
-    enter() {
+    enter () {
       if (this.hover && !this.data_touch) this.data_hover = true;
       // 移动端触摸事件响应 hover 非常缓慢，主动切换 active 反馈
       if (this.hover && this.data_touch) {
@@ -95,12 +95,12 @@ export default {
         this.data_active = true;
       }
     },
-    leave() {
+    leave () {
       if (this.hover) this.data_hover = false;
       this.removeRipple();
     },
     // Click
-    startClick(event) {
+    startClick (event) {
       //   this.data_active = true;
       // Ripple
       if (this.ripple || this.data_active) {
@@ -110,11 +110,11 @@ export default {
         if (this.ignoreClick) this.ignoreClick = false;
       }
     },
-    endClick() {
+    endClick () {
       this.removeRipple();
     },
     // Touch
-    startTouche(event) {
+    startTouche (event) {
       // XXX data_touch 不能设置为 false 未知的影响
       this.data_touch = true;
       this.enter();
@@ -127,17 +127,17 @@ export default {
         this.ignoreClick = true;
       }
     },
-    endTouche() {
+    endTouche () {
       this.leave();
       this.removeRipple();
     }
   },
   watch: {
-    active(v) {
+    active (v) {
       this.data_active = v;
     }
   },
-  render() {
+  render () {
     return h(
       this.tag,
       {

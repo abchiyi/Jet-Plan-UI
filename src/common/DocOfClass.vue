@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO 移除组件，使用 ，改用 <doc-item> 实现-->
   <div class="doc class">
 
     <strong>参数：</strong>

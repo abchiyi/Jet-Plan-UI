@@ -28,12 +28,6 @@
 <script>
 export default {
   name: "demo-header",
-  data () {
-    return {
-      // TODO读取cookis确定值
-      colorMode: true
-    };
-  },
   props: {
     modelValue: {
       type: Boolean

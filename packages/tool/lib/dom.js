@@ -49,8 +49,7 @@ export function scrollTo (elID, toTop) {
         const TOP = $(elID).offset().top
 
         // 设置 toTop 的默认值
-        // FIXME不需要的默认值，容易引发逻辑错误
-        toTop = toTop ? Math.round(toTop) : 200
+        toTop = toTop ? Math.round(toTop) : 0
 
         if (ELHEIGHT <= SCREENHEIGHT) {
             // 当元素接近屏幕高度时

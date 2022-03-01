@@ -1,4 +1,5 @@
 <template>
+  <!-- TODO 移除组件，使用 ，改用 <doc-item> 实现-->
   <!-- Doc -->
   <strong :id="ids.directiveDoc">v-
     {{directive}}:
@@ -43,7 +44,6 @@
   </div>
   <!-- arg -->
 
-  <!-- TODO 仅在文档说明超出屏幕长度显示 ‘返回文档顶部按钮’-->
   <m-button v-scroll-to:120px="`#${ids.directiveDoc}`">
     返回至 v-{{directive}} 文档头部
   </m-button>
