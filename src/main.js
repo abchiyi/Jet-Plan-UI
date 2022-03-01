@@ -1,25 +1,34 @@
 import {
-    createApp
+    resolveComponent,
+    createApp,
+    h
 } from 'vue'
 
-import router from './router'
-import App from './App.vue'
-
-import common from './common'
+// UI
 import ui from '@'
 import {
     theme,
     themeDefault
 } from '@'
-import './css/main.css'
+
+// Custom compents
+import router from './router'
+import common from './common'
 import {
     redColorModeCookie,
 } from './common'
 
-
+// Set theme
+// XXX 应设置默认颜色选项
 theme.use(themeDefault, ...redColorModeCookie())
 
-createApp(App)
+const BASE_COMPONENT = {
+    name: "mousseUI-home-page",
+    render: () => h(resolveComponent('router-view'))
+}
+
+// Go
+createApp(BASE_COMPONENT)
     .use(common)
     .use(router)
     .use(ui)
