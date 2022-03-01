@@ -1,8 +1,8 @@
 hr {
-    background: var(--border);
-    border-radius: 1px;
-    margin: 0.5em 1rem;
-    border: unset;
-    opacity: 0.5;
-    height: 2px;
+	background: var(--border);
+	border-radius: 1px;
+	margin: 0.5em 0;
+	border: unset;
+	opacity: 0.5;
+	height: 2px;
 }
