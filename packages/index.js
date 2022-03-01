@@ -7,7 +7,6 @@ import layout from './layout'
 import theme from './theme'
 import mask from './mask'
 import codeBox from "./code_box";
-import shadowBox from './shaodwBox'
 import ActionFeedback from './action-feedback'
 // 指令&工具函数/类
 import directives from './tool/directives'
@@ -18,7 +17,6 @@ const components = [
     ActionFeedback,
     directives,
     animations,
-    shadowBox,
     progress,
     codeBox,
     layout,
@@ -33,7 +31,6 @@ export {
     themeDefault,
     animations,
     directives,
-    shadowBox,
     progress,
     codeBox,
     layout,
