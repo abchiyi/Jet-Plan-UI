@@ -14,7 +14,7 @@ import directives from './tool/directives'
 
 import themeDefault from './theme_default'
 
-const components = {
+const components = [
     ActionFeedback,
     directives,
     animations,
@@ -26,17 +26,7 @@ const components = {
     gird,
     form,
     card,
-}
-
-function install (Vue) {
-    Object.keys(components).forEach(key => {
-        Vue.use(components[key])
-    })
-}
-
-if (typeof window !== 'undefined' && window.Vue) {
-    install(window.Vue)
-}
+]
 
 export {
     ActionFeedback,
@@ -54,8 +44,9 @@ export {
     card,
 }
 
-export default {
-    themeDefault,
-    install,
-    theme,
+// 默认安装程序
+export default function install (Vue) {
+    Object.keys(components).forEach(key => {
+        Vue.use(components[key])
+    })
 }
