@@ -45,6 +45,10 @@ export default [
             {
                 name: 'scrollTo',
                 to: '#demo-scroll-to'
+            },
+            {
+                name: "shadowPainter",
+                to: "#demo-shadow-painter"
             }
         ]
     }
