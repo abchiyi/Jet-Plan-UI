@@ -36,7 +36,7 @@ export default {
 }
 .m-code-box code {
   overflow: hidden;
-  border-radius: var(--s-radius);
+  border-radius: var(--m-radius);
 }
 
 pre.m-code-box {

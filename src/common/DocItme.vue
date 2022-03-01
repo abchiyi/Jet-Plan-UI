@@ -1,5 +1,5 @@
 <template>
-  <div class="doc">
+  <div :class="classes">
     <strong>{{name}}：</strong>
     <ul>
       <slot>
@@ -13,9 +13,21 @@ export default {
   name: "doc-item",
   props: {
     name: {
-      required: true,
       type: String,
+      required: true,
     },
+    noDot: {
+      type: Boolean,
+      default: false
+    },
+  },
+  computed: {
+    classes () {
+      return [
+        'doc',
+        this.noDot ? "no-dot" : ""
+      ]
+    }
   }
 };
 </script>
