@@ -8,6 +8,7 @@ import TheDemoCompontentsRouter from './TheDemoCompontentsRouter'
 import TheDemoStart from './TheDemoStart'
 import TheDemoStyle from './TheDemoStyle'
 import TheDemoTool from './TheDemoTool'
+import TheDemoLayout from './TheDemoLayout'
 
 
 const defaultPage = TheDemoStart[0].path
@@ -33,6 +34,7 @@ const routes = [{
         ...TheDemoStart,
         ...TheDemoStyle,
         ...TheDemoTool,
+        ...TheDemoLayout
     ]
 }
 ]
@@ -46,7 +48,8 @@ export {
     TheDemoCompontentsRouter,
     TheDemoStart,
     TheDemoStyle,
-    TheDemoTool
+    TheDemoTool,
+    TheDemoLayout
 }
 
 export default router

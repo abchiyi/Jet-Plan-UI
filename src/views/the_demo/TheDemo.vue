@@ -41,6 +41,16 @@
               />
             </m-transition-folded>
           </expand-menu>
+          <!-- Layout -->
+          <expand-menu v-model="expand.layout">
+            <template v-slot:text> 布局 </template>
+            <m-transition-folded>
+              <demo-page-have-index
+                v-show="expand.layout"
+                :paths="links.layout"
+              />
+            </m-transition-folded>
+          </expand-menu>
           <!-- tools -->
           <expand-menu v-model="expand.tools">
             <template v-slot:text> 工具 </template>
@@ -87,7 +97,7 @@
 </template>
 
 <script>
-import { TheDemoCompontentsRouter, TheDemoStart, TheDemoStyle, TheDemoTool } from "../../router";
+import { TheDemoCompontentsRouter, TheDemoStart, TheDemoStyle, TheDemoTool, TheDemoLayout } from "../../router";
 function toLinks (routerConf) {
   return routerConf.map(item => {
     return {
@@ -107,6 +117,7 @@ export default {
         style: true,
         components: true,
         tools: true,
+        layout: true,
       },
     };
   },
@@ -116,7 +127,8 @@ export default {
         start: toLinks(TheDemoStart),
         components: toLinks(TheDemoCompontentsRouter),
         tools: toLinks(TheDemoTool),
-        styles: toLinks(TheDemoStyle)
+        styles: toLinks(TheDemoStyle),
+        layout: toLinks(TheDemoLayout),
       }
     }
   },
