@@ -17,7 +17,7 @@ export default {
     },
   },
   computed: {
-    style() {
+    style () {
       let position = {
         left: "-100%,0,0",
         right: "100%,0,0",
@@ -31,7 +31,7 @@ export default {
     },
   },
   methods: {},
-  render() {
+  render () {
     return h(
       Transition,
       {
@@ -54,6 +54,6 @@ export default {
 }
 .m-transition-slide-enter-active,
 .m-transition-slide-leave-active {
-  transition: all 500ms var(--ease-in-out);
+  transition: all 500ms var(--ease-in-out) !important;
 }
 </style>
