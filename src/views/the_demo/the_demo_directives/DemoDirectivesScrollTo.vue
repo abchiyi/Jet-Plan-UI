@@ -26,15 +26,16 @@
       <m-row X='center'>
         <m-col style="width:100px">
           <m-cube
-            id="cube1"
-            style="height:120vh"
-            v-scroll-to="`#scroll-controll`"
-          >120vh</m-cube>
-          <m-cube
             id="cube2"
             v-scroll-to="`#scroll-controll`"
             style="height:100px;background:var(--warning)"
           >100px</m-cube>
+          <m-cube
+            id="cube1"
+            style="height:120vh"
+            v-scroll-to="`#scroll-controll`"
+          >120vh</m-cube>
+
           <m-cube
             id="cube3"
             v-scroll-to="`#scroll-controll`"

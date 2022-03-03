@@ -20,6 +20,7 @@
             v-show="$route.path == item.href"
           >
             <m-button
+              class="item"
               v-scroll-to:120="i.to"
               style="padding-left: 2.5rem"
               v-for="i in item.index"
@@ -58,5 +59,11 @@ export default {
 #links,
 .container {
   padding: unset;
+}
+
+.item > .router-link-a,
+.page-index > .item {
+  font-size: 15px;
+  padding: 8px 0;
 }
 </style>
