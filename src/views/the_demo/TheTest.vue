@@ -1,17 +1,14 @@
 <template>
-  <m-button @click="()=>{ tal.action(()=>{value = !value})}">
-  </m-button>
-  <m-transition-slide
-    :opacity="true/false"
-    position="bottom"
-  >
-    <div
-      class="deom-item"
-      v-show="value"
-    >
-      <m-cube>To top</m-cube>
-    </div>
-  </m-transition-slide>
+  <div>
+    <m-button @click="click">Click me</m-button>
+    <m-transition-slide position="right">
+      <m-cube
+        class="a"
+        v-show="value"
+      >To top</m-cube>
+    </m-transition-slide>
+  </div>
+
 </template>
 <script>
 import pdn from '../../common/mix/popDemoName'
@@ -26,9 +23,15 @@ export default {
     };
   },
   methods: {
+    click () {
+      this.tal.action(() => { this.value = !this.value })
+    }
   },
 };
 </script>
 
 <style >
+.a {
+  position: relative;
+}
 </style>
