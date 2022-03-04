@@ -21,4 +21,8 @@ code.inline-code {
   padding: 2px 6px;
   margin: 2px 0;
 }
+
+.inline-code + .inline-code {
+  margin-left: 5px;
+}
 </style>

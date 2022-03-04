@@ -1,6 +1,8 @@
 <template>
   <div :class="classes">
-    <strong>{{name}}：</strong>
+    <component :is="titleIs">
+      {{name}}
+    </component>
     <ul>
       <slot>
         <li style="color:var(--error);"><strong>Empty !</strong></li>
@@ -15,6 +17,10 @@ export default {
     name: {
       type: String,
       required: true,
+    },
+    titleIs: {
+      type: String,
+      default: 'strong'
     },
     noDot: {
       type: Boolean,
