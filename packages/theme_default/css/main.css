@@ -91,19 +91,19 @@ h2 {
 }
 
 h3 {
-	font-size: 1.5rem;
-}
-
-h4 {
 	font-size: 1.3rem;
 }
 
-h5 {
+h4 {
 	font-size: 1rem;
 }
 
-h6 {
+h5 {
 	font-size: 0.8rem;
+}
+
+h6 {
+	font-size: 0.6rem;
 }
 
 h1,
@@ -113,7 +113,7 @@ h4,
 h5,
 h6 {
 	font-weight: bold;
-	margin: 1rem 0;
+	margin: 2rem 0 1rem 0;
 }
 
 /* 隐藏选中框 */
