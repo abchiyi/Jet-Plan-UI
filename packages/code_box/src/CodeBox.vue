@@ -17,6 +17,7 @@
 </template>
 
 <script>
+	// TODO 添加复制功能
 	// TODO hljs 主题跟随 ui
 	import 'highlight.js/styles/atom-one-dark.css';
 	import 'highlight.js/lib/common';
