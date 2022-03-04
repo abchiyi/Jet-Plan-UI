@@ -1,11 +1,12 @@
 <template>
 	<!-- div 标签作为缓冲,避免过渡动画修改内部样式 -->
-	<div class="m-code-box-toplayer">
+	<div class="m-code-box-toplayer" :style="style">
 		<m-row class="m-code-box" ref="codeBox">
 			<ul class="line-number">
 				<li v-for="i in linenumber" :key="i">{{ i }}</li>
 			</ul>
 			<highlightjs
+				v-update-color="updateColor"
 				style="width: 100%"
 				:autodetect="lang ? false : true"
 				:language="lang"
@@ -33,6 +34,26 @@
 		components: {
 			highlightjs: hljsVuePlugin.component,
 		},
+		directives: {
+			updateColor: {
+				mounted(el, binding) {
+					binding.value(
+						window.getComputedStyle(
+							el.children[0],
+							'backgroundColor'
+						).backgroundColor
+					);
+				},
+				updated(el, binding) {
+					binding.value(
+						window.getComputedStyle(
+							el.children[0],
+							'backgroundColor'
+						).backgroundColor
+					);
+				},
+			},
+		},
 		computed: {
 			linenumber() {
 				return this.stripCode.split('\n').length;
@@ -40,15 +61,21 @@
 			stripCode() {
 				return this.code.trim();
 			},
-		},
-		mounted() {
-			console.log(this.getHljsBackgroundColor());
+			style() {
+				return {
+					'--hljs-bgcolor': this.backgroundColor,
+				};
+			},
 		},
 		methods: {
-			getHljsBackgroundColor() {
-				let el = this.$refs.codeBox.$el.children[1];
-				return el.style.background;
+			updateColor(c) {
+				this.backgroundColor = c;
 			},
+		},
+		data() {
+			return {
+				backgroundColor: undefined,
+			};
 		},
 	};
 </script>
@@ -72,7 +99,7 @@
 	}
 
 	.m-code-box > .line-number {
-		background: rgb(25, 33, 51);
+		background: var(--hljs-bgcolor);
 		border-right: 2px dashed var(--border);
 		box-sizing: border-box;
 		color: var(--text-hint);
@@ -81,6 +108,7 @@
 		user-select: none;
 		list-style: none;
 		flex-shrink: 0;
+		transition: color 0;
 	}
 
 	.m-code-box .line-number li {
