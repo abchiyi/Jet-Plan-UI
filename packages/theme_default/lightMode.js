@@ -1,8 +1,8 @@
 const BACKGROUND = {
     foreground: '#ffffff',
-    border: "#e0e0e0",
-    background: "#f3f3f3",
-    disabled: '#f3f3f3'
+    border: "#dadada",
+    background: "#ebebeb",
+    disabled: '#ededed'
 }
 
 const TEXTCOLOR = {
