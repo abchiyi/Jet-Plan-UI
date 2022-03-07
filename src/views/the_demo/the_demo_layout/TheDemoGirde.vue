@@ -7,7 +7,7 @@
 		<br />
 		<div id="doc">
 			<!-- m-col -->
-			<doc-item name="m-col:" title-is="h2">
+			<doc-item name="<m-col> :" title-is="h2">
 				<li id="props">
 					<doc-item title-is="h3" name="Props:">
 						<li id="props-m-col-tag">
@@ -62,7 +62,7 @@
 				</li>
 			</doc-item>
 			<!-- m-row -->
-			<doc-item name="m-row:" title-is="h2">
+			<doc-item name="<m-row> :" title-is="h2">
 				<li>
 					<doc-item title-is="h3" name="Props:">
 						<li id="props-m-row-tag">
