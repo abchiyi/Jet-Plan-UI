@@ -19,4 +19,9 @@ export default [
         name: "Pages",
         component: () => import('../views/the_demo/the_demo_layout/TheDemoPages.vue'),
     },
+    {
+        path: "/header",
+        name: "Header",
+        component: () => import('../views/the_demo/the_demo_layout/TheDemoHeader.vue'),
+    },
 ]
