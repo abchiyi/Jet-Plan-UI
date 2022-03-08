@@ -1,5 +1,13 @@
 <template>
 	<div id="demo-m-control-bar">
+		<doc-itme id="describes" name="控制条组件:" title-is="h2">
+			<p>
+				强化
+				<inline-code>input</inline-code>
+				衍生组件的可点击范围,使得组件内任意区域均可触发点击
+			</p>
+		</doc-itme>
+		<hr />
 		<doc-itme name="<m-control-bar> :" title-is="h2">
 			<li id="m-control-bar-props">
 				<doc-itme name="Props:" title-is="h3">
@@ -40,7 +48,7 @@
 				</doc-itme>
 			</li>
 		</doc-itme>
-		<doc-itme name="如何使用">
+		<doc-itme name="如何使用:" title-is="h2">
 			<li id="demo">
 				<demo-box title="<m-control-bar>" :code="code" :expand="true">
 					<template v-slot:header>
@@ -108,7 +116,9 @@
 <script>
 	import DocItme from '../../../common/DocItme.vue';
 	import InlineCode from '../../../common/inlineCode.vue';
+	import pdn from '../../../common/mix/popDemoName';
 	export default {
+		mixins: [pdn],
 		components: { DocItme, InlineCode },
 		name: '',
 		data: () => {
