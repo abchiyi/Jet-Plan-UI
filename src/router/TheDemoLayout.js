@@ -9,4 +9,9 @@ export default [
         name: "ControlBar",
         component: () => import('../views/the_demo/the_demo_layout/TheDemoControlBar.vue'),
     },
+    {
+        path: "/full-screen-mask",
+        name: "FullscreenMask",
+        component: () => import('../views/the_demo/the_demo_layout/TheFullscreenMask.vue'),
+    },
 ]
