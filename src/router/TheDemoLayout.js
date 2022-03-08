@@ -14,4 +14,9 @@ export default [
         name: "FullscreenMask",
         component: () => import('../views/the_demo/the_demo_layout/TheFullscreenMask.vue'),
     },
+    {
+        path: "/pages",
+        name: "Pages",
+        component: () => import('../views/the_demo/the_demo_layout/TheDemoPages.vue'),
+    },
 ]
