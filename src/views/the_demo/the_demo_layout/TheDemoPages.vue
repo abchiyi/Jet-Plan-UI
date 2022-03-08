@@ -4,13 +4,13 @@
 			<li><p>mousseUI 提供一些预设的页面布局来进行快速页面设置</p></li>
 		</doc-item>
 		<hr />
-		<div id="doc">
+		<div id="p1-doc">
 			<doc-item title-is="h2" name="预设1：">
 				<li id="describes-p1">
 					<p>上中下布局+侧栏，兼容移动设备</p>
 					<p>在移动设备宽度下侧栏由停靠转为浮动</p>
 				</li>
-				<li id="props">
+				<li id="p1-props">
 					<doc-item name="props">
 						<li id="props-model-value">
 							<p>
@@ -21,7 +21,7 @@
 						</li>
 					</doc-item>
 				</li>
-				<li id="event">
+				<li id="p1-event">
 					<doc-item name="Event:">
 						<li id="event-update-model-value">
 							<p>
@@ -29,6 +29,34 @@
 								: type - Boolean
 							</p>
 							<p>更新绑定值</p>
+						</li>
+					</doc-item>
+				</li>
+				<li id="p1-slots">
+					<doc-item name="Slots">
+						<li id="p1-slots-header">
+							<p>
+								<inline-code>:header</inline-code>
+								- 顶部浮动栏插槽
+							</p>
+						</li>
+						<li id="p1-slots-default">
+							<p>
+								<inline-code>:default</inline-code>
+								- 正文插槽
+							</p>
+						</li>
+						<li id="p1-slots-footer">
+							<p>
+								<inline-code>:footer</inline-code>
+								- 页脚插槽
+							</p>
+						</li>
+						<li id="p1-slots-sidebar">
+							<p>
+								<inline-code>:sidebar</inline-code>
+								- 侧栏插槽
+							</p>
 						</li>
 					</doc-item>
 				</li>
