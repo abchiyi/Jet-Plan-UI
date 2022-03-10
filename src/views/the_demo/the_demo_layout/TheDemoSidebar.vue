@@ -71,13 +71,6 @@
 				</demo-box>
 			</li>
 		</doc-item>
-		<m-button
-			@click="
-				() => {
-					demoShowSidebar = !demoShowSidebar;
-				}
-			"
-		></m-button>
 		<m-sidebar
 			:right="displayInRight"
 			:dock="demoSidebarDock"
