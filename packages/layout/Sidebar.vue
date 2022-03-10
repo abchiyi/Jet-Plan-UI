@@ -1,22 +1,24 @@
-=;
 <template>
-	<m-transition-slide
-		v-focus="onblurClose"
-		:opacity="false"
-		:position="right ? 'right' : 'left'"
-	>
-		<div v-show="modelValue" :class="classes">
-			<slot />
-		</div>
-	</m-transition-slide>
+	<div>
+		<m-transition-slide
+			v-focus="onblurClose"
+			:opacity="false"
+			:position="right ? 'right' : 'left'"
+		>
+			<div v-show="modelValue" :class="classes">
+				<slot />
+			</div>
+		</m-transition-slide>
+		<m-transition-fade>
+			<div class="sidebar-mask" v-show="showMask"></div>
+		</m-transition-fade>
+	</div>
 </template>
 
 <script>
 	import { Focus } from '../tool/directives';
-	import { TimedActionLimit } from '../tool';
 	export default {
 		name: 'm-sidebar',
-		mounted() {},
 		props: {
 			modelValue: {
 				type: Boolean,
@@ -42,7 +44,7 @@
 			return {
 				width: undefined,
 				show: false,
-				tal: new TimedActionLimit(10, 1, false),
+				dock_: this.dock,
 			};
 		},
 		computed: {
@@ -52,29 +54,36 @@
 			postiton() {
 				return this.right ? 'right' : 'left';
 			},
+			showMask() {
+				return !this.dock_ && this.modelValue;
+			},
 		},
 		watch: {
-			modelValue(v) {
-				this.$emit('update:modelValue', v);
-
-				// 侧栏开启使计数器过热
-				if (v) this.tal.action(() => {});
+			dock(v) {
+				this.dock_ = v;
 			},
 		},
 		methods: {
 			onblurClose(v) {
-				// 计数器控制是否要执行关闭动作
-				// this.tal.action(() => {
-				if (!v && !this.dock) {
+				if (!v && !this.dock_) {
 					this.$emit('update:modelValue', false);
 				}
-				// });
 			},
 		},
 	};
 </script>
 
 <style scoped>
+	.sidebar-mask {
+		background-color: var(--mask);
+		position: fixed;
+		opacity: 0.5;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		top: 0;
+	}
+
 	.m-sidebar {
 		overflow-y: scroll;
 		position: fixed;
