@@ -5,7 +5,7 @@
 		:opacity="false"
 		:position="right ? 'right' : 'left'"
 	>
-		<div v-show="show" class="bar frosted-glass">
+		<div v-show="modelValue" :class="classes">
 			<slot />
 		</div>
 	</m-transition-slide>
@@ -16,9 +16,7 @@
 	import { TimedActionLimit } from '../tool';
 	export default {
 		name: 'm-sidebar',
-		mounted() {
-			this.show = this.modelValue;
-		},
+		mounted() {},
 		props: {
 			modelValue: {
 				type: Boolean,
@@ -44,33 +42,40 @@
 			return {
 				width: undefined,
 				show: false,
-				tal: new TimedActionLimit(500, 1),
+				tal: new TimedActionLimit(10, 1, false),
 			};
 		},
-		watch: {
-			modelValue() {
-				this.show = this.modelValue;
+		computed: {
+			classes() {
+				return ['m-sidebar', this.postiton, 'frosted-glass'];
 			},
-			show() {
-				this.$emit('update:modelValue', this.show);
+			postiton() {
+				return this.right ? 'right' : 'left';
+			},
+		},
+		watch: {
+			modelValue(v) {
+				this.$emit('update:modelValue', v);
 
 				// 侧栏开启使计数器过热
-				if (this.show) this.tal.action(() => {});
+				if (v) this.tal.action(() => {});
 			},
 		},
 		methods: {
 			onblurClose(v) {
 				// 计数器控制是否要执行关闭动作
-				this.tal.action(() => {
-					if (!v && !this.dock) this.show = false;
-				});
+				// this.tal.action(() => {
+				if (!v && !this.dock) {
+					this.$emit('update:modelValue', false);
+				}
+				// });
 			},
 		},
 	};
 </script>
 
 <style scoped>
-	.bar {
+	.m-sidebar {
 		overflow-y: scroll;
 		position: fixed;
 		height: 100vh;
@@ -80,21 +85,26 @@
 		left: 0;
 	}
 
+	.m-sidebar.right {
+		left: unset;
+		right: 0;
+	}
+
 	/* Firefox  */
 	@supports (scrollbar-width: none) {
-		.bar {
+		.m-sidebar {
 			/* overflow: -moz-scrollbars-none; */
 			scrollbar-width: none;
 		}
 	}
 
 	/* chrome and Safari */
-	.bar::-webkit-scrollbar {
+	.m-sidebar::-webkit-scrollbar {
 		display: none;
 	}
 
 	/* IE 10+ */
-	.bar {
+	.m-sidebar {
 		-ms-overflow-style: none;
 	}
 </style>
