@@ -20,19 +20,20 @@ Missing values ‘timeout’ are required
     }
 
     action (callback) {
-        if (!this.overheat) {
-            callback()
-            this.conter = this.conter - 1
-            this.overheat = this.conter == 0
-        }
-
         if (this.overheat) {
             // 通知外部程序已过热
+            // FIXME 过热之通知一次
             if (this.overheatAlarm) this.overheatAlarm()
             // 设置冷却动作
             this.__setCooling()
             // 清除冷却动作
             this.__waitControl()
+        }
+
+        if (!this.overheat) {
+            callback()
+            this.conter = this.conter - 1
+            this.overheat = this.conter == 0
         }
     }
 

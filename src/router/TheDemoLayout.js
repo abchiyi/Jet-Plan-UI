@@ -24,4 +24,10 @@ export default [
         name: "Header",
         component: () => import('../views/the_demo/the_demo_layout/TheDemoHeader.vue'),
     },
+    {
+        path: "/sidebar",
+        name: "Sidebar",
+        component: () => import('../views/the_demo/the_demo_layout/TheDemoSidebar.vue'),
+    },
+
 ]
