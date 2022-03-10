@@ -116,6 +116,9 @@
 				this.$emit('update:modelValue', v);
 				this.sidebarExpand = v;
 			},
+			sidebarExpand(v) {
+				this.$emit('update:modelValue', v);
+			},
 		},
 	};
 </script>
