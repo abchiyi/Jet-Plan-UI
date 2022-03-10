@@ -3,10 +3,10 @@ import { TimedActionLimit } from '../lib'
 function ReSize () {
     let width = window.innerWidth;
     let col = {
-        xs: width < 576,
-        sm: width >= 576 && width < 768,
-        md: width >= 768 && width < 992,
-        lg: width >= 992 && width < 1200,
+        xs: width <= 578,
+        sm: width > 578 && width <= 768,
+        md: width > 768 && width <= 992,
+        lg: width > 992 && width <= 1200,
         xl: width > 1200
     }
 
