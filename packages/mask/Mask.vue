@@ -26,7 +26,6 @@
 	.m-mask {
 		background-color: var(--mask);
 		position: fixed;
-		opacity: 0.5;
 		bottom: 0;
 		right: 0;
 		left: 0;

@@ -69,16 +69,6 @@
 </script>
 
 <style scoped>
-	.sidebar-mask {
-		background-color: var(--mask);
-		position: fixed;
-		opacity: 0.5;
-		bottom: 0;
-		right: 0;
-		left: 0;
-		top: 0;
-	}
-
 	.m-sidebar {
 		overflow-y: scroll;
 		position: fixed;
