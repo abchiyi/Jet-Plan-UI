@@ -66,7 +66,6 @@
 	.m-button {
 		transition: all 0.3s var(--ease-out);
 		background-color: var(--secondary);
-		/* text-decoration: underline 2px; */
 		border-radius: var(--s-radius);
 		box-sizing: border-box;
 		display: inline-block;
@@ -75,8 +74,6 @@
 		-webkit-user-select: none;
 		-ms-user-select: none;
 		user-select: none;
-		font-size: 0.8em;
-		/* font-size: 14px; */
 		color: var(--text-hint);
 		cursor: pointer;
 	}
@@ -113,7 +110,6 @@
 	/* Text Button */
 	/*------------ Default ----------*/
 	.m-button.text-button {
-		/* font-weight: bold; */
 		background: unset;
 		padding: 6px 8px;
 	}
