@@ -5,8 +5,7 @@
 			default: _default || false,
 		};
 	}
-	// TODO 移除ripple， Ripple 渲染逻辑导致性能低下，有新 rippl 加入或移除时的全部过渡过渡动画
-	import ripple from './ActionFeedbackRipple.vue';
+	import mask from './ActionFeedbackMask.vue';
 	import { h, TransitionGroup } from 'vue';
 	export default {
 		name: 'm-action-feedback',
@@ -18,7 +17,6 @@
 			tag: propInit(String, 'div'),
 			active: propInit(),
 			hover: propInit(),
-			ripple: propInit(),
 		},
 		data() {
 			return {
@@ -38,23 +36,20 @@
 			},
 		},
 		methods: {
-			// Ripple
-			createRippleAttrs(event) {
-				const ripple = {
+			createMask(event) {
+				return {
 					data: {
 						opacity: this.opacity,
 						el: this.$refs.self,
 						color: this.color,
 						event: event,
-						ripple: !this.data_active,
 					},
 					key: this.key++,
 				};
-				return ripple;
 			},
-			removeRipple() {
-				this.masks.forEach((ripple, index, masks) => {
-					if (ripple.key != this.key) {
+			removeMask() {
+				this.masks.forEach((item, index, masks) => {
+					if (item.key != this.key) {
 						masks.splice(index, 1);
 					}
 				});
@@ -67,7 +62,7 @@
 				}
 				return 'Submit';
 			},
-			renderRipples() {
+			renderMask() {
 				let key = 0;
 				return h(
 					TransitionGroup,
@@ -75,7 +70,7 @@
 					{
 						default: () =>
 							this.masks.map(attrs => {
-								return h(ripple, {
+								return h(mask, {
 									data: attrs.data,
 									key: key++,
 								});
@@ -84,7 +79,7 @@
 				);
 			},
 			render() {
-				return [this.renderDefault(), this.renderRipples()];
+				return [this.renderDefault(), this.renderMask()];
 			},
 			// Hover
 			enter() {
@@ -97,21 +92,19 @@
 			},
 			leave() {
 				if (this.hover) this.data_hover = false;
-				this.removeRipple();
+				this.removeMask();
 			},
 			// Click
 			startClick(event) {
-				//   this.data_active = true;
-				// Ripple
-				if (this.ripple || this.data_active) {
+				if (this.data_active) {
 					if (event.button === 0 && !this.ignoreClick) {
-						this.masks.push(this.createRippleAttrs(event));
+						this.masks.push(this.createMask(event));
 					}
 					if (this.ignoreClick) this.ignoreClick = false;
 				}
 			},
 			endClick() {
-				this.removeRipple();
+				this.removeMask();
 			},
 			// Touch
 			startTouche(event) {
@@ -120,8 +113,8 @@
 				this.enter();
 
 				// Ripple
-				if ((event.touches && this.ripple) || this.data_active) {
-					this.masks.push(this.createRippleAttrs(event.touches[0]));
+				if (event.touches || this.data_active) {
+					this.masks.push(this.createMask(event.touches[0]));
 					// 触发"touche"事件时会在之后触发"click"事件
 					// 此变量改变下一次"click"回调函数的运行结果
 					this.ignoreClick = true;
@@ -129,7 +122,7 @@
 			},
 			endTouche() {
 				this.leave();
-				this.removeRipple();
+				this.removeMask();
 			},
 		},
 		watch: {
