@@ -153,7 +153,6 @@
 		right: 0;
 		top: 0;
 		bottom: 0;
-		z-index: 1;
 	}
 	.slide_left-enter-from,
 	.slide_right-leave-to {

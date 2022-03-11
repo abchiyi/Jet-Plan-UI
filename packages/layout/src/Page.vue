@@ -4,15 +4,6 @@
 		:class="modelValue ? 'is-open' : 'is-closed'"
 		v-rss="reScreenSize"
 	>
-		<!-- 头栏 -->
-		<m-header
-			id="page-header"
-			:class="classSidebarOpen"
-			class="frosted-glass"
-			v-shadow:bottom="2"
-		>
-			<slot name="header"></slot>
-		</m-header>
 		<!-- 正文 -->
 		<m-row id="page-content" :class="classSidebarOpen" X="center">
 			<m-col id="content">
@@ -25,6 +16,17 @@
 				</footer>
 			</m-col>
 		</m-row>
+		<!-- 头栏 -->
+		<m-header
+			id="page-header"
+			:class="classSidebarOpen"
+			class="frosted-glass"
+			v-shadow:bottom="2"
+		>
+			<slot name="header"></slot>
+		</m-header>
+		<!-- 遮罩 -->
+		<m-mask :value="sidebarExpand && !sidebarDock" />
 		<!-- 侧栏 -->
 		<m-sidebar
 			id="page-sidebar"
@@ -38,8 +40,12 @@
 
 <script>
 	import { Focus, ReScreenSize } from '../../tool/directives';
+	import { Mask } from '../../mask';
 	export default {
 		name: 'm-page',
+		components: {
+			'm-mask': Mask,
+		},
 		props: {
 			modelValue: {
 				type: Boolean,

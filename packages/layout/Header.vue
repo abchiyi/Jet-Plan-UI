@@ -17,7 +17,6 @@
 <style>
 	.m-header {
 		position: fixed;
-		z-index: 90;
 		right: 0;
 		left: 0;
 		top: 0;

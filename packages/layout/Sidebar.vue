@@ -6,10 +6,6 @@
 	>
 		<div v-shadow:right="2" v-show="modelValue" :class="classes">
 			<slot />
-			<!-- FIXME sideba 遮罩修复 -->
-			<m-transition-fade>
-				<div class="sidebar-mask" v-show="showMask"></div>
-			</m-transition-fade>
 		</div>
 	</m-transition-slide>
 </template>
@@ -87,7 +83,6 @@
 		overflow-y: scroll;
 		position: fixed;
 		height: 100vh;
-		z-index: 91;
 		bottom: 0;
 		top: 0;
 		left: 0;
