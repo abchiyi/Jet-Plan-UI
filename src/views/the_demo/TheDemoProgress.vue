@@ -1,51 +1,134 @@
 <template>
-  <div>
-    <h2>进度条</h2>
-    <m-card class="demo-box">
-      <!-- <m-switch-item v-model="failed">失败</m-switch-item> -->
-      <!-- <m-switch-item v-model="success">完成</m-switch-item> -->
-      <input
-        type="number"
-        v-model="number"
-      />
-      <hr />
-      <mo-progress
-        :failed="failed"
-        :value="number"
-      ></mo-progress>
-    </m-card>
-  </div>
+	<div id="the-demo-progressbar">
+		<doc-item id="describes" title-is="h2" name="进度条:">
+			<li><p>用于展示加载进度</p></li>
+		</doc-item>
+		<hr />
+		<div id="doc">
+			<doc-item title-is="h2" name="<m-progress>:">
+				<li>
+					<doc-itme name="Props:">
+						<li id="prop-value">
+							<p>
+								<inline-code>value</inline-code>
+								:type - String|Number, default - 0, range - 0 ~
+								100
+							</p>
+							<p>控制进度条百分比</p>
+						</li>
+						<li id="prop-failed">
+							<p>
+								<inline-code>failed</inline-code>
+								: type - Boolean, default - false
+							</p>
+							<p>切换进度条为失败状态</p>
+						</li>
+						<li id="prop-height">
+							<p>
+								<inline-code>height</inline-code>
+								: type - String, default - "8px"
+							</p>
+							<p>控制状态栏行高</p>
+						</li>
+					</doc-itme>
+				</li>
+			</doc-item>
+		</div>
+		<doc-item id="demo" title-is="h2" name="如何使用">
+			<li>
+				<demo-box title="<m-progress>" :code="code" :expand="true">
+					<template v-slot:header>
+						<m-control-bar for-id="demo-progress-to-susccess">
+							<template v-slot:text>完成进度条</template>
+							<template v-slot:control>
+								<m-switch
+									id="demo-progress-to-susccess"
+									v-model="success"
+								/>
+							</template>
+						</m-control-bar>
+						<m-control-bar for-id="demo-progress-to-failed">
+							<template v-slot:text>失败进度条</template>
+							<template v-slot:control>
+								<m-switch
+									id="demo-progress-to-failed"
+									v-model="failed"
+								/>
+							</template>
+						</m-control-bar>
+					</template>
+					<div id="demo-content">
+						<m-progress
+							:failed="failed"
+							:value="number"
+						></m-progress>
+					</div>
+				</demo-box>
+			</li>
+		</doc-item>
+	</div>
 </template>
 
 <script>
-import pdn from '../../common/mix/popDemoName'
-export default {
-  mixins: [pdn],
-  name: "m-progress-demo",
-  data () {
-    return {
-      code: undefined,
-      success: false,
-      failed: false,
-      number: 50
-    };
-  },
-  watch: {
-    success () {
-      if (this.success) {
-        this.code = setInterval(() => {
-          this.number++;
-        }, 100);
-      } else {
-        this.number = 50;
-        clearInterval(this.code);
-      }
-    },
-    number () {
-      if (this.number > 100) {
-        clearInterval(this.code);
-      }
-    }
-  }
-};
+	import pdn from '../../common/mix/popDemoName';
+	export default {
+		mixins: [pdn],
+		name: 'the-demo-progress',
+		data() {
+			return {
+				code: `
+//javascript
+let value = 50;
+let filed = false;
+
+// HTML
+<m-control-bar for-id="demo-progress-to-susccess">
+    <template v-slot:text>完成进度条</template>
+    <template v-slot:control>
+        <m-switch
+            id="demo-progress-to-susccess"
+            v-model="success"
+        />
+    </template>
+</m-control-bar>
+<m-control-bar for-id="demo-progress-to-failed">
+    <template v-slot:text>失败进度条</template>
+    <template v-slot:control>
+        <m-switch
+            id="demo-progress-to-failed"
+            v-model="failed"
+        />
+    </template>
+</m-control-bar>
+<div id="demo-content">
+    <m-progress
+        :failed="failed"
+        :value="number"
+    ></m-progress>
+</div>
+                `,
+				intervalID: null,
+				success: false,
+				failed: false,
+				number: 50,
+			};
+		},
+		watch: {
+			success() {
+				if (this.success) {
+					this.intervalID = setInterval(() => {
+						this.number++;
+					}, 100);
+				} else {
+					this.number = 50;
+					clearInterval(this.intervalID);
+				}
+			},
+			number() {
+				if (this.number > 100) {
+					clearInterval(this.intervalID);
+				}
+			},
+		},
+	};
 </script>
