@@ -36,10 +36,9 @@
 </script>
 
 <style>
-	.dov {
-		margin: 10px;
+	.doc {
+		font-family: SarasaMono;
 	}
-
 	.doc li + li {
 		margin-top: 1em;
 	}
