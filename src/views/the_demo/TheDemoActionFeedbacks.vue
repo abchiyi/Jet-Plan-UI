@@ -19,12 +19,6 @@
 				<m-switch id="re-hover" v-model="hover" />
 			</template>
 		</m-control-bar>
-		<m-control-bar for-id="re-ripple">
-			<template v-slot:text>启用 Ripple 效果</template>
-			<template v-slot:control>
-				<m-switch :disabled="active" id="re-ripple" v-model="ripple" />
-			</template>
-		</m-control-bar>
 		<!-- Demo -->
 		<demo-box title="点击反馈" :code="code" id="fade">
 			<m-row class="animation-box" X="center">
@@ -74,19 +68,6 @@
 					。 默认为
 					<inline-code>false</inline-code>
 				</li>
-				<li id="prop-ripple">
-					<inline-code>ripple - Boolean</inline-code>
-					开启关闭 ripple 效果 。 默认为
-					<inline-code>false</inline-code>
-					。
-					<warning-text>
-						注意:
-						<inline-code>ripple</inline-code>
-						会被
-						<inline-code>active</inline-code>
-						效果覆盖。两种效果不可同时开启
-					</warning-text>
-				</li>
 			</ul>
 		</article>
 		<article class="events">
@@ -122,10 +103,9 @@
 <script>
 	import pdn from '../../common/mix/popDemoName';
 	import inlineCode from '../../common/inlineCode.vue';
-	import WarningText from '../../common/Warning-text.vue';
 	export default {
 		mixins: [pdn],
-		components: { inlineCode, WarningText },
+		components: { inlineCode },
 		name: 'the-demo-action-feedbacks',
 		data() {
 			return {
