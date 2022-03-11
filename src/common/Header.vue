@@ -1,5 +1,5 @@
 <template>
-	<m-row class="header" Y="center" X="center" spaceMode="between">
+	<m-row class="header" Y="center" spaceMode="between">
 		<!-- 标题 -->
 		<slot name="title">
 			<h1>{{ title }}</h1>
@@ -88,6 +88,12 @@
 	};
 </script>
 <style>
+	.header {
+		height: 100%;
+	}
+	.header > h1 {
+		margin: unset;
+	}
 	#darkmode-switch * {
 		font-size: 1.2rem;
 	}

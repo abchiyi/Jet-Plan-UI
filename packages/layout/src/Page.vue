@@ -100,7 +100,7 @@
 	};
 </script>
 
-<style scoped>
+<style>
 	#page-sidebar {
 		width: 255px;
 	}
@@ -108,12 +108,18 @@
 	#page-header,
 	#page-content {
 		transition: all 500ms var(--ease-in-out);
+		padding: 0 2em;
 	}
 
 	#page-header.with-sidebar-open,
 	#page-content.with-sidebar-open {
 		margin-left: 255px;
 	}
+
+	#page-header {
+		height: 72px;
+	}
+
 	.content,
 	main,
 	footer {
@@ -122,16 +128,7 @@
 		--TOP-MARGIN: 100px;
 	}
 
-	.m-header > .m-row {
-		height: 72px;
-	}
-
-	.m-header > *,
-	#content {
-		padding: 0 20px;
-	}
-
-	#content {
+	#page-content > #content {
 		max-width: 960px;
 		height: 100vh;
 	}
