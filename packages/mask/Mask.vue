@@ -24,8 +24,7 @@
 
 <style>
 	.m-mask {
-		background-color: rgb(145, 238, 207);
-		pointer-events: none;
+		background-color: var(--mask);
 		position: fixed;
 		opacity: 0.5;
 		bottom: 0;
