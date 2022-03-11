@@ -1,18 +1,17 @@
 <template>
-	<div>
-		<m-transition-slide
-			v-focus="onblurClose"
-			:opacity="false"
-			:position="right ? 'right' : 'left'"
-		>
-			<div v-shadow:right="2" v-show="modelValue" :class="classes">
-				<slot />
-			</div>
-		</m-transition-slide>
-		<m-transition-fade>
-			<div class="sidebar-mask" v-show="showMask"></div>
-		</m-transition-fade>
-	</div>
+	<m-transition-slide
+		v-focus="onblurClose"
+		:opacity="false"
+		:position="right ? 'right' : 'left'"
+	>
+		<div v-shadow:right="2" v-show="modelValue" :class="classes">
+			<slot />
+			<!-- FIXME sideba 遮罩修复 -->
+			<m-transition-fade>
+				<div class="sidebar-mask" v-show="showMask"></div>
+			</m-transition-fade>
+		</div>
+	</m-transition-slide>
 </template>
 
 <script>
