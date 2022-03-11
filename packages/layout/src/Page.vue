@@ -77,7 +77,6 @@
 				v.contains(this.sidebarOpenIn, bool => {
 					this.$emit('update:modelValue', bool);
 					this.sidebarDock = bool;
-					console.log(3);
 				});
 			},
 		},
