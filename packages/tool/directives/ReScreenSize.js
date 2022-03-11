@@ -25,7 +25,10 @@ function ReSize () {
     }
 }
 
-const timeout = new TimedActionLimit(100)
+const timeout = new TimedActionLimit(200)
+function lastScreenUpdate (callback) {
+    timeout.setCooledAlarm(callback)
+}
 export default {
     name: 're-screen-size',
     created (el, binding) {
@@ -41,6 +44,13 @@ export default {
                     ReSize()
                 )
             })
+            lastScreenUpdate(() => {
+                binding.value(
+                    el,
+                    ReSize()
+                )
+            }
+            )
         })
     },
     reSize: ReSize
