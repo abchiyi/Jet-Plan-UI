@@ -85,18 +85,6 @@
 				</li>
 			</ul>
 		</article>
-		<article class="others">
-			<strong>组件特性：</strong>
-			<ul class="doc">
-				<li>
-					在触摸动作时如开启了 ripple 的同时且开启了 houer， hover
-					将不会生效，houver 将会被关闭 active
-					会被设置为启用状态。这是为触摸事件所做的优化，触摸 houver
-					效果响应缓慢，且在手指离开后遮罩不能正常移除，故使用 active
-					效果代替。
-				</li>
-			</ul>
-		</article>
 	</div>
 </template>
 
