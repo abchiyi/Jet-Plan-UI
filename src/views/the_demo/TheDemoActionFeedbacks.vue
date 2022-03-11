@@ -23,11 +23,7 @@
 		<!-- Demo -->
 		<demo-box title="点击反馈" :code="code" id="fade">
 			<m-row class="animation-box" X="center">
-				<m-action-feedback
-					:active="active"
-					:hover="hover"
-					:ripple="ripple"
-				>
+				<m-action-feedback :active="active" :hover="hover">
 					<m-cube>ClickMe</m-cube>
 				</m-action-feedback>
 			</m-row>
@@ -38,11 +34,7 @@
 			<ul class="doc">
 				<li id="prop-color">
 					<inline-code>color - String</inline-code>
-					用于设置
-					<inline-code>active</inline-code>
-					,
-					<inline-code>ripple</inline-code>
-					效果遮罩色彩,支持 css 原生色彩格式&css变量.默认为
+					用于设置遮罩色彩,支持 css 原生色彩格式&css变量.默认为
 					<inline-code>"var(--mask)"</inline-code>
 				</li>
 				<li id="prop-opacity">
@@ -101,22 +93,10 @@
 				oldRipple: false,
 				active: false,
 				hover: false,
-				ripple: false,
-				code: `<m-action-feedback :active="boolenValue1" :hover="boolenValue2" :ripple="boolenValue3">
+				code: `<m-action-feedback :active="boolenValue1" :hover="boolenValue2">
     <m-cube>ClickMe</m-cube>
 </m-action-feedback>`,
 			};
-		},
-		watch: {
-			active(v) {
-				if (v) {
-					// 关闭开启的ripple效果，并记录状态，以便在active关闭时恢复开启状态
-					this.oldRipple = this.ripple;
-					this.ripple = false;
-				} else {
-					this.ripple = this.oldRipple;
-				}
-			},
 		},
 	};
 </script>
