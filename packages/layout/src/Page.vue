@@ -71,6 +71,7 @@
 				v.contains(this.sidebarOpenIn, bool => {
 					this.$emit('update:modelValue', bool);
 					this.sidebarDock = bool;
+					console.log(3);
 				});
 			},
 		},
@@ -80,7 +81,11 @@
 		},
 		computed: {
 			classSidebarOpen() {
-				return [this.sidebarExpand ? 'with-sidebar-open' : ''];
+				return [
+					this.sidebarExpand && this.sidebarDock
+						? 'with-sidebar-open'
+						: '',
+				];
 			},
 		},
 		watch: {
