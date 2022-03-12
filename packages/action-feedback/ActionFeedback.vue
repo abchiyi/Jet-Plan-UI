@@ -182,7 +182,7 @@
 	.m-action-feedback.focus-outline:focus {
 		transition: 0.3s var(--ease-out);
 		/* TODO 优化样式 */
-		outline: solid 3px rgba(70, 70, 70, 0.774);
+		outline: solid 3px rgba(125, 125, 125, 0.5);
 	}
 
 	/* Keyborder focus */
