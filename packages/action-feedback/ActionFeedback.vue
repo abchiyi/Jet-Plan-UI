@@ -172,6 +172,9 @@
 		top: 0;
 	}
 
+	/* Keyborder focus */
+	.m-action-feedback:focus::before,
+    /* Mouse hover */
 	.m-action-feedback.hover:hover::before {
 		opacity: 0.5;
 	}
