@@ -77,6 +77,7 @@
 		user-select: none;
 		color: var(--text-hint);
 		cursor: pointer;
+		font-size: 0.9rem;
 	}
 
 	.m-button + .m-button {
