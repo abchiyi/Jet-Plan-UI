@@ -93,6 +93,7 @@
 	}
 	.header > h1 {
 		margin: unset;
+		font-size: 1.4rem;
 	}
 	#darkmode-switch * {
 		font-size: 1.2rem;
