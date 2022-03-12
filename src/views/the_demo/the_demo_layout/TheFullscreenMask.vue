@@ -30,7 +30,6 @@
 		name: 'demo-fullscreen-mask',
 		data: () => {
 			return {
-				//TODO示例代码
 				code: `
 <full-screen-mask />
                 `,

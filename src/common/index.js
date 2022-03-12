@@ -7,8 +7,6 @@ import InlineCode from './inlineCode.vue'
 import DemoDoc from './DemoDoc.vue'
 import ExpandMennu from './ExpandMenu.vue'
 import DemoPageHaveIndex from './DemoPageHaveIndex.vue'
-import DocDirective from './DocDirective.vue'
-import DocOfClass from './DocOfClass.vue'
 import DocItem from './DocItem.vue'
 
 function setCookie (name, value) {
@@ -54,8 +52,6 @@ const components = {
     Cube,
     ExpandMennu,
     DemoPageHaveIndex,
-    DocDirective,
-    DocOfClass,
     DocItem
 }
 export {
@@ -73,8 +69,6 @@ export {
     Cube,
     ExpandMennu,
     DemoPageHaveIndex,
-    DocDirective,
-    DocOfClass,
     DocItem
 }
 export default {

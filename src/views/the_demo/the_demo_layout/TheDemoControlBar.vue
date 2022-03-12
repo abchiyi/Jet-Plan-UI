@@ -1,16 +1,16 @@
 <template>
 	<div id="demo-m-control-bar">
-		<doc-itme id="describes" name="控制条组件:" title-is="h2">
+		<doc-item id="describes" name="控制条组件:" title-is="h2">
 			<p>
 				强化
 				<inline-code>input</inline-code>
 				衍生组件的可点击范围,使得组件内任意区域均可触发点击
 			</p>
-		</doc-itme>
+		</doc-item>
 		<hr />
-		<doc-itme name="<m-control-bar> :" title-is="h2">
+		<doc-item name="<m-control-bar> :" title-is="h2">
 			<li id="m-control-bar-props">
-				<doc-itme name="Props:" title-is="h3">
+				<doc-item name="Props:" title-is="h3">
 					<li id="prop-for-id">
 						<p>
 							<inline-code>for-id</inline-code>
@@ -29,10 +29,10 @@
 						</p>
 						<p>反向排列内部元素</p>
 					</li>
-				</doc-itme>
+				</doc-item>
 			</li>
 			<li id="m-control-bar-slots">
-				<doc-itme name="Slots:" title-is="h3">
+				<doc-item name="Slots:" title-is="h3">
 					<li id="slot-text">
 						<p>
 							<inline-code>text</inline-code>
@@ -45,10 +45,10 @@
 							只能放置 input 组件以及 input 衍生组件
 						</p>
 					</li>
-				</doc-itme>
+				</doc-item>
 			</li>
-		</doc-itme>
-		<doc-itme name="如何使用:" title-is="h2">
+		</doc-item>
+		<doc-item name="如何使用:" title-is="h2">
 			<li id="demo">
 				<demo-box title="<m-control-bar>" :code="code" :expand="true">
 					<template v-slot:header>
@@ -110,7 +110,7 @@
 					</div>
 				</demo-box>
 			</li>
-		</doc-itme>
+		</doc-item>
 	</div>
 </template>
 <script>

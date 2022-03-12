@@ -7,7 +7,7 @@
 		<div id="doc">
 			<doc-item title-is="h2" name="<m-progress>:">
 				<li>
-					<doc-itme name="Props:">
+					<doc-item name="Props:">
 						<li id="prop-value">
 							<p>
 								<inline-code>value</inline-code>
@@ -30,7 +30,7 @@
 							</p>
 							<p>控制状态栏行高</p>
 						</li>
-					</doc-itme>
+					</doc-item>
 				</li>
 			</doc-item>
 		</div>
