@@ -81,3 +81,25 @@ export function installDirective (Vue, array) {
         Vue.directive(directive.name, directive)
     })
 }
+
+
+export function hexToRgb (hex) {
+    const hashtag = hex[0] == '#'
+    function parse (v) {
+        return parseInt(`0x${v}`)
+    }
+    let rgb = {
+        r: hashtag ? parse(hex.slice(1, 3)) : parse(hex.slice(0, 2)),
+        g: hashtag ? parse(hex.slice(3, 5)) : parse(hex.slice(2, 4)),
+        b: hashtag ? parse(hex.slice(5, 7)) : parse(hex.slice(4, 6)),
+        opacity: (hashtag ? parse(hex.slice(7, 9)) : parse(hex.slice(6, 8))) / 255,
+    }
+    let max = rgb.r + rgb.g + rgb.b
+    return {
+        ...rgb,
+        max: rgb.opacity < 1 ? max * rgb.opacity : max,
+        color: rgb.opacity < 1
+            ? `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.opacity})`
+            : `rgb(${rgb.r},${rgb.g},${rgb.b})`
+    }
+}
