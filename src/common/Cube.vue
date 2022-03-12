@@ -25,8 +25,8 @@
 
 <style>
 	.m-cube {
-		min-width: 100px;
-		min-height: 100px;
+		width: 100px;
+		height: 100px;
 		border-radius: var(--m-radius);
 		background-color: var(--primary);
 		/* 文本设置 */
