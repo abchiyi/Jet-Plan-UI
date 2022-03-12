@@ -33,6 +33,9 @@
 </script>
 
 <style>
+	.router-link-a {
+		text-align: start;
+	}
 	.router-link-a.active {
 		color: var(--primary);
 	}
