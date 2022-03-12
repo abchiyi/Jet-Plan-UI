@@ -79,12 +79,6 @@
 		cursor: pointer;
 	}
 
-	@supports (-webkit-tap-highlight-color: #ffffff00) {
-		.m-button {
-			-webkit-tap-highlight-color: #ffffff00;
-		}
-	}
-
 	.m-button + .m-button {
 		margin: 0 0 0 2px;
 	}
