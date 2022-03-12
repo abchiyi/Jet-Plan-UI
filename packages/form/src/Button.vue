@@ -51,6 +51,7 @@
 			return h(
 				ActionFeedback,
 				{
+					tag: 'button',
 					active: true,
 					class: this.classes,
 				},
