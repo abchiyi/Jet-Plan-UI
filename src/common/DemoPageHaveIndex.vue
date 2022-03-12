@@ -8,7 +8,10 @@
 				</router-link-a>
 				<!-- Index -->
 				<m-transition-folded>
-					<div class="page-index" v-show="$route.path == item.href">
+					<div
+						class="page-index"
+						v-show="$route.path == item.href && item.index.length"
+					>
 						<m-button
 							class="item"
 							v-scroll-to:120="i.to"
@@ -41,7 +44,7 @@
 		},
 	};
 </script>
-<style>
+<style scoped>
 	.item::marker {
 		font-size: 0;
 	}
@@ -49,5 +52,15 @@
 	#links,
 	.container {
 		padding: unset;
+	}
+	.item {
+		text-align: start;
+		font-size: 0.8rem;
+	}
+	.page-index {
+		background: var(--background);
+		border-radius: var(--m-radius);
+		overflow: hidden;
+		padding: 5px;
 	}
 </style>
