@@ -174,8 +174,14 @@
 
 	/* Keyborder focus */
 	.m-action-feedback:focus::before,
-    /* Mouse hover */
+	/* Mouse hover */
 	.m-action-feedback.hover:hover::before {
 		opacity: 0.5;
+	}
+
+	@supports (-webkit-tap-highlight-color: #ffffff00) {
+		.m-action-feedback {
+			-webkit-tap-highlight-color: #ffffff00;
+		}
 	}
 </style>
