@@ -19,7 +19,7 @@
 				transform="translate(2 2)"
 			/>
 			<g class="lever">
-				<rect class="lever-fill" width="10" height="10" rx="5" />
+				<rect class="lever-fill" width="10" height="10" rx="5" s />
 			</g>
 		</svg>
 	</div>
@@ -141,12 +141,18 @@
 	}
 
 	.m-switch .background {
+		fill: var(--border);
 		width: 26px;
 		height: 16px;
 		opacity: 0.6;
 	}
 
+	.m-switch .mask {
+		fill: var(--border);
+	}
+
 	.m-switch .lever {
+		fill: var(--foreground);
 		transform: translate(3px, 3px);
 		stroke-width: 1;
 	}
@@ -161,6 +167,14 @@
 	}
 
 	/*--------------- ON --------------- */
+	.m-switch.on .background,
+	.m-switch.on .mask {
+		fill: var(--primary);
+	}
+
+	.m-switch.on .background {
+		opacity: 0.4;
+	}
 	.m-switch.on .lever {
 		transform: translate(13px, 3px);
 	}
@@ -171,6 +185,19 @@
 	}
 
 	/*--------------- Disabled --------------- */
+
+	.m-switch.disabled.on .background {
+		fill: var(--border);
+		opacity: unset;
+	}
+
+	.m-switch.disabled.on .mask {
+		fill: var(--disabled);
+	}
+
+	.m-switch.disabled .lever {
+		opacity: 0.5;
+	}
 
 	/* 切换指针为禁用 */
 	.m-switch.disabled {
