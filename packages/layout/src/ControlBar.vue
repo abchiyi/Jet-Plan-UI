@@ -1,27 +1,25 @@
 <template>
-	<div class="m-control-bar">
-		<m-action-feedback active>
-			<m-row :reverse="reverse" space-mode="between">
-				<m-row
-					class="control-label"
-					:for="forId"
-					tag="label"
-					Y="center"
-					:X="reverse ? 'end' : 'start'"
-					style="text-align: start"
-				>
-					<slot name="text">
-						<p>Display text</p>
-					</slot>
-				</m-row>
-				<m-row :reverse="reverse" class="control-comp" Y="center">
-					<slot name="control">
-						<p>Control</p>
-					</slot>
-				</m-row>
+	<m-action-feedback active class="m-control-bar">
+		<m-row :reverse="reverse" space-mode="between">
+			<m-row
+				class="control-label"
+				:for="forId"
+				tag="label"
+				Y="center"
+				:X="reverse ? 'end' : 'start'"
+				style="text-align: start"
+			>
+				<slot name="text">
+					<p>Display text</p>
+				</slot>
 			</m-row>
-		</m-action-feedback>
-	</div>
+			<m-row :reverse="reverse" class="control-comp" Y="center">
+				<slot name="control">
+					<p>Control</p>
+				</slot>
+			</m-row>
+		</m-row>
+	</m-action-feedback>
 </template>
 
 <script>
