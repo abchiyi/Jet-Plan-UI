@@ -106,11 +106,11 @@
 		box-sizing: border-box;
 		color: var(--text-hint);
 		padding: 12px 0.6em;
+		transition: unset;
 		text-align: right;
 		user-select: none;
 		list-style: none;
 		flex-shrink: 0;
-		transition: color 0;
 	}
 
 	.m-code-box .line-number li {
