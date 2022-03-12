@@ -17,6 +17,8 @@
 			tag: propInit(String, 'div'),
 			active: propInit(),
 			hover: propInit(),
+			focusOutline: propInit(),
+			focus: propInit(),
 		},
 		data() {
 			return {
@@ -32,6 +34,8 @@
 				return [
 					'm-action-feedback',
 					this.hover && this.data_hover ? 'hover' : '',
+					this.focus ? 'focus' : '',
+					this.focusOutline ? 'focus-outline' : '',
 				];
 			},
 		},
@@ -155,7 +159,9 @@
 </script>
 <style>
 	.m-action-feedback {
+		outline: solid 3px #00000000;
 		position: relative;
+		transition: unset;
 		overflow: hidden;
 	}
 
@@ -173,7 +179,14 @@
 	}
 
 	/* Keyborder focus */
-	.m-action-feedback:focus::before,
+	.m-action-feedback.focus-outline:focus {
+		transition: 0.3s var(--ease-out);
+		/* TODO 优化样式 */
+		outline: solid 3px rgba(70, 70, 70, 0.774);
+	}
+
+	/* Keyborder focus */
+	.m-action-feedback.focus:focus::before,
 	/* Mouse hover */
 	.m-action-feedback.hover:hover::before {
 		opacity: 0.5;
