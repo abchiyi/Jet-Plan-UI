@@ -113,7 +113,7 @@
 	#page-header,
 	#page-content {
 		transition: all 500ms var(--ease-in-out);
-		padding: 0 2em;
+		padding: 0 10px;
 	}
 
 	#page-header.with-sidebar-open,
