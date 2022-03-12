@@ -2,7 +2,11 @@
 	<div style="background: var(--foreground); padding: 100px">
 		<m-button @click="click">Click me</m-button>
 		<m-transition-slide position="right">
-			<m-cube class="a" v-show="value">To top</m-cube>
+			<m-cube class="a test-cube">
+				<m-switch size="s" v-model="v" :disabled="value" />
+				<m-switch size="m" v-model="value" />
+				<m-switch size="l" v-model="value1" />
+			</m-cube>
 		</m-transition-slide>
 		<div class="test-cube" v-shadow:bottom="5"></div>
 	</div>
@@ -16,6 +20,8 @@
 		data() {
 			return {
 				value: true,
+				value1: true,
+				v: true,
 				tal: new TimedActionLimit(510, 1, false),
 			};
 		},
