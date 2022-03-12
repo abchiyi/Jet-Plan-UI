@@ -63,6 +63,27 @@
 							: type - Boolean, default - false
 						</p>
 						<p>元素聚焦( :fcous, outline )外边框效果</p>
+						<p></p>
+					</li>
+					<li id="props-describes">
+						<p>
+							<inline-code>focus</inline-code>
+							,
+							<inline-code>focus-outline</inline-code>
+						</p>
+						<p>
+							<warning-text>
+								组件渲染元素为不可聚焦元素时,使用以上效果需要设置属性
+								<!-- TODO  属性文档 Mdn -->
+								"tabindex"
+							</warning-text>
+						</p>
+						<m-code-box
+							code="
+<m-action-feedback tabindex='1' focus focus-outline ></m-action-feedback>
+<m-action-feedback tabindex='2' focus focus-outline ></m-action-feedback>
+"
+						/>
 					</li>
 				</doc-item>
 			</li>
@@ -154,7 +175,9 @@
 
 <script>
 	import pdn from '../../common/mix/popDemoName';
+	import WarningText from '../../common/Warning-text.vue';
 	export default {
+		components: { WarningText },
 		mixins: [pdn],
 		name: 'the-demo-action-feedbacks',
 		data() {
