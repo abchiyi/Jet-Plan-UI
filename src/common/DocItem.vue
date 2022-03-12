@@ -26,10 +26,18 @@
 				type: Boolean,
 				default: false,
 			},
+			noPadding: {
+				type: Boolean,
+				default: false,
+			},
 		},
 		computed: {
 			classes() {
-				return ['doc', this.noDot ? 'no-dot' : ''];
+				return [
+					'doc',
+					this.noDot ? 'no-dot' : '',
+					this.noPadding ? 'no-padding' : '',
+				];
 			},
 		},
 	};
@@ -54,6 +62,10 @@
 	.doc.no-dot > ol,
 	.doc.no-dot > ul {
 		list-style-type: none;
+	}
+	.doc.no-padding > ol,
+	.doc.no-padding > ul {
+		padding-left: unset;
 	}
 
 	.doc + .doc {
