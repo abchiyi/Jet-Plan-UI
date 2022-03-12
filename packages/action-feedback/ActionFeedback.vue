@@ -117,7 +117,7 @@
 				this.enter();
 
 				// Ripple
-				if (event.touches || this.data_active) {
+				if (event.touches && this.data_active) {
 					this.masks.push(this.createMask(event.touches[0]));
 					// 触发"touche"事件时会在之后触发"click"事件
 					// 此变量改变下一次"click"回调函数的运行结果
@@ -182,7 +182,7 @@
 	.m-action-feedback.focus-outline:focus {
 		transition: 0.3s var(--ease-out);
 		/* TODO 优化样式 */
-		outline: solid 3px rgba(125, 125, 125, 0.5);
+		outline: solid 3px rgba(125, 125, 125, 0.1);
 	}
 
 	/* Keyborder focus */
