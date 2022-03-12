@@ -114,12 +114,9 @@
 	</div>
 </template>
 <script>
-	import DocItme from '../../../common/DocItme.vue';
-	import InlineCode from '../../../common/inlineCode.vue';
 	import pdn from '../../../common/mix/popDemoName';
 	export default {
 		mixins: [pdn],
-		components: { DocItme, InlineCode },
 		name: '',
 		data: () => {
 			return {
