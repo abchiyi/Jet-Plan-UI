@@ -1,7 +1,7 @@
 const BACKGROUND = {
     foreground: '#ffffff',
     border: "#c8c8c8",
-    background: "#ebebeb",
+    background: "#e1e1e1",
     disabled: '#aaaaaa'
 }
 
