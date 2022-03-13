@@ -1,17 +1,18 @@
 export default {
     name: 'focus',
-    created(el, binding) {
+    created (el, binding) {
         const documentHandler = function (e) {
-            binding.value(el.contains(e.target))
+            if (!el.contains(e.target)) {
+                binding.value()
+            }
         }
         el['$$func'] = {
             documentHandler,
-            func: binding.func
         }
 
         document.addEventListener("click", documentHandler)
     },
-    unmounted(el) {
+    unmounted (el) {
         document.removeEventListener('click', el['$$func'].documentHandler)
     }
 }
