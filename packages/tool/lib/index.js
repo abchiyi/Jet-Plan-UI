@@ -27,7 +27,6 @@ Missing values ‘timeout’ are required
         }
         if (this.overheat) {
             // 通知外部程序已过热
-            // FIXME 过热之通知一次
             if (this.overheatAlarm) this.overheatAlarm()
             // 设置冷却动作
             this.__setCooling()
