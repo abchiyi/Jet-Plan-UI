@@ -59,8 +59,8 @@
 			},
 		},
 		methods: {
-			onblurClose(v) {
-				if (!v && !this.dock_) {
+			onblurClose() {
+				if (!this.dock_) {
 					this.$emit('update:modelValue', false);
 				}
 			},
