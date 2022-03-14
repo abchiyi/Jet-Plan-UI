@@ -1,7 +1,9 @@
 <template>
-	<m-row :class="classes" X="center" Y="center">
-		<slot></slot>
-	</m-row>
+	<div :class="classes">
+		<m-row style="height: 100px" X="center" Y="center">
+			<slot></slot>
+		</m-row>
+	</div>
 </template>
 
 <script>
