@@ -1,67 +1,24 @@
 <script>
-	// TODO 重构
-	function getSize(size) {
-		if (!size) return 0;
-		const index = size.indexOf('px');
-		if (index === -1) return 0;
-		return Number(size.substring(0, index));
-	}
 	import { h, Transition } from 'vue';
 	export default {
 		name: 'm-transition-folded',
 		methods: {
-			beforeEnter(el) {
-				el.dataset.oldPaddingTop = el.style.paddingTop;
-				el.dataset.oldPaddingBottom = el.style.paddingBottom;
-				el.dataset.oldOverflow = el.style.overflow;
-				el.style.paddingTop = '0';
-				el.style.paddingBottom = '0';
-				el.style.height = '0';
-			},
 			enter(el) {
-				el.style.display = 'block';
-				el.style.overflow = 'hidden';
-				el.style.height =
-					el.scrollHeight +
-					getSize(el.dataset.oldPaddingTop) +
-					getSize(el.dataset.oldPaddingBottom) +
-					'px';
-				el.style.paddingTop = el.dataset.oldPaddingTop;
-				el.style.paddingBottom = el.dataset.oldPaddingBottom;
+				el.style.height = el.scrollHeight + 'px';
 			},
 			afterEnter(el) {
-				el.style.display = '';
 				el.style.height = '';
-				el.style.overflow = el.dataset.oldOverflow;
-				el.style.paddingTop = el.dataset.oldPaddingTop;
-				el.style.paddingBottom = el.dataset.oldPaddingBottom;
 			},
-			beforeLeave(el) {
-				el.dataset.oldPaddingTop = el.style.paddingTop;
-				el.dataset.oldPaddingBottom = el.style.paddingBottom;
-				el.dataset.oldOverflow = el.style.overflow;
 
-				el.style.display = 'block';
-				if (el.scrollHeight !== 0) {
-					el.style.height = el.scrollHeight + 'px';
-				}
-				el.style.overflow = 'hidden';
-			},
 			leave(el) {
-				if (el.scrollHeight !== 0) {
-					setTimeout(() => {
-						el.style.height = 0;
-						el.style.paddingTop = 0;
-						el.style.paddingBottom = 0;
-					});
-				}
+				let style = window.getComputedStyle(el);
+				let paddingTop = style.paddingTop.split('px')[0];
+				let paddingBottom = style.paddingBottom.split('px')[0];
+				el.style.height =
+					el.scrollHeight - paddingTop - paddingBottom + 'px';
 			},
 			afterLeave(el) {
-				el.style.display = 'none';
 				el.style.height = '';
-				el.style.overflow = el.dataset.oldOverflow;
-				el.style.paddingTop = el.dataset.oldPaddingTop;
-				el.style.paddingBottom = el.dataset.oldPaddingBottom;
 			},
 		},
 		render() {
@@ -69,11 +26,9 @@
 				Transition,
 				{
 					name: 'm-transition-folded',
-					onBeforeEnter: this.beforeEnter,
 					onEnter: this.enter,
 					onAfterEnter: this.afterEnter,
 
-					onBeforeLeave: this.beforeLeave,
 					onLeave: this.leave,
 					onAfterLeave: this.afterLeave,
 				},
@@ -86,10 +41,20 @@
 </script>
 
 <style>
-	.m-transition-folded-enter-active,
-	.m-transition-folded-leave-active {
-		transition: all 0.45s var(--ease-out);
-		backface-visibility: hidden;
+	.m-transition-folded-leave-to,
+	.m-transition-folded-enter-from {
+		margin-bottom: 0px !important;
+		margin-top: 0px !important;
+		padding-bottom: 0px !important;
+		padding-top: 0px !important;
+		height: 0px !important;
+	}
+	.m-transition-folded-leave-active,
+	.m-transition-folded-enter-active {
+		transition: all 0.4s var(--ease-out);
 		transform: translate3d(0, 0, 0);
+		backface-visibility: hidden;
+		overflow: hidden;
+		display: block;
 	}
 </style>
