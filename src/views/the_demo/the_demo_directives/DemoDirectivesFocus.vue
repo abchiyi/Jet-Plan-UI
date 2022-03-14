@@ -6,7 +6,7 @@
 				<doc-item name="Value：">
 					<li>
 						<p>
-							<inline-code>="value"</inline-code>
+							<c-highlighter>="value"</c-highlighter>
 							: type - Function
 						</p>
 						<p>接受一个无参数回调函数，会在点击元素外时执行回调</p>

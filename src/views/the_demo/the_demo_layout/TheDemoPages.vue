@@ -14,7 +14,7 @@
 					<doc-item name="props">
 						<li id="props-model-value">
 							<p>
-								<inline-code>modelValue</inline-code>
+								<c-highlighter>modelValue</c-highlighter>
 								: type - Boolean
 							</p>
 							<p>用于绑定值，控制侧边栏开/关</p>
@@ -25,7 +25,9 @@
 					<doc-item name="Event:">
 						<li id="event-update-model-value">
 							<p>
-								<inline-code>@update-model-value</inline-code>
+								<c-highlighter>
+									@update-model-value
+								</c-highlighter>
 								: type - Boolean
 							</p>
 							<p>更新绑定值</p>
@@ -36,25 +38,25 @@
 					<doc-item name="Slots">
 						<li id="p1-slots-header">
 							<p>
-								<inline-code>:header</inline-code>
+								<c-highlighter>:header</c-highlighter>
 								- 顶部浮动栏插槽
 							</p>
 						</li>
 						<li id="p1-slots-default">
 							<p>
-								<inline-code>:default</inline-code>
+								<c-highlighter>:default</c-highlighter>
 								- 正文插槽
 							</p>
 						</li>
 						<li id="p1-slots-footer">
 							<p>
-								<inline-code>:footer</inline-code>
+								<c-highlighter>:footer</c-highlighter>
 								- 页脚插槽
 							</p>
 						</li>
 						<li id="p1-slots-sidebar">
 							<p>
-								<inline-code>:sidebar</inline-code>
+								<c-highlighter>:sidebar</c-highlighter>
 								- 侧栏插槽
 							</p>
 						</li>
@@ -99,10 +101,8 @@
 	</div>
 </template>
 <script>
-	import inlineCode from '../../../common/inlineCode.vue';
 	import pdn from '../../../common/mix/popDemoName';
 	export default {
-		components: { inlineCode },
 		mixins: [pdn],
 		name: 'demo-pages',
 		data: () => {

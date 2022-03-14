@@ -16,28 +16,28 @@
 				<doc-item name="Props:">
 					<li id="prop-color">
 						<p>
-							<inline-code>color</inline-code>
+							<c-highlighter>color</c-highlighter>
 							: type - String, default - "var(-mask)"
 						</p>
 						<p>用于设置遮罩色彩,支持 css 原生色彩格式&css变量</p>
 					</li>
 					<li id="prop-opacity">
 						<p>
-							<inline-code>opacity</inline-code>
+							<c-highlighter>opacity</c-highlighter>
 							: type - String, default - "0.5"
 						</p>
 						<p>用于设置遮罩不透明度</p>
 					</li>
 					<li id="prop-tag">
 						<p>
-							<inline-code>tag</inline-code>
+							<c-highlighter>tag</c-highlighter>
 							: type - String, default - "div"
 						</p>
 						<p>设置组件渲染标签</p>
 					</li>
 					<li id="prop-active">
 						<p>
-							<inline-code>active</inline-code>
+							<c-highlighter>active</c-highlighter>
 							: type - Boolean, default - false
 						</p>
 						<!-- TODO 链接动作效果到Mdn文档 -->
@@ -45,21 +45,21 @@
 					</li>
 					<li id="prop-hover">
 						<p>
-							<inline-code>hover</inline-code>
+							<c-highlighter>hover</c-highlighter>
 							: type - Boolean, default - false
 						</p>
 						<p>开启/关闭 "hover" 效果</p>
 					</li>
 					<li id="prop-focus">
 						<p>
-							<inline-code>focus</inline-code>
+							<c-highlighter>focus</c-highlighter>
 							: type - Boolean, default - false
 						</p>
 						<p>元素聚焦( :fcous )效果</p>
 					</li>
 					<li id="prop-focus">
 						<p>
-							<inline-code>focus-outline</inline-code>
+							<c-highlighter>focus-outline</c-highlighter>
 							: type - Boolean, default - false
 						</p>
 						<p>元素聚焦( :fcous, outline )外边框效果</p>
@@ -67,9 +67,9 @@
 					</li>
 					<li id="props-describes">
 						<p>
-							<inline-code>focus</inline-code>
+							<c-highlighter>focus</c-highlighter>
 							,
-							<inline-code>focus-outline</inline-code>
+							<c-highlighter>focus-outline</c-highlighter>
 						</p>
 						<p>
 							<warning-text>
@@ -90,7 +90,7 @@
 			<li id="slots">
 				<doc-item name="Slots:">
 					<li>
-						<inline-code>default</inline-code>
+						<c-highlighter>default</c-highlighter>
 						: 组件仅有一个默认插槽
 					</li>
 				</doc-item>

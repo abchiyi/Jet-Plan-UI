@@ -3,7 +3,7 @@
 		<doc-item id="describes" name="控制条组件:" title-is="h2">
 			<p>
 				强化
-				<inline-code>input</inline-code>
+				<c-highlighter>input</c-highlighter>
 				衍生组件的可点击范围,使得组件内任意区域均可触发点击
 			</p>
 		</doc-item>
@@ -13,18 +13,18 @@
 				<doc-item name="Props:" title-is="h3">
 					<li id="prop-for-id">
 						<p>
-							<inline-code>for-id</inline-code>
+							<c-highlighter>for-id</c-highlighter>
 							type - String, required - true
 						</p>
 						<p>
 							被控制组件的
-							<inline-code>id</inline-code>
+							<c-highlighter>id</c-highlighter>
 							,这个值是必须的
 						</p>
 					</li>
 					<li id="prop-reverse">
 						<p>
-							<inline-code>reverse</inline-code>
+							<c-highlighter>reverse</c-highlighter>
 							type - Boolean, default - false
 						</p>
 						<p>反向排列内部元素</p>
@@ -35,13 +35,13 @@
 				<doc-item name="Slots:" title-is="h3">
 					<li id="slot-text">
 						<p>
-							<inline-code>text</inline-code>
+							<c-highlighter>text</c-highlighter>
 							文本或任意你想要放置于内部的元素
 						</p>
 					</li>
 					<li id="slot-control">
 						<p>
-							<inline-code>control</inline-code>
+							<c-highlighter>control</c-highlighter>
 							只能放置 input 组件以及 input 衍生组件
 						</p>
 					</li>

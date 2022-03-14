@@ -10,14 +10,14 @@
 					<doc-item name="props:">
 						<li id="prop-mode-value">
 							<p>
-								<inline-code>modelValue</inline-code>
+								<c-highlighter>modelValue</c-highlighter>
 								:type - Boolean, default - false
 							</p>
 							<p>用于参数绑定，控制侧栏开关</p>
 						</li>
 						<li id="propo-dock">
 							<p>
-								<inline-code>dock</inline-code>
+								<c-highlighter>dock</c-highlighter>
 								:type - Boolean, default - false
 							</p>
 							<p>
@@ -27,7 +27,7 @@
 						</li>
 						<li id="prop-right">
 							<p>
-								<inline-code>right</inline-code>
+								<c-highlighter>right</c-highlighter>
 								:type - Boolean, default - false
 							</p>
 							<p>设置侧栏在屏幕左/右，默认左侧</p>

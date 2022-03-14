@@ -3,7 +3,7 @@
 		<doc-item name="v-re-screen-size:" title-is="h2">
 			<li>
 				<p>
-					<inline-code>="value"</inline-code>
+					<c-highlighter>="value"</c-highlighter>
 					: type - Function(el,reSizeObj)
 				</p>
 				<p>
@@ -12,14 +12,14 @@
 			</li>
 			<li id="re-screen-size-value-callback-el">
 				<p>
-					<inline-code>el</inline-code>
+					<c-highlighter>el</c-highlighter>
 					: type - Element
 				</p>
 				<p>指令所在的元素</p>
 			</li>
 			<li id="re-screen-size-value-callback-reSizeObj">
 				<p>
-					<inline-code>reSizeObj</inline-code>
+					<c-highlighter>reSizeObj</c-highlighter>
 					: type - Object
 				</p>
 				<p>包含了当前视窗尺寸信息的对象</p>
@@ -27,14 +27,14 @@
 					<p>reSizeObj 包含信息</p>
 					<li id="resize-obj-width">
 						<p>
-							<inline-code>width</inline-code>
+							<c-highlighter>width</c-highlighter>
 							: type - Number
 						</p>
 						<p>当前屏幕可视宽度，单位为 “px”</p>
 					</li>
 					<li id="resize-obj-col">
 						<p>
-							<inline-code>col</inline-code>
+							<c-highlighter>col</c-highlighter>
 							: type - Obj
 						</p>
 
@@ -50,7 +50,7 @@
 					</li>
 					<li id="resize-obj-active-col">
 						<p>
-							<inline-code>activeCol</inline-code>
+							<c-highlighter>activeCol</c-highlighter>
 							: type - String, range - [ "xs", "sm", "md",
 							"lg","xl"]
 						</p>
@@ -68,10 +68,7 @@
 	</article>
 </template>
 <script>
-	import DocItem from '../../../common/DocItem.vue';
-	import inlineCode from '../../../common/inlineCode.vue';
 	export default {
-		components: { inlineCode, DocItem },
 		name: 're-screen-size',
 		data: () => {
 			return {

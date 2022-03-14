@@ -3,7 +3,7 @@
 		<doc-item name="v-scroll-to:" title-is="h2">
 			<li>
 				<p>
-					<inline-code>="value"</inline-code>
+					<c-highlighter>="value"</c-highlighter>
 					: type - Number
 				</p>
 				<p>
@@ -12,7 +12,7 @@
 			</li>
 			<li>
 				<p>
-					<inline-code>:args</inline-code>
+					<c-highlighter>:args</c-highlighter>
 				</p>
 				<p>传入任意元素 id</p>
 			</li>

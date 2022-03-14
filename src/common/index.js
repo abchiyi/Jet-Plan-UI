@@ -3,7 +3,7 @@ import DemoPage from './DemoPage.vue'
 import DemoBox from './DemoBox.vue'
 import Header from './Header.vue'
 import Cube from './Cube.vue'
-import InlineCode from './inlineCode.vue'
+import Highlighter from './Highlighter.vue'
 import DemoDoc from './DemoDoc.vue'
 import ExpandMennu from './ExpandMenu.vue'
 import DemoPageHaveIndex from './DemoPageHaveIndex.vue'
@@ -44,7 +44,7 @@ function setColorModeCookie (color, auto) {
 }
 const components = {
     RouterLinkA,
-    InlineCode,
+    Highlighter,
     DemoPage,
     DemoBox,
     DemoDoc,
@@ -57,7 +57,7 @@ const components = {
 export {
     redColorModeCookie,
     setColorModeCookie,
-    InlineCode,
+    Highlighter,
     setCookie,
     getCookie,
     // 组件

@@ -12,48 +12,48 @@
 					<doc-item title-is="h3" name="Props:">
 						<li id="props-m-col-tag">
 							<p>
-								<inline-code>tag</inline-code>
+								<c-highlighter>tag</c-highlighter>
 								type - String , default - div
 							</p>
 							<p>指定当前组件渲染标签</p>
 						</li>
 						<li id="props-m-col-col">
 							<p>
-								<inline-code>col</inline-code>
+								<c-highlighter>col</c-highlighter>
 								type - Number | range - 0 ~ 24
 							</p>
 							<p>未特定屏幕尺寸下所元素占用列数</p>
 						</li>
 						<li id="props-m-col-all">
 							<p>
-								<inline-code>xs</inline-code>
-								<inline-code>sm</inline-code>
-								<inline-code>md</inline-code>
-								<inline-code>lg</inline-code>
+								<c-highlighter>xs</c-highlighter>
+								<c-highlighter>sm</c-highlighter>
+								<c-highlighter>md</c-highlighter>
+								<c-highlighter>lg</c-highlighter>
 								type - Number , range - 0 ~ 24
 							</p>
 							<p>设置特定屏幕尺寸下所元素占用列数</p>
 						</li>
 						<li id="props-m-col-offset">
 							<p>
-								<inline-code>offset</inline-code>
+								<c-highlighter>offset</c-highlighter>
 								type - String | range - 0 ~ 24
 							</p>
 							<p>未特定屏幕宽度下设置位移</p>
 						</li>
 						<li id="props-m-col-offset-all">
 							<p>
-								<inline-code>offsetXs</inline-code>
-								<inline-code>offsetSm</inline-code>
-								<inline-code>offsetMd</inline-code>
-								<inline-code>offsetLg</inline-code>
+								<c-highlighter>offsetXs</c-highlighter>
+								<c-highlighter>offsetSm</c-highlighter>
+								<c-highlighter>offsetMd</c-highlighter>
+								<c-highlighter>offsetLg</c-highlighter>
 								type - Number , range - 0 ~ 24
 							</p>
 							<p>特定屏幕宽度下设置位移</p>
 						</li>
 						<li id="props-m-col-relative-to-screen">
 							<p>
-								<inline-code>relativeToScreen</inline-code>
+								<c-highlighter>relativeToScreen</c-highlighter>
 								type - Boolean , default - false
 							</p>
 							<p>始终相对屏幕计算列宽,而非相对父元素</p>
@@ -67,14 +67,14 @@
 					<doc-item title-is="h3" name="Props:">
 						<li id="props-m-row-tag">
 							<p>
-								<inline-code>tag</inline-code>
+								<c-highlighter>tag</c-highlighter>
 								type - String , default - div
 							</p>
 							<p>指定当前组件渲染标签</p>
 						</li>
 						<li id="props-m-row-x">
 							<p>
-								<inline-code>X</inline-code>
+								<c-highlighter>X</c-highlighter>
 								type - String , range - start | center | end ,
 								default - start
 							</p>
@@ -82,7 +82,7 @@
 						</li>
 						<li id="props-m-row-y">
 							<p>
-								<inline-code>Y</inline-code>
+								<c-highlighter>Y</c-highlighter>
 								type - String , range - top | center | bottom |
 								, default - top
 							</p>
@@ -90,7 +90,7 @@
 						</li>
 						<li id="props-m-row-warp">
 							<p>
-								<inline-code>warp</inline-code>
+								<c-highlighter>warp</c-highlighter>
 								type - Boolean , default - false
 							</p>
 							<p>
@@ -100,14 +100,14 @@
 						</li>
 						<li id="props-m-row-reverse">
 							<p>
-								<inline-code>reverse</inline-code>
+								<c-highlighter>reverse</c-highlighter>
 								type - Boolean , default - false
 							</p>
 							<p>反向排列元素</p>
 						</li>
 						<li id="props-m-row-nogap">
 							<p>
-								<inline-code>no-gap</inline-code>
+								<c-highlighter>no-gap</c-highlighter>
 								type - Boolean , default - false
 							</p>
 							<p>取消 'm-col' 组件间隙</p>
@@ -138,7 +138,7 @@
 			<li id="use-offset-positioning">
 				<p>
 					使用
-					<inline-code>m-col</inline-code>
+					<c-highlighter>m-col</c-highlighter>
 					组件的 offset 属性来进行偏移定位
 				</p>
 				<demo-box title="flex 定位" :code="code2" :expand="v1">
@@ -154,7 +154,7 @@
 			<li id="position-x-y">
 				<p>
 					使用
-					<inline-code>m-row</inline-code>
+					<c-highlighter>m-row</c-highlighter>
 					组件的 X,Y 属性以快速定位元素
 				</p>
 				<demo-box title="flex 定位" :code="code3" :expand="v1">
@@ -215,10 +215,8 @@
 </template>
 
 <script>
-	import inlineCode from '../../../common/inlineCode.vue';
 	import pdn from '../../../common/mix/popDemoName';
 	export default {
-		components: { inlineCode },
 		name: 'grid-demo',
 		mixins: [pdn],
 		data() {

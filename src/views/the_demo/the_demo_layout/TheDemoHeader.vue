@@ -15,7 +15,7 @@
 					<doc-item name="Slots:">
 						<li id="slots-default">
 							<p>
-								<inline-code>:default</inline-code>
+								<c-highlighter>:default</c-highlighter>
 								- 默认插槽
 							</p>
 						</li>
@@ -31,10 +31,8 @@
 	</div>
 </template>
 <script>
-	import inlineCode from '../../../common/inlineCode.vue';
 	import pdn from '../../../common/mix/popDemoName';
 	export default {
-		components: { inlineCode },
 		mixins: [pdn],
 		name: 'the-demo-header',
 		data: () => {

@@ -3,13 +3,13 @@
 		<doc-item name="v-shadow:" title-is="h2">
 			<li>
 				<p>
-					<inline-code>:arg</inline-code>
+					<c-highlighter>:arg</c-highlighter>
 					: range - top | nottom | left | right
 				</p>
 			</li>
 			<li>
 				<p>
-					<inline-code>="value"</inline-code>
+					<c-highlighter>="value"</c-highlighter>
 					: type - Number, range - 1~30
 				</p>
 				设置阴影强度,建议1~30,最大值可超过30

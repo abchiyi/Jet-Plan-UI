@@ -10,7 +10,7 @@
 					<doc-item name="Props:">
 						<li id="prop-value">
 							<p>
-								<inline-code>value</inline-code>
+								<c-highlighter>value</c-highlighter>
 								:type - String|Number, default - 0, range - 0 ~
 								100
 							</p>
@@ -18,14 +18,14 @@
 						</li>
 						<li id="prop-failed">
 							<p>
-								<inline-code>failed</inline-code>
+								<c-highlighter>failed</c-highlighter>
 								: type - Boolean, default - false
 							</p>
 							<p>切换进度条为失败状态</p>
 						</li>
 						<li id="prop-height">
 							<p>
-								<inline-code>height</inline-code>
+								<c-highlighter>height</c-highlighter>
 								: type - String, default - "8px"
 							</p>
 							<p>控制状态栏行高</p>
