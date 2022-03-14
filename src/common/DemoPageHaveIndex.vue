@@ -10,6 +10,7 @@
 				<m-transition-folded>
 					<div
 						class="page-index"
+						v-shadow:bottom="0.5"
 						v-show="$route.path == item.href && item.index.length"
 					>
 						<m-button
@@ -55,14 +56,13 @@
 	}
 	.item {
 		text-align: start;
-		font-size: 0.8rem;
 	}
 	.router-link-a + .page-index {
 		margin-top: 5px;
 	}
 	.page-index {
-		background: var(--background);
 		border-radius: var(--m-radius);
+		background: var(--background);
 		overflow: hidden;
 		padding: 5px;
 	}
