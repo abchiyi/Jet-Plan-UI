@@ -51,7 +51,7 @@
 	}
 	.m-transition-folded-leave-active,
 	.m-transition-folded-enter-active {
-		transition: all 0.4s var(--ease-out);
+		transition: all 0.4s var(--ease-out) !important;
 		transform: translate3d(0, 0, 0);
 		backface-visibility: hidden;
 		overflow: hidden;
