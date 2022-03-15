@@ -7,7 +7,7 @@
 			</template>
 			<!-- 浮动侧栏 -->
 			<template v-slot:sidebar>
-				<side-bar-header />
+				<logo-title />
 				<ol id="links">
 					<!-- Start -->
 					<expand-menu v-model="expand.start">
@@ -85,7 +85,7 @@
 </template>
 
 <script>
-	import sideBarHeader from '../../components/sideBarHeader.vue';
+	import logoTitle from '../../components/logoTitle.vue';
 	import {
 		TheDemoCompontentsRouter,
 		TheDemoStart,
@@ -103,7 +103,7 @@
 		});
 	}
 	export default {
-		components: { sideBarHeader },
+		components: { logoTitle },
 		data() {
 			return {
 				value: false,

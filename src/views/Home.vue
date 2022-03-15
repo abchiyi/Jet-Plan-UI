@@ -1,10 +1,14 @@
 <template>
 	<m-page v-model="mobileDevicesWidth">
 		<template v-slot:header>
-			<demo-header v-model="mobileDevicesWidth"></demo-header>
+			<m-row spaceMode="between" style="height: 100%">
+				<logo-title />
+				<demo-header v-model="mobileDevicesWidth"></demo-header>
+			</m-row>
 		</template>
 		<template v-slot:sidebar>
-			<side-bar-header />
+			<logo-title />
+			<hr style="margin: auto" />
 			<ol id="links">
 				<router-link-a>About</router-link-a>
 			</ol>
@@ -36,9 +40,9 @@
 </template>
 
 <script>
-	import sideBarHeader from '../components/sideBarHeader.vue';
+	import logoTitle from '../components/logoTitle.vue';
 	export default {
-		components: { sideBarHeader },
+		components: { logoTitle },
 		name: 'Home',
 		data() {
 			return {
