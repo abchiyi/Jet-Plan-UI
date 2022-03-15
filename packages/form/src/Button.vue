@@ -67,7 +67,7 @@
 	.m-button {
 		transition: all 0.3s var(--ease-out);
 		background-color: var(--secondary);
-		border-radius: var(--s-radius);
+		border-radius: var(--m-radius);
 		box-sizing: border-box;
 		display: inline-block;
 		position: relative;
@@ -81,7 +81,8 @@
 	}
 
 	.m-button + .m-button {
-		margin: 0 0 0 2px;
+		/* margin: 0 0 0 2px; */
+		margin-left: calc(1em * 0.3);
 	}
 	/*------------ disabled ----------*/
 	.m-button.disabled {
