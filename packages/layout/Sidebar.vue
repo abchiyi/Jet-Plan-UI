@@ -1,10 +1,6 @@
 <template>
-	<m-transition-slide
-		v-focus="onblurClose"
-		:opacity="false"
-		:position="right ? 'right' : 'left'"
-	>
-		<div v-shadow:right="dock ? 0 : 2" v-show="modelValue" :class="classes">
+	<m-transition-slide :opacity="false" :position="right ? 'right' : 'left'">
+		<div v-shadow:right="dock ? 0 : 2" v-show="expand" :class="classes">
 			<slot />
 		</div>
 	</m-transition-slide>
@@ -15,9 +11,9 @@
 	export default {
 		name: 'm-sidebar',
 		props: {
-			modelValue: {
+			expand: {
 				type: Boolean,
-				default: false,
+				required: true,
 			},
 			dock: {
 				type: Boolean,
@@ -30,10 +26,6 @@
 		},
 		directives: {
 			focus: Focus,
-		},
-		model: {
-			prop: 'modeValue',
-			event: 'update:modelValue',
 		},
 		data() {
 			return {
@@ -49,20 +41,10 @@
 			postiton() {
 				return this.right ? 'right' : 'left';
 			},
-			showMask() {
-				return !this.dock_ && this.modelValue;
-			},
 		},
 		watch: {
 			dock(v) {
 				this.dock_ = v;
-			},
-		},
-		methods: {
-			onblurClose() {
-				if (!this.dock_) {
-					this.$emit('update:modelValue', false);
-				}
 			},
 		},
 	};

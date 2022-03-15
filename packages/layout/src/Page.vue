@@ -2,7 +2,7 @@
 	<div
 		id="page"
 		:class="modelValue ? 'is-open' : 'is-closed'"
-		v-rss="reScreenSize"
+		v-re-screen-size="autoSidebarControl"
 	>
 		<!-- 正文 -->
 		<m-row id="page-content" :class="classSidebarOpen" X="center">
@@ -21,7 +21,6 @@
 			id="page-header"
 			:class="classSidebarOpen"
 			class="frosted-glass"
-			v-shadow:bottom="2"
 		>
 			<slot name="header"></slot>
 		</m-header>
@@ -31,7 +30,8 @@
 		<m-sidebar
 			id="page-sidebar"
 			:dock="sidebarDock"
-			v-model="sidebarExpand"
+			v-focus="onBlur"
+			:expand="modelValue"
 		>
 			<slot name="sidebar" />
 		</m-sidebar>
@@ -39,7 +39,6 @@
 </template>
 
 <script>
-	import { Focus, ReScreenSize } from '../../tool/directives';
 	import { Mask } from '../../mask';
 	export default {
 		name: 'm-page',
@@ -51,6 +50,10 @@
 				type: Boolean,
 				default: false,
 			},
+			autoSidebar: {
+				type: Boolean,
+				default: false,
+			},
 		},
 		model: {
 			prop: 'modeValue',
@@ -58,36 +61,30 @@
 		},
 		data() {
 			return {
-				contentBody: {
-					colXs: 24,
-					colSm: 24,
-					colMd: 24,
-					colLg: 16,
-					colXl: 16,
-					col: 16,
-				},
-				sidebarOpenIn: ['xl', 'lg'],
-				sidebarExpand: true,
-				sidebarDock: undefined,
+				sidebarExpand: false,
+				sidebarDock: false,
 			};
 		},
 		methods: {
-			reScreenSize(el, v) {
-				el;
-				v.contains(this.sidebarOpenIn, bool => {
-					this.$emit('update:modelValue', bool);
-					this.sidebarDock = bool;
+			autoSidebarControl(el, v) {
+				v.contains(['xl', 'lg'], bool => {
+					el;
+					if (this.autoSidebar) {
+						this.$emit('update:modelValue', bool);
+						this.sidebarDock = bool;
+					}
 				});
 			},
-		},
-		directives: {
-			focus: Focus,
-			rss: ReScreenSize,
+			onBlur() {
+				if (!this.sidebarDock) {
+					this.$emit('update:modelValue', false);
+				}
+			},
 		},
 		computed: {
 			classSidebarOpen() {
 				return [
-					this.sidebarExpand && this.sidebarDock
+					this.modelValue && this.sidebarDock
 						? 'with-sidebar-open'
 						: '',
 				];
@@ -95,17 +92,13 @@
 		},
 		watch: {
 			modelValue(v) {
-				this.$emit('update:modelValue', v);
 				this.sidebarExpand = v;
-			},
-			sidebarExpand(v) {
-				this.$emit('update:modelValue', v);
 			},
 		},
 	};
 </script>
 
-<style>
+<style scoped>
 	#page-sidebar {
 		width: 255px;
 	}

@@ -1,7 +1,7 @@
 <template>
-	<m-page v-model="value">
+	<m-page v-model="mobileDevicesWidth">
 		<template v-slot:header>
-			<demo-header v-model="value"></demo-header>
+			<demo-header v-model="mobileDevicesWidth"></demo-header>
 		</template>
 		<template v-slot:sidebar>
 			<side-bar-header />
@@ -42,7 +42,7 @@
 		name: 'Home',
 		data() {
 			return {
-				value: true,
+				mobileDevicesWidth: false,
 				showMenuButton: undefined,
 			};
 		},
