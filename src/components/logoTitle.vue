@@ -1,6 +1,6 @@
 <template>
 	<m-row class="logo-header" X="center" Y="center">
-		<m-button text class="text-hint" @click="toHomePage">
+		<m-button class="text-hint" text @click="toHomePage">
 			<m-row X="center" Y="center">
 				<img src="../../public/logo.png" alt="logo" height="30" />
 				<span class="version">Jet UI - V0.87.1beta</span>

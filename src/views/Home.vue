@@ -1,8 +1,10 @@
 <template>
 	<m-page v-model="mobileDevicesWidth">
 		<template v-slot:header>
-			<m-row spaceMode="between" style="height: 100%">
-				<logo-title />
+			<m-row spaceMode="between" style="">
+				<m-col :xs="0" :sm="0" :md="0">
+					<logo-title />
+				</m-col>
 				<demo-header v-model="mobileDevicesWidth"></demo-header>
 			</m-row>
 		</template>

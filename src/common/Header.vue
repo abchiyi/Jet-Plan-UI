@@ -89,7 +89,7 @@
 </script>
 <style scoped>
 	.header {
-		height: 100%;
+		height: 72px;
 	}
 	.header > h1 {
 		margin: unset;
