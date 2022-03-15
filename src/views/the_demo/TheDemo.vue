@@ -8,6 +8,7 @@
 			<!-- 浮动侧栏 -->
 			<template v-slot:sidebar>
 				<logo-title />
+				<hr style="margin: auto" />
 				<ol id="links">
 					<!-- Start -->
 					<expand-menu v-model="expand.start">
