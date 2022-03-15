@@ -25,6 +25,7 @@
 			sm: Number,
 			md: Number,
 			lg: Number,
+			xl: Number,
 			offset: Number,
 			offsetXs: Number,
 			offsetSm: Number,
@@ -47,11 +48,13 @@
 					notUndefined(this.sm, 'm-col-sm'),
 					notUndefined(this.md, 'm-col-md'),
 					notUndefined(this.lg, 'm-col-lg'),
+					notUndefined(this.lg, 'm-col-xl'),
 					notUndefined(this.offset, 'offset'),
 					notUndefined(this.offsetXs, 'offset-xs'),
 					notUndefined(this.offsetSm, 'offset-sm'),
 					notUndefined(this.offsetMd, 'offset-md'),
 					notUndefined(this.offsetLg, 'offset-lg'),
+					notUndefined(this.offsetLg, 'offset-xl'),
 				];
 			},
 			style() {
@@ -62,17 +65,20 @@
 					sm: this.calcWidth(this.sm),
 					md: this.calcWidth(this.md),
 					lg: this.calcWidth(this.lg),
+					xl: this.calcWidth(this.xl),
 					// offset
 					offset: this.calcWidth(this.offset),
 					offsetXs: this.calcWidth(this.offsetXs),
 					offsetSm: this.calcWidth(this.offsetSm),
 					offsetMd: this.calcWidth(this.offsetMd),
 					offsetLg: this.calcWidth(this.offsetLg),
+					offsetXl: this.calcWidth(this.offsetXl),
 					// hidden
 					hiddenOnXs: ifHidden(this.xs),
 					hiddenOnSm: ifHidden(this.sm),
 					hiddenOnMd: ifHidden(this.md),
 					hiddenOnLg: ifHidden(this.lg),
+					hiddenOnXl: ifHidden(this.xl),
 				};
 			},
 		},
@@ -123,8 +129,24 @@
 
 	/* --响应式-- */
 
+	/* xl */
+	@media (min-width: 1200px) {
+		.m-col-xl {
+			width: v-bind('style.xl');
+			display: v-bind('style.hiddenOnXl');
+		}
+
+		.m-col.offset-xl {
+			margin-left: v-bind('style.offsetXl');
+		}
+
+		.row.reverse > .offset-xl {
+			margin-right: v-bind('style.offsetXl');
+		}
+	}
+
 	/* lg */
-	@media (max-width: 1200px) {
+	@media (min-width: 993px) and (max-width: 1200px) {
 		.m-col-lg {
 			width: v-bind('style.lg');
 			display: v-bind('style.hiddenOnLg');
@@ -140,7 +162,7 @@
 	}
 
 	/* md */
-	@media (max-width: 992px) {
+	@media (min-width: 769px) and (max-width: 992px) {
 		.m-col-md {
 			width: v-bind('style.md');
 			display: v-bind('style.hiddenOnMd');
@@ -156,7 +178,7 @@
 	}
 
 	/* sm */
-	@media (max-width: 768px) {
+	@media (min-width: 579px) and (max-width: 768px) {
 		.m-col-sm {
 			width: v-bind('style.sm');
 			display: v-bind('style.hiddenOnSm');
@@ -172,7 +194,7 @@
 	}
 
 	/* xs */
-	@media (max-width: 577px) {
+	@media (max-width: 578px) {
 		.m-col-xs {
 			width: v-bind('style.xs');
 			display: v-bind('style.hiddenOnXs');
