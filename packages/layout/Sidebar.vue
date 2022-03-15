@@ -4,7 +4,7 @@
 		:opacity="false"
 		:position="right ? 'right' : 'left'"
 	>
-		<div v-shadow:right="2" v-show="modelValue" :class="classes">
+		<div v-shadow:right="dock ? 0 : 2" v-show="modelValue" :class="classes">
 			<slot />
 		</div>
 	</m-transition-slide>
