@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<m-page v-model="value">
+		<m-page v-model="value" auto-sidebar>
 			<!--浮动头栏 -->
 			<template v-slot:header>
 				<demo-header :title="title" v-model="value"></demo-header>
@@ -106,7 +106,7 @@
 		components: { sideBarHeader },
 		data() {
 			return {
-				value: true,
+				value: false,
 				title: null,
 				expand: {
 					start: true,
