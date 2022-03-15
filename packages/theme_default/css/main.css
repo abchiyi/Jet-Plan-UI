@@ -42,7 +42,6 @@ body {
 }
 
 /* 辅助文本 */
-.text-hint > *,
 .text-hint {
 	color: var(--text-hint);
 	font-weight: bolder;
