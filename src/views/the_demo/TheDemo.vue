@@ -7,9 +7,7 @@
 			</template>
 			<!-- 浮动侧栏 -->
 			<template v-slot:sidebar>
-				<m-row tag="header" X="center" Y="center">
-					<m-button text @click="$router.push('/')">Home</m-button>
-				</m-row>
+				<side-bar-header />
 				<ol id="links">
 					<!-- Start -->
 					<expand-menu v-model="expand.start">
@@ -87,6 +85,7 @@
 </template>
 
 <script>
+	import sideBarHeader from '../../components/sideBarHeader.vue';
 	import {
 		TheDemoCompontentsRouter,
 		TheDemoStart,
@@ -104,6 +103,7 @@
 		});
 	}
 	export default {
+		components: { sideBarHeader },
 		data() {
 			return {
 				value: true,

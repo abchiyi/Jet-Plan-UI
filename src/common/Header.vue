@@ -1,36 +1,33 @@
 <template>
 	<m-row class="header" Y="center" spaceMode="between">
-		<!-- 标题 -->
-		<slot name="title">
-			<h1>{{ title }}</h1>
-		</slot>
 		<m-row Y="center" id="header-control">
-			<!-- Dark mode 开关 -->
-			<div id="darkmode-switch" style="user-select: none">
-				<m-transition-scale @leave="darkModeSwitch">
-					<div
-						@click="
-							() => {
-								darkModeTransitionSwitch = false;
-							}
-						"
-						v-show="darkModeTransitionSwitch"
-						:key="1"
-						:class="[
-							'test',
-							'bi',
-							darkMode ? 'bi-moon-fill' : 'bi-sun-fill',
-						]"
-					></div>
-				</m-transition-scale>
-			</div>
-			<!-- 侧栏开关 -->
-			<div>
+			<m-col lg="0" xl="0">
+				<!-- 侧栏开关 -->
 				<m-button text title="menu" @click.stop="click">
-					<i style="font-size: 2rem" class="bi bi-list"></i>
+					<i style="font-size: 1.8em" class="bi bi-list"></i>
 				</m-button>
-			</div>
+			</m-col>
 		</m-row>
+		<!-- 选项 -->
+		<div id="header-options">
+			<m-button text hover @click="switchMode">
+				<div id="darkmode-switch" style="user-select: none">
+					<m-transition-fade @leave="darkModeSwitch">
+						<i
+							v-show="darkModeTransitionSwitch"
+							:key="1"
+							:class="[
+								'bi',
+								darkMode ? 'bi-moon-fill' : 'bi-sun-fill',
+							]"
+						></i>
+					</m-transition-fade>
+				</div>
+			</m-button>
+			<m-button text hover>About</m-button>
+			<m-button text hover>Gitee</m-button>
+			<m-button text hover>GitHub</m-button>
+		</div>
 	</m-row>
 </template>
 
@@ -58,17 +55,27 @@
 				darkModeTransitionSwitch: true,
 				autoDarkMode: false,
 				darkMode: false,
+				showMenuButton: undefined,
 			};
 		},
 		methods: {
 			click() {
 				this.$emit('update:modelValue', this.modelValue ? false : true);
 			},
+			switchMode() {
+				this.darkModeTransitionSwitch = false;
+			},
 			darkModeSwitch() {
 				setTimeout(() => {
 					this.darkModeTransitionSwitch = true;
 					this.darkMode = !this.darkMode;
 				}, 400);
+			},
+			switchMenuButton(el, v) {
+				el;
+				v.contains(['lg', 'xl'], v => {
+					this.showMenuButton = !v;
+				});
 			},
 		},
 		watch: {
@@ -87,7 +94,7 @@
 		},
 	};
 </script>
-<style>
+<style scoped>
 	.header {
 		height: 100%;
 	}
@@ -95,7 +102,13 @@
 		margin: unset;
 		font-size: 1.4rem;
 	}
-	#darkmode-switch * {
-		font-size: 1.2rem;
+	#darkmode-switch {
+		height: 16px;
+		width: 18.6px;
+	}
+
+	#header-title > * {
+		font-size: 1.8rem;
+		vertical-align: middle;
 	}
 </style>
