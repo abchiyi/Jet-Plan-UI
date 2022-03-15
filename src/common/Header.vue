@@ -26,7 +26,10 @@
 			</m-button>
 			<m-button text hover>About</m-button>
 			<m-button text hover>Gitee</m-button>
-			<m-button text hover>GitHub</m-button>
+			<m-button text hover>
+				<i class="bi bi-github" />
+				GitHub
+			</m-button>
 		</div>
 	</m-row>
 </template>

@@ -1,7 +1,7 @@
 <template>
 	<m-page v-model="mobileDevicesWidth">
 		<template v-slot:header>
-			<m-row spaceMode="between" style="">
+			<m-row spaceMode="between">
 				<m-col :xs="0" :sm="0" :md="0">
 					<logo-title />
 				</m-col>
@@ -26,18 +26,16 @@
 					<p>适用于移动端和桌面端的 UI 组件库</p>
 				</div>
 				<div class="buttons">
-					<m-button primary>Start</m-button>
-					<m-button primary>GitHub</m-button>
+					<m-button primary @click="to('/get-started')">
+						Get Start
+					</m-button>
+					<m-button primary>
+						<i class="bi bi-github" />
+						GitHub
+					</m-button>
 				</div>
 			</div>
 		</m-row>
-		<m-button
-			@click="
-				() => {
-					$router.push('/get-started');
-				}
-			"
-		></m-button>
 	</m-page>
 </template>
 
@@ -53,11 +51,8 @@
 			};
 		},
 		methods: {
-			switchMenuButton(el, v) {
-				el;
-				v.contains(['lg', 'xl'], v => {
-					this.showMenuButton = !v;
-				});
+			to(url) {
+				this.$router.push(url);
 			},
 		},
 	};
@@ -69,6 +64,7 @@
 
 	#header > .left {
 		text-align: right;
+		user-select: none;
 		padding: 0 20px;
 	}
 
