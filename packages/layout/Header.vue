@@ -6,7 +6,7 @@
 			return h(
 				'header',
 				{
-					class: ['m-header', ''],
+					class: ['m-header', 'frosted-glass'],
 				},
 				this.$slots
 			);
@@ -16,6 +16,7 @@
 
 <style>
 	.m-header {
+		margin-top: unset !important;
 		position: fixed;
 		right: 0;
 		left: 0;
