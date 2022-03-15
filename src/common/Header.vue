@@ -1,7 +1,7 @@
 <template>
 	<m-row class="header" Y="center" spaceMode="between">
 		<m-row Y="center" id="header-control">
-			<m-col lg="0" xl="0">
+			<m-col :lg="0" :xl="0">
 				<!-- 侧栏开关 -->
 				<m-button text title="menu" @click.stop="click">
 					<i style="font-size: 1.8em" class="bi bi-list"></i>
@@ -55,7 +55,6 @@
 				darkModeTransitionSwitch: true,
 				autoDarkMode: false,
 				darkMode: false,
-				showMenuButton: undefined,
 			};
 		},
 		methods: {
@@ -70,12 +69,6 @@
 					this.darkModeTransitionSwitch = true;
 					this.darkMode = !this.darkMode;
 				}, 400);
-			},
-			switchMenuButton(el, v) {
-				el;
-				v.contains(['lg', 'xl'], v => {
-					this.showMenuButton = !v;
-				});
 			},
 		},
 		watch: {
