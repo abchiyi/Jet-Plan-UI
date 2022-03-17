@@ -30,6 +30,7 @@
 								<c-highlighter>sm</c-highlighter>
 								<c-highlighter>md</c-highlighter>
 								<c-highlighter>lg</c-highlighter>
+								<c-highlighter>xl</c-highlighter>
 								type - Number , range - 0 ~ 24
 							</p>
 							<p>设置特定屏幕尺寸下所元素占用列数</p>
@@ -47,6 +48,7 @@
 								<c-highlighter>offsetSm</c-highlighter>
 								<c-highlighter>offsetMd</c-highlighter>
 								<c-highlighter>offsetLg</c-highlighter>
+								<c-highlighter>offsetXl</c-highlighter>
 								type - Number , range - 0 ~ 24
 							</p>
 							<p>特定屏幕宽度下设置位移</p>
