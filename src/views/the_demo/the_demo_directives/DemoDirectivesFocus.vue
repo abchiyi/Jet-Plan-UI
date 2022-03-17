@@ -16,7 +16,15 @@
 		</doc-item>
 		<demo-box title="v-focus" :code="code">
 			<m-row X="center">
-				<m-cube v-focus="onblur" style="width: 150px; padding: 0 10px">
+				<m-cube
+					v-focus="onblur"
+					@click="
+						() => {
+							value = true;
+						}
+					"
+					style="width: 150px; padding: 0 10px"
+				>
 					{{ value ? 'NowClickOutside' : 'NowClickMe' }}
 				</m-cube>
 			</m-row>
@@ -28,35 +36,22 @@
 		name: 'demo-directives-focus',
 		data: () => {
 			return {
-				code: `// Script
-function onblur (v) {
-    this.value = v;
+				code: `
+// Script
+function onblur () {
+    this.value = false;
 };
-
-
-// Style
-<style>
-    .demo-cube{
-        style="width:150px;
-        padding:0 10px;
-    }
-</style>
-
-
 //Html
-<body>
-    <div class="demo-cube" v-focus="onblur">
-        {{value?'NowClickOutside':"NowClickMe"}}
-    </div>
-</body>
-
+<m-cube v-focus="onblur" @click="() => {value = true}" 1>
+    {{ value ? 'NowClickOutside' : 'NowClickMe' }}
+</m-cube>
 `,
 				value: false,
 			};
 		},
 		methods: {
-			onblur(v) {
-				this.value = v;
+			onblur() {
+				this.value = false;
 			},
 		},
 	};
