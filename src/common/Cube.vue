@@ -26,6 +26,9 @@
 </script>
 
 <style>
+	.m-cube > .m-row {
+		height: 100%;
+	}
 	.m-cube {
 		width: 100px;
 		height: 100px;
@@ -35,6 +38,8 @@
 		color: #fff;
 		transition: 0.4s ease-in-out;
 		overflow: hidden;
+		font-family: 'SarasaMono';
+		font-size: 1.3em;
 	}
 	.m-cube.dark {
 		background-color: var(--secondary);

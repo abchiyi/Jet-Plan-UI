@@ -131,5 +131,5 @@ strong {
 strong > *,
 li > *,
 p > * {
-	vertical-align: middle;
+	/* vertical-align: middle; */
 }

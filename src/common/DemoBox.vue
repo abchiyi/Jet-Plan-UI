@@ -1,5 +1,5 @@
 <template>
-	<m-card class="m-demo-box">
+	<m-card class="m-demo-box" v-shadow:bottom="5">
 		<m-row v-if="codeControl" Y="center" space-mode="between">
 			<span class="text-hint">{{ title }}</span>
 			<m-button @click="expand_" text>View Code</m-button>
@@ -80,7 +80,6 @@ ${this.$refs.showDemo.innerHTML}
 <style>
 	.m-demo-box {
 		padding: 20px;
-		outline: rgba(88, 88, 88, 0.08) 1px solid;
 	}
 	.demo-box-demo > *:nth-child(1) {
 		background-color: var(--background);
