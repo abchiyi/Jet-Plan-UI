@@ -226,20 +226,16 @@
 		<!-- Switch theme -->
 		<m-control-bar for-id="dark-mode">
 			<template v-slot:text>开启深色模式</template>
-			<template v-slot:control>
-				<m-switch
-					id="dark-mode"
-					:disabled="autoDarkMode"
-					v-model="darkMode"
-				/>
-			</template>
+			<m-switch
+				id="dark-mode"
+				:disabled="autoDarkMode"
+				v-model="darkMode"
+			/>
 		</m-control-bar>
 		<!-- Auto dark mode -->
 		<m-control-bar for-id="auto-dark-mode">
 			<template v-slot:text>跟随系统</template>
-			<template v-slot:control>
-				<m-switch id="auto-dark-mode" v-model="autoDarkMode" />
-			</template>
+			<m-switch id="auto-dark-mode" v-model="autoDarkMode" />
 		</m-control-bar>
 	</div>
 </template>

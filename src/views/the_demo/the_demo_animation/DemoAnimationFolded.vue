@@ -4,18 +4,16 @@
 		<template v-slot:text>
 			{{ value ? '折叠' : '展开' }}
 		</template>
-		<template v-slot:control>
-			<m-button
-				id="re-folded-value"
-				@click="
-					() => {
-						value = !value;
-					}
-				"
-			>
-				ClickMe
-			</m-button>
-		</template>
+		<m-button
+			id="re-folded-value"
+			@click="
+				() => {
+					value = !value;
+				}
+			"
+		>
+			ClickMe
+		</m-button>
 	</m-control-bar>
 	<demo-box title="折叠展开" :code="code" id="folded">
 		<div>

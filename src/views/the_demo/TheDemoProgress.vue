@@ -65,21 +65,17 @@ let filed = false;
 // HTML
 <m-control-bar for-id="demo-progress-to-susccess">
     <template v-slot:text>完成进度条</template>
-    <template v-slot:control>
         <m-switch
             id="demo-progress-to-susccess"
             v-model="success"
         />
-    </template>
 </m-control-bar>
 <m-control-bar for-id="demo-progress-to-failed">
     <template v-slot:text>失败进度条</template>
-    <template v-slot:control>
         <m-switch
             id="demo-progress-to-failed"
             v-model="failed"
         />
-    </template>
 </m-control-bar>
 <div id="demo-content">
     <m-progress

@@ -104,47 +104,39 @@ let toReverse = false,
     :reverse="toReverse"
 >
     <template v-slot:text>Switch</template>
-    <template v-slot:control>
         <m-switch id="demo-switch" v-model="value" />
-    </template>
 </m-control-bar>
 <m-control-bar
     for-id="demo-checkbox"
     :reverse="toReverse"
 >
     <template v-slot:text>Checkbox</template>
-    <template v-slot:control>
         <m-checkbox
             id="demo-checkbox"
             v-model="value"
         />
-    </template>
 </m-control-bar>
 <m-control-bar
     for-id="demo-radio1"
     :reverse="toReverse"
 >
     <template v-slot:text>Radio1</template>
-    <template v-slot:control>
         <m-radio
             id="demo-radio1"
             value="demo-value1"
             v-model="valueRadio"
         />
-    </template>
 </m-control-bar>
 <m-control-bar
     for-id="demo-radio2"
     :reverse="toReverse"
 >
     <template v-slot:text>Radio2</template>
-    <template v-slot:control>
         <m-radio
             id="demo-radio2"
             value="demo-value2"
             v-model="valueRadio"
         />
-    </template>
 </m-control-bar>`,
 				value: false,
 				valueRadio: [],

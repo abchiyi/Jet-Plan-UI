@@ -42,30 +42,24 @@
 					<div>
 						<m-control-bar for-id="demo-sidebar-switch">
 							<template v-slot:text>开启侧栏</template>
-							<template v-slot:control>
-								<m-switch
-									id="demo-sidebar-switch"
-									v-model="demoShowSidebar"
-								/>
-							</template>
+							<m-switch
+								id="demo-sidebar-switch"
+								v-model="demoShowSidebar"
+							/>
 						</m-control-bar>
 						<m-control-bar for-id="demo-sideber-display-in-right">
 							<template v-slot:text>停靠于右侧</template>
-							<template v-slot:control>
-								<m-switch
-									id="demo-sideber-display-in-right"
-									v-model="displayInRight"
-								/>
-							</template>
+							<m-switch
+								id="demo-sideber-display-in-right"
+								v-model="displayInRight"
+							/>
 						</m-control-bar>
 						<m-control-bar for-id="demo-sideber-dock">
 							<template v-slot:text>始终停靠于屏幕边缘</template>
-							<template v-slot:control>
-								<m-switch
-									id="demo-sideber-dock"
-									v-model="demoSidebarDock"
-								/>
-							</template>
+							<m-switch
+								id="demo-sideber-dock"
+								v-model="demoSidebarDock"
+							/>
 						</m-control-bar>
 					</div>
 				</demo-box>

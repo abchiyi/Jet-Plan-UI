@@ -104,32 +104,28 @@
 						<!-- Control -->
 						<m-control-bar for-id="re-active">
 							<template v-slot:text>启用 Active 效果</template>
-							<template v-slot:control>
-								<m-switch id="re-active" v-model="active" />
-							</template>
+
+							<m-switch id="re-active" v-model="active" />
 						</m-control-bar>
 						<m-control-bar for-id="re-hover">
 							<template v-slot:text>启用 Hover 效果</template>
-							<template v-slot:control>
-								<m-switch id="re-hover" v-model="hover" />
-							</template>
+
+							<m-switch id="re-hover" v-model="hover" />
 						</m-control-bar>
 						<m-control-bar for-id="switch-focus">
 							<template v-slot:text>启用 :focus 效果</template>
-							<template v-slot:control>
-								<m-switch id="switch-focus" v-model="focus" />
-							</template>
+
+							<m-switch id="switch-focus" v-model="focus" />
 						</m-control-bar>
 						<m-control-bar for-id="switch-focus-outline">
 							<template v-slot:text>
 								启用 :focus.outline 效果
 							</template>
-							<template v-slot:control>
-								<m-switch
-									id="switch-focus-outline"
-									v-model="focusOutline"
-								/>
-							</template>
+
+							<m-switch
+								id="switch-focus-outline"
+								v-model="focusOutline"
+							/>
 						</m-control-bar>
 						<!-- Demo -->
 						<m-row X="center">
@@ -196,19 +192,19 @@ let focusOutline = true,
 <!-- Control -->
 <m-control-bar for-id="re-active">
     <template v-slot:text>启用 Active 效果</template>
-    <template v-slot:control>
+
         <m-switch id="re-active" v-model="active" />
     </template>
 </m-control-bar>
 <m-control-bar for-id="re-hover">
     <template v-slot:text>启用 Hover 效果</template>
-    <template v-slot:control>
+
         <m-switch id="re-hover" v-model="hover" />
     </template>
 </m-control-bar>
 <m-control-bar for-id="switch-focus">
     <template v-slot:text>启用 :focus 效果</template>
-    <template v-slot:control>
+
         <m-switch id="switch-focus" v-model="focus" />
     </template>
 </m-control-bar>
@@ -216,7 +212,7 @@ let focusOutline = true,
     <template v-slot:text>
         启用 :focus.outline 效果
     </template>
-    <template v-slot:control>
+
         <m-switch
             id="switch-focus-outline"
             v-model="focusOutline"
