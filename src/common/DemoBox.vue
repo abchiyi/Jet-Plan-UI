@@ -4,10 +4,7 @@
 			<span class="text-hint">{{ title }}</span>
 			<m-button @click="expand_" text>View Code</m-button>
 		</m-row>
-		<div class="demo-box-header">
-			<slot name="header"></slot>
-		</div>
-		<div ref="showDemo" class="demo-box-show-demo">
+		<div ref="showDemo" class="demo-box-demo">
 			<slot></slot>
 		</div>
 		<m-transition-folded title="展开Code">
@@ -85,7 +82,7 @@ ${this.$refs.showDemo.innerHTML}
 		padding: 20px;
 		outline: rgba(88, 88, 88, 0.08) 1px solid;
 	}
-	.demo-box-show-demo > *:nth-child(1) {
+	.demo-box-demo > *:nth-child(1) {
 		background-color: var(--background);
 		border-radius: var(--m-radius);
 		padding: 1rem 2rem;
