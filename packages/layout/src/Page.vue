@@ -32,6 +32,7 @@
 			:dock="sidebarDock"
 			v-focus="onBlur"
 			:expand="modelValue"
+			@click="andClose"
 		>
 			<slot name="sidebar" />
 		</m-sidebar>
@@ -79,6 +80,9 @@
 				if (!this.sidebarDock) {
 					this.$emit('update:modelValue', false);
 				}
+			},
+			andClose() {
+				if (!this.dock) this.onBlur();
 			},
 		},
 		computed: {
