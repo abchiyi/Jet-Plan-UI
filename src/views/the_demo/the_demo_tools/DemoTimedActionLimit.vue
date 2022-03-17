@@ -53,20 +53,13 @@
 				</template>
 			</doc-item>
 			<p>在下方 Demo 中限制为 2s内可执行2次操作</p>
-			<!-- Demo box -->
-			<demo-box title="TimedActionLimit" :code="code">
-				<!-- control -->
-				<template v-slot:header>
-					<m-control-bar for-id="demo-wcd-control">
-						<template v-slot:text>
-							{{ wcd ? '阻塞式等待' : '动态等待' }}
-						</template>
-						<template v-slot:control>
-							<m-switch id="demo-wcd-control" v-model="wcd" />
-						</template>
-					</m-control-bar>
+			<m-control-bar for-id="demo-wcd-control">
+				<template v-slot:text>
+					{{ wcd ? '阻塞式等待' : '动态等待' }}
 				</template>
-
+				<m-switch id="demo-wcd-control" v-model="wcd" />
+			</m-control-bar>
+			<demo-box title="TimedActionLimit" :code="code">
 				<!-- Demo -->
 				<div>
 					<!-- 冷却进度条 -->

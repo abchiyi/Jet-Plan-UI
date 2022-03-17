@@ -15,18 +15,13 @@
 				设置阴影强度,建议1~30,最大值可超过30
 			</li>
 		</doc-item>
-
+		<m-card>
+			<m-row spaceMode="between" Y="center">
+				<label for="shadow-intensity"><span>阴影强度</span></label>
+				<input id="shadow-intensity" type="number" v-model="value" />
+			</m-row>
+		</m-card>
 		<demo-box title="v-shaow" :code="code">
-			<template v-slot:header>
-				<p>
-					<label for="shadow-intensity">阴影强度</label>
-					<input
-						id="shadow-intensity"
-						type="number"
-						v-model="value"
-					/>
-				</p>
-			</template>
 			<m-row X="center">
 				<m-cube class="demo-box" v-shadow:bottom="value">
 					Intensity:{{ value }}

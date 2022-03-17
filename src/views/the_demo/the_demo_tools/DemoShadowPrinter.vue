@@ -27,17 +27,6 @@
 		<doc-item no-dot name="示例">
 			<li>
 				<demo-box title="shadowPainter" :code="code" expand>
-					<template v-slot:header>
-						<p>
-							<label for="shadow-intensity">阴影强度</label>
-							<input
-								style="color: black"
-								id="shadow-intensity"
-								type="number"
-								v-model="value"
-							/>
-						</p>
-					</template>
 					<m-row X="center">
 						<m-cube class="demo-box" v-shadow:bottom="value">
 							Intensity:{{ value }}

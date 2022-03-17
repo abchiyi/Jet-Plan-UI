@@ -131,7 +131,7 @@
 	}
 
 	#page-content > #content {
-		max-width: 860px;
+		max-width: 760px;
 		height: 100vh;
 		width: 100%;
 	}

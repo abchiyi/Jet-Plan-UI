@@ -34,38 +34,19 @@
 				</li>
 			</doc-item>
 		</div>
-		<doc-item id="demo" title-is="h2" name="如何使用">
-			<li>
-				<demo-box title="<m-progress>" :code="code" :expand="true">
-					<template v-slot:header>
-						<m-control-bar for-id="demo-progress-to-susccess">
-							<template v-slot:text>完成进度条</template>
-							<template v-slot:control>
-								<m-switch
-									id="demo-progress-to-susccess"
-									v-model="success"
-								/>
-							</template>
-						</m-control-bar>
-						<m-control-bar for-id="demo-progress-to-failed">
-							<template v-slot:text>失败进度条</template>
-							<template v-slot:control>
-								<m-switch
-									id="demo-progress-to-failed"
-									v-model="failed"
-								/>
-							</template>
-						</m-control-bar>
-					</template>
-					<div id="demo-content">
-						<m-progress
-							:failed="failed"
-							:value="number"
-						></m-progress>
-					</div>
-				</demo-box>
-			</li>
-		</doc-item>
+		<m-control-bar for-id="demo-progress-to-susccess">
+			<template v-slot:text>完成进度条</template>
+			<m-switch id="demo-progress-to-susccess" v-model="success" />
+		</m-control-bar>
+		<m-control-bar for-id="demo-progress-to-failed">
+			<template v-slot:text>失败进度条</template>
+			<m-switch id="demo-progress-to-failed" v-model="failed" />
+		</m-control-bar>
+		<demo-box title="<m-progress>" :code="code" :expand="true">
+			<div id="demo-content">
+				<m-progress :failed="failed" :value="number"></m-progress>
+			</div>
+		</demo-box>
 	</div>
 </template>
 

@@ -22,20 +22,18 @@
 			在元素高度大于视窗时，会将元素滚动至 “value”
 			中指定的距离屏幕顶部的高度。
 		</p>
+		<div id="scroll-controll">
+			<m-button row tag="a" v-scroll-to:120="`#cube1`">
+				滚动至大于屏幕高度元素,定义顶部距离视窗200px
+			</m-button>
+			<m-button row tag="a" v-scroll-to="`#cube2`">
+				滚动至小于屏幕高度元素
+			</m-button>
+			<m-button row tag="a" v-scroll-to="`#cube3`">
+				滚动至大于屏幕高度元素,未定义顶部距离视窗位置
+			</m-button>
+		</div>
 		<demo-box title="v-scroll-to" :code="code">
-			<template v-slot:header>
-				<div id="scroll-controll">
-					<m-button tag="a" v-scroll-to:120="`#cube1`">
-						滚动至大于屏幕高度元素,定义顶部距离视窗200px
-					</m-button>
-					<m-button tag="a" v-scroll-to="`#cube2`">
-						滚动至小于屏幕高度元素
-					</m-button>
-					<m-button tag="a" v-scroll-to="`#cube3`">
-						滚动至大于屏幕高度元素,未定义顶部距离视窗位置
-					</m-button>
-				</div>
-			</template>
 			<m-row X="center">
 				<m-col style="width: 100px">
 					<m-cube
