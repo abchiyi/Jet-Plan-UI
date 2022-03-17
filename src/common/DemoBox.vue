@@ -1,5 +1,5 @@
 <template>
-	<m-card class="m-demo-box" v-shadow:bottom="5">
+	<m-card class="m-demo-box">
 		<m-row v-if="codeControl" Y="center" space-mode="between">
 			<span class="text-hint">{{ title }}</span>
 			<m-button @click="expand_" text>View Code</m-button>

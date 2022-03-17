@@ -117,100 +117,104 @@
 			</doc-item>
 		</div>
 		<br />
-		<doc-item id="demo" title-is="h2" name="如何使用">
-			<li id="base-raster">
-				<p>通过使用使用组件 'm-col' 的 col 属性来组合网格</p>
-				<demo-box title="基础栅格" :code="code1" :expand="true">
-					<div id="base-gired">
-						<m-row class="girde-item" v-for="n in 4" :key="n">
-							<m-col :col="n * 4">
-								<m-cube class="girde-cube">{{ n * 4 }}</m-cube>
-							</m-col>
-							<m-col :col="24 - n * 2">
-								<m-cube class="girde-cube" dark>
-									{{ 24 - n * 4 }}
-								</m-cube>
-							</m-col>
-						</m-row>
-					</div>
-				</demo-box>
-			</li>
-			<li id="use-offset-positioning">
-				<p>
-					使用
-					<c-highlighter>m-col</c-highlighter>
-					组件的 offset 属性来进行偏移定位
-				</p>
-				<demo-box title="flex 定位" :code="code2" :expand="v1">
-					<div id="gired-flex">
-						<m-row class="girde-item" v-for="n in 4" :key="n">
-							<m-col :col="4" :offset="n * 2">
-								<m-cube class="girde-cube">{{ n * 4 }}</m-cube>
-							</m-col>
-						</m-row>
-					</div>
-				</demo-box>
-			</li>
-			<li id="position-x-y">
-				<p>
-					使用
-					<c-highlighter>m-row</c-highlighter>
-					组件的 X,Y 属性以快速定位元素
-				</p>
-				<demo-box title="flex 定位" :code="code3" :expand="v1">
-					<template v-slot:header>
-						<m-row space-mode="between">
-							<label for="y-top">Y 轴顶部对齐</label>
-							<m-radio id="y-top" value="top" v-model="y" />
-						</m-row>
-						<m-row space-mode="between">
-							<label for="y-center">Y 轴居中</label>
-							<m-radio id="y-center" value="center" v-model="y" />
-						</m-row>
-						<m-row space-mode="between">
-							<label for="y-bottom">Y 轴底部对齐</label>
-							<m-radio id="y-bottom" value="bottom" v-model="y" />
-						</m-row>
-						<m-row space-mode="between">
-							<label for="x-start">X 轴顶部对齐</label>
-							<m-radio id="x-start" value="start" v-model="x" />
-						</m-row>
-						<m-row space-mode="between">
-							<label for="x-center">X 轴居中</label>
-							<m-radio id="x-center" value="center" v-model="x" />
-						</m-row>
-						<m-row space-mode="between">
-							<label for="x-end">X 轴末尾对齐</label>
-							<m-radio id="x-end" value="end" v-model="x" />
-						</m-row>
-					</template>
-					<div>
-						<m-row
-							class="girde-item"
-							style="height: 100px"
-							:Y="y"
-							:X="x"
-						>
-							<m-col :col="4">
-								<m-cube class="girde-cube" />
-							</m-col>
-							<m-col :col="4">
-								<m-cube
-									class="girde-cube"
-									style="height: 48px"
-								/>
-							</m-col>
-							<m-col :col="4">
-								<m-cube
-									class="girde-cube"
-									style="height: 72px"
-								/>
-							</m-col>
-						</m-row>
-					</div>
-				</demo-box>
-			</li>
-		</doc-item>
+		<h2>基础网格</h2>
+		<p>
+			通过使用使用组件
+			<c-highlighter>&lt;m-col&gt;</c-highlighter>
+			组合网格
+		</p>
+		<hr />
+		<br />
+		<demo-box title="基础栅格" :code="code1" :expand="true">
+			<div id="base-gired">
+				<m-row class="girde-item" v-for="n in 4" :key="n">
+					<m-col :col="n * 4">
+						<m-cube class="girde-cube">
+							<span>
+								{{ n * 4 }}
+							</span>
+						</m-cube>
+					</m-col>
+					<m-col :col="24 - n * 2">
+						<m-cube class="girde-cube" dark>
+							<span>
+								{{ 24 - n * 4 }}
+							</span>
+						</m-cube>
+					</m-col>
+				</m-row>
+			</div>
+		</demo-box>
+		<h2>偏移定位</h2>
+		<p>
+			使用
+			<c-highlighter>&lt;m-col&gt;</c-highlighter>
+			组件的 offset 属性来进行偏移定位
+		</p>
+		<hr />
+		<br />
+		<demo-box title="flex 定位" :code="code2" :expand="v1">
+			<div id="gired-flex">
+				<m-row class="girde-item" v-for="n in 4" :key="n">
+					<m-col :col="4" :offset="n * 2">
+						<m-cube class="girde-cube">{{ n * 4 }}</m-cube>
+					</m-col>
+				</m-row>
+			</div>
+		</demo-box>
+		<h2>子元素起始轴</h2>
+		<p>
+			使用
+			<c-highlighter>&lt;m-row&gt;</c-highlighter>
+			组件的 X,Y 属性以快速定位元素
+		</p>
+		<hr />
+		<br />
+
+		<demo-box title="flex 定位" :code="code3" :expand="v1">
+			<div>
+				<m-row id="flex-y" warp spaceMode="between">
+					<span>
+						<m-radio id="y-top" value="top" v-model="y" />
+						<label for="y-top">Y top</label>
+					</span>
+					<span>
+						<m-radio id="y-center" value="center" v-model="y" />
+						<label for="y-center">Y middle</label>
+					</span>
+					<span>
+						<m-radio id="y-bottom" value="bottom" v-model="y" />
+						<label for="y-bottom">Y bottom</label>
+					</span>
+				</m-row>
+				<m-row id="flex-x" warp spaceMode="between">
+					<span>
+						<m-radio id="x-start" value="start" v-model="x" />
+						<label for="x-start">X Start</label>
+					</span>
+					<span>
+						<m-radio id="x-center" value="center" v-model="x" />
+						<label for="x-center">X Center</label>
+					</span>
+					<span>
+						<m-radio id="x-end" value="end" v-model="x" />
+						<label for="x-end">X end</label>
+					</span>
+				</m-row>
+				<hr />
+				<m-row class="girde-item" style="height: 100px" :Y="y" :X="x">
+					<m-col :col="4">
+						<m-cube class="girde-cube" />
+					</m-col>
+					<m-col :col="4">
+						<m-cube class="girde-cube" style="height: 48px" />
+					</m-col>
+					<m-col :col="4">
+						<m-cube class="girde-cube" style="height: 72px" />
+					</m-col>
+				</m-row>
+			</div>
+		</demo-box>
 	</div>
 </template>
 
@@ -262,6 +266,10 @@ width: 100%;
 <style>
 	tr td:nth-child(2) {
 		width: 200px;
+	}
+	#flex-x > span > *,
+	#flex-y > span > * {
+		vertical-align: middle;
 	}
 	.girde-item + .girde-item {
 		margin-top: 8px;
