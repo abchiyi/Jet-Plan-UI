@@ -1,6 +1,6 @@
 <template>
 	<div :class="classes">
-		<m-row style="height: 100px" X="center" Y="center">
+		<m-row X="center" Y="center">
 			<slot></slot>
 		</m-row>
 	</div>
