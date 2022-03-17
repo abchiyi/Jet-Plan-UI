@@ -60,7 +60,7 @@
 			style() {
 				return {
 					// col
-					col: this.col ? this.calcWidth(this.col) : '100%',
+					col: this.col ? this.calcWidth(this.col) : 'auto',
 					xs: this.calcWidth(this.xs),
 					sm: this.calcWidth(this.sm),
 					md: this.calcWidth(this.md),

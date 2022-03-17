@@ -1,13 +1,5 @@
 <template>
-	<m-row class="header" Y="center" spaceMode="between">
-		<m-row Y="center" id="header-control">
-			<m-col :lg="0" :xl="0">
-				<!-- 侧栏开关 -->
-				<m-button text title="menu" @click.stop="click">
-					<i style="font-size: 1.8em" class="bi bi-list"></i>
-				</m-button>
-			</m-col>
-		</m-row>
+	<m-row class="navbar" Y="center" spaceMode="between" reverse>
 		<!-- 选项 -->
 		<div id="header-options">
 			<m-button text hover @click="switchMode">
@@ -31,6 +23,12 @@
 				GitHub
 			</m-button>
 		</div>
+		<m-col :lg="0" :xl="0">
+			<!-- 侧栏开关 -->
+			<m-button text title="menu" @click.stop="click">
+				<i style="font-size: 1.8em" class="bi bi-list"></i>
+			</m-button>
+		</m-col>
 	</m-row>
 </template>
 
@@ -91,20 +89,13 @@
 	};
 </script>
 <style scoped>
-	.header {
+	.navbar {
 		height: 72px;
-	}
-	.header > h1 {
-		margin: unset;
-		font-size: 1.4rem;
-	}
-	#darkmode-switch {
-		height: 16px;
-		width: 18.6px;
+		width: 100%;
 	}
 
-	#header-title > * {
-		font-size: 1.8rem;
-		vertical-align: middle;
+	.navbar > #darkmode-switch {
+		height: 16px;
+		width: 18.6px;
 	}
 </style>
