@@ -24,17 +24,13 @@
 			</li>
 		</doc-item>
 
-		<doc-item no-dot name="示例">
-			<li>
-				<demo-box title="shadowPainter" :code="code" expand>
-					<m-row X="center">
-						<m-cube class="demo-box" v-shadow:bottom="value">
-							Intensity:{{ value }}
-						</m-cube>
-					</m-row>
-				</demo-box>
-			</li>
-		</doc-item>
+		<demo-box title="shadowPainter" :code="code" expand>
+			<m-row X="center">
+				<m-cube class="demo-box" v-shadow:bottom="value">
+					Intensity:{{ value }}
+				</m-cube>
+			</m-row>
+		</demo-box>
 	</article>
 </template>
 <script>

@@ -36,39 +36,25 @@
 				</li>
 			</doc-item>
 		</div>
-		<doc-item id="demo" title-is="h2" name="如何使用">
-			<li>
-				<demo-box title="<>" :code="code" :expand="true">
-					<div>
-						<m-control-bar for-id="demo-sidebar-switch">
-							<template v-slot:text>开启侧栏</template>
-							<m-switch
-								id="demo-sidebar-switch"
-								v-model="demoShowSidebar"
-							/>
-						</m-control-bar>
-						<m-control-bar for-id="demo-sideber-display-in-right">
-							<template v-slot:text>停靠于右侧</template>
-							<m-switch
-								id="demo-sideber-display-in-right"
-								v-model="displayInRight"
-							/>
-						</m-control-bar>
-						<m-control-bar for-id="demo-sideber-dock">
-							<template v-slot:text>始终停靠于屏幕边缘</template>
-							<m-switch
-								id="demo-sideber-dock"
-								v-model="demoSidebarDock"
-							/>
-						</m-control-bar>
-					</div>
-				</demo-box>
-			</li>
-		</doc-item>
+		<div @click.stop>
+			<m-control-bar for-id="demo-sidebar-switch">
+				<template v-slot:text>开启侧栏</template>
+				<m-switch id="demo-sidebar-switch" v-model="demoShowSidebar" />
+			</m-control-bar>
+			<m-control-bar for-id="demo-sideber-display-in-right">
+				<template v-slot:text>停靠于右侧</template>
+				<m-switch
+					id="demo-sideber-display-in-right"
+					v-model="displayInRight"
+				/>
+			</m-control-bar>
+		</div>
+		<demo-box title="<m-sidebar>" :code="code" :expand="true"></demo-box>
 		<m-sidebar
+			v-focus="close"
+			style="width: 320px"
 			:right="displayInRight"
-			:dock="demoSidebarDock"
-			v-model="demoShowSidebar"
+			:expand="demoShowSidebar"
 		>
 			测试内容
 		</m-sidebar>
@@ -91,10 +77,15 @@
 	测试内容
 	</m-sidebar>
 	                `,
-				demoShowSidebar: true,
-				demoSidebarDock: true,
+				demoShowSidebar: false,
 				displayInRight: true,
 			};
+		},
+
+		methods: {
+			close() {
+				this.demoShowSidebar = false;
+			},
 		},
 	};
 </script>

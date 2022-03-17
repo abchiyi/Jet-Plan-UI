@@ -62,41 +62,35 @@
 						</li>
 					</doc-item>
 				</li>
-				<li id="p1-demo">
-					<demo-box :code="code" :expand="true" title="预设1">
-						<m-row X="center">
-							<m-row
-								id="p1"
-								:class="demoClass"
-								v-re-screen-size="setDemoMobileMode"
-							>
-								<m-transition-slide position="left">
-									<m-col
-										id="left"
-										v-show="!demoMobileMode"
-										:col="4"
-									>
-										<div id="p1-sidebar"></div>
-									</m-col>
-								</m-transition-slide>
-								<m-col id="right">
-									<div id="p1-header"></div>
-									<m-row X="center" id="p1-main">
-										<div>
-											<div></div>
-											<div></div>
-											<div></div>
-										</div>
-									</m-row>
-									<m-row X="center" id="p1-footer">
-										<div></div>
-									</m-row>
-								</m-col>
-							</m-row>
-						</m-row>
-					</demo-box>
-				</li>
 			</doc-item>
+			<demo-box id="p1-demo" :code="code" :expand="true" title="预设1">
+				<m-row X="center">
+					<m-row
+						id="p1"
+						:class="demoClass"
+						v-re-screen-size="setDemoMobileMode"
+					>
+						<m-transition-slide position="left">
+							<m-col id="left" v-show="!demoMobileMode" :col="4">
+								<div id="p1-sidebar"></div>
+							</m-col>
+						</m-transition-slide>
+						<m-col id="right">
+							<div id="p1-header"></div>
+							<m-row X="center" id="p1-main">
+								<div>
+									<div></div>
+									<div></div>
+									<div></div>
+								</div>
+							</m-row>
+							<m-row X="center" id="p1-footer">
+								<div></div>
+							</m-row>
+						</m-col>
+					</m-row>
+				</m-row>
+			</demo-box>
 		</div>
 	</div>
 </template>
@@ -169,6 +163,7 @@ let expandSidebar = true;
 
 	#p1 #right {
 		padding-left: unset;
+		width: 100%;
 	}
 
 	#p1.mobile-mode #right {

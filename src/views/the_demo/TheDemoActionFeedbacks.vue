@@ -96,76 +96,61 @@
 				</doc-item>
 			</li>
 		</doc-item>
+		<demo-box title="<m-action-feedback>" :code="code" expand>
+			<div>
+				<!-- Control -->
+				<m-control-bar for-id="re-active">
+					<template v-slot:text>启用 Active 效果</template>
 
-		<doc-item id="demo" name="如何使用:" title-is="h2" no-dot no-padding>
-			<li>
-				<demo-box title="<m-action-feedback>" :code="code" expand>
-					<div>
-						<!-- Control -->
-						<m-control-bar for-id="re-active">
-							<template v-slot:text>启用 Active 效果</template>
+					<m-switch id="re-active" v-model="active" />
+				</m-control-bar>
+				<m-control-bar for-id="re-hover">
+					<template v-slot:text>启用 Hover 效果</template>
 
-							<m-switch id="re-active" v-model="active" />
-						</m-control-bar>
-						<m-control-bar for-id="re-hover">
-							<template v-slot:text>启用 Hover 效果</template>
+					<m-switch id="re-hover" v-model="hover" />
+				</m-control-bar>
+				<m-control-bar for-id="switch-focus">
+					<template v-slot:text>启用 :focus 效果</template>
 
-							<m-switch id="re-hover" v-model="hover" />
-						</m-control-bar>
-						<m-control-bar for-id="switch-focus">
-							<template v-slot:text>启用 :focus 效果</template>
+					<m-switch id="switch-focus" v-model="focus" />
+				</m-control-bar>
+				<m-control-bar for-id="switch-focus-outline">
+					<template v-slot:text>启用 :focus.outline 效果</template>
 
-							<m-switch id="switch-focus" v-model="focus" />
-						</m-control-bar>
-						<m-control-bar for-id="switch-focus-outline">
-							<template v-slot:text>
-								启用 :focus.outline 效果
-							</template>
-
-							<m-switch
-								id="switch-focus-outline"
-								v-model="focusOutline"
-							/>
-						</m-control-bar>
-						<!-- Demo -->
-						<m-row X="center">
-							<m-action-feedback
-								tabindex="1"
-								class="demo-item"
-								:active="active"
-								:hover="hover"
-								:focus="focus"
-								:focus-outline="focusOutline"
-							>
-								<m-row
-									style="height: 100%"
-									X="center"
-									Y="center"
-								>
-									ClickMe!!
-								</m-row>
-							</m-action-feedback>
-							<m-action-feedback
-								tabindex="2"
-								class="demo-item"
-								:active="active"
-								:hover="hover"
-								:focus="focus"
-								:focus-outline="focusOutline"
-							>
-								<m-row
-									style="height: 100%"
-									X="center"
-									Y="center"
-								>
-									ClickMe!!
-								</m-row>
-							</m-action-feedback>
+					<m-switch
+						id="switch-focus-outline"
+						v-model="focusOutline"
+					/>
+				</m-control-bar>
+				<!-- Demo -->
+				<m-row X="center">
+					<m-action-feedback
+						tabindex="1"
+						class="demo-item"
+						:active="active"
+						:hover="hover"
+						:focus="focus"
+						:focus-outline="focusOutline"
+					>
+						<m-row style="height: 100%" X="center" Y="center">
+							ClickMe!!
 						</m-row>
-					</div>
-				</demo-box>
-			</li>
-		</doc-item>
+					</m-action-feedback>
+					<m-action-feedback
+						tabindex="2"
+						class="demo-item"
+						:active="active"
+						:hover="hover"
+						:focus="focus"
+						:focus-outline="focusOutline"
+					>
+						<m-row style="height: 100%" X="center" Y="center">
+							ClickMe!!
+						</m-row>
+					</m-action-feedback>
+				</m-row>
+			</div>
+		</demo-box>
 	</div>
 </template>
 

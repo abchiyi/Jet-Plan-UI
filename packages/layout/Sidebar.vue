@@ -1,6 +1,6 @@
 <template>
 	<m-transition-slide :opacity="false" :position="right ? 'right' : 'left'">
-		<div v-shadow:right="dock ? 0 : 2" v-show="expand" :class="classes">
+		<div v-show="expand" :class="classes">
 			<slot />
 		</div>
 	</m-transition-slide>
@@ -15,10 +15,6 @@
 				type: Boolean,
 				required: true,
 			},
-			dock: {
-				type: Boolean,
-				default: false,
-			},
 			right: {
 				type: Boolean,
 				default: false,
@@ -31,7 +27,6 @@
 			return {
 				width: undefined,
 				show: false,
-				dock_: this.dock,
 			};
 		},
 		computed: {
@@ -40,11 +35,6 @@
 			},
 			postiton() {
 				return this.right ? 'right' : 'left';
-			},
-		},
-		watch: {
-			dock(v) {
-				this.dock_ = v;
 			},
 		},
 	};

@@ -23,11 +23,7 @@
 				</li>
 			</doc-item>
 		</div>
-		<doc-item id="demo" title-is="h2" name="如何使用">
-			<li>
-				<demo-box title="<>" :code="code" :expand="true"></demo-box>
-			</li>
-		</doc-item>
+		<demo-box title="<m-header>" :code="code" :expand="true"></demo-box>
 	</div>
 </template>
 <script>
