@@ -14,7 +14,7 @@
 				</slot>
 			</m-row>
 			<m-row :reverse="reverse" class="control-comp" Y="center">
-				<slot name="control">
+				<slot>
 					<p>Control</p>
 				</slot>
 			</m-row>
@@ -46,7 +46,7 @@
 		overflow: hidden;
 		font-size: 1rem;
 		display: block;
-		margin: 1rem 0;
+		margin: 0.8rem 0;
 	}
 
 	.control-comp,
