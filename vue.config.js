@@ -12,6 +12,8 @@ module.exports = {
             filename: 'index.html'
         }
     },
+    // jetplanui.github.io 主页输出目录
+    outputDir: './dist/docs/',
     // 为packages目录添加babel-loader处理
     chainWebpack: config => {
         config.module
