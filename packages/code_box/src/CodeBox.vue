@@ -1,7 +1,6 @@
 <template>
 	<!-- div 标签作为缓冲,避免过渡动画修改内部样式 -->
 	<div class="m-code-box-toplayer" :style="style">
-		<p>123</p>
 		<m-row class="m-code-box" ref="codeBox">
 			<ul class="line-number">
 				<li v-for="i in linenumber" :key="i">{{ i }}</li>

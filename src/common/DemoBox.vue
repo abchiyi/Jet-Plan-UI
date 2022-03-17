@@ -8,12 +8,7 @@
 			<slot></slot>
 		</div>
 		<m-transition-folded title="展开Code">
-			<m-code-box
-				:id="codeID"
-				:code="code"
-				v-show="value"
-				lang="javascript"
-			/>
+			<m-code-box :id="codeID" :code="code" v-show="value" />
 		</m-transition-folded>
 	</m-card>
 </template>

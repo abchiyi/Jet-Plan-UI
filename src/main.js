@@ -1,3 +1,4 @@
+// import 'default-passive-events'
 import {
     resolveComponent,
     createApp,

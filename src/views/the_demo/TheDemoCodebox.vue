@@ -33,9 +33,6 @@
 				code: `<m-code-box code="conosle.log('Hello world')"  lang="javascript" />`,
 			};
 		},
-		mounted() {
-			console.log(this.$route);
-		},
 	};
 </script>
 
