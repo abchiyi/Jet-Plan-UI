@@ -22,8 +22,9 @@ jobs:
                   mkdir  ~/SOURCE_REPO_TEMP
                   cd ~/SOURCE_REPO_TEMP
                   git clone --mirror "$SOURCE_REPO" .
-                  npm install # Install a package
-                  npm run build
+                  ls -a
+                  # npm install # Install a package
+                  # npm run build
                   # cd ./dist
                   # git init
                   # git add .
