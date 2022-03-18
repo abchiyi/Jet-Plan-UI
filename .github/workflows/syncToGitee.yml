@@ -14,7 +14,7 @@ jobs:
                   echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
                   echo "StrictHostKeyChecking no" >> ~/.ssh/config
-                  ls ~
+                  ssh-keygen -f ~/.ssh/id_rsa -y > ~/.ssh/id_rsa.pub
             - name: Push Mirror
               env:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
