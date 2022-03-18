@@ -29,9 +29,10 @@ jobs:
                   npm run build
 
                   cd ./dist
-                  git add .
-                  git commit -am 'update-doc'
-                  git remote set-url --push origin "$DESTINATION_REPO"
-                  git fetch -p origin
-                  git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
-                  git push --mirror
+                  ls -a
+                  # git add .
+                  # git commit -am 'update-doc'
+                  # git remote set-url --push origin "$DESTINATION_REPO"
+                  # git fetch -p origin
+                  # git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+                  # git push --mirror
