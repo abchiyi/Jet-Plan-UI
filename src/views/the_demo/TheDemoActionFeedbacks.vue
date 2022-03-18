@@ -1,4 +1,3 @@
-// TODO 添加选中效果
 <template>
 	<div>
 		<doc-item id="describes" name="动作反馈组件" title-is="h2">
