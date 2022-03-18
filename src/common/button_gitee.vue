@@ -30,3 +30,12 @@
 		name: 'button-gitee',
 	};
 </script>
+<style scoped>
+	.m-button {
+		background: #c0392b;
+	}
+
+	.m-button.text-button {
+		background: unset;
+	}
+</style>
