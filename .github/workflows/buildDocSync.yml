@@ -24,6 +24,8 @@ jobs:
                   ls -a
                   npm install
                   npm run build
+                  ls -a
+                  ls ./dist -a
                   # ls ~/resource_temp -a
                   # npm install # Install a package
                   # npm run build
