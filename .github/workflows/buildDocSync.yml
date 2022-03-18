@@ -19,8 +19,9 @@ jobs:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
                   DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
               run: |
-                  git clone --mirror "$SOURCE_REPO" ~/SOURCE_REPO_TEMP .
+                  mkdir  ~/SOURCE_REPO_TEMP
                   cd ~/SOURCE_REPO_TEMP
+                  git clone --mirror "$SOURCE_REPO" .
                   npm install # Install a package
                   npm run build
                   # cd ./dist
