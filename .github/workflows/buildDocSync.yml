@@ -14,26 +14,22 @@ jobs:
                   echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
                   echo "StrictHostKeyChecking no" >> ~/.ssh/config
-            - name: Push Mirror
+            - name: build
               env:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
                   DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
               run: |
                   git clone https://github.com/abchiyi/Jet-Plan-UI.git ~/resource_temp
                   cd  ~/resource_temp
-                  ls -a
                   npm install
                   npm run build
-                  ls -a
-                  ls ./dist -a
-                  # ls ~/resource_temp -a
-                  # npm install # Install a package
-                  # npm run build
-                  # cd ./dist
-                  # git init
-                  # git add .
-                  # git commit -am 'update-doc'
-                  # git remote set-url --push origin "$DESTINATION_REPO"
-                  # git fetch -p origin
-                  # git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
-                  # git push --mirror
+            -name : push
+              run : |
+                  cd ./dist
+                  git init
+                  git add .
+                  git commit -am 'update-doc'
+                  git remote set-url --push origin "$DESTINATION_REPO"
+                  git fetch -p origin
+                  git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+                  git push --mirror
