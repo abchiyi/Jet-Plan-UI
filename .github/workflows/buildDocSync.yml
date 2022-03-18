@@ -19,14 +19,16 @@ jobs:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
                   DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
               run: |
-                  git clone https://github.com/abchiyi/Jet-Plan-UI.git ~/resource_temp
+                  git config --global user.email "meme_me2019@outlook.com"
+                  git config --global user.name "abchiyi"
+                  git clone "$SOURCE_REPO" ~/resource_temp
+                  git clone "$DESTINATION_REPO" ./dist
+
                   cd  ~/resource_temp
                   npm install
                   npm run build
+
                   cd ./dist
-                  git config --global user.email "meme_me2019@outlook.com"
-                  git config --global user.name "abchiyi"
-                  git init
                   git add .
                   git commit -am 'update-doc'
                   git remote set-url --push origin "$DESTINATION_REPO"
