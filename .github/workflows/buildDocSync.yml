@@ -21,7 +21,10 @@ jobs:
               run: |
                   git clone https://github.com/abchiyi/Jet-Plan-UI.git ~/resource_temp
                   cd  ~/resource_temp
-                  ls ~/resource_temp -a
+                  ls -a
+                  npm install
+                  npm run build
+                  # ls ~/resource_temp -a
                   # npm install # Install a package
                   # npm run build
                   # cd ./dist
