@@ -14,17 +14,15 @@ jobs:
                   echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
                   echo "StrictHostKeyChecking no" >> ~/.ssh/config
-            - name: build
+            - name: build and push
               env:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
-                  DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
+                  DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git's
               run: |
                   git clone https://github.com/abchiyi/Jet-Plan-UI.git ~/resource_temp
                   cd  ~/resource_temp
                   npm install
                   npm run build
-            -name : push
-              run : |
                   cd ./dist
                   git init
                   git add .
