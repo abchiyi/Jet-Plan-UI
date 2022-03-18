@@ -16,7 +16,7 @@ jobs:
                   echo "StrictHostKeyChecking no" >> ~/.ssh/config
             - name: Push Mirror
               env:
-                  SOURCE_REPO: 'git@github.com:abchiyi/Jet-Plan-UI.git'
+                  SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
                   DESTINATION_REPO: 'git@gitee.com:abchiyi/jet-plan-ui.git'
               run: |
                   git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
