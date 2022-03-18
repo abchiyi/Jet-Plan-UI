@@ -21,7 +21,7 @@ jobs:
               run: |
                   git clone --mirror "$SOURCE_REPO" ~/SOURCE_REPO_TEMP
                   cd ~/SOURCE_REPO_TEMP
-                  npm intsall
+                  npm install # Install a package
                   npm run build
                   # cd ./dist
                   # git init
