@@ -29,10 +29,8 @@
 					<m-button primary @click="to('/get-started')">
 						Get Start
 					</m-button>
-					<m-button primary>
-						<i class="bi bi-github" />
-						GitHub
-					</m-button>
+					<button-github primary />
+					<button-gitee />
 				</div>
 			</div>
 		</m-row>

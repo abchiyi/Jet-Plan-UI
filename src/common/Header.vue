@@ -17,11 +17,9 @@
 				</div>
 			</m-button>
 			<m-button text hover>About</m-button>
-			<m-button text hover>Gitee</m-button>
-			<m-button text hover>
-				<i class="bi bi-github" />
-				GitHub
-			</m-button>
+
+			<button-gitee text />
+			<button-github text />
 		</div>
 		<m-col :lg="0" :xl="0">
 			<!-- 侧栏开关 -->

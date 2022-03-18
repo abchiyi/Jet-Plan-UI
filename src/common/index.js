@@ -8,6 +8,8 @@ import DemoDoc from './DemoDoc.vue'
 import ExpandMennu from './ExpandMenu.vue'
 import DemoPageHaveIndex from './DemoPageHaveIndex.vue'
 import DocItem from './DocItem.vue'
+import buttonGithub from './button_github.vue'
+import buttonGitee from './button_gitee.vue'
 
 function setCookie (name, value) {
     let Days = 30;
@@ -52,7 +54,9 @@ const components = {
     Cube,
     ExpandMennu,
     DemoPageHaveIndex,
-    DocItem
+    DocItem,
+    buttonGithub,
+    buttonGitee
 }
 export {
     redColorModeCookie,
