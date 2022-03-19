@@ -5,12 +5,15 @@ import {
     h
 } from 'vue'
 
-// UI
-import ui from '@'
-import {
-    theme,
-    themeDefault
-} from '@'
+// // UI
+// import ui from '@'
+// import {
+//     theme,
+//     themeDefault
+// } from '@'
+
+import ui from 'jet-plan-ui'
+import { theme, themeDefault } from 'jet-plan-ui'
 
 // Custom compents
 import router from './router'
