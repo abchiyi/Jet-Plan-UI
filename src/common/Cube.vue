@@ -1,14 +1,14 @@
 <template>
 	<div :class="classes">
-		<m-row X="center" Y="center">
+		<j-row X="center" Y="center">
 			<slot></slot>
-		</m-row>
+		</j-row>
 	</div>
 </template>
 
 <script>
 	export default {
-		name: 'm-cube',
+		name: 'j-cube',
 		props: {
 			dark: {
 				type: Boolean,
@@ -17,7 +17,7 @@
 		},
 		computed: {
 			classes() {
-				let classes = ['m-cube'];
+				let classes = ['j-cube'];
 				if (this.dark) classes.push('dark');
 				return classes;
 			},
@@ -26,10 +26,10 @@
 </script>
 
 <style>
-	.m-cube > .m-row {
+	.j-cube > .j-row {
 		height: 100%;
 	}
-	.m-cube {
+	.j-cube {
 		width: 100px;
 		height: 100px;
 		border-radius: var(--m-radius);
@@ -41,7 +41,7 @@
 		font-family: 'SarasaMono';
 		font-size: 1.3em;
 	}
-	.m-cube.dark {
+	.j-cube.dark {
 		background-color: var(--secondary);
 		color: inherit;
 		font-weight: bolder;

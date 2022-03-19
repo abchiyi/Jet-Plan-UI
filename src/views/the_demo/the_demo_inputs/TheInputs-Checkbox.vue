@@ -2,14 +2,14 @@
 	<div>
 		<strong>Checkbox</strong>
 		<!-- Demo -->
-		<m-control-bar for-id="disabled-checkbox">
+		<j-control-bar for-id="disabled-checkbox">
 			<template v-slot:text>禁用组件</template>
-			<m-switch v-model="disabled" id="disabled-checkbox" />
-		</m-control-bar>
+			<j-switch v-model="disabled" id="disabled-checkbox" />
+		</j-control-bar>
 		<demo-box title="Checkbox" :code="code">
 			<div id="demo-checkbox-group">
 				<div id="check-all-group">
-					<m-checkbox
+					<j-checkbox
 						id="check-all"
 						:value="data"
 						v-model="showData"
@@ -19,7 +19,7 @@
 				</div>
 				<div id="checkbox-group">
 					<div v-for="item in data" :key="item">
-						<m-checkbox
+						<j-checkbox
 							:disabled="disabled"
 							:id="item"
 							:value="item"
@@ -48,12 +48,12 @@ let showData: [];
 <body>
     <p>Data:{{ showData }}</p>
     <div id="check-all-group">
-        <m-checkbox id="check-all" :value="data" v-model="showData" />
+        <j-checkbox id="check-all" :value="data" v-model="showData" />
         <label for="check-all">Check All</label>
     </div>
     <div id="checkbox-group">
         <div v-for="item in data" :key="item">
-        <m-checkbox :id="item" :value="item" v-model="showData" />
+        <j-checkbox :id="item" :value="item" v-model="showData" />
         <label :for="item">{{ item }} </label>
         </div>
     </div>

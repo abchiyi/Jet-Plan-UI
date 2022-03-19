@@ -5,20 +5,20 @@
 		<!-- Demo -->
 		<demo-box title="点击反馈" :code="code" id="fade">
 			<div>
-				<m-row id="buttons-button" X="center">
-					<m-button Primary>primary</m-button>
-					<m-button>Button</m-button>
-					<m-button disabled>Button disabled</m-button>
-				</m-row>
-				<m-row id="buttons-button-text" X="center">
-					<m-button primary text>Text Button Primary</m-button>
-					<m-button text>Text Button</m-button>
-					<m-button text disabled>Text Button Disabled</m-button>
-				</m-row>
+				<j-row id="buttons-button" X="center">
+					<j-button Primary>primary</j-button>
+					<j-button>Button</j-button>
+					<j-button disabled>Button disabled</j-button>
+				</j-row>
+				<j-row id="buttons-button-text" X="center">
+					<j-button primary text>Text Button Primary</j-button>
+					<j-button text>Text Button</j-button>
+					<j-button text disabled>Text Button Disabled</j-button>
+				</j-row>
 				<br />
 				<div id="buttons-row">
-					<m-button row>Button One Row</m-button>
-					<m-button text row>Text Button One Row</m-button>
+					<j-button row>Button One Row</j-button>
+					<j-button text row>Text Button One Row</j-button>
 				</div>
 			</div>
 		</demo-box>
@@ -46,12 +46,12 @@
 				</li>
 				<li id="prop-others">
 					按钮组件外层使用
-					<c-highlighter>m-action-feedback</c-highlighter>
+					<c-highlighter>j-action-feedback</c-highlighter>
 					组件渲染，其余
 					<c-highlighter>Prop</c-highlighter>
 					参考
 					<!--    TODO 跳转到组件 -->
-					<m-button text teg="a">m-action-feedback 组件</m-button>
+					<j-button text teg="a">j-action-feedback 组件</j-button>
 				</li>
 			</template>
 
@@ -69,21 +69,21 @@
 		name: 'the-demo-buttons',
 		data() {
 			return {
-				code: `<m-button Primary>primary</m-button>
-<m-button>Button</m-button>
-<m-button disabled>Button disabled</m-button>
-<m-button primary text>Text Button Primary</m-button>
-<m-button text>Text Button</m-button>
-<m-button text disabled>Text Button Disabled</m-button>
-<m-button row>Button One Row</m-button>
-<m-button text row>Text Button One Row </m-button>`,
+				code: `<j-button Primary>primary</j-button>
+<j-button>Button</j-button>
+<j-button disabled>Button disabled</j-button>
+<j-button primary text>Text Button Primary</j-button>
+<j-button text>Text Button</j-button>
+<j-button text disabled>Text Button Disabled</j-button>
+<j-button row>Button One Row</j-button>
+<j-button text row>Text Button One Row </j-button>`,
 			};
 		},
 	};
 </script>
 
 <style>
-	.m-button.aa {
+	.j-button.aa {
 		width: 400px;
 	}
 </style>

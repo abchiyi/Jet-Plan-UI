@@ -1,12 +1,12 @@
 <template>
-	<m-row class="logo-header" X="center" Y="center">
-		<m-button class="text-hint" text @click="toHomePage">
-			<m-row X="center" Y="center">
+	<j-row class="logo-header" X="center" Y="center">
+		<j-button class="text-hint" text @click="toHomePage">
+			<j-row X="center" Y="center">
 				<img src="../../public/logo.png" alt="logo" height="30" />
 				<span class="version">Jet UI - V0.87.1beta</span>
-			</m-row>
-		</m-button>
-	</m-row>
+			</j-row>
+		</j-button>
+	</j-row>
 </template>
 <script>
 	export default {

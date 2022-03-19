@@ -1,10 +1,10 @@
 <template>
 	<h2>滑入滑出</h2>
-	<m-control-bar for-id="re-slide-value">
+	<j-control-bar for-id="re-slide-value">
 		<template v-slot:text>
 			{{ value ? '滑出' : '滑入' }}
 		</template>
-		<m-button
+		<j-button
 			id="re-slide-value"
 			@click="
 				() => {
@@ -13,46 +13,46 @@
 			"
 		>
 			ClickMe
-		</m-button>
-	</m-control-bar>
-	<m-control-bar for-id="re-opacity-value">
+		</j-button>
+	</j-control-bar>
+	<j-control-bar for-id="re-opacity-value">
 		<template v-slot:text>同时应用 Fade 效果</template>
-		<m-switch id="re-opacity-value" v-model="opacity"></m-switch>
-	</m-control-bar>
+		<j-switch id="re-opacity-value" v-model="opacity"></j-switch>
+	</j-control-bar>
 	<demo-box title="滑入滑出" :code="code" id="slide">
 		<div id="slider-animation-group">
-			<m-row class="demo-row" X="center">
-				<m-transition-slide :opacity="opacity" position="top">
+			<j-row class="demo-row" X="center">
+				<j-transition-slide :opacity="opacity" position="top">
 					<div class="deom-item" v-show="value">
-						<m-cube>To top</m-cube>
+						<j-cube>To top</j-cube>
 					</div>
-				</m-transition-slide>
-				<m-transition-slide :opacity="opacity" position="right">
+				</j-transition-slide>
+				<j-transition-slide :opacity="opacity" position="right">
 					<div class="deom-item" v-show="value">
-						<m-cube>To right</m-cube>
+						<j-cube>To right</j-cube>
 					</div>
-				</m-transition-slide>
-			</m-row>
-			<m-row class="demo-row" X="center">
-				<m-transition-slide
+				</j-transition-slide>
+			</j-row>
+			<j-row class="demo-row" X="center">
+				<j-transition-slide
 					:opacity="opacity"
 					class="deom-item"
 					position="left"
 				>
 					<div class="deom-item" v-show="value">
-						<m-cube>To left</m-cube>
+						<j-cube>To left</j-cube>
 					</div>
-				</m-transition-slide>
-				<m-transition-slide
+				</j-transition-slide>
+				<j-transition-slide
 					:opacity="opacity"
 					class="deom-item"
 					position="bottom"
 				>
 					<div class="deom-item" v-show="value">
-						<m-cube>To bottom</m-cube>
+						<j-cube>To bottom</j-cube>
 					</div>
-				</m-transition-slide>
-			</m-row>
+				</j-transition-slide>
+			</j-row>
 		</div>
 	</demo-box>
 	<p>禁用透明效果适用于元素在屏幕或其他元素边缘进出可视范围使用</p>
@@ -91,11 +91,11 @@
 			return {
 				value: true,
 				opacity: true,
-				code: `<m-transition-slide :opacity="true/false" position="top">
+				code: `<j-transition-slide :opacity="true/false" position="top">
     <div class="deom-item" v-show="value">
-    <m-cube>To top</m-cube>
+    <j-cube>To top</j-cube>
     </div>
-</m-transition-slide>`,
+</j-transition-slide>`,
 			};
 		},
 	};
@@ -105,7 +105,7 @@
 	.demo-row {
 		height: 100px;
 	}
-	.deom-item .m-cube {
+	.deom-item .j-cube {
 		font-size: 14px;
 	}
 	.deom-item + .deom-item {

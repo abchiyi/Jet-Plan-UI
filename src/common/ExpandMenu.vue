@@ -1,12 +1,12 @@
 <template>
-	<m-button :style="styles" row text hover @click.stop="click">
-		<m-row space-mode="between">
+	<j-button :style="styles" row text hover @click.stop="click">
+		<j-row space-mode="between">
 			<strong>
 				<slot name="text">ShowMenu</slot>
 			</strong>
 			<i :class="iconClass"></i>
-		</m-row>
-	</m-button>
+		</j-row>
+	</j-button>
 	<div class="more-content">
 		<slot></slot>
 	</div>

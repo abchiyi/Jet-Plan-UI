@@ -60,7 +60,7 @@
 				<li>
 					组件事件请参考
 					<!-- TODO 指向 MDN input 标签事件参考 -->
-					<m-button text hover>&lt;input&gt;</m-button>
+					<j-button text hover>&lt;input&gt;</j-button>
 					标签事件
 				</li>
 			</template>

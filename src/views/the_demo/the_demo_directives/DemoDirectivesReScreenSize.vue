@@ -43,7 +43,7 @@
 						</p>
 						<p>
 							类似这样：
-							<m-code-box
+							<j-code-box
 								code="{xs: false, sm: false, md: false, lg: false, xl: true}"
 							/>
 						</p>

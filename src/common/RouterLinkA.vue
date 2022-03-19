@@ -1,7 +1,7 @@
 <template>
-	<m-button text hover row :class="className" @click="click">
+	<j-button text hover row :class="className" @click="click">
 		<slot />
-	</m-button>
+	</j-button>
 </template>
 
 <script>

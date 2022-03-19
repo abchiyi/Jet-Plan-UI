@@ -20,7 +20,7 @@
 		</doc-item>
 		<doc-item class="no-dot" name="使用">
 			<li>
-				<m-code-box :code="code" />
+				<j-code-box :code="code" />
 			</li>
 		</doc-item>
 	</article>

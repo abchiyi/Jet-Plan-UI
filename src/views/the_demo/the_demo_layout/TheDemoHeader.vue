@@ -10,7 +10,7 @@
 		</doc-item>
 		<hr />
 		<div id="doc">
-			<doc-item title-is="h2" name="<m-header>:">
+			<doc-item title-is="h2" name="<j-header>:">
 				<li id="slots">
 					<doc-item name="Slots:">
 						<li id="slots-default">
@@ -23,7 +23,7 @@
 				</li>
 			</doc-item>
 		</div>
-		<demo-box title="<m-header>" :code="code" :expand="true"></demo-box>
+		<demo-box title="<j-header>" :code="code" :expand="true"></demo-box>
 	</div>
 </template>
 <script>
@@ -34,11 +34,11 @@
 		data: () => {
 			return {
 				code: `
-<m-header>
+<j-header>
     <template v-slot:default>
         Header
     </template>
-</m-header>
+</j-header>
                 `,
 			};
 		},

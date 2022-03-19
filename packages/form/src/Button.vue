@@ -2,7 +2,7 @@
 	import { h } from 'vue';
 	import { ActionFeedback } from '../../action-feedback';
 	export default {
-		name: 'm-button',
+		name: 'j-button',
 		data() {
 			return {
 				value: false,
@@ -29,7 +29,7 @@
 		},
 		computed: {
 			classes() {
-				let classes = ['shape', 'm-button'];
+				let classes = ['shape', 'j-button'];
 				if (this.primary) classes.push('primary');
 				if (this.disabled) classes.push('disabled');
 				if (this.row) classes.push('row');
@@ -64,7 +64,7 @@
 </script>
 <style>
 	/*------------ Default ----------*/
-	.m-button {
+	.j-button {
 		transition: all 0.3s var(--ease-out);
 		background-color: var(--secondary);
 		border-radius: var(--m-radius);
@@ -80,42 +80,42 @@
 		/* font-size: 1.1rem; */
 	}
 
-	.m-button {
+	.j-button {
 		/* margin: 0 0 0 2px; */
 		margin: calc(1em * 0.15);
 	}
 	/*------------ disabled ----------*/
-	.m-button.disabled {
+	.j-button.disabled {
 		color: var(--text-disabled);
 		cursor: not-allowed;
 	}
 
 	/*------------ OneLine ----------*/
-	.m-button.row {
+	.j-button.row {
 		display: block;
 		width: 100%;
 	}
-	.m-button.row + .m-button.row {
+	.j-button.row + .j-button.row {
 		margin: 2px 0 0 0;
 	}
 	/* Button Mode Only*/
-	.m-button.button.primary {
+	.j-button.button.primary {
 		background-color: var(--primary);
 		/* TODO需要在主题文件定义文本色彩 */
 		color: white;
 	}
 	/* Text Button */
 	/*------------ Default ----------*/
-	.m-button.text-button {
+	.j-button.text-button {
 		background: unset;
 		padding: 6px 8px;
 	}
 	/*------------ Primary ----------*/
-	.m-button.text-button.primary {
+	.j-button.text-button.primary {
 		color: var(--primary);
 	}
 	/* ------------ disabled ---------- */
-	.m-button.text-button.disabled {
+	.j-button.text-button.disabled {
 		color: var(--text-disabled);
 	}
 </style>

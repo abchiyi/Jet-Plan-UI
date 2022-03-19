@@ -1,28 +1,28 @@
 <script>
-import { h, Transition } from "vue";
-export default {
-  name: "m-transition-fade",
-  render() {
-    return h(
-      Transition,
-      {
-        name: "m-transition-fade",
-      },
-      {
-        default: () => this.$slots.default(),
-      }
-    );
-  },
-};
+	import { h, Transition } from 'vue';
+	export default {
+		name: 'j-transition-fade',
+		render() {
+			return h(
+				Transition,
+				{
+					name: 'j-transition-fade',
+				},
+				{
+					default: () => this.$slots.default(),
+				}
+			);
+		},
+	};
 </script>
 
 <style>
-.m-transition-fade-enter-active,
-.m-transition-fade-leave-active {
-  transition: opacity 0.4s var(--ease-out);
-}
-.m-transition-fade-enter-from,
-.m-transition-fade-leave-active {
-  opacity: 0 !important;
-}
+	.j-transition-fade-enter-active,
+	.j-transition-fade-leave-active {
+		transition: opacity 0.4s var(--ease-out);
+	}
+	.j-transition-fade-enter-from,
+	.j-transition-fade-leave-active {
+		opacity: 0 !important;
+	}
 </style>

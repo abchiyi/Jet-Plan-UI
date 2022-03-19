@@ -1,7 +1,7 @@
 <script>
 	import { h } from 'vue';
 	export default {
-		name: 'm-card',
+		name: 'j-card',
 		props: {
 			zDepth: {
 				// TODD 限制范围
@@ -11,7 +11,7 @@
 		},
 		computed: {
 			classes() {
-				let classes = ['m-card'];
+				let classes = ['j-card'];
 				return classes;
 			},
 			styles() {
@@ -34,7 +34,7 @@
 </script>
 
 <style>
-	.m-card {
+	.j-card {
 		border-radius: var(--m-radius);
 		box-shadow: var(--shadow);
 		background: var(--card);

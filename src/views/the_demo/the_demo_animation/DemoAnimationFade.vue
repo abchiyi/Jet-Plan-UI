@@ -1,10 +1,10 @@
 <template>
 	<h2>淡出淡入</h2>
-	<m-control-bar for-id="re-fade-value">
+	<j-control-bar for-id="re-fade-value">
 		<template v-slot:text>
 			{{ value ? '淡出' : '淡入' }}
 		</template>
-		<m-button
+		<j-button
 			id="re-fade-value"
 			@click="
 				() => {
@@ -13,16 +13,16 @@
 			"
 		>
 			ClickMe
-		</m-button>
-	</m-control-bar>
+		</j-button>
+	</j-control-bar>
 	<demo-box title="淡出淡入" :code="code" id="fade">
-		<m-row class="animation-box" X="center">
-			<m-transition-fade>
-				<m-cube v-show="value">
+		<j-row class="animation-box" X="center">
+			<j-transition-fade>
+				<j-cube v-show="value">
 					<p>Fade</p>
-				</m-cube>
-			</m-transition-fade>
-		</m-row>
+				</j-cube>
+			</j-transition-fade>
+		</j-row>
 	</demo-box>
 </template>
 
@@ -32,11 +32,11 @@
 		data() {
 			return {
 				value: true,
-				code: `<m-transition-fade>
-    <m-cube v-show="value">
+				code: `<j-transition-fade>
+    <j-cube v-show="value">
         <p>Fade</p>
-    </m-cube>
-</m-transition-fade>`,
+    </j-cube>
+</j-transition-fade>`,
 			};
 		},
 	};

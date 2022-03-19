@@ -1,5 +1,5 @@
 <template>
-	<m-button
+	<j-button
 		tag="a"
 		hover
 		target="_blank"
@@ -23,7 +23,7 @@
 			</svg>
 			Gitee
 		</span>
-	</m-button>
+	</j-button>
 </template>
 <script>
 	export default {
@@ -31,11 +31,11 @@
 	};
 </script>
 <style scoped>
-	.m-button {
+	.j-button {
 		background: #c0392b;
 	}
 
-	.m-button.text-button {
+	.j-button.text-button {
 		background: unset;
 	}
 </style>

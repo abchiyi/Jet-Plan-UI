@@ -4,7 +4,7 @@
 
 <script>
 	export default {
-		name: 'm-progress',
+		name: 'j-progress',
 		props: {
 			value: {
 				type: [Number, String],

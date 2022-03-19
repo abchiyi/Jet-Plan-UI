@@ -1,10 +1,10 @@
 <template>
-	<m-row class="navbar" Y="center" spaceMode="between" reverse>
+	<j-row class="navbar" Y="center" spaceMode="between" reverse>
 		<!-- 选项 -->
 		<div id="header-options">
-			<m-button text hover @click="switchMode">
+			<j-button text hover @click="switchMode">
 				<div id="darkmode-switch" style="user-select: none">
-					<m-transition-fade @leave="darkModeSwitch">
+					<j-transition-fade @leave="darkModeSwitch">
 						<i
 							v-show="darkModeTransitionSwitch"
 							:key="1"
@@ -13,21 +13,21 @@
 								darkMode ? 'bi-moon-fill' : 'bi-sun-fill',
 							]"
 						></i>
-					</m-transition-fade>
+					</j-transition-fade>
 				</div>
-			</m-button>
-			<m-button text hover>About</m-button>
+			</j-button>
+			<j-button text hover>About</j-button>
 
 			<button-gitee text />
 			<button-github text />
 		</div>
-		<m-col :lg="0" :xl="0">
+		<j-col :lg="0" :xl="0">
 			<!-- 侧栏开关 -->
-			<m-button text title="menu" @click.stop="click">
+			<j-button text title="menu" @click.stop="click">
 				<i style="font-size: 1.8em" class="bi bi-list"></i>
-			</m-button>
-		</m-col>
-	</m-row>
+			</j-button>
+		</j-col>
+	</j-row>
 </template>
 
 <script>

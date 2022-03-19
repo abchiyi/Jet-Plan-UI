@@ -16,12 +16,12 @@
 					{{ item.name }}
 				</router-link-a>
 				<!-- Index -->
-				<m-transition-folded>
+				<j-transition-folded>
 					<div
 						class="page-index"
 						v-show="$route.path == item.href && item.index.length"
 					>
-						<m-button
+						<j-button
 							v-scroll-to:120="i.to"
 							style="padding-left: 2.5rem"
 							v-for="i in item.index"
@@ -32,9 +32,9 @@
 							row
 						>
 							{{ i.name }}
-						</m-button>
+						</j-button>
 					</div>
-				</m-transition-folded>
+				</j-transition-folded>
 			</li>
 		</ul>
 	</div>

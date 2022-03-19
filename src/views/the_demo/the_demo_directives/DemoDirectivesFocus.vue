@@ -15,8 +15,8 @@
 			</li>
 		</doc-item>
 		<demo-box title="v-focus" :code="code">
-			<m-row X="center">
-				<m-cube
+			<j-row X="center">
+				<j-cube
 					v-focus="onblur"
 					@click="
 						() => {
@@ -26,8 +26,8 @@
 					style="width: 150px; padding: 0 10px"
 				>
 					{{ value ? 'NowClickOutside' : 'NowClickMe' }}
-				</m-cube>
-			</m-row>
+				</j-cube>
+			</j-row>
 		</demo-box>
 	</article>
 </template>
@@ -42,9 +42,9 @@ function onblur () {
     this.value = false;
 };
 //Html
-<m-cube v-focus="onblur" @click="() => {value = true}" 1>
+<j-cube v-focus="onblur" @click="() => {value = true}" 1>
     {{ value ? 'NowClickOutside' : 'NowClickMe' }}
-</m-cube>
+</j-cube>
 `,
 				value: false,
 			};

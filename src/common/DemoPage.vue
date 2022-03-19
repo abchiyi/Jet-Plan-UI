@@ -1,17 +1,17 @@
 <template>
-  <m-row class="demo-page" X="center">
-    <m-col colMd="12" xl="12" sm="20"> </m-col>
-  </m-row>
+	<j-row class="demo-page" X="center">
+		<j-col colMd="12" xl="12" sm="20"></j-col>
+	</j-row>
 </template>
 
 <script>
-export default {
-  name: "m-demo-page"
-};
+	export default {
+		name: 'j-demo-page',
+	};
 </script>
 
 <style>
-.demo-page {
-  padding-top: 150px;
-}
+	.demo-page {
+		padding-top: 150px;
+	}
 </style>

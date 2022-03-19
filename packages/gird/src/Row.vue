@@ -2,7 +2,7 @@
 	import { h } from 'vue';
 
 	export default {
-		name: 'm-row',
+		name: 'j-row',
 		props: {
 			X: {
 				type: String,
@@ -85,7 +85,7 @@
 				this.tag,
 				{
 					class: [
-						'm-row',
+						'j-row',
 						this.noGap ? 'no-gap' : '',
 						this.reverse ? 'reverse' : '',
 					],
@@ -98,12 +98,12 @@
 
 <style>
 	/* 取消子 Col 组件的间隙 */
-	.m-row.no-gap > .m-col {
+	.j-row.no-gap > .j-col {
 		padding: unset;
 	}
 </style>
 <style scoped>
-	.m-row {
+	.j-row {
 		display: flex;
 		flex-direction: row;
 		align-items: v-bind(y);
@@ -111,7 +111,7 @@
 		flex-wrap: v-bind(flexWrap);
 	}
 
-	.m-row.reverse {
+	.j-row.reverse {
 		flex-direction: row-reverse;
 	}
 </style>

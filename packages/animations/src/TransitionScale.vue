@@ -1,12 +1,12 @@
 <script>
 	import { h, TransitionGroup } from 'vue';
 	export default {
-		name: 'm-transition-scale',
+		name: 'j-transition-scale',
 		render() {
 			return h(
 				TransitionGroup,
 				{
-					name: 'm-transition-scale',
+					name: 'j-transition-scale',
 					mode: 'out-in',
 				},
 				{
@@ -18,12 +18,12 @@
 </script>
 
 <style>
-	.m-transition-scale-enter-active,
-	.m-transition-scale-leave-active {
+	.j-transition-scale-enter-active,
+	.j-transition-scale-leave-active {
 		transition: all 0.4s var(--ease-out);
 	}
-	.m-transition-scale-enter-from,
-	.m-transition-scale-leave-active {
+	.j-transition-scale-enter-from,
+	.j-transition-scale-leave-active {
 		transform: scale(0) !important;
 		opacity: 0;
 	}

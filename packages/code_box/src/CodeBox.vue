@@ -1,7 +1,7 @@
 <template>
 	<!-- div 标签作为缓冲,避免过渡动画修改内部样式 -->
-	<div class="m-code-box-toplayer" :style="style">
-		<m-row class="m-code-box" ref="codeBox">
+	<div class="j-code-box-toplayer" :style="style">
+		<j-row class="j-code-box" ref="codeBox">
 			<ul class="line-number">
 				<li v-for="i in linenumber" :key="i">{{ i }}</li>
 			</ul>
@@ -12,7 +12,7 @@
 				:language="lang"
 				:code="code.trim()"
 			/>
-		</m-row>
+		</j-row>
 	</div>
 </template>
 
@@ -24,7 +24,7 @@
 	import hljsVuePlugin from '@highlightjs/vue-plugin';
 
 	export default {
-		name: 'm-code-box',
+		name: 'j-code-box',
 		props: {
 			code: {
 				type: String,
@@ -83,24 +83,24 @@
 </script>
 <style>
 	/* Font */
-	.m-code-box .line-number,
-	.m-code-box *,
-	.m-code-box {
+	.j-code-box .line-number,
+	.j-code-box *,
+	.j-code-box {
 		font-family: SarasaMono;
 		font-size: 12px;
 	}
-	.m-code-box {
+	.j-code-box {
 		overflow: hidden;
 		border-radius: var(--m-radius);
 	}
 
-	.m-code-box > .line-number,
-	.m-code-box > pre {
+	.j-code-box > .line-number,
+	.j-code-box > pre {
 		margin-top: unset;
 		margin-bottom: unset;
 	}
 
-	.m-code-box > .line-number {
+	.j-code-box > .line-number {
 		background: var(--hljs-bgcolor);
 		border-right: 2px dashed var(--border);
 		box-sizing: border-box;
@@ -113,7 +113,7 @@
 		flex-shrink: 0;
 	}
 
-	.m-code-box .line-number li {
+	.j-code-box .line-number li {
 		margin: unset;
 	}
 </style>

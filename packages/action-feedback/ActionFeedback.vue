@@ -8,7 +8,7 @@
 	import mask from './ActionFeedbackMask.vue';
 	import { h, TransitionGroup } from 'vue';
 	export default {
-		name: 'm-action-feedback',
+		name: 'j-action-feedback',
 		props: {
 			// TODO 验证色彩字符串是否合法
 			color: propInit(String, 'var(--mask)'),
@@ -32,7 +32,7 @@
 		computed: {
 			classes() {
 				return [
-					'm-action-feedback',
+					'j-action-feedback',
 					this.hover && this.data_hover ? 'hover' : '',
 					this.focus ? 'focus' : '',
 					this.focusOutline ? 'focus-outline' : '',
@@ -158,14 +158,14 @@
 	};
 </script>
 <style>
-	.m-action-feedback {
+	.j-action-feedback {
 		outline: solid 3px #00000000;
 		position: relative;
 		transition: unset;
 		overflow: hidden;
 	}
 
-	.m-action-feedback::before {
+	.j-action-feedback::before {
 		transition: 0.3s var(--ease-out-slow);
 		background-color: var(--mask);
 		pointer-events: none;
@@ -179,21 +179,21 @@
 	}
 
 	/* Keyborder focus */
-	.m-action-feedback.focus-outline:focus {
+	.j-action-feedback.focus-outline:focus {
 		transition: 0.3s var(--ease-out);
 		/* TODO 优化样式 */
 		outline: solid 3px rgba(125, 125, 125, 0.1);
 	}
 
 	/* Keyborder focus */
-	.m-action-feedback.focus:focus::before,
+	.j-action-feedback.focus:focus::before,
 	/* Mouse hover */
-	.m-action-feedback.hover:hover::before {
+	.j-action-feedback.hover:hover::before {
 		opacity: 0.5;
 	}
 
 	@supports (-webkit-tap-highlight-color: #ffffff00) {
-		.m-action-feedback {
+		.j-action-feedback {
 			-webkit-tap-highlight-color: #ffffff00;
 		}
 	}

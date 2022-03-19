@@ -1,7 +1,7 @@
 <script>
 	import { h, Transition } from 'vue';
 	export default {
-		name: 'm-transition-folded',
+		name: 'j-transition-folded',
 		methods: {
 			enter(el) {
 				el.style.height = el.scrollHeight + 'px';
@@ -25,7 +25,7 @@
 			return h(
 				Transition,
 				{
-					name: 'm-transition-folded',
+					name: 'j-transition-folded',
 					onEnter: this.enter,
 					onAfterEnter: this.afterEnter,
 
@@ -41,16 +41,16 @@
 </script>
 
 <style>
-	.m-transition-folded-leave-to,
-	.m-transition-folded-enter-from {
+	.j-transition-folded-leave-to,
+	.j-transition-folded-enter-from {
 		margin-bottom: 0px !important;
 		margin-top: 0px !important;
 		padding-bottom: 0px !important;
 		padding-top: 0px !important;
 		height: 0px !important;
 	}
-	.m-transition-folded-leave-active,
-	.m-transition-folded-enter-active {
+	.j-transition-folded-leave-active,
+	.j-transition-folded-enter-active {
 		transition: all 0.4s var(--ease-out) !important;
 		transform: translate3d(0, 0, 0);
 		backface-visibility: hidden;

@@ -34,7 +34,7 @@
 <script>
 	import './css/shape.css';
 	export default {
-		name: 'm-switch',
+		name: 'j-switch',
 		props: {
 			modelValue: {
 				type: Boolean,
@@ -70,7 +70,7 @@
 		computed: {
 			classes() {
 				return [
-					'shape m-switch',
+					'shape j-switch',
 					this.size,
 					this.wider ? 'wider' : '',
 					this.disabled ? 'disabled' : '',
@@ -126,12 +126,12 @@
 <style>
 	/* 隐藏选中框 */
 	@supports (-webkit-tap-highlight-color: #ffffff00) {
-		.m-switch {
+		.j-switch {
 			-webkit-tap-highlight-color: #ffffff00;
 		}
 	}
 	/*--------------- Default --------------- */
-	.m-switch {
+	.j-switch {
 		height: var(--HEIGHT);
 		width: var(--WIDTH);
 		display: inline-block;
@@ -140,67 +140,67 @@
 		margin: 0 2px;
 	}
 
-	.m-switch .background {
+	.j-switch .background {
 		fill: var(--border);
 		width: 26px;
 		height: 16px;
 		opacity: 0.6;
 	}
 
-	.m-switch .mask {
+	.j-switch .mask {
 		fill: var(--border);
 	}
 
-	.m-switch .lever {
+	.j-switch .lever {
 		fill: var(--foreground);
 		transform: translate(3px, 3px);
 		stroke-width: 1;
 	}
 
 	/*--------------- Acitive --------------- */
-	.m-switch.wider .lever > .lever-fill {
+	.j-switch.wider .lever > .lever-fill {
 		width: 15px;
 	}
-	.m-switch.wider.on .lever > .lever-fill {
+	.j-switch.wider.on .lever > .lever-fill {
 		width: 15px;
 		transform: translate(-5px, 0px);
 	}
 
 	/*--------------- ON --------------- */
-	.m-switch.on .background,
-	.m-switch.on .mask {
+	.j-switch.on .background,
+	.j-switch.on .mask {
 		fill: var(--primary);
 	}
 
-	.m-switch.on .background {
+	.j-switch.on .background {
 		opacity: 0.4;
 	}
-	.m-switch.on .lever {
+	.j-switch.on .lever {
 		transform: translate(13px, 3px);
 	}
 
 	/*------------ Animation ----------*/
-	.m-switch * {
+	.j-switch * {
 		transition: 0.3s cubic-bezier(0.3, 0.6, 0.15, 1.2);
 	}
 
 	/*--------------- Disabled --------------- */
 
-	.m-switch.disabled.on .background {
+	.j-switch.disabled.on .background {
 		fill: var(--border);
 		opacity: unset;
 	}
 
-	.m-switch.disabled.on .mask {
+	.j-switch.disabled.on .mask {
 		fill: var(--disabled);
 	}
 
-	.m-switch.disabled .lever {
+	.j-switch.disabled .lever {
 		opacity: 0.5;
 	}
 
 	/* 切换指针为禁用 */
-	.m-switch.disabled {
+	.j-switch.disabled {
 		cursor: not-allowed;
 	}
 </style>

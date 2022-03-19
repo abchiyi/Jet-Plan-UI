@@ -25,11 +25,11 @@
 		</doc-item>
 
 		<demo-box title="shadowPainter" :code="code" expand>
-			<m-row X="center">
-				<m-cube class="demo-box" v-shadow:bottom="value">
+			<j-row X="center">
+				<j-cube class="demo-box" v-shadow:bottom="value">
 					Intensity:{{ value }}
-				</m-cube>
-			</m-row>
+				</j-cube>
+			</j-row>
 		</demo-box>
 	</article>
 </template>

@@ -1,5 +1,5 @@
 <template>
-	<m-button
+	<j-button
 		tag="a"
 		hover
 		target="_blank"
@@ -7,7 +7,7 @@
 	>
 		<i class="bi bi-github" />
 		GitHub
-	</m-button>
+	</j-button>
 </template>
 <script>
 	export default {

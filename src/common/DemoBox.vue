@@ -1,16 +1,16 @@
 <template>
-	<m-card class="m-demo-box">
-		<m-row v-if="codeControl" Y="center" space-mode="between">
+	<j-card class="j-demo-box">
+		<j-row v-if="codeControl" Y="center" space-mode="between">
 			<span class="text-hint">{{ title }}</span>
-			<m-button @click="expand_" text>View Code</m-button>
-		</m-row>
+			<j-button @click="expand_" text>View Code</j-button>
+		</j-row>
 		<div ref="showDemo" class="demo-box-demo">
 			<slot></slot>
 		</div>
-		<m-transition-folded title="展开Code">
-			<m-code-box :id="codeID" :code="code" v-show="value" />
-		</m-transition-folded>
-	</m-card>
+		<j-transition-folded title="展开Code">
+			<j-code-box :id="codeID" :code="code" v-show="value" />
+		</j-transition-folded>
+	</j-card>
 </template>
 
 <script>
@@ -73,7 +73,7 @@ ${this.$refs.showDemo.innerHTML}
 </script>
 
 <style>
-	.m-demo-box {
+	.j-demo-box {
 		padding: 20px;
 	}
 	.demo-box-demo > *:nth-child(1) {

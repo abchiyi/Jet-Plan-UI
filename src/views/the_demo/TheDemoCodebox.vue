@@ -4,9 +4,9 @@
 		<p>用于展示各种代码</p>
 		<!-- Demo -->
 		<demo-box title="点击反馈" :code="code">
-			<m-row X="center">
-				<m-code-box code="conosle.log('Hello world')" />
-			</m-row>
+			<j-row X="center">
+				<j-code-box code="conosle.log('Hello world')" />
+			</j-row>
 		</demo-box>
 		<demo-doc>
 			<template v-slot:prop>
@@ -30,7 +30,7 @@
 		name: 'the-demo-code-box',
 		data() {
 			return {
-				code: `<m-code-box code="conosle.log('Hello world')"  lang="javascript" />`,
+				code: `<j-code-box code="conosle.log('Hello world')"  lang="javascript" />`,
 			};
 		},
 	};

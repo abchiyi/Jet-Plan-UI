@@ -47,18 +47,18 @@
 						<!-- XXX 可能变更的包名  mousse-ui -->
 						导入路径:
 					</li>
-					<m-code-box
+					<j-code-box
 						code="import { TimedActionLimit } from mousse-ui/tool/lib"
 					/>
 				</template>
 			</doc-item>
 			<p>在下方 Demo 中限制为 2s内可执行2次操作</p>
-			<m-control-bar for-id="demo-wcd-control">
+			<j-control-bar for-id="demo-wcd-control">
 				<template v-slot:text>
 					{{ wcd ? '阻塞式等待' : '动态等待' }}
 				</template>
-				<m-switch id="demo-wcd-control" v-model="wcd" />
-			</m-control-bar>
+				<j-switch id="demo-wcd-control" v-model="wcd" />
+			</j-control-bar>
 			<demo-box title="TimedActionLimit" :code="code">
 				<!-- Demo -->
 				<div>
@@ -67,17 +67,17 @@
 						:class="cooldownProgressClass"
 						id="demo-cooldown-progress"
 					>
-						<m-row X="center">{{ text }}</m-row>
+						<j-row X="center">{{ text }}</j-row>
 					</div>
 					<!-- 点击示例 -->
-					<m-cube
+					<j-cube
 						id="demo-show-click-conter"
 						@click="click"
 						style="user-select: none"
 						:style="{ fontSize: clickConter == 0 ? '1em' : '' }"
 					>
 						{{ clickConter == 0 ? 'ClickMe!!' : clickConter }}
-					</m-cube>
+					</j-cube>
 				</div>
 			</demo-box>
 		</article>

@@ -10,7 +10,7 @@
 		</doc-item>
 		<hr />
 
-		<doc-item id="doc" name="<m-action-feedback>:">
+		<doc-item id="doc" name="<j-action-feedback>:">
 			<li id="props:">
 				<doc-item name="Props:">
 					<li id="prop-color">
@@ -77,10 +77,10 @@
 								"tabindex"
 							</warning-text>
 						</p>
-						<m-code-box
+						<j-code-box
 							code="
-<m-action-feedback tabindex='1' focus focus-outline ></m-action-feedback>
-<m-action-feedback tabindex='2' focus focus-outline ></m-action-feedback>
+<j-action-feedback tabindex='1' focus focus-outline ></j-action-feedback>
+<j-action-feedback tabindex='2' focus focus-outline ></j-action-feedback>
 "
 						/>
 					</li>
@@ -95,35 +95,35 @@
 				</doc-item>
 			</li>
 		</doc-item>
-		<demo-box title="<m-action-feedback>" :code="code" expand>
+		<demo-box title="<j-action-feedback>" :code="code" expand>
 			<div>
 				<!-- Control -->
-				<m-control-bar for-id="re-active">
+				<j-control-bar for-id="re-active">
 					<template v-slot:text>启用 Active 效果</template>
 
-					<m-switch id="re-active" v-model="active" />
-				</m-control-bar>
-				<m-control-bar for-id="re-hover">
+					<j-switch id="re-active" v-model="active" />
+				</j-control-bar>
+				<j-control-bar for-id="re-hover">
 					<template v-slot:text>启用 Hover 效果</template>
 
-					<m-switch id="re-hover" v-model="hover" />
-				</m-control-bar>
-				<m-control-bar for-id="switch-focus">
+					<j-switch id="re-hover" v-model="hover" />
+				</j-control-bar>
+				<j-control-bar for-id="switch-focus">
 					<template v-slot:text>启用 :focus 效果</template>
 
-					<m-switch id="switch-focus" v-model="focus" />
-				</m-control-bar>
-				<m-control-bar for-id="switch-focus-outline">
+					<j-switch id="switch-focus" v-model="focus" />
+				</j-control-bar>
+				<j-control-bar for-id="switch-focus-outline">
 					<template v-slot:text>启用 :focus.outline 效果</template>
 
-					<m-switch
+					<j-switch
 						id="switch-focus-outline"
 						v-model="focusOutline"
 					/>
-				</m-control-bar>
+				</j-control-bar>
 				<!-- Demo -->
-				<m-row X="center">
-					<m-action-feedback
+				<j-row X="center">
+					<j-action-feedback
 						tabindex="1"
 						class="demo-item"
 						:active="active"
@@ -131,11 +131,11 @@
 						:focus="focus"
 						:focus-outline="focusOutline"
 					>
-						<m-row style="height: 100%" X="center" Y="center">
+						<j-row style="height: 100%" X="center" Y="center">
 							ClickMe!!
-						</m-row>
-					</m-action-feedback>
-					<m-action-feedback
+						</j-row>
+					</j-action-feedback>
+					<j-action-feedback
 						tabindex="2"
 						class="demo-item"
 						:active="active"
@@ -143,11 +143,11 @@
 						:focus="focus"
 						:focus-outline="focusOutline"
 					>
-						<m-row style="height: 100%" X="center" Y="center">
+						<j-row style="height: 100%" X="center" Y="center">
 							ClickMe!!
-						</m-row>
-					</m-action-feedback>
-				</m-row>
+						</j-row>
+					</j-action-feedback>
+				</j-row>
 			</div>
 		</demo-box>
 	</div>
@@ -174,38 +174,38 @@ let focus = true,
 let focusOutline = true,
 // HTML
 <!-- Control -->
-<m-control-bar for-id="re-active">
+<j-control-bar for-id="re-active">
     <template v-slot:text>启用 Active 效果</template>
 
-        <m-switch id="re-active" v-model="active" />
+        <j-switch id="re-active" v-model="active" />
     </template>
-</m-control-bar>
-<m-control-bar for-id="re-hover">
+</j-control-bar>
+<j-control-bar for-id="re-hover">
     <template v-slot:text>启用 Hover 效果</template>
 
-        <m-switch id="re-hover" v-model="hover" />
+        <j-switch id="re-hover" v-model="hover" />
     </template>
-</m-control-bar>
-<m-control-bar for-id="switch-focus">
+</j-control-bar>
+<j-control-bar for-id="switch-focus">
     <template v-slot:text>启用 :focus 效果</template>
 
-        <m-switch id="switch-focus" v-model="focus" />
+        <j-switch id="switch-focus" v-model="focus" />
     </template>
-</m-control-bar>
-<m-control-bar for-id="switch-focus-outline">
+</j-control-bar>
+<j-control-bar for-id="switch-focus-outline">
     <template v-slot:text>
         启用 :focus.outline 效果
     </template>
 
-        <m-switch
+        <j-switch
             id="switch-focus-outline"
             v-model="focusOutline"
         />
     </template>
-</m-control-bar>
+</j-control-bar>
 <!-- Demo -->
-<m-row X="center">
-    <m-action-feedback
+<j-row X="center">
+    <j-action-feedback
         tabindex="1"
         class="demo-item"
         :active="active"
@@ -213,15 +213,15 @@ let focusOutline = true,
         :focus="focus"
         :focus-outline="focusOutline"
     >
-        <m-row
+        <j-row
             style="height: 100%"
             X="center"
             Y="center"
         >
             ClickMe!!
-        </m-row>
-    </m-action-feedback>
-    <m-action-feedback
+        </j-row>
+    </j-action-feedback>
+    <j-action-feedback
         tabindex="2"
         class="demo-item"
         :active="active"
@@ -229,15 +229,15 @@ let focusOutline = true,
         :focus="focus"
         :focus-outline="focusOutline"
     >
-        <m-row
+        <j-row
             style="height: 100%"
             X="center"
             Y="center"
         >
             ClickMe!!
-        </m-row>
-    </m-action-feedback>
-</m-row>
+        </j-row>
+    </j-action-feedback>
+</j-row>
 
 
 

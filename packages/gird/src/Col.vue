@@ -14,7 +14,7 @@
 		return '';
 	}
 	export default {
-		name: 'm-col',
+		name: 'j-col',
 		props: {
 			tag: {
 				type: String,
@@ -44,11 +44,11 @@
 		computed: {
 			class() {
 				return [
-					notUndefined(this.xs, 'm-col-xs'),
-					notUndefined(this.sm, 'm-col-sm'),
-					notUndefined(this.md, 'm-col-md'),
-					notUndefined(this.lg, 'm-col-lg'),
-					notUndefined(this.lg, 'm-col-xl'),
+					notUndefined(this.xs, 'j-col-xs'),
+					notUndefined(this.sm, 'j-col-sm'),
+					notUndefined(this.md, 'j-col-md'),
+					notUndefined(this.lg, 'j-col-lg'),
+					notUndefined(this.lg, 'j-col-xl'),
 					notUndefined(this.offset, 'offset'),
 					notUndefined(this.offsetXs, 'offset-xs'),
 					notUndefined(this.offsetSm, 'offset-sm'),
@@ -86,7 +86,7 @@
 			return h(
 				this.tag,
 				{
-					class: ['m-col', ...this.class],
+					class: ['j-col', ...this.class],
 				},
 				this.$slots
 			);
@@ -97,11 +97,11 @@
 <style>
 	/* --常规设置-- */
 
-	.m-col,
-	.m-col-xs,
-	.m-col-sm,
-	.m-col-md,
-	.m-col-lg {
+	.j-col,
+	.j-col-xs,
+	.j-col-sm,
+	.j-col-md,
+	.j-col-lg {
 		transition: 500ms var(--ease-in-out), color 0s;
 		/* 内外边距和变宽将包含在总大小内 */
 		box-sizing: border-box;
@@ -109,20 +109,20 @@
 		min-height: 1px;
 	}
 
-	.m-col {
+	.j-col {
 		width: v-bind('style.col');
 	}
 
-	.m-col + * {
+	.j-col + * {
 		padding-left: 8px;
 	}
 
 	/* 偏移 */
-	.m-col.offset {
+	.j-col.offset {
 		margin-left: v-bind('style.offset');
 	}
 
-	.m-row.reverse > .offset {
+	.j-row.reverse > .offset {
 		margin-right: v-bind('style.offset');
 		margin-left: unset;
 	}
@@ -131,12 +131,12 @@
 
 	/* xl */
 	@media (min-width: 1200px) {
-		.m-col-xl {
+		.j-col-xl {
 			width: v-bind('style.xl');
 			display: v-bind('style.hiddenOnXl');
 		}
 
-		.m-col.offset-xl {
+		.j-col.offset-xl {
 			margin-left: v-bind('style.offsetXl');
 		}
 
@@ -147,12 +147,12 @@
 
 	/* lg */
 	@media (min-width: 993px) and (max-width: 1200px) {
-		.m-col-lg {
+		.j-col-lg {
 			width: v-bind('style.lg');
 			display: v-bind('style.hiddenOnLg');
 		}
 
-		.m-col.offset-lg {
+		.j-col.offset-lg {
 			margin-left: v-bind('style.offsetLg');
 		}
 
@@ -163,12 +163,12 @@
 
 	/* md */
 	@media (min-width: 769px) and (max-width: 992px) {
-		.m-col-md {
+		.j-col-md {
 			width: v-bind('style.md');
 			display: v-bind('style.hiddenOnMd');
 		}
 
-		.m-col.offset-md {
+		.j-col.offset-md {
 			margin-left: v-bind('style.offsetMd');
 		}
 
@@ -179,12 +179,12 @@
 
 	/* sm */
 	@media (min-width: 579px) and (max-width: 768px) {
-		.m-col-sm {
+		.j-col-sm {
 			width: v-bind('style.sm');
 			display: v-bind('style.hiddenOnSm');
 		}
 
-		.m-col.offset-sm {
+		.j-col.offset-sm {
 			margin-left: v-bind('style.offsetSm');
 		}
 
@@ -195,12 +195,12 @@
 
 	/* xs */
 	@media (max-width: 578px) {
-		.m-col-xs {
+		.j-col-xs {
 			width: v-bind('style.xs');
 			display: v-bind('style.hiddenOnXs');
 		}
 
-		.m-col.offset-xs {
+		.j-col.offset-xs {
 			margin-left: v-bind('style.offsetXs');
 		}
 

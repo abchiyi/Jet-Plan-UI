@@ -1,7 +1,7 @@
 <script>
 	import { h } from 'vue';
 	export default {
-		name: 'm-mask',
+		name: 'j-mask',
 		props: {
 			data: {
 				type: Object,
@@ -18,7 +18,7 @@
 		},
 		render() {
 			return h('span', {
-				class: ['m-mask', 'mask'],
+				class: ['j-mask', 'mask'],
 				style: this.styles,
 			});
 		},

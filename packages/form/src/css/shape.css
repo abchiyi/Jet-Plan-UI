@@ -1,66 +1,66 @@
 /* 公共基础参数 */
 .shape.s {
-    --SIZE: 16px;
+	--SIZE: 16px;
 }
 
 .shape.m {
-    --SIZE: 24px;
+	--SIZE: 24px;
 }
 
 .shape.l {
-    --SIZE: 32px;
+	--SIZE: 32px;
 }
 
 .shape.em {
-    --SIZE: 1em
+	--SIZE: 1em;
 }
 
 .shape.rem {
-    --SIZE: 1rem
+	--SIZE: 1rem;
 }
 
 .shape {
-    --BASE-LENGTH: calc(var(--SIZE) / 8);
-    --OFF-SET: var(--BASE-LENGTH);
-    --SHAODW: 0.08;
+	--BASE-LENGTH: calc(var(--SIZE) / 8);
+	--OFF-SET: var(--BASE-LENGTH);
+	--SHAODW: 0.08;
 }
 
 /* switch button 共有参数 */
-.shape.m-check-box,
-.shape.m-radio,
-.shape.m-button,
-.shape.m-switch {
-    --HEIGHT: calc(var(--BASE-LENGTH) * 8);
-    --WIDTH: calc(var(--BASE-LENGTH) * 13);
-
+.shape.j-check-box,
+.shape.j-radio,
+.shape.j-button,
+.shape.j-switch {
+	--HEIGHT: calc(var(--BASE-LENGTH) * 8);
+	--WIDTH: calc(var(--BASE-LENGTH) * 13);
 }
 
 /* switch */
-.shape.m-switch {
-    --MASK-WIDTH: calc(var(--WIDTH) - var(--OFF-SET) * 2);
-    --MASK-HEIGHT: calc(var(--HEIGHT) - var(--OFF-SET) * 2);
-    --LEVER_DIAMETER: var(--MASK-HEIGHT);
-    --LEVER-WIDER: calc(var(--LEVER_DIAMETER) * 1.2);
-    --LEVER-SHADOW: calc(var(--LEVER_DIAMETER) * var(--SHAODW));
+.shape.j-switch {
+	--MASK-WIDTH: calc(var(--WIDTH) - var(--OFF-SET) * 2);
+	--MASK-HEIGHT: calc(var(--HEIGHT) - var(--OFF-SET) * 2);
+	--LEVER_DIAMETER: var(--MASK-HEIGHT);
+	--LEVER-WIDER: calc(var(--LEVER_DIAMETER) * 1.2);
+	--LEVER-SHADOW: calc(var(--LEVER_DIAMETER) * var(--SHAODW));
 }
 
-.shape.m-switch.s {
-    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.15);
+.shape.j-switch.s {
+	--LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.15);
 }
 
-.shape.m-switch.m {
-    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.12);
+.shape.j-switch.m {
+	--LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.12);
 }
 
-.shape.m-switch.l {
-    --LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.1);
+.shape.j-switch.l {
+	--LEVER-BORDER: calc(var(--LEVER_DIAMETER) * 0.1);
 }
 
 /* Check box */
-.shape.m-check-box {}
+.shape.j-check-box {
+}
 
 /* Radio */
-.shape.m-check-box,
-.shape.m-radio {
-    --DOT-DIAMETER: calc(var(--HEIGHT) - var(--OFF-SET) * 4);
+.shape.j-check-box,
+.shape.j-radio {
+	--DOT-DIAMETER: calc(var(--HEIGHT) - var(--OFF-SET) * 4);
 }

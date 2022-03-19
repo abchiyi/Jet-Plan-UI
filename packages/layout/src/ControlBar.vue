@@ -1,7 +1,7 @@
 <template>
-	<m-action-feedback active class="m-control-bar">
-		<m-row :reverse="reverse" space-mode="between">
-			<m-row
+	<j-action-feedback active class="j-control-bar">
+		<j-row :reverse="reverse" space-mode="between">
+			<j-row
 				class="control-label"
 				:for="forId"
 				tag="label"
@@ -12,22 +12,22 @@
 				<slot name="text">
 					<p>Display text</p>
 				</slot>
-			</m-row>
-			<m-row :reverse="reverse" class="control-comp" Y="center">
+			</j-row>
+			<j-row :reverse="reverse" class="control-comp" Y="center">
 				<slot>
 					<p>Control</p>
 				</slot>
-			</m-row>
-		</m-row>
-	</m-action-feedback>
+			</j-row>
+		</j-row>
+	</j-action-feedback>
 </template>
 
 <script>
 	import { Row } from '../../gird/';
 	export default {
-		name: 'm-control-bar',
+		name: 'j-control-bar',
 		components: {
-			'm-row': Row,
+			'j-row': Row,
 		},
 		props: {
 			forId: { type: String, required: true },
@@ -40,7 +40,7 @@
 	.control-label {
 		user-select: none;
 	}
-	.m-control-bar {
+	.j-control-bar {
 		border-radius: var(--m-radius);
 		background: var(--foreground);
 		overflow: hidden;

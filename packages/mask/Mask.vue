@@ -2,7 +2,7 @@
 	import { h } from 'vue';
 	import { TransitionFade } from '../animations';
 	export default {
-		name: 'm-mask',
+		name: 'j-mask',
 		components: {
 			TransitionFade,
 		},
@@ -15,7 +15,7 @@
 		render() {
 			return h(TransitionFade, null, {
 				default: () => [
-					this.value ? h('div', { class: 'm-mask' }) : '',
+					this.value ? h('div', { class: 'j-mask' }) : '',
 				],
 			});
 		},
@@ -23,7 +23,7 @@
 </script>
 
 <style>
-	.m-mask {
+	.j-mask {
 		background-color: var(--mask);
 		position: fixed;
 		bottom: 0;

@@ -1,10 +1,10 @@
 <template>
 	<h2>折叠展开</h2>
-	<m-control-bar for-id="re-folded-value">
+	<j-control-bar for-id="re-folded-value">
 		<template v-slot:text>
 			{{ value ? '折叠' : '展开' }}
 		</template>
-		<m-button
+		<j-button
 			id="re-folded-value"
 			@click="
 				() => {
@@ -13,18 +13,18 @@
 			"
 		>
 			ClickMe
-		</m-button>
-	</m-control-bar>
+		</j-button>
+	</j-control-bar>
 	<demo-box title="折叠展开" :code="code" id="folded">
 		<div>
-			<!-- <m-row X="center"> -->
-			<m-transition-folded>
-				<m-cube v-show="value">
+			<!-- <j-row X="center"> -->
+			<j-transition-folded>
+				<j-cube v-show="value">
 					<p>Folded</p>
-				</m-cube>
-			</m-transition-folded>
+				</j-cube>
+			</j-transition-folded>
 		</div>
-		<!-- </m-row> -->
+		<!-- </j-row> -->
 	</demo-box>
 </template>
 
@@ -34,13 +34,13 @@
 		data() {
 			return {
 				value: true,
-				code: `<m-transition-folded>
+				code: `<j-transition-folded>
     <div v-show="value">
-        <m-cube>
+        <j-cube>
         <p>Folded</p>
-        </m-cube>
+        </j-cube>
     </div>
-</m-transition-folded>`,
+</j-transition-folded>`,
 			};
 		},
 	};

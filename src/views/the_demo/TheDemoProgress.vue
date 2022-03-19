@@ -5,7 +5,7 @@
 		</doc-item>
 		<hr />
 		<div id="doc">
-			<doc-item title-is="h2" name="<m-progress>:">
+			<doc-item title-is="h2" name="<j-progress>:">
 				<li>
 					<doc-item name="Props:">
 						<li id="prop-value">
@@ -34,17 +34,17 @@
 				</li>
 			</doc-item>
 		</div>
-		<m-control-bar for-id="demo-progress-to-susccess">
+		<j-control-bar for-id="demo-progress-to-susccess">
 			<template v-slot:text>完成进度条</template>
-			<m-switch id="demo-progress-to-susccess" v-model="success" />
-		</m-control-bar>
-		<m-control-bar for-id="demo-progress-to-failed">
+			<j-switch id="demo-progress-to-susccess" v-model="success" />
+		</j-control-bar>
+		<j-control-bar for-id="demo-progress-to-failed">
 			<template v-slot:text>失败进度条</template>
-			<m-switch id="demo-progress-to-failed" v-model="failed" />
-		</m-control-bar>
-		<demo-box title="<m-progress>" :code="code" :expand="true">
+			<j-switch id="demo-progress-to-failed" v-model="failed" />
+		</j-control-bar>
+		<demo-box title="<j-progress>" :code="code" :expand="true">
 			<div id="demo-content">
-				<m-progress :failed="failed" :value="number"></m-progress>
+				<j-progress :failed="failed" :value="number"></j-progress>
 			</div>
 		</demo-box>
 	</div>
@@ -63,25 +63,25 @@ let value = 50;
 let filed = false;
 
 // HTML
-<m-control-bar for-id="demo-progress-to-susccess">
+<j-control-bar for-id="demo-progress-to-susccess">
     <template v-slot:text>完成进度条</template>
-        <m-switch
+        <j-switch
             id="demo-progress-to-susccess"
             v-model="success"
         />
-</m-control-bar>
-<m-control-bar for-id="demo-progress-to-failed">
+</j-control-bar>
+<j-control-bar for-id="demo-progress-to-failed">
     <template v-slot:text>失败进度条</template>
-        <m-switch
+        <j-switch
             id="demo-progress-to-failed"
             v-model="failed"
         />
-</m-control-bar>
+</j-control-bar>
 <div id="demo-content">
-    <m-progress
+    <j-progress
         :failed="failed"
         :value="number"
-    ></m-progress>
+    ></j-progress>
 </div>
                 `,
 				intervalID: null,

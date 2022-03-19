@@ -5,7 +5,7 @@
 		</doc-item>
 		<hr />
 		<div id="doc">
-			<doc-item title-is="h2" name="<m-sidebar>：">
+			<doc-item title-is="h2" name="<j-sidebar>：">
 				<li id="props">
 					<doc-item name="props:">
 						<li id="prop-mode-value">
@@ -37,27 +37,27 @@
 			</doc-item>
 		</div>
 		<div @click.stop>
-			<m-control-bar for-id="demo-sidebar-switch">
+			<j-control-bar for-id="demo-sidebar-switch">
 				<template v-slot:text>开启侧栏</template>
-				<m-switch id="demo-sidebar-switch" v-model="demoShowSidebar" />
-			</m-control-bar>
-			<m-control-bar for-id="demo-sideber-display-in-right">
+				<j-switch id="demo-sidebar-switch" v-model="demoShowSidebar" />
+			</j-control-bar>
+			<j-control-bar for-id="demo-sideber-display-in-right">
 				<template v-slot:text>停靠于右侧</template>
-				<m-switch
+				<j-switch
 					id="demo-sideber-display-in-right"
 					v-model="displayInRight"
 				/>
-			</m-control-bar>
+			</j-control-bar>
 		</div>
-		<demo-box title="<m-sidebar>" :code="code" :expand="true"></demo-box>
-		<m-sidebar
+		<demo-box title="<j-sidebar>" :code="code" :expand="true"></demo-box>
+		<j-sidebar
 			v-focus="close"
 			style="width: 320px"
 			:right="displayInRight"
 			:expand="demoShowSidebar"
 		>
 			测试内容
-		</m-sidebar>
+		</j-sidebar>
 	</div>
 </template>
 <script>
@@ -71,11 +71,11 @@
 	let demoShowSidebar =  true;
 	let displayInRight = true;
 	// HTML
-	<m-switch id="demo-sideber-display-in-right" v-model="displayInRight" />
-	<m-switch id="demo-sideber-switch" v-model="demoShowSidebar" />
-	<m-sidebar :right="displayInRight" v-model="demoShowSidebar">
+	<j-switch id="demo-sideber-display-in-right" v-model="displayInRight" />
+	<j-switch id="demo-sideber-switch" v-model="demoShowSidebar" />
+	<j-sidebar :right="displayInRight" v-model="demoShowSidebar">
 	测试内容
-	</m-sidebar>
+	</j-sidebar>
 	                `,
 				demoShowSidebar: false,
 				displayInRight: true,

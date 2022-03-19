@@ -11,12 +11,12 @@
 		</div>
 		<demo-box title="<>" :code="code" :expand="true">
 			<div>
-				<m-button hover @click="mask">打开全屏遮罩</m-button>
+				<j-button hover @click="mask">打开全屏遮罩</j-button>
 			</div>
 		</demo-box>
-		<m-transition-fade>
+		<j-transition-fade>
 			<full-screen-mask v-show="showMask" @click="mask" />
-		</m-transition-fade>
+		</j-transition-fade>
 	</div>
 </template>
 <script>

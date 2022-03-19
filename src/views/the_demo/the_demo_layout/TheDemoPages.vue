@@ -64,32 +64,32 @@
 				</li>
 			</doc-item>
 			<demo-box id="p1-demo" :code="code" :expand="true" title="预设1">
-				<m-row X="center">
-					<m-row
+				<j-row X="center">
+					<j-row
 						id="p1"
 						:class="demoClass"
 						v-re-screen-size="setDemoMobileMode"
 					>
-						<m-transition-slide position="left">
-							<m-col id="left" v-show="!demoMobileMode" :col="4">
+						<j-transition-slide position="left">
+							<j-col id="left" v-show="!demoMobileMode" :col="4">
 								<div id="p1-sidebar"></div>
-							</m-col>
-						</m-transition-slide>
-						<m-col id="right">
+							</j-col>
+						</j-transition-slide>
+						<j-col id="right">
 							<div id="p1-header"></div>
-							<m-row X="center" id="p1-main">
+							<j-row X="center" id="p1-main">
 								<div>
 									<div></div>
 									<div></div>
 									<div></div>
 								</div>
-							</m-row>
-							<m-row X="center" id="p1-footer">
+							</j-row>
+							<j-row X="center" id="p1-footer">
 								<div></div>
-							</m-row>
-						</m-col>
-					</m-row>
-				</m-row>
+							</j-row>
+						</j-col>
+					</j-row>
+				</j-row>
 			</demo-box>
 		</div>
 	</div>
@@ -107,7 +107,7 @@
 let expandSidebar = true;
 // HTML
 <body>
-    <m-pages v-mode="expandSidebar">
+    <j-pages v-mode="expandSidebar">
         <template slot:header>
             Header
         </template>
@@ -120,7 +120,7 @@ let expandSidebar = true;
         <template slot:sidebar>
             sidebar
         </template>
-    </m-pages>
+    </j-pages>
 </body>`,
 			};
 		},

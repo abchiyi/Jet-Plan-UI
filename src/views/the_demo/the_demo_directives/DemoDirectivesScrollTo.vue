@@ -23,43 +23,43 @@
 			中指定的距离屏幕顶部的高度。
 		</p>
 		<div id="scroll-controll">
-			<m-button row tag="a" v-scroll-to:120="`#cube1`">
+			<j-button row tag="a" v-scroll-to:120="`#cube1`">
 				滚动至大于屏幕高度元素,定义顶部距离视窗200px
-			</m-button>
-			<m-button row tag="a" v-scroll-to="`#cube2`">
+			</j-button>
+			<j-button row tag="a" v-scroll-to="`#cube2`">
 				滚动至小于屏幕高度元素
-			</m-button>
-			<m-button row tag="a" v-scroll-to="`#cube3`">
+			</j-button>
+			<j-button row tag="a" v-scroll-to="`#cube3`">
 				滚动至大于屏幕高度元素,未定义顶部距离视窗位置
-			</m-button>
+			</j-button>
 		</div>
 		<demo-box title="v-scroll-to" :code="code">
-			<m-row X="center">
-				<m-col style="width: 100px">
-					<m-cube
+			<j-row X="center">
+				<j-col style="width: 100px">
+					<j-cube
 						id="cube2"
 						v-scroll-to="`#scroll-controll`"
 						style="height: 100px; background: var(--warning)"
 					>
 						100px
-					</m-cube>
-					<m-cube
+					</j-cube>
+					<j-cube
 						id="cube1"
 						style="height: 120vh"
 						v-scroll-to="`#scroll-controll`"
 					>
 						120vh
-					</m-cube>
+					</j-cube>
 
-					<m-cube
+					<j-cube
 						id="cube3"
 						v-scroll-to="`#scroll-controll`"
 						style="height: 120vh; background: var(--error)"
 					>
 						120vh
-					</m-cube>
-				</m-col>
-			</m-row>
+					</j-cube>
+				</j-col>
+			</j-row>
 		</demo-box>
 	</article>
 </template>
@@ -70,22 +70,22 @@
 			return {
 				code: `// HTML
 <body>
-    <m-button tag='a' v-scroll-to:120="'#cube1'">
+    <j-button tag='a' v-scroll-to:120="'#cube1'">
         滚动至大于屏幕高度元素,定义顶部距离视窗200px
-    </m-button>
-    <m-button tag='a' v-scroll-to="#cube2'">
+    </j-button>
+    <j-button tag='a' v-scroll-to="#cube2'">
         滚动至小于屏幕高度元素
-    </m-button>
-    <m-button tag='a' v-scroll-to="'#cube3'">
+    </j-button>
+    <j-button tag='a' v-scroll-to="'#cube3'">
         滚动至大于屏幕高度元素,未定义顶部距离视窗位置
-    </m-button>
-    <m-row X='center'>
-        <m-col style="width:100px">
-            <m-cube id="cube1" style="height:120vh">120vh</m-cube>
-            <m-cube id="cube2" style="height:100px">100px</m-cube>
-            <m-cube id="cube3" style="height:120vh">120vh</m-cube>
-        </m-col>
-    </m-row>
+    </j-button>
+    <j-row X='center'>
+        <j-col style="width:100px">
+            <j-cube id="cube1" style="height:120vh">120vh</j-cube>
+            <j-cube id="cube2" style="height:100px">100px</j-cube>
+            <j-cube id="cube3" style="height:120vh">120vh</j-cube>
+        </j-col>
+    </j-row>
 </body>`,
 			};
 		},

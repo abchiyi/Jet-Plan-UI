@@ -1,15 +1,15 @@
 <template>
-	<m-transition-slide :opacity="false" :position="right ? 'right' : 'left'">
+	<j-transition-slide :opacity="false" :position="right ? 'right' : 'left'">
 		<div v-show="expand" :class="classes">
 			<slot />
 		</div>
-	</m-transition-slide>
+	</j-transition-slide>
 </template>
 
 <script>
 	import { Focus } from '../tool/directives';
 	export default {
-		name: 'm-sidebar',
+		name: 'j-sidebar',
 		props: {
 			expand: {
 				type: Boolean,
@@ -31,7 +31,7 @@
 		},
 		computed: {
 			classes() {
-				return ['m-sidebar', this.postiton, 'frosted-glass'];
+				return ['j-sidebar', this.postiton, 'frosted-glass'];
 			},
 			postiton() {
 				return this.right ? 'right' : 'left';
@@ -41,7 +41,7 @@
 </script>
 
 <style scoped>
-	.m-sidebar {
+	.j-sidebar {
 		overflow-y: scroll;
 		position: fixed;
 		height: 100vh;
@@ -50,26 +50,26 @@
 		left: 0;
 	}
 
-	.m-sidebar.right {
+	.j-sidebar.right {
 		left: unset;
 		right: 0;
 	}
 
 	/* Firefox  */
 	@supports (scrollbar-width: none) {
-		.m-sidebar {
+		.j-sidebar {
 			/* overflow: -moz-scrollbars-none; */
 			scrollbar-width: none;
 		}
 	}
 
 	/* chrome and Safari */
-	.m-sidebar::-webkit-scrollbar {
+	.j-sidebar::-webkit-scrollbar {
 		display: none;
 	}
 
 	/* IE 10+ */
-	.m-sidebar {
+	.j-sidebar {
 		-ms-overflow-style: none;
 	}
 </style>

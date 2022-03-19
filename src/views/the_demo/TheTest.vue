@@ -1,13 +1,13 @@
 <template>
 	<div style="background: var(--foreground); padding: 100px">
-		<m-button @click="click">Click me</m-button>
-		<m-transition-slide position="right">
-			<m-cube class="a test-cube">
-				<m-switch size="s" v-model="v" :disabled="value" />
-				<m-switch size="m" v-model="value" />
-				<m-switch size="l" v-model="value1" />
-			</m-cube>
-		</m-transition-slide>
+		<j-button @click="click">Click me</j-button>
+		<j-transition-slide position="right">
+			<j-cube class="a test-cube">
+				<j-switch size="s" v-model="v" :disabled="value" />
+				<j-switch size="m" v-model="value" />
+				<j-switch size="l" v-model="value1" />
+			</j-cube>
+		</j-transition-slide>
 		<div class="test-cube" v-shadow:bottom="5"></div>
 	</div>
 </template>

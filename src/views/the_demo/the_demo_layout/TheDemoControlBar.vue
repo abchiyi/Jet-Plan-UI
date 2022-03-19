@@ -1,5 +1,5 @@
 <template>
-	<div id="demo-m-control-bar">
+	<div id="demo-j-control-bar">
 		<doc-item id="describes" name="控制条组件:" title-is="h2">
 			<p>
 				强化
@@ -8,8 +8,8 @@
 			</p>
 		</doc-item>
 		<hr />
-		<doc-item name="<m-control-bar> :" title-is="h2">
-			<li id="m-control-bar-props">
+		<doc-item name="<j-control-bar> :" title-is="h2">
+			<li id="j-control-bar-props">
 				<doc-item name="Props:" title-is="h3">
 					<li id="prop-for-id">
 						<p>
@@ -31,7 +31,7 @@
 					</li>
 				</doc-item>
 			</li>
-			<li id="m-control-bar-slots">
+			<li id="j-control-bar-slots">
 				<doc-item name="Slots:" title-is="h3">
 					<li id="slot-text">
 						<p>
@@ -49,36 +49,36 @@
 			</li>
 		</doc-item>
 
-		<m-control-bar for-id="to-reverse">
+		<j-control-bar for-id="to-reverse">
 			<template v-slot:text>反向排列元素</template>
-			<m-switch id="to-reverse" v-model="toReverse" />
-		</m-control-bar>
-		<demo-box title="<m-control-bar>" :code="code">
+			<j-switch id="to-reverse" v-model="toReverse" />
+		</j-control-bar>
+		<demo-box title="<j-control-bar>" :code="code">
 			<div id="demo-default">
-				<m-control-bar for-id="demo-switch" :reverse="toReverse">
+				<j-control-bar for-id="demo-switch" :reverse="toReverse">
 					<template v-slot:text>Switch</template>
-					<m-switch id="demo-switch" v-model="value" />
-				</m-control-bar>
-				<m-control-bar for-id="demo-checkbox" :reverse="toReverse">
+					<j-switch id="demo-switch" v-model="value" />
+				</j-control-bar>
+				<j-control-bar for-id="demo-checkbox" :reverse="toReverse">
 					<template v-slot:text>Checkbox</template>
-					<m-checkbox id="demo-checkbox" v-model="value" />
-				</m-control-bar>
-				<m-control-bar for-id="demo-radio1" :reverse="toReverse">
+					<j-checkbox id="demo-checkbox" v-model="value" />
+				</j-control-bar>
+				<j-control-bar for-id="demo-radio1" :reverse="toReverse">
 					<template v-slot:text>Radio1</template>
-					<m-radio
+					<j-radio
 						id="demo-radio1"
 						value="demo-value1"
 						v-model="valueRadio"
 					/>
-				</m-control-bar>
-				<m-control-bar for-id="demo-radio2" :reverse="toReverse">
+				</j-control-bar>
+				<j-control-bar for-id="demo-radio2" :reverse="toReverse">
 					<template v-slot:text>Radio2</template>
-					<m-radio
+					<j-radio
 						id="demo-radio2"
 						value="demo-value2"
 						v-model="valueRadio"
 					/>
-				</m-control-bar>
+				</j-control-bar>
 			</div>
 		</demo-box>
 	</div>
@@ -99,45 +99,45 @@ let toReverse = false,
 
 // HTML
 <div id="demo-default">
-<m-control-bar
+<j-control-bar
     for-id="demo-switch"
     :reverse="toReverse"
 >
     <template v-slot:text>Switch</template>
-        <m-switch id="demo-switch" v-model="value" />
-</m-control-bar>
-<m-control-bar
+        <j-switch id="demo-switch" v-model="value" />
+</j-control-bar>
+<j-control-bar
     for-id="demo-checkbox"
     :reverse="toReverse"
 >
     <template v-slot:text>Checkbox</template>
-        <m-checkbox
+        <j-checkbox
             id="demo-checkbox"
             v-model="value"
         />
-</m-control-bar>
-<m-control-bar
+</j-control-bar>
+<j-control-bar
     for-id="demo-radio1"
     :reverse="toReverse"
 >
     <template v-slot:text>Radio1</template>
-        <m-radio
+        <j-radio
             id="demo-radio1"
             value="demo-value1"
             v-model="valueRadio"
         />
-</m-control-bar>
-<m-control-bar
+</j-control-bar>
+<j-control-bar
     for-id="demo-radio2"
     :reverse="toReverse"
 >
     <template v-slot:text>Radio2</template>
-        <m-radio
+        <j-radio
             id="demo-radio2"
             value="demo-value2"
             v-model="valueRadio"
         />
-</m-control-bar>`,
+</j-control-bar>`,
 				value: false,
 				valueRadio: [],
 				toReverse: false,

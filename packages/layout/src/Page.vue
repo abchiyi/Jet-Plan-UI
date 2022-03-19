@@ -5,8 +5,8 @@
 		v-re-screen-size="autoSidebarControl"
 	>
 		<!-- 正文 -->
-		<m-row id="page-content" :class="classSidebarOpen" X="center">
-			<m-col id="content">
+		<j-row id="page-content" :class="classSidebarOpen" X="center">
+			<j-col id="content">
 				<main>
 					<slot></slot>
 				</main>
@@ -14,20 +14,20 @@
 					<hr />
 					<slot name="footer"></slot>
 				</footer>
-			</m-col>
-		</m-row>
+			</j-col>
+		</j-row>
 		<!-- 头栏 -->
-		<m-header
+		<j-header
 			id="page-header"
 			:class="classSidebarOpen"
 			class="frosted-glass"
 		>
 			<slot name="header"></slot>
-		</m-header>
+		</j-header>
 		<!-- 遮罩 -->
-		<m-mask :value="sidebarExpand && !sidebarDock" />
+		<j-mask :value="sidebarExpand && !sidebarDock" />
 		<!-- 侧栏 -->
-		<m-sidebar
+		<j-sidebar
 			id="page-sidebar"
 			:dock="sidebarDock"
 			v-focus="onBlur"
@@ -35,16 +35,16 @@
 			@click="andClose"
 		>
 			<slot name="sidebar" />
-		</m-sidebar>
+		</j-sidebar>
 	</div>
 </template>
 
 <script>
 	import { Mask } from '../../mask';
 	export default {
-		name: 'm-page',
+		name: 'j-page',
 		components: {
-			'm-mask': Mask,
+			'j-mask': Mask,
 		},
 		props: {
 			modelValue: {

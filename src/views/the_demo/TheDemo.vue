@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<m-page v-model="value" auto-sidebar>
+		<j-page v-model="value" auto-sidebar>
 			<!--浮动头栏 -->
 			<template v-slot:header>
 				<demo-header :title="title" v-model="value"></demo-header>
@@ -13,52 +13,52 @@
 					<!-- Start -->
 					<expand-menu v-model="expand.start">
 						<template v-slot:text>开始</template>
-						<m-transition-folded>
+						<j-transition-folded>
 							<demo-page-have-index
 								v-show="expand.start"
 								:paths="links.start"
 							/>
-						</m-transition-folded>
+						</j-transition-folded>
 					</expand-menu>
 					<!-- Style -->
 					<expand-menu v-model="expand.style">
 						<template v-slot:text>样式</template>
-						<m-transition-folded>
+						<j-transition-folded>
 							<demo-page-have-index
 								v-show="expand.style"
 								:paths="links.styles"
 							/>
-						</m-transition-folded>
+						</j-transition-folded>
 					</expand-menu>
 					<!-- Layout -->
 					<expand-menu v-model="expand.layout">
 						<template v-slot:text>布局</template>
-						<m-transition-folded>
+						<j-transition-folded>
 							<demo-page-have-index
 								v-show="expand.layout"
 								:paths="links.layout"
 							/>
-						</m-transition-folded>
+						</j-transition-folded>
 					</expand-menu>
 					<!-- tools -->
 					<expand-menu v-model="expand.tools">
 						<template v-slot:text>工具</template>
-						<m-transition-folded>
+						<j-transition-folded>
 							<demo-page-have-index
 								v-show="expand.tools"
 								:paths="links.tools"
 							/>
-						</m-transition-folded>
+						</j-transition-folded>
 					</expand-menu>
 					<!-- components -->
 					<expand-menu v-model="expand.components">
 						<template v-slot:text>组件</template>
-						<m-transition-folded>
+						<j-transition-folded>
 							<demo-page-have-index
 								v-show="expand.components"
 								:paths="links.components"
 							/>
-						</m-transition-folded>
+						</j-transition-folded>
 					</expand-menu>
 				</ol>
 			</template>
@@ -73,7 +73,7 @@
 					"
 					v-slot="{ Component }"
 				>
-					<transition mode="out-in" name="m-transition-fade">
+					<transition mode="out-in" name="j-transition-fade">
 						<component :is="Component" />
 					</transition>
 				</router-view>
@@ -81,7 +81,7 @@
 			<template v-slot:footer>
 				<p>Footer</p>
 			</template>
-		</m-page>
+		</j-page>
 	</div>
 </template>
 
