@@ -1,9 +1,10 @@
 {
   "name": "jet-plan-ui",
-  "version": "0.1.0-alpha",
+  "version": "0.1.1-alpha",
   "description": "Jet plan UI for vue3",
   "author": "abchiyi <meme_me2019@outlook.com>",
   "private": false,
+  "main":"/lib/jet-plan-ui.umd.min.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
