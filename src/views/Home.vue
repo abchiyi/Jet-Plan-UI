@@ -25,13 +25,13 @@
 					<h1 style="font-size: 3rem">Jet UI</h1>
 					<p>适用于移动端和桌面端的 UI 组件库</p>
 				</div>
-				<div class="buttons">
+				<m-row warp X="center" class="buttons">
 					<m-button primary @click="to('/get-started')">
 						Get Start
 					</m-button>
 					<button-github primary />
 					<button-gitee />
-				</div>
+				</m-row>
 			</div>
 		</m-row>
 	</m-page>

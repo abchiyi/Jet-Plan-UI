@@ -80,9 +80,9 @@
 		/* font-size: 1.1rem; */
 	}
 
-	.m-button + .m-button {
+	.m-button {
 		/* margin: 0 0 0 2px; */
-		margin-left: calc(1em * 0.3);
+		margin: calc(1em * 0.15);
 	}
 	/*------------ disabled ----------*/
 	.m-button.disabled {
