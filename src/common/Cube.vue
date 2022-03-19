@@ -27,11 +27,10 @@
 
 <style>
 	.j-cube > .j-row {
-		height: 100%;
+		height: 100px;
 	}
 	.j-cube {
 		width: 100px;
-		height: 100px;
 		border-radius: var(--m-radius);
 		background-color: var(--primary);
 		/* 文本设置 */
