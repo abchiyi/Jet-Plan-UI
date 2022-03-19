@@ -1,5 +1,4 @@
 import RouterLinkA from './RouterLinkA.vue'
-import DemoPage from './DemoPage.vue'
 import DemoBox from './DemoBox.vue'
 import Header from './Header.vue'
 import Cube from './Cube.vue'
@@ -47,7 +46,6 @@ function setColorModeCookie (color, auto) {
 const components = {
     RouterLinkA,
     Highlighter,
-    DemoPage,
     DemoBox,
     DemoDoc,
     Header,
@@ -66,7 +64,6 @@ export {
     getCookie,
     // 组件
     RouterLinkA,
-    DemoPage,
     DemoBox,
     DemoDoc,
     Header,
