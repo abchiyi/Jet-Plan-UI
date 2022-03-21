@@ -7,7 +7,7 @@ export default [
     {
         name: "使用",
         path: '/use',
-        component: () => import('../views/the_demo/TheDemoTODO.vue')
+        component: () => import('../views/the_start/TheHowToUse.vue')
     },
     {
         name: "更新日志",
