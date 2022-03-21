@@ -2,7 +2,7 @@ export default [
     {
         name: "安装",
         path: '/install',
-        component: () => import('../views/the_demo/TheDemoTODO.vue')
+        component: () => import('../views/the_start/TheInstall.vue')
     },
     {
         name: "使用",
