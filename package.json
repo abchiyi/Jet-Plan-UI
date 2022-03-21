@@ -4,7 +4,7 @@
   "description": "Jet plan UI for vue3",
   "author": "abchiyi <meme_me2019@outlook.com>",
   "private": false,
-  "main":"/lib/jet-plan-ui.umd.min.js",
+  "main":"./packages/index.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
