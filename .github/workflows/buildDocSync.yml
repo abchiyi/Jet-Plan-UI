@@ -29,6 +29,7 @@ jobs:
 
                   # build
                   cd  ~/resource_temp
+                  npm install jet-plan-ui -s
                   npm install
                   npm run build
 
