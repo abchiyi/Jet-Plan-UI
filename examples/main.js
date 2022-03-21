@@ -13,7 +13,6 @@ import {
 // } from '@'
 
 import ui from 'jet-plan-ui'
-// import 'jet-plan-ui/lib/jet-plan-ui.css'
 // import { theme, themeDefault } from 'jet-plan-ui'
 
 // Custom compents

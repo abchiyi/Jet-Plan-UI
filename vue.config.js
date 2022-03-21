@@ -8,8 +8,8 @@ module.exports = {
     pages: {
         index: {
             template: 'public/index.html',
-            entry: 'src/main.js',
-            filename: 'index.html'
+            entry: "./examples/main.js",
+            filename: 'index.html',
         }
     },
     css: { extract: false },

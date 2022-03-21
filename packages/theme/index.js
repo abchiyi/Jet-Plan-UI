@@ -1,4 +1,4 @@
-function getThemeStyleEl(elId) {
+function getThemeStyleEl (elId) {
     let styleEl = document.getElementById(elId);
     if (styleEl) return styleEl;
     styleEl = document.createElement('style');
@@ -7,7 +7,7 @@ function getThemeStyleEl(elId) {
     return styleEl
 }
 
-function setTheme(el, colotString) {
+function setTheme (el, colotString) {
     if (el.innerHTML != colotString) {
         el.innerHTML = colotString
     }
@@ -15,10 +15,10 @@ function setTheme(el, colotString) {
 }
 
 export default {
-    use(themes, auto, darkMode) {
+    use (themes, auto, darkMode) {
         const EL = getThemeStyleEl("mousse-ui-theme-color");
 
-        function themToString(colors) {
+        function themToString (colors) {
             let themeStringArry = Object.keys(colors).map(key => {
                 if (Object.hasOwnProperty.call(colors, key)) {
                     return `--${key}:${colors[key]}`;
@@ -27,7 +27,7 @@ export default {
             return `:root{${themeStringArry.join(";")}}`;
         }
 
-        function themeSwitch(theme) {
+        function themeSwitch (theme) {
             if (!auto) {
                 // 常规切换主题
                 let colors = darkMode ? theme.dark : theme.light
