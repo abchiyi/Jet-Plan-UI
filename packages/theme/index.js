@@ -14,9 +14,6 @@ function setTheme (el, colotString) {
 
 }
 
-const onLoade = {
-    firstLoade: true
-}
 
 function use (themes, auto, darkMode) {
     const EL = getThemeStyleEl("jet-plan-ui-theme-color");
@@ -54,8 +51,6 @@ function use (themes, auto, darkMode) {
         setTheme(EL, themeSwitch(themes))
 }
 
-
 export default {
-    onLoade: onLoade,
     use: use
 }
