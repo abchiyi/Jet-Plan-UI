@@ -1,5 +1,5 @@
 <template>
-	<code class="c-highlighter">
+	<code class="c-highlighter font-mono">
 		<slot>inline code</slot>
 	</code>
 </template>
@@ -16,7 +16,6 @@
 		background-color: var(--border);
 		border-radius: var(--s-radius);
 		color: var(--text-hint);
-		font-family: SarasaMono;
 		display: inline-block;
 		padding: 2px 6px;
 		margin: 2px 0;

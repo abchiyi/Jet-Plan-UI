@@ -66,12 +66,14 @@
 					<div
 						:class="cooldownProgressClass"
 						id="demo-cooldown-progress"
+						class="font-mono"
 					>
 						<j-row X="center">{{ text }}</j-row>
 					</div>
 					<!-- 点击示例 -->
 					<j-cube
 						id="demo-show-click-conter"
+						class="font-mono"
 						@click="click"
 						style="user-select: none"
 						:style="{ fontSize: clickConter == 0 ? '1em' : '' }"
@@ -162,13 +164,11 @@ function click() {
 </script>
 <style>
 	#demo-show-click-conter {
-		font-family: SarasaMono;
 		font-size: 48px;
 	}
 	#demo-cooldown-progress {
 		background-color: var(--success);
 		border-radius: var(--s-radius);
-		font-family: SarasaMono;
 		display: inline-block;
 		margin-bottom: 1em;
 		color: white;

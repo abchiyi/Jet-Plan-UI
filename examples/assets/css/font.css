@@ -14,3 +14,9 @@
 	font-family: 'sarasa ui sc regular', 'Segoe UI', Tahoma, Geneva, Verdana,
 		sans-serif;
 }
+
+.font-mono *,
+.font-mono {
+	font-family: 'sarasa mono sc semibold', Consolas, 'Courier New', Courier,
+		FreeMono, monospace;
+}

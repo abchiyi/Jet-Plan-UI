@@ -73,12 +73,12 @@
 
 	#header .j-button {
 		font-size: 1.5em;
-		font-family: SarasaMono;
 	}
 
 	#header .buttons,
 	#header .title {
 		height: 110px;
+		text-align: center;
 	}
 
 	.j-sidebar {

@@ -35,6 +35,7 @@
 			classes() {
 				return [
 					'doc',
+					'font-mono',
 					this.noDot ? 'no-dot' : '',
 					this.noPadding ? 'no-padding' : '',
 				];
@@ -44,9 +45,6 @@
 </script>
 
 <style>
-	.doc {
-		font-family: SarasaMono;
-	}
 	.doc li + li {
 		margin-top: 1em;
 	}
