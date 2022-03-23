@@ -10,7 +10,6 @@
     "highlight.js": "11.4.0",
     "jquery.easing": "^1.4.1",
     "jquery": "^3.6.0",
-    "jet-plan-ui-theme":"^0.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0"
   },
