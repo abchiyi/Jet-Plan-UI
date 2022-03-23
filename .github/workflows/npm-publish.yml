@@ -32,9 +32,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
 #       - run: npm ci
       - run: /
-          cd ./packages/jet-plan-ui
-          npm publish
-          cd ../jet-plan-ui-theme
-          npm publish
+            ls
+#           cd ./packages/jet-plan-ui
+#           npm publish
+#           cd ../jet-plan-ui-theme
+#           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
