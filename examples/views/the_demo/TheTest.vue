@@ -13,7 +13,7 @@
 </template>
 <script>
 	import pdn from '../../common/mix/popDemoName';
-	import { TimedActionLimit } from '../../../packages/tool';
+	import { TimedActionLimit } from '@ui/tool';
 	export default {
 		mixins: [pdn],
 		name: 'TheTestPage',

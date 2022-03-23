@@ -84,7 +84,7 @@
 	</div>
 </template>
 <script>
-	import { TimedActionLimit } from '@/tool/lib';
+	import { TimedActionLimit } from '@ui/tool/lib';
 	// const tal = new TimedActionLimit(2000, 2);
 	export default {
 		name: 'the-tool-lib',

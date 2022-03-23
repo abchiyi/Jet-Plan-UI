@@ -5,8 +5,9 @@ import {
     h
 } from 'vue'
 
-import ui from 'jet-plan-ui'
-import { theme, themeDefault } from 'jet-plan-ui'
+import ui from '@ui'
+import { theme } from '@ui'
+import themeDefault from '@theme'
 
 // Custom compents
 import router from './router'

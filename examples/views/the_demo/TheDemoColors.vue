@@ -242,7 +242,8 @@
 
 <script>
 	import pdn from '../../common/mix/popDemoName';
-	import { theme, themeDefault } from '@';
+	import { theme } from '@ui';
+	import themeDefault from '@theme';
 	import { redColorModeCookie, setColorModeCookie } from '../../common';
 	export default {
 		mixins: [pdn],

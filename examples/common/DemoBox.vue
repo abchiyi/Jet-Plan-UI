@@ -14,7 +14,7 @@
 </template>
 
 <script>
-	import { scrollTo } from '../../packages/tool/lib/dom';
+	import { scrollTo } from '@ui/tool/lib/dom';
 	export default {
 		name: 'demo-box',
 		mounted() {
