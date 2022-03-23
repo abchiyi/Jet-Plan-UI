@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 name: Mirror to Doc Repo
+=======
+name: Build AND PUSH JET PLAN DOC
+>>>>>>> f1c015ff5452b228c847477ff54a7aa6fdb84a4e
 
 on: [push, delete, create]
 
@@ -19,8 +23,22 @@ jobs:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
                   DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
               run: |
-                  git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
-                  git remote set-url --push origin "$DESTINATION_REPO"
-                  git fetch -p origin
-                  git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
-                  git push --mirror
+                  git config --global user.email "meme_me2019@outlook.com"
+                  git config --global user.name "abchiyi"
+                  git clone "$SOURCE_REPO" ~/resource_temp
+
+                  mkdir ~/resource_temp/dist
+                  cd ~/resource_temp/dist
+                  git clone "$DESTINATION_REPO" .
+
+                  # build
+                  cd  ~/resource_temp
+                  npm install jet-plan-ui -s
+                  npm install
+                  npm run build
+
+                  # commit & push
+                  cd ~/resource_temp/dist
+                  git add .
+                  git commit -am 'update-doc'
+                  git push
