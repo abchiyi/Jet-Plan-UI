@@ -1,4 +1,6 @@
-// import 'default-passive-events'
+// 自定义 fonts, css, style
+import './assets'
+
 import {
     resolveComponent,
     createApp,

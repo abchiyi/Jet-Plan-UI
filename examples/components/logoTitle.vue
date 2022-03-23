@@ -2,7 +2,7 @@
 	<j-row class="logo-header" X="center" Y="center">
 		<j-button class="text-hint" text @click="toHomePage">
 			<j-row X="center" Y="center">
-				<img src="../../public/logo.png" alt="logo" height="30" />
+				<img src="../assets/logo.png" alt="logo" height="30" />
 				<span class="version">Jet UI - V0.87.1beta</span>
 			</j-row>
 		</j-button>

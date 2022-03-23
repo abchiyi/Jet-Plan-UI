@@ -18,7 +18,7 @@
 		<!-- 正文 -->
 		<j-row id="header" tag="header" X="center" Y="center" warp>
 			<div class="left">
-				<img src="../../public/logo.png" alt="logo" id="logo" />
+				<img src="../assets/logo.png" alt="logo" id="logo" />
 			</div>
 			<div class="right">
 				<div class="title">
