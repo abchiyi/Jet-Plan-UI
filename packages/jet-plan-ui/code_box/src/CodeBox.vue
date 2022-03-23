@@ -86,7 +86,8 @@
 	.j-code-box .line-number,
 	.j-code-box *,
 	.j-code-box {
-		font-family: SarasaMono;
+		font-family: 'sarasa mono sc semibold', Consolas, 'Courier New', Courier,
+			FreeMono, monospace;
 		font-size: 12px;
 	}
 	.j-code-box {

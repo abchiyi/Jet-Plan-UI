@@ -1,4 +1,3 @@
-import './fonts'
 import './css'
 
 import light from './lightMode'
