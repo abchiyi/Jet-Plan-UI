@@ -1,8 +1,4 @@
-<<<<<<< HEAD
 name: Mirror to Doc Repo
-=======
-name: Build AND PUSH JET PLAN DOC
->>>>>>> f1c015ff5452b228c847477ff54a7aa6fdb84a4e
 
 on: [push, delete, create]
 
