@@ -1,0 +1,15 @@
+@font-face {
+	font-family: sarasa ui sc regular;
+	src: url('../font/sarasa-ui-sc-regular.ttf');
+	font-weight: normal;
+}
+
+@font-face {
+	font-family: sarasa mono sc semibold;
+	src: url('../font/sarasa-mono-sc-semibold.ttf');
+	font-weight: normal;
+}
+
+* {
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
