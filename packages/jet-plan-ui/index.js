@@ -11,7 +11,7 @@ import ActionFeedback from './action-feedback'
 // 指令&工具函数/类
 import directives from './tool/directives'
 
-import themeDefault from './theme_default'
+// import themeDefault from './theme_default'
 
 const components = [
     ActionFeedback,
@@ -28,7 +28,7 @@ const components = [
 
 export {
     ActionFeedback,
-    themeDefault,
+    // themeDefault,
     animations,
     directives,
     progress,

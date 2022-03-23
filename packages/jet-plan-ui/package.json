@@ -1,6 +1,6 @@
 {
   "name": "jet-plan-ui",
-  "version": "0.1.3-alpha",
+  "version": "0.1.4-alpha",
   "description": "Jet plan UI for vue3",
   "author": "abchiyi <meme_me2019@outlook.com>",
   "private": false,
@@ -10,6 +10,7 @@
     "highlight.js": "11.4.0",
     "jquery.easing": "^1.4.1",
     "jquery": "^3.6.0",
+    "jet-plan-ui-theme":"^0.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0"
   },

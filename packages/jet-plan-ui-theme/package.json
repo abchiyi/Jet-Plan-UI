@@ -1,0 +1,35 @@
+{
+  "name": "jet-plan-ui-theme",
+  "version": "0.1.4-alpha",
+  "description": "Jet plan UI for vue3",
+  "author": "abchiyi <meme_me2019@outlook.com>",
+  "private": false,
+  "main": "index.js",
+  "scripts": {
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "lib": "vue-cli-service build --target lib --name jet-plan-ui --dest lib packages/index.js"
+  },
+  "dependencies": {
+    "jet-plan-ui": "^0.1.3-alpha"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
