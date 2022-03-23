@@ -10,11 +10,11 @@
 
 import { resolveComponent, createApp, h } from 'vue'
 
-// 引入组件库
+// 组件库
 import ui from 'jet-plan-ui'
 // 主题安装器
-import { theme } from jet-plan-ui'
-// 引入主题
+import { theme } from 'jet-plan-ui'
+// 基本主题
 import  themeDefault from 'jet-plan-ui-theme'
 // 设置主题
 theme.use(themeDefault)
