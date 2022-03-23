@@ -78,6 +78,7 @@
 		color: var(--text-hint);
 		cursor: pointer;
 		/* font-size: 1.1rem; */
+		text-decoration: underline;
 	}
 
 	.j-button {

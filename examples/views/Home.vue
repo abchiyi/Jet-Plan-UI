@@ -29,7 +29,7 @@
 					<j-button primary @click="to('/get-started')">
 						Get Start
 					</j-button>
-					<button-github primary />
+					<button-github />
 					<button-gitee />
 				</j-row>
 			</div>

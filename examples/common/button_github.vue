@@ -14,4 +14,8 @@
 		name: 'button-github',
 	};
 </script>
-<style lang=""></style>
+<style>
+	.j-button {
+		background: #2d333b;
+	}
+</style>
