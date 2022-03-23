@@ -33,7 +33,7 @@ jobs:
       - name: publish
         run: |
             ls -a
-            cd ./packages/jet-plan-ui-theme
+            cd ./packages/jet-plan-ui
             ls -a
             npm install
             ls -a
