@@ -32,10 +32,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
 #       - run: npm ci
 
-      - run: /
-            ls -a
+      - run: |
+            ls
             cd ./packages/jet-plan-ui-theme
-            ls -a
+            ls
       - run: npm install
       - run: npm publish ./packages/jet-plan-ui-theme
       - run: npm publish ./packages/jet-plan-ui
