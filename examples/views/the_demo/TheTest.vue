@@ -9,6 +9,14 @@
 			</j-cube>
 		</j-transition-slide>
 		<div class="test-cube" v-shadow:bottom="5"></div>
+		<j-code-box
+			:code="`
+abc
+ABC
+012
+-+=
+		`"
+		/>
 	</div>
 </template>
 <script>

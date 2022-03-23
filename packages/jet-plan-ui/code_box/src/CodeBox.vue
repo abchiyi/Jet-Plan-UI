@@ -1,11 +1,12 @@
 <template>
 	<!-- div 标签作为缓冲,避免过渡动画修改内部样式 -->
-	<div class="j-code-box-toplayer" :style="style">
+	<div class="j-code-box-toplayer font-mono" :style="style">
 		<j-row class="j-code-box" ref="codeBox">
 			<ul class="line-number">
 				<li v-for="i in linenumber" :key="i">{{ i }}</li>
 			</ul>
 			<highlightjs
+				class="code"
 				v-update-color="updateColor"
 				style="width: 100%"
 				:autodetect="lang ? false : true"
@@ -83,16 +84,17 @@
 </script>
 <style>
 	/* Font */
-	.j-code-box .line-number,
 	.j-code-box *,
 	.j-code-box {
+		font-size: 12px;
 		font-family: 'sarasa mono sc semibold', Consolas, 'Courier New', Courier,
 			FreeMono, monospace;
-		font-size: 12px;
 	}
+
 	.j-code-box {
 		overflow: hidden;
 		border-radius: var(--m-radius);
+		background: var(--hljs-bgcolor);
 	}
 
 	.j-code-box > .line-number,
@@ -101,9 +103,11 @@
 		margin-bottom: unset;
 	}
 
+	.j-code-box > .code {
+		border-left: 2px dashed var(--border);
+	}
+
 	.j-code-box > .line-number {
-		background: var(--hljs-bgcolor);
-		border-right: 2px dashed var(--border);
 		box-sizing: border-box;
 		color: var(--text-hint);
 		padding: 12px 0.6em;
