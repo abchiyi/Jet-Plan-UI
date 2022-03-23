@@ -25,7 +25,9 @@ const OTHERS = {
     card: BACKGROUND.foreground,
     shadow: '#00000033',
     mask: '#27272760',
-}
+    "text-light": '#FCFCFC',
+    "text-dark": TEXTCOLOR.text,
+};
 
 export default {
     name: "Mousse-UI-Light",
