@@ -1,6 +1,6 @@
 <template>
   <div style="background: var(--foreground); padding: 100px">
-    <j-button @click="click">Click me</j-button>
+    <j-button v-auto-color @click="click">Click me</j-button>
     <div
       v-auto-color="updatedColor"
       :class="['test-cube', value ? 'a' : 'b']"
@@ -59,13 +59,15 @@ export default {
   background: var(--foreground);
   border-radius: var(--m-radius);
   box-shadow: "";
+  transition: unset;
+  /* background: #000; */
 }
-
+/*
 .a {
   background: rgb(15, 87, 109);
 }
 
 .b {
   background: #cfcfcf;
-}
+} */
 </style>
