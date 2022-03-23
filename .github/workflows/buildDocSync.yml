@@ -1,4 +1,4 @@
-name: Build AND PUSH JET PLAN DOC
+name: Mirror to Repo Doc
 
 on: [push, delete, create]
 
@@ -14,26 +14,13 @@ jobs:
                   echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
                   echo "StrictHostKeyChecking no" >> ~/.ssh/config
-            - name: build and push
+            - name: Push Mirror
               env:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
-                  DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
+                  DESTINATION_REPO: 'git@gitee.com:abchiyi/jet-plan-ui.git'
               run: |
-                  git config --global user.email "meme_me2019@outlook.com"
-                  git config --global user.name "abchiyi"
-                  git clone "$SOURCE_REPO" ~/resource_temp
-
-                  mkdir ~/resource_temp/dist
-                  cd ~/resource_temp/dist
-                  git clone "$DESTINATION_REPO" .
-
-                  # build
-                  cd  ~/resource_temp
-                  npm install
-                  npm run build
-
-                  # commit & push
-                  cd ~/resource_temp/dist
-                  git add .
-                  git commit -am 'update-doc'
-                  git reset --hard origin/doc
+                  git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
+                  git remote set-url --push origin "$DESTINATION_REPO"
+                  git fetch -p origin
+                  git for-each-ref --format 'delete %(refname)' refs/pull | git update-ref --stdin
+                  git push --mirror

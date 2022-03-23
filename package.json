@@ -9,7 +9,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name jet-plan-ui --dest lib packages/index.js"
+    "lib": "vue-cli-service build --target lib --name jet-plan-ui --dest lib packages/jet-plan-ui/index.js",
+    "lib-theme": "vue-cli-service build --target lib --name jet-plan-ui-theme --dest lib packages/jet-plan-ui-theme/index.js"
   },
   "dependencies": {
     "core-js": "^3.6.5",

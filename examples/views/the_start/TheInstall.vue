@@ -5,7 +5,12 @@
 		<br />
 		<h3>npm 安装</h3>
 		<p>使用 npm 安装以配合webpack 打包工具</p>
-		<j-code-box :code="'npm i jet-plan-ui'"></j-code-box>
+		<j-code-box
+			:code="`
+npm i jet-plan-ui
+npm i jet-plan-ui-theme
+`"
+		></j-code-box>
 		<h3>最小文件</h3>
 		<p>从 git clone 包后自行打包文件,</p>
 		<p>打包后主文件存放在jet-plan-ui/lib目录下</p>
