@@ -31,8 +31,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
 #       - run: npm ci
-      - run: /
-            ls
+      - run: ls -a
 #           cd ./packages/jet-plan-ui
 #           npm publish
 #           cd ../jet-plan-ui-theme
