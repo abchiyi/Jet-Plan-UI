@@ -29,7 +29,6 @@ jobs:
 
                   # build
                   cd  ~/resource_temp
-                  npm install jet-plan-ui -s
                   npm install
                   npm run build
 
@@ -37,4 +36,4 @@ jobs:
                   cd ~/resource_temp/dist
                   git add .
                   git commit -am 'update-doc'
-                  git push
+                  git reset --hard origin/doc
