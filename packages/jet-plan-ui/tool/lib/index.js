@@ -91,7 +91,9 @@ export function hexToRgb (hex) {
         r: hashtag ? parse(hex.slice(1, 3)) : parse(hex.slice(0, 2)),
         g: hashtag ? parse(hex.slice(3, 5)) : parse(hex.slice(2, 4)),
         b: hashtag ? parse(hex.slice(5, 7)) : parse(hex.slice(4, 6)),
-        opacity: (hashtag ? parse(hex.slice(7, 9)) : parse(hex.slice(6, 8))) / 255,
+        opacity: parseFloat(
+            (hashtag ? parse(hex.slice(7, 9)) : parse(hex.slice(6, 8))) / 255,
+        ).toFixed(3)
     }
     let max = rgb.r + rgb.g + rgb.b
     return {
@@ -101,4 +103,26 @@ export function hexToRgb (hex) {
             ? `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.opacity})`
             : `rgb(${rgb.r},${rgb.g},${rgb.b})`
     }
+}
+
+export function rgbToHex (rgb) {
+    function colorToHex (color) {
+        var hexadecimal = color.toString(16);
+        return hexadecimal.length == 1 ? "0" + hexadecimal : hexadecimal;
+    }
+    const leftBrackets = rgb.indexOf('(') + 1;
+    const rightBrackets = rgb.indexOf(')');
+    let rgba = rgb.substring(leftBrackets, rightBrackets).split(', ')
+    let s = ["#"]
+    let conter = 0
+    rgba.forEach(v => {
+        conter++
+        s.push(
+            conter < 4
+                ? colorToHex(Math.abs(v))
+                : colorToHex(parseInt(v * 255))
+        )
+    })
+
+    return s.join('')
 }
