@@ -8,9 +8,9 @@
   "dependencies": {
     "@highlightjs/vue-plugin": "2.1",
     "highlight.js": "11.4.0",
-    "core-js": "^3.6.5",
-    "jquery": "^3.6.0",
     "jquery.easing": "^1.4.1",
+    "jquery": "^3.6.0",
+    "core-js": "^3.6.5",
     "vue": "^3.0.0"
   },
   "browserslist": [
