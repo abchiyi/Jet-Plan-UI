@@ -1,4 +1,4 @@
-name: Mirror to Repo Doc
+name: Mirror to Doc Repo
 
 on: [push, delete, create]
 
@@ -14,10 +14,10 @@ jobs:
                   echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
                   chmod 600 ~/.ssh/id_rsa
                   echo "StrictHostKeyChecking no" >> ~/.ssh/config
-            - name: Push Mirror
+            - name: build and push
               env:
                   SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
-                  DESTINATION_REPO: 'git@gitee.com:abchiyi/jet-plan-ui.git'
+                  DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
               run: |
                   git clone --mirror "$SOURCE_REPO" && cd `basename "$SOURCE_REPO"`
                   git remote set-url --push origin "$DESTINATION_REPO"
