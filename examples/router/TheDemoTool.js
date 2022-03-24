@@ -1,5 +1,4 @@
-export default [
-    {
+export default [{
         name: "Transition",
         path: "/transition",
         component: () => import('../views/the_demo/the_demo_animation')
@@ -13,8 +12,7 @@ export default [
         name: "Directives",
         path: '/directives',
         component: () => import('../views/the_demo/the_demo_directives/DemoDirectives.vue'),
-        index: [
-            {
+        index: [{
                 name: 'focus',
                 to: '#focus'
             },
@@ -29,6 +27,10 @@ export default [
             {
                 name: 'ReScreenSize',
                 to: '#re-screen-size'
+            },
+            {
+                name: 'AutoColor',
+                to: '#auto-color'
             }
         ]
     },
@@ -36,8 +38,7 @@ export default [
         name: "ToolFunction",
         path: '/tool-function',
         component: () => import('../views/the_demo/the_demo_tools/DemoTools.vue'),
-        index: [
-            {
+        index: [{
                 name: 'TimeActionLimit',
                 to: '#time-action-limit'
             },
