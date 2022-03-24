@@ -50,9 +50,9 @@ Missing values ‘timeout’ are required
 
     __waitControl() {
         if (this.timeoutID.length > 1) {
-            const clId = this.waitCoolingDown
-                ? this.timeoutID.shift()
-                : this.timeoutID.pop();
+            const clId = this.waitCoolingDown ?
+                this.timeoutID.shift() :
+                this.timeoutID.pop();
             clearTimeout(clId);
         }
     }
@@ -78,33 +78,31 @@ export function installDirective(Vue, array) {
 }
 
 export function hexToRgb(hex) {
-    const hashtag = hex[0] == "#";
     function parse(v) {
         return parseInt(`0x${v}`);
     }
+    if (!hex[0] == "#") hex = '#' + hex;
+
+
     let rgb = {
-        r: hashtag ? parse(hex.slice(1, 3)) : parse(hex.slice(0, 2)),
-        g: hashtag ? parse(hex.slice(3, 5)) : parse(hex.slice(2, 4)),
-        b: hashtag ? parse(hex.slice(5, 7)) : parse(hex.slice(4, 6)),
-        opacity:
-            parseFloat(
-                (hashtag ? parse(hex.slice(7, 9)) : parse(hex.slice(6, 8))) /
-                    255
-            ).toFixed(2) + 5,
+        r: parse(hex.slice(1, 3)),
+        g: parse(hex.slice(3, 5)),
+        b: parse(hex.slice(5, 7)),
+        opacity: parseFloat(parse(hex.slice(7)) / 255)
     };
+    console.log(hex);
+    console.log(rgb);
     // let max = rgb.r + rgb.g + rgb.b;
     return {
-        ...rgb,
+        color: rgb.opacity < 1 ?
+            `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.opacity})` : `rgb(${rgb.r},${rgb.g},${rgb.b})`,
+        opacity: isNaN(rgb.opacity) ? 1 : rgb.opacity,
         max: Math.abs(
             parseFloat(
                 (parseInt(rgb.r) + parseInt(rgb.g) + parseInt(rgb.b)) /
-                    (255 * 3)
+                (255 * 3)
             ).toFixed(3)
         ),
-        color:
-            rgb.opacity < 1
-                ? `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.opacity})`
-                : `rgb(${rgb.r},${rgb.g},${rgb.b})`,
     };
 }
 
@@ -127,10 +125,11 @@ export function rgbToHex(rgb) {
     });
     return {
         color: s.join(""),
+        opacity: parseFloat(rgba[3] ? rgba[3] : 1),
         max: Math.abs(
             parseFloat(
                 (parseInt(rgba[0]) + parseInt(rgba[1]) + parseInt(rgba[2])) /
-                    (255 * 3)
+                (255 * 3)
             ).toFixed(3)
         ),
     };
