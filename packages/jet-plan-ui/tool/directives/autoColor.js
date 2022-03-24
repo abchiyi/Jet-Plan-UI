@@ -1,15 +1,20 @@
 import {
-    rgbToHex
+    rgbToHex,
 } from "../lib";
 
 function reTextColor(el) {
     function getBgColor(el) {
         return window.getComputedStyle(el).backgroundColor;
     }
-    if (rgbToHex(getBgColor(el)).max < 0.6) {
-        el.style.color = "var(--text-light)";
+    let hexColor = rgbToHex(getBgColor(el))
+    if (hexColor.opacity == 0) {
+        el.style.color = ''
     } else {
-        el.style.color = "var(--text-dark)";
+        if (hexColor.max < 0.6) {
+            el.style.color = "var(--text-light)";
+        } else {
+            el.style.color = "var(--text-dark)";
+        }
     }
 }
 
