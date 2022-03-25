@@ -28,7 +28,10 @@ module.exports = {
                 return options
             })
         config.resolve.alias
+            // ui
             .set('@ui', resolve('./packages/jet-plan-ui'))
             .set('@theme', resolve('./packages/jet-plan-ui-theme'))
+            // examples
+            .set('@common', resolve('./examples/common'))
     }
 }
