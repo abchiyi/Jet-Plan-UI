@@ -127,8 +127,8 @@ export default {
   background: var(--hljs-bgcolor);
 }
 
-.line-number,
-.j-code-box pre {
+.j-code-box .line-number,
+.j-code-box .hljs {
   margin-top: unset;
   margin-bottom: unset;
 }
@@ -140,7 +140,7 @@ export default {
 .j-code-box .line-number {
   border-right: 2px dashed var(--text-hint);
   box-sizing: border-box;
-  margin: 12px 12px 12px 0;
+  margin: 12px 0;
   transition: unset;
   padding: 0 0.6em;
   text-align: right;
