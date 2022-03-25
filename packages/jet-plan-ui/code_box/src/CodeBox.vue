@@ -113,6 +113,12 @@ export default {
 };
 </script>
 <style>
+/* 禁用背景色过渡，避免呈现时背景色与 code 区域出现色差 */
+.j-code-box *,
+.j-code-box {
+  transition: background 0s, background-color 0s;
+}
+
 /* Font */
 .j-code-box *,
 .j-code-box {
@@ -141,7 +147,6 @@ export default {
   border-right: 2px dashed var(--text-hint);
   box-sizing: border-box;
   margin: 12px 0;
-  transition: unset;
   padding: 0 0.6em;
   text-align: right;
   user-select: none;
