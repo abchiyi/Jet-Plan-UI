@@ -84,7 +84,7 @@ export default {
 </j-code-box>
 <br />
 
-<p>启用 can-copy 和 自定义图标 在多行状态下</p>
+<p>启用 can-copy 和 自定义图标以及在多行状态下</p>
 <j-code-box can-copy code="conosle.log('Hello world');">
     <template v-slot:icon-copy>
         <i class="bi bi-file-earmark-text"></i>
