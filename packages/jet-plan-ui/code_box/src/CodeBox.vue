@@ -1,22 +1,37 @@
 <template>
   <!-- div 标签作为缓冲,避免过渡动画修改内部样式 -->
-  <div class="j-code-box-toplayer font-mono" :style="style">
-    <div v-if="canCopy" class="copy" style="text-align: right">
+  <div class="j-code-box font-mono" :style="style">
+    <div
+      v-if="canCopy && linenumber > 1"
+      class="copy"
+      style="text-align: right"
+    >
       <j-button text @click="this.copyCode">
         <slot name="icon-copy"> Copy </slot>
       </j-button>
     </div>
-    <j-row class="j-code-box" ref="codeBox" style="width: 100%">
-      <ul class="line-number">
-        <li v-for="i in linenumber" :key="i">{{ i }}</li>
-      </ul>
-      <highlightjs
-        class="code"
-        v-update-color="updateColor"
-        :autodetect="lang ? false : true"
-        :language="lang"
-        :code="code.trim()"
-      />
+    <j-row class="bottom-box" Y="center" ref="codeBox" spaceMode="between">
+      <j-row class="code">
+        <ul class="line-number">
+          <li v-for="i in linenumber" :key="i">{{ i }}</li>
+        </ul>
+        <highlightjs
+          class="hljs"
+          v-update-color="updateColor"
+          :autodetect="lang ? false : true"
+          :language="lang"
+          :code="code.trim()"
+        />
+      </j-row>
+
+      <j-button
+        class="copy-button"
+        v-if="canCopy && linenumber == 1"
+        style="background: var(--hljs-bgcolor)"
+        @click="this.copyCode"
+      >
+        <slot name="icon-copy"> Copy </slot>
+      </j-button>
     </j-row>
   </div>
 </template>
@@ -50,12 +65,14 @@ export default {
     updateColor: {
       mounted(el, binding) {
         binding.value(
-          window.getComputedStyle(el.children[0], "backgroundColor").backgroundColor
+          window.getComputedStyle(el.children[0], "backgroundColor")
+            .backgroundColor
         );
       },
       updated(el, binding) {
         binding.value(
-          window.getComputedStyle(el.children[0], "backgroundColor").backgroundColor
+          window.getComputedStyle(el.children[0], "backgroundColor")
+            .backgroundColor
         );
       },
     },
@@ -100,24 +117,27 @@ export default {
 .j-code-box *,
 .j-code-box {
   font-size: 12px;
-  font-family: "sarasa mono sc semibold", Consolas, "Courier New", Courier, FreeMono,
-    monospace;
+  font-family: "sarasa mono sc semibold", Consolas, "Courier New", Courier,
+    FreeMono, monospace;
 }
 
-/* .j-code-box { */
-.j-code-box-toplayer {
+.j-code-box {
   overflow: hidden;
   border-radius: var(--m-radius);
   background: var(--hljs-bgcolor);
 }
 
-.j-code-box > .line-number,
+.line-number,
 .j-code-box pre {
   margin-top: unset;
   margin-bottom: unset;
 }
 
-.j-code-box > .line-number {
+.j-code-box .code {
+  overflow-x: auto;
+}
+
+.j-code-box .line-number {
   border-right: 2px dashed var(--text-hint);
   box-sizing: border-box;
   margin: 12px 12px 12px 0;
@@ -129,15 +149,18 @@ export default {
   flex-shrink: 0;
 }
 
-.j-code-box .line-number li {
+.line-number li {
   margin: unset;
 }
-.j-code-box .copy * {
-  font-size: 18px;
+
+.copy-button *,
+.copy-button,
+.copy * {
+  font-size: 16px;
 }
 
-.j-code-box .line-number,
-.j-code-box-toplayer .copy {
+.line-number,
+.copy {
   color: var(--text-hint);
 }
 
