@@ -228,82 +228,58 @@
 			<template v-slot:text>开启深色模式</template>
 			<j-switch
 				id="dark-mode"
-				:disabled="autoDarkMode"
-				v-model="darkMode"
+				:disabled="$jetTheme.autoDarkMode"
+				v-model="$jetTheme.darkMode"
 			/>
 		</j-control-bar>
 		<!-- Auto dark mode -->
 		<j-control-bar for-id="auto-dark-mode">
 			<template v-slot:text>跟随系统</template>
-			<j-switch id="auto-dark-mode" v-model="autoDarkMode" />
+			<j-switch id="auto-dark-mode" v-model="$jetTheme.autoDarkMode" />
 		</j-control-bar>
 	</div>
 </template>
 
 <script>
-	import pdn from '@common/mix/popDemoName';
-	import { theme } from '@ui';
-	import themeDefault from '@theme';
-	import { redColorModeCookie, setColorModeCookie } from '../../common';
-	export default {
-		mixins: [pdn],
-		name: 'the-demo-style',
-		data() {
-			return {
-				darkMode: false,
-				autoDarkMode: false,
-			};
-		},
-		created() {
-			let cookies = redColorModeCookie();
-			this.darkMode = cookies[1];
-			this.autoDarkMode = cookies[0];
-		},
-		watch: {
-			darkMode(b) {
-				setColorModeCookie(this.darkMode, this.autoDarkMode);
-				theme.use(themeDefault, null, b);
-			},
-			autoDarkMode(b) {
-				setColorModeCookie(this.darkMode, this.autoDarkMode);
-				theme.use(themeDefault, b, this.darkMode);
-			},
-		},
-	};
+import pdn from "@common/mix/popDemoName";
+export default {
+	mixins: [pdn],
+	name: "the-demo-style",
+};
 </script>
 
 <style>
-	#colors {
-		background: var(--foreground);
-	}
+#colors {
+	background: var(--foreground);
+}
 
-	.color-box {
-		align-items: top;
-		display: flex;
-	}
-	.color-box > * {
-		width: 130px;
-		display: inline-block;
-	}
-	.color-box p {
-		font-size: 19px;
-	}
+.color-box {
+	align-items: top;
+	display: flex;
+}
+.color-box > * {
+	width: 130px;
+	display: inline-block;
+}
+.color-box p {
+	font-size: 19px;
+}
 
-	.color {
-		border: 3px solid var(--border);
-		border-radius: var(--m-radius);
-		height: 50px;
-		width: 50px;
-		margin: 5px;
-	}
+.color {
+	border: 3px solid var(--border);
+	border-radius: var(--m-radius);
+	height: 50px;
+	width: 50px;
+	margin: 5px;
+}
 
-	.show-h-tag > *:last-child {
-		margin-left: 10px;
-	}
-	.show-h-tag > * {
-		display: inline-block;
-	}
-	.shadow {
-		box-shadow: 0 2px 10px 1px var(--shadow);
-	}
+.show-h-tag > *:last-child {
+	margin-left: 10px;
+}
+.show-h-tag > * {
+	display: inline-block;
+}
+.shadow {
+	box-shadow: 0 2px 10px 1px var(--shadow);
+}
 </style>

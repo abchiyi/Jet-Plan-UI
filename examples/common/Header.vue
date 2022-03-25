@@ -10,7 +10,9 @@
 							:key="1"
 							:class="[
 								'bi',
-								darkMode ? 'bi-moon-fill' : 'bi-sun-fill',
+								$jetTheme.darkMode
+									? 'bi-moon-fill'
+									: 'bi-sun-fill',
 							]"
 						></i>
 					</j-transition-fade>
@@ -31,70 +33,56 @@
 </template>
 
 <script>
-	import { theme } from '@ui';
-	import themeDefault from '@theme';
-	import { redColorModeCookie, setColorModeCookie } from '../common';
-	export default {
-		name: 'demo-header',
-		props: {
-			modelValue: {
-				type: Boolean,
-			},
-			title: {
-				default: 'Mousse UI',
-				type: String,
-			},
+export default {
+	name: "demo-header",
+	props: {
+		modelValue: {
+			type: Boolean,
 		},
-		created() {
-			let cookies = redColorModeCookie();
-			this.darkMode = cookies[1];
-			// this.autoDarkMode = cookies[0];
+		title: {
+			default: "Mousse UI",
+			type: String,
 		},
-		data() {
-			return {
-				darkModeTransitionSwitch: true,
-				autoDarkMode: false,
-				darkMode: false,
-			};
+	},
+	data() {
+		return {
+			darkModeTransitionSwitch: true,
+			darkMode: false,
+		};
+	},
+	methods: {
+		click() {
+			this.$emit("update:modelValue", this.modelValue ? false : true);
 		},
-		methods: {
-			click() {
-				this.$emit('update:modelValue', this.modelValue ? false : true);
-			},
-			switchMode() {
-				this.darkModeTransitionSwitch = false;
-			},
-			darkModeSwitch() {
-				setTimeout(() => {
-					this.darkModeTransitionSwitch = true;
-					this.darkMode = !this.darkMode;
-				}, 400);
-			},
+		switchMode() {
+			this.darkModeTransitionSwitch = false;
 		},
-		watch: {
-			darkMode(b) {
-				setColorModeCookie(this.darkMode, this.autoDarkMode);
-				theme.use(themeDefault, null, b);
-			},
-			// autoDarkMode(b) {
-			// 	setColorModeCookie(this.autoDarkMode, this.darkMode);
-			// 	theme.use(themeDefault, b, this.darkMode);
-			// },
+		darkModeSwitch() {
+			setTimeout(() => {
+				this.darkModeTransitionSwitch = true;
+				this.darkMode = !this.darkMode;
+			}, 400);
 		},
-		model: {
-			prop: 'modeValue',
-			event: 'update:modelValue',
+	},
+	watch: {
+		darkMode(b) {
+			this.$jetTheme.darkMode = b;
 		},
-	};
+	},
+	model: {
+		prop: "modeValue",
+		event: "update:modelValue",
+	},
+};
 </script>
 <style scoped>
-	.navbar {
-		height: 72px;
-		width: 100%;
-	}
+.navbar {
+	height: 72px;
+	width: 100%;
+}
 
-	.navbar > #darkmode-switch {
-		height: 16px;
-		width: 18.6px;
-	}
+.navbar > #darkmode-switch {
+	height: 16px;
+	width: 18.6px;
+}
 </style>
