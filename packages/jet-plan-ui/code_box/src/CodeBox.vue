@@ -10,15 +10,13 @@
       <ul class="line-number">
         <li v-for="i in linenumber" :key="i">{{ i }}</li>
       </ul>
-      <j-col class="code" style="width: 100%">
-        <highlightjs
-          class="hljs"
-          v-update-color="updateColor"
-          :autodetect="lang ? false : true"
-          :language="lang"
-          :code="code.trim()"
-        />
-      </j-col>
+      <highlightjs
+        class="code"
+        v-update-color="updateColor"
+        :autodetect="lang ? false : true"
+        :language="lang"
+        :code="code.trim()"
+      />
     </j-row>
   </div>
 </template>
@@ -143,13 +141,12 @@ export default {
   color: var(--text-hint);
 }
 
-.copy + .j-code-box .line-number,
-.copy + .j-code-box .code {
+/* 如果启用 Copy 按钮 */
+.copy + .j-code-box .line-number {
   padding-top: unset;
   margin-top: unset;
 }
-
-.code > .hljs > * {
+.copy + .j-code-box .code > * {
   padding: unset;
 }
 </style>
