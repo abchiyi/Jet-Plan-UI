@@ -11,9 +11,9 @@
       <ul class="line-number">
         <li v-for="i in linenumber" :key="i">{{ i }}</li>
       </ul>
-      <j-col style="width: 100%">
+      <j-col class="code" style="width: 100%">
         <highlightjs
-          class="code"
+          class="hljs"
           v-update-color="updateColor"
           :autodetect="lang ? false : true"
           :language="lang"
@@ -113,9 +113,9 @@ export default {
 .j-code-box > .line-number {
   border-right: 2px dashed var(--text-hint);
   box-sizing: border-box;
-  padding: 0 0.6em;
-  margin: 12px 0;
+  margin: 12px 12px 12px 0;
   transition: unset;
+  padding: 0 0.6em;
   text-align: right;
   user-select: none;
   list-style: none;
@@ -133,8 +133,14 @@ export default {
 .j-code-box-toplayer .copy {
   color: var(--text-hint);
 }
-.j-code-box-toplayer > .copy > * {
-  padding-bottom: unset;
-  margin-bottom: unset;
+
+.copy + .j-code-box .line-number,
+.copy + .j-code-box .code {
+  padding-top: unset;
+  margin-top: unset;
+}
+
+.code > .hljs > * {
+  padding: unset;
 }
 </style>
