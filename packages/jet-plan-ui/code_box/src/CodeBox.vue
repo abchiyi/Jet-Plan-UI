@@ -2,9 +2,8 @@
   <!-- div 标签作为缓冲,避免过渡动画修改内部样式 -->
   <div class="j-code-box-toplayer font-mono" :style="style">
     <div v-if="canCopy" class="copy" style="text-align: right">
-      <j-button text>
+      <j-button text @click="this.copyCode">
         <slot name="icon-copy"> Copy </slot>
-        <!-- <i class="bi bi-clipboard"></i> -->
       </j-button>
     </div>
     <j-row class="j-code-box" ref="codeBox" style="width: 100%">
@@ -79,6 +78,16 @@ export default {
   methods: {
     updateColor(c) {
       this.backgroundColor = c;
+    },
+    copyCode() {
+      // XXX 结构优化
+      let copy = (e) => {
+        e.preventDefault();
+        e.clipboardData.setData("text/plain", this.code);
+        document.removeEventListener("copy", copy);
+      };
+      document.addEventListener("copy", copy);
+      document.execCommand("Copy");
     },
   },
   data() {
