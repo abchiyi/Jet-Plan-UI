@@ -241,7 +241,7 @@
 </template>
 
 <script>
-	import pdn from '../../common/mix/popDemoName';
+	import pdn from '@common/mix/popDemoName';
 	import { theme } from '@ui';
 	import themeDefault from '@theme';
 	import { redColorModeCookie, setColorModeCookie } from '../../common';
