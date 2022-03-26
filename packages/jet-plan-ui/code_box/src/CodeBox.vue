@@ -137,8 +137,7 @@ export default {
 .j-code-box .hljs {
 	margin-top: unset;
 	margin-bottom: unset;
-	padding-top: unset;
-	padding-bottom: unset;
+	padding: unset;
 }
 
 .j-code-box .code {
@@ -146,13 +145,16 @@ export default {
 }
 
 .j-code-box .line-number {
-	border-right: 2px dashed var(--text-hint);
+	background: var(--hljs-bgcolor);
+	/* border-right: 2px dashed var(--text-hint); */
 	box-sizing: border-box;
-	padding: 0 0.6em;
+	padding: 0 1em;
 	text-align: right;
 	user-select: none;
 	list-style: none;
 	flex-shrink: 0;
+	position: sticky;
+	left: 0;
 }
 
 .line-number li {
