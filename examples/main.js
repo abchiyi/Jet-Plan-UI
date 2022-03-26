@@ -27,22 +27,22 @@ const BASE_COMPONENT = {
         this.$jetTheme.autoDarkMode = themeSetting[0]
 
         // 监听并设置 cookes
-        function setCookie () {
-            setColorModeCookie(
-                this.$jetTheme.DarkMode,
-                this.$jetTheme.autoDarkMode
-            )
-        }
         this.$watch(
-            () => this.$jetTheme.DarkMode,
+            () => this.$jetTheme.darkMode,
             () => {
-                setCookie()
+                setColorModeCookie(
+                    this.$jetTheme.darkMode,
+                    this.$jetTheme.autoDarkMode
+                )
             }
         )
         this.$watch(
             () => this.$jetTheme.autoDarkMode,
             () => {
-                setCookie()
+                setColorModeCookie(
+                    this.$jetTheme.darkMode,
+                    this.$jetTheme.autoDarkMode
+                )
             }
         )
 
