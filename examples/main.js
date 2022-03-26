@@ -20,11 +20,11 @@ import { redColorModeCookie, setColorModeCookie } from "./common";
 const BASE_COMPONENT = {
     name: "mousseUI-home-page",
     created () {
-        let themeSetting = redColorModeCookie()
+        let themeCookie = redColorModeCookie()
         this.$jetTheme.watchTheneChange(this);
         this.$jetTheme.themeList = [themeDefault]
-        this.$jetTheme.DarkMode = themeSetting[1]
-        this.$jetTheme.autoDarkMode = themeSetting[0]
+        this.$jetTheme.darkMode = themeCookie.darkMode
+        this.$jetTheme.autoDarkMode = themeCookie.darkModeAuto
 
         // 监听并设置 cookes
         this.$watch(

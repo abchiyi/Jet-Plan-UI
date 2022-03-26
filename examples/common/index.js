@@ -36,7 +36,10 @@ function redColorModeCookie () {
         this.setColorModeCookie(true);
         return true;
     }
-    return [autoColor, colorMode];
+    return {
+        darkMode: colorMode,
+        darkModeAuto: autoColor,
+    }
 }
 
 function setColorModeCookie (color, auto) {
