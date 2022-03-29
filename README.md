@@ -6,4 +6,4 @@ VueJs 3 UI component library for mobile and desktop
 Doc - [Chinese](https://jetplanui.github.io/#/) | [English](https://jetplanui.github.io/#/english)
 
 ## Bulid
-You can use the ‘ npm run build ’ command to compile a production library to use
+You can use the ‘ npm run lib ’ and ‘ npm run lib-theme ’  command to compile a production library to use
