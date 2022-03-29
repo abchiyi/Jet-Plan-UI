@@ -45,7 +45,7 @@ conosle.log('Hello world');
     <doc-item name="Props:" title-is="h2">
       <li>
         <p>
-          <c-highlighter>can-copy</c-highlighter>
+          <high-lighter>can-copy</high-lighter>
           - type: Boolen, default:false
         </p>
         控制是否显示复制按钮
@@ -54,7 +54,7 @@ conosle.log('Hello world');
     <doc-item name="Slots:" title-is="h2">
       <li>
         <p>
-          <c-highlighter>icon-copy</c-highlighter>
+          <high-lighter>icon-copy</high-lighter>
           - 自定义复制按钮图标,默认为文本 'Copy'
         </p>
       </li>
@@ -63,10 +63,10 @@ conosle.log('Hello world');
 </template>
 
 <script>
-import pdn from "../../common/mix/popDemoName";
+import pdn from '../../common/mix/popDemoName';
 export default {
   mixins: [pdn],
-  name: "the-demo-code-box",
+  name: 'the-demo-code-box',
   data() {
     return {
       code: `

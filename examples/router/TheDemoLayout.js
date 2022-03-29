@@ -29,5 +29,9 @@ export default [
         name: "Sidebar",
         component: () => import('../views/the_demo/the_demo_layout/TheDemoSidebar.vue'),
     },
-
+    {
+        path: "/drawer",
+        name: 'Drawer',
+        component: () => import('../views/the_demo/the_demo_layout/TheDemoDrawers.vue')
+    }
 ]

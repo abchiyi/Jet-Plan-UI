@@ -1,27 +1,27 @@
 <template>
-	<code class="c-highlighter font-mono">
-		<slot>inline code</slot>
-	</code>
+  <code class="high-lighter font-mono">
+    <slot>inline code</slot>
+  </code>
 </template>
 
 <script>
-	export default {
-		name: 'c-highlighter',
-	};
+export default {
+  name: 'high-lighter',
+};
 </script>
 
 <style>
-	.warning-text,
-	code.c-highlighter {
-		background-color: var(--border);
-		border-radius: var(--s-radius);
-		color: var(--text-hint);
-		display: inline-block;
-		padding: 2px 6px;
-		margin: 2px 0;
-	}
+.warning-text,
+code.high-lighter {
+  outline: solid 2px var(--border);
+  background-color: var(--border);
+  border-radius: var(--s-radius);
+  color: var(--text-hint);
+  display: inline-block;
+  padding: 0 6px;
+}
 
-	.c-highlighter + .c-highlighter {
-		margin-left: 5px;
-	}
+.high-lighter + .high-lighter {
+  margin-left: 5px;
+}
 </style>

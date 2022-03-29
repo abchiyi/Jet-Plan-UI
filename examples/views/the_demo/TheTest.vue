@@ -1,5 +1,5 @@
 <template>
-  <div style="background: var(--foreground); padding: 100px">
+  <div>
     <j-button v-auto-color @click="click">Click me</j-button>
     <div
       v-auto-color="updatedColor"
@@ -10,37 +10,58 @@
     </div>
     <j-code-box
       :code="`
-abc
-ABC
-012
--+=
-		`"
+        abc
+        ABC
+        012
+        -+=
+        `"
     />
+
+    <j-control-bar for-id="expand-switch">
+      <template v-slot:text>展开抽屉</template>
+      <j-switch v-model="value" id="expand-switch" />
+    </j-control-bar>
+
+    <j-control-bar
+      :for-id="`radio-${i}`"
+      v-bind:key="i"
+      v-for="i in ['top', 'bottom', 'left', 'right']"
+    >
+      <template v-slot:text>{{ i }}</template>
+      <j-radio :id="`radio-${i}`" v-model="openOn" :value="i" />
+    </j-control-bar>
+
+    <j-drawers :from="openOn" :expand="value">
+      <h1>drawers</h1>
+      <h1>drawers</h1>
+      <h1>drawers</h1>
+    </j-drawers>
   </div>
 </template>
 <script>
-import pdn from "../../common/mix/popDemoName";
-import { TimedActionLimit } from "@ui/tool";
+import pdn from "../../common/mix/popDemoName"
+import { TimedActionLimit } from "@ui/tool"
 export default {
   mixins: [pdn],
   name: "TheTestPage",
-  data() {
+  data () {
     return {
       value: false,
       value1: true,
+      openOn: 'top',
       v: true,
       tal: new TimedActionLimit(510, 1, false),
       color: undefined,
-    };
+    }
   },
   methods: {
-    click() {
+    click () {
       this.tal.action(() => {
-        this.value = !this.value;
-      });
+        this.value = !this.value
+      })
     },
-    updatedColor(v) {
-      this.color = v;
+    updatedColor (v) {
+      this.color = v
     },
   },
 };
@@ -58,16 +79,8 @@ export default {
   border: 1px solid #ebebeb;
   background: var(--foreground);
   border-radius: var(--m-radius);
-  box-shadow: "";
+  box-shadow: '';
   transition: unset;
   /* background: #000; */
 }
-/*
-.a {
-  background: rgb(15, 87, 109);
-}
-
-.b {
-  background: #cfcfcf;
-} */
 </style>

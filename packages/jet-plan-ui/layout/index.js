@@ -1,21 +1,34 @@
 import Page from './src/Page.vue'
 import Header from './Header.vue'
 import Sidebar from './Sidebar.vue'
-import Controlbar from "./src/ControlBar.vue";
+import ControlBar from "./src/ControlBar.vue"
 import FullScreenMask from './src/FullScreenMask.vue'
+import Drawer from './src/drawer.vue'
+
+import { installComponent } from '../tool/lib'
+
 export {
+    Page,
     Header,
     Sidebar,
-    Controlbar,
-    FullScreenMask
+    ControlBar,
+    FullScreenMask,
+    Drawer
 }
+
+const components = [
+    Page,
+    Header,
+    Sidebar,
+    ControlBar,
+    FullScreenMask,
+    Drawer
+]
+
+
 
 export default {
     install (Vue) {
-        Vue.component(Page.name, Page)
-        Vue.component(Header.name, Header)
-        Vue.component(Sidebar.name, Sidebar)
-        Vue.component(Controlbar.name, Controlbar)
-        Vue.component(FullScreenMask.name, FullScreenMask)
+        installComponent(Vue, components)
     }
 }

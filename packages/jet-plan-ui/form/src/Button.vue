@@ -1,8 +1,8 @@
 <script>
-import { h } from "vue";
-import { ActionFeedback } from "../../action-feedback";
+import { h } from 'vue';
+import { ActionFeedback } from '../../action-feedback';
 export default {
-  name: "j-button",
+  name: 'j-button',
   data() {
     return {
       value: false,
@@ -29,11 +29,11 @@ export default {
   },
   computed: {
     classes() {
-      let classes = ["shape", "j-button"];
-      if (this.primary) classes.push("primary");
-      if (this.disabled) classes.push("disabled");
-      if (this.row) classes.push("row");
-      classes.push(this.text ? "text-button" : "button");
+      let classes = ['shape', 'j-button'];
+      if (this.primary) classes.push('primary');
+      if (this.disabled) classes.push('disabled');
+      if (this.row) classes.push('row');
+      classes.push(this.text ? 'text-button' : 'button');
 
       return classes;
     },
@@ -44,14 +44,14 @@ export default {
       if (solt) {
         return solt();
       }
-      return "Submit";
+      return 'Submit';
     },
   },
   render() {
     return h(
       ActionFeedback,
       {
-        tag: "button",
+        tag: 'button',
         active: true,
         class: this.classes,
       },
@@ -77,8 +77,9 @@ export default {
   user-select: none;
   /* color: var(--text-hint); */
   cursor: pointer;
-  /* font-size: 1.1rem; */
-  text-decoration: underline;
+  font-size: 0.8rem;
+  /* text-decoration: underline; */
+  white-space: nowrap;
 }
 
 .j-button {
