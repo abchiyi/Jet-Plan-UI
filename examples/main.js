@@ -18,36 +18,35 @@ import { redColorModeCookie, setColorModeCookie } from "./common";
 // theme.use(themeDefault);
 
 const BASE_COMPONENT = {
-    name: "mousseUI-home-page",
-    created () {
-        let themeCookie = redColorModeCookie()
-        this.$jetTheme.watchTheneChange(this);
-        this.$jetTheme.themeList = [themeDefault]
-        this.$jetTheme.darkMode = themeCookie.darkMode
-        this.$jetTheme.autoDarkMode = themeCookie.darkModeAuto
+	name: "mousseUI-home-page",
+	created() {
+		let themeCookie = redColorModeCookie();
+		this.$jetTheme.watchTheneChange(this);
+		this.$jetTheme.themeList = [themeDefault];
+		this.$jetTheme.darkMode = themeCookie.darkMode;
+		this.$jetTheme.autoDarkMode = themeCookie.darkModeAuto;
 
-        // 监听并设置 cookes
-        this.$watch(
-            () => this.$jetTheme.darkMode,
-            () => {
-                setColorModeCookie(
-                    this.$jetTheme.darkMode,
-                    this.$jetTheme.autoDarkMode
-                )
-            }
-        )
-        this.$watch(
-            () => this.$jetTheme.autoDarkMode,
-            () => {
-                setColorModeCookie(
-                    this.$jetTheme.darkMode,
-                    this.$jetTheme.autoDarkMode
-                )
-            }
-        )
-
-    },
-    render: () => h(resolveComponent("router-view")),
+		// 监听并设置 cookes
+		this.$watch(
+			() => this.$jetTheme.darkMode,
+			() => {
+				setColorModeCookie(
+					this.$jetTheme.darkMode,
+					this.$jetTheme.autoDarkMode
+				);
+			}
+		);
+		this.$watch(
+			() => this.$jetTheme.autoDarkMode,
+			() => {
+				setColorModeCookie(
+					this.$jetTheme.darkMode,
+					this.$jetTheme.autoDarkMode
+				);
+			}
+		);
+	},
+	render: () => h(resolveComponent("router-view")),
 };
 
 // Go
