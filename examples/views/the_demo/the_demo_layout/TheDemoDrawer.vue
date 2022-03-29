@@ -57,12 +57,17 @@
         <p>控制展开方向</p>
       </li>
     </doc-item>
+    <doc-item name="Slots:">
+      <li><high-lighter>default</high-lighter> - 仅有默认插槽</li>
+    </doc-item>
   </article>
 </template>
 
 <script>
+import popDemoName from '../../../common/mix/popDemoName';
 export default {
   name: 'the-demo-drawers',
+  mixins: [popDemoName],
   data() {
     return {
       openOn: 'right',
