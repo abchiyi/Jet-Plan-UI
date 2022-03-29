@@ -32,6 +32,6 @@ export default [
     {
         path: "/drawer",
         name: 'Drawer',
-        component: () => import('../views/the_demo/the_demo_layout/TheDemoDrawers.vue')
+        component: () => import('../views/the_demo/the_demo_layout/TheDemoDrawer.vue')
     }
 ]
