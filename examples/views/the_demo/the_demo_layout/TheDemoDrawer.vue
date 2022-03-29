@@ -79,7 +79,50 @@ export default {
         right: '右侧',
       },
       code: `
+// !注意 以下 Code 中 以 'j-' 开头的均为 Jet-UI 组件, 请确保已引入所有已使用的组件。
 
+//JavaScript
+
+let openOn =  'right';
+let expand =  false;
+let text =  {top: '顶部',bottom: '底部',left: '左侧',right: '右侧',};
+
+// HTML
+
+<--! 展开控制 -->
+<j-control-bar for-id="expand-switch">
+    <template v-slot:text>展开抽屉</template>
+    <div>
+    <j-button
+        @click="
+        () => {
+            expand = !expand;
+        }
+        "
+        id="expand-switch"
+    >
+        {{ expand ? '收起' : '展开' }}
+    </j-button>
+    </div>
+</j-control-bar>
+
+<--! 位置选择 -->
+<j-control-bar
+    :for-id="\`radio-\${i}\`"
+    v-bind:key="i"
+    v-for="i in ['top', 'bottom', 'left', 'right']"
+>
+    <template v-slot:text>{{ \`从\${text[i]}展开\` }}</template>
+    <j-radio :id="\`radio-\${i}\`" v-model="openOn" :value="i" />
+</j-control-bar>
+
+<!-- 抽屉组件 -->
+<j-drawer id="demo-drawer" :from="openOn" :expand="expand">
+    <m-row spaceMode="between">
+    <h1>drawer</h1>
+    <h1>drawer</h1>
+    </m-row>
+</j-drawer>
       `,
     };
   },
