@@ -89,7 +89,7 @@ let text =  {top: '顶部',bottom: '底部',left: '左侧',right: '右侧',};
 
 // HTML
 
-<--! 展开控制 -->
+<!-- 展开控制 -->
 <j-control-bar for-id="expand-switch">
     <template v-slot:text>展开抽屉</template>
     <div>
@@ -106,7 +106,7 @@ let text =  {top: '顶部',bottom: '底部',left: '左侧',right: '右侧',};
     </div>
 </j-control-bar>
 
-<--! 位置选择 -->
+<!-- 位置选择 -->
 <j-control-bar
     :for-id="\`radio-\${i}\`"
     v-bind:key="i"
