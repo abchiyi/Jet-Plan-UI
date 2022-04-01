@@ -29,7 +29,7 @@ export default {
 
   computed: {
     classes() {
-      return ['j-drawers', this.from, 'frosted-glass'];
+      return ['j-drawers', this.from];
     },
   },
 };
