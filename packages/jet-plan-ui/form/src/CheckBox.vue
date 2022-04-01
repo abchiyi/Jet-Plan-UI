@@ -257,7 +257,7 @@ label > * {
   fill: var(--border);
 }
 .j-check-box.disabled .check {
-  stroke: var(--text-disabled);
+  opacity: 50%;
 }
 
 /* Animation */
