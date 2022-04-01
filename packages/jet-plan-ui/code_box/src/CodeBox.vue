@@ -144,8 +144,9 @@ export default {
 }
 
 .j-code-box .line-number {
+  border-right: 2px dashed var(--text-hint);
+  margin-right: 1em;
   background: var(--hljs-bgcolor);
-  /* border-right: 2px dashed var(--text-hint); */
   box-sizing: border-box;
   padding: 0 1em;
   text-align: right;
