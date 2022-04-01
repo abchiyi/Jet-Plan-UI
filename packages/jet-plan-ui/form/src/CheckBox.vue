@@ -254,7 +254,8 @@ label > * {
   fill: var(--disabled);
 }
 .j-check-box.disabled .dot {
-  fill: var(--border);
+  fill: var(--text-light);
+  opacity: 0.5;
 }
 .j-check-box.disabled .check {
   opacity: 50%;
