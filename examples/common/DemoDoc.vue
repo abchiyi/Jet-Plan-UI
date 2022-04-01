@@ -27,13 +27,13 @@
 </template>
 <script>
 export default {
-  name: "demo-doc"
+  name: 'demo-doc',
 };
 </script>
 
 <style>
 .doc li + li {
-  margin-top: 1em;
+  /* margin-top: 1em; */
 }
 
 .doc li::marker {
