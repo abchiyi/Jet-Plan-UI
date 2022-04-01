@@ -120,4 +120,12 @@ export default {
 .j-button.text-button.disabled {
   color: var(--text-disabled);
 }
+
+/* p li span */
+span > .j-button.text-button,
+li > .j-button.text-button,
+p > .j-button.text-button {
+  padding-top: unset;
+  padding-bottom: unset;
+}
 </style>
