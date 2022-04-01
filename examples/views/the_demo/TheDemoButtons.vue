@@ -22,43 +22,37 @@
         </div>
       </div>
     </demo-box>
-    <demo-doc>
-      <template v-slot:prop>
-        <li id="prop-button-text">
-          <high-lighter>text - Boolean</high-lighter>
-          按钮外观切换，使用常规按钮还是文本按钮
-          <high-lighter>default - false</high-lighter>
-        </li>
-        <li id="prop-button-primary">
-          <high-lighter>primary - Boolean</high-lighter>
-          按钮外观切换，按钮外观展示为带主题色的主要按钮
-          <high-lighter>default - false</high-lighter>
-        </li>
-        <li id="prop-button-row">
-          <high-lighter>row - Boolean</high-lighter>
-          使按钮占据一行
-          <high-lighter>default - false</high-lighter>
-        </li>
-        <li id="prop-button-disabled">
-          <high-lighter>disabled - Boolean</high-lighter>
-          禁用按钮
-          <high-lighter>default - false</high-lighter>
-        </li>
-        <li id="prop-others">
-          按钮组件外层使用
-          <high-lighter>j-action-feedback</high-lighter>
-          组件渲染，其余
-          <high-lighter>Prop</high-lighter>
-          参考
-          <!--    TODO 跳转到组件 -->
-          <j-button text teg="a">j-action-feedback 组件</j-button>
-        </li>
-      </template>
-
-      <template v-slot:slot>
-        <li>默认插槽</li>
-      </template>
-    </demo-doc>
+    <doc-item name="Props:" tag-is="h2">
+      <li id="prop-button-text">
+        <high-lighter>text - Boolean</high-lighter>
+        按钮外观切换，使用常规按钮还是文本按钮
+        <high-lighter>default - false</high-lighter>
+      </li>
+      <li id="prop-button-primary">
+        <high-lighter>primary - Boolean</high-lighter>
+        按钮外观切换，按钮外观展示为带主题色的主要按钮
+        <high-lighter>default - false</high-lighter>
+      </li>
+      <li id="prop-button-row">
+        <high-lighter>row - Boolean</high-lighter>
+        使按钮占据一行
+        <high-lighter>default - false</high-lighter>
+      </li>
+      <li id="prop-button-disabled">
+        <high-lighter>disabled - Boolean</high-lighter>
+        禁用按钮
+        <high-lighter>default - false</high-lighter>
+      </li>
+      <li id="prop-others">
+        按钮组件外层使用
+        <high-lighter>j-action-feedback</high-lighter>
+        组件渲染，其余
+        <high-lighter>Prop</high-lighter>
+        参考
+        <!--    TODO 跳转到组件 -->
+        <j-button text teg="a">j-action-feedback 组件</j-button>
+      </li>
+    </doc-item>
   </div>
 </template>
 
