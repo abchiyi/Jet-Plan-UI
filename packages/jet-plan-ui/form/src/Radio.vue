@@ -54,9 +54,11 @@ export default {
   },
   props: {
     modelValue: {
-      type: [String, Array, Boolean],
+      required: true,
     },
-    value: [String, Boolean],
+    value: {
+      required: true,
+    },
     name: String,
     id: {
       required: true,

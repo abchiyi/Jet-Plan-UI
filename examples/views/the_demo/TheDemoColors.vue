@@ -14,25 +14,10 @@
       <!-- themes -->
       <j-row id="all-theme" warp>
         <div class="theme-item">
-          <!-- <j-theme-cube /> -->
           <j-all-theme />
         </div>
       </j-row>
     </div>
-    <!-- Switch theme -->
-    <j-control-bar for-id="dark-mode">
-      <template v-slot:text>开启深色模式</template>
-      <j-switch
-        id="dark-mode"
-        :disabled="$jetTheme.autoDarkMode"
-        v-model="$jetTheme.darkMode"
-      />
-    </j-control-bar>
-    <!-- Auto dark mode -->
-    <j-control-bar for-id="auto-dark-mode">
-      <template v-slot:text>跟随系统</template>
-      <j-switch id="auto-dark-mode" v-model="$jetTheme.autoDarkMode" />
-    </j-control-bar>
   </div>
 </template>
 

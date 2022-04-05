@@ -2,8 +2,12 @@
   <div class="no-theme-control" v-if="!$jetTheme">没有设置主题控制器!</div>
   <div class="no-theme-control no-theme" v-if="noTheme">没有加载任何主题!</div>
   <j-row warp v-if="$jetTheme">
-    <div class="all-theme" v-for="theme in $jetTheme.allThemes" :key="theme">
-      <theme-cube :theme="theme" />
+    <div
+      class="all-theme"
+      v-for="key in Object.keys($jetTheme.allThemes)"
+      :key="key"
+    >
+      <theme-cube :theme="$jetTheme.allThemes[key]" :name="key" />
     </div>
   </j-row>
 </template>

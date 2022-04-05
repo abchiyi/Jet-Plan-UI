@@ -31,7 +31,6 @@ const OTHERS = {
 }
 
 export default {
-    name: "JetUI_dark",
     ...BACKGROUND,
     ...TEXTCOLOR,
     ...BASECOLOR,

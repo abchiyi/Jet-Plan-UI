@@ -30,7 +30,6 @@ const OTHERS = {
 }
 
 export default {
-    name: "JetUI_light",
     ...BACKGROUND,
     ...TEXTCOLOR,
     ...BASECOLOR,

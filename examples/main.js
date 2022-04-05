@@ -25,28 +25,23 @@ const BASE_COMPONENT = {
     name: "base-page",
     mixins: [ui.themeMixin],
     created() {
-        this.$jetTheme.installTheme(themeDefault)
-        // this.$jetTheme.installTheme({
-        //     test_light: {
-        //         name: 'test_light',
-        //         primary: '#e47878',
-        //         background: "#a3b3d4",
-        //     },
-        //     test_dark: {
-        //         name: 'test_dark',
-        //         text: "#a0a59b",
-        //         primary: '#3c35ff',
-        //         background: '#24282f',
-        //         foreground: '#adadad'
-        //     }
-        // })
-
-        // this.$jetTheme.installTheme({
-        //     test2: {
-        //         name: 'test2',
-        //         primary: '#36ecf0'
-        //     }
-        // })
+        this.$jetTheme.install(themeDefault)
+        this.$jetTheme.installTheme(
+            "bright_pink", {
+                primary: '#e47878',
+                background: "#e3ecff",
+            },
+            this.$jetTheme.allThemes.jetPlan_light
+        )
+        this.$jetTheme.installTheme(
+            "night_blue", {
+                text: "#a0a59b",
+                primary: '#3c35ff',
+                background: '#24282f',
+                foreground: '#141920'
+            },
+            this.$jetTheme.allThemes.jetPlan_dark
+        )
 
 
         let keys = Object.keys(

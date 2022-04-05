@@ -44,7 +44,7 @@ const theme = reactive({
     allThemes: {},
     theme: null,
 
-    installTheme(theme) {
+    install(theme) {
         /**
          * 主题是对象时尝试调用 ‘install’ 方法，否则将作为函数处理
          */
@@ -54,15 +54,25 @@ const theme = reactive({
             theme(this)
         }
     },
-    install(name, object) {
-        this.allThemes[name] = object
+    installTheme(name, object, extend) {
+        if (extend) {
+            this.allThemes[name] = {
+                ...extend,
+                ...object
+            }
+            console.log(
+                this.allThemes[name]
+            );
+        } else {
+            this.allThemes[name] = object
+        }
     },
     toAuto(lightTheme, darkTheme) {
         const auto = {
             ...lightTheme
         }
         auto.auto = darkTheme
-        auto.name = auto.name.split('_')[0] + '_auto';
+        // auto.name = auto.name.split('_')[0] + '_auto';
         return auto
     }
 })
@@ -93,7 +103,6 @@ export default {
             // -- 监听主题设置变更 --
             this.$watch(() => theme.theme, (theme) => {
                 use(theme)
-                console.log();
             })
         }
     }
