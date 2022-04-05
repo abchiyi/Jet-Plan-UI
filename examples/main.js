@@ -18,7 +18,10 @@ import common, {
     setCookie
 } from "./common"
 
+// 安装主题
 ui.$jetTheme.install(themeDefault)
+
+// 从现有主题拓展并安装
 ui.$jetTheme.installTheme(
     "bright_pink", {
         primary: '#e47878',
