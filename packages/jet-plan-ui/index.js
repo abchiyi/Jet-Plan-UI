@@ -1,18 +1,15 @@
-import gird from "./gird";
-import form from "./form";
-import card from "./card";
-import animations from "./animations";
-import progress from "./progress";
-import layout from "./layout";
-import _theme from "./theme";
-import mask from "./mask";
-import codeBox from "./code_box";
-import ActionFeedback from "./action-feedback";
+import gird from "./gird"
+import form from "./form"
+import card from "./card"
+import animations from "./animations"
+import progress from "./progress"
+import layout from "./layout"
+import mask from "./mask"
+import codeBox from "./code_box"
+import ActionFeedback from "./action-feedback"
+import theme from './theme'
 // 指令&工具函数/类
-import directives from "./tool/directives";
-
-import { reactive } from "vue";
-let theme = reactive(_theme);
+import directives from "./tool/directives"
 
 const components = [
     ActionFeedback,
@@ -25,7 +22,8 @@ const components = [
     gird,
     form,
     card,
-];
+    theme
+]
 
 export {
     ActionFeedback,
@@ -39,13 +37,14 @@ export {
     gird,
     form,
     card,
-};
+}
 
 // 默认安装程序
-export default function install (Vue) {
-    Object.keys(components).forEach((key) => {
-        Vue.use(components[key]);
-    });
-    // 全局挂载主题控制器
-    Vue.config.globalProperties.$jetTheme = theme;
+export default {
+    install(Vue) {
+        Object.keys(components).forEach((key) => {
+            Vue.use(components[key])
+        })
+    },
+    themeMixin: theme.mixin
 }

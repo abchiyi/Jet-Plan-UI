@@ -1,32 +1,52 @@
+import {
+    resolveComponent,
+    createApp,
+    h
+} from "vue"
+
 // 自定义 fonts, css, style
 import "./assets"
 
-import { resolveComponent, createApp, h } from "vue"
-
+// JetUI
 import ui from "@ui"
-// import { theme } from "@ui";
 import themeDefault from "@theme"
 
-// Custom compents
+// Custom components
 import router from "./router"
 import common from "./common"
 
-import { redColorModeCookie, setColorModeCookie } from "./common"
+import {
+    redColorModeCookie,
+    setColorModeCookie
+} from "./common"
 
-// Set theme
-// theme.use(themeDefault, ...redColorModeCookie());
-// theme.use(themeDefault);
 
 const BASE_COMPONENT = {
-    name: "mousseUI-home-page",
-    created () {
+    name: "base-page",
+    mixins: [ui.themeMixin],
+    created() {
+        this.$jetTheme.importTheme(themeDefault)
+        this.$jetTheme.importTheme({
+            test_light: {
+                name: 'test-light',
+                primary: '#e47878',
+                background: "#a3b3d4",
+            },
+            test_dark: {
+                name: 'test-dark',
+                text: "#a0a59b",
+                primary: '#3c35ff',
+                background: '#24282f',
+                foreground: '#adadad'
+            }
+        })
+
+        // 读取主题配置
         let themeCookie = redColorModeCookie()
-        this.$jetTheme.watchTheneChange(this)
-        this.$jetTheme.themeList = [themeDefault]
         this.$jetTheme.darkMode = themeCookie.darkMode
         this.$jetTheme.autoDarkMode = themeCookie.darkModeAuto
 
-        // 监听并设置 cookes
+        // 监听并设置 cookies
         this.$watch(
             () => this.$jetTheme.darkMode,
             () => {

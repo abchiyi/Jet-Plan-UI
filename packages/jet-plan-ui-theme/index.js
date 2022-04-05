@@ -4,10 +4,6 @@ import light from './lightMode'
 import dark from './darkMode'
 
 export default {
-    light: {
-        ...light
-    },
-    dark: {
-        ...dark
-    },
+    jetPlan_light: light,
+    jetPlan_dark: dark,
 }

@@ -36,32 +36,39 @@
       <h1>drawers</h1>
       <h1>drawers</h1>
     </j-drawers>
+    <themem-cube :theme="theme.light"></themem-cube>
+    <themem-cube :theme="theme.dark"></themem-cube>
   </div>
 </template>
 <script>
-import pdn from "../../common/mix/popDemoName"
-import { TimedActionLimit } from "@ui/tool"
+import pdn from '../../common/mix/popDemoName';
+import { TimedActionLimit } from '@ui/tool';
+import theme from '../../../packages/jet-plan-ui-theme/';
+theme;
+import thememCube from '../../../packages/jet-plan-ui/theme/themem-cube.vue';
 export default {
+  components: { thememCube },
   mixins: [pdn],
-  name: "TheTestPage",
-  data () {
+  name: 'TheTestPage',
+  data() {
     return {
       value: false,
       value1: true,
       openOn: 'top',
+      theme: theme,
       v: true,
       tal: new TimedActionLimit(510, 1, false),
       color: undefined,
-    }
+    };
   },
   methods: {
-    click () {
+    click() {
       this.tal.action(() => {
-        this.value = !this.value
-      })
+        this.value = !this.value;
+      });
     },
-    updatedColor (v) {
-      this.color = v
+    updatedColor(v) {
+      this.color = v;
     },
   },
 };
