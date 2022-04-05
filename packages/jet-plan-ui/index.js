@@ -46,5 +46,5 @@ export default {
             Vue.use(components[key])
         })
     },
-    themeMixin: theme.mixin
+    $jetTheme: theme.$jetTheme
 }

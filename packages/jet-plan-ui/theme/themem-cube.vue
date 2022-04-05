@@ -1,5 +1,5 @@
 <template>
-  <div @click="$jetTheme.theme = theme" class="color-set-cube">
+  <div @click="$jetTheme.setTheme(name)" class="color-set-cube">
     <div class="image">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
         <g id="colorset-box" transform="translate(-2915 226)">

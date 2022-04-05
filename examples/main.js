@@ -18,32 +18,32 @@ import common, {
     setCookie
 } from "./common"
 
+ui.$jetTheme.install(themeDefault)
+ui.$jetTheme.installTheme(
+    "bright_pink", {
+        primary: '#e47878',
+        background: "#e3ecff",
+    },
+    ui.$jetTheme.allThemes.jetPlan_light
+)
+ui.$jetTheme.installTheme(
+    "night_blue", {
+        text: "#a0a59b",
+        primary: '#3c35ff',
+        background: '#24282f',
+        foreground: '#141920'
+    },
+    ui.$jetTheme.allThemes.jetPlan_dark
+)
+
+// 从‘Cookie’读取主题配置
+ui.$jetTheme.setTheme(
+    getCookie('theme_of_last')
+)
 
 const BASE_COMPONENT = {
     name: "base-page",
-    mixins: [ui.themeMixin],
     created() {
-        this.$jetTheme.install(themeDefault)
-        this.$jetTheme.installTheme(
-            "bright_pink", {
-                primary: '#e47878',
-                background: "#e3ecff",
-            },
-            this.$jetTheme.allThemes.jetPlan_light
-        )
-        this.$jetTheme.installTheme(
-            "night_blue", {
-                text: "#a0a59b",
-                primary: '#3c35ff',
-                background: '#24282f',
-                foreground: '#141920'
-            },
-            this.$jetTheme.allThemes.jetPlan_dark
-        )
-        // 读取主题配置
-        let themeName = getCookie('theme_of_last')
-        this.$jetTheme.setTheme(themeName)
-
         // 在 cookies 中记录最后应用的主题
         this.$watch(
             () => this.$jetTheme.theme,

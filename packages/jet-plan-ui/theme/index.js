@@ -79,14 +79,13 @@ const theme = reactive({
     setTheme(name) {
         if (this.allThemes[name]) {
             this.theme = this.allThemes[name]
+            use(this.theme)
         } else {
             console.warn(`$jetTheme.setTheme
     Not found theme :${name}`)
         }
     }
 })
-
-let _Vue;
 
 import {
     installComponent
@@ -102,17 +101,8 @@ export default {
         installComponent(Vue, [
             AllTheme
         ])
-        _Vue = Vue
+        // 全局挂载主题控制器
+        Vue.config.globalProperties.$jetTheme = reactive(theme)
     },
-    mixin: {
-        created() {
-            // 全局挂载主题控制器
-            _Vue.config.globalProperties.$jetTheme = reactive(theme)
-
-            // -- 监听主题设置变更 --
-            this.$watch(() => theme.theme, (theme) => {
-                use(theme)
-            })
-        }
-    }
+    $jetTheme: theme
 }
