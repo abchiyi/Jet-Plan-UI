@@ -1,5 +1,5 @@
 <template>
-  <div @click="setTheme" class="theme-cube" :key="theme">
+  <div class="theme-cube" :key="theme">
     <div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -97,10 +97,6 @@
       </svg>
     </div>
     <span class="text-hint"> {{ theme.name }} </span>
-    :
-    <span class="text-hint">
-      {{ $jetTheme.usedThemes.indexOf(theme) + 1 }}
-    </span>
   </div>
 </template>
 
@@ -111,32 +107,6 @@ export default {
     theme: {
       type: Object,
       required: true,
-    },
-  },
-  methods: {
-    // 主题当前主题已被应用时清
-    /* 当前主题已被应用时 */
-    setTheme() {
-      if (this.clearTheme()) {
-        this.$jetTheme.usedThemes.push(this.theme);
-      }
-    },
-    clearTheme() {
-      if (
-        this.$jetTheme.usedThemes.length ==
-        this.getThemeIndexOfUsedTheme() + 1
-      ) {
-        return false;
-      }
-
-      while (this.getThemeIndexOfUsedTheme() != -1) {
-        this.$jetTheme.usedThemes.splice(this.getThemeIndexOfUsedTheme(), 1);
-      }
-
-      return true;
-    },
-    getThemeIndexOfUsedTheme() {
-      return this.$jetTheme.usedThemes.indexOf(this.theme);
     },
   },
 };

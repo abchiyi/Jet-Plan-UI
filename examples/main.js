@@ -25,21 +25,34 @@ const BASE_COMPONENT = {
     name: "base-page",
     mixins: [ui.themeMixin],
     created() {
-        this.$jetTheme.importTheme(themeDefault)
-        this.$jetTheme.importTheme({
-            test_light: {
-                name: 'test-light',
-                primary: '#e47878',
-                background: "#a3b3d4",
-            },
-            test_dark: {
-                name: 'test-dark',
-                text: "#a0a59b",
-                primary: '#3c35ff',
-                background: '#24282f',
-                foreground: '#adadad'
-            }
-        })
+        this.$jetTheme.installTheme(themeDefault)
+        // this.$jetTheme.installTheme({
+        //     test_light: {
+        //         name: 'test_light',
+        //         primary: '#e47878',
+        //         background: "#a3b3d4",
+        //     },
+        //     test_dark: {
+        //         name: 'test_dark',
+        //         text: "#a0a59b",
+        //         primary: '#3c35ff',
+        //         background: '#24282f',
+        //         foreground: '#adadad'
+        //     }
+        // })
+
+        // this.$jetTheme.installTheme({
+        //     test2: {
+        //         name: 'test2',
+        //         primary: '#36ecf0'
+        //     }
+        // })
+
+
+        let keys = Object.keys(
+            this.$jetTheme.allThemes
+        )
+        this.$jetTheme.theme = this.$jetTheme.allThemes[keys[2]]
 
         // 读取主题配置
         let themeCookie = redColorModeCookie()
@@ -56,15 +69,15 @@ const BASE_COMPONENT = {
                 )
             }
         )
-        this.$watch(
-            () => this.$jetTheme.autoDarkMode,
-            () => {
-                setColorModeCookie(
-                    this.$jetTheme.darkMode,
-                    this.$jetTheme.autoDarkMode
-                )
-            }
-        )
+        // this.$watch(
+        //     () => this.$jetTheme.autoDarkMode,
+        //     () => {
+        //         setColorModeCookie(
+        //             this.$jetTheme.darkMode,
+        //             this.$jetTheme.autoDarkMode
+        //         )
+        //     }
+        // )
     },
     render: () => h(resolveComponent("router-view")),
 }

@@ -2,7 +2,7 @@
   <div class="no-theme-control" v-if="!$jetTheme">没有设置主题控制器!</div>
   <div class="no-theme-control no-theme" v-if="noTheme">没有加载任何主题!</div>
   <j-row warp v-if="$jetTheme">
-    <div class="all-theme" v-for="theme in $jetTheme.list" :key="theme">
+    <div class="all-theme" v-for="theme in $jetTheme.allThemes" :key="theme">
       <theme-cube :theme="theme" />
     </div>
   </j-row>
@@ -18,7 +18,7 @@ export default {
   computed: {
     noTheme() {
       try {
-        return !this.$jetTheme.list.length > 0;
+        return !this.$jetTheme.theme;
       } catch (error) {
         return true;
       }
