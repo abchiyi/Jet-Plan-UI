@@ -64,15 +64,6 @@ const BASE_COMPONENT = {
                 )
             }
         )
-        // this.$watch(
-        //     () => this.$jetTheme.autoDarkMode,
-        //     () => {
-        //         setColorModeCookie(
-        //             this.$jetTheme.darkMode,
-        //             this.$jetTheme.autoDarkMode
-        //         )
-        //     }
-        // )
     },
     render: () => h(resolveComponent("router-view")),
 }
