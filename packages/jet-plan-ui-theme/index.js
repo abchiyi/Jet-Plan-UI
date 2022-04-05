@@ -11,5 +11,6 @@ export default {
             light,
             dark
         ))
+        jetTheme.setTheme("jetPlan_light")
     },
 }

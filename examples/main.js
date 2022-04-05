@@ -13,11 +13,9 @@ import themeDefault from "@theme"
 
 // Custom components
 import router from "./router"
-import common from "./common"
-
-import {
-    redColorModeCookie,
-    setColorModeCookie
+import common, {
+    getCookie,
+    setCookie
 } from "./common"
 
 
@@ -42,26 +40,15 @@ const BASE_COMPONENT = {
             },
             this.$jetTheme.allThemes.jetPlan_dark
         )
-
-
-        let keys = Object.keys(
-            this.$jetTheme.allThemes
-        )
-        this.$jetTheme.theme = this.$jetTheme.allThemes[keys[2]]
-
         // 读取主题配置
-        let themeCookie = redColorModeCookie()
-        this.$jetTheme.darkMode = themeCookie.darkMode
-        this.$jetTheme.autoDarkMode = themeCookie.darkModeAuto
+        let themeName = getCookie('theme_of_last')
+        this.$jetTheme.setTheme(themeName)
 
-        // 监听并设置 cookies
+        // 在 cookies 中记录最后应用的主题
         this.$watch(
-            () => this.$jetTheme.darkMode,
-            () => {
-                setColorModeCookie(
-                    this.$jetTheme.darkMode,
-                    this.$jetTheme.autoDarkMode
-                )
+            () => this.$jetTheme.theme,
+            (theme) => {
+                setCookie('theme_of_last', theme.name)
             }
         )
     },

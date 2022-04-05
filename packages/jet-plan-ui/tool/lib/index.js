@@ -90,8 +90,6 @@ export function hexToRgb(hex) {
         b: parse(hex.slice(5, 7)),
         opacity: parseFloat(parse(hex.slice(7)) / 255)
     };
-    console.log(hex);
-    console.log(rgb);
     // let max = rgb.r + rgb.g + rgb.b;
     return {
         color: rgb.opacity < 1 ?

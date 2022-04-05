@@ -58,13 +58,14 @@ const theme = reactive({
         if (extend) {
             this.allThemes[name] = {
                 ...extend,
+                ...object,
+                name: name
+            }
+        } else {
+            this.allThemes[name] = {
+                name: name,
                 ...object
             }
-            console.log(
-                this.allThemes[name]
-            );
-        } else {
-            this.allThemes[name] = object
         }
     },
     toAuto(lightTheme, darkTheme) {
@@ -74,6 +75,14 @@ const theme = reactive({
         auto.auto = darkTheme
         // auto.name = auto.name.split('_')[0] + '_auto';
         return auto
+    },
+    setTheme(name) {
+        if (this.allThemes[name]) {
+            this.theme = this.allThemes[name]
+        } else {
+            console.warn(`$jetTheme.setTheme
+    Not found theme :${name}`)
+        }
     }
 })
 
