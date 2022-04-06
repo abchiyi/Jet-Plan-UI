@@ -62,8 +62,6 @@ export default {
   list-style-type: none;
 }
 
-.doc .doc > ol,
-.doc .doc > ul,
 .doc.no-padding > ol,
 .doc.no-padding > ul {
   padding-left: unset;

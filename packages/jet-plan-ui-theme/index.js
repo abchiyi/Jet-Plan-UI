@@ -3,6 +3,11 @@ import './css'
 import light from './lightMode'
 import dark from './darkMode'
 
+export {
+    dark,
+    light
+}
+
 export default {
     install(jetTheme) {
         jetTheme.installTheme('jetPlan_light', light)

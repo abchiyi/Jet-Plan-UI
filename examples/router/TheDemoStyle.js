@@ -1,8 +1,16 @@
-export default [
-    {
+export default [{
         name: "主题",
         path: '/theme',
-        component: () => import('../views/the_demo/TheDemoColors.vue')
+        component: () => import('../views/the_demo/the_demo_style/TheDemoColors.vue'),
+        index: [{
+                name: '$jetTheme',
+                to: '#jet-theme'
+            },
+            {
+                name: '定制主题',
+                to: '#customize-theme'
+            }
+        ]
     },
     {
         name: '色彩',
