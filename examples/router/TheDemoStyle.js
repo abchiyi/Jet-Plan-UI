@@ -1,6 +1,6 @@
 export default [{
         name: "主题",
-        path: '/theme',
+        path: '/demo/theme',
         component: () => import('../views/the_demo/the_demo_style/TheDemoColors.vue'),
         index: [{
                 name: '切换主题',
@@ -10,8 +10,15 @@ export default [{
                 name: '使用主题',
                 to: '#theme-install-use'
             },
+            {
+                name: "创建主题",
+                to: '#theme-create'
+            }
 
-        ]
+        ],
+        children: [
+
+        ],
     },
     {
         name: '色彩',
