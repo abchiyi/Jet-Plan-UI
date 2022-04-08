@@ -253,19 +253,6 @@ export default {
   padding-left: 8px;
 }
 
-#theme-box {
-  background-color: var(--foreground);
-  border-radius: var(--m-radius);
-  padding: 5px 20px;
-}
-
-#colors {
-  background: var(--foreground);
-}
-
-#all-theme {
-}
-
 .color-box {
   align-items: top;
   display: flex;
