@@ -27,9 +27,8 @@
                 transform="translate(2 2)"
             />
             <transition name="dot">
-                <g class="dot">
+                <g class="dot" v-show="sectionSelected">
                     <rect
-                        v-show="sectionSelected"
                         width="8"
                         height="8"
                         rx="2"
@@ -323,10 +322,8 @@ label > * {
 
 @keyframes dot-in {
     0% {
-        transform: translate(50%, 50%);
+        transform: scale(0);
         opacity: 0;
-        height: 0;
-        width: 0;
     }
     30% {
         opacity: 1;
@@ -343,10 +340,8 @@ label > * {
         opacity: 0;
     }
     100% {
-        transform: translate(50%, 50%);
+        transform: scale(0);
         opacity: 0;
-        height: 0;
-        width: 0;
     }
 }
 </style>
