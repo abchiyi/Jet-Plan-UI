@@ -97,9 +97,6 @@ export default {
   display: block;
   width: 100%;
 }
-.j-button.row + .j-button.row {
-  margin: 2px 0 0 0;
-}
 /* Button Mode Only*/
 .j-button.button.primary {
   background-color: var(--primary);
