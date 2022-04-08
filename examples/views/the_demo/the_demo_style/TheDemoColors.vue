@@ -21,6 +21,7 @@
         noPadding
         noDot
       >
+        <hr />
         <li id="set-theme-at-main-file">
           <p class="text-hint">在'main.js'（app 入口 js）:</p>
           <j-code-box
