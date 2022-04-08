@@ -21,8 +21,7 @@ export default [
         name: 'Test',
         path: '/test',
         component: () => import('../views/the_demo/TheTest.vue'),
-        index: [
-            {
+        index: [{
                 name: 'div1',
                 to: "#div1"
             },
@@ -49,21 +48,26 @@ export default [
         name: 'Inputs',
         path: '/inputs',
         index: [{
-            name: 'Input',
-            to: "#input"
-        },
-        {
-            name: 'Checkbox',
-            to: "#checkbox"
-        },
-        {
-            name: 'Radio',
-            to: "#radio"
-        }, {
-            name: 'Switch',
-            to: "#switch"
-        }
+                name: 'Input',
+                to: "#input"
+            },
+            {
+                name: 'Checkbox',
+                to: "#checkbox"
+            },
+            {
+                name: 'Radio',
+                to: "#radio"
+            }, {
+                name: 'Switch',
+                to: "#switch"
+            }
         ],
         component: () => import('../views/the_demo/the_demo_inputs/TheDemoInputs.vue')
+    },
+    {
+        name: 'All Themes',
+        path: '/all-themes',
+        component: () => import('../views/the_demo/TheDemoAllThemes.vue')
     }
 ]

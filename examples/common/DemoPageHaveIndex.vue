@@ -55,6 +55,7 @@ export default {
 }
 .item::marker {
   color: #00000000;
+  list-style: unset;
   font-size: 0;
 }
 .item *,
