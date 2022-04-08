@@ -94,6 +94,8 @@ export default {
 
 /*------------ OneLine ----------*/
 .j-button.row {
+  margin-left: unset;
+  margin-right: unset;
   display: block;
   width: 100%;
 }
