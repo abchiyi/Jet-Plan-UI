@@ -1,12 +1,8 @@
 <template>
   <div class="no-theme-control" v-if="!$jetTheme">没有设置主题控制器!</div>
   <div class="no-theme-control no-theme" v-if="noTheme">没有加载任何主题!</div>
-  <j-row warp v-if="$jetTheme">
-    <div
-      class="all-theme"
-      v-for="key in Object.keys($jetTheme.allThemes)"
-      :key="key"
-    >
+  <j-row warp v-if="$jetTheme" class="all-theme">
+    <div v-for="key in Object.keys($jetTheme.allThemes)" :key="key">
       <theme-cube :theme="$jetTheme.allThemes[key]" :name="key" />
     </div>
   </j-row>
@@ -32,6 +28,13 @@ export default {
 </script>
 
 <style>
+.all-theme {
+  background: var(--foreground);
+  border-radius: 8px;
+  padding: 20px;
+  padding-bottom: 5px;
+}
+
 .no-theme-control {
   animation: waring-flicker 1.5s ease-in-out infinite;
   background-color: rgb(255, 90, 40);

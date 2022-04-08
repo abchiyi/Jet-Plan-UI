@@ -9,7 +9,11 @@ import "./assets"
 
 // JetUI
 import ui from "@ui"
-import themeDefault from "@theme"
+import themeDefault, {
+    jetPlanLight,
+    jetPlanDark
+}
+from "@theme"
 
 // Custom components
 import router from "./router"
@@ -27,7 +31,7 @@ ui.$jetTheme.installTheme(
         primary: '#e47878',
         background: "#e3ecff",
     },
-    ui.$jetTheme.allThemes.jetPlan_light
+    jetPlanLight
 )
 ui.$jetTheme.installTheme(
     "night_blue", {
@@ -36,7 +40,7 @@ ui.$jetTheme.installTheme(
         background: '#24282f',
         foreground: '#141920'
     },
-    ui.$jetTheme.allThemes.jetPlan_dark
+    jetPlanDark
 )
 
 // 从‘Cookie’读取主题配置

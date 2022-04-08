@@ -1,27 +1,91 @@
 <template>
   <div>
-    <h2>主题</h2>
-    <p>
-      Jet plan UI 内置了一个主题控制器
-      <high-lighter> $jetTheme </high-lighter>
-      。使用它来轻松的切换，自定义，或从网络动态加载主题
-    </p>
-    <hr />
-    <br />
-    <article id="theme-box">
-      <!-- header -->
-      <j-row Y="center">
-        <h3>选择主题</h3>
-      </j-row>
+    <doc-item name="主题" title-is="h1" noDot noPadding>
+      <p>
+        Jet plan UI 内置了一个主题控制器
+        <high-lighter> $jetTheme </high-lighter>
+        。使用它来轻松的切换，自定义，或从网络动态加载主题
+      </p>
       <hr />
-      <!-- themes -->
-      <j-row id="all-theme" warp>
-        <div class="theme-item">
+      <li id="theme-switcher">
+        <doc-item name="选择主题" noPadding title-is="h2">
           <j-all-theme />
-        </div>
-      </j-row>
-    </article>
-    <article id="jet-theme">
+        </doc-item>
+      </li>
+
+      <doc-item
+        id="theme-install-use"
+        name="使用主题"
+        title-is="h2"
+        noPadding
+        noDot
+      >
+        <li id="set-theme-at-main-file">
+          <p class="text-hint">在'main.js'（app 入口 js）:</p>
+          <j-code-box
+            :code="`
+// main.js
+
+// 导入ui和主题
+import ui from 'jet-plan-ui'
+import { jetPlanLight } from 'jet-plan-ui-theme'
+
+// 安装主题
+ui.$jetTheme.installTheme(
+    'jet-ui-light',
+    jetPlanLight
+)
+
+// 通过向 '.setTheme' 方法指定 主题的安装名来应用主题
+ui.$jetTheme.setTheme('jet-ui-light')
+          `"
+          />
+        </li>
+        <li id="set-theme-at-component">
+          <p>在组件中更改/安装主题:</p>
+          <p class="text-hint">
+            $JetTheme 是全局注册的你可以在任何地方调用它。比如在组件中
+          </p>
+          <j-code-box
+            :code="`
+import { jetPlanDark } from 'jet-plan-ui-theme'
+
+export default{
+    name:'some-component',
+    mounted(){
+
+        this.$jetTheme.installTheme(
+            'jet-ui-dark',
+            jetPlanDark
+        )
+
+        this.$jetTheme.setTheme('jet-ui-dark')
+    }
+}
+          `"
+          />
+        </li>
+        <li id="use-theme-pack">
+          <p>使用主题包:</p>
+          <p class="text-hint">
+            主题控制的 '.install'
+            方法接受一个对象或一个函数以一次性安装主题包内有主题
+          </p>
+          <j-code-box
+            :code="`
+import JetPlanUI from 'jet-plan-ui';
+import jetPlanTheme from 'jet-plan-ui-theme';
+
+ui.$jetTheme.install(
+    JetPlanTheme
+);
+          `"
+          />
+        </li>
+      </doc-item>
+    </doc-item>
+
+    <!-- <article id="jet-theme">
       <doc-item name="$jetTheme" title-is="h2" no-padding>
         Jet PLan UI 提供的主题控制器
         <hr />
@@ -177,8 +241,8 @@ this.$jetTheme.installTheme(
           </li>
         </doc-item>
       </doc-item>
-    </article>
-    <article id="customize-theme">
+    </article> -->
+    <!-- <article id="customize-theme">
       <doc-item name="Customize theme" title-is="h2" no-padding>
         定制你自己的主题
         <hr />
@@ -210,9 +274,7 @@ this.$jetTheme.installTheme(
           </li>
           <li>
             <h4>主题选项</h4>
-            <p>
-              下面是可自定义的主题选项,你可以直接点击复制按钮来建立你的主题文件
-            </p>
+            <p>组件库已使用的 option 参考</p>
             <j-code-box
               lang="JavaScript"
               can-copy
@@ -264,14 +326,51 @@ this.$jetTheme.installTheme(
             </j-code-box>
           </li>
         </doc-item>
+        <doc-item name="在主题中添加你的 option">
+          <p>主题控制器支持添加你定义的属性</p>
+          <hr />
+          TODO 新文档页面，主题原理
+          <li>
+            <h4>主题原理</h4>
+            <p>
+              主题控制器只做一件事，将 option 以 key:value 的形式输出为 css
+              变量，然后输入到 css 选择器 :root
+              中，因此你可以在任何位置使用定义的值
+            </p>
+            <p>例如：</p>
+            <j-code-box
+              :code="`
+//  定义 options
+{
+    primary:'#FFF'
+}
+
+// 组件中
+<div style='var(--primary)' >
+    Primary-Color
+</div>
+
+// css 文件
+div{
+    background:var(--primary)
+}
+
+// JavaScript
+el.style.background = 'var(--primary)'
+             `"
+            ></j-code-box>
+          </li>
+        </doc-item>
       </doc-item>
-    </article>
+    </article> -->
   </div>
 </template>
 
 <script>
 import pdn from '@common/mix/popDemoName';
+import DocItem from '../../../common/DocItem.vue';
 export default {
+  components: { DocItem },
   name: 'the-demo-style',
   mixins: [pdn],
 };
@@ -293,7 +392,6 @@ export default {
 }
 
 #all-theme {
-  padding: 5px 20px;
 }
 
 .color-box {

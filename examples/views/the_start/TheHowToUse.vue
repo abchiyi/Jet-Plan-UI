@@ -11,14 +11,12 @@
 
 import { resolveComponent, createApp, h } from 'vue'
 
-// 组件库
+// 导入组件库和主题
 import ui from 'jet-plan-ui'
-// 主题安装器
-import { theme } from 'jet-plan-ui'
-// 基本主题
-import  themeDefault from 'jet-plan-ui-theme'
-// 设置主题
-theme.use(themeDefault)
+import theme from 'jet-plan-ui-theme'
+
+// 安装主题
+ui.$jetTheme.install(theme)
 
 const BASE_COMPONENT = {
     name: 'app',
@@ -29,8 +27,7 @@ createApp(BASE_COMPONENT)
     .mount('#app')
         `"
     >
-      <template v-slot:icon-copy>
-        <i class="bi bi-clipboard"></i> </template
+      <template v-slot:icon-copy> <i class="bi bi-clipboard"></i> </template
     ></j-code-box>
     <h3>部分引入</h3>
     <!-- TODO  部分引入-->
@@ -38,7 +35,7 @@ createApp(BASE_COMPONENT)
 </template>
 <script>
 export default {
-  name: "the-how-to-use",
+  name: 'the-how-to-use',
 };
 </script>
 <style lang=""></style>

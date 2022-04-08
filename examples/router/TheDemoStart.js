@@ -1,5 +1,4 @@
-export default [
-    {
+export default [{
         name: "安装",
         path: '/install',
         component: () => import('../views/the_start/TheInstall.vue')

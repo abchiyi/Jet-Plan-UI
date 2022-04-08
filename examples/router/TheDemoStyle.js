@@ -3,13 +3,14 @@ export default [{
         path: '/theme',
         component: () => import('../views/the_demo/the_demo_style/TheDemoColors.vue'),
         index: [{
-                name: '$jetTheme',
-                to: '#jet-theme'
+                name: '切换主题',
+                to: '#theme-switcher'
             },
             {
-                name: '定制主题',
-                to: '#customize-theme'
-            }
+                name: '使用主题',
+                to: '#theme-install-use'
+            },
+
         ]
     },
     {

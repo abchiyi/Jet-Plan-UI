@@ -156,6 +156,6 @@ export default {
 }
 
 .color-set-cube > .j-control-bar {
-  margin-top: 0;
+  margin: 0;
 }
 </style>
