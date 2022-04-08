@@ -31,6 +31,47 @@
                 {{ key }}
             </j-cube>
         </j-row>
+
+        <h2>Options</h2>
+        <j-code-box
+            lang="javascript"
+            :code="`
+
+ export default {
+    // BACKGROUND
+    foreground: '', // 前景色，多用于需要强调的块
+    background: '', // 背景色，默认应用与 body 元素
+    disabled: '', // 块被禁用时
+    border: '', // 边框色，通常比以上 3个色深
+
+    // TEXT
+    'text-disabled': '', // 文本禁用时。要求为30%透明色
+    'text-hint': '', // 辅助文本色，不透明，比常规文本色浅
+    text: '', // 常规文本色，已应用于body并设置为全局继承
+
+    // INFO 信息色
+    secondary: '' // 通常用于次级按钮
+    primary: '', // 主题色
+    success: '',
+    warning: '',
+    error: '',
+    info: '',
+
+    // OTHERS
+    frosted_glass: '', // 毛玻璃效果色
+    card: '', // 卡片组件背景色
+    shadow: '', // 阴影色
+    mask: '', // 遮罩色，通常为透明
+
+    // 以下文本色彩仅被指令 v-auto-color 调用
+    // 详情参考 https://jetplanui.github.io/#/directives 指令 v-auto-color
+    'text-light': '',
+    'text-dark': '',
+}
+
+
+        `"
+        />
     </div>
 </template>
 
