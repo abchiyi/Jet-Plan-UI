@@ -90,17 +90,17 @@ export function hexToRgb(hex) {
         b: parse(hex.slice(5, 7)),
         opacity: parseFloat(parse(hex.slice(7)) / 255)
     };
-    // let max = rgb.r + rgb.g + rgb.b;
+    const max = Math.abs(
+        parseFloat(
+            (parseInt(rgb.r) + parseInt(rgb.g) + parseInt(rgb.b)) /
+            (255 * 3)
+        ).toFixed(3))
+
     return {
         color: rgb.opacity < 1 ?
             `rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.opacity})` : `rgb(${rgb.r},${rgb.g},${rgb.b})`,
         opacity: isNaN(rgb.opacity) ? 1 : rgb.opacity,
-        max: Math.abs(
-            parseFloat(
-                (parseInt(rgb.r) + parseInt(rgb.g) + parseInt(rgb.b)) /
-                (255 * 3)
-            ).toFixed(3)
-        ),
+        max: rgb.opacity ? max * rgb.opacity : max,
     };
 }
 
@@ -121,14 +121,17 @@ export function rgbToHex(rgb) {
             conter < 4 ? colorToHex(Math.abs(v)) : colorToHex(parseInt(v * 255))
         );
     });
+
+    const max = Math.abs(
+        parseFloat(
+            (parseInt(rgba[0]) + parseInt(rgba[1]) + parseInt(rgba[2])) /
+            (255 * 3)
+        ).toFixed(3)
+    )
+
     return {
         color: s.join(""),
         opacity: parseFloat(rgba[3] ? rgba[3] : 1),
-        max: Math.abs(
-            parseFloat(
-                (parseInt(rgba[0]) + parseInt(rgba[1]) + parseInt(rgba[2])) /
-                (255 * 3)
-            ).toFixed(3)
-        ),
+        max: rgba[3] ? max * rgba[3] : max
     };
 }
