@@ -1,5 +1,10 @@
 <template>
-  <div @click="$jetTheme.setTheme(name)" class="color-set-cube">
+  <ActionFeedback
+    class="color-set-cube"
+    @click="$jetTheme.setTheme(name)"
+    active
+    hover
+  >
     <div class="image">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
         <g id="colorset-box" transform="translate(-2915 226)">
@@ -97,7 +102,12 @@
         </g>
       </svg>
     </div>
-    <ControlBar :forId="name + 'theme'" reverse>
+    <ControlBar
+      :style="{ background: 'unset' }"
+      :forId="name + 'theme'"
+      :active="false"
+      reverse
+    >
       <template v-slot:text>
         <span class="text-hint">
           {{ name }}
@@ -110,11 +120,12 @@
         :value="theme"
       />
     </ControlBar>
-  </div>
+  </ActionFeedback>
 </template>
 
 <script>
 import ControlBar from '../layout/src/ControlBar.vue';
+import ActionFeedback from '../action-feedback/ActionFeedback.vue';
 export default {
   name: 'j-color-set-cube',
   props: {
@@ -139,12 +150,15 @@ export default {
       return this.theme;
     },
   },
-  components: { ControlBar },
+  components: { ControlBar, ActionFeedback },
 };
 </script>
 
 <style>
 .color-set-cube {
+  border-radius: var(--m-radius);
+  padding-top: 10px;
+  cursor: pointer;
   width: 110px;
 }
 .color-set-cube * {

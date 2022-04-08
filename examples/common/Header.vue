@@ -1,12 +1,11 @@
 <template>
   <j-row class="navbar" Y="center" spaceMode="between" reverse>
     <!-- 选项 -->
-    <div id="header-options">
+    <j-row X="center" id="header-options">
       <j-button text hover>About</j-button>
-
       <button-gitee text />
       <button-github text />
-    </div>
+    </j-row>
     <j-col :lg="0" :xl="0">
       <!-- 侧栏开关 -->
       <j-button text title="menu" @click.stop="click">
