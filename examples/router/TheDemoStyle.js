@@ -13,6 +13,10 @@ export default [{
             {
                 name: "创建主题",
                 to: '#theme-create'
+            },
+            {
+                name: "自动切换深色主题",
+                to: '#theme-auto-dark-mode'
             }
 
         ],
