@@ -206,6 +206,34 @@ ui.$jetTheme.installTheme(
           />
         </li>
       </doc-item>
+      <doc-item
+        id="theme-auto-dark-mode"
+        name="创建自动深色模式"
+        title-is="h2"
+        noPadding
+      >
+        <p>使用 '$jetTheme.toAuto' 方法来创建一个随系统切换的深色模式</p>
+        <j-code-box
+          :code="`
+// main.js
+
+// 导入组件库和主题
+import ui from 'jet-plan-ui'
+import { jetPLanLight, jetPLanDark } from 'jet-plan-ui-theme'
+
+// 安装主题
+ui.$jetTheme.installTheme(
+    'jetPlanAuto', // 主题名称
+
+    // 将两个主题合并为一个主题
+    $jetTheme.toAuto(
+        jetPLanLight, // 第一位参数提供亮色主题
+        jetPLanDark // 第二位参数提供暗色主题
+    )
+)
+            `"
+        />
+      </doc-item>
     </doc-item>
   </div>
 </template>
