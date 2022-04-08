@@ -87,6 +87,9 @@ const theme = reactive({
     }
 })
 
+// 导入基本样式
+import './src/css'
+
 import {
     installComponent
 } from '../tool/lib'

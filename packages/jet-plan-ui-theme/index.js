@@ -1,5 +1,3 @@
-import './css'
-
 import jetPlanLight from './lightMode'
 import jetPlanDark from './darkMode'
 
