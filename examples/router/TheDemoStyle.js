@@ -1,7 +1,7 @@
 export default [{
         name: "主题",
         path: '/demo/theme',
-        component: () => import('../views/the_demo/the_demo_style/TheDemoColors.vue'),
+        component: () => import('../views/the_demo/the_demo_style/TheDemoTheme.vue'),
         index: [{
                 name: '切换主题',
                 to: '#theme-switcher'
@@ -19,15 +19,12 @@ export default [{
                 to: '#theme-auto-dark-mode'
             }
 
-        ],
-        children: [
-
-        ],
+        ]
     },
     {
         name: '色彩',
         path: '/color',
-        component: () => import('../views/the_demo/TheDemoTODO.vue')
+        component: () => import('../views/the_demo/the_demo_style/TheDemoColor.vue')
     },
     {
         name: "字体",
