@@ -29,6 +29,6 @@ export default [{
     {
         name: "字体",
         path: '/fonts',
-        component: () => import('../views/the_demo/TheDemoTODO.vue')
+        component: () => import('../views/the_demo/the_demo_style/TheDemoFont.vue')
     },
 ]

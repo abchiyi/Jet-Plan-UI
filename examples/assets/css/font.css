@@ -1,22 +1,31 @@
 @font-face {
-	font-family: sarasa ui sc regular;
-	src: url('../font/sarasa-ui-sc-regular.ttf');
-	font-weight: normal;
+    font-family: sarasa ui sc regular;
+    src: url('../font/sarasa-ui-sc-regular.ttf');
+    font-weight: normal;
 }
 
 @font-face {
-	font-family: sarasa mono sc semibold;
-	src: url('../font/sarasa-mono-sc-semibold.ttf');
-	font-weight: normal;
+    font-family: sarasa mono sc semibold;
+    src: url('../font/sarasa-mono-sc-semibold.ttf');
+    font-weight: normal;
 }
 
 * {
-	font-family: 'sarasa ui sc regular', 'Segoe UI', Tahoma, Geneva, Verdana,
-		sans-serif;
+    font-family: 'sarasa ui sc regular', 'Segoe UI', Tahoma, Geneva, Verdana,
+        sans-serif;
 }
 
+.monospace *,
+.monospace,
 .font-mono *,
 .font-mono {
-	font-family: 'sarasa mono sc semibold', Consolas, 'Courier New', Courier,
-		FreeMono, monospace;
+    font-family: 'sarasa mono sc semibold', Consolas, 'Courier New', Courier,
+        FreeMono, monospace;
+}
+
+/* 辅助文本 */
+.text-hint {
+    color: var(--text-hint);
+    font-weight: bold;
+    font-size: 14px;
 }

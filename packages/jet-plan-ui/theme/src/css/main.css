@@ -38,17 +38,6 @@ body {
     color: var(--text-disabled);
 }
 
-.text-hint {
-    color: var(--text_hit);
-}
-
-/* 辅助文本 */
-.text-hint {
-    color: var(--text-hint);
-    font-weight: bolder;
-    font-size: 12px;
-}
-
 .frosted-glass {
     background-color: var(--foreground);
 }
@@ -82,39 +71,54 @@ td {
     height: 40px;
 }
 
-h1 {
-    font-size: 2.2rem;
-}
-
-h2 {
-    font-size: 1.6rem;
-}
-
-h3 {
-    font-size: 1.3rem;
-}
-
-h4 {
-    font-size: 1rem;
-}
-
-h5 {
-    font-size: 0.8rem;
-}
-
-h6 {
-    font-size: 0.6rem;
-}
-
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-    font-weight: bold;
+    font-weight: 500;
     margin: 2rem 0 1rem 0;
 }
+
+.h1,
+h1 {
+    font-size: 3rem;
+    font-weight: 500
+}
+
+.h2,
+h2 {
+    font-size: 2.5rem;
+}
+
+.h3,
+h3 {
+    font-size: 2rem;
+}
+
+.h4,
+h4 {
+    font-size: 1.6rem;
+}
+
+.h5,
+h5 {
+    font-size: 1.4rem;
+}
+
+.h6,
+h6 {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 
 /* 隐藏选中框 */
 @supports (-webkit-tap-highlight-color: #ffffff00) {
@@ -134,5 +138,5 @@ strong {
 strong>*,
 li>*,
 p>* {
-    /* vertical-align: middle; */
+    vertical-align: middle;
 }
