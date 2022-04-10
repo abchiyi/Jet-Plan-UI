@@ -18,7 +18,9 @@
     <demo-box title="折叠展开" :code="code" id="folded">
         <div>
             <j-transition-folded>
-                <div class="cube" v-show="value"></div>
+                <div v-show="value">
+                    <j-cube>Folded</j-cube>
+                </div>
             </j-transition-folded>
         </div>
     </demo-box>
@@ -46,10 +48,3 @@ export default {
     },
 };
 </script>
-<style>
-.cube {
-    height: 100px;
-    width: 100px;
-    background: #fff;
-}
-</style>
