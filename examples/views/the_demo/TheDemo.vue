@@ -1,4 +1,5 @@
 <template>
+    <!-- TODO 切换页面自动回到顶部 -->
     <j-page v-model="value" auto-sidebar>
         <!--浮动头栏 -->
         <template v-slot:header>
