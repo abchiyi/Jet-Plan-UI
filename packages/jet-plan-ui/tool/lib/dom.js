@@ -2,21 +2,21 @@ import $ from 'jquery';
 import 'jquery.easing'
 
 
-export function getOffset (el) {
-    function getWindowScroll () {
+export function getOffset(el) {
+    function getWindowScroll() {
         // FullSupport
         const supportPageOffset = window.pageXOffset !== undefined;
         const isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
 
         const x = supportPageOffset ?
             window.pageXOffset : isCSS1Compat ?
-                document.documentElement.scrollLeft :
-                document.body.scrollLeft;
+            document.documentElement.scrollLeft :
+            document.body.scrollLeft;
 
         const y = supportPageOffset ?
             window.pageYOffset : isCSS1Compat ?
-                document.documentElement.scrollTop :
-                document.body.scrollTop;
+            document.documentElement.scrollTop :
+            document.body.scrollTop;
 
         return {
             x: x,
@@ -38,8 +38,9 @@ export function getOffset (el) {
     }
 }
 
-export function scrollTo (elID, toTop) {
+export function scrollTo(elID, toTop, duration) {
     let position;
+    if (!duration) duration = 500;
     if (elID.toLowerCase() === "top") {
         // 保留字段,返回顶部
         position = 0
@@ -68,18 +69,18 @@ export function scrollTo (elID, toTop) {
         scrollTop: position
     }, {
         // TODO 使用UI 定义的缓动函数,和根据元素滚动距离定义的动画时间
-        duration: 500,
+        duration: duration,
         easing: 'easeInOutQuad'
     })
     return false
 
 }
 
-export function shadowPainter (direction, intensity, color) {
+export function shadowPainter(direction, intensity, color) {
 
 
 
-    function calcDirection (array) {
+    function calcDirection(array) {
         if (array.indexOf(direction) !== -1) {
             return direction == array[1] ?
                 intensity + "px" :
@@ -88,11 +89,11 @@ export function shadowPainter (direction, intensity, color) {
         return '0'
     }
 
-    function x () {
+    function x() {
         return calcDirection(['left', 'right'])
     }
 
-    function y () {
+    function y() {
         return calcDirection(['top', 'bottom'])
     }
     chekcDirection(direction)
@@ -103,13 +104,13 @@ export function shadowPainter (direction, intensity, color) {
     ${color ? color : 'var(--shadow)'}`
 }
 export class SHADOW_PAINTER_ERROR extends Error {
-    constructor (message) {
+    constructor(message) {
         super(message);
         this.name = 'ShadowPainterError';
     }
 }
 
-export function chekcDirection (direction) {
+export function chekcDirection(direction) {
     const args = ['center', 'top', 'bottom', 'left', 'right']
     if (direction) {
         if (args.indexOf(direction.toLocaleLowerCase()) == -1) {

@@ -68,8 +68,6 @@
     'text-light': '',
     'text-dark': '',
 }
-
-
         `"
         />
     </div>
@@ -91,7 +89,7 @@ export default {
 <style>
 .cube {
     box-sizing: border-box var(--border);
-    outline: 1px solid var(--border);
+    border: 3px solid var(--border);
     border-radius: var(--m-radius);
     font-weight: 400;
     font-size: 12px;
