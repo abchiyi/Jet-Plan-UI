@@ -48,15 +48,29 @@
                 <high-lighter>default - false</high-lighter>
             </li>
             <li id="prop-others">
-                按钮组件外层使用
-                <high-lighter>j-action-feedback</high-lighter>
-                组件渲染，其余
-                <high-lighter>Prop</high-lighter>
-                参考
-                <j-button @click="$router.push('/action-feedback')" tag="a" text
-                    >j-action-feedback</j-button
-                >
-                组件
+                <p>
+                    按钮组件外层使用
+                    <high-lighter>j-action-feedback</high-lighter>
+                    组件渲染，其余
+                    <high-lighter>Prop</high-lighter>
+                    参考
+                    <j-button
+                        @click="$router.push('/action-feedback')"
+                        tag="a"
+                        text
+                        >j-action-feedback</j-button
+                    >
+                    组件。
+                </p>
+                <p>
+                    <high-lighter>j-button</high-lighter>
+                    非文本按钮状态下接入了自动文本色计算函数，能够在一定情况下控制增强按钮背景与文本的对比度。详细参考
+                    <j-button @click="$router.push('/directives')" tag="a" text
+                        >directives</j-button
+                    >
+                    中的
+                    <high-lighter>v-auto-color</high-lighter> 指令。
+                </p>
             </li>
         </doc-item>
     </div>
