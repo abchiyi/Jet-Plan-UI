@@ -4,8 +4,16 @@
     "author": "abchiyi <meme_me2019@outlook.com>",
     "private": false,
     "main": "index.js",
+    "dependencies": {
+        "@highlightjs/vue-plugin": "^2.1",
+        "highlight.js": "11.4.0",
+        "jquery.easing": "^1.4.1",
+        "jquery": "^3.6.0",
+        "core-js": "^3.6.5",
+        "vue": "^3.0.0"
+    },
     "peerDependencies": {
-        "@highlightjs/vue-plugin": "2.1",
+        "@highlightjs/vue-plugin": "^2.1",
         "highlight.js": "11.4.0",
         "jquery.easing": "^1.4.1",
         "jquery": "^3.6.0",
