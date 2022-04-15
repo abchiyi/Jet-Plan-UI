@@ -41,7 +41,18 @@ const routes = [{
 
 const router = createRouter({
     history: createWebHashHistory(),
-    routes
+    routes,
+    scrollBehavior() {
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                console.log(reject);
+                resolve({
+                    top: 0,
+                    left: 0
+                })
+            }, 500);
+        })
+    }
 })
 
 export {
