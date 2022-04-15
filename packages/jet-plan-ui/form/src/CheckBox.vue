@@ -268,7 +268,7 @@ label > * {
     opacity: 0.5;
 }
 .j-check-box.disabled .check {
-    opacity: 50%;
+    opacity: 0.5;
 }
 
 /* Animation */
