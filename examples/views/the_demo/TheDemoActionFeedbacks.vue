@@ -73,7 +73,6 @@
                         <p>
                             <warning-text>
                                 组件渲染元素为不可聚焦元素时,使用以上效果需要设置属性
-                                <!-- TODO  属性文档 Mdn -->
                                 <j-button
                                     tag="a"
                                     text
