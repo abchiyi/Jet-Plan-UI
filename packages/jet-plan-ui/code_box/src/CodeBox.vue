@@ -99,7 +99,6 @@ export default {
             this.backgroundColor = c;
         },
         copyCode() {
-            // XXX 结构优化
             let copy = (e) => {
                 e.preventDefault();
                 e.clipboardData.setData('text/plain', this.code);

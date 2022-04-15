@@ -135,3 +135,20 @@ export function rgbToHex(rgb) {
         max: rgba[3] ? max * rgba[3] : max
     };
 }
+
+// TODO 需要添加文档
+export function autoTextColor(el) {
+    function getBgColor(el) {
+        return window.getComputedStyle(el).backgroundColor;
+    }
+    let hexColor = rgbToHex(getBgColor(el))
+    if (hexColor.opacity == 0) {
+        el.style.color = ''
+    } else {
+        if (hexColor.max < 0.6) {
+            return "var(--text-light)"
+        } else {
+            return "var(--text-dark)"
+        }
+    }
+}
