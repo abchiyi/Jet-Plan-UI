@@ -11,22 +11,20 @@ export default {
             baseColor: '',
         };
     },
-    created() {
+    mounted() {
         function getTransitionDuration(el) {
             return parseFloat(window.getComputedStyle(el).transitionDuration);
         }
-
         function checkAndSetTransition(el) {
             if (!getTransitionDuration(el)) {
                 el.style.transition = '0.1s ease-in-out';
             }
         }
-        this.$refs.$el.addEventListener('transitionend', () => {
-            checkAndSetTransition(this.$refs.$el);
+        let el = this.$refs.self;
+        el.addEventListener('transitionend', () => {
+            checkAndSetTransition(el);
             this.calcTextColor();
         });
-    },
-    mounted() {
         this.calcTextColor();
     },
     updated() {
