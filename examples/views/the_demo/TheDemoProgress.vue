@@ -1,5 +1,6 @@
 <template>
     <div id="the-demo-progressbar">
+        <!-- header -->
         <doc-item
             id="describes"
             name="<j-progress>:"
@@ -11,6 +12,7 @@
         </doc-item>
         <hr />
 
+        <!-- Api -->
         <doc-item name="Props:" title-is="h2">
             <li id="prop-value">
                 <p>
@@ -35,20 +37,34 @@
             </li>
         </doc-item>
 
-        <h2>示例：</h2>
-        <j-control-bar for-id="demo-progress-to-susccess">
-            <template v-slot:text>完成进度条</template>
-            <j-switch id="demo-progress-to-susccess" v-model="success" />
-        </j-control-bar>
-        <j-control-bar for-id="demo-progress-to-failed">
-            <template v-slot:text>失败进度条</template>
-            <j-switch id="demo-progress-to-failed" v-model="failed" />
-        </j-control-bar>
-        <demo-box title="<j-progress>" :code="code" :expand="true">
-            <div id="demo-content">
-                <j-progress :failed="failed" :value="number"></j-progress>
+        <doc-item name="示例：" no-dot no-padding title-is="h2">
+            <!-- control -->
+            <div>
+                <j-control-bar for-id="demo-progress-to-succuss">
+                    <template v-slot:text>完成进度条</template>
+                    <j-switch id="demo-progress-to-succuss" v-model="success" />
+                </j-control-bar>
+                <j-control-bar for-id="demo-progress-to-failed">
+                    <template v-slot:text>失败进度条</template>
+                    <j-switch id="demo-progress-to-failed" v-model="failed" />
+                </j-control-bar>
+                <j-control-bar for-id="demo-progress-to-pause">
+                    <template v-slot:text> 暂停 </template>
+                    <j-switch id="demo-progress-to-pause" v-model="pause" />
+                </j-control-bar>
             </div>
-        </demo-box>
+
+            <!-- demo -->
+            <demo-box title="<j-progress>" :code="code" :expand="true">
+                <div id="demo-content">
+                    <j-progress
+                        :failed="failed"
+                        :value="number"
+                        :pause="pause"
+                    ></j-progress>
+                </div>
+            </demo-box>
+        </doc-item>
     </div>
 </template>
 
@@ -65,10 +81,10 @@ let value = 50;
 let filed = false;
 
 // HTML
-<j-control-bar for-id="demo-progress-to-susccess">
+<j-control-bar for-id="demo-progress-to-succuss">
     <template v-slot:text>完成进度条</template>
         <j-switch
-            id="demo-progress-to-susccess"
+            id="demo-progress-to-succuss"
             v-model="success"
         />
 </j-control-bar>
@@ -89,6 +105,7 @@ let filed = false;
             intervalID: null,
             success: false,
             failed: false,
+            pause: false,
             number: 50,
         };
     },
