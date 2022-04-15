@@ -39,7 +39,6 @@
                             <high-lighter>active</high-lighter>
                             : type - Boolean, default - false
                         </p>
-                        <!-- TODO 链接动作效果到Mdn文档 -->
                         <p>开启/关闭 "active" 效果</p>
                     </li>
                     <li id="prop-hover">
