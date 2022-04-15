@@ -4,7 +4,7 @@
     "author": "abchiyi <meme_me2019@outlook.com>",
     "private": false,
     "main": "index.js",
-    "dependencies": {
+    "peerDependencies": {
         "@highlightjs/vue-plugin": "2.1",
         "highlight.js": "11.4.0",
         "jquery.easing": "^1.4.1",
