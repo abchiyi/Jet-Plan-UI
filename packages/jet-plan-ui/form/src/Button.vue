@@ -20,7 +20,7 @@ export default {
                 el.style.transition = '0.1s ease-in-out';
             }
         }
-        let el = this.$refs.self;
+        let el = this.$refs.self.$el;
         el.addEventListener('transitionend', () => {
             checkAndSetTransition(el);
             this.calcTextColor();
