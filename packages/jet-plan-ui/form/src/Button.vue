@@ -124,8 +124,6 @@ a.j-button {
 /* Button Mode Only*/
 .j-button.button.primary {
     background-color: var(--primary);
-    /* TODO需要在主题文件定义文本色彩 */
-    /* color: white; */
 }
 /* Text Button */
 /*------------ Default ----------*/
@@ -138,8 +136,13 @@ a.j-button {
     color: var(--primary);
 }
 /* ------------ disabled ---------- */
+.j-button.primary.disabled {
+    background: var(--border);
+}
+
 .j-button.text-button.disabled {
     color: var(--text-disabled);
+    background: unset;
 }
 
 /* p span */
