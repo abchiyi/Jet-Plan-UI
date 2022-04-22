@@ -64,24 +64,46 @@
                         :pause="pause"
                     ></j-progress>
                     <p>环形:</p>
-                    <j-progress
-                        :failed="failed"
-                        :value="number"
-                        :pause="pause"
-                        ring
-                    ></j-progress>
+                    <p>
+                        Font size - 16px
+                        <j-progress
+                            :failed="failed"
+                            :value="number"
+                            :pause="pause"
+                            ring
+                        ></j-progress>
+                    </p>
+                    <p style="font-size: 24px">
+                        Font size 24px
+                        <j-progress
+                            :failed="failed"
+                            :value="number"
+                            :pause="pause"
+                            ring
+                        ></j-progress>
+                    </p>
+                    <p style="font-size: 32px">
+                        Font size 32px
+                        <j-progress
+                            :failed="failed"
+                            :value="number"
+                            :pause="pause"
+                            ring
+                        ></j-progress>
+                    </p>
                     <p>环形 in Button:</p>
                     <j-button
                         @click="success = !success"
                         style="background: var(--foreground)"
                     >
                         <j-progress
-                            ring
+                            style="font-size: 20px"
                             :failed="failed"
                             :value="number"
                             :pause="pause"
+                            ring
                         ></j-progress>
-                        <span> {{ ' ' + number }}% </span>
+                        <span style="margin-left: 10px"> {{ +number }}% </span>
                     </j-button>
                 </div>
             </demo-box>

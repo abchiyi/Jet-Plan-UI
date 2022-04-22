@@ -133,9 +133,3 @@ strong {
     font-size: 1.2em;
     font-weight: bold;
 }
-
-strong>*,
-li>*,
-p>* {
-    vertical-align: middle;
-}

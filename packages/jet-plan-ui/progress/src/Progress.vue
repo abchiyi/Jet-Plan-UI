@@ -1,7 +1,5 @@
 <template>
-    <div v-if="!ring" :class="classes" class="progress" :style="styles"></div>
-
-    <div v-if="ring" :class="classes" class="circle">
+    <div :class="classes" :style="styles">
         <svg viewBox="0 0 160 160">
             <g stroke-width="20">
                 <g class="background">
@@ -57,7 +55,7 @@ export default {
             return style;
         },
         classes: function () {
-            let className = [];
+            let className = [this.ring ? 'circle' : 'progress'];
 
             // 控制是否显示完成的进度条
             className.push(this.percentage == 100 ? 'complete' : '');
@@ -163,10 +161,8 @@ export default {
     background: unset;
     transform: rotate(-90deg);
     display: inline-block;
-    max-height: 120px;
-    max-width: 120px;
-    min-height: 1.5em;
-    min-width: 1.5em;
+    height: 1em;
+    width: 1em;
 }
 
 .circle .background {
