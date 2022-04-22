@@ -60,9 +60,9 @@ export default {
         },
         // Render
         renderDefault() {
-            const solt = this.$slots.default;
-            if (solt) {
-                return solt();
+            const slot = this.$slots.default;
+            if (slot) {
+                return slot();
             }
             return 'Submit';
         },
