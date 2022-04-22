@@ -41,7 +41,7 @@
 import logoTitle from '../components/logoTitle.vue';
 export default {
     components: { logoTitle },
-    name: 'Home',
+    name: 'the-home',
     data() {
         return {
             mobileDevicesWidth: false,
