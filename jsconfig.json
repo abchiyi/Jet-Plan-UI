@@ -1,14 +1,20 @@
 {
     "compilerOptions": {
-        "target": "es6",
+        "target": "es5",
         "module": "esnext",
         "baseUrl": "./",
         "moduleResolution": "node",
-        // "paths": {
-        //     "@/*": [
-        //         "src/*"
-        //     ]
-        // },
+        "paths": {
+            "@/*": [
+                "examples/*"
+            ],
+            "@ui/*": [
+                "packages/jet-plan-ui/*"
+            ],
+            "@theme/*": [
+                "packages/jet-plan-ui-theme/*"
+            ]
+        },
         "lib": [
             "esnext",
             "dom",

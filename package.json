@@ -1,38 +1,35 @@
 {
-    "name": "jet-plan-ui",
-    "private": false,
-    "description": "Jet plan UI for vue3",
-    "author": "abchiyi <meme_me2019@outlook.com>",
+    "name": "test",
+    "version": "0.1.0",
+    "private": true,
     "scripts": {
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "test:unit": "vue-cli-service test:unit",
-        "lint": "vue-cli-service lint",
-        "lib": "vue-cli-service build --target lib --name jet-plan-ui --dest lib packages/jet-plan-ui/index.js",
-        "lib-theme": "vue-cli-service build --target lib --name jet-plan-ui-theme --dest lib packages/jet-plan-ui-theme/index.js"
+        "lint": "vue-cli-service lint"
     },
     "dependencies": {
-        "core-js": "^3.6.5",
-        "jet-plan-ui": "^0.1.9-alpha",
-        "vue": "^3.0.0",
+        "core-js": "^3.8.3",
+        "vue": "^3.2.13",
         "vue-router": "^4.0.0-0"
     },
     "devDependencies": {
-        "@highlightjs/vue-plugin": "2.1",
-        "@vue/cli-plugin-babel": "~4.5.0",
-        "@vue/cli-plugin-eslint": "~4.5.0",
         "@vue/cli-plugin-router": "~4.5.0",
+        "@babel/core": "^7.12.16",
+        "@babel/eslint-parser": "^7.12.16",
+        "@vue/cli-plugin-babel": "~5.0.0",
+        "@vue/cli-plugin-eslint": "~5.0.0",
         "@vue/cli-plugin-unit-jest": "~5.0.0",
-        "@vue/cli-service": "~4.5.0",
-        "@vue/compiler-sfc": "^3.0.0",
+        "@vue/cli-service": "~5.0.0",
         "@vue/test-utils": "^2.0.0-0",
         "@vue/vue3-jest": "^27.0.0-alpha.1",
         "babel-eslint": "^10.1.0",
         "babel-jest": "^27.0.6",
-        "eslint": "^6.7.2",
-        "eslint-plugin-vue": "^7.0.0",
-        "highlight.js": "11.4.0",
+        "eslint": "^7.32.0",
+        "eslint-plugin-vue": "^8.0.3",
         "jest": "^27.0.5",
+        "@highlightjs/vue-plugin": "2.1",
+        "highlight.js": "11.4.0",
         "jquery": "^3.6.0",
         "jquery.easing": "^1.4.1"
     },
@@ -46,7 +43,7 @@
             "eslint:recommended"
         ],
         "parserOptions": {
-            "parser": "babel-eslint"
+            "parser": "@babel/eslint-parser"
         },
         "rules": {},
         "overrides": [{
@@ -62,6 +59,10 @@
     "browserslist": [
         "> 1%",
         "last 2 versions",
-        "not dead"
-    ]
+        "not dead",
+        "not ie 11"
+    ],
+    "jest": {
+        "preset": "@vue/cli-plugin-unit-jest"
+    }
 }

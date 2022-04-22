@@ -1,10 +1,19 @@
+const {
+    defineConfig
+} = require('@vue/cli-service')
+
 const path = require('path')
 
-function resolve (dir) {
+function resolve(dir) {
     return path.join(__dirname, dir)
 }
 
-module.exports = {
+module.exports = defineConfig({
+    transpileDependencies: true,
+    outputDir: './dist/docs/',
+    css: {
+        extract: false
+    },
     pages: {
         index: {
             template: 'public/index.html',
@@ -12,21 +21,7 @@ module.exports = {
             filename: 'index.html',
         }
     },
-    css: { extract: false },
-    // jetplanui.github.io 主页输出目录
-    outputDir: './dist/docs/',
-    // 为packages目录添加babel-loader处理
     chainWebpack: config => {
-        config.module
-            .rule('js')
-            .include
-            .add(resolve('packages'))
-            .end()
-            .use('babel')
-            .loader('babel-loader')
-            .tap(options => {
-                return options
-            })
         config.resolve.alias
             // ui
             .set('@ui', resolve('./packages/jet-plan-ui'))
@@ -34,4 +29,4 @@ module.exports = {
             // examples
             .set('@common', resolve('./examples/common'))
     }
-}
+})
