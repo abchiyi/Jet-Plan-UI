@@ -4,17 +4,17 @@
         "module": "esnext",
         "baseUrl": "./",
         "moduleResolution": "node",
-        "paths": {
-            "@/*": [
-                "examples/*"
-            ],
-            "@ui/*": [
-                "packages/jet-plan-ui/*"
-            ],
-            "@theme/*": [
-                "packages/jet-plan-ui-theme/*"
-            ]
-        },
+        // "paths": {
+        //     "@/*": [
+        //         "examples/*"
+        //     ],
+        //     "@ui/*": [
+        //         "packages/jet-plan-ui/*"
+        //     ],
+        //     "@theme/*": [
+        //         "packages/jet-plan-ui-theme/*"
+        //     ]
+        // },
         "lib": [
             "esnext",
             "dom",
