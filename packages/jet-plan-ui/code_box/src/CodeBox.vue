@@ -120,6 +120,7 @@ export default {
 .j-code-box *,
 .j-code-box {
     transition: background 0s, background-color 0s;
+    vertical-align: unset;
 }
 
 /* Font */
