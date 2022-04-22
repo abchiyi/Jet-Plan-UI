@@ -57,11 +57,32 @@
             <!-- demo -->
             <demo-box title="<j-progress>" :code="code" :expand="true">
                 <div id="demo-content">
+                    <p>常规:</p>
                     <j-progress
                         :failed="failed"
                         :value="number"
                         :pause="pause"
                     ></j-progress>
+                    <p>环形:</p>
+                    <j-progress
+                        :failed="failed"
+                        :value="number"
+                        :pause="pause"
+                        ring
+                    ></j-progress>
+                    <p>环形 in Button:</p>
+                    <j-button
+                        @click="success = !success"
+                        style="background: var(--foreground)"
+                    >
+                        <j-progress
+                            ring
+                            :failed="failed"
+                            :value="number"
+                            :pause="pause"
+                        ></j-progress>
+                        <span> {{ ' ' + number }}% </span>
+                    </j-button>
                 </div>
             </demo-box>
         </doc-item>
@@ -77,8 +98,9 @@ export default {
         return {
             code: `
 //javascript
-let value = 50;
+let number = 50;
 let filed = false;
+let pause = false;
 
 // HTML
 <j-control-bar for-id="demo-progress-to-succuss">
@@ -95,12 +117,32 @@ let filed = false;
             v-model="failed"
         />
 </j-control-bar>
-<div id="demo-content">
+<j-progress
+    :failed="failed"
+    :value="number"
+></j-progress>
+
+<!-- type ring -->
+<j-progress
+    :failed="failed"
+    :value="number"
+    :pause="pause"
+    ring
+></j-progress>
+
+<!--  type ring -->
+<j-button
+    @click="success = !success"
+    style="background: var(--foreground)"
+>
     <j-progress
+        ring
         :failed="failed"
         :value="number"
+        :pause="pause"
     ></j-progress>
-</div>
+    {{ number }} %
+</j-button>
                 `,
             intervalID: null,
             success: false,
@@ -114,14 +156,14 @@ let filed = false;
             if (this.success) {
                 this.intervalID = setInterval(() => {
                     this.number++;
-                }, 100);
+                }, 99);
             } else {
                 this.number = 50;
                 clearInterval(this.intervalID);
             }
         },
         number() {
-            if (this.number > 100) {
+            if (this.number >= 100) {
                 clearInterval(this.intervalID);
             }
         },

@@ -1,5 +1,20 @@
 <template>
-    <div :class="classes" :style="styles"></div>
+    <div v-if="!ring" :class="classes" class="progress" :style="styles"></div>
+
+    <div v-if="ring" :class="classes" class="circle">
+        <svg viewBox="0 0 160 160">
+            <g stroke-width="20">
+                <g class="background">
+                    <circle cx="80" cy="80" r="80" stroke="none" />
+                    <circle cx="80" cy="80" r="70" fill="none" />
+                </g>
+                <g class="progressbar" :stroke-dashoffset="percentageOfRing">
+                    <circle cx="80" cy="80" r="80" stroke="none" />
+                    <circle cx="80" cy="80" r="70" fill="none" />
+                </g>
+            </g>
+        </svg>
+    </div>
 </template>
 
 <script>
@@ -22,8 +37,19 @@ export default {
             type: String,
             default: '8px',
         },
+        ring: {
+            type: Boolean,
+            default: false,
+        },
     },
     computed: {
+        // 计算输入数字绝对值,最大100
+        percentage: function () {
+            return Math.abs(this.value) > 100 ? 100 : Math.abs(this.value);
+        },
+        percentageOfRing() {
+            return 440 - 4.4 * this.percentage;
+        },
         styles: function () {
             let style = {};
             style['--percentage'] = this.percentage + '%';
@@ -31,7 +57,7 @@ export default {
             return style;
         },
         classes: function () {
-            let className = ['progress'];
+            let className = [];
 
             // 控制是否显示完成的进度条
             className.push(this.percentage == 100 ? 'complete' : '');
@@ -39,10 +65,6 @@ export default {
             className.push(this.pause ? 'pause' : '');
 
             return className;
-        },
-        // 计算输入数字绝对值,最大100
-        percentage: function () {
-            return Math.abs(this.value) > 100 ? 100 : Math.abs(this.value);
         },
     },
 };
@@ -77,6 +99,8 @@ export default {
 }
 
 /* 预先绘制透明的伪类元素以便应用色彩过渡动画 */
+
+.circle .progressbar,
 .progress::before,
 .progress::after {
     content: '';
@@ -133,6 +157,40 @@ export default {
 }
 .progress.failed::after {
     background: var(--failed);
+}
+
+.circle {
+    background: unset;
+    transform: rotate(-90deg);
+    display: inline-block;
+    max-height: 120px;
+    max-width: 120px;
+    min-height: 1.5em;
+    min-width: 1.5em;
+}
+
+.circle .background {
+    stroke: var(--border);
+    fill: none;
+}
+
+.circle .progressbar {
+    /* stroke-dashoffset: var(--percentage-of-ring); */
+    stroke-dasharray: 440;
+    /* stroke-dashoffset: 220; */
+    stroke-linecap: round;
+    stroke: var(--info);
+    fill: none;
+}
+
+.circle.complete .progressbar {
+    stroke: var(--success);
+}
+.circle.failed .progressbar {
+    stroke: var(--error);
+}
+.circle.pause .progressbar {
+    stroke: var(--warning);
 }
 </style>
 
