@@ -159,23 +159,36 @@ export default {
 </script>
 <style>
 .j-action-feedback {
-    transition: background-color 0.3s var(--ease-out-slow) !important;
     outline: solid 3px #00000000;
     position: relative;
     transition: unset;
     overflow: hidden;
 }
 
+.j-action-feedback::before {
+    transition: 0.3s var(--ease-out-slow);
+    background-color: var(--mask);
+    pointer-events: none;
+    position: absolute;
+    content: '';
+    opacity: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
 /* Keyboard focus */
 .j-action-feedback.focus-outline:focus {
+    transition: 0.3s var(--ease-out);
     outline: solid 3px var(--border);
 }
 
-/* focus */
-.j-action-feedback.focus:focus,
-/* Hover */
-.j-action-feedback.hover:hover {
-    background-color: var(--border);
+/* Keyboard focus */
+.j-action-feedback.focus:focus::before,
+/* Mouse hover */
+.j-action-feedback.hover:hover::before {
+    opacity: 0.5;
 }
 
 @supports (-webkit-tap-highlight-color: #ffffff00) {

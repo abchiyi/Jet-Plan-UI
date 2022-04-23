@@ -6,7 +6,9 @@
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "test:unit": "vue-cli-service test:unit",
-        "lint": "vue-cli-service lint"
+        "lint": "vue-cli-service lint",
+        "lib": "vue-cli-service build --target lib --name jet-plan-ui --dest lib packages/jet-plan-ui/index.js",
+        "lib-theme": "vue-cli-service build --target lib --name jet-plan-ui-theme --dest lib packages/jet-plan-ui-theme/index.js"
     },
     "dependencies": {
         "core-js": "^3.8.3",
@@ -50,7 +52,7 @@
         "overrides": [{
             "files": [
                 "**/__tests__/*.{j,t}s?(x)",
-                "**/tests/unit/**/*.spec.{j,t}s?(x)"
+                "**/*.spec.{j,t}s?(x)"
             ],
             "env": {
                 "jest": true
@@ -62,8 +64,5 @@
         "last 2 versions",
         "not dead",
         "not ie 11"
-    ],
-    "jest": {
-        "preset": "@vue/cli-plugin-unit-jest"
-    }
+    ]
 }
