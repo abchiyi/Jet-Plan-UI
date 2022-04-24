@@ -33,7 +33,7 @@ jobs:
                   echo 'to build'
                   # build
                   cd  ~/resource_temp
-                  npm install
+                  npm install --foce
                   npm run build
                   echo 'build comp'
 
