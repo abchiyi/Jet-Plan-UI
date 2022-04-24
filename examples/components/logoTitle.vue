@@ -4,7 +4,7 @@
             <j-row X="center" Y="center">
                 <img src="../assets/logo.png" alt="logo" height="30" />
                 <span class="version"
-                    >JetPlanUI - <span class="font-mono">V0.1.10</span></span
+                    >JetPlanUI - <span class="font-mono">V0.2.0</span></span
                 >
             </j-row>
         </j-button>
