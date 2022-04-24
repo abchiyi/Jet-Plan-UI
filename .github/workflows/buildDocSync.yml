@@ -1,8 +1,9 @@
 name: Mirror to Doc Repo
 
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+        - master
 
 jobs:
     git-mirror:
