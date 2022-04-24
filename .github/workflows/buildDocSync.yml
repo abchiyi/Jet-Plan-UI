@@ -33,6 +33,8 @@ jobs:
                   echo 'to build'
                   # build
                   cd  ~/resource_temp
+                  npm i jet-plan-ui -s
+                  npm i jet-plan-ui-theme -s
                   npm install
                   npm run build
                   echo 'build comp'
