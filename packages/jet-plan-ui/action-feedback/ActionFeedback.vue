@@ -13,8 +13,6 @@ import { h, TransitionGroup } from 'vue';
 export default {
     name: 'j-action-feedback',
     props: {
-        // // TODO 验证色彩字符串是否合法
-        // color: propInit(String, 'var(--mask)'),
         // TODO 或者透明度曲线
         opacity: propInit(String, '0.5'),
         tag: propInit(String, 'div'),
