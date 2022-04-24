@@ -2,9 +2,8 @@ name: Mirror to Doc Repo
 
 # on: [push, delete, create]
 on:
-  push:
-    branches:
-        - master
+  release:
+    types: [created]
 
 jobs:
     git-mirror:
@@ -33,7 +32,6 @@ jobs:
 
                   # build
                   cd  ~/resource_temp
-                  npm install jet-plan-ui -s
                   npm install
                   npm run build
 
