@@ -5,6 +5,7 @@ V = os.popen('git tag').read().split()
 PATH = [
     './packages/jet-plan-ui-theme/package.json',
     './packages/jet-plan-ui/package.json',
+    './examples/version.js',
 ]
 
 if V:
