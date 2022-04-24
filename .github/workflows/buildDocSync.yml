@@ -33,6 +33,7 @@ jobs:
                   # build
                   cd  ~/resource_temp
                   npm install --force
+                  python -u ./setup.py
                   npm run build
                   echo 'build comp'
 
