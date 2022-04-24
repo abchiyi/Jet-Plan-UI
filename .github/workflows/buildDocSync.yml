@@ -32,7 +32,7 @@ jobs:
                   echo 'to build'
                   # build
                   cd  ~/resource_temp
-                  npm install
+                  npm install --force
                   npm run build
                   echo 'build comp'
 
