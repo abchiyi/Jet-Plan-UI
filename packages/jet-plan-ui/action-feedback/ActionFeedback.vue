@@ -1,17 +1,20 @@
 <script>
-function propInit(_type, _default) {
+function propInit(_type, _default = false) {
     return {
         type: _type || Boolean,
-        default: _default || false,
+        default: _default,
     };
+}
+function propColor() {
+    return propInit(String, '');
 }
 import mask from './ActionFeedbackMask.vue';
 import { h, TransitionGroup } from 'vue';
 export default {
     name: 'j-action-feedback',
     props: {
-        // TODO 验证色彩字符串是否合法
-        color: propInit(String, 'var(--mask)'),
+        // // TODO 验证色彩字符串是否合法
+        // color: propInit(String, 'var(--mask)'),
         // TODO 或者透明度曲线
         opacity: propInit(String, '0.5'),
         tag: propInit(String, 'div'),
@@ -19,24 +22,46 @@ export default {
         hover: propInit(),
         focusOutline: propInit(),
         focus: propInit(),
+
+        // custom color
+        colorFocusOutline: propColor(),
+        colorActive: propColor(),
+        colorFocus: propColor(),
+        colorHover: propColor(),
     },
     data() {
         return {
             data_active: this.active,
-            data_hover: false,
+            data_hover: true,
             data_touch: false,
             masks: [],
             key: 0,
         };
     },
     computed: {
+        customColor() {
+            return (
+                this.colorFocusOutline &&
+                this.colorActive &&
+                this.colorFocus &&
+                this.colorHover
+            );
+        },
         classes() {
             return [
-                'j-action-feedback',
                 this.hover && this.data_hover ? 'hover' : '',
-                this.focus ? 'focus' : '',
                 this.focusOutline ? 'focus-outline' : '',
+                this.customColor ? 'custom-color' : '',
+                this.focus ? 'focus' : '',
             ];
+        },
+        styles() {
+            return {
+                '--color-focus-out-line': this.colorFocusOutline,
+                '--color-active': this.colorActive,
+                '--color-focus': this.colorFocus,
+                '--color-hover': this.colorHover,
+            };
         },
     },
     methods: {
@@ -45,7 +70,9 @@ export default {
                 data: {
                     opacity: this.opacity,
                     el: this.$refs.self,
-                    color: this.color,
+                    color: this.customColor
+                        ? 'var(--color-active)'
+                        : 'var(--mask)',
                     event: event,
                 },
                 key: this.key++,
@@ -95,7 +122,6 @@ export default {
             }
         },
         leave() {
-            if (this.hover) this.data_hover = false;
             this.removeMask();
         },
         // Click
@@ -138,7 +164,8 @@ export default {
         return h(
             this.tag,
             {
-                class: this.classes,
+                class: ['j-action-feedback', ...this.classes],
+                style: this.styles,
                 onmousedown: this.startClick,
                 onmouseup: this.endClick,
 
@@ -195,5 +222,19 @@ export default {
     .j-action-feedback {
         -webkit-tap-highlight-color: #ffffff00;
     }
+}
+
+/* custom color */
+.j-action-feedback.custom-color:focus:before {
+    background: var(--color-focus);
+}
+
+.j-action-feedback.custom-color:hover:before {
+    background: var(--color-hover);
+}
+
+.j-action-feedback.focus-outline:focus {
+    transition: 0.3s var(--ease-out);
+    outline: solid 3px var(--color-focus-out-line);
 }
 </style>
