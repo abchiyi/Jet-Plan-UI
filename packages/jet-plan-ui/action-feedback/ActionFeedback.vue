@@ -29,6 +29,7 @@ export default {
     },
     data() {
         return {
+            hoverOnTouch: false,
             data_active: this.active,
             data_hover: true,
             data_touch: false,
@@ -64,13 +65,17 @@ export default {
     },
     methods: {
         createMask(event) {
+            let bgColor = 'var(--mask)';
+            if (this.customColor) {
+                bgColor = 'var(--color-active)';
+                if (this.hoverOnTouch) bgColor = 'var(--color-hover)';
+            }
+
             return {
                 data: {
                     opacity: this.opacity,
                     el: this.$refs.self,
-                    color: this.customColor
-                        ? 'var(--color-active)'
-                        : 'var(--mask)',
+                    color: bgColor,
                     event: event,
                 },
                 key: this.key++,
@@ -115,8 +120,7 @@ export default {
             if (this.hover && !this.data_touch) this.data_hover = true;
             // 移动端触摸事件响应 hover 非常缓慢，主动切换 active 反馈
             if (this.hover && this.data_touch) {
-                this.data_hover = false;
-                this.data_active = true;
+                this.hoverOnTouch = true;
             }
         },
         leave() {
@@ -155,7 +159,23 @@ export default {
     },
     watch: {
         active(v) {
-            this.data_active = v;
+            if (this.hoverOnTouch) {
+                this.data_active = true;
+            } else {
+                this.data_active = v;
+            }
+        },
+        hover(v) {
+            if (!v && this.hoverOnTouch) {
+                this.data_active = this.active;
+                this.hoverOnTouch = false;
+            }
+        },
+        hoverOnTouch(v) {
+            if (v) {
+                this.data_active = true;
+                this.data_hover = false;
+            }
         },
     },
     render() {
@@ -167,8 +187,8 @@ export default {
                 onmousedown: this.startClick,
                 onmouseup: this.endClick,
 
-                onmouseenter: this.enter,
-                onmouseleave: this.leave,
+                // onmouseenter: this.enter,
+                // onmouseleave: this.leave,
 
                 ontouchstart: this.startTouche,
                 ontouchcancel: this.endTouche,
@@ -227,7 +247,7 @@ export default {
     background: var(--color-focus);
 }
 
-.j-action-feedback.custom-color:hover:before {
+.j-action-feedback.custom-color.hover:hover:before {
     background: var(--color-hover);
 }
 
