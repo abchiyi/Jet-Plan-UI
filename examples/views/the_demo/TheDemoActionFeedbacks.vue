@@ -128,12 +128,14 @@
             <p>自定义色彩:</p>
             <div id="controls-color">
                 <j-card>
-                    <j-button
+                    <j-action-feedback
+                        class="color-group"
+                        tag="label"
                         v-for="item in customColors"
                         @click="changCustomColor(item.colors)"
                         :key="item.name"
+                        active
                         hover
-                        text
                     >
                         <j-radio
                             :id="'radio-' + item.name"
@@ -176,7 +178,13 @@
                                 >Focus<br />Outline</j-cube
                             >
                         </j-row>
-                    </j-button>
+                    </j-action-feedback>
+                    <j-button
+                        row
+                        id="clear-custom-color"
+                        @click="customColorsActive = {}"
+                        >清除自定义色彩</j-button
+                    >
                 </j-card>
             </div>
             <div id="controls">
@@ -373,5 +381,15 @@ let focusOutline = true,
 
 #controls-color .j-button {
     text-align: start;
+}
+#controls-color .color-group {
+    border-radius: var(--m-radius);
+    display: inline-block;
+    text-align: start;
+}
+
+#controls-color #clear-custom-color {
+    font-size: 1.2em;
+    font-weight: bold;
 }
 </style>
