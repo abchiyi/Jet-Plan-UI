@@ -13,7 +13,6 @@ import { h, TransitionGroup } from 'vue';
 export default {
     name: 'j-action-feedback',
     props: {
-        // TODO 或者透明度曲线
         opacity: propInit(String, '0.5'),
         tag: propInit(String, 'div'),
         active: propInit(),
