@@ -1,6 +1,5 @@
 name: Mirror to Doc Repo
 
-# on: [push, delete, create]
 on:
   push:
     branches:
@@ -31,14 +30,17 @@ jobs:
                   cd ~/resource_temp/dist
                   git clone "$DESTINATION_REPO" .
 
+                  echo 'to build'
                   # build
                   cd  ~/resource_temp
-                  npm install jet-plan-ui -s
                   npm install
                   npm run build
+                  echo 'build comp'
 
+                  echo 'to push'
                   # commit & push
                   cd ~/resource_temp/dist
                   git add .
                   git commit -am 'update-doc'
                   git push
+                  echo 'push comp'
