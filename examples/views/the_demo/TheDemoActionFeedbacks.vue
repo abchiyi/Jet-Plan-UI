@@ -93,56 +93,145 @@
                 : 组件仅有一个默认插槽
             </li>
         </doc-item>
+        <doc-item name="自定义色彩:" title-is="h2" no-padding no-dot>
+            <li>
+                <p>
+                    组件支持定义各种动作的色彩，选择下面的配色组再尝试点击示例以查看效果。
+                </p>
+                <demo-box
+                    title="自定义色彩"
+                    code='
+<!-- HTML -->
+<j-action-feedback
+    active
+    hover
+    focus
+    focus-outline
+
+    colorFocusOutline: "#50b0ff",
+    colorActive: "#a3b3d4",
+    colorFocus: "#e3ecff",
+    colorHover: "#bfd2f8",
+>
+    <j-row style="height: 100%" warp X="center" Y="center">
+        <span> ClickMe!! </span>
+        <j-switch id="test-switch-1" v-model="v"></j-switch>
+    </j-row>
+</j-action-feedback>
+            '
+                ></demo-box>
+            </li>
+        </doc-item>
         <h2>示例：</h2>
         <!-- Control -->
-        <j-control-bar for-id="re-active">
-            <template v-slot:text>启用 Active 效果</template>
+        <div id="controls-group">
+            <p>自定义色彩:</p>
+            <div id="controls-color">
+                <j-card>
+                    <j-action-feedback
+                        class="color-group"
+                        tag="label"
+                        v-for="item in customColors"
+                        @click="changCustomColor(item.colors)"
+                        :key="item.name"
+                        active
+                        hover
+                    >
+                        <j-radio
+                            :id="'radio-' + item.name"
+                            v-model="customColorsActive"
+                            :value="item.colors"
+                        />
+                        <span class="text-hint">{{ item.name }}:</span>
+                        <j-row>
+                            <j-cube
+                                class="text-hint"
+                                :style="{
+                                    backgroundColor: item.colors.colorActive,
+                                }"
+                                v-auto-color
+                                >active</j-cube
+                            >
+                            <j-cube
+                                class="text-hint"
+                                :style="{
+                                    backgroundColor: item.colors.colorHover,
+                                }"
+                                v-auto-color
+                                >Hover</j-cube
+                            >
+                            <j-cube
+                                class="text-hint"
+                                :style="{
+                                    backgroundColor: item.colors.colorFocus,
+                                }"
+                                v-auto-color
+                                >Focus</j-cube
+                            >
+                            <j-cube
+                                class="text-hint"
+                                :style="{
+                                    backgroundColor:
+                                        item.colors.colorFocusOutline,
+                                }"
+                                v-auto-color
+                                >Focus<br />Outline</j-cube
+                            >
+                        </j-row>
+                    </j-action-feedback>
+                    <j-button
+                        row
+                        id="clear-custom-color"
+                        @click="customColorsActive = {}"
+                        >清除自定义色彩</j-button
+                    >
+                </j-card>
+            </div>
+            <div id="controls">
+                <j-control-bar for-id="re-active">
+                    <template v-slot:text>启用 Active 效果</template>
 
-            <j-switch id="re-active" v-model="active" />
-        </j-control-bar>
-        <j-control-bar for-id="re-hover">
-            <template v-slot:text>启用 Hover 效果</template>
+                    <j-switch id="re-active" v-model="active" />
+                </j-control-bar>
+                <j-control-bar for-id="re-hover">
+                    <template v-slot:text>启用 Hover 效果</template>
 
-            <j-switch id="re-hover" v-model="hover" />
-        </j-control-bar>
-        <j-control-bar for-id="switch-focus">
-            <template v-slot:text>启用 :focus 效果</template>
+                    <j-switch id="re-hover" v-model="hover" />
+                </j-control-bar>
+                <j-control-bar for-id="switch-focus">
+                    <template v-slot:text>启用 :focus 效果</template>
 
-            <j-switch id="switch-focus" v-model="focus" />
-        </j-control-bar>
-        <j-control-bar for-id="switch-focus-outline">
-            <template v-slot:text>启用 :focus.outline 效果</template>
+                    <j-switch id="switch-focus" v-model="focus" />
+                </j-control-bar>
+                <j-control-bar for-id="switch-focus-outline">
+                    <template v-slot:text>启用 :focus.outline 效果</template>
 
-            <j-switch id="switch-focus-outline" v-model="focusOutline" />
-        </j-control-bar>
+                    <j-switch
+                        id="switch-focus-outline"
+                        v-model="focusOutline"
+                    />
+                </j-control-bar>
+            </div>
+        </div>
+
         <!-- Demo -->
         <demo-box title="<j-action-feedback>" :code="code" expand>
             <div>
                 <j-row X="center">
                     <j-action-feedback
-                        tabindex="1"
                         class="demo-item"
+                        v-for="n in 2"
+                        :key="n"
+                        :tabindex="n"
                         :active="active"
                         :hover="hover"
                         :focus="focus"
                         :focus-outline="focusOutline"
+                        v-bind="customColorsActive"
                     >
                         <j-row style="height: 100%" warp X="center" Y="center">
                             <span> ClickMe!! </span>
                             <j-switch id="test-switch-1" v-model="v"></j-switch>
-                        </j-row>
-                    </j-action-feedback>
-                    <j-action-feedback
-                        tabindex="2"
-                        class="demo-item"
-                        :active="active"
-                        :hover="hover"
-                        :focus="focus"
-                        :focus-outline="focusOutline"
-                    >
-                        <j-row style="height: 100%" warp X="center" Y="center">
-                            <span> ClickMe!! </span>
-                            <j-switch id="test-switch-2" v-model="v"></j-switch>
                         </j-row>
                     </j-action-feedback>
                 </j-row>
@@ -161,10 +250,31 @@ export default {
     data() {
         return {
             v: true,
-            active: false,
-            hover: false,
+            active: true,
+            hover: true,
             focus: false,
             focusOutline: false,
+            customColors: [
+                {
+                    name: '配色组1',
+                    colors: {
+                        colorFocusOutline: '#50b0ff',
+                        colorActive: '#a3b3d4',
+                        colorFocus: '#e3ecff',
+                        colorHover: '#bfd2f8',
+                    },
+                },
+                {
+                    name: '配色组2',
+                    colors: {
+                        colorFocusOutline: '#d33030',
+                        colorActive: '#871f1f',
+                        colorFocus: '#ffe2e2',
+                        colorHover: '#ed9797',
+                    },
+                },
+            ],
+            customColorsActive: {},
             code: `
 //Javascript
 let active = true,
@@ -243,6 +353,11 @@ let focusOutline = true,
                 `,
         };
     },
+    methods: {
+        changCustomColor(colors) {
+            this.customColorsActive = colors;
+        },
+    },
 };
 </script>
 
@@ -255,5 +370,26 @@ let focusOutline = true,
     height: 100px;
     width: 100px;
     margin: 10px;
+}
+
+#controls-color .j-cube {
+    font-size: 12px;
+    height: 60px;
+    margin: 5px;
+    width: 60px;
+}
+
+#controls-color .j-button {
+    text-align: start;
+}
+#controls-color .color-group {
+    border-radius: var(--m-radius);
+    display: inline-block;
+    text-align: start;
+}
+
+#controls-color #clear-custom-color {
+    font-size: 1.2em;
+    font-weight: bold;
 }
 </style>

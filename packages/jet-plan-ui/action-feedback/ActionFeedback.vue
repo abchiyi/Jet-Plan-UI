@@ -1,17 +1,18 @@
 <script>
-function propInit(_type, _default) {
+function propInit(_type, _default = false) {
     return {
         type: _type || Boolean,
-        default: _default || false,
+        default: _default,
     };
+}
+function propColor() {
+    return propInit(String, '');
 }
 import mask from './ActionFeedbackMask.vue';
 import { h, TransitionGroup } from 'vue';
 export default {
     name: 'j-action-feedback',
     props: {
-        // TODO 验证色彩字符串是否合法
-        color: propInit(String, 'var(--mask)'),
         // TODO 或者透明度曲线
         opacity: propInit(String, '0.5'),
         tag: propInit(String, 'div'),
@@ -19,33 +20,62 @@ export default {
         hover: propInit(),
         focusOutline: propInit(),
         focus: propInit(),
+
+        // custom color
+        colorFocusOutline: propColor(),
+        colorActive: propColor(),
+        colorFocus: propColor(),
+        colorHover: propColor(),
     },
     data() {
         return {
+            hoverOnTouch: false,
             data_active: this.active,
-            data_hover: false,
+            data_hover: true,
             data_touch: false,
             masks: [],
             key: 0,
         };
     },
     computed: {
+        customColor() {
+            return (
+                this.colorFocusOutline &&
+                this.colorActive &&
+                this.colorFocus &&
+                this.colorHover
+            );
+        },
         classes() {
             return [
-                'j-action-feedback',
                 this.hover && this.data_hover ? 'hover' : '',
-                this.focus ? 'focus' : '',
                 this.focusOutline ? 'focus-outline' : '',
+                this.customColor ? 'custom-color' : '',
+                this.focus ? 'focus' : '',
             ];
+        },
+        styles() {
+            return {
+                '--color-focus-out-line': this.colorFocusOutline,
+                '--color-active': this.colorActive,
+                '--color-focus': this.colorFocus,
+                '--color-hover': this.colorHover,
+            };
         },
     },
     methods: {
         createMask(event) {
+            let bgColor = 'var(--mask)';
+            if (this.customColor) {
+                bgColor = 'var(--color-active)';
+                if (this.hoverOnTouch) bgColor = 'var(--color-hover)';
+            }
+
             return {
                 data: {
                     opacity: this.opacity,
                     el: this.$refs.self,
-                    color: this.color,
+                    color: bgColor,
                     event: event,
                 },
                 key: this.key++,
@@ -90,12 +120,10 @@ export default {
             if (this.hover && !this.data_touch) this.data_hover = true;
             // 移动端触摸事件响应 hover 非常缓慢，主动切换 active 反馈
             if (this.hover && this.data_touch) {
-                this.data_hover = false;
-                this.data_active = true;
+                this.hoverOnTouch = true;
             }
         },
         leave() {
-            if (this.hover) this.data_hover = false;
             this.removeMask();
         },
         // Click
@@ -131,19 +159,36 @@ export default {
     },
     watch: {
         active(v) {
-            this.data_active = v;
+            if (this.hoverOnTouch) {
+                this.data_active = true;
+            } else {
+                this.data_active = v;
+            }
+        },
+        hover(v) {
+            if (!v && this.hoverOnTouch) {
+                this.data_active = this.active;
+                this.hoverOnTouch = false;
+            }
+        },
+        hoverOnTouch(v) {
+            if (v) {
+                this.data_active = true;
+                this.data_hover = false;
+            }
         },
     },
     render() {
         return h(
             this.tag,
             {
-                class: this.classes,
+                class: ['j-action-feedback', ...this.classes],
+                style: this.styles,
                 onmousedown: this.startClick,
                 onmouseup: this.endClick,
 
-                onmouseenter: this.enter,
-                onmouseleave: this.leave,
+                // onmouseenter: this.enter,
+                // onmouseleave: this.leave,
 
                 ontouchstart: this.startTouche,
                 ontouchcancel: this.endTouche,
@@ -195,5 +240,19 @@ export default {
     .j-action-feedback {
         -webkit-tap-highlight-color: #ffffff00;
     }
+}
+
+/* custom color */
+.j-action-feedback.custom-color:focus:before {
+    background: var(--color-focus);
+}
+
+.j-action-feedback.custom-color.hover:hover:before {
+    background: var(--color-hover);
+}
+
+.j-action-feedback.focus-outline:focus {
+    transition: 0.3s var(--ease-out);
+    outline: solid 3px var(--color-focus-out-line);
 }
 </style>

@@ -12,7 +12,7 @@ const TEXTCOLOR = {
 }
 
 const BASECOLOR = {
-    secondary: BACKGROUND.border,
+    secondary: "#eeeeee",
     primary: "#1687a7",
     success: "#4cd966",
     warning: "#ecb02c",
