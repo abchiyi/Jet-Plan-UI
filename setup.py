@@ -5,7 +5,6 @@ V = os.popen('git tag').read().split()
 PATH = [
     './packages/jet-plan-ui-theme/package.json',
     './packages/jet-plan-ui/package.json',
-    './examples/version.js',
 ]
 
 if V:
@@ -18,6 +17,14 @@ if V:
             if VERSION:
                 config['version'] = VERSION
                 json.dump(config, f)
+
+        with open('./examples/version.js', 'w', encoding='UTF8') as f:
+            data = json.dumps({
+                'version': VERSION
+            })
+            f.write(
+                "export default "+data
+            )
 
 else:
     print('No Tag')
