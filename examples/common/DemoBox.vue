@@ -14,7 +14,7 @@
         <j-transition-folded title="展开Code">
             <j-code-box can-copy :id="codeID" :code="code" v-show="value">
                 <template v-slot:icon-copy>
-                    <i class="bi bi-clipboard"></i>
+                    <i class="bi bi-files"></i>
                 </template>
             </j-code-box>
         </j-transition-folded>
