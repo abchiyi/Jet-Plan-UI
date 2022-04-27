@@ -1,6 +1,12 @@
 export default [
 
     {
+        name: "Avater",
+        path: "/avater",
+        component: () => import(
+            '../views/the_demo/TheDemoAvater.vue')
+    },
+    {
         name: "Card",
         path: "/card",
         component: () => import(

@@ -68,7 +68,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .progress {
     --background-color: #bdc3c7;
     --c1: #5fc2ff;
