@@ -43,6 +43,7 @@ export default {
 }
 
 .j-avater {
+    background: var(--foreground);
     outline: 2px solid var(--border);
     min-height: var(--size);
     min-width: var(--size);
