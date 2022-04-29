@@ -3,6 +3,44 @@
         <h1>Avater</h1>
         <p>用于图形, 图标，头像</p>
         <hr />
+        <doc-item name="Props:" title-is="h2">
+            <li id="avater-border">
+                <p>
+                    <high-lighter>border</high-lighter>: type - Boolean, default
+                    - false
+                </p>
+                <p>关闭/开启 边框</p>
+            </li>
+            <li id="avater-circle">
+                <p>
+                    <high-lighter>circle</high-lighter>: type - Boolean, default
+                    - true
+                </p>
+                <p>切换 圆形/圆角矩形</p>
+            </li>
+            <li id="avater-size">
+                <p>
+                    <high-lighter>size</high-lighter>: type - String|Boolean,
+                    default - 2
+                </p>
+                <p>控制组件尺寸，默认为组件字体尺寸 2倍，即2em</p>
+            </li>
+            <li id="avater-color">
+                <p>
+                    <high-lighter>color</high-lighter>: type - String, default -
+                    'var(--foreground)'
+                </p>
+                <p>设置组件背景色</p>
+            </li>
+        </doc-item>
+        <doc-item name="Slots:" title-is="h2">
+            <li>
+                <p><high-lighter>default</high-lighter>: 仅有默认插槽</p>
+            </li>
+        </doc-item>
+
+        <h2>示例：</h2>
+        <hr />
         <j-control-bar for-id="c-switch-to-circle">
             <template v-slot:text> 切换外形为矩形 </template>
             <j-switch id="c-switch-to-circle" v-model="toCircle" />
