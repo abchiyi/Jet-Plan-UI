@@ -39,7 +39,7 @@ export default {
 <style >
 .j-avater,
 .j-avater * {
-    transition: 0.5s var(--ease-in-out);
+    transition: 0.5s var(--ease-in-out), outline-width 0s;
 }
 
 .j-avater {
