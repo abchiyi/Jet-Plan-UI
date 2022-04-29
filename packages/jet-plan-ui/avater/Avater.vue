@@ -37,12 +37,16 @@ export default {
 </script>
 
 <style >
+.j-avater,
+.j-avater * {
+    transition: 0.5s var(--ease-in-out);
+}
+
 .j-avater {
     outline: 2px solid var(--border);
     min-height: var(--size);
     min-width: var(--size);
     display: inline-block;
-    /* padding: 5px; */
 }
 
 .j-avater .content {
@@ -53,6 +57,11 @@ export default {
 }
 
 .j-avater img,
+.j-avater {
+    border-radius: var(--m-radius);
+}
+
+.j-avater.circle img,
 .j-avater.circle {
     border-radius: var(--size);
 }
@@ -60,6 +69,5 @@ export default {
 .j-avater img {
     height: var(--size);
     width: var(--size);
-    border: unset;
 }
 </style>
