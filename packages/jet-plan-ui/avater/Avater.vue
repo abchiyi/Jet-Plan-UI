@@ -27,9 +27,6 @@ export default {
             type: String,
             default: '',
         },
-        directives: {
-            AutoColor,
-        },
     },
     computed: {
         classes() {
@@ -41,6 +38,9 @@ export default {
                 '--color': this.color ? this.color : 'var(--foreground)',
             };
         },
+    },
+    directives: {
+        AutoColor,
     },
 };
 </script>
