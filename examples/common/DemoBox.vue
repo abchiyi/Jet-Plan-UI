@@ -7,12 +7,14 @@
             >
         </j-row>
         <div ref="showDemo" class="demo-box-demo">
-            <slot></slot>
+            <div v-if="isDemo">
+                <slot></slot>
+            </div>
         </div>
         <j-transition-folded title="展开Code">
             <j-code-box can-copy :id="codeID" :code="code" v-show="value">
                 <template v-slot:icon-copy>
-                    <i class="bi bi-clipboard"></i>
+                    <i class="bi bi-files"></i>
                 </template>
             </j-code-box>
         </j-transition-folded>
@@ -32,7 +34,7 @@ ${this.$refs.showDemo.innerHTML}
         `);
         }
 
-        if (!this.showDemoHaveContent) {
+        if (!this.isDemo) {
             this.codeControl = false;
             this.value = true;
         }
@@ -49,6 +51,7 @@ ${this.$refs.showDemo.innerHTML}
         title: {
             type: String,
             required: true,
+            default: 'Title is required',
         },
     },
     data() {
@@ -71,8 +74,8 @@ ${this.$refs.showDemo.innerHTML}
         codeID() {
             return this.title + '-code';
         },
-        showDemoHaveContent() {
-            return this.$refs.showDemo.children.length > 0;
+        isDemo() {
+            return Boolean(this.$slots.default);
         },
     },
 };
@@ -89,8 +92,6 @@ ${this.$refs.showDemo.innerHTML}
     margin: 20px 0;
 }
 .j-demo-box .demo-title {
-    padding: 1rem;
-    padding-top: unset;
     padding-left: 0.5em;
 }
 </style>
