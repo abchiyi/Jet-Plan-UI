@@ -44,7 +44,6 @@ export default {
 
 .j-avater {
     background: var(--foreground);
-    outline: 2px solid var(--border);
     min-height: var(--size);
     min-width: var(--size);
     display: inline-block;
@@ -55,6 +54,10 @@ export default {
     align-items: center;
     height: var(--size);
     display: flex;
+}
+
+.j-avater.border {
+    outline: 2px solid var(--border);
 }
 
 .j-avater img,
