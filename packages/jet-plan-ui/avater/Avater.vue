@@ -1,5 +1,5 @@
 <template>
-    <div class="j-avater" :style="styles" :class="classes">
+    <div v-auto-color class="j-avater" :style="styles" :class="classes">
         <div class="content">
             <slot></slot>
         </div>
@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { AutoColor } from '../tool/directives';
 export default {
     name: 'j-avater',
     props: {
@@ -25,6 +26,9 @@ export default {
         color: {
             type: String,
             default: '',
+        },
+        directives: {
+            AutoColor,
         },
     },
     computed: {

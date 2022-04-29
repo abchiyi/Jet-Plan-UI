@@ -44,7 +44,11 @@
             <j-row warp>
                 <div class="demo-item text-hint">
                     <span>图标</span>
-                    <j-avater :border="border" :circle="toCircle">
+                    <j-avater
+                        color="#263238"
+                        :border="border"
+                        :circle="toCircle"
+                    >
                         <i class="bi bi-files"></i>
                     </j-avater>
                 </div>
@@ -59,7 +63,12 @@
                 </div>
                 <div class="demo-item text-hint">
                     <span>文字</span>
-                    <j-avater :border="border" :circle="toCircle">A</j-avater>
+                    <j-avater
+                        color="#ff4d28"
+                        :border="border"
+                        :circle="toCircle"
+                        >A</j-avater
+                    >
                 </div>
                 <div class="demo-item text-hint">
                     <span>文字-多字符</span>
