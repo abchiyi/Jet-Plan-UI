@@ -42,6 +42,12 @@ describe('Avater', () => {
             circle: false,
         })
         expect(wrapper.html()).toMatchSnapshot()
+        await wrapper.setProps({
+            border: true,
+            circle: false,
+            color: '#61ff73'
+        })
+        expect(wrapper.html()).toMatchSnapshot()
 
     })
 
@@ -96,5 +102,13 @@ describe('Avater', () => {
                 wrapper.attributes('style')
             )['--size']
         ).toContain('4em')
+
+        const color = {
+            color: '#61ff73'
+        }
+        await wrapper.setProps(color)
+
+        expect(
+            getStyle(wrapper, '--color')).toContain(color.color)
     })
 })

@@ -1,19 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Avater Document test 1`] = `
-<div class="j-avater circle" style="--size: 2em;">
+<div class="j-avater circle" style="--size: 2em; --color: var(--foreground);">
   <div class="content"></div>
 </div>
 `;
 
 exports[`Avater Document test 2`] = `
-<div class="j-avater border circle" style="--size: 2em;">
+<div class="j-avater border circle" style="--size: 2em; --color: var(--foreground);">
   <div class="content"></div>
 </div>
 `;
 
 exports[`Avater Document test 3`] = `
-<div class="j-avater border" style="--size: 2em;">
+<div class="j-avater border" style="--size: 2em; --color: var(--foreground);">
+  <div class="content"></div>
+</div>
+`;
+
+exports[`Avater Document test 4`] = `
+<div class="j-avater border" style="--size: 2em; --color: #61ff73;">
   <div class="content"></div>
 </div>
 `;

@@ -22,6 +22,10 @@ export default {
             type: [Number, String],
             default: '2',
         },
+        color: {
+            type: String,
+            default: '',
+        },
     },
     computed: {
         classes() {
@@ -30,6 +34,7 @@ export default {
         styles() {
             return {
                 '--size': this.size + 'em',
+                '--color': this.color ? this.color : 'var(--foreground)',
             };
         },
     },
@@ -43,7 +48,7 @@ export default {
 }
 
 .j-avater {
-    background: var(--foreground);
+    background: var(--color);
     min-height: var(--size);
     min-width: var(--size);
     display: inline-block;
