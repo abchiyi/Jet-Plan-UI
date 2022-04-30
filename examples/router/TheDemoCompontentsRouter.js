@@ -70,6 +70,10 @@ export default [
             }
         ],
         component: () => import('../views/the_demo/the_demo_inputs/TheDemoInputs.vue')
+    }, {
+        name: "Table",
+        path: "/table",
+        component: () => import('../views/the_demo/TheDemoTable.vue')
     },
     {
         name: 'All Themes',
