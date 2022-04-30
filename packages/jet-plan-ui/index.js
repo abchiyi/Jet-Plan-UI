@@ -9,6 +9,7 @@ import codeBox from "./code_box"
 import ActionFeedback from "./action-feedback"
 import avater from './avater'
 import theme from './theme'
+import table from './table'
 // 指令&工具函数/类
 import directives from "./tool/directives"
 
@@ -24,7 +25,8 @@ const components = [
     form,
     card,
     theme,
-    avater
+    avater,
+    table
 ]
 
 export {
@@ -39,7 +41,8 @@ export {
     gird,
     form,
     card,
-    avater
+    avater,
+    table
 }
 
 // 默认安装程序
