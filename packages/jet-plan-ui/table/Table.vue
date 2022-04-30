@@ -41,6 +41,7 @@ export default {
                         active: true,
                         hover: true,
                         focus: true,
+                        maskOpacity: 0.2,
                         ...{
                             colorHover: 'var(--info)',
                             colorFocus: 'var(--primary)',
