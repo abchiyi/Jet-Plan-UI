@@ -186,8 +186,8 @@ export default {
                 onmousedown: this.startClick,
                 onmouseup: this.endClick,
 
-                // onmouseenter: this.enter,
-                // onmouseleave: this.leave,
+                onmouseenter: this.enter,
+                onmouseleave: this.leave,
 
                 ontouchstart: this.startTouche,
                 ontouchcancel: this.endTouche,
@@ -209,7 +209,7 @@ export default {
     overflow: hidden;
 }
 
-.j-action-feedback::before {
+.j-action-feedback::after {
     transition: 0.3s var(--ease-out-slow);
     background-color: var(--mask);
     pointer-events: none;
@@ -229,9 +229,9 @@ export default {
 }
 
 /* Keyboard focus */
-.j-action-feedback.focus:focus::before,
+.j-action-feedback.focus:focus::after,
 /* Mouse hover */
-.j-action-feedback.hover:hover::before {
+.j-action-feedback.hover:hover::after {
     opacity: 0.5;
 }
 
@@ -242,11 +242,11 @@ export default {
 }
 
 /* custom color */
-.j-action-feedback.custom-color:focus:before {
+.j-action-feedback.custom-color:focus:fa::after {
     background: var(--color-focus);
 }
 
-.j-action-feedback.custom-color.hover:hover:before {
+.j-action-feedback.custom-color.hover:hover:fa::after {
     background: var(--color-hover);
 }
 
