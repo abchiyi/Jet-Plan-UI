@@ -5,7 +5,13 @@ import {
 import Table from '../Table.vue'
 
 const data = {
-    test: 'test'
+    list: [{
+        name: 'n1'
+    }, {
+        name: 'n2'
+    }, {
+        name: 'n3'
+    }]
 }
 
 describe('Table', () => {

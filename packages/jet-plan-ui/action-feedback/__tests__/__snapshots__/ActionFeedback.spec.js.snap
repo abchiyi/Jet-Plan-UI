@@ -1,26 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionFeedback.vue Style test 1`] = `
-<div class="j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
+<div class="j-action-feedback" style="--color-focus-out-line: var(--border); --color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 2`] = `
-<div class="j-action-feedback hover" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
+<div class="j-action-feedback hover" style="--color-focus-out-line: var(--border); --color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 3`] = `
-<div class="j-action-feedback hover focus" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
+<div class="j-action-feedback hover focus" style="--color-focus-out-line: var(--border); --color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 4`] = `
-<div class="j-action-feedback hover focus-outline focus" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
+<div class="j-action-feedback hover focus-outline focus" style="--color-focus-out-line: var(--border); --color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 5`] = `
-<div class="j-action-feedback hover focus-outline custom-color focus" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus-out-line: #fff; --color-active: #263238; --color-focus: #5a7fa2; --color-hover: #a3b3d4;">Submit<transition-group-stub></transition-group-stub>
+<div class="j-action-feedback hover focus-outline focus" style="--color-focus-out-line: #fff; --color-focus: #5a7fa2; --color-hover: #a3b3d4; --mask-opacity: 0.5;" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;

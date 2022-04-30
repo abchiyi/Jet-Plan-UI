@@ -61,12 +61,6 @@ describe('ActionFeedback.vue', () => {
 
         const wrapper = mount(ActionFeedback)
 
-        expect(wrapper.classes()).not.toContain(
-            'custom-color'
-        )
-
-        expect(wrapper.attributes('style')).not.toBeTruthy()
-
         const colorData = {
             colorFocusOutline: '#fff',
             colorActive: '#263238',
@@ -76,25 +70,11 @@ describe('ActionFeedback.vue', () => {
 
         await wrapper.setProps(colorData)
 
-        expect(wrapper.classes()).toContain(
-            'custom-color'
-        )
-
-        expect(wrapper.attributes('style')).toContain(
-            '--color-focus-out-line',
-            '--color-active',
-            '--color-focus',
-            '--color-hover',
-        )
-
         const style = cssAttrsStringToObj(
             wrapper.attributes('style')
         )
         expect(style['--color-focus-out-line']).toEqual(
             colorData.colorFocusOutline
-        )
-        expect(style['--color-active']).toEqual(
-            colorData.colorActive
         )
         expect(style['--color-focus']).toEqual(
             colorData.colorFocus
@@ -102,18 +82,21 @@ describe('ActionFeedback.vue', () => {
         expect(style['--color-hover']).toEqual(
             colorData.colorHover
         )
+    })
+
+    it('mask opacity', async () => {
+        const wrapper = mount(ActionFeedback)
+        const style = cssAttrsStringToObj(
+            wrapper.attributes('style')
+        )
+        expect(style['--mask-opacity']).toEqual('0.5')
 
         await wrapper.setProps({
-            colorFocusOutline: '',
-            colorActive: '',
-            colorFocus: '',
-            colorHover: ''
+            maskOpacity: 0.2
         })
+        expect(cssAttrsStringToObj(
+            wrapper.attributes('style')
+        )['--mask-opacity']).toEqual('0.2')
 
-        expect(wrapper.classes()).not.toContain(
-            'custom-color'
-        )
-
-        expect(wrapper.attributes('style')).not.toBeTruthy()
     })
 })
