@@ -91,7 +91,7 @@ td {
 }
 
 .j-table tr:nth-child(odd) {
-    background: #eeeeee;
+    background: var(--secondary);
 }
 
 /* chrome and Safari scrollbar */
