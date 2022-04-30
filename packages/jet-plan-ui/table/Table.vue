@@ -1,5 +1,6 @@
 <script>
 import { h } from 'vue';
+import { ActionFeedback } from '../action-feedback';
 export default {
     name: 'j-table',
     props: {
@@ -32,9 +33,17 @@ export default {
                 for (let key in item) {
                     tempCol.push(renderCol(item[key]));
                 }
-                return h('tr', null, {
-                    default: () => tempCol,
-                });
+                return h(
+                    ActionFeedback,
+                    {
+                        tag: 'tr',
+                        hover: true,
+                        active: true,
+                    },
+                    {
+                        default: () => tempCol,
+                    }
+                );
             }
             const data = this.data.list;
             const tempItem = [this.renderHeader];
