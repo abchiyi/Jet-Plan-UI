@@ -25,7 +25,7 @@ export default {
             );
         },
         renderTable() {
-            function renderItem(item) {
+            function renderItem(item, key) {
                 function renderCol(v) {
                     return h('td', null, v);
                 }
@@ -37,8 +37,14 @@ export default {
                     ActionFeedback,
                     {
                         tag: 'tr',
-                        hover: true,
+                        tabIndex: key,
                         active: true,
+                        hover: true,
+                        focus: true,
+                        ...{
+                            colorHover: 'var(--info)',
+                            colorFocus: 'var(--primary)',
+                        },
                     },
                     {
                         default: () => tempCol,
@@ -48,7 +54,7 @@ export default {
             const data = this.data.list;
             const tempItem = [this.renderHeader];
             for (let key in data) {
-                tempItem.push(renderItem(data[key]));
+                tempItem.push(renderItem(data[key], key + 1));
             }
             return tempItem;
         },

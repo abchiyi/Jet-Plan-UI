@@ -5,8 +5,8 @@ function propInit(_type, _default = false) {
         default: _default,
     };
 }
-function propColor() {
-    return propInit(String, '');
+function propColor(defaultColor) {
+    return propInit(String, defaultColor);
 }
 import mask from './ActionFeedbackMask.vue';
 import { h, TransitionGroup } from 'vue';
@@ -21,10 +21,10 @@ export default {
         focus: propInit(),
 
         // custom color
-        colorFocusOutline: propColor(),
-        colorActive: propColor(),
-        colorFocus: propColor(),
-        colorHover: propColor(),
+        colorFocusOutline: propColor('var(--border)'),
+        colorActive: propColor('var(--mask)'),
+        colorFocus: propColor('var(--mask)'),
+        colorHover: propColor('var(--mask)'),
     },
     data() {
         return {
@@ -37,26 +37,16 @@ export default {
         };
     },
     computed: {
-        customColor() {
-            return (
-                this.colorFocusOutline &&
-                this.colorActive &&
-                this.colorFocus &&
-                this.colorHover
-            );
-        },
         classes() {
             return [
                 this.hover && this.data_hover ? 'hover' : '',
                 this.focusOutline ? 'focus-outline' : '',
-                this.customColor ? 'custom-color' : '',
                 this.focus ? 'focus' : '',
             ];
         },
         styles() {
             return {
                 '--color-focus-out-line': this.colorFocusOutline,
-                '--color-active': this.colorActive,
                 '--color-focus': this.colorFocus,
                 '--color-hover': this.colorHover,
             };
@@ -64,17 +54,14 @@ export default {
     },
     methods: {
         createMask(event) {
-            let bgColor = 'var(--mask)';
-            if (this.customColor) {
-                bgColor = 'var(--color-active)';
-                if (this.hoverOnTouch) bgColor = 'var(--color-hover)';
-            }
-
             return {
                 data: {
                     opacity: this.opacity,
                     el: this.$refs.self,
-                    color: bgColor,
+                    color:
+                        this.hoverOnTouch && !this.active
+                            ? 'var(--color-hover)'
+                            : this.colorActive,
                     event: event,
                 },
                 key: this.key++,
@@ -210,8 +197,8 @@ export default {
 }
 
 .j-action-feedback::after {
-    transition: 0.3s var(--ease-out-slow);
-    background-color: var(--mask);
+    transition: opacity 0.3s var(--ease-out-slow);
+    background-color: var(--color-hover);
     pointer-events: none;
     position: absolute;
     content: '';
@@ -225,12 +212,20 @@ export default {
 /* Keyboard focus */
 .j-action-feedback.focus-outline:focus {
     transition: 0.3s var(--ease-out);
-    outline: solid 3px var(--border);
+    outline: solid 3px var(--color-focus-out-line);
 }
 
 /* Keyboard focus */
-.j-action-feedback.focus:focus::after,
+.j-action-feedback.focus:focus::after {
+    background-color: var(--color-focus);
+    opacity: 0.5;
+}
 /* Mouse hover */
+.j-action-feedback.hover:hover::after {
+    background-color: var(--color-hover);
+    opacity: 0.5;
+}
+.j-action-feedback.focus:focus::after,
 .j-action-feedback.hover:hover::after {
     opacity: 0.5;
 }
@@ -239,19 +234,5 @@ export default {
     .j-action-feedback {
         -webkit-tap-highlight-color: #ffffff00;
     }
-}
-
-/* custom color */
-.j-action-feedback.custom-color:focus:fa::after {
-    background: var(--color-focus);
-}
-
-.j-action-feedback.custom-color.hover:hover:fa::after {
-    background: var(--color-hover);
-}
-
-.j-action-feedback.focus-outline:focus {
-    transition: 0.3s var(--ease-out);
-    outline: solid 3px var(--color-focus-out-line);
 }
 </style>
