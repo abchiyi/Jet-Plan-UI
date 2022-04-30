@@ -82,18 +82,21 @@ describe('ActionFeedback.vue', () => {
         expect(style['--color-hover']).toEqual(
             colorData.colorHover
         )
+    })
+
+    it('mask opacity', async () => {
+        const wrapper = mount(ActionFeedback)
+        const style = cssAttrsStringToObj(
+            wrapper.attributes('style')
+        )
+        expect(style['--mask-opacity']).toEqual('0.5')
 
         await wrapper.setProps({
-            colorFocusOutline: '',
-            colorActive: '',
-            colorFocus: '',
-            colorHover: ''
+            maskOpacity: 0.2
         })
+        expect(cssAttrsStringToObj(
+            wrapper.attributes('style')
+        )['--mask-opacity']).toEqual('0.2')
 
-        expect(wrapper.classes()).not.toContain(
-            'custom-color'
-        )
-
-        expect(wrapper.attributes('style')).not.toBeTruthy()
     })
 })

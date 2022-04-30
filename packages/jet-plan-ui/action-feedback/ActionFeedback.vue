@@ -13,12 +13,12 @@ import { h, TransitionGroup } from 'vue';
 export default {
     name: 'j-action-feedback',
     props: {
-        opacity: propInit(String, '0.5'),
         tag: propInit(String, 'div'),
         active: propInit(),
         hover: propInit(),
         focusOutline: propInit(),
         focus: propInit(),
+        maskOpacity: propInit([String, Number], 0.5),
 
         // custom color
         colorFocusOutline: propColor('var(--border)'),
@@ -49,6 +49,7 @@ export default {
                 '--color-focus-out-line': this.colorFocusOutline,
                 '--color-focus': this.colorFocus,
                 '--color-hover': this.colorHover,
+                '--mask-opacity': this.maskOpacity,
             };
         },
         // Render
@@ -80,7 +81,7 @@ export default {
         createMask(event) {
             return {
                 data: {
-                    opacity: this.opacity,
+                    opacity: this.maskOpacity,
                     el: this.$refs.self,
                     color:
                         this.hoverOnTouch && !this.active
@@ -215,16 +216,14 @@ export default {
 /* Keyboard focus */
 .j-action-feedback.focus:focus::after {
     background-color: var(--color-focus);
-    opacity: 0.5;
 }
 /* Mouse hover */
 .j-action-feedback.hover:hover::after {
     background-color: var(--color-hover);
-    opacity: 0.5;
 }
 .j-action-feedback.focus:focus::after,
 .j-action-feedback.hover:hover::after {
-    opacity: 0.5;
+    opacity: var(--mask-opacity);
 }
 
 @supports (-webkit-tap-highlight-color: #ffffff00) {
