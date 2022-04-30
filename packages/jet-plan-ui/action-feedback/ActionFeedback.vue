@@ -51,29 +51,6 @@ export default {
                 '--color-hover': this.colorHover,
             };
         },
-    },
-    methods: {
-        createMask(event) {
-            return {
-                data: {
-                    opacity: this.opacity,
-                    el: this.$refs.self,
-                    color:
-                        this.hoverOnTouch && !this.active
-                            ? 'var(--color-hover)'
-                            : this.colorActive,
-                    event: event,
-                },
-                key: this.key++,
-            };
-        },
-        removeMask() {
-            this.masks.forEach((item, index, masks) => {
-                if (item.key != this.key) {
-                    masks.splice(index, 1);
-                }
-            });
-        },
         // Render
         renderDefault() {
             const slot = this.$slots.default;
@@ -98,8 +75,28 @@ export default {
                 }
             );
         },
-        render() {
-            return [this.renderDefault(), this.renderMask()];
+    },
+    methods: {
+        createMask(event) {
+            return {
+                data: {
+                    opacity: this.opacity,
+                    el: this.$refs.self,
+                    color:
+                        this.hoverOnTouch && !this.active
+                            ? 'var(--color-hover)'
+                            : this.colorActive,
+                    event: event,
+                },
+                key: this.key++,
+            };
+        },
+        removeMask() {
+            this.masks.forEach((item, index, masks) => {
+                if (item.key != this.key) {
+                    masks.splice(index, 1);
+                }
+            });
         },
         // Hover
         enter() {
@@ -182,7 +179,7 @@ export default {
                 ref: 'self',
             },
             {
-                default: this.render,
+                default: () => [this.renderDefault, this.renderMask],
             }
         );
     },
