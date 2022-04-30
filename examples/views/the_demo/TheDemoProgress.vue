@@ -35,6 +35,20 @@
                 </p>
                 <p>控制状态栏行高</p>
             </li>
+            <li>
+                <p>
+                    <high-lighter>pause</high-lighter>: : type - Boolean,
+                    default - failed
+                </p>
+                <p>切换样式到暂停状态</p>
+            </li>
+            <li>
+                <p>
+                    <high-lighter>ring</high-lighter>: type - Boolean, default -
+                    false
+                </p>
+                <p>切换样式到环形进度条</p>
+            </li>
         </doc-item>
 
         <doc-item name="示例：" no-dot no-padding title-is="h2">
@@ -62,7 +76,7 @@
                         :failed="failed"
                         :value="number"
                         :pause="pause"
-                    ></j-progress>
+                    />
                     <p>环形:</p>
                     <p>
                         Font size - 16px
@@ -71,7 +85,7 @@
                             :value="number"
                             :pause="pause"
                             ring
-                        ></j-progress>
+                        />
                     </p>
                     <p style="font-size: 24px">
                         Font size 24px
@@ -80,7 +94,7 @@
                             :value="number"
                             :pause="pause"
                             ring
-                        ></j-progress>
+                        />
                     </p>
                     <p style="font-size: 32px">
                         Font size 32px
@@ -89,7 +103,7 @@
                             :value="number"
                             :pause="pause"
                             ring
-                        ></j-progress>
+                        />
                     </p>
                     <p>环形 in Button:</p>
                     <j-button
@@ -102,7 +116,7 @@
                             :value="number"
                             :pause="pause"
                             ring
-                        ></j-progress>
+                        />
                         <span style="margin-left: 10px"> {{ +number }}% </span>
                     </j-button>
                 </div>
