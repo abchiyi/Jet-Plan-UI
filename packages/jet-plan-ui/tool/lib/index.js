@@ -152,3 +152,55 @@ export function autoTextColor(el) {
         }
     }
 }
+
+export function* toBodyNode(el) {
+    // 从任意node节点迭代至body节点
+    let stop = false
+    let node = el
+    while (!stop) {
+        node = node.parentNode
+        yield node
+        if (node.tagName == 'BODY') stop = true
+    }
+}
+
+
+export function searchBackgroundColor(el) {
+    function getBgColor(el) {
+        return rgbToHex(
+            window.getComputedStyle(el).backgroundColor
+        )
+    }
+
+    let color = getBgColor(el)
+    if (color.opacity) return color;
+
+    let node = toBodyNode(el)
+    let stop = false
+    while (!stop) {
+        let g = node.next()
+        if (g.value) {
+            let color = getBgColor(g.value)
+            if (color.opacity) return color;
+        } else {
+            stop = true
+        }
+    }
+    return '#00000000'
+}
+
+export function reTextColor(el) {
+    function getBgColor(el) {
+        return window.getComputedStyle(el).backgroundColor;
+    }
+    let hexColor = rgbToHex(getBgColor(el))
+    if (hexColor.opacity == 0) {
+        el.style.color = ''
+    } else {
+        if (hexColor.max < 0.6) {
+            el.style.color = "var(--text-light)";
+        } else {
+            el.style.color = "var(--text-dark)";
+        }
+    }
+}
