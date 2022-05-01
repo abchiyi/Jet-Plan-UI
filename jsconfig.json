@@ -15,6 +15,7 @@
         //         "packages/jet-plan-ui-theme/*"
         //     ]
         // },
+        "vueCompilerOptions.experimentalDisableTemplateSupport": false,
         "lib": [
             "esnext",
             "dom",
