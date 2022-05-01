@@ -93,7 +93,7 @@ ${this.$refs.showDemo.innerHTML}
     background-color: var(--background);
     border-radius: var(--m-radius);
     padding: 1rem 2rem;
-    margin: 20px 0;
+    margin-bottom: 1em;
 }
 .j-demo-box .demo-title {
     padding-left: 0.5em;
