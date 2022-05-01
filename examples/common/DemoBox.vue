@@ -2,7 +2,7 @@
     <j-card class="j-demo-box">
         <j-row class="demo-box-header" Y="center" space-mode="between">
             <span class="demo-title text-hint">{{ title }}</span>
-            <j-button v-if="codeControl" @click="expand_" text
+            <j-button v-if="codeControl" hover active @click="expand_"
                 >View Code</j-button
             >
         </j-row>
@@ -85,17 +85,16 @@ ${this.$refs.showDemo.innerHTML}
 .j-demo-box {
     padding: 20px;
 }
-
-.j-demo-box .demo-box-header {
-    height: 2em;
-}
 .demo-box-demo > *:nth-child(1) {
     background-color: var(--background);
     border-radius: var(--m-radius);
     padding: 1rem 2rem;
-    margin-bottom: 1em;
 }
 .j-demo-box .demo-title {
     padding-left: 0.5em;
+}
+.j-demo-box .demo-box-header,
+.j-demo-box .demo-box-demo {
+    margin-bottom: 1em;
 }
 </style>
