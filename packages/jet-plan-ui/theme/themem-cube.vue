@@ -153,6 +153,14 @@ export default {
                 ? this.theme.auto
                 : this.theme;
         },
+        themeAutoMark() {
+            return this.theme.auto
+                ? this.theme
+                : {
+                      ...this.theme,
+                      auto: {},
+                  };
+        },
     },
     components: { ActionFeedback },
 };
@@ -188,7 +196,13 @@ export default {
     fill: v-bind('showTheme.foreground');
 }
 .foreground-dark {
-    fill: var(--foreground-dark);
+    fill: var('theme.auto.foreground');
+}
+.them-auto-mark .foreground {
+    fill: v-bind('themeAutoMark.foreground');
+}
+.them-auto-mark .foreground-dark {
+    fill: v-bind('themeAutoMark.auto.foreground');
 }
 .line {
     fill: v-bind('showTheme.border');
