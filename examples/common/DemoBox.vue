@@ -1,6 +1,6 @@
 <template>
     <j-card class="j-demo-box">
-        <j-row Y="center" space-mode="between">
+        <j-row class="demo-box-header" Y="center" space-mode="between">
             <span class="demo-title text-hint">{{ title }}</span>
             <j-button v-if="codeControl" @click="expand_" text
                 >View Code</j-button
@@ -84,6 +84,10 @@ ${this.$refs.showDemo.innerHTML}
 <style>
 .j-demo-box {
     padding: 20px;
+}
+
+.j-demo-box .demo-box-header {
+    height: 2em;
 }
 .demo-box-demo > *:nth-child(1) {
     background-color: var(--background);
