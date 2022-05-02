@@ -1,8 +1,9 @@
 <script>
 import { h } from 'vue';
 import { propInitBoolean } from '../tool/lib';
+const name = 'j-base-action';
 export default {
-    name: 'j-base-action-feedback',
+    name: name,
     props: {
         action: propInitBoolean(false),
         hover: propInitBoolean(false),
@@ -19,7 +20,7 @@ export default {
     },
     render() {
         return h('div', {
-            class: ['j-base-action-feedback', ...this.class],
+            class: [name, ...this.class],
         });
     },
 };

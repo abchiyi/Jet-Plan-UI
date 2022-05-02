@@ -2,7 +2,7 @@ import {
     shallowMount
 } from '@vue/test-utils'
 
-import baseActionFeedback from '../baseActionFeedback.vue'
+import baseAction from '../baseAction.vue'
 import test from '@test'
 
 const getClass = test.tools.getClass
@@ -10,26 +10,26 @@ const getClass = test.tools.getClass
 describe('Base ActionFeedback', () => {
 
     it('Node Map', async () => {
-        const wrapper = shallowMount(baseActionFeedback)
+        const wrapper = shallowMount(baseAction)
 
         expect(wrapper.html()).toMatchSnapshot()
     })
 
     it('Class Map', async () => {
-        const wrapper = shallowMount(baseActionFeedback)
+        const wrapper = shallowMount(baseAction)
 
         // 类名匹配组件名
         expect(getClass(wrapper)).toContain(
-            baseActionFeedback.name
+            baseAction.name
         )
 
     })
 
     it('Actions Map', async () => {
-        const wrapper = shallowMount(baseActionFeedback)
+        const wrapper = shallowMount(baseAction)
 
         expect(getClass(wrapper)).toEqual([
-            'j-base-action-feedback'
+            baseAction.name
         ])
 
         // Action
