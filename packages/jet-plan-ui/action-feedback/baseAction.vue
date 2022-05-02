@@ -18,11 +18,24 @@ export default {
                 this.focus ? 'focus' : null,
             ];
         },
+        renderSlotDefault() {
+            if (this.$slots.default) {
+                return this.$slots.default();
+            } else {
+                return null;
+            }
+        },
     },
     render() {
-        return h(this.tag, {
-            class: [name, ...this.class],
-        });
+        return h(
+            this.tag,
+            {
+                class: [name, ...this.class],
+            },
+            {
+                default: () => [this.renderSlotDefault],
+            }
+        );
     },
 };
 </script>
