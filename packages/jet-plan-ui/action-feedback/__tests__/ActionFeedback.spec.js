@@ -92,7 +92,7 @@ describe('ActionFeedback.vue', () => {
         expect(style['--mask-opacity']).toEqual('0.5')
 
         await wrapper.setProps({
-            maskOpacity: 0.2
+            opacity: 0.2
         })
         expect(cssAttrsStringToObj(
             wrapper.attributes('style')
