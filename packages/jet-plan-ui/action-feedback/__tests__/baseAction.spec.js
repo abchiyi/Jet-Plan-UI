@@ -67,5 +67,14 @@ describe('Base ActionFeedback', () => {
 
     })
 
+    it("Prop tag", () => {
+        const wrapper = shallowMount(baseAction, {
+            propsData: {
+                tag: 'p'
+            }
+        })
+
+        expect(wrapper.element.tagName).toEqual('P')
+    })
 
 })

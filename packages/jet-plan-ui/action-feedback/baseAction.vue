@@ -1,6 +1,6 @@
 <script>
 import { h } from 'vue';
-import { propInitBoolean } from '../tool/lib';
+import { propInitBoolean, propInit } from '../tool/lib';
 const name = 'j-base-action';
 export default {
     name: name,
@@ -8,6 +8,7 @@ export default {
         action: propInitBoolean(false),
         hover: propInitBoolean(false),
         focus: propInitBoolean(false),
+        tag: propInit(String, 'div'),
     },
     computed: {
         class() {
@@ -19,7 +20,7 @@ export default {
         },
     },
     render() {
-        return h('div', {
+        return h(this.tag, {
             class: [name, ...this.class],
         });
     },
