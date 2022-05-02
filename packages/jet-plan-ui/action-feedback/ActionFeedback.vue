@@ -18,7 +18,7 @@ export default {
         hover: propInit(),
         focusOutline: propInit(),
         focus: propInit(),
-        maskOpacity: propInit([String, Number], 0.5),
+        opacity: propInit([String, Number], 0.5),
 
         // custom color
         colorFocusOutline: propColor('var(--border)'),
@@ -49,7 +49,7 @@ export default {
                 '--color-focus-out-line': this.colorFocusOutline,
                 '--color-focus': this.colorFocus,
                 '--color-hover': this.colorHover,
-                '--mask-opacity': this.maskOpacity,
+                '--mask-opacity': this.opacity,
             };
         },
         // Render
@@ -81,7 +81,7 @@ export default {
         createMask(event) {
             return {
                 data: {
-                    opacity: this.maskOpacity,
+                    opacity: this.opacity,
                     el: this.$refs.self,
                     color:
                         this.hoverOnTouch && !this.active
@@ -195,8 +195,8 @@ export default {
 }
 
 .j-action-feedback::after {
-    transition: opacity 0.3s var(--ease-out-slow);
-    background-color: var(--color-hover);
+    transition: 0.3s var(--ease-out-slow);
+    /* background-color: var(--color-hover); */
     pointer-events: none;
     position: absolute;
     content: '';
@@ -209,7 +209,6 @@ export default {
 
 /* Keyboard focus */
 .j-action-feedback.focus-outline:focus {
-    transition: 0.3s var(--ease-out);
     outline: solid 3px var(--color-focus-out-line);
 }
 
