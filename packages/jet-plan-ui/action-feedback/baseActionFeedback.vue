@@ -6,10 +6,15 @@ export default {
     props: {
         action: propInitBoolean(false),
         hover: propInitBoolean(false),
+        focus: propInitBoolean(false),
     },
     computed: {
         class() {
-            return [this.action ? 'action' : null, this.hover ? 'hover' : null];
+            return [
+                this.action ? 'action' : null,
+                this.hover ? 'hover' : null,
+                this.focus ? 'focus' : null,
+            ];
         },
     },
     render() {

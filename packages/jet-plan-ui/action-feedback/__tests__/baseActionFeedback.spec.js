@@ -54,6 +54,17 @@ describe('Base ActionFeedback', () => {
         })
         expect(getClass(wrapper)).not.toContain('hover')
 
+        // Hover
+        await wrapper.setProps({
+            focus: true
+        })
+        expect(getClass(wrapper)).toContain('focus')
+
+        await wrapper.setProps({
+            focus: false
+        })
+        expect(getClass(wrapper)).not.toContain('focus')
+
     })
 
 
