@@ -4,9 +4,11 @@ import {
 } from '@vue/test-utils'
 
 import baseAction from '../baseAction.vue'
-import test from '@test'
+import {
+    getClass,
+    getLastEvent
+} from '@test/tools'
 
-const getClass = test.tools.getClass
 
 describe('Base ActionFeedback', () => {
 
@@ -40,20 +42,45 @@ describe('Base ActionFeedback', () => {
         const wrapper = mount(baseAction)
 
         wrapper.trigger('mousedown')
-        expect(wrapper.emitted('active_from')[0][0].active).toBeTruthy()
+        expect(
+            getLastEvent(wrapper, 'active_from').active
+        ).toBeTruthy()
 
         wrapper.trigger('mouseup')
-        expect(wrapper.emitted('active_to')[0][0].active).not.toBeTruthy()
+        expect(
+            getLastEvent(wrapper, 'active_to').active
+        ).not.toBeTruthy()
 
         // 触摸事件监听
-        const onTouch = wrapper.vm.onTouch
-        expect(onTouch.ontouchstart).toEqual(wrapper.vm.handlerTouchStartEvent)
-        expect(typeof onTouch.ontouchstart).toEqual('function')
-        expect(onTouch.ontouchcancel).toEqual(wrapper.vm.handlerTouchOver)
-        expect(typeof onTouch.ontouchcancel).toEqual('function')
-        expect(onTouch.ontouchend).toEqual(wrapper.vm.handlerTouchOver)
-        expect(typeof onTouch.ontouchend).toEqual('function')
+        wrapper.vm.handlerTouchEvent({
+            type: 'touchstart'
+        })
+        expect(
+            getLastEvent(wrapper, 'active_from').active
+        ).toBeTruthy()
 
+        wrapper.vm.handlerTouchEvent({
+            type: 'touchend'
+        })
+        expect(
+            getLastEvent(wrapper, 'active_to')
+        ).toEqual({
+            active: false,
+            event: {
+                type: 'touchend'
+            }
+        })
+        wrapper.vm.handlerTouchEvent({
+            type: 'touchcancel'
+        })
+        expect(
+            getLastEvent(wrapper, 'active_to')
+        ).toEqual({
+            active: false,
+            event: {
+                type: 'touchcancel'
+            }
+        })
     })
     it('Actions on touch', async () => {
         const wrapper = mount(baseAction)

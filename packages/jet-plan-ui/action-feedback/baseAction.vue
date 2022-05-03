@@ -26,9 +26,10 @@ export default {
     data() {
         return {
             onTouch: {
-                ontouchstart: this.handlerTouchStartEvent,
-                ontouchcancel: this.handlerTouchOver,
-                ontouchend: this.handlerTouchOver,
+                // ontouchstart: this.handlerTouchStartEvent,
+                ontouchstart: this.handlerTouchEvent,
+                ontouchcancel: this.handlerTouchEvent,
+                ontouchend: this.handlerTouchEvent,
             },
             isTouch: false,
         };
@@ -76,16 +77,31 @@ export default {
                 }
             }
         },
-        handlerTouchStartEvent(event) {
-            // Hover in touch
-            this.isTouch = true;
-            this.activeFrom(event);
-            if (this.isTouch) this.hoverFrom(event);
-        },
-        handlerTouchOver(event) {
-            this.activeTo(event);
-            // Hover in touch
-            if (this.isTouch) this.hoverTo(event);
+        // handlerTouchOver(event) {
+        //     this.activeTo({
+        //         active: false,
+        //         event: event,
+        //     });
+        //     // Hover in touch
+        //     if (this.isTouch) this.hoverTo(event);
+        // },
+        handlerTouchEvent(event) {
+            if (event.type == 'touchstart') {
+                // Hover in touch
+                this.isTouch = true;
+                this.activeFrom({
+                    active: true,
+                    event: event,
+                });
+                if (this.isTouch) this.hoverFrom(event);
+            } else if (['touchend', 'touchcancel'].includes(event.type)) {
+                this.activeTo({
+                    active: false,
+                    event: event,
+                });
+                // Hover in touch
+                if (this.isTouch) this.hoverTo(event);
+            }
         },
         handlerHover(event) {
             if (!this.isTouch) {
