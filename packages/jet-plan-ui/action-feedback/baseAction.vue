@@ -2,8 +2,15 @@
 import { h } from 'vue';
 import { propInitBoolean, propInit } from '../tool/lib';
 const name = 'j-base-action';
+
 export default {
     name: name,
+    mounted() {
+        document.addEventListener('click', this.focusHandler);
+    },
+    unmounted() {
+        document.removeEventListener('click', this.focusHandler);
+    },
     props: {
         action: propInitBoolean(false),
         hover: propInitBoolean(false),
@@ -33,15 +40,36 @@ export default {
                 ontouchcancel: this.activeTo,
                 ontouchend: this.activeTo,
             },
+            isTouch: false,
         };
     },
-    emits: ['active_from', 'active_to'],
+    emits: [
+        'active_from',
+        'active_to',
+        'hover_from',
+        'hover_to',
+        'focus_from',
+        'focus_to',
+    ],
     methods: {
-        activeFrom() {
-            this.$emit('active_from');
+        activeFrom(event) {
+            this.$emit('active_from', event);
         },
-        activeTo() {
-            this.$emit('active_to');
+        activeTo(event) {
+            this.$emit('active_to', event);
+        },
+        hoverFrom(event) {
+            this.$emit('hover_from', event);
+        },
+        hoverTo(event) {
+            this.$emit('hover_to', event);
+        },
+        focusHandler(event) {
+            if (this.$refs.self.contains(event.target)) {
+                this.$emit('focus_from', event);
+            } else {
+                this.$emit('focus_to', event);
+            }
         },
     },
     render() {
@@ -54,6 +82,11 @@ export default {
                 onmouseup: this.activeTo,
                 // Touch
                 ...this.onTouch,
+                // Hover
+                onmouseenter: this.hoverFrom,
+                onmouseleave: this.hoverTo,
+                // Ref
+                ref: 'self',
             },
             {
                 default: () => [this.renderSlotDefault],

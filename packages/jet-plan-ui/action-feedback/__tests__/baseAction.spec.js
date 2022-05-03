@@ -100,4 +100,14 @@ describe('Base ActionFeedback', () => {
 
     })
 
+    it("Hover", async () => {
+        const wrapper = mount(baseAction)
+
+        wrapper.trigger('mouseenter')
+        expect(wrapper.emitted().hover_from).toBeTruthy()
+
+        wrapper.trigger('mouseleave')
+        expect(wrapper.emitted().hover_to).toBeTruthy()
+    })
+
 })
