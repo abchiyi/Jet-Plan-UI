@@ -105,6 +105,28 @@ describe('ActionFeedback.vue', () => {
 
         expect(wrapper.vm.name).toEqual('j')
 
+        const newName = 'test'
+
+        await wrapper.setProps({
+            name: newName
+        })
+
+        expect(wrapper.classes()).toContain(`${newName}-action-feedback`)
+
+        await wrapper.setProps({
+            active: true
+        })
+
+        // mousedown & touchstart
+        await wrapper.vm.handlerActive({
+            active: true
+        })
+        expect(wrapper.classes()).toContain(`active`)
+
+        await wrapper.vm.handlerActive({
+            active: false
+        })
+        expect(wrapper.classes()).not.toContain(`active`)
 
 
     })

@@ -22,6 +22,7 @@ export default {
     },
     data() {
         return {
+            data_active: false,
             data_hover: false,
             data_focus: false,
             masks: [],
@@ -31,8 +32,10 @@ export default {
     computed: {
         classes() {
             return [
+                `${this.name}-action-feedback`,
                 this.data_hover && this.hover ? 'hover' : '',
                 this.data_focus && this.focus ? 'focus' : '',
+                this.data_active && this.active ? 'active' : '',
             ];
         },
         styles() {
@@ -89,15 +92,6 @@ export default {
         leave() {
             this.data_hover = false;
         },
-        // Click & touch
-        startClick(event) {
-            if (this.active && (event.button === 0 || event.touches)) {
-                this.masks.push(this.createMask(event));
-            }
-        },
-        endClick() {
-            this.removeMask();
-        },
 
         handlerFocus() {
             this.data_focus = true;
@@ -105,16 +99,32 @@ export default {
         handlerFocusTo() {
             this.data_focus = false;
         },
+
+        handlerActive(event) {
+            if (event.active) {
+                // 遮罩在自定义类名中不启用
+                if (this.name == 'j') {
+                    let e = event.event;
+                    if (this.active && (e.button === 0 || e.touches)) {
+                        this.masks.push(this.createMask(e));
+                    }
+                }
+            } else {
+                this.removeMask();
+            }
+
+            this.data_active = event.active;
+        },
     },
     render() {
         return h(
             baseAction,
             {
-                class: ['j-action-feedback', ...this.classes],
+                class: [...this.classes],
                 style: this.styles,
 
-                onActive_from: this.startClick,
-                onActive_to: this.endClick,
+                onActive_from: this.handlerActive,
+                onActive_to: this.handlerActive,
 
                 onHover_from: this.enter,
                 onHover_to: this.leave,
