@@ -85,11 +85,10 @@ export default {
         removeMask() {
             this.masks = [];
         },
-        handlerFocus() {
-            this.data_focus = true;
-        },
-        handlerFocusTo() {
-            this.data_focus = false;
+        handlerFocus(event) {
+            if (this.focus) {
+                this.data_focus = event.active;
+            }
         },
         handlerActive(event) {
             if (event.active) {
@@ -124,7 +123,7 @@ export default {
                 onHover_to: this.handlerHover,
 
                 onFocus_from: this.handlerFocus,
-                onFocus_to: this.handlerFocusTo,
+                onFocus_to: this.handlerFocus,
 
                 ref: 'self',
             },
