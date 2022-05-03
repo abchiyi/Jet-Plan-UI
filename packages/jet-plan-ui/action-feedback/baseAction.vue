@@ -57,9 +57,15 @@ export default {
         },
         focusHandler(event) {
             if (this.$refs.self.contains(event.target)) {
-                this.$emit('focus_from', event);
+                this.$emit('focus_from', {
+                    active: true,
+                    event: event,
+                });
             } else {
-                this.$emit('focus_to', event);
+                this.$emit('focus_to', {
+                    active: false,
+                    event: event,
+                });
             }
         },
         handlerMouseEvent(event) {
