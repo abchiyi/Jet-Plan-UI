@@ -142,8 +142,12 @@ export default {
     overflow: hidden;
 }
 
+.j-action-feedback,
 .j-action-feedback::after {
-    transition: 0.3s var(--ease-out);
+    transition: 0.3s var(--ease-out-slow);
+}
+
+.j-action-feedback::after {
     pointer-events: none;
     position: absolute;
     content: '';
