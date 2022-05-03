@@ -40,10 +40,10 @@ describe('Base ActionFeedback', () => {
         const wrapper = mount(baseAction)
 
         wrapper.trigger('mousedown')
-        expect(wrapper.emitted().active_from).toBeTruthy()
+        expect(wrapper.emitted('active_from')[0][0].active).toBeTruthy()
 
         wrapper.trigger('mouseup')
-        expect(wrapper.emitted().active_to).toBeTruthy()
+        expect(wrapper.emitted('active_to')[0][0].active).not.toBeTruthy()
 
         // 触摸事件监听
         const onTouch = wrapper.vm.onTouch

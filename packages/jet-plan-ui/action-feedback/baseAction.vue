@@ -64,9 +64,15 @@ export default {
         handlerMouseEvent(event) {
             if (!this.isTouch) {
                 if (event.type == 'mousedown') {
-                    this.activeFrom(event);
+                    this.activeFrom({
+                        active: true,
+                        event: event,
+                    });
                 } else if (event.type == 'mouseup') {
-                    this.activeTo(event);
+                    this.activeTo({
+                        active: false,
+                        event: event,
+                    });
                 }
             }
         },
