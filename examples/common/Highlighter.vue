@@ -11,7 +11,6 @@ export default {
 </script>
 
 <style>
-.warning-text,
 code.high-lighter {
     background-color: var(--border);
     border-radius: var(--s-radius);
