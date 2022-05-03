@@ -108,10 +108,25 @@ describe('Base ActionFeedback', () => {
     it('Hover on touch', async () => {
         const wrapper = mount(baseAction)
 
-        wrapper.vm.handlerTouchOver('')
-        expect(wrapper.emitted().active_to)
-        expect(wrapper.emitted().hover_to)
+        wrapper.vm.handlerTouchEvent({
+            type: 'touchstart'
+        })
+        expect(getLastEvent(wrapper, 'hover_from')).toEqual({
+            active: true,
+            event: {
+                type: 'touchstart'
+            }
+        })
 
+        wrapper.vm.handlerTouchEvent({
+            type: 'touchend'
+        })
+        expect(getLastEvent(wrapper, 'hover_to')).toEqual({
+            active: false,
+            event: {
+                type: 'touchend'
+            }
+        })
     })
 
 })

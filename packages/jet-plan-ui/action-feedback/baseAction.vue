@@ -83,30 +83,25 @@ export default {
                 }
             }
         },
-        // handlerTouchOver(event) {
-        //     this.activeTo({
-        //         active: false,
-        //         event: event,
-        //     });
-        //     // Hover in touch
-        //     if (this.isTouch) this.hoverTo(event);
-        // },
         handlerTouchEvent(event) {
             if (event.type == 'touchstart') {
-                // Hover in touch
                 this.isTouch = true;
-                this.activeFrom({
+                const callData = {
                     active: true,
                     event: event,
-                });
-                if (this.isTouch) this.hoverFrom(event);
+                };
+                this.activeFrom(callData);
+                // Hover in touch
+                if (this.isTouch) this.hoverFrom(callData);
             } else if (['touchend', 'touchcancel'].includes(event.type)) {
-                this.activeTo({
+                const callData = {
                     active: false,
                     event: event,
-                });
+                };
+
+                this.activeTo(callData);
                 // Hover in touch
-                if (this.isTouch) this.hoverTo(event);
+                if (this.isTouch) this.hoverTo(callData);
             }
         },
         handlerHover(event) {
