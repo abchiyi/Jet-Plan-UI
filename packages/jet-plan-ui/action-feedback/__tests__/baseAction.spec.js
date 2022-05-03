@@ -1,4 +1,5 @@
 import {
+    mount,
     shallowMount
 } from '@vue/test-utils'
 
@@ -75,6 +76,28 @@ describe('Base ActionFeedback', () => {
         })
 
         expect(wrapper.element.tagName).toEqual('P')
+    })
+
+    it('Actions', async () => {
+        const wrapper = mount(baseAction)
+
+        await wrapper.setProps({
+            active: true
+        })
+
+
+        wrapper.trigger('mousedown')
+        expect(wrapper.emitted().active_from).toBeTruthy()
+
+        wrapper.trigger('mouseup')
+        expect(wrapper.emitted().active_to).toBeTruthy()
+
+        // 在触摸环境下
+        const onTouch = wrapper.vm.onTouch
+        expect(onTouch.ontouchstart).toEqual(wrapper.vm.activeFrom)
+        expect(onTouch.ontouchcancel).toEqual(wrapper.vm.activeTo)
+        expect(onTouch.ontouchend).toEqual(wrapper.vm.activeTo)
+
     })
 
 })

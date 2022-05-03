@@ -26,11 +26,34 @@ export default {
             }
         },
     },
+    data() {
+        return {
+            onTouch: {
+                ontouchstart: this.activeFrom,
+                ontouchcancel: this.activeTo,
+                ontouchend: this.activeTo,
+            },
+        };
+    },
+    emits: ['active_from', 'active_to'],
+    methods: {
+        activeFrom() {
+            this.$emit('active_from');
+        },
+        activeTo() {
+            this.$emit('active_to');
+        },
+    },
     render() {
         return h(
             this.tag,
             {
                 class: [name, ...this.class],
+                // Mouse
+                onmousedown: this.activeFrom,
+                onmouseup: this.activeTo,
+                // Touch
+                ...this.onTouch,
             },
             {
                 default: () => [this.renderSlotDefault],

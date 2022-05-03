@@ -7,7 +7,4 @@ module.exports = {
     },
     "resolver": undefined,
     verbose: false,
-    globals: {
-        ontouchstart: null
-    }
 }
