@@ -27,8 +27,8 @@ export default {
         return {
             onTouch: {
                 ontouchstart: this.handlerTouchStartEvent,
-                ontouchcancel: this.activeTo,
-                ontouchend: this.activeTo,
+                ontouchcancel: this.handlerTouchOver,
+                ontouchend: this.handlerTouchOver,
             },
             isTouch: false,
         };
@@ -71,8 +71,24 @@ export default {
             }
         },
         handlerTouchStartEvent(event) {
-            this.activeFrom(event);
+            // Hover in touch
             this.isTouch = true;
+            this.activeFrom(event);
+            if (this.isTouch) this.hoverFrom(event);
+        },
+        handlerTouchOver(event) {
+            this.activeTo(event);
+            // Hover in touch
+            if (this.isTouch) this.hoverTo(event);
+        },
+        handlerHover(event) {
+            if (!this.isTouch) {
+                if (event.type == 'mouseenter') {
+                    this.hoverFrom(event);
+                } else if (event.type == 'mouseleave') {
+                    this.hoverTo(event);
+                }
+            }
         },
     },
     render() {
@@ -86,8 +102,8 @@ export default {
                 // Touch
                 ...this.onTouch,
                 // Hover
-                onmouseenter: this.hoverFrom,
-                onmouseleave: this.hoverTo,
+                onmouseenter: this.handlerHover,
+                onmouseleave: this.handlerHover,
                 // Ref
                 ref: 'self',
             },

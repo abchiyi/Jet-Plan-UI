@@ -49,9 +49,9 @@ describe('Base ActionFeedback', () => {
         const onTouch = wrapper.vm.onTouch
         expect(onTouch.ontouchstart).toEqual(wrapper.vm.handlerTouchStartEvent)
         expect(typeof onTouch.ontouchstart).toEqual('function')
-        expect(onTouch.ontouchcancel).toEqual(wrapper.vm.activeTo)
+        expect(onTouch.ontouchcancel).toEqual(wrapper.vm.handlerTouchOver)
         expect(typeof onTouch.ontouchcancel).toEqual('function')
-        expect(onTouch.ontouchend).toEqual(wrapper.vm.activeTo)
+        expect(onTouch.ontouchend).toEqual(wrapper.vm.handlerTouchOver)
         expect(typeof onTouch.ontouchend).toEqual('function')
 
     })
@@ -75,6 +75,15 @@ describe('Base ActionFeedback', () => {
 
         wrapper.trigger('mouseleave')
         expect(wrapper.emitted().hover_to).toBeTruthy()
+    })
+
+    it('Hover on touch', async () => {
+        const wrapper = mount(baseAction)
+
+        wrapper.vm.handlerTouchOver('')
+        expect(wrapper.emitted().active_to)
+        expect(wrapper.emitted().hover_to)
+
     })
 
 })
