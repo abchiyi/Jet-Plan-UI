@@ -11,7 +11,7 @@ const getClass = test.tools.getClass
 describe('Base ActionFeedback', () => {
 
     it('Node Map', async () => {
-        const wrapper = shallowMount(baseAction)
+        const wrapper = mount(baseAction)
 
         expect(wrapper.html()).toMatchSnapshot()
     })
@@ -47,12 +47,12 @@ describe('Base ActionFeedback', () => {
 
         // 触摸事件监听
         const onTouch = wrapper.vm.onTouch
-        expect(onTouch.ontouchstart).toEqual(wrapper.vm.activeFrom)
-        expect(onTouch.ontouchstart).toBeTruthy()
+        expect(onTouch.ontouchstart).toEqual(wrapper.vm.handlerTouchStartEvent)
+        expect(typeof onTouch.ontouchstart).toEqual('function')
         expect(onTouch.ontouchcancel).toEqual(wrapper.vm.activeTo)
-        expect(onTouch.ontouchcancel).toBeTruthy()
+        expect(typeof onTouch.ontouchcancel).toEqual('function')
         expect(onTouch.ontouchend).toEqual(wrapper.vm.activeTo)
-        expect(onTouch.ontouchend).toBeTruthy()
+        expect(typeof onTouch.ontouchend).toEqual('function')
 
     })
     it('Actions on touch', async () => {

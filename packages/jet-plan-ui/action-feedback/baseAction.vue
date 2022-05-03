@@ -26,7 +26,7 @@ export default {
     data() {
         return {
             onTouch: {
-                ontouchstart: this.activeFrom,
+                ontouchstart: this.handlerTouchStartEvent,
                 ontouchcancel: this.activeTo,
                 ontouchend: this.activeTo,
             },
@@ -62,12 +62,17 @@ export default {
             }
         },
         handlerMouseEvent(event) {
-            if (this.isTouch || event.touches) return;
-            if (event.type == 'mousedown') {
-                this.activeFrom(event);
-            } else if (event.type == 'mouseup') {
-                this.activeTo(event);
+            if (!this.isTouch) {
+                if (event.type == 'mousedown') {
+                    this.activeFrom(event);
+                } else if (event.type == 'mouseup') {
+                    this.activeTo(event);
+                }
             }
+        },
+        handlerTouchStartEvent(event) {
+            this.activeFrom(event);
+            this.isTouch = true;
         },
     },
     render() {
