@@ -2,7 +2,6 @@ import ActionFeedback from '../ActionFeedback.vue'
 
 import {
     mount,
-    // shallowMount
 } from '@vue/test-utils'
 
 function cssAttrsStringToObj(str) {
@@ -44,12 +43,10 @@ describe('ActionFeedback.vue', () => {
             active: true,
             hover: true,
             focus: true,
-            focusOutline: true,
         })
         expect(wrapper.html()).toMatchSnapshot()
 
         await wrapper.setProps({
-            colorFocusOutline: '#fff',
             colorActive: '#263238',
             colorFocus: '#5a7fa2',
             colorHover: "#a3b3d4"
@@ -62,7 +59,6 @@ describe('ActionFeedback.vue', () => {
         const wrapper = mount(ActionFeedback)
 
         const colorData = {
-            colorFocusOutline: '#fff',
             colorActive: '#263238',
             colorFocus: '#5a7fa2',
             colorHover: "#a3b3d4"
@@ -73,9 +69,7 @@ describe('ActionFeedback.vue', () => {
         const style = cssAttrsStringToObj(
             wrapper.attributes('style')
         )
-        expect(style['--color-focus-out-line']).toEqual(
-            colorData.colorFocusOutline
-        )
+
         expect(style['--color-focus']).toEqual(
             colorData.colorFocus
         )
