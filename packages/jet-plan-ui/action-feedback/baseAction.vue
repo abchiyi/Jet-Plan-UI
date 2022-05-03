@@ -106,9 +106,15 @@ export default {
         handlerHover(event) {
             if (!this.isTouch) {
                 if (event.type == 'mouseenter') {
-                    this.hoverFrom(event);
+                    this.hoverFrom({
+                        active: true,
+                        event: event,
+                    });
                 } else if (event.type == 'mouseleave') {
-                    this.hoverTo(event);
+                    this.hoverTo({
+                        active: false,
+                        event: event,
+                    });
                 }
             }
         },

@@ -8,6 +8,9 @@ import {
     getClass,
     getLastEvent
 } from '@test/tools'
+import {
+    get
+} from 'jquery'
 
 
 describe('Base ActionFeedback', () => {
@@ -98,10 +101,12 @@ describe('Base ActionFeedback', () => {
         const wrapper = mount(baseAction)
 
         wrapper.trigger('mouseenter')
-        expect(wrapper.emitted().hover_from).toBeTruthy()
+        expect(
+            getLastEvent(wrapper, 'hover_from').active
+        ).toBeTruthy()
 
         wrapper.trigger('mouseleave')
-        expect(wrapper.emitted().hover_to).toBeTruthy()
+        expect(getLastEvent(wrapper, 'hover_to').active).toBe(false)
     })
 
     it('Hover on touch', async () => {
