@@ -48,8 +48,11 @@ describe('Base ActionFeedback', () => {
         // 触摸事件监听
         const onTouch = wrapper.vm.onTouch
         expect(onTouch.ontouchstart).toEqual(wrapper.vm.activeFrom)
+        expect(onTouch.ontouchstart).toBeTruthy()
         expect(onTouch.ontouchcancel).toEqual(wrapper.vm.activeTo)
+        expect(onTouch.ontouchcancel).toBeTruthy()
         expect(onTouch.ontouchend).toEqual(wrapper.vm.activeTo)
+        expect(onTouch.ontouchend).toBeTruthy()
 
     })
     it('Actions on touch', async () => {

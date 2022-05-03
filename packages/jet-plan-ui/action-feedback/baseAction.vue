@@ -42,6 +42,12 @@ export default {
         'focus_to',
     ],
     methods: {
+        activeFrom(event) {
+            this.$emit('active_from', event);
+        },
+        activeTo(event) {
+            this.$emit('active_to', event);
+        },
         hoverFrom(event) {
             this.$emit('hover_from', event);
         },
@@ -58,9 +64,9 @@ export default {
         handlerMouseEvent(event) {
             if (this.isTouch || event.touches) return;
             if (event.type == 'mousedown') {
-                this.$emit('active_from', event);
+                this.activeFrom(event);
             } else if (event.type == 'mouseup') {
-                this.$emit('active_to', event);
+                this.activeTo(event);
             }
         },
     },
