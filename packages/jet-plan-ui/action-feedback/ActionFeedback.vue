@@ -144,7 +144,6 @@ export default {
 
 .j-action-feedback::after {
     transition: 0.3s var(--ease-out);
-    /* background-color: var(--color-hover); */
     pointer-events: none;
     position: absolute;
     content: '';
@@ -154,11 +153,6 @@ export default {
     left: 0;
     top: 0;
 }
-
-/* Keyboard focus */
-/* .j-action-feedback.focus.focus-outline {
-    outline: solid 3px var(--color-focus-out-line);
-} */
 
 /* Keyboard focus */
 .j-action-feedback.focus::after {
