@@ -5,6 +5,12 @@ export function getClass(wrapper) {
 }
 
 
+export function getLastEvent(wrapper, evenName) {
+    const events = wrapper.emitted(evenName)
+    return events[events.length - 1][0]
+}
+
+
 export default {
     getClass
 }
