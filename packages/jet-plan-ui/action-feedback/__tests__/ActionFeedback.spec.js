@@ -99,4 +99,13 @@ describe('ActionFeedback.vue', () => {
         )['--mask-opacity']).toEqual('0.2')
 
     })
+
+    it('Custom class', async () => {
+        const wrapper = mount(ActionFeedback)
+
+        expect(wrapper.vm.name).toEqual('j')
+
+
+
+    })
 })

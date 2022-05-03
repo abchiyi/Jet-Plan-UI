@@ -9,6 +9,7 @@ import { h, TransitionGroup } from 'vue';
 export default {
     name: 'j-action-feedback',
     props: {
+        name: propInit(String, 'j'),
         focus: propInitBoolean(false),
         hover: propInitBoolean(false),
         active: propInitBoolean(false),
