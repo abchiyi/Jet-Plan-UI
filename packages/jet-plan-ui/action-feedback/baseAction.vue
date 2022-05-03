@@ -1,6 +1,6 @@
 <script>
 import { h } from 'vue';
-import { propInitBoolean, propInit } from '../tool/lib';
+import { propInit } from '../tool/lib';
 const name = 'j-base-action';
 
 export default {
@@ -12,9 +12,6 @@ export default {
         document.removeEventListener('click', this.focusHandler);
     },
     props: {
-        action: propInitBoolean(false),
-        hover: propInitBoolean(false),
-        focus: propInitBoolean(false),
         tag: propInit(String, 'div'),
     },
     computed: {
