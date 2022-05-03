@@ -222,7 +222,6 @@
                         class="demo-item"
                         v-for="n in 2"
                         :key="n"
-                        :tabindex="n"
                         :active="active"
                         :hover="hover"
                         :focus="focus"

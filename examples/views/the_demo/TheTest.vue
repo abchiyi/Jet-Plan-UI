@@ -5,6 +5,11 @@
                 @click="eventBus.push('click')"
                 @touchstart="eventBus.push('touchstart')"
                 @mousedown="eventBus.push('mousedown')"
+                @mouseup="eventBus.push('mouseup')"
+                @mouseenter="eventBus.push('mouseenter')"
+                @mouseleave="eventBus.push('mouseleave')"
+                @touchend="eventBus.push('touchend')"
+                @ontouchcancel="eventBus.push('ontouchcancel')"
             >
                 Test Page
             </h1>
