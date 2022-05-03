@@ -15,13 +15,6 @@ export default {
         tag: propInit(String, 'div'),
     },
     computed: {
-        class() {
-            return [
-                this.action ? 'action' : null,
-                this.hover ? 'hover' : null,
-                this.focus ? 'focus' : null,
-            ];
-        },
         renderSlotDefault() {
             if (this.$slots.default) {
                 return this.$slots.default();
@@ -49,12 +42,6 @@ export default {
         'focus_to',
     ],
     methods: {
-        activeFrom(event) {
-            this.$emit('active_from', event);
-        },
-        activeTo(event) {
-            this.$emit('active_to', event);
-        },
         hoverFrom(event) {
             this.$emit('hover_from', event);
         },
@@ -68,15 +55,23 @@ export default {
                 this.$emit('focus_to', event);
             }
         },
+        handlerMouseEvent(event) {
+            if (this.isTouch || event.touches) return;
+            if (event.type == 'mousedown') {
+                this.$emit('active_from', event);
+            } else if (event.type == 'mouseup') {
+                this.$emit('active_to', event);
+            }
+        },
     },
     render() {
         return h(
             this.tag,
             {
-                class: [name, ...this.class],
+                class: [name],
                 // Mouse
-                onmousedown: this.activeFrom,
-                onmouseup: this.activeTo,
+                onmousedown: this.handlerMouseEvent,
+                onmouseup: this.handlerMouseEvent,
                 // Touch
                 ...this.onTouch,
                 // Hover

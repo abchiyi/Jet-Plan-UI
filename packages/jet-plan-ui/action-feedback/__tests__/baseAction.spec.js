@@ -26,48 +26,6 @@ describe('Base ActionFeedback', () => {
 
     })
 
-    it('Actions Map', async () => {
-        const wrapper = shallowMount(baseAction)
-
-        expect(getClass(wrapper)).toEqual([
-            baseAction.name
-        ])
-
-        // Action
-        await wrapper.setProps({
-            action: true
-        })
-        expect(getClass(wrapper)).toContain('action')
-
-        await wrapper.setProps({
-            action: false
-        })
-        expect(getClass(wrapper)).not.toContain('action')
-
-        // Hover
-        await wrapper.setProps({
-            hover: true
-        })
-        expect(getClass(wrapper)).toContain('hover')
-
-        await wrapper.setProps({
-            hover: false
-        })
-        expect(getClass(wrapper)).not.toContain('hover')
-
-        // Hover
-        await wrapper.setProps({
-            focus: true
-        })
-        expect(getClass(wrapper)).toContain('focus')
-
-        await wrapper.setProps({
-            focus: false
-        })
-        expect(getClass(wrapper)).not.toContain('focus')
-
-    })
-
     it("Prop tag", () => {
         const wrapper = shallowMount(baseAction, {
             propsData: {
@@ -81,23 +39,29 @@ describe('Base ActionFeedback', () => {
     it('Actions', async () => {
         const wrapper = mount(baseAction)
 
-        await wrapper.setProps({
-            active: true
-        })
-
-
         wrapper.trigger('mousedown')
         expect(wrapper.emitted().active_from).toBeTruthy()
 
         wrapper.trigger('mouseup')
         expect(wrapper.emitted().active_to).toBeTruthy()
 
-        // 在触摸环境下
+        // 触摸事件监听
         const onTouch = wrapper.vm.onTouch
         expect(onTouch.ontouchstart).toEqual(wrapper.vm.activeFrom)
         expect(onTouch.ontouchcancel).toEqual(wrapper.vm.activeTo)
         expect(onTouch.ontouchend).toEqual(wrapper.vm.activeTo)
 
+    })
+    it('Actions on touch', async () => {
+        const wrapper = mount(baseAction)
+
+        wrapper.vm.isTouch = true
+
+        wrapper.trigger('mousedown')
+        expect(wrapper.emitted().active_from).not.toBeTruthy()
+
+        wrapper.trigger('mouseup')
+        expect(wrapper.emitted().active_to).not.toBeTruthy()
     })
 
     it("Hover", async () => {
