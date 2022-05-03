@@ -1,10 +1,10 @@
 <template>
     <j-card class="j-demo-box">
-        <j-row Y="center" space-mode="between">
+        <j-row class="demo-box-header" Y="center" space-mode="between">
             <span class="demo-title text-hint">{{ title }}</span>
-            <j-button v-if="codeControl" @click="expand_" text
-                >View Code</j-button
-            >
+            <j-button v-if="codeControl" hover active @click="expand_">
+                <i class="bi bi-code-slash"></i>
+            </j-button>
         </j-row>
         <div ref="showDemo" class="demo-box-demo">
             <div v-if="isDemo">
@@ -89,9 +89,17 @@ ${this.$refs.showDemo.innerHTML}
     background-color: var(--background);
     border-radius: var(--m-radius);
     padding: 1rem 2rem;
-    margin: 20px 0;
 }
 .j-demo-box .demo-title {
     padding-left: 0.5em;
+}
+.j-demo-box .demo-box-header,
+.j-demo-box .demo-box-demo {
+    margin-bottom: 1em;
+}
+
+.j-demo-box .demo-box-header > .j-button {
+    font-size: 1.2rem;
+    padding: 0 10px;
 }
 </style>

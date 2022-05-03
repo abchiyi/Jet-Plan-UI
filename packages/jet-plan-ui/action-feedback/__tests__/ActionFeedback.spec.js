@@ -2,7 +2,6 @@ import ActionFeedback from '../ActionFeedback.vue'
 
 import {
     mount,
-    // shallowMount
 } from '@vue/test-utils'
 
 function cssAttrsStringToObj(str) {
@@ -44,12 +43,10 @@ describe('ActionFeedback.vue', () => {
             active: true,
             hover: true,
             focus: true,
-            focusOutline: true,
         })
         expect(wrapper.html()).toMatchSnapshot()
 
         await wrapper.setProps({
-            colorFocusOutline: '#fff',
             colorActive: '#263238',
             colorFocus: '#5a7fa2',
             colorHover: "#a3b3d4"
@@ -62,7 +59,6 @@ describe('ActionFeedback.vue', () => {
         const wrapper = mount(ActionFeedback)
 
         const colorData = {
-            colorFocusOutline: '#fff',
             colorActive: '#263238',
             colorFocus: '#5a7fa2',
             colorHover: "#a3b3d4"
@@ -73,9 +69,7 @@ describe('ActionFeedback.vue', () => {
         const style = cssAttrsStringToObj(
             wrapper.attributes('style')
         )
-        expect(style['--color-focus-out-line']).toEqual(
-            colorData.colorFocusOutline
-        )
+
         expect(style['--color-focus']).toEqual(
             colorData.colorFocus
         )
@@ -92,11 +86,69 @@ describe('ActionFeedback.vue', () => {
         expect(style['--mask-opacity']).toEqual('0.5')
 
         await wrapper.setProps({
-            maskOpacity: 0.2
+            opacity: 0.2
         })
         expect(cssAttrsStringToObj(
             wrapper.attributes('style')
         )['--mask-opacity']).toEqual('0.2')
+
+    })
+
+    it('Custom class', async () => {
+        const wrapper = mount(ActionFeedback)
+
+        expect(wrapper.vm.name).toEqual('j')
+
+        const newName = 'test'
+
+        await wrapper.setProps({
+            name: newName
+        })
+
+        expect(wrapper.classes()).toContain(`${newName}-action-feedback`)
+
+        // mousedown & touchstart
+        await wrapper.setProps({
+            active: true
+        })
+
+        await wrapper.vm.handlerActive({
+            active: true
+        })
+        expect(wrapper.classes()).toContain(`active`)
+
+        await wrapper.vm.handlerActive({
+            active: false
+        })
+        expect(wrapper.classes()).not.toContain(`active`)
+
+        // Hover
+        await wrapper.setProps({
+            hover: true
+        })
+        await wrapper.vm.handlerHover({
+            active: true
+        })
+        expect(wrapper.classes()).toContain(`hover`)
+
+        await wrapper.vm.handlerHover({
+            active: false
+        })
+        expect(wrapper.classes()).not.toContain(`hover`)
+
+        // Focus
+        await wrapper.setProps({
+            focus: true
+        })
+        await wrapper.vm.handlerFocus({
+            active: true
+        })
+        expect(wrapper.classes()).toContain(`focus`)
+
+        await wrapper.vm.handlerFocus({
+            active: false
+        })
+        expect(wrapper.classes()).not.toContain(`focus`)
 
     })
 })

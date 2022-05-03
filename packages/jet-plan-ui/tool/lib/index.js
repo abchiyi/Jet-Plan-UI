@@ -204,3 +204,14 @@ export function reTextColor(el) {
         }
     }
 }
+
+export function propInit(_type, _default) {
+    return {
+        type: _type,
+        default: _default,
+    };
+}
+
+export function propInitBoolean(default_value) {
+    return propInit(Boolean, default_value)
+}
