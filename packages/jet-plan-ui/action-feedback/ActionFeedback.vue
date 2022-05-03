@@ -85,21 +85,12 @@ export default {
         removeMask() {
             this.masks = [];
         },
-        // Hover
-        enter() {
-            if (this.hover) this.data_hover = true;
-        },
-        leave() {
-            this.data_hover = false;
-        },
-
         handlerFocus() {
             this.data_focus = true;
         },
         handlerFocusTo() {
             this.data_focus = false;
         },
-
         handlerActive(event) {
             if (event.active) {
                 // 遮罩在自定义类名中不启用
@@ -115,6 +106,9 @@ export default {
 
             this.data_active = event.active;
         },
+        handlerHover(event) {
+            if (this.hover) this.data_hover = event.active;
+        },
     },
     render() {
         return h(
@@ -126,8 +120,8 @@ export default {
                 onActive_from: this.handlerActive,
                 onActive_to: this.handlerActive,
 
-                onHover_from: this.enter,
-                onHover_to: this.leave,
+                onHover_from: this.handlerHover,
+                onHover_to: this.handlerHover,
 
                 onFocus_from: this.handlerFocus,
                 onFocus_to: this.handlerFocusTo,

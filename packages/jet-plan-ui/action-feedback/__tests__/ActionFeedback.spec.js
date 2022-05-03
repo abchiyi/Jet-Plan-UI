@@ -113,11 +113,11 @@ describe('ActionFeedback.vue', () => {
 
         expect(wrapper.classes()).toContain(`${newName}-action-feedback`)
 
+        // mousedown & touchstart
         await wrapper.setProps({
             active: true
         })
 
-        // mousedown & touchstart
         await wrapper.vm.handlerActive({
             active: true
         })
@@ -128,6 +128,19 @@ describe('ActionFeedback.vue', () => {
         })
         expect(wrapper.classes()).not.toContain(`active`)
 
+        // Hover
+        await wrapper.setProps({
+            hover: true
+        })
+        await wrapper.vm.handlerHover({
+            active: true
+        })
+        expect(wrapper.classes()).toContain(`hover`)
+
+        await wrapper.vm.handlerHover({
+            active: false
+        })
+        expect(wrapper.classes()).not.toContain(`hover`)
 
     })
 })
