@@ -8,10 +8,6 @@ import {
     getClass,
     getLastEvent
 } from '@test/tools'
-import {
-    get
-} from 'jquery'
-
 
 describe('Base ActionFeedback', () => {
 
