@@ -37,6 +37,7 @@ export default {
                     ActionFeedback,
                     {
                         tag: 'tr',
+                        class: 'table-item',
                         tabIndex: key,
                         active: true,
                         hover: true,
@@ -72,7 +73,36 @@ export default {
 };
 </script>
 
-<style>
+<style scoped >
+.table-item.j-action-feedback:after {
+    transition: 0.3s var(--ease-out);
+    background: var(--info);
+    color: var(--text-light);
+    border-radius: 0.3em;
+    margin: 1em 0em;
+    content: '';
+    opacity: 0.7;
+    width: 0.3em;
+    left: -1em;
+}
+
+.table-item.j-action-feedback.focus:after {
+    margin: 0.5em 0.15em;
+    left: 0;
+}
+.table-item.j-action-feedback.focus {
+    background: var(--secondary);
+    color: var(--text);
+}
+
+.table-item.j-action-feedback.hover.focus::after {
+    background: var(--foreground);
+    margin: 0.3em 0.15em;
+}
+.table-item.j-action-feedback.hover {
+    background: var(--info);
+    color: var(--text-light);
+}
 table {
     border-collapse: collapse;
     width: 100%;
@@ -106,7 +136,10 @@ td {
     background: var(--background);
 }
 
-.j-table tr:nth-child(odd) {
+/* .j-table tr:nth-child(odd) {
+    background: var(--secondary);
+} */
+.j-table tr:nth-child(1) {
     background: var(--secondary);
 }
 
