@@ -17,18 +17,30 @@
 
 <script>
 import { Shadow } from '../tool/directives';
-import { row } from '../layout';
+import { Row } from '../gird';
 import { Button } from '../form';
+// import { propInit } from '../tool/lib';
 const NAME = 'j-alert-item';
 export default {
     name: NAME,
+    props: {
+        // type:propInit(String,'info'),
+        type: {
+            type: String,
+            default: 'info',
+            validator: (v) => {
+                const value = ['info', 'error', 'success', 'warning'];
+                return value.indexOf(v) !== -1;
+            },
+        },
+    },
     components: {
         'j-button': Button,
-        'j-row': row,
+        'j-row': Row,
     },
     computed: {
         classes() {
-            return [NAME];
+            return [NAME, this.type];
         },
     },
     directives: {
@@ -44,6 +56,18 @@ export default {
     margin-bottom: 0.5rem;
     height: 2.5rem;
     width: 100%;
+}
+.j-alert-item::before {
+    transition: 0.3s var(--ease-out);
+    background: var(--info);
+    color: var(--text-light);
+    border-radius: 0.3em;
+    height: 1.2em;
+    margin: 0 4px;
+    width: 0.3em;
+    content: '';
+    left: 0em;
+    background: var(--secondary);
 }
 
 .j-alert-item > .j-button,
