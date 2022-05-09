@@ -1,11 +1,27 @@
 <template>
-    <div :class="classes"></div>
+    <div :class="classes">
+        <transition-group name="alert">
+            <alert-item v-for="item in data" :key="item">
+                {{ item }}
+            </alert-item>
+        </transition-group>
+    </div>
 </template>
 
 <script>
+import alertItem from './alertItem.vue';
 const NAME = 'j-alert';
 export default {
     name: NAME,
+    props: {
+        data: {
+            type: Object,
+            require: true,
+        },
+    },
+    components: {
+        alertItem,
+    },
     computed: {
         classes() {
             return [NAME];
@@ -15,4 +31,20 @@ export default {
 </script>
 
 <style>
+.j-alert {
+    position: fixed;
+    height: 100vh;
+    width: 280px;
+    right: 0;
+    top: 0;
+}
+
+.alert-enter-from,
+.alert-leave-to {
+    transform: translateX(100%);
+}
+
+.alert-leave-active {
+    position: absolute;
+}
 </style>

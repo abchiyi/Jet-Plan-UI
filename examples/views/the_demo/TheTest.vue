@@ -1,58 +1,50 @@
 <template>
-    <j-row X="center">
-        <div ref="test">
-            <j-button @click="testF"></j-button>
-            <h1
-                @click="eventBus.push('click')"
-                @touchstart="eventBus.push('touchstart')"
-                @mousedown="eventBus.push('mousedown')"
-                @mouseup="eventBus.push('mouseup')"
-                @mouseenter="eventBus.push('mouseenter')"
-                @mouseleave="eventBus.push('mouseleave')"
-                @touchend="eventBus.push('touchend')"
-                @ontouchcancel="eventBus.push('ontouchcancel')"
-            >
-                Test Page
-            </h1>
-            <p>{{ eventBus }}</p>
-            <j-switch v-model="value" id="test-switch" />
-            <j-switch v-model="value1" id="test-switch1" />
-            <base-shape
-                :class="testClass"
-                class="show-box"
-                border="2"
-                :round="value1"
-            >
-                <j-cube></j-cube>
-            </base-shape>
+    <div>
+        <j-row X="center" style="width: 100%">
+            <h1>Test Page</h1>
+        </j-row>
+        <alert :data="items"></alert>
+        <div id="list-complete-demo" class="demo">
+            <j-button @click="add">Add</j-button>
+            <j-button @click="remove">Remove</j-button>
+            <!-- <transition-group name="list-complete" tag="p">
+                <alert
+                    v-for="item in items"
+                    :key="item"
+                    class="list-complete-item"
+                >
+                    {{ item }}</alert
+                >
+            </transition-group> -->
         </div>
-    </j-row>
+    </div>
 </template>
 <script>
-import { getOffset } from '@ui/tool/lib/dom';
-import { baseShape } from '../../../packages/jet-plan-ui/shape';
+import { alert } from '../../../packages/jet-plan-ui/alert';
 export default {
     name: 'the-test-page',
     components: {
-        baseShape,
+        alert,
     },
     data() {
         return {
-            eventBus: [],
-            value: false,
-            value1: false,
+            items: [1, 2, 3],
+            nextNum: 4,
         };
     },
     methods: {
-        testF() {
-            console.log(getOffset(this.$refs.test));
+        randomIndex() {
+            return Math.floor(Math.random() * this.items.length);
+        },
+        add() {
+            // this.items.splice(this.randomIndex(), 0, this.nextNum++);
+            this.items.push(this.nextNum++);
+        },
+        remove() {
+            this.items.splice(this.randomIndex(), 1);
         },
     },
-    computed: {
-        testClass() {
-            return [this.value ? 'xl' : ''];
-        },
-    },
+    computed: {},
 };
 </script>
 
@@ -65,5 +57,19 @@ export default {
 
 .xl {
     height: 200px;
+}
+
+.list-complete-item {
+    transition: all 0.6s var(--ease-out);
+}
+
+.list-complete-enter-from,
+.list-complete-leave-to {
+    transform: translateX(-200px);
+}
+
+.list-complete-enter-active,
+.list-complete-leave-active {
+    position: absolute;
 }
 </style>
