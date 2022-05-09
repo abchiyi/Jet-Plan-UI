@@ -23,6 +23,7 @@
                 border="2"
                 :round="value1"
             >
+                <j-cube></j-cube>
             </base-shape>
         </div>
     </j-row>
@@ -57,8 +58,8 @@ export default {
 
 <style>
 .show-box {
-    height: 60px;
-    width: 300px;
+    /* height: 60px; */
+    /* width: 300px; */
     border-radius: var(--m-radius);
 }
 
