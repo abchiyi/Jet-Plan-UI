@@ -67,7 +67,19 @@ export default {
     width: 0.3em;
     content: '';
     left: 0em;
-    background: var(--secondary);
+}
+
+.j-alert-item.info::before {
+    background: var(--info);
+}
+.j-alert-item.error::before {
+    background: var(--error);
+}
+.j-alert-item.success::before {
+    background: var(--success);
+}
+.j-alert-item.warning::before {
+    background: var(--warning);
 }
 
 .j-alert-item > .j-button,

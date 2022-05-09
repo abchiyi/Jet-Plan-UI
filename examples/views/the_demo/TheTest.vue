@@ -28,7 +28,24 @@ export default {
     },
     data() {
         return {
-            items: [1, 2, 3],
+            items: [
+                {
+                    type: 'info',
+                    content: 'Info',
+                },
+                {
+                    type: 'error',
+                    content: 'Error',
+                },
+                {
+                    type: 'success',
+                    content: 'Success',
+                },
+                {
+                    type: 'warning',
+                    content: 'Warning',
+                },
+            ],
             nextNum: 4,
         };
     },
@@ -38,7 +55,9 @@ export default {
         },
         add() {
             // this.items.splice(this.randomIndex(), 0, this.nextNum++);
-            this.items.push(this.nextNum++);
+            this.items.push({
+                content: this.nextNum++,
+            });
         },
         remove() {
             this.items.splice(this.randomIndex(), 1);
@@ -49,27 +68,4 @@ export default {
 </script>
 
 <style>
-.show-box {
-    /* height: 60px; */
-    /* width: 300px; */
-    border-radius: var(--m-radius);
-}
-
-.xl {
-    height: 200px;
-}
-
-.list-complete-item {
-    transition: all 0.6s var(--ease-out);
-}
-
-.list-complete-enter-from,
-.list-complete-leave-to {
-    transform: translateX(-200px);
-}
-
-.list-complete-enter-active,
-.list-complete-leave-active {
-    position: absolute;
-}
 </style>

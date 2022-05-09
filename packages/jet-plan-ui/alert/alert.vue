@@ -1,8 +1,8 @@
 <template>
     <div :class="classes">
         <transition-group name="alert">
-            <alert-item v-for="item in data" :key="item">
-                {{ item }}
+            <alert-item v-bind="item" v-for="item in data" :key="item">
+                {{ item.content }}
             </alert-item>
         </transition-group>
     </div>
