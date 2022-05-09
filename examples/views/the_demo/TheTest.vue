@@ -3,7 +3,7 @@
         <j-row X="center" style="width: 100%">
             <h1>Test Page</h1>
         </j-row>
-        <alert :data="items"></alert>
+        <alert style="padding: 100px 0" :data="items"></alert>
         <div id="list-complete-demo" class="demo">
             <j-button @click="add">Add</j-button>
             <j-button @click="remove">Remove</j-button>

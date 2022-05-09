@@ -1,7 +1,13 @@
 <template>
     <div :class="classes">
         <transition-group name="alert">
-            <alert-item v-bind="item" v-for="item in data" :key="item">
+            <alert-item
+                v-for="item in data"
+                @wangToClose="wangToClose"
+                v-bind="item"
+                :_key="item"
+                :key="item"
+            >
                 {{ item.content }}
             </alert-item>
         </transition-group>
@@ -25,6 +31,11 @@ export default {
     computed: {
         classes() {
             return [NAME];
+        },
+    },
+    methods: {
+        wangToClose(v) {
+            console.log(v);
         },
     },
 };

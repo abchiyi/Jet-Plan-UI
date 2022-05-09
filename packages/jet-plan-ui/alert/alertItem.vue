@@ -9,7 +9,7 @@
         <div class="content">
             <slot></slot>
         </div>
-        <j-button text hover>
+        <j-button @click="wangToClose" text hover>
             <i class="bi bi-x"></i>
         </j-button>
     </j-row>
@@ -33,6 +33,10 @@ export default {
                 return value.indexOf(v) !== -1;
             },
         },
+        _key: {
+            type: Object,
+            required: true,
+        },
     },
     components: {
         'j-button': Button,
@@ -45,6 +49,11 @@ export default {
     },
     directives: {
         Shadow,
+    },
+    methods: {
+        wangToClose() {
+            this.$emit('wangToClose', this._key);
+        },
     },
 };
 </script>
