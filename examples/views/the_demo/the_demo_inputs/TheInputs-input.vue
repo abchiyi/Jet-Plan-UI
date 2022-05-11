@@ -2,7 +2,12 @@
     <div>
         <h3>Input</h3>
         <demo-box title="input" :code="code">
-            <j-input />
+            <j-input v-model="value" />
+            <p>
+                <strong>
+                    {{ value }}
+                </strong>
+            </p>
         </demo-box>
     </div>
 </template>
@@ -12,6 +17,7 @@ export default {
     data: () => {
         return {
             code: `<j-input />`,
+            value: 'Abc123',
         };
     },
 };
