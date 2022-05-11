@@ -11,6 +11,7 @@ import avater from './avater'
 import theme from './theme'
 import table from './table'
 import alert from './alert'
+import baseShape from './shape'
 // 指令&工具函数/类
 import directives from "./tool/directives"
 
@@ -28,7 +29,8 @@ const components = [
     theme,
     avater,
     table,
-    alert
+    alert,
+    baseShape
 ]
 
 export {
@@ -45,7 +47,8 @@ export {
     card,
     avater,
     table,
-    alert
+    alert,
+    baseShape
 }
 
 // 默认安装程序
