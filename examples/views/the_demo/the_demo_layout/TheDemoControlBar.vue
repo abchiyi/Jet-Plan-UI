@@ -29,6 +29,13 @@
                         </p>
                         <p>反向排列内部元素</p>
                     </li>
+                    <li id="prop-no-background">
+                        <p>
+                            <high-lighter>no-background</high-lighter>
+                            type - Boolean, default - false
+                        </p>
+                        <p>不设置背景</p>
+                    </li>
                 </doc-item>
             </li>
             <li id="j-control-bar-slots">
