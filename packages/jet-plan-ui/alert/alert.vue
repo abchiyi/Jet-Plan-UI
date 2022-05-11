@@ -30,7 +30,7 @@ export default {
     },
     computed: {
         classes() {
-            return [NAME];
+            return [NAME, 'j-hidden-scrollbar'];
         },
     },
     methods: {
@@ -48,6 +48,8 @@ export default {
     width: 280px;
     right: 0;
     top: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
 .alert-enter-from,

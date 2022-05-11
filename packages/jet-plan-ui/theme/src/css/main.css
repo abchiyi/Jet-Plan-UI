@@ -117,3 +117,22 @@ strong {
     font-size: 1.2em;
     font-weight: bold;
 }
+
+
+/* Firefox  */
+@supports (scrollbar-width: none) {
+    .j-hidden-scrollbar {
+        overflow: -moz-scrollbars-none;
+        scrollbar-width: none;
+    }
+}
+
+/* chrome and Safari */
+.j-hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* IE 10+ */
+.j-hidden-scrollbar {
+    -ms-overflow-style: none;
+}
