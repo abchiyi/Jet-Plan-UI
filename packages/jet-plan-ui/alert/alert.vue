@@ -52,6 +52,8 @@ export default {
     bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
+    padding: 3vh 0;
+    pointer-events: none;
 }
 
 .alert-enter-from,
