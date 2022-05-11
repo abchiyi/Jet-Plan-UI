@@ -10,6 +10,7 @@ import ActionFeedback from "./action-feedback"
 import avater from './avater'
 import theme from './theme'
 import table from './table'
+import alert from './alert'
 // 指令&工具函数/类
 import directives from "./tool/directives"
 
@@ -26,7 +27,8 @@ const components = [
     card,
     theme,
     avater,
-    table
+    table,
+    alert
 ]
 
 export {
@@ -42,7 +44,8 @@ export {
     form,
     card,
     avater,
-    table
+    table,
+    alert
 }
 
 // 默认安装程序
