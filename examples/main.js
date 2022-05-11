@@ -1,7 +1,7 @@
 import {
     resolveComponent,
     createApp,
-    h
+    h,
 } from "vue"
 
 // 自定义 fonts, css, style
@@ -14,6 +14,11 @@ import themeDefault, {
     jetPlanDark
 }
 from "@theme"
+
+// 导入通知控制器
+import {
+    AlertData
+} from '@ui/alert'
 
 // Custom components
 import router from "./router"
@@ -67,4 +72,7 @@ createApp(BASE_COMPONENT)
     .use(common)
     .use(router)
     .use(ui)
+    .use((Vue) => {
+        Vue.config.globalProperties.$jetAlert = new AlertData()
+    })
     .mount("#app")
