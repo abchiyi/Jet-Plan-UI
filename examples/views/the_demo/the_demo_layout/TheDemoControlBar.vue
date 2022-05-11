@@ -60,6 +60,7 @@
             <template v-slot:text>反向排列元素</template>
             <j-switch id="to-reverse" v-model="toReverse" />
         </j-control-bar>
+        <!-- TODO 添加无背景状态控制 -->
         <demo-box title="<j-control-bar>" :code="code">
             <div id="demo-default">
                 <j-control-bar for-id="demo-switch" :reverse="toReverse">
