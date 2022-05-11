@@ -3,13 +3,17 @@ import alert from './alert.vue'
 import {
     installComponent
 } from '../tool/lib'
+import {
+    reactive
+} from 'vue'
 
 // const alerts = []
+
 
 export class AlertData {
 
     constructor() {
-        this.alerts = []
+        this.alerts = reactive([])
     }
 
     info(text, timeout) {
