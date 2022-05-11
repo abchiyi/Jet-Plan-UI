@@ -19,12 +19,10 @@
 import { Shadow } from '../tool/directives';
 import { Row } from '../gird';
 import { Button } from '../form';
-// import { propInit } from '../tool/lib';
 const NAME = 'j-alert-item';
 export default {
     name: NAME,
     props: {
-        // type:propInit(String,'info'),
         type: {
             type: String,
             default: 'info',
@@ -36,6 +34,17 @@ export default {
         _key: {
             required: true,
         },
+        timeout: {
+            type: Number,
+            default: 0,
+        },
+    },
+    mounted() {
+        if (this.timeout) {
+            setTimeout(() => {
+                this.wangToClose();
+            }, this.timeout);
+        }
     },
     components: {
         'j-button': Button,

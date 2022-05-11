@@ -2,7 +2,7 @@
     <div :class="classes">
         <transition-group name="alert">
             <alert-item
-                v-for="item in data"
+                v-for="item in data.alerts"
                 @wangToClose="wangToClose"
                 v-bind="item"
                 :_key="item"
@@ -35,7 +35,8 @@ export default {
     },
     methods: {
         wangToClose(v) {
-            console.log(v);
+            // this.$emit('remove', v);
+            this.data.remove(v);
         },
     },
 };
@@ -43,11 +44,12 @@ export default {
 
 <style>
 .j-alert {
+    box-sizing: border-box;
     position: fixed;
     height: 100vh;
     width: 280px;
     right: 0;
-    top: 0;
+    bottom: 0;
     overflow-x: hidden;
     overflow-y: auto;
 }

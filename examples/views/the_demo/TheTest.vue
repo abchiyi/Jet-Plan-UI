@@ -3,24 +3,28 @@
         <j-row X="center" style="width: 100%">
             <h1>Test Page</h1>
         </j-row>
-        <alert style="padding: 100px 0" :data="items"></alert>
+        <alert
+            @remove="remove"
+            style="padding: 100px 0"
+            :data="AlertData"
+        ></alert>
         <div id="list-complete-demo" class="demo">
-            <j-button @click="add">Add</j-button>
-            <j-button @click="remove">Remove</j-button>
-            <!-- <transition-group name="list-complete" tag="p">
-                <alert
-                    v-for="item in items"
-                    :key="item"
-                    class="list-complete-item"
-                >
-                    {{ item }}</alert
-                >
-            </transition-group> -->
+            <j-button @click="AlertData.info(nextNum++, 3000)"
+                >Alert Info</j-button
+            >
+            <j-button @click="AlertData.error(nextNum++)">Alert Error</j-button>
+            <j-button @click="AlertData.success(nextNum++)"
+                >Alert Success</j-button
+            >
+            <j-button @click="AlertData.warning(nextNum++)"
+                >Alert Warning</j-button
+            >
+            <j-button @click="AlertData.removeAll()">Remove All</j-button>
         </div>
     </div>
 </template>
 <script>
-import { alert } from '../../../packages/jet-plan-ui/alert';
+import { alert, AlertData } from '../../../packages/jet-plan-ui/alert';
 export default {
     name: 'the-test-page',
     components: {
@@ -47,6 +51,8 @@ export default {
                 },
             ],
             nextNum: 4,
+
+            AlertData: new AlertData(),
         };
     },
     methods: {
@@ -54,13 +60,21 @@ export default {
             return Math.floor(Math.random() * this.items.length);
         },
         add() {
-            // this.items.splice(this.randomIndex(), 0, this.nextNum++);
-            this.items.push({
-                content: this.nextNum++,
-            });
+            this.items.splice(this.randomIndex(), 0, this.nextNum++);
         },
-        remove() {
-            this.items.splice(this.randomIndex(), 1);
+        remove(v) {
+            const index = this.items.indexOf(v);
+            if (index !== -1) {
+                this.items.splice(index, 1);
+            }
+        },
+        removeAll() {
+            let ms = 200;
+            this.items.forEach((item) => {
+                setTimeout(() => {
+                    this.remove(item);
+                }, (ms += 200));
+            });
         },
     },
     computed: {},
