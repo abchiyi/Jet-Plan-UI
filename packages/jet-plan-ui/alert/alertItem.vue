@@ -34,7 +34,6 @@ export default {
             },
         },
         _key: {
-            type: Object,
             required: true,
         },
     },
@@ -63,8 +62,8 @@ export default {
     transition: all 0.6s var(--ease-out);
     border-radius: var(--m-radius);
     margin-bottom: 0.5rem;
+    margin-left: 15px;
     height: 2.5rem;
-    width: 100%;
 }
 .j-alert-item::before {
     transition: 0.3s var(--ease-out);

@@ -59,5 +59,6 @@ export default {
 
 .alert-leave-active {
     position: absolute;
+    width: 100%;
 }
 </style>
