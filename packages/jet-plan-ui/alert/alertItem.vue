@@ -73,6 +73,7 @@ export default {
     margin-bottom: 0.5rem;
     margin-left: 15px;
     height: 2.5rem;
+    pointer-events: all;
 }
 .j-alert-item::before {
     transition: 0.3s var(--ease-out);
