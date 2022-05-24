@@ -1,73 +1,69 @@
 <template>
-  <div :class="classes">
-    <component :is="titleIs">
-      {{ name }}
-    </component>
-    <ul>
-      <slot>
-        <li style="color: var(--error)"><strong>Empty !</strong></li>
-      </slot>
-    </ul>
-  </div>
+    <div :class="classes">
+        <component :is="titleIs">
+            {{ name }}
+        </component>
+        <ul>
+            <slot>
+                <li style="color: var(--error)"><strong>Empty !</strong></li>
+            </slot>
+        </ul>
+    </div>
 </template>
 <script>
 export default {
-  name: 'doc-item',
-  props: {
-    name: {
-      type: String,
-      required: true,
+    name: 'doc-item',
+    props: {
+        name: {
+            type: String,
+            //   required: true,
+        },
+        titleIs: {
+            type: String,
+            default: 'strong',
+        },
+        noDot: {
+            type: Boolean,
+            default: false,
+        },
+        noPadding: {
+            type: Boolean,
+            default: false,
+        },
     },
-    titleIs: {
-      type: String,
-      default: 'strong',
+    computed: {
+        classes() {
+            return [
+                'doc',
+                this.noDot ? 'no-dot' : '',
+                this.noPadding ? 'no-padding' : '',
+            ];
+        },
     },
-    noDot: {
-      type: Boolean,
-      default: false,
-    },
-    noPadding: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  computed: {
-    classes() {
-      return [
-        'doc',
-        'font-mono',
-        this.noDot ? 'no-dot' : '',
-        this.noPadding ? 'no-padding' : '',
-      ];
-    },
-  },
 };
 </script>
 
 <style>
 .doc > ul > li {
-  margin-top: 1em;
+    margin-top: 1em;
 }
 
 .doc li::marker {
-  margin: unset;
-}
-
-.doc + .doc {
-  margin-bottom: 20px;
+    margin: unset;
 }
 
 .doc.no-dot > ol,
 .doc.no-dot > ul {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 .doc.no-padding > ol,
 .doc.no-padding > ul {
-  padding-left: unset;
+    padding-left: unset;
 }
 
-.doc + .doc {
-  margin-top: 3em;
+.doc {
+    margin-top: 3em;
+    margin-bottom: 20px;
 }
 </style>
