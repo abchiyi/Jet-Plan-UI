@@ -60,7 +60,7 @@
                 <p>使用：清除所有通知</p>
             </li>
         </doc-item>
-
+        <!-- Alert Demo -->
         <h2>示例:</h2>
         <hr />
         <demo-box
@@ -160,6 +160,33 @@
                 <strong> Clear All </strong>
             </j-button>
         </demo-box>
+
+        <h2>在任意组件中发送通知：</h2>
+        <hr>
+        <p>可以在 main.js 中全局注册 <high-lighter>AlertData</high-lighter>，
+            将 &lt;alert&gt; 组件放置于合适的位置即可在任意组件中发送通知
+        </p>
+        <demo-box
+            title="全局注册 AlertData "
+            code='
+import {
+    AlertData
+} from "jet-plan-ui/alert"
+
+const BASE_COMPONENT = {
+    name: "base-page",
+    render: () => h(resolveComponent("router-view")),
+}
+
+createApp(BASE_COMPONENT)
+    .use((Vue) => {
+        // 全局注册通知控制器
+        Vue.config.globalProperties.$jetAlert = new AlertData()
+    })
+    .mount("#app")
+
+        '
+        />
     </div>
 </template>
 
