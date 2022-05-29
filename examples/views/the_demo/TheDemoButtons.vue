@@ -1,51 +1,36 @@
 <template>
     <div>
         <h1>按钮</h1>
-        <p>基本按钮组件</p>
-        <!-- Demo -->
-        <demo-box title="<j-button>" :code="code" id="fade">
-            <div>
-                <j-row id="buttons-button" X="center">
-                    <j-button primary>Primary</j-button>
-                    <j-button primary disabled>Primary</j-button>
-                    <j-button>Button</j-button>
-                    <j-button disabled>Button disabled</j-button>
-                </j-row>
-                <j-row id="buttons-button-text" X="center">
-                    <j-button primary text>Text Button Primary</j-button>
-                    <j-button primary text disabled
-                        >Text Button Primary</j-button
-                    >
-                    <j-button text>Text Button</j-button>
-                    <j-button text disabled>Text Button Disabled</j-button>
-                </j-row>
-                <br />
-                <div id="buttons-row">
-                    <j-button row>Button One Row</j-button>
-                    <j-button text row>Text Button One Row</j-button>
-                </div>
-            </div>
-        </demo-box>
+        <p>按钮组件</p>
+        <hr />
         <doc-item name="Props:" tag-is="h2">
             <li id="prop-button-text">
-                <high-lighter>text - Boolean</high-lighter>
-                按钮外观切换，使用常规按钮还是文本按钮
-                <high-lighter>default - false</high-lighter>
+                <p>
+                    <high-lighter>text</high-lighter>: type - Boolean, default -
+                    false
+                </p>
+                <p>按钮外观切换，使用常规按钮还是文本按钮</p>
             </li>
             <li id="prop-button-primary">
-                <high-lighter>primary - Boolean</high-lighter>
-                按钮外观切换，按钮外观展示为带主题色的主要按钮
-                <high-lighter>default - false</high-lighter>
+                <p>
+                    <high-lighter>primary</high-lighter>: type - Boolean,
+                    default - false
+                </p>
+                <p>按钮外观切换，按钮外观展示为带主题色的主要按钮</p>
             </li>
             <li id="prop-button-row">
-                <high-lighter>row - Boolean</high-lighter>
-                使按钮占据一行
-                <high-lighter>default - false</high-lighter>
+                <p>
+                    <high-lighter>row</high-lighter>: type - Boolean, default -
+                    false
+                </p>
+                <p>使按钮占据一行</p>
             </li>
             <li id="prop-button-disabled">
-                <high-lighter>disabled - Boolean</high-lighter>
-                禁用按钮
-                <high-lighter>default - false</high-lighter>
+                <p>
+                    <high-lighter>disabled</high-lighter>: type - Boolean,
+                    default - false
+                </p>
+                <p>禁用按钮</p>
             </li>
             <li id="prop-others">
                 <p>
@@ -73,6 +58,29 @@
                 </p>
             </li>
         </doc-item>
+        <!-- Demo -->
+        <h2>示例：</h2>
+        <demo-box title="<j-button>" :code="code" id="fade">
+            <h3>按钮</h3>
+            <j-row warp id="buttons-button">
+                <j-button primary>Primary</j-button>
+                <j-button primary disabled>Primary</j-button>
+                <j-button>Button</j-button>
+                <j-button disabled>Button disabled</j-button>
+            </j-row>
+            <h3>文本按钮</h3>
+            <j-row warp id="buttons-button-text">
+                <j-button primary text>Text Button Primary</j-button>
+                <j-button primary text disabled>Text Button Primary</j-button>
+                <j-button text>Text Button</j-button>
+                <j-button text disabled>Text Button Disabled</j-button>
+            </j-row>
+            <h3>单行按钮</h3>
+            <div id="buttons-row">
+                <j-button row>Button One Row</j-button>
+                <j-button text row>Text Button One Row</j-button>
+            </div>
+        </demo-box>
     </div>
 </template>
 

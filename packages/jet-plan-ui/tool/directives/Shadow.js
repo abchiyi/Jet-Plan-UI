@@ -1,6 +1,9 @@
-import { shadowPainter, SHADOW_PAINTER_ERROR } from '../lib/dom'
+import {
+    shadowPainter,
+    SHADOW_PAINTER_ERROR
+} from '../lib/dom'
 
-function setSahdow (el, binding) {
+function setSahdow(el, binding) {
     let direction = binding.arg ? binding.arg : 'center'
 
     try {
@@ -18,16 +21,10 @@ function setSahdow (el, binding) {
 
 export default {
     name: 'shadow',
-    mounted (el, binding) {
-        el._oldStyle = {
-            boxShadow: el.style.boxShadow
-        }
+    mounted(el, binding) {
         setSahdow(el, binding)
     },
-    updated (el, binding) {
+    updated(el, binding) {
         setSahdow(el, binding)
-    },
-    unmounted (el) {
-        el.style.boxShadow = el._oldStyle.boxShadow
     },
 }

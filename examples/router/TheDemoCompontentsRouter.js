@@ -7,6 +7,12 @@ export default [
             '../views/the_demo/TheDemoAvater.vue')
     },
     {
+        name: "Alert",
+        path: "/alert",
+        component: () => import(
+            '../views/the_demo/TheDemoAlert.vue')
+    },
+    {
         name: "Card",
         path: "/card",
         component: () => import(

@@ -9,7 +9,7 @@
     font-weight: inherit;
     /* transition: color 0.2s var(--ease-out); */
     /* transition: background 0.4s var(--ease-out); */
-    vertical-align: middle;
+    /* vertical-align: middle; */
 }
 
 :root {
@@ -68,39 +68,45 @@ h4,
 h5,
 h6 {
     font-weight: 500;
-    margin: 2rem 0 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .h1,
 h1 {
-    font-size: 2.5rem;
-    font-weight: 500
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 3rem;
 }
 
 .h2,
 h2 {
-    font-size: 2.1rem;
+    font-size: 1.8rem;
+    margin-top: 2.6rem;
 }
 
 .h3,
 h3 {
-    font-size: 1.9rem;
+    font-size: 1.6rem;
+    margin-top: 2.2rem;
 }
 
 .h4,
 h4 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
+    margin-top: 1.8rem;
 }
 
 .h5,
 h5 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
+    margin-top: 1.4rem;
 }
 
 .h6,
 h6 {
-    font-size: 1rem;
+    font-size: 12px;
     font-weight: bold;
+    margin-top: 1.4rem;
 }
 
 
@@ -116,4 +122,23 @@ h6 {
 strong {
     font-size: 1.2em;
     font-weight: bold;
+}
+
+
+/* Firefox  */
+@supports (scrollbar-width: none) {
+    .j-hidden-scrollbar {
+        overflow: -moz-scrollbars-none;
+        scrollbar-width: none;
+    }
+}
+
+/* chrome and Safari */
+.j-hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* IE 10+ */
+.j-hidden-scrollbar {
+    -ms-overflow-style: none;
 }

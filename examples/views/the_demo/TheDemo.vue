@@ -81,6 +81,7 @@
             <p>Footer</p>
         </template>
     </j-page>
+    <j-alert :data="$jetAlert"></j-alert>
 </template>
 
 <script>

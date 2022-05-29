@@ -8,7 +8,7 @@ function getTransitionDuration(el) {
 
 function checkAndSetTransition(el) {
     if (!getTransitionDuration(el)) {
-        el.style.transition = '0.1s ease-in-out'
+        el.style.transition = '1ms ease-in-out'
     }
 }
 
