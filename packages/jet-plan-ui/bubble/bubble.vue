@@ -7,7 +7,12 @@
     >
         <slot></slot>
         <j-transition-slide position="top">
-            <j-button tag="div" class="bubble" v-show="showBubble">
+            <j-button
+                tag="div"
+                class="bubble"
+                v-show="showBubble"
+                v-shadow:bottom="4"
+            >
                 {{ message }}
             </j-button>
         </j-transition-slide>
@@ -16,6 +21,7 @@
 
 <script>
 import baseAction from '../action-feedback/baseAction.vue';
+import { Shadow } from '../tool/directives';
 const Name = 'j-bubble';
 export default {
     name: Name,
@@ -43,8 +49,8 @@ export default {
             this.showBubble = true;
         },
         hiddenBubble() {
-            this.showBubble = false;
-        },
+    directives: {
+        Shadow,
     },
 };
 </script>
