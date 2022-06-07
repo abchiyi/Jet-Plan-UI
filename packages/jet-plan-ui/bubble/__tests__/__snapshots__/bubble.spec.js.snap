@@ -1,3 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Babble Node map 1`] = `<div class="j-babble"></div>`;
+exports[`Babble Node map 1`] = `
+<div class="j-base-action j-babble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <j-transition-slide position="top">
+    <j-button tag="div" class="bubble" style="display: none;"></j-button>
+  </j-transition-slide>
+</div>
+`;

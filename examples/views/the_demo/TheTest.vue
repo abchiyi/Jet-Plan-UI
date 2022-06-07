@@ -21,14 +21,29 @@
             >
             <j-button @click="AlertData.removeAll()">Remove All</j-button>
         </div>
+        <j-switch id="enter-switch" v-model="value" />
+
+        <div class="bubble" @mouseenter="enter" @mouseout="out">
+            <p>popup 测试</p>
+
+            <j-transition-slide position="top">
+                <j-button class="pp" v-show="value">Popup message</j-button>
+            </j-transition-slide>
+        </div>
+
+        <bubble message="Test bubble">
+            <p>123</p>
+        </bubble>
     </div>
 </template>
 <script>
 import { alert, AlertData } from '../../../packages/jet-plan-ui/alert';
+import { bubble } from '../../../packages/jet-plan-ui/bubble';
 export default {
     name: 'the-test-page',
     components: {
         alert,
+        bubble,
     },
     data() {
         return {
@@ -51,11 +66,19 @@ export default {
                 },
             ],
             nextNum: 4,
-
+            value: false,
             AlertData: new AlertData(),
         };
     },
     methods: {
+        enter() {
+            this.value = true;
+            console.log('enter');
+        },
+        out() {
+            this.value = false;
+            console.log('out');
+        },
         randomIndex() {
             return Math.floor(Math.random() * this.items.length);
         },
@@ -82,4 +105,12 @@ export default {
 </script>
 
 <style>
+.bubble {
+    position: relative;
+    display: inline-block;
+}
+
+.pp {
+    position: absolute;
+}
 </style>
