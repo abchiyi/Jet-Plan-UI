@@ -21,7 +21,8 @@ import baseAction from '../action-feedback/baseAction.vue';
 import { Row as JRow } from '../gird/index';
 import { Shadow } from '../tool/directives';
 import { TransitionSlide } from '../animations';
-
+import { TimedActionLimit } from '../tool/lib';
+const tal = new TimedActionLimit(400, 1);
 const Name = 'j-bubble';
 export default {
     name: Name,
@@ -101,13 +102,19 @@ export default {
     data() {
         return {
             showBubble: false,
+            showBubbleNow: false,
         };
     },
     methods: {
         _showBubble() {
-            this.showBubble = true;
+            tal.action(() => {});
+            this.showBubbleNow = true;
+            tal.setCooledAlarm(() => {
+                this.showBubble = this.showBubbleNow;
+            });
         },
         hiddenBubble() {
+            this.showBubbleNow = false;
             this.showBubble = false;
         },
     },

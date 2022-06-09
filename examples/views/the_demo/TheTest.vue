@@ -96,7 +96,7 @@
             </label>
         </j-row>
         <bubble message="Test bubble " :position="position">
-            <P>Test bubble</P>
+            <p>Test bubble</p>
         </bubble>
         <bubble message="Test bubble " :position="position">
             <j-button>Test bubble</j-button>
