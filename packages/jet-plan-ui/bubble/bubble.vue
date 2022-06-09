@@ -6,36 +6,95 @@
         :class="classes"
     >
         <slot></slot>
-        <j-transition-slide position="top">
-            <j-button
-                tag="div"
-                class="bubble"
-                v-show="showBubble"
-                v-shadow:bottom="4"
-            >
-                {{ message }}
-            </j-button>
-        </j-transition-slide>
+        <transition-slide v-bind="positionMach.transitionSlide">
+            <j-row X="start" :class="bubbleClasses" v-show="showBubble">
+                <j-button tag="div" v-shadow:bottom="4">
+                    {{ message }}
+                </j-button>
+            </j-row>
+        </transition-slide>
     </base-action>
 </template>
 
 <script>
 import baseAction from '../action-feedback/baseAction.vue';
+import { Row as JRow } from '../gird/index';
 import { Shadow } from '../tool/directives';
+import { TransitionSlide } from '../animations';
+
 const Name = 'j-bubble';
 export default {
     name: Name,
     components: {
+        TransitionSlide,
         baseAction,
+        JRow,
     },
     props: {
         message: {
             required: true,
         },
+        position: {
+            type: String,
+            required: true,
+            validator: (v) => {
+                return (
+                    [
+                        'top',
+                        'top-end',
+                        'top-start',
+                        'bottom',
+                        'bottom-end',
+                        'bottom-start',
+                        'left',
+                        'left-top',
+                        'left-bottom',
+                        'right',
+                        'right-top',
+                        'right-bottom',
+                    ].indexOf(v) !== -1
+                );
+            },
+        },
     },
     computed: {
         classes() {
             return [Name];
+        },
+        bubbleClasses() {
+            return ['bubble', this.positionMach.bubblePosition];
+        },
+        positionMach() {
+            let rr = this.position.split('-');
+            function reverse(str) {
+                // 设置参数以呈现元素从父元素中出现，而不是从外部飞入
+                switch (str) {
+                    case 'top':
+                        return 'bottom';
+                    case 'bottom':
+                        return 'top';
+                    case 'left':
+                        return 'right';
+                    case 'right':
+                        return 'left';
+                    default:
+                        break;
+                }
+            }
+            function calcXY(position, start) {
+                if (['top', 'bottom'].indexOf(position) != -1) {
+                    return start ? { X: start } : { X: 'center' };
+                } else {
+                    return start ? { Y: start } : { Y: 'center' };
+                }
+            }
+            return {
+                bubblePosition: rr[0],
+                transitionSlide: {
+                    position: reverse(rr[0]),
+                    ...calcXY(rr[0], rr[1]),
+                },
+            };
         },
     },
 
@@ -49,6 +108,9 @@ export default {
             this.showBubble = true;
         },
         hiddenBubble() {
+            this.showBubble = false;
+        },
+    },
     directives: {
         Shadow,
     },
@@ -63,5 +125,30 @@ export default {
 
 .j-bubble .bubble {
     position: absolute;
+}
+
+.j-bubble .bottom,
+.j-bubble .top {
+    left: 0;
+    right: 0;
+}
+
+.j-bubble .left,
+.j-bubble .right {
+    top: 0;
+    bottom: 0;
+}
+
+.j-bubble .top {
+    bottom: 100%;
+}
+.j-bubble .bottom {
+    top: 100%;
+}
+.j-bubble .left {
+    right: 100%;
+}
+.j-bubble .right {
+    left: 100%;
 }
 </style>

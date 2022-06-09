@@ -22,23 +22,91 @@
             <j-button @click="AlertData.removeAll()">Remove All</j-button>
         </div>
         <j-switch id="enter-switch" v-model="value" />
-
-        <div class="bubble" @mouseenter="enter" @mouseout="out">
-            <p>popup 测试</p>
-
-            <j-transition-slide position="top">
-                <j-button class="pp" v-show="value">Popup message</j-button>
-            </j-transition-slide>
-        </div>
-
-        <bubble message="Test bubble">
-            <p>123</p>
+        <strong>{{ position }}</strong>
+        <j-row spaceMode="between" id="group-top">
+            <label for="top">
+                <j-radio v-model="position" id="top" value="top" />
+                <p>top</p>
+            </label>
+            <label for="top-start">
+                <j-radio v-model="position" id="top-start" value="top-start" />
+                <p>top-start</p>
+            </label>
+            <label for="top-end">
+                <j-radio v-model="position" id="top-end" value="top-end" />
+                <p>top-end</p>
+            </label>
+        </j-row>
+        <j-row spaceMode="between" id="group-bottom">
+            <label for="bottom">
+                <j-radio v-model="position" id="bottom" value="bottom" />
+                <p>bottom</p>
+            </label>
+            <label for="bottom-start">
+                <j-radio
+                    v-model="position"
+                    id="bottom-start"
+                    value="bottom-start"
+                />
+                <p>bottom-start</p>
+            </label>
+            <label for="bottom-end">
+                <j-radio
+                    v-model="position"
+                    id="bottom-end"
+                    value="bottom-end"
+                />
+                <p>bottom-end</p>
+            </label>
+        </j-row>
+        <j-row spaceMode="between" id="group-left">
+            <label for="left">
+                <j-radio v-model="position" id="left" value="left" />
+                <p>left</p>
+            </label>
+            <label for="left-top">
+                <j-radio v-model="position" id="left-top" value="left-top" />
+                <p>left-top</p>
+            </label>
+            <label for="left-bottom">
+                <j-radio
+                    v-model="position"
+                    id="left-bottom"
+                    value="left-bottom"
+                />
+                <p>left-bottom</p>
+            </label>
+        </j-row>
+        <j-row spaceMode="between" id="group-right">
+            <label for="right">
+                <j-radio v-model="position" id="right" value="right" />
+                <p>right</p>
+            </label>
+            <label for="right-top">
+                <j-radio v-model="position" id="right-top" value="right-top" />
+                <p>right-top</p>
+            </label>
+            <label for="right-bottom">
+                <j-radio
+                    v-model="position"
+                    id="right-bottom"
+                    value="right-bottom"
+                />
+                <p>right-bottom</p>
+            </label>
+        </j-row>
+        <bubble message="Test bubble " :position="position">
+            <P>Test bubble</P>
+        </bubble>
+        <bubble message="Test bubble " :position="position">
+            <j-button>Test bubble</j-button>
         </bubble>
     </div>
 </template>
 <script>
 import { alert, AlertData } from '../../../packages/jet-plan-ui/alert';
 import { bubble } from '../../../packages/jet-plan-ui/bubble';
+
 export default {
     name: 'the-test-page',
     components: {
@@ -68,16 +136,15 @@ export default {
             nextNum: 4,
             value: false,
             AlertData: new AlertData(),
+            position: 'top',
         };
     },
     methods: {
         enter() {
             this.value = true;
-            console.log('enter');
         },
         out() {
             this.value = false;
-            console.log('out');
         },
         randomIndex() {
             return Math.floor(Math.random() * this.items.length);
