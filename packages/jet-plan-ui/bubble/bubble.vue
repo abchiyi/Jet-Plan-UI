@@ -22,7 +22,8 @@ import { Row as JRow } from '../gird/index';
 import { Shadow } from '../tool/directives';
 import { TransitionSlide } from '../animations';
 import { TimedActionLimit } from '../tool/lib';
-const tal = new TimedActionLimit(400, 1);
+const talEnter = new TimedActionLimit(400, 1);
+const talOut = new TimedActionLimit(50, 1);
 const Name = 'j-bubble';
 export default {
     name: Name,
@@ -114,8 +115,11 @@ export default {
             });
         },
         hiddenBubble() {
+            talOut.action(() => {});
             this.showBubbleNow = false;
-            this.showBubble = false;
+            talOut.setCooledAlarm(() => {
+                this.showBubble = this.showBubbleNow;
+            });
         },
     },
     directives: {
@@ -148,14 +152,18 @@ export default {
 
 .j-bubble .top {
     bottom: 100%;
+    margin-bottom: 5px;
 }
 .j-bubble .bottom {
     top: 100%;
+    margin-top: 5px;
 }
 .j-bubble .left {
     right: 100%;
+    margin-right: 5px;
 }
 .j-bubble .right {
     left: 100%;
+    margin-left: 5px;
 }
 </style>
