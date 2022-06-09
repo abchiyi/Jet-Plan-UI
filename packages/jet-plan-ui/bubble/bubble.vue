@@ -108,9 +108,9 @@ export default {
     },
     methods: {
         _showBubble() {
-            tal.action(() => {});
+            talEnter.action(() => {});
             this.showBubbleNow = true;
-            tal.setCooledAlarm(() => {
+            talEnter.setCooledAlarm(() => {
                 this.showBubble = this.showBubbleNow;
             });
         },
@@ -136,12 +136,15 @@ export default {
 
 .j-bubble .bubble {
     position: absolute;
+    z-index: 1;
+    border: 1px solid black;
 }
 
 .j-bubble .bottom,
 .j-bubble .top {
-    left: 0;
-    right: 0;
+    /* left: 0;
+    right: 0; */
+    left: -50%;
 }
 
 .j-bubble .left,
