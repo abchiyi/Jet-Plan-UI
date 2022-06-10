@@ -95,11 +95,8 @@
                 <p>right-bottom</p>
             </label>
         </j-row>
-        <bubble message="Test bubble " :position="position">
-            <p>Test bubble</p>
-        </bubble>
-        <bubble message="Test bubble " :position="position">
-            <j-button>Test bubble</j-button>
+        <bubble message="Test bubble" :position="position">
+            <j-cube />
         </bubble>
     </div>
 </template>

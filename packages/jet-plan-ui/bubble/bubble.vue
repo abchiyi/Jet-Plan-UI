@@ -1,19 +1,27 @@
 
 <template>
-    <base-action
-        @hover_from="_showBubble"
-        @hover_to="hiddenBubble"
-        :class="classes"
-    >
-        <slot></slot>
-        <transition-slide v-bind="positionMach.transitionSlide">
-            <j-row X="start" :class="bubbleClasses" v-show="showBubble">
-                <j-button tag="div" v-shadow:bottom="4">
-                    {{ message }}
-                </j-button>
+    <j-row style="display: inline-block">
+        <base-action
+            @hover_from="_showBubble"
+            @hover_to="hiddenBubble"
+            :class="classes"
+        >
+            <j-row X="center" Y="center">
+                <slot></slot>
+                <transition-slide v-bind="positionMach.transitionSlide">
+                    <j-button
+                        v-show="showBubble"
+                        :class="bubbleClasses"
+                        ref="bubble"
+                        tag="div"
+                        v-shadow:bottom="4"
+                    >
+                        {{ message }}
+                    </j-button>
+                </transition-slide>
             </j-row>
-        </transition-slide>
-    </base-action>
+        </base-action>
+    </j-row>
 </template>
 
 <script>
@@ -64,7 +72,11 @@ export default {
             return [Name];
         },
         bubbleClasses() {
-            return ['bubble', this.positionMach.bubblePosition];
+            return [
+                'bubble',
+                this.positionMach.bubblePosition,
+                this.positionMach.start,
+            ];
         },
         positionMach() {
             let rr = this.position.split('-');
@@ -83,18 +95,11 @@ export default {
                         break;
                 }
             }
-            function calcXY(position, start) {
-                if (['top', 'bottom'].indexOf(position) != -1) {
-                    return start ? { X: start } : { X: 'center' };
-                } else {
-                    return start ? { Y: start } : { Y: 'center' };
-                }
-            }
             return {
+                start: rr[1],
                 bubblePosition: rr[0],
                 transitionSlide: {
                     position: reverse(rr[0]),
-                    ...calcXY(rr[0], rr[1]),
                 },
             };
         },
@@ -137,20 +142,15 @@ export default {
 .j-bubble .bubble {
     position: absolute;
     z-index: 1;
-    border: 1px solid black;
 }
 
-.j-bubble .bottom,
-.j-bubble .top {
-    /* left: 0;
-    right: 0; */
-    left: -50%;
+.j-bubble .bottom.start,
+.j-bubble .top.start {
+    left: 0;
 }
-
-.j-bubble .left,
-.j-bubble .right {
-    top: 0;
-    bottom: 0;
+.j-bubble .bottom.end,
+.j-bubble .top.end {
+    right: 0;
 }
 
 .j-bubble .top {
@@ -161,12 +161,26 @@ export default {
     top: 100%;
     margin-top: 5px;
 }
-.j-bubble .left {
-    right: 100%;
-    margin-right: 5px;
+
+.j-bubble .right.top,
+.j-bubble .left.top {
+    top: 0;
+    bottom: unset;
 }
+
+.j-bubble .right.bottom,
+.j-bubble .left.bottom {
+    bottom: 0;
+    top: unset;
+}
+
 .j-bubble .right {
     left: 100%;
     margin-left: 5px;
+}
+
+.j-bubble .left {
+    right: 100%;
+    margin-right: 5px;
 }
 </style>
