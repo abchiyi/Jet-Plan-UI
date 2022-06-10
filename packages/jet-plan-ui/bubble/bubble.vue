@@ -183,4 +183,13 @@ export default {
     right: 100%;
     margin-right: 5px;
 }
+
+.right.j-transition-slide-enter-from,
+.right.j-transition-slide-leave-active {
+    transform: translate3d(-40px, 0, 0);
+}
+.left.j-transition-slide-enter-from,
+.left.j-transition-slide-leave-active {
+    transform: translate3d(40px, 0, 0);
+}
 </style>

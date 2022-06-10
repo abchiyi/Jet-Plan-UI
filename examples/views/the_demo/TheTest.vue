@@ -95,7 +95,7 @@
                 <p>right-bottom</p>
             </label>
         </j-row>
-        <bubble message="Test bubble" :position="position">
+        <bubble message="Test bubble 这是一段测试文本" :position="position">
             <j-cube />
         </bubble>
     </div>
