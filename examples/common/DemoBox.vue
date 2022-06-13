@@ -2,9 +2,14 @@
     <j-card class="j-demo-box">
         <j-row class="demo-box-header" Y="center" space-mode="between">
             <span class="demo-title text-hint">{{ title }}</span>
-            <j-button v-if="codeControl" hover active @click="expand_">
-                <i class="bi bi-code-slash"></i>
-            </j-button>
+            <j-bubble
+                :message="value ? '收起Code' : '展开Code'"
+                position="top-start"
+            >
+                <j-button text v-if="codeControl" hover active @click="expand_">
+                    <i class="bi bi-code-slash"></i>
+                </j-button>
+            </j-bubble>
         </j-row>
         <div ref="showDemo" class="demo-box-demo">
             <div v-if="isDemo">
