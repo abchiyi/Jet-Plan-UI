@@ -1,169 +1,205 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Babble Node map 1`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub x="center">
-    <div class="j-row bubble top" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 2`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub x="start">
-    <div class="j-row bubble top" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble top start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 3`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub x="end">
-    <div class="j-row bubble top" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble top end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 4`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub x="center">
-    <div class="j-row bubble bottom" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble bottom" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 5`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub x="start">
-    <div class="j-row bubble bottom" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble bottom start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 6`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub x="end">
-    <div class="j-row bubble bottom" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble bottom end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 7`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub y="center">
-    <div class="j-row bubble left" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble left" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 8`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub y="start">
-    <div class="j-row bubble left" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble left start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 9`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub y="end">
-    <div class="j-row bubble left" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble left end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 10`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub y="center">
-    <div class="j-row bubble right" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble right" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 11`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub y="start">
-    <div class="j-row bubble right" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble right start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;
 
 exports[`Babble Node map 12`] = `
-<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-  <transition-stub y="end">
-    <div class="j-row bubble right" style="display: none;">
-      <j-button tag="div" style="box-shadow: 
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble right end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</j-button>
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
     </div>
-  </transition-stub>
+  </div>
 </div>
 `;

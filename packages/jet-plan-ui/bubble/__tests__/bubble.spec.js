@@ -56,7 +56,7 @@ describe('Babble', () => {
                 position: 'top'
             }
         })
-        expect(wrapper.classes()).toContain(babble.name)
+        expect(wrapper.find('.j-base-action').classes()).toContain(babble.name)
     })
 
     it('Message', async () => {
@@ -72,7 +72,7 @@ describe('Babble', () => {
             }
         )
 
-        expect(wrapper.find('j-button').html()).toContain('hello')
+        expect(wrapper.find('.j-button').html()).toContain('hello')
 
 
     }

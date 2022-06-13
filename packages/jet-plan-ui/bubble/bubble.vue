@@ -26,6 +26,7 @@
 
 <script>
 import baseAction from '../action-feedback/baseAction.vue';
+import { Button as JButton } from '../form';
 import { Row as JRow } from '../gird/index';
 import { Shadow } from '../tool/directives';
 import { TransitionSlide } from '../animations';
@@ -38,6 +39,7 @@ export default {
     components: {
         TransitionSlide,
         baseAction,
+        JButton,
         JRow,
     },
     props: {
