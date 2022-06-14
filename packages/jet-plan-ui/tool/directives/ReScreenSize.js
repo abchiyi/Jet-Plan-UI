@@ -1,5 +1,6 @@
 function ReSize () {
     let width = window.innerWidth
+    let height = window.innerHeight
     let col = {
         xs: width <= 578,
         sm: width > 578 && width <= 768,
@@ -16,6 +17,7 @@ function ReSize () {
     return {
         activeCol: activeCol(),
         width: width,
+        height: height,
         col: col,
         contains (array, callback) {
             callback(array.indexOf(this.activeCol) != -1)
