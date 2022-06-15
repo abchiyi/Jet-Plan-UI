@@ -5,6 +5,8 @@
             @hover_from="_showBubble"
             @hover_to="hiddenBubble"
             :class="classes"
+            ref="self"
+            v-re-screen-size="autoCheckPosition"
         >
             <j-row X="center" Y="center">
                 <slot></slot>
@@ -28,9 +30,10 @@
 import baseAction from '../action-feedback/baseAction.vue';
 import { Button as JButton } from '../form';
 import { Row as JRow } from '../gird/index';
-import { Shadow } from '../tool/directives';
+import { Shadow, ReScreenSize } from '../tool/directives';
 import { TransitionSlide } from '../animations';
 import { TimedActionLimit } from '../tool/lib';
+import { getOffset } from '../tool/lib/dom';
 const talEnter = new TimedActionLimit(400, 1);
 const talOut = new TimedActionLimit(50, 1);
 const Name = 'j-bubble';
@@ -111,10 +114,12 @@ export default {
         return {
             showBubble: false,
             showBubbleNow: false,
+            nearEdgeOfScreen: undefined,
         };
     },
     methods: {
-        _showBubble() {
+        _showBubble(event) {
+            this.autoCheckPosition(event.event.target);
             talEnter.action(() => {});
             this.showBubbleNow = true;
             talEnter.setCooledAlarm(() => {
@@ -128,9 +133,21 @@ export default {
                 this.showBubble = this.showBubbleNow;
             });
         },
+        autoCheckPosition(el, screenSize) {
+            const marginMax = 50;
+            let elSize = getOffset(el);
+            screenSize = screenSize ? screenSize : ReScreenSize.reSize();
+            this.nearEdgeOfScreen = {
+                top: elSize.size.top <= marginMax,
+                left: elSize.size.left <= marginMax,
+                right: screenSize.width - elSize.size.right <= marginMax,
+                bottom: screenSize.height - elSize.size.bottom <= marginMax,
+            };
+        },
     },
     directives: {
         Shadow,
+        ReScreenSize,
     },
 };
 </script>
