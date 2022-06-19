@@ -12,6 +12,7 @@ import theme from './theme'
 import table from './table'
 import alert from './alert'
 import baseShape from './shape'
+import bubble from './bubble'
 // 指令&工具函数/类
 import directives from "./tool/directives"
 
@@ -30,7 +31,8 @@ const components = [
     avater,
     table,
     alert,
-    baseShape
+    baseShape,
+    bubble
 ]
 
 export {
@@ -48,12 +50,13 @@ export {
     avater,
     table,
     alert,
-    baseShape
+    baseShape,
+    bubble
 }
 
 // 默认安装程序
 export default {
-    install(Vue) {
+    install (Vue) {
         Object.keys(components).forEach((key) => {
             Vue.use(components[key])
         })

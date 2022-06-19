@@ -1,7 +1,6 @@
-import { TimedActionLimit } from '../lib'
-
 function ReSize () {
-    let width = window.innerWidth;
+    let width = window.innerWidth
+    let height = window.innerHeight
     let col = {
         xs: width <= 578,
         sm: width > 578 && width <= 768,
@@ -18,6 +17,7 @@ function ReSize () {
     return {
         activeCol: activeCol(),
         width: width,
+        height: height,
         col: col,
         contains (array, callback) {
             callback(array.indexOf(this.activeCol) != -1)
@@ -25,26 +25,13 @@ function ReSize () {
     }
 }
 
-const timeout = new TimedActionLimit(200)
-function lastScreenUpdate (callback) {
-    timeout.setCooledAlarm(callback)
-}
 export default {
     name: 're-screen-size',
     created (el, binding) {
         window.addEventListener('resize', () => {
-            timeout.action(() => {
-                binding.value(
-                    el,
-                    ReSize()
-                )
-            })
-            lastScreenUpdate(() => {
-                binding.value(
-                    el,
-                    ReSize()
-                )
-            }
+            binding.value(
+                el,
+                ReSize()
             )
         })
     },

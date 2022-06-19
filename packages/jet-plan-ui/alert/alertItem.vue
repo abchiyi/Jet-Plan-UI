@@ -9,17 +9,21 @@
         <div class="content">
             <slot></slot>
         </div>
-        <j-button @click="wangToClose" text hover>
+        <j-button
+            @click="wangToClose"
+            text
+            hover
+        >
             <i class="bi bi-x"></i>
         </j-button>
     </j-row>
 </template>
 
 <script>
-import { Shadow } from '../tool/directives';
-import { Row } from '../gird';
-import { Button } from '../form';
-const NAME = 'j-alert-item';
+import { Shadow } from '../tool/directives'
+import { Row } from '../gird'
+import { Button } from '../form'
+const NAME = 'j-alert-item'
 export default {
     name: NAME,
     props: {
@@ -27,8 +31,8 @@ export default {
             type: String,
             default: 'info',
             validator: (v) => {
-                const value = ['info', 'error', 'success', 'warning'];
-                return value.indexOf(v) !== -1;
+                const value = ['info', 'error', 'success', 'warning']
+                return value.indexOf(v) !== -1
             },
         },
         _key: {
@@ -39,11 +43,11 @@ export default {
             default: 0,
         },
     },
-    mounted() {
+    mounted () {
         if (this.timeout) {
             setTimeout(() => {
-                this.wangToClose();
-            }, this.timeout);
+                this.wangToClose()
+            }, this.timeout)
         }
     },
     components: {
@@ -51,30 +55,30 @@ export default {
         'j-row': Row,
     },
     computed: {
-        classes() {
-            return [NAME, this.type];
+        classes () {
+            return [NAME, this.type]
         },
     },
     directives: {
         Shadow,
     },
     methods: {
-        wangToClose() {
-            this.$emit('wangToClose', this._key);
+        wangToClose () {
+            this.$emit('wangToClose', this._key)
         },
     },
-};
+}
 </script>
 
 <style>
 .j-alert-item {
     transition: all 0.6s var(--ease-out);
     border-radius: var(--m-radius);
-    margin-bottom: 0.5rem;
-    margin-left: 15px;
+    margin: 1rem 0.5rem 0;
     height: 2.5rem;
     pointer-events: all;
 }
+
 .j-alert-item::before {
     transition: 0.3s var(--ease-out);
     background: var(--info);
@@ -90,18 +94,21 @@ export default {
 .j-alert-item.info::before {
     background: var(--info);
 }
+
 .j-alert-item.error::before {
     background: var(--error);
 }
+
 .j-alert-item.success::before {
     background: var(--success);
 }
+
 .j-alert-item.warning::before {
     background: var(--warning);
 }
 
-.j-alert-item > .j-button,
-.j-alert-item > .content {
+.j-alert-item>.j-button,
+.j-alert-item>.content {
     margin: 0 4px;
 }
 </style>
