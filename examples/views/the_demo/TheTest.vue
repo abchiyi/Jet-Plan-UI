@@ -1,8 +1,19 @@
 <template>
     <div>
         <j-row X="center" style="width: 100%">
-            <h1>Test Page</h1>
+            <BaseAction
+                @hover_from="log('hoverFrom')"
+                @hover_to="log('hover_to')"
+                @active_from="log('active_from')"
+                @active_to="log('active_to')"
+                @focus_from="log('focus_from')"
+                @focus_to="log('focus_to')"
+            >
+                <h1>Test Page</h1>
+            </BaseAction>
         </j-row>
+
+        <p>{{ logBus }}</p>
         <alert
             @remove="remove"
             style="padding: 100px 0"
@@ -95,20 +106,24 @@
                 <p>right-bottom</p>
             </label>
         </j-row>
-        <bubble message="Test bubble 这是一段测试文本" :position="position">
-            <j-cube />
-        </bubble>
+        <j-row X="end">
+            <bubble message="Test bubble 这是一段测试文本" :position="position">
+                <j-cube />
+            </bubble>
+        </j-row>
     </div>
 </template>
 <script>
 import { alert, AlertData } from '../../../packages/jet-plan-ui/alert';
 import { bubble } from '../../../packages/jet-plan-ui/bubble';
+import BaseAction from '../../../packages/jet-plan-ui/action-feedback/baseAction.vue';
 
 export default {
     name: 'the-test-page',
     components: {
         alert,
         bubble,
+        BaseAction,
     },
     data() {
         return {
@@ -134,9 +149,17 @@ export default {
             value: false,
             AlertData: new AlertData(),
             position: 'top',
+            logBus: [],
         };
     },
     methods: {
+        log(str) {
+            console.log(str);
+            this.logBus.push(str);
+            if (this.logBus.length >= 7) {
+                this.logBus.pop();
+            }
+        },
         enter() {
             this.value = true;
         },

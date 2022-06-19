@@ -84,7 +84,7 @@ export default {
             ];
         },
         positionMach() {
-            let rr = this.position.split('-');
+            let rr = this.newPosition.split('-');
             function reverse(str) {
                 // 设置参数以呈现元素从父元素中出现，而不是从外部飞入
                 switch (str) {
@@ -115,11 +115,13 @@ export default {
             showBubble: false,
             showBubbleNow: false,
             nearEdgeOfScreen: undefined,
+            newPosition: this.position,
         };
     },
     methods: {
         _showBubble(event) {
             this.autoCheckPosition(event.event.target);
+            this.edgeAvoidance();
             talEnter.action(() => {});
             this.showBubbleNow = true;
             talEnter.setCooledAlarm(() => {
@@ -143,6 +145,45 @@ export default {
                 right: screenSize.width - elSize.size.right <= marginMax,
                 bottom: screenSize.height - elSize.size.bottom <= marginMax,
             };
+        },
+        edgeAvoidance() {
+            let rr = this.position.split('-');
+            let position = rr[0];
+            let start = rr[1];
+            function xStartTo(nearEdgeOfScreen) {
+                if (nearEdgeOfScreen.left) {
+                    return nearEdgeOfScreen.right ? '' : 'start';
+                } else if (nearEdgeOfScreen.right) {
+                    return 'end';
+                } else if (nearEdgeOfScreen.top) {
+                    position = 'bottom';
+                    return '';
+                }
+                return start;
+            }
+            switch (position) {
+                case 'top':
+                    start = xStartTo(this.nearEdgeOfScreen);
+                    if (this.nearEdgeOfScreen.top) position = 'bottom';
+                    break;
+                case 'bottom':
+                    start = xStartTo(this.nearEdgeOfScreen);
+                    if (this.nearEdgeOfScreen.bottom) position = 'top';
+                    break;
+                case 'left':
+                    if (this.nearEdgeOfScreen.left) position = 'right';
+                    break;
+                case 'right':
+                    if (this.nearEdgeOfScreen.right) position = 'left';
+                    break;
+                default:
+                    break;
+            }
+            this.newPosition = `${position}${start ? '-' : ''}${
+                start ? start : ''
+            }`;
+            console.log(this.newPosition);
+            console.log(this.nearEdgeOfScreen);
         },
     },
     directives: {

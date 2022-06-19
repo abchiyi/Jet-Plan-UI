@@ -22,7 +22,7 @@ exports[`Babble Node map 2`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble top start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -39,7 +39,7 @@ exports[`Babble Node map 3`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble top end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -56,7 +56,7 @@ exports[`Babble Node map 4`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble bottom" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -73,7 +73,7 @@ exports[`Babble Node map 5`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble bottom start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -90,7 +90,7 @@ exports[`Babble Node map 6`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble bottom end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -107,7 +107,7 @@ exports[`Babble Node map 7`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble left" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -124,7 +124,7 @@ exports[`Babble Node map 8`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble left start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -141,7 +141,7 @@ exports[`Babble Node map 9`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble left end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -158,7 +158,7 @@ exports[`Babble Node map 10`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble right" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -175,7 +175,7 @@ exports[`Babble Node map 11`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble right start" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
@@ -192,7 +192,7 @@ exports[`Babble Node map 12`] = `
   <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
     <div class="j-row">
       <transition-stub>
-        <div class="j-base-action j-action-feedback shape j-button button bubble right end" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
     0 4px
     6px
     0.4px
