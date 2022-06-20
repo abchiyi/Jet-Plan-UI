@@ -245,7 +245,7 @@ export default {
 }
 
 .j-bubble .right.j-transition-slide-enter-from,
-.right.j-transition-slide-leave-active {
+.j-bubble .right.j-transition-slide-leave-active {
     transform: translate3d(-40px, 0, 0);
 }
 .j-bubble .left.j-transition-slide-enter-from,
