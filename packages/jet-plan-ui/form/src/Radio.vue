@@ -26,6 +26,7 @@
     />
 </template>
 <script>
+// TODO 修正第一次载入时选中白点过渡问题
 export default {
     name: 'j-radio',
     methods: {
