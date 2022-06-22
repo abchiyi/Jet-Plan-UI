@@ -21,7 +21,8 @@ export default {
     },
     data() {
         return {
-            nowPosition: 8,
+            nowPosition: undefined,
+            thumbSize: undefined,
             useTransition: true,
         };
     },
@@ -31,7 +32,6 @@ export default {
             document.addEventListener('mousemove', this.trackMove);
             document.addEventListener('mouseup', this.trackEnd);
             this.transitionOn();
-            // this.trackMove(event);
             this.updateValue(event);
         },
         trackMove(event) {
@@ -44,19 +44,21 @@ export default {
         },
         updateValue(event) {
             const elSize = getOffset(this.$refs.self);
-            const thumbSize = getOffset(this.$refs.thumb);
-            const thumbWidth = (thumbSize.size.right - thumbSize.size.left) / 2;
-            const MAX = elSize.size.right - elSize.size.left - thumbWidth;
-            const MIN = thumbWidth;
+            const thumbRadius = this.thumbSize.elWidth / 2;
+            const nowPosition = event.pageX - elSize.x;
+            const MAX = elSize.elWidth - thumbRadius;
+            const MIN = thumbRadius;
 
-            let nowPosition = event.pageX - getOffset(this.$refs.self).x;
-
-            if (nowPosition < MIN) {
-                this.nowPosition = MIN;
-            } else if (nowPosition > MAX) {
-                this.nowPosition = MAX;
-            } else {
-                this.nowPosition = nowPosition;
+            switch (true) {
+                case nowPosition < MIN:
+                    this.nowPosition = MIN;
+                    break;
+                case nowPosition > MAX:
+                    this.nowPosition = MAX;
+                    break;
+                default:
+                    this.nowPosition = nowPosition;
+                    break;
             }
         },
         transitionOn() {
@@ -65,7 +67,6 @@ export default {
         transitionOff() {
             this.useTransition = false;
         },
-        // handleMovseEvents(event) {},
     },
     computed: {
         style() {
@@ -76,6 +77,10 @@ export default {
         classTrack() {
             return [!this.useTransition ? 'move' : ''];
         },
+    },
+    mounted() {
+        this.thumbSize = getOffset(this.$refs.thumb);
+        this.nowPosition = this.thumbSize.elWidth / 2;
     },
 };
 </script>
