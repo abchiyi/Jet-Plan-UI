@@ -1,22 +1,22 @@
-import $ from 'jquery';
+import $ from 'jquery'
 import 'jquery.easing'
 
 
-export function getOffset(el) {
-    function getWindowScroll() {
+export function getOffset (el) {
+    function getWindowScroll () {
         // FullSupport
-        const supportPageOffset = window.pageXOffset !== undefined;
-        const isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        const supportPageOffset = window.pageXOffset !== undefined
+        const isCSS1Compat = ((document.compatMode || "") === "CSS1Compat")
 
         const x = supportPageOffset ?
             window.pageXOffset : isCSS1Compat ?
-            document.documentElement.scrollLeft :
-            document.body.scrollLeft;
+                document.documentElement.scrollLeft :
+                document.body.scrollLeft
 
         const y = supportPageOffset ?
             window.pageYOffset : isCSS1Compat ?
-            document.documentElement.scrollTop :
-            document.body.scrollTop;
+                document.documentElement.scrollTop :
+                document.body.scrollTop
 
         return {
             x: x,
@@ -30,17 +30,21 @@ export function getOffset(el) {
     const scrollTop = windowScrool.y || el.scrollTop
     const scrollLeft = windowScrool.x || el.scrollLeft
 
+    const elWidth = elScreenBounding.right - elScreenBounding.left
+    const elHeight = elScreenBounding.bottom - elScreenBounding.top
     return {
         size: elScreenBounding,
         // XXX不适合的属性名称
+        elWidth: elWidth,
+        elHeight: elHeight,
         y: elScreenBounding.top + scrollTop - el.clientTop,
         x: elScreenBounding.left + scrollLeft - el.clientLeft
     }
 }
 
-export function scrollTo(elID, toTop, duration) {
-    let position;
-    if (!duration) duration = 500;
+export function scrollTo (elID, toTop, duration) {
+    let position
+    if (!duration) duration = 500
     if (elID.toLowerCase() === "top") {
         // 保留字段,返回顶部
         position = 0
@@ -76,11 +80,11 @@ export function scrollTo(elID, toTop, duration) {
 
 }
 
-export function shadowPainter(direction, intensity, color) {
+export function shadowPainter (direction, intensity, color) {
 
 
 
-    function calcDirection(array) {
+    function calcDirection (array) {
         if (array.indexOf(direction) !== -1) {
             return direction == array[1] ?
                 intensity + "px" :
@@ -89,11 +93,11 @@ export function shadowPainter(direction, intensity, color) {
         return '0'
     }
 
-    function x() {
+    function x () {
         return calcDirection(['left', 'right'])
     }
 
-    function y() {
+    function y () {
         return calcDirection(['top', 'bottom'])
     }
     chekcDirection(direction)
@@ -104,13 +108,13 @@ export function shadowPainter(direction, intensity, color) {
     ${color ? color : 'var(--shadow)'}`
 }
 export class SHADOW_PAINTER_ERROR extends Error {
-    constructor(message) {
-        super(message);
-        this.name = 'ShadowPainterError';
+    constructor (message) {
+        super(message)
+        this.name = 'ShadowPainterError'
     }
 }
 
-export function chekcDirection(direction) {
+export function chekcDirection (direction) {
     const args = ['center', 'top', 'bottom', 'left', 'right']
     if (direction) {
         if (args.indexOf(direction.toLocaleLowerCase()) == -1) {
