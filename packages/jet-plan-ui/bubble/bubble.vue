@@ -182,8 +182,6 @@ export default {
             this.newPosition = `${position}${start ? '-' : ''}${
                 start ? start : ''
             }`;
-            console.log(this.newPosition);
-            console.log(this.nearEdgeOfScreen);
         },
     },
     directives: {
