@@ -57,12 +57,15 @@ export default {
             this.updatePosition(touchEventCompatible(event));
         },
         trackEnd() {
+            document.removeEventListener('mousemove', this.transitionOff);
             document.removeEventListener('mousemove', this.trackMove);
             document.removeEventListener('mouseup', this.trackEnd);
+
             document.removeEventListener('touchmove', this.transitionOff);
             document.removeEventListener('touchmove', this.trackMove);
             document.removeEventListener('touchend', this.trackEnd);
             document.removeEventListener('touchcancel', this.trackEnd);
+            this.transitionOn();
         },
         updatePosition(event) {
             this.percentage = this.updateClickPositionPercentage(event);
@@ -180,7 +183,7 @@ export default {
                 style: this.style,
                 class: [NAME, ...this.classes],
                 onmousedown: this.handleMouseDown,
-                ontouchstart: this.handleTouchStart,
+                // ontouchstart: this.handleTouchStart,
             },
             [TRACK, INPUT]
         );
