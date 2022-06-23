@@ -27,6 +27,7 @@ export default {
     },
     data() {
         return {
+            showBubble: false,
             nowPosition: undefined,
             thumbSize: undefined,
             useTransition: true,
@@ -60,6 +61,7 @@ export default {
     methods: {
         trackStart(event) {
             if (this.disabled) return;
+            this.showBubble = true;
             this.transitionOn();
             this.updatePosition(touchEventCompatible(event));
         },
@@ -76,6 +78,7 @@ export default {
             document.removeEventListener('touchmove', this.trackMove);
             document.removeEventListener('touchend', this.trackEnd);
             document.removeEventListener('touchcancel', this.trackEnd);
+            this.showBubble = false;
             this.transitionOn();
             this.TAL.reSetConter();
         },
@@ -176,6 +179,7 @@ export default {
 
                 position: 'top',
                 message: this.value,
+                show: this.showBubble,
             },
             {
                 default() {
