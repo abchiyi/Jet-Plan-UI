@@ -15,7 +15,11 @@
                 设置阴影强度,建议1~30,最大值可超过30
             </li>
         </doc-item>
-        <j-control-bar for-id="demo-checkbox" :reverse="toReverse">
+        <j-control-bar
+            :active="false"
+            for-id="demo-checkbox"
+            :reverse="toReverse"
+        >
             <template v-slot:text>Checkbox</template>
             <j-slider max="30" v-model="value" />
         </j-control-bar>
