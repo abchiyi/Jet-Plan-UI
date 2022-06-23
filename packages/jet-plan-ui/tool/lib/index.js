@@ -65,7 +65,7 @@ Missing values ‘timeout’ are required
         this.overheatAlarm = callback
     }
     reSetConter () {
-        this.conter = 0
+        this.conter = this.limit
     }
 }
 
