@@ -24,7 +24,7 @@ const OTHERS = {
     frosted_glass: BACKGROUND.foreground + "b3",
     card: BACKGROUND.foreground,
     shadow: "#00000033",
-    mask: "#d2d2d2",
+    mask: "#27272760",
     "text-light": "#FCFCFC",
     "text-dark": TEXTCOLOR.text,
 }
