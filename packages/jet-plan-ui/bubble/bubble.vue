@@ -11,15 +11,16 @@
             <j-row X="center" Y="center">
                 <slot></slot>
                 <transition-slide v-bind="positionMach.transitionSlide">
-                    <j-button
+                    <div
                         v-show="showBubble"
                         :class="bubbleClasses"
+                        class="font-mono"
                         ref="bubble"
                         tag="div"
                         v-shadow:bottom="4"
                     >
                         {{ message }}
-                    </j-button>
+                    </div>
                 </transition-slide>
             </j-row>
         </base-action>
@@ -28,7 +29,6 @@
 
 <script>
 import baseAction from '../action-feedback/baseAction.vue';
-import { Button as JButton } from '../form';
 import { Row as JRow } from '../gird/index';
 import { Shadow, ReScreenSize } from '../tool/directives';
 import { TransitionSlide } from '../animations';
@@ -42,7 +42,6 @@ export default {
     components: {
         TransitionSlide,
         baseAction,
-        JButton,
         JRow,
     },
     props: {
@@ -210,6 +209,16 @@ export default {
 }
 
 .j-bubble .bubble {
+    transition: all 0.3s var(--ease-out);
+    background-color: var(--secondary);
+    border-radius: var(--m-radius);
+    color: var(--base-text-color);
+    box-sizing: border-box;
+    display: inline-block;
+    padding: 5px 10px;
+    user-select: none;
+    font-size: 0.8rem;
+    white-space: nowrap;
     position: absolute;
     z-index: 1;
 }

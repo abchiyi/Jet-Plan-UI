@@ -8,6 +8,7 @@
         <slider v-model="value"></slider>
         <slider v-model="value"></slider>
         <slider v-model="value" disabled></slider>
+        <j-base-shape round border class="test"></j-base-shape>
     </div>
 </template>
 <script>
@@ -30,4 +31,10 @@ export default {
 </script>
 
 <style>
+.test {
+    height: 1rem;
+    width: 3rem;
+    background-color: aliceblue;
+    display: inline-block;
+}
 </style>
