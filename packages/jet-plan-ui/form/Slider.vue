@@ -49,13 +49,10 @@ export default {
             this.updatePosition(touchEventCompatible(event));
         },
         trackMove(event) {
-            this.preventScroll(true);
             this.transitionOff();
             this.updatePosition(touchEventCompatible(event));
         },
         trackEnd() {
-            this.preventScroll(false);
-            this.oldOverflow = undefined;
             document.removeEventListener('mousemove', this.trackMove);
             document.removeEventListener('mouseup', this.trackEnd);
             document.removeEventListener('touchmove', this.transitionOff);
@@ -112,17 +109,12 @@ export default {
             this.trackStart(event);
         },
         handleTouchStart(event) {
+            event.preventDefault();
             document.addEventListener('touchmove', this.transitionOff);
             document.addEventListener('touchmove', this.trackMove);
             document.addEventListener('touchend', this.trackEnd);
             document.addEventListener('touchcancel', this.trackEnd);
             this.trackStart(event);
-        },
-        preventScroll(bool) {
-            if (this.oldOverflow == undefined) {
-                this.oldOverflow = document.body.style.overflow;
-            }
-            document.body.style.overflow = bool ? 'hidden' : this.oldOverflow;
         },
     },
     computed: {
