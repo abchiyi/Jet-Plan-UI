@@ -3,19 +3,10 @@
         <p>
             <strong>{{ value }}</strong>
         </p>
-        <input
-            @change="log"
-            min="0"
-            max="200"
-            v-model="value"
-            id="range"
-            type="range"
-            @onchange="log"
-        />
-        <slider style="width: 100%"></slider>
-        <slider></slider>
-        <slider></slider>
-        <slider></slider>
+        <!-- <input min="0" v-model="value" id="range" type="range" />
+        <slider v-model="value" style="width: 100%"></slider>
+        <slider v-model="value"></slider> -->
+        <slider v-model="value"></slider>
     </div>
 </template>
 <script>
