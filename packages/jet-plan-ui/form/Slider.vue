@@ -21,6 +21,7 @@ export default {
         });
         this.TAL.setOverheatAlarm(() => {
             this.transitionOff();
+            clearTimeout(this.timeOutID);
         });
     },
     data() {
@@ -162,7 +163,7 @@ export default {
             this.value = v;
             this.updateModelValuePercentage(this.modelValue);
             this.TAL.action(() => {});
-            setTimeout(() => {
+            this.timeOutID = setTimeout(() => {
                 this.TAL.reSetConter();
             }, 50);
         },
