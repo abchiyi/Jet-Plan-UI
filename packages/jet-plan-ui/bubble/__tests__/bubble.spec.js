@@ -46,6 +46,9 @@ describe('Babble', () => {
         await wrapper.setProps({ message: 'hello', position: 'right-end' })
         expect(wrapper.html()).toMatchSnapshot()
 
+        await wrapper.setProps({ message: 'hello', position: 'top', show: true })
+        expect(wrapper.html()).toMatchSnapshot()
+
 
     })
 

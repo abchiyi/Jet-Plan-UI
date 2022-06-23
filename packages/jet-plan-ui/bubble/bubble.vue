@@ -71,6 +71,11 @@ export default {
                 );
             },
         },
+
+        show: {
+            type: [Boolean, undefined],
+            default: undefined,
+        },
     },
     computed: {
         classes() {
@@ -120,6 +125,7 @@ export default {
     },
     methods: {
         _showBubble(event) {
+            if (this.show != undefined) return;
             this.autoCheckPosition(event.event.target);
             this.edgeAvoidance();
             talEnter.action(() => {});
@@ -129,6 +135,7 @@ export default {
             });
         },
         hiddenBubble() {
+            if (this.show != undefined) return;
             talOut.action(() => {});
             this.showBubbleNow = false;
             talOut.setCooledAlarm(() => {
@@ -187,6 +194,11 @@ export default {
     directives: {
         Shadow,
         ReScreenSize,
+    },
+    watch: {
+        show(v) {
+            this.showBubble = v;
+        },
     },
 };
 </script>

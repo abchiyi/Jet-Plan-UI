@@ -203,3 +203,20 @@ exports[`Babble Node map 12`] = `
   </div>
 </div>
 `;
+
+exports[`Babble Node map 13`] = `
+<div class="j-row" style="display: inline-block;">
+  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+    <div class="j-row">
+      <transition-stub>
+        <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; box-shadow: 
+    0 4px
+    6px
+    0.4px
+    var(--shadow); --base-text-color: var(--text-dark);">hello<transition-group-stub></transition-group-stub>
+        </div>
+      </transition-stub>
+    </div>
+  </div>
+</div>
+`;
