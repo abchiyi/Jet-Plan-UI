@@ -14,7 +14,7 @@
                     <div
                         v-show="showBubble"
                         :class="bubbleClasses"
-                        class="font-mono"
+                        class="font-mono frosted-glass"
                         ref="bubble"
                         tag="div"
                         v-shadow:bottom="4"
@@ -210,7 +210,6 @@ export default {
 
 .j-bubble .bubble {
     transition: all 0.3s var(--ease-out);
-    background-color: var(--secondary);
     border-radius: var(--m-radius);
     color: var(--base-text-color);
     box-sizing: border-box;
