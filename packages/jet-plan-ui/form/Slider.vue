@@ -114,7 +114,6 @@ export default {
             value = parseFloat(value.toFixed(5));
             value = value > max ? max : value < min ? min : value;
             this.value = value;
-            // this.$emit('update:modelValue', value);
         },
         transitionOn() {
             this.useTransition = true;
