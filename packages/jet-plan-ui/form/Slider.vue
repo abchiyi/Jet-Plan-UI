@@ -14,6 +14,7 @@ export default {
     mounted() {
         this.thumbSize = getOffset(this.$refs.thumb.$el);
         this.nowPosition = this.thumbSize.elWidth / 2;
+        this.updateModelValuePercentage(this.modelValue);
     },
     data() {
         return {
