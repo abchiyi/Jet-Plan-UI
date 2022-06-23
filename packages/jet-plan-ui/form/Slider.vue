@@ -250,8 +250,8 @@ export default {
     width: 1rem;
 }
 .j-slider .thumb {
-    border: solid 3.5px var(--foreground);
-    background-color: var(--border);
+    border: solid 3.5px var(--border);
+    background-color: var(--foreground);
     box-sizing: border-box;
     border-radius: 1rem;
     height: 1rem;
