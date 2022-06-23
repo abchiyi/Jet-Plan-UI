@@ -1,7 +1,6 @@
 <script>
 const NAME = 'j-slider';
 import { h } from 'vue';
-// import BaseAction from '../action-feedback/baseAction.vue';
 import { getOffset } from '../tool/lib/dom';
 import { bubble } from '../bubble';
 function touchEventCompatible(event) {
@@ -42,9 +41,14 @@ export default {
             type: [Number, String],
             default: 0.1,
         },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
     },
     methods: {
         trackStart(event) {
+            if (this.disabled) return;
             this.transitionOn();
             this.updatePosition(touchEventCompatible(event));
         },
@@ -109,11 +113,11 @@ export default {
             this.trackStart(event);
         },
         handleTouchStart(event) {
-            event.preventDefault();
             document.addEventListener('touchmove', this.transitionOff);
             document.addEventListener('touchmove', this.trackMove);
             document.addEventListener('touchend', this.trackEnd);
             document.addEventListener('touchcancel', this.trackEnd);
+            event.preventDefault();
             this.trackStart(event);
         },
     },
@@ -125,6 +129,9 @@ export default {
         },
         classTrack() {
             return [!this.useTransition ? 'move' : ''];
+        },
+        classes() {
+            return [this.disabled ? 'disabled' : ''];
         },
     },
     watch: {
@@ -171,8 +178,7 @@ export default {
             'div',
             {
                 style: this.style,
-                class: [NAME],
-
+                class: [NAME, ...this.classes],
                 onmousedown: this.handleMouseDown,
                 ontouchstart: this.handleTouchStart,
             },
@@ -198,21 +204,29 @@ export default {
     height: 0.5rem;
     width: 200px;
 }
-.track {
+.j-slider.disabled {
+    cursor: not-allowed;
+}
+
+.j-slider .track {
     background-color: var(--primary);
     width: var(--track-fill-width);
     border-radius: 0.5rem;
     user-select: none;
     height: 0.5rem;
 }
-.thumb-shell {
+.j-slider.disabled .track {
+    background-color: var(--disabled);
+}
+
+.j-slider .thumb-shell {
     right: calc(-100% + 0.5rem);
     position: relative;
     top: -0.25rem;
     height: 1rem;
     width: 1rem;
 }
-.thumb {
+.j-slider .thumb {
     border: solid 3.5px var(--foreground);
     background-color: var(--border);
     box-sizing: border-box;
@@ -220,12 +234,16 @@ export default {
     height: 1rem;
     width: 1rem;
 }
+.j-slider.disabled .thumb {
+    border: solid 3.5px var(--disabled);
+    /* background-color: var(--border); */
+}
 
 /* 过渡动画 */
-.track {
+.j-slider .track {
     transition: 0.4s var(--ease-out);
 }
-.track.move {
+.j-slider .track.move {
     transition: unset;
 }
 </style>
