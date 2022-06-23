@@ -51,7 +51,6 @@ export default {
 .j-control-bar {
     border-radius: var(--m-radius);
     background: var(--foreground);
-    overflow: hidden;
     font-size: 1rem;
     display: block;
     margin: 0.8rem 0;
