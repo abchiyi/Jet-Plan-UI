@@ -20,9 +20,7 @@ export default {
             this.transitionOn();
         });
         this.TAL.setOverheatAlarm(() => {
-            // setTimeout(() => {
             this.transitionOff();
-            // }, 400);
         });
     },
     data() {
@@ -33,7 +31,7 @@ export default {
             useTransition: true,
             value: 0,
             percentage: undefined,
-            TAL: new TimedActionLimit(5, 2),
+            TAL: new TimedActionLimit(100, 2),
         };
     },
     props: {
@@ -80,7 +78,7 @@ export default {
             document.removeEventListener('touchcancel', this.trackEnd);
             this.showBubble = false;
             this.transitionOn();
-            this.TAL.reSetConter();
+            // this.TAL.reSetConter();
         },
         updatePosition(event) {
             this.percentage = this.updateClickPositionPercentage(event);
@@ -164,6 +162,9 @@ export default {
             this.value = v;
             this.updateModelValuePercentage(this.modelValue);
             this.TAL.action(() => {});
+            setTimeout(() => {
+                this.TAL.reSetConter();
+            }, 50);
         },
     },
     render() {

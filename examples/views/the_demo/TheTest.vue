@@ -6,6 +6,7 @@
         <input min="0" v-model="value" id="range" type="range" />
         <slider v-model="value"></slider>
         <slider v-model="value"></slider>
+        <slider v-model="value"></slider>
         <slider v-model="value" disabled></slider>
     </div>
 </template>
