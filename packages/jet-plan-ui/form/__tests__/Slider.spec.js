@@ -21,6 +21,6 @@ describe('Slider', () => {
                 position: 'top'
             }
         })
-        expect(wrapper.find('.j-base-action').classes()).toContain(Slider.name)
+        expect(wrapper.classes()).toContain(Slider.name)
     })
 })

@@ -2,6 +2,7 @@
 const NAME = 'j-slider';
 import { h } from 'vue';
 import { getOffset } from '../tool/lib/dom';
+import { TimedActionLimit } from '../tool/lib';
 import { bubble } from '../bubble';
 function touchEventCompatible(event) {
     if (event.type.indexOf('touch') != -1) {
@@ -15,6 +16,14 @@ export default {
         this.thumbSize = getOffset(this.$refs.thumb.$el);
         this.nowPosition = this.thumbSize.elWidth / 2;
         this.updateModelValuePercentage(this.modelValue);
+        this.TAL.setCooledAlarm(() => {
+            this.transitionOn();
+        });
+        this.TAL.setOverheatAlarm(() => {
+            // setTimeout(() => {
+            this.transitionOff();
+            // }, 400);
+        });
     },
     data() {
         return {
@@ -23,6 +32,7 @@ export default {
             useTransition: true,
             value: 0,
             percentage: undefined,
+            TAL: new TimedActionLimit(5, 2),
         };
     },
     props: {
@@ -67,6 +77,7 @@ export default {
             document.removeEventListener('touchend', this.trackEnd);
             document.removeEventListener('touchcancel', this.trackEnd);
             this.transitionOn();
+            this.TAL.reSetConter();
         },
         updatePosition(event) {
             this.percentage = this.updateClickPositionPercentage(event);
@@ -103,6 +114,7 @@ export default {
             value = parseFloat(value.toFixed(5));
             value = value > max ? max : value < min ? min : value;
             this.value = value;
+            // this.$emit('update:modelValue', value);
         },
         transitionOn() {
             this.useTransition = true;
@@ -147,8 +159,9 @@ export default {
             this.$emit('update:modelValue', v);
         },
         modelValue(v) {
-            this.updateModelValuePercentage(v);
             this.value = v;
+            this.updateModelValuePercentage(this.modelValue);
+            this.TAL.action(() => {});
         },
     },
     render() {
@@ -184,7 +197,7 @@ export default {
                 style: this.style,
                 class: [NAME, ...this.classes],
                 onmousedown: this.handleMouseDown,
-                // ontouchstart: this.handleTouchStart,
+                ontouchstart: this.handleTouchStart,
             },
             [TRACK, INPUT]
         );
@@ -218,6 +231,7 @@ export default {
     border-radius: 0.5rem;
     user-select: none;
     height: 0.5rem;
+    transform: translate3d(0, 0, 0);
 }
 .j-slider.disabled .track {
     background-color: var(--disabled);

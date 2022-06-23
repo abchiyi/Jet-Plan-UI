@@ -4,9 +4,8 @@
             <strong>{{ value }}</strong>
         </p>
         <input min="0" v-model="value" id="range" type="range" />
-        <slider v-model="value" style="width: 100%"></slider>
         <slider v-model="value"></slider>
-        <slider v-model="value" disabled></slider>
+        <!-- <slider v-model="value" disabled></slider> -->
     </div>
 </template>
 <script>
@@ -16,7 +15,7 @@ export default {
     components: { Slider },
     data() {
         return {
-            value: 5,
+            value: 0,
         };
     },
     methods: {
