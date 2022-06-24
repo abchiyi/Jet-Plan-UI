@@ -6,9 +6,11 @@
             class="copy"
             style="text-align: right"
         >
-            <j-button text @click="this.copyCode">
-                <slot name="icon-copy"> Copy </slot>
-            </j-button>
+            <j-bubble position="top" :message="copyMessage">
+                <j-button text @click="this.copyCode">
+                    <slot name="icon-copy"> Copy </slot>
+                </j-button>
+            </j-bubble>
         </div>
         <j-row class="bottom-box" Y="center" ref="codeBox" spaceMode="between">
             <j-row class="code">
@@ -23,15 +25,16 @@
                     :code="_code"
                 />
             </j-row>
-
-            <j-button
-                class="copy-button"
-                v-if="canCopy && linenumber == 1"
-                style="background: var(--hljs-bgcolor)"
-                @click="this.copyCode"
-            >
-                <slot name="icon-copy"> Copy </slot>
-            </j-button>
+            <j-bubble position="top" :message="copyMessage">
+                <j-button
+                    class="copy-button"
+                    v-if="canCopy && linenumber == 1"
+                    style="background: var(--hljs-bgcolor)"
+                    @click="this.copyCode"
+                >
+                    <slot name="icon-copy"> Copy </slot>
+                </j-button>
+            </j-bubble>
         </j-row>
     </div>
 </template>
@@ -43,6 +46,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 import 'highlight.js/lib/common';
 import hljsVuePlugin from '@highlightjs/vue-plugin';
 
+import { bubble as JBubble } from '../../bubble';
 export default {
     name: 'j-code-box',
     props: {
@@ -56,9 +60,14 @@ export default {
             default: false,
         },
         lang: { type: String },
+        copyMessage: {
+            type: String,
+            default: '复制/Copy',
+        },
     },
     components: {
         highlightjs: hljsVuePlugin.component,
+        JBubble,
     },
     directives: {
         updateColor: {
@@ -132,7 +141,7 @@ export default {
 }
 
 .j-code-box {
-    overflow: hidden;
+    /* overflow: hidden; */
     border-radius: var(--m-radius);
     background: var(--hljs-bgcolor);
 }
@@ -167,7 +176,7 @@ export default {
 }
 
 .j-code-box .bottom-box {
-    margin: 12px 0;
+    padding: 12px 0;
 }
 
 .copy-button *,
