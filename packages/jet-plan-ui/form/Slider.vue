@@ -179,7 +179,6 @@ export default {
 
                 position: 'top',
                 message: this.value,
-                show: this.showBubble,
             },
             h('div', { class: 'thumb' })
         );
