@@ -3,7 +3,7 @@ const NAME = 'j-slider';
 import { h } from 'vue';
 import { getOffset } from '../tool/lib/dom';
 import { TimedActionLimit } from '../tool/lib';
-import { bubble } from '../bubble';
+// import { bubble } from '../bubble';
 function touchEventCompatible(event) {
     if (event.type.indexOf('touch') != -1) {
         return event.touches[0];
@@ -13,7 +13,7 @@ function touchEventCompatible(event) {
 export default {
     name: NAME,
     mounted() {
-        this.thumbSize = getOffset(this.$refs.thumb.$el);
+        this.thumbSize = getOffset(this.$refs.thumb);
         this.nowPosition = this.thumbSize.elWidth / 2;
         this.updateModelValuePercentage(this.modelValue);
         this.TAL.setCooledAlarm(() => {
@@ -26,7 +26,6 @@ export default {
     },
     data() {
         return {
-            showBubble: false,
             nowPosition: undefined,
             thumbSize: undefined,
             useTransition: true,
@@ -59,8 +58,6 @@ export default {
     },
     methods: {
         trackStart(event) {
-            if (this.disabled) return;
-            this.showBubble = true;
             this.transitionOn();
             this.updatePosition(touchEventCompatible(event));
         },
@@ -77,7 +74,6 @@ export default {
             document.removeEventListener('touchmove', this.trackMove);
             document.removeEventListener('touchend', this.trackEnd);
             document.removeEventListener('touchcancel', this.trackEnd);
-            this.showBubble = false;
             this.transitionOn();
             // this.TAL.reSetConter();
         },
@@ -124,12 +120,14 @@ export default {
             this.useTransition = false;
         },
         handleMouseDown(event) {
+            if (this.disabled) return;
             document.addEventListener('mousemove', this.transitionOff);
             document.addEventListener('mousemove', this.trackMove);
             document.addEventListener('mouseup', this.trackEnd);
             this.trackStart(event);
         },
         handleTouchStart(event) {
+            if (this.disabled) return;
             document.addEventListener('touchmove', this.transitionOff);
             document.addEventListener('touchmove', this.trackMove);
             document.addEventListener('touchend', this.trackEnd);
@@ -174,7 +172,7 @@ export default {
             value: this.value,
         });
         const THUMB = h(
-            bubble,
+            'div',
             {
                 class: 'thumb-shell',
                 ref: 'thumb',
@@ -183,11 +181,7 @@ export default {
                 message: this.value,
                 show: this.showBubble,
             },
-            {
-                default() {
-                    return h('div', { class: 'thumb' });
-                },
-            }
+            h('div', { class: 'thumb' })
         );
         const TRACK = h(
             'div',
