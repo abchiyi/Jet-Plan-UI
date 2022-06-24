@@ -220,6 +220,7 @@ export default {
     white-space: nowrap;
     position: absolute;
     z-index: 1;
+    pointer-events: none;
 }
 
 .j-bubble .bottom.start,
