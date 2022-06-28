@@ -1,13 +1,10 @@
 <template>
     <div>
-        <doc-item id="describes" name="动作反馈组件" title-is="h1">
-            <p>
-                <high-lighter>j-action-feedback</high-lighter>
-                是一套定制优化的反馈事件&样式的组件。组件自带一套开箱即用的和ui风格统一的css样式。
-            </p>
-        </doc-item>
+        <h1>动作反馈组件</h1>
+        <p>用于动作交互视觉反馈</p>
         <hr />
 
+        <!-- DOC -->
         <doc-item name="Props:" title-is="h2">
             <li id="prop-opacity">
                 <p>
@@ -58,14 +55,108 @@
                 : 组件仅有一个默认插槽
             </li>
         </doc-item>
-        <doc-item name="自定义色彩:" title-is="h2" no-padding no-dot>
-            <li>
-                <p>
-                    组件支持定义各种动作的色彩，选择下面的配色组再尝试点击示例以查看效果。
-                </p>
-                <demo-box
-                    title="自定义色彩"
-                    code='
+
+        <!-- Control -->
+        <div id="controls-group">
+            <p>自定义色彩:</p>
+            <div id="controls-color">
+                <j-card>
+                    <j-action-feedback
+                        class="color-group"
+                        tag="label"
+                        v-for="item in customColors"
+                        @click="changCustomColor(item.colors)"
+                        :key="item.name"
+                        active
+                        hover
+                    >
+                        <j-radio
+                            :id="'radio-' + item.name"
+                            v-model="customColorsActive"
+                            :value="item.colors"
+                        />
+                        <span class="text-hint">{{ item.name }}:</span>
+                        <j-row>
+                            <j-cube
+                                class="text-hint"
+                                :style="{
+                                    backgroundColor: item.colors.colorActive,
+                                }"
+                                v-auto-color
+                                >active</j-cube
+                            >
+                            <j-cube
+                                class="text-hint"
+                                :style="{
+                                    backgroundColor: item.colors.colorHover,
+                                }"
+                                v-auto-color
+                                >Hover</j-cube
+                            >
+                            <j-cube
+                                class="text-hint"
+                                :style="{
+                                    backgroundColor: item.colors.colorFocus,
+                                }"
+                                v-auto-color
+                                >Focus</j-cube
+                            >
+                        </j-row>
+                    </j-action-feedback>
+                    <j-button
+                        row
+                        id="clear-custom-color"
+                        @click="customColorsActive = {}"
+                        >清除自定义色彩</j-button
+                    >
+                </j-card>
+            </div>
+            <div id="controls">
+                <j-control-bar for-id="re-active">
+                    <template v-slot:text>启用 Active 效果</template>
+
+                    <j-switch id="re-active" v-model="active" />
+                </j-control-bar>
+                <j-control-bar for-id="re-hover">
+                    <template v-slot:text>启用 Hover 效果</template>
+
+                    <j-switch id="re-hover" v-model="hover" />
+                </j-control-bar>
+                <j-control-bar for-id="switch-focus">
+                    <template v-slot:text>启用 :focus 效果</template>
+
+                    <j-switch id="switch-focus" v-model="focus" />
+                </j-control-bar>
+            </div>
+        </div>
+        <!-- Demo -->
+        <demo-box title="j-action-feedback" :code="code">
+            <div>
+                <j-row X="center">
+                    <j-action-feedback
+                        class="demo-item"
+                        v-for="n in 2"
+                        :key="n"
+                        :active="active"
+                        :hover="hover"
+                        :focus="focus"
+                        :focus-outline="focusOutline"
+                        v-bind="customColorsActive"
+                    >
+                        <j-row style="height: 100%" warp X="center" Y="center">
+                            <span> ClickMe!! </span>
+                            <j-switch id="test-switch-1" v-model="v"></j-switch>
+                        </j-row>
+                    </j-action-feedback>
+                </j-row>
+            </div>
+        </demo-box>
+        <h2>自定义色彩:</h2>
+        <p>组件支持定义各种动作的色彩</p>
+        <hr />
+        <demo-box
+            title="自定义色彩"
+            code='
 <!-- HTML -->
 <j-action-feedback
     active
@@ -82,116 +173,8 @@
     </j-row>
 </j-action-feedback>
             '
-                ></demo-box>
-            </li>
-        </doc-item>
-        <doc-item name="示例:" title-is="h2" no-dote no-padding>
-            <!-- Control -->
-            <div id="controls-group">
-                <p>自定义色彩:</p>
-                <div id="controls-color">
-                    <j-card>
-                        <j-action-feedback
-                            class="color-group"
-                            tag="label"
-                            v-for="item in customColors"
-                            @click="changCustomColor(item.colors)"
-                            :key="item.name"
-                            active
-                            hover
-                        >
-                            <j-radio
-                                :id="'radio-' + item.name"
-                                v-model="customColorsActive"
-                                :value="item.colors"
-                            />
-                            <span class="text-hint">{{ item.name }}:</span>
-                            <j-row>
-                                <j-cube
-                                    class="text-hint"
-                                    :style="{
-                                        backgroundColor:
-                                            item.colors.colorActive,
-                                    }"
-                                    v-auto-color
-                                    >active</j-cube
-                                >
-                                <j-cube
-                                    class="text-hint"
-                                    :style="{
-                                        backgroundColor: item.colors.colorHover,
-                                    }"
-                                    v-auto-color
-                                    >Hover</j-cube
-                                >
-                                <j-cube
-                                    class="text-hint"
-                                    :style="{
-                                        backgroundColor: item.colors.colorFocus,
-                                    }"
-                                    v-auto-color
-                                    >Focus</j-cube
-                                >
-                            </j-row>
-                        </j-action-feedback>
-                        <j-button
-                            row
-                            id="clear-custom-color"
-                            @click="customColorsActive = {}"
-                            >清除自定义色彩</j-button
-                        >
-                    </j-card>
-                </div>
-                <div id="controls">
-                    <j-control-bar for-id="re-active">
-                        <template v-slot:text>启用 Active 效果</template>
-
-                        <j-switch id="re-active" v-model="active" />
-                    </j-control-bar>
-                    <j-control-bar for-id="re-hover">
-                        <template v-slot:text>启用 Hover 效果</template>
-
-                        <j-switch id="re-hover" v-model="hover" />
-                    </j-control-bar>
-                    <j-control-bar for-id="switch-focus">
-                        <template v-slot:text>启用 :focus 效果</template>
-
-                        <j-switch id="switch-focus" v-model="focus" />
-                    </j-control-bar>
-                </div>
-            </div>
-            <!-- Demo -->
-            <demo-box title="j-action-feedback" :code="code">
-                <div>
-                    <j-row X="center">
-                        <j-action-feedback
-                            class="demo-item"
-                            v-for="n in 2"
-                            :key="n"
-                            :active="active"
-                            :hover="hover"
-                            :focus="focus"
-                            :focus-outline="focusOutline"
-                            v-bind="customColorsActive"
-                        >
-                            <j-row
-                                style="height: 100%"
-                                warp
-                                X="center"
-                                Y="center"
-                            >
-                                <span> ClickMe!! </span>
-                                <j-switch
-                                    id="test-switch-1"
-                                    v-model="v"
-                                ></j-switch>
-                            </j-row>
-                        </j-action-feedback>
-                    </j-row>
-                </div>
-            </demo-box>
-        </doc-item>
-        <doc-item name="自定义样式:" title-is="h2">
+        ></demo-box>
+        <doc-item name="自定义样式:" title-is="h2" no-dot no-padding>
             <hr />
             <li>
                 <p>

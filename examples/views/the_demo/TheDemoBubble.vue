@@ -122,8 +122,10 @@
         <hr />
         <doc-item name="message:">
             <li>type: {String}</li>
-            <li>required</li>
-            <p>提示信息内容</p>
+            <li>
+                <p>required</p>
+                <p>提示信息内容</p>
+            </li>
         </doc-item>
         <doc-item name="position:">
             <li>type:{String}</li>
@@ -134,13 +136,17 @@
                 <p>bottom | bottom-end | bottom-start</p>
                 <p>left' | left-top | left-bottom</p>
                 <p>right | right-top | right-bottom</p>
+                <p>用于设置悬浮位置</p>
             </li>
-            <p>用于设置悬浮位置</p>
         </doc-item>
 
         <doc-item name="Slots:" title-is="h2">
-            <hr />
-            <p>仅有默认插槽</p>
+            <template v-slot:title>
+                <hr />
+            </template>
+            <li>
+                <p>仅有默认插槽</p>
+            </li>
         </doc-item>
 
         <h2>其他功能：</h2>

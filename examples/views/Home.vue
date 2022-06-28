@@ -11,9 +11,11 @@
         <template v-slot:sidebar>
             <logo-title />
             <hr style="margin: auto" />
-            <ol id="links">
-                <router-link-a>About</router-link-a>
-            </ol>
+            <ul id="links">
+                <li>
+                    <router-link-a>About</router-link-a>
+                </li>
+            </ul>
         </template>
         <!-- 正文 -->
         <j-row id="header" tag="header" X="center" Y="center" warp>
@@ -95,5 +97,10 @@ export default {
 }
 .j-sidebar #version {
     font-size: 0.6rem;
+}
+
+#links {
+    list-style: none;
+    padding: unset;
 }
 </style>

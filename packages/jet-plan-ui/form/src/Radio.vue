@@ -1,6 +1,6 @@
 <template>
     <div @click="click" :class="classes">
-        <svg id="radio" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <rect class="background" width="16" height="16" rx="8" />
             <rect
                 class="mask"

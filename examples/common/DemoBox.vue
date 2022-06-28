@@ -6,7 +6,14 @@
                 :message="value ? '收起Code' : '展开Code'"
                 position="top-start"
             >
-                <j-button text v-if="codeControl" hover active @click="expand_">
+                <j-button
+                    aria-label="Expand Code/展开代码"
+                    text
+                    v-if="codeControl"
+                    hover
+                    active
+                    @click="expand_"
+                >
                     <i class="bi bi-code-slash"></i>
                 </j-button>
             </j-bubble>

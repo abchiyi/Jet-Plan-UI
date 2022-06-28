@@ -1,12 +1,11 @@
 <template>
     <div id="demo-j-control-bar">
-        <doc-item id="describes" name="控制条组件:" title-is="h2">
-            <p>
-                强化
-                <high-lighter>input</high-lighter>
-                衍生组件的可点击范围,使得组件内任意区域均可触发点击
-            </p>
-        </doc-item>
+        <h1>控制条</h1>
+        <p>
+            强化
+            <high-lighter>input</high-lighter>
+            衍生组件的可点击范围,使得组件内任意区域均可触发点击
+        </p>
         <hr />
         <doc-item name="<j-control-bar> :" title-is="h2">
             <li id="j-control-bar-props">

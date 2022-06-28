@@ -1,20 +1,18 @@
 <template>
     <div>
-        <h2>Inputs</h2>
+        <h1>Inputs</h1>
         <p>
             以下组件都是
             <high-lighter>&lt;input&gt;</high-lighter>
             标签的衍生组件，使用它们以获得统一的样式风格
         </p>
+        <hr />
         <the-inputs-input id="input" />
         <br />
-        <hr />
         <theinputs-checkbox id="checkbox" />
         <br />
-        <hr />
         <theinputs-radio id="radio" />
         <br />
-        <hr />
         <theinputs-switch id="switch" />
         <br />
         <hr />

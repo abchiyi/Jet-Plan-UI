@@ -1,10 +1,8 @@
 <template>
     <div>
-        <doc-item id="describes" title-is="h2" name="基础栅格系统">
-            <p>基于 flexbox 的24栏网格系统</p>
-        </doc-item>
+        <h1>栅格系统</h1>
+        <p>基于 flexbox 的24栏网格系统</p>
         <hr />
-        <br />
         <div id="doc">
             <!-- j-col -->
             <doc-item name="<j-col> :" title-is="h2">
@@ -155,7 +153,7 @@
         </p>
         <hr />
         <br />
-        <demo-box title="flex 定位" :code="code2" :expand="v1">
+        <demo-box title="Offset" :code="code2" :expand="v1">
             <div id="gired-flex">
                 <j-row class="girde-item" v-for="n in 4" :key="n">
                     <j-col :col="4" :offset="n * 2">
@@ -173,7 +171,7 @@
         <hr />
         <br />
 
-        <demo-box title="flex 定位" :code="code3" :expand="v1">
+        <demo-box title="X YStart" :code="code3" :expand="v1">
             <div>
                 <j-row id="flex-y" warp spaceMode="between">
                     <span>

@@ -1,13 +1,12 @@
 <template>
     <article id="auto-color">
-        <doc-item name="v-auto-color:" title-is="h2">
-            <p>
-                自动控制元素文本色彩，在明/暗两色之间自动切换，用于主题的自适应设计
-            </p>
-            <p>
-                被控制的元素必须已设置了背景色，否则指令不会生效，子元素如无背景色可将指令设置到父元素
-            </p>
-        </doc-item>
+        <h2>v-auto-color:</h2>
+        <p>
+            自动控制元素文本色彩，在明/暗两色之间自动切换，用于主题的自适应设计
+        </p>
+        <p>
+            被控制的元素必须已设置了背景色，否则指令不会生效，子元素如无背景色可将指令设置到父元素
+        </p>
         <hr />
 
         <demo-box title="v-auto-color" :code="code" expand>

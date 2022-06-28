@@ -7,7 +7,8 @@
             style="text-align: right"
         >
             <j-bubble position="top" :message="copyMessage">
-                <j-button text @click="this.copyCode">
+                <!-- TODO i8n 兼容不可视 ‘aria-label’ -->
+                <j-button aria-label="复制/copy" text @click="this.copyCode">
                     <slot name="icon-copy"> Copy </slot>
                 </j-button>
             </j-bubble>
@@ -27,6 +28,7 @@
             </j-row>
             <j-bubble position="top" :message="copyMessage">
                 <j-button
+                    aria-label="复制/copy"
                     class="copy-button"
                     v-if="canCopy && linenumber == 1"
                     style="background: var(--hljs-bgcolor)"

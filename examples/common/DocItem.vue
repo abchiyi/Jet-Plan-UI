@@ -3,6 +3,7 @@
         <component :is="titleIs">
             {{ name }}
         </component>
+        <slot name="title"></slot>
         <ul>
             <slot>
                 <li style="color: var(--error)"><strong>Empty !</strong></li>

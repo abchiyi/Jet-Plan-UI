@@ -51,77 +51,73 @@
             </li>
         </doc-item>
 
-        <doc-item name="示例：" no-dot no-padding title-is="h2">
-            <!-- control -->
-            <div>
-                <j-control-bar for-id="demo-progress-to-succuss">
-                    <template v-slot:text>完成进度条</template>
-                    <j-switch id="demo-progress-to-succuss" v-model="success" />
-                </j-control-bar>
-                <j-control-bar for-id="demo-progress-to-failed">
-                    <template v-slot:text>失败进度条</template>
-                    <j-switch id="demo-progress-to-failed" v-model="failed" />
-                </j-control-bar>
-                <j-control-bar for-id="demo-progress-to-pause">
-                    <template v-slot:text> 暂停 </template>
-                    <j-switch id="demo-progress-to-pause" v-model="pause" />
-                </j-control-bar>
-            </div>
+        <h2>示例:</h2>
+        <hr />
+        <!-- control -->
+        <div>
+            <j-control-bar for-id="demo-progress-to-succuss">
+                <template v-slot:text>完成进度条</template>
+                <j-switch id="demo-progress-to-succuss" v-model="success" />
+            </j-control-bar>
+            <j-control-bar for-id="demo-progress-to-failed">
+                <template v-slot:text>失败进度条</template>
+                <j-switch id="demo-progress-to-failed" v-model="failed" />
+            </j-control-bar>
+            <j-control-bar for-id="demo-progress-to-pause">
+                <template v-slot:text> 暂停 </template>
+                <j-switch id="demo-progress-to-pause" v-model="pause" />
+            </j-control-bar>
+        </div>
 
-            <!-- demo -->
-            <demo-box title="<j-progress>" :code="code" :expand="true">
-                <div id="demo-content">
-                    <p>常规:</p>
+        <!-- demo -->
+        <demo-box title="<j-progress>" :code="code" :expand="true">
+            <div id="demo-content">
+                <p>常规:</p>
+                <j-progress :failed="failed" :value="number" :pause="pause" />
+                <p>环形:</p>
+                <p>
+                    Font size - 16px
                     <j-progress
                         :failed="failed"
                         :value="number"
                         :pause="pause"
+                        ring
                     />
-                    <p>环形:</p>
-                    <p>
-                        Font size - 16px
-                        <j-progress
-                            :failed="failed"
-                            :value="number"
-                            :pause="pause"
-                            ring
-                        />
-                    </p>
-                    <p style="font-size: 24px">
-                        Font size 24px
-                        <j-progress
-                            :failed="failed"
-                            :value="number"
-                            :pause="pause"
-                            ring
-                        />
-                    </p>
-                    <p style="font-size: 32px">
-                        Font size 32px
-                        <j-progress
-                            :failed="failed"
-                            :value="number"
-                            :pause="pause"
-                            ring
-                        />
-                    </p>
-                    <p>环形 in Button:</p>
-                    <j-button
-                        @click="success = !success"
-                        style="background: var(--foreground)"
-                    >
-                        <j-progress
-                            style="font-size: 20px"
-                            :failed="failed"
-                            :value="number"
-                            :pause="pause"
-                            ring
-                        />
-                        <span style="margin-left: 10px"> {{ +number }}% </span>
-                    </j-button>
-                </div>
-            </demo-box>
-        </doc-item>
+                </p>
+                <p style="font-size: 24px">
+                    Font size 24px
+                    <j-progress
+                        :failed="failed"
+                        :value="number"
+                        :pause="pause"
+                        ring
+                    />
+                </p>
+                <p style="font-size: 32px">
+                    Font size 32px
+                    <j-progress
+                        :failed="failed"
+                        :value="number"
+                        :pause="pause"
+                        ring
+                    />
+                </p>
+                <p>环形 in Button:</p>
+                <j-button
+                    @click="success = !success"
+                    style="background: var(--foreground)"
+                >
+                    <j-progress
+                        style="font-size: 20px"
+                        :failed="failed"
+                        :value="number"
+                        :pause="pause"
+                        ring
+                    />
+                    <span style="margin-left: 10px"> {{ +number }}% </span>
+                </j-button>
+            </div>
+        </demo-box>
     </div>
 </template>
 

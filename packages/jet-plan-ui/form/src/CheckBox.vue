@@ -10,11 +10,7 @@
         @click="click"
     />
     <label :for="id" :class="classes">
-        <svg
-            id="checkbox"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-        >
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
             <path
                 class="background"
                 d="M4,0h8a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z"

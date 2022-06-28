@@ -8,58 +8,72 @@
         <template v-slot:sidebar>
             <logo-title />
             <hr style="margin: auto" />
-            <ol id="links">
+            <ul id="links">
                 <!-- Start -->
-                <expand-menu v-model="expand.start">
-                    <template v-slot:text>开始</template>
-                    <j-transition-folded>
-                        <demo-page-have-index
-                            v-show="expand.start"
-                            :paths="links.start"
-                        />
-                    </j-transition-folded>
-                </expand-menu>
+                <li>
+                    <expand-menu v-model="expand.start">
+                        <template v-slot:text>开始</template>
+                        <j-transition-folded>
+                            <demo-page-have-index
+                                v-show="expand.start"
+                                :paths="links.start"
+                            />
+                        </j-transition-folded>
+                    </expand-menu>
+                </li>
+
                 <!-- Style -->
-                <expand-menu v-model="expand.style">
-                    <template v-slot:text>样式</template>
-                    <j-transition-folded>
-                        <demo-page-have-index
-                            v-show="expand.style"
-                            :paths="links.styles"
-                        />
-                    </j-transition-folded>
-                </expand-menu>
+                <li>
+                    <expand-menu v-model="expand.style">
+                        <template v-slot:text>样式</template>
+                        <j-transition-folded>
+                            <demo-page-have-index
+                                v-show="expand.style"
+                                :paths="links.styles"
+                            />
+                        </j-transition-folded>
+                    </expand-menu>
+                </li>
+
                 <!-- Layout -->
-                <expand-menu v-model="expand.layout">
-                    <template v-slot:text>布局</template>
-                    <j-transition-folded>
-                        <demo-page-have-index
-                            v-show="expand.layout"
-                            :paths="links.layout"
-                        />
-                    </j-transition-folded>
-                </expand-menu>
+                <li>
+                    <expand-menu v-model="expand.layout">
+                        <template v-slot:text>布局</template>
+                        <j-transition-folded>
+                            <demo-page-have-index
+                                v-show="expand.layout"
+                                :paths="links.layout"
+                            />
+                        </j-transition-folded>
+                    </expand-menu>
+                </li>
+
                 <!-- tools -->
-                <expand-menu v-model="expand.tools">
-                    <template v-slot:text>工具</template>
-                    <j-transition-folded>
-                        <demo-page-have-index
-                            v-show="expand.tools"
-                            :paths="links.tools"
-                        />
-                    </j-transition-folded>
-                </expand-menu>
+                <li>
+                    <expand-menu v-model="expand.tools">
+                        <template v-slot:text>工具</template>
+                        <j-transition-folded>
+                            <demo-page-have-index
+                                v-show="expand.tools"
+                                :paths="links.tools"
+                            />
+                        </j-transition-folded>
+                    </expand-menu>
+                </li>
+
                 <!-- components -->
-                <expand-menu v-model="expand.components">
-                    <template v-slot:text>组件</template>
-                    <j-transition-folded>
-                        <demo-page-have-index
-                            v-show="expand.components"
-                            :paths="links.components"
-                        />
-                    </j-transition-folded>
-                </expand-menu>
-            </ol>
+                <li>
+                    <expand-menu v-model="expand.components">
+                        <template v-slot:text>组件</template>
+                        <j-transition-folded>
+                            <demo-page-have-index
+                                v-show="expand.components"
+                                :paths="links.components"
+                            />
+                        </j-transition-folded>
+                    </expand-menu>
+                </li>
+            </ul>
         </template>
         <template v-slot:default>
             <!-- <router-view /> -->
@@ -134,6 +148,7 @@ export default {
 <style>
 #links {
     padding: 0 16px;
+    list-style: none;
 }
 .demo-box {
     margin: 10px 0;

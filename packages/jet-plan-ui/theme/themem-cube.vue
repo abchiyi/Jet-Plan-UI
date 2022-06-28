@@ -17,7 +17,6 @@
                 <g class="theme-background">
                     <g style="theme-background-bg">
                         <path
-                            id="background-border"
                             d="M0 8C4.90527396329193e-16 3.5817220013536524 3.5817220013536533 0 8 0L72 0C76.41827799864635 0 80 3.5817220013536533 80 8L80 72C80 76.41827799864635 76.41827799864635 80 72 80L8 80C3.5817220013536533 80 0 76.41827799864635 0 72Z"
                             class="background"
                             fill-opacity="1"

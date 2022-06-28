@@ -2,7 +2,7 @@
     <div>
         <h3>Input</h3>
         <demo-box title="input" :code="code">
-            <j-input v-model="value" />
+            <j-input aria-label="demo-input" v-model="value" />
             <p>
                 <strong>
                     {{ value }}
