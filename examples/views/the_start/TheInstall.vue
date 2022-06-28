@@ -1,58 +1,41 @@
 <template>
-  <div id="the-insatll">
-    <h2>安装</h2>
-    <hr />
-    <br />
-    <h3>npm 安装</h3>
-    <p>使用 npm 安装以配合webpack 打包工具</p>
-    <j-code-box
-      can-copy
-      :code="`
+    <div id="the-insatll">
+        <h1>安装</h1>
+        <hr />
+        <h2>从 Npm 安装:</h2>
+        <p>使用 npm 安装以配合webpack 打包工具</p>
+        <hr />
+        <demo-box
+            title="npm install"
+            code="
 npm i jet-plan-ui
 npm i jet-plan-ui-theme
-`"
-    >
-      <template v-slot:icon-copy>
-        <i class="bi bi-clipboard"></i>
-      </template>
-    </j-code-box>
-    <h3>最小文件</h3>
-    <p>从 git clone 包后自行打包文件,</p>
-    <p>打包后主文件存放在jet-plan-ui/lib目录下</p>
-    <p calss="text-hint">
-      Gitee:
-      <j-code-box
-        can-copy
-        :code="`
-https://gitee.com/abchiyi/jet-plan-ui.git
+        "
+        ></demo-box>
+
+        <h2>从源文件编译:</h2>
+        <hr />
+        <demo-box
+            title="Gitee"
+            code="
+git clone https://gitee.com/abchiyi/jet-plan-ui.git ./
 cd ./Jet-Plan-UI
 npm run lib
-`"
-      >
-        <template v-slot:icon-copy>
-          <i class="bi bi-clipboard"></i>
-        </template>
-      </j-code-box>
-    </p>
-    <p calss="text-hint">
-      Github :
-      <j-code-box
-        can-copy
-        :code="`
-https://github.com/abchiyi/Jet-Plan-UI.git
+"
+        />
+        <demo-box
+            title="Github"
+            code="
+git clone https://github.com/abchiyi/Jet-Plan-UI.git ./
 cd ./Jet-Plan-UI
 npm run lib
-`"
-      >
-        <template v-slot:icon-copy>
-          <i class="bi bi-clipboard"></i> </template
-      ></j-code-box>
-    </p>
-  </div>
+"
+        />
+    </div>
 </template>
 <script>
 export default {
-  name: "the-install",
+    name: 'the-install',
 };
 </script>
 <style></style>
