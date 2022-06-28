@@ -27,6 +27,7 @@
             <li id="set-theme-at-main-file">
                 <p class="text-hint">在'main.js'（app 入口 js）:</p>
                 <j-code-box
+                    can-copy
                     :code="`
 // main.js
 
@@ -51,6 +52,7 @@ ui.$jetTheme.setTheme('jet-ui-light')
                     $JetTheme 是全局注册的你可以在任何地方调用它。比如在组件中
                 </p>
                 <j-code-box
+                    can-copy
                     :code="`
 import { jetPlanDark } from 'jet-plan-ui-theme'
 
@@ -76,6 +78,7 @@ export default{
                     方法接受一个对象或一个函数以一次性安装主题包内有主题
                 </p>
                 <j-code-box
+                    can-copy
                     :code="`
 import JetPlanUI from 'jet-plan-ui';
 import jetPlanTheme from 'jet-plan-ui-theme';
@@ -99,6 +102,7 @@ ui.$jetTheme.install(
                     使用 '$jetTheme.installTheme' 方法来从现有主题拓展一个新主题
                 </p>
                 <j-code-box
+                    can-copy
                     :code="`
 // main.js
 
@@ -124,6 +128,7 @@ ui.$jetTheme.installTheme(
                     'option' 参考。
                 </p>
                 <j-code-box
+                    can-copy
                     lang="javascript"
                     :code="`
 // jetPLanDark
@@ -170,6 +175,7 @@ ui.$jetTheme.installTheme(
                 <hr />
                 <p>设置自定义 'option'</p>
                 <j-code-box
+                    can-copy
                     :code="`
 // main.js
 
@@ -190,6 +196,7 @@ ui.$jetTheme.installTheme(
                 />
                 <p>使用自定义 'option'</p>
                 <j-code-box
+                    can-copy
                     lang="css"
                     :code="`
  /* 在css中访问 */
@@ -200,6 +207,7 @@ ui.$jetTheme.installTheme(
                 />
                 <br />
                 <j-code-box
+                    can-copy
                     lang="JavaScript"
                     :code="`
  // 在组件中调用当前主题
@@ -226,6 +234,7 @@ ui.$jetTheme.installTheme(
             </template>
             <li>
                 <j-code-box
+                    can-copy
                     :code="`
 // main.js
 

@@ -34,6 +34,7 @@
 
         <h2>Options</h2>
         <j-code-box
+            can-copy
             lang="javascript"
             :code="`
 
