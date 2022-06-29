@@ -75,7 +75,7 @@ describe('Babble', () => {
             }
         )
 
-        expect(wrapper.find('.j-button').html()).toContain('hello')
+        expect(wrapper.find('.bubble').html()).toContain('hello')
 
 
     }

@@ -3,20 +3,8 @@
 exports[`Slider Node map 1`] = `
 <div style="--track-fill-width: undefinedpx;" class="j-slider" ontouchstart="function () { [native code] }" message="hello" position="top">
   <div class="track">
-    <div class="j-row thumb-shell" style="display: inline-block;">
-      <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-        <div class="j-row">
-          <div class="thumb"></div>
-          <transition-stub>
-            <div class="j-base-action j-action-feedback shape j-button button bubble top" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5; display: none; box-shadow: 
-    0 4px
-    6px
-    0.4px
-    var(--shadow);">0<transition-group-stub></transition-group-stub>
-            </div>
-          </transition-stub>
-        </div>
-      </div>
+    <div class="thumb-shell" position="top" message="0">
+      <div class="thumb"></div>
     </div>
   </div><input type="hidden" value="0">
 </div>
