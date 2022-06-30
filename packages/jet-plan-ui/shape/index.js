@@ -9,9 +9,10 @@ import {
 } from '../tool/lib'
 
 export default {
-    install(Vue) {
+    install (Vue) {
         installComponent(Vue, [
             baseShape
         ])
     }
 }
+// TODO 删除组件

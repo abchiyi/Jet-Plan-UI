@@ -1,4 +1,4 @@
-function getThemeStyleEl(elId) {
+function getThemeStyleEl (elId) {
     let styleEl = document.getElementById(elId)
     if (styleEl) return styleEl
     styleEl = document.createElement("style")
@@ -7,7 +7,7 @@ function getThemeStyleEl(elId) {
     return styleEl
 }
 
-function themToString(colors) {
+function themToString (colors) {
     let themeStringArray = Object.keys(colors).map((key) => {
         if (Object.hasOwnProperty.call(colors, key)) {
             return `--${key}:${colors[key]}`
@@ -16,8 +16,8 @@ function themToString(colors) {
     return `:root{${themeStringArray.join(";")}}`
 }
 
-function use(theme) {
-    function autoDarkMode() {
+function use (theme) {
+    function autoDarkMode () {
         const light = {
             ...theme
         }
@@ -40,11 +40,11 @@ function use(theme) {
 const EL = getThemeStyleEl("jet-plan-ui-theme-color")
 
 // 响应式主题系统
-const theme = reactive({
+const Theme = reactive({
     allThemes: {},
     theme: null,
 
-    install(theme) {
+    install (theme) {
         /**
          * 主题是对象时尝试调用 ‘install’ 方法，否则将作为函数处理
          */
@@ -54,7 +54,7 @@ const theme = reactive({
             theme(this)
         }
     },
-    installTheme(name, object, extend) {
+    installTheme (name, object, extend) {
         if (extend) {
             this.allThemes[name] = {
                 ...extend,
@@ -68,7 +68,7 @@ const theme = reactive({
             }
         }
     },
-    toAuto(lightTheme, darkTheme) {
+    toAuto (lightTheme, darkTheme) {
         const auto = {
             ...lightTheme
         }
@@ -76,7 +76,7 @@ const theme = reactive({
         // auto.name = auto.name.split('_')[0] + '_auto';
         return auto
     },
-    setTheme(name) {
+    setTheme (name) {
         if (this.allThemes[name]) {
             this.theme = this.allThemes[name]
             use(this.theme)
@@ -100,12 +100,15 @@ import {
 } from "vue"
 
 export default {
-    install(Vue) {
+    install (Vue) {
         installComponent(Vue, [
             AllTheme
         ])
-        // 全局挂载主题控制器
-        Vue.config.globalProperties.$jetTheme = reactive(theme)
+
     },
-    $jetTheme: theme
+    $jetTheme: Theme
+}
+export {
+    AllTheme,
+    Theme,
 }

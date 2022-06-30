@@ -12,10 +12,8 @@
     </div>
 </template>
 <script>
-import Slider from '../../../packages/jet-plan-ui/form/Slider.vue';
 export default {
     name: 'the-test-page',
-    components: { Slider },
     data() {
         return {
             value: 0,

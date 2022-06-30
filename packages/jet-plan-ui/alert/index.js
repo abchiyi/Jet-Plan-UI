@@ -1,15 +1,5 @@
-import alert from './alert.vue'
-
-import {
-    installComponent
-} from '../tool/lib'
-import {
-    reactive
-} from 'vue'
-
-// const alerts = []
-
-
+import Alert from './alert.vue'
+import { reactive } from 'vue'
 export class AlertData {
 
     constructor () {
@@ -63,20 +53,5 @@ export class AlertData {
 }
 
 export {
-    alert
-}
-
-export default {
-    install (Vue) {
-        installComponent(Vue, [
-            alert
-        ])
-        // 全局挂载 alert 对象
-        // Vue.config.globalProperties.$jetAlert = {
-        //     alerts: alerts,
-        //     alert(alertObj) {
-        //         alerts.push(alertObj)
-        //     }
-        // }
-    }
+    Alert
 }

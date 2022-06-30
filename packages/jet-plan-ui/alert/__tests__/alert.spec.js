@@ -3,7 +3,7 @@ import {
 } from '@vue/test-utils'
 
 import {
-    alert,
+    Alert,
     AlertData
 } from '../../alert'
 
@@ -11,12 +11,12 @@ describe("Component j-alert", () => {
 
     it('name in class', () => {
         const data = new AlertData()
-        const wrapper = mount(alert, {
+        const wrapper = mount(Alert, {
             propsData: {
                 data: data
             }
         })
-        expect(wrapper.classes()).toContain(alert.name)
+        expect(wrapper.classes()).toContain(Alert.name)
     })
 
     it('Prop data', () => {
@@ -25,7 +25,7 @@ describe("Component j-alert", () => {
         data.error('hello')
         data.warning('hello')
         data.success('hello')
-        const wrapper = mount(alert, {
+        const wrapper = mount(Alert, {
             propsData: {
                 data: data
             }

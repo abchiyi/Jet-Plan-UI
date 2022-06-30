@@ -1,12 +1,8 @@
-import ReScreenSize from "./ReScreenSize.js";
-import ScrollTo from "./ScrollTo.js";
-import Shadow from "./Shadow.js";
-import Focus from "./Focus.js";
-import AutoColor from "./autoColor.js";
-
-import {
-    installDirective
-} from "../lib";
+import ReScreenSize from "./ReScreenSize.js"
+import ScrollTo from "./ScrollTo.js"
+import Shadow from "./Shadow.js"
+import Focus from "./Focus.js"
+import AutoColor from "./autoColor.js"
 
 export {
     ReScreenSize,
@@ -14,12 +10,4 @@ export {
     ScrollTo,
     Shadow,
     Focus
-};
-
-const directives = [ReScreenSize, AutoColor, ScrollTo, Shadow, Focus];
-
-export default {
-    install(Vue) {
-        installDirective(Vue, directives);
-    },
-};
+}

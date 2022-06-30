@@ -13,14 +13,3 @@ export {
     Input,
     Slider
 }
-
-export default {
-    install (Vue) {
-        Vue.component(CheckBox.name, CheckBox)
-        Vue.component(Button.name, Button)
-        Vue.component(Switch.name, Switch)
-        Vue.component(Radio.name, Radio)
-        Vue.component(Input.name, Input)
-        Vue.component(Slider.name, Slider)
-    }
-}

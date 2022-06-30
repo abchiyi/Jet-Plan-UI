@@ -8,12 +8,3 @@ export {
     TransitionFade,
     TransitionScale,
 }
-
-export default {
-    install (Vue) {
-        Vue.component(TransitionFolded.name, TransitionFolded)
-        Vue.component(TransitionSlide.name, TransitionSlide)
-        Vue.component(TransitionFade.name, TransitionFade)
-        Vue.component(TransitionScale.name, TransitionScale)
-    }
-}

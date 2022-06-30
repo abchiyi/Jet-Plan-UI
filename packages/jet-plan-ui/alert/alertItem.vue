@@ -9,21 +9,17 @@
         <div class="content">
             <slot></slot>
         </div>
-        <j-button
-            @click="wangToClose"
-            text
-            hover
-        >
+        <j-button @click="wangToClose" text hover>
             <i class="bi bi-x"></i>
         </j-button>
     </j-row>
 </template>
 
 <script>
-import { Shadow } from '../tool/directives'
-import { Row } from '../gird'
-import { Button } from '../form'
-const NAME = 'j-alert-item'
+import { Shadow } from '../tool/directives';
+import { Row } from '../gird';
+import { Button } from '../inputs';
+const NAME = 'j-alert-item';
 export default {
     name: NAME,
     props: {
@@ -31,8 +27,8 @@ export default {
             type: String,
             default: 'info',
             validator: (v) => {
-                const value = ['info', 'error', 'success', 'warning']
-                return value.indexOf(v) !== -1
+                const value = ['info', 'error', 'success', 'warning'];
+                return value.indexOf(v) !== -1;
             },
         },
         _key: {
@@ -43,11 +39,11 @@ export default {
             default: 0,
         },
     },
-    mounted () {
+    mounted() {
         if (this.timeout) {
             setTimeout(() => {
-                this.wangToClose()
-            }, this.timeout)
+                this.wangToClose();
+            }, this.timeout);
         }
     },
     components: {
@@ -55,19 +51,19 @@ export default {
         'j-row': Row,
     },
     computed: {
-        classes () {
-            return [NAME, this.type]
+        classes() {
+            return [NAME, this.type];
         },
     },
     directives: {
         Shadow,
     },
     methods: {
-        wangToClose () {
-            this.$emit('wangToClose', this._key)
+        wangToClose() {
+            this.$emit('wangToClose', this._key);
         },
     },
-}
+};
 </script>
 
 <style>
@@ -107,8 +103,8 @@ export default {
     background: var(--warning);
 }
 
-.j-alert-item>.j-button,
-.j-alert-item>.content {
+.j-alert-item > .j-button,
+.j-alert-item > .content {
     margin: 0 4px;
 }
 </style>
