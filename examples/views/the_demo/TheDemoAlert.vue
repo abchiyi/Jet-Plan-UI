@@ -1,5 +1,4 @@
 <template>
-    <!-- TODO 页面存在多个条目需要设置页面 index -->
     <div id="the-demo-alert">
         <h1>Alert</h1>
         <p>用于简短的消息通知</p>
