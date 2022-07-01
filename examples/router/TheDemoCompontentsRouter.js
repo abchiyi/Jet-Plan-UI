@@ -10,7 +10,17 @@ export default [
         name: "Alert",
         path: "/alert",
         component: () => import(
-            '../views/the_demo/TheDemoAlert.vue')
+            '../views/the_demo/TheDemoAlert.vue'),
+        index: [
+            {
+                name: 'Alert',
+                to: '#doc-j-alert'
+            },
+            {
+                name: 'AlertData',
+                to: '#doc-alert-data'
+            },
+        ]
     },
     {
         name: "Bubble",

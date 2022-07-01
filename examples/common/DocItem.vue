@@ -1,14 +1,11 @@
 <template>
     <div :class="classes">
-        <component :is="titleIs">
+        <component :is="tag">
             {{ name }}
         </component>
-        <slot name="title"></slot>
-        <ul>
-            <slot>
-                <li style="color: var(--error)"><strong>Empty !</strong></li>
-            </slot>
-        </ul>
+        <slot>
+            <p style="color: var(--error)"><strong>Empty !</strong></p>
+        </slot>
     </div>
 </template>
 <script>
@@ -19,7 +16,7 @@ export default {
             type: String,
             //   required: true,
         },
-        titleIs: {
+        tag: {
             type: String,
             default: 'strong',
         },
@@ -33,19 +30,19 @@ export default {
         },
     },
     computed: {
-        classes() {
+        classes () {
             return [
                 'doc',
                 this.noDot ? 'no-dot' : '',
                 this.noPadding ? 'no-padding' : '',
-            ];
+            ]
         },
     },
-};
+}
 </script>
 
 <style>
-.doc > ul > li {
+.doc>ul>li {
     margin-top: 1em;
 }
 
@@ -53,13 +50,13 @@ export default {
     margin: unset;
 }
 
-.doc.no-dot > ol,
-.doc.no-dot > ul {
+.doc.no-dot>ol,
+.doc.no-dot>ul {
     list-style-type: none;
 }
 
-.doc.no-padding > ol,
-.doc.no-padding > ul {
+.doc.no-padding>ol,
+.doc.no-padding>ul {
     padding-left: unset;
 }
 

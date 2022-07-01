@@ -4,65 +4,8 @@
         <h1>Alert</h1>
         <p>用于简短的消息通知</p>
         <hr />
-
-        <h2>&lt;j-alert&gt;</h2>
-        <h3>Props：</h3>
-        <hr>
-
-        <!-- Doc <alert> -->
-        <doc-item name="data:">
-            <li>
-                <p>
-                    <high-lighter>data
-                    </high-lighter> type - AlertData, required
-                </p>
-                <p>需要传入
-                    <high-lighter>AlertData</high-lighter>对象
-                </p>
-            </li>
-        </doc-item>
-
-        <!-- Doc AlertData -->
-        <h2>AlertData()</h2>
-        <h3>methods:</h3>
-        <hr />
-        <doc-item name="info(), error(), warning(), success()">
-            <li>
-                <p><strong> 参数： </strong></p>
-                <ul>
-                    <li>
-                        <p>{String} Message</p>
-                    </li>
-                    <li>
-                        <p>{Number} Alert timeout</p>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <p><strong> 使用：</strong>
-                <ul>
-                    <li>
-                        <p>
-                            发出类型为
-                            <high-lighter>info</high-lighter>
-                            的 alert
-                        </p>
-                    </li>
-                </ul>
-                </p>
-            </li>
-        </doc-item>
-        <doc-item name="removeAll()">
-            <li>
-                <p>参数：无</p>
-            </li>
-            <li>
-                <p>使用：清除所有通知</p>
-            </li>
-        </doc-item>
         <!-- Alert Demo -->
         <h2>示例:</h2>
-        <hr />
         <demo-box
             title="j-alert"
             :code="`1`"
@@ -161,14 +104,88 @@
             </j-button>
         </demo-box>
 
-        <h2>在任意组件中发送通知：</h2>
-        <hr>
-        <p>可以在 main.js 中全局注册 <high-lighter>AlertData</high-lighter>，
-            将 &lt;alert&gt; 组件放置于合适的位置即可在任意组件中发送通知
-        </p>
-        <demo-box
-            title="全局注册 AlertData "
-            code='
+        <doc-item
+            name="<j-alert>:"
+            tag="h2"
+            id="doc-j-alert"
+        >
+            <hr>
+            <doc-item
+                name="Props:"
+                tag="h3"
+            >
+                <ul>
+                    <li>
+                        <strong>data:</strong>
+                        <p> type - { AlertData }, required
+                        </p>
+                        <p>传入 { AlertData } 对象用于控制如何发出通知 </p>
+                    </li>
+                </ul>
+            </doc-item>
+        </doc-item>
+
+        <doc-item
+            name="{AlertData}:"
+            tag="h2"
+            id="doc-alert-data"
+        >
+            <hr>
+            <doc-item
+                name="methods:"
+                tag="h3"
+            >
+                <ul>
+                    <li>
+                        <doc-item name="info(), error(), warning(), success()">
+                            <ul>
+                                <li>
+                                    <p> 参数：</p>
+                                    <ol>
+                                        <li>
+                                            <p>{String} Message</p>
+                                        </li>
+                                        <li>
+                                            <p>
+                                                {Number}/ms 设置通知超时自动关闭
+                                            </p>
+                                        </li>
+                                    </ol>
+                                </li>
+                                <li>
+                                    <p> 使用： 发出方法名对应类型的通知</p>
+                                </li>
+                            </ul>
+                        </doc-item>
+                    </li>
+                    <li>
+                        <doc-item name="removeAll()">
+                            <ul>
+                                <li>
+                                    <p>参数：无</p>
+                                </li>
+                                <li>
+                                    <p>使用：清除所有通知</p>
+                                </li>
+                            </ul>
+                        </doc-item>
+                    </li>
+                </ul>
+
+            </doc-item>
+        </doc-item>
+
+        <doc-item
+            name="在任意组件中发送通知："
+            tag="h2"
+        >
+            <hr>
+            <p>可以在 main.js 中全局注册 <high-lighter>AlertData</high-lighter>，
+                将 &lt;alert&gt; 组件放置于合适的位置即可在任意组件中发送通知
+            </p>
+            <demo-box
+                title="全局注册 AlertData "
+                code='
 import {
     AlertData
 } from "jet-plan-ui/alert"
@@ -186,7 +203,8 @@ createApp(BASE_COMPONENT)
     .mount("#app")
 
         '
-        />
+            />
+        </doc-item>
     </div>
 </template>
 
