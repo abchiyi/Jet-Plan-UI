@@ -9,7 +9,7 @@
                 <j-button
                     aria-label="Expand Code/展开代码"
                     text
-                    v-if="codeControl"
+                    v-if="codeControl && code"
                     hover
                     active
                     @click="expand_"
@@ -24,7 +24,13 @@
             </div>
         </div>
         <j-transition-folded>
-            <j-code-box can-copy :id="codeID" :code="code" v-show="value">
+            <j-code-box
+                v-if="code"
+                can-copy
+                :id="codeID"
+                :code="code"
+                v-show="value"
+            >
                 <template v-slot:icon-copy>
                     <i class="bi bi-files"></i>
                 </template>
@@ -59,7 +65,6 @@ ${this.$refs.showDemo.innerHTML}
         },
         code: {
             type: String,
-            required: true,
         },
         title: {
             type: String,
