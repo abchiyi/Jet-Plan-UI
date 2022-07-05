@@ -55,7 +55,7 @@
             </j-row>
         </div>
     </demo-box>
-    <component-documentation v-bind="docData" />
+    <component-documentation title-tag-props="h3" v-bind="docData" />
 </template>
 
 <script>

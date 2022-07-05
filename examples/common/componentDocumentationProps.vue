@@ -25,9 +25,6 @@ export default {
         },
     },
     methods: {
-        renderTitle() {
-            return [h('h2', null, ['Props:']), h('hr')];
-        },
         renderProps() {
             function handleTypeStyle(value) {
                 switch (typeof value) {
@@ -68,7 +65,7 @@ export default {
             {
                 class: ['doc'],
             },
-            [...this.renderTitle(), this.renderProps()]
+            [this.renderProps()]
         );
     },
 };

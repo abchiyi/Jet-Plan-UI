@@ -12,11 +12,19 @@ export default {
             type: Object,
             required: true,
         },
+        titleTagProps: {
+            type: String,
+            default: 'h2',
+        },
     },
     data() {
         return {};
     },
-    methods: {},
+    methods: {
+        renderPropsTitle() {
+            return [h(this.titleTagProps, null, ['Props:']), h('hr')];
+        },
+    },
     computed: {
         parseProps() {
             function parseType(types) {
@@ -56,6 +64,7 @@ export default {
     },
     render() {
         return h('div', {}, [
+            this.renderPropsTitle(),
             h(docProps, {
                 parseProps: this.parseProps,
                 description: this.description,

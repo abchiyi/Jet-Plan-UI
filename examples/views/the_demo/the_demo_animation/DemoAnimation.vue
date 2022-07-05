@@ -16,9 +16,9 @@
         <br />
         <demo-animation-fade></demo-animation-fade>
         <br />
-        <demo-animation-slide></demo-animation-slide>
-        <br />
         <demo-animation-folded></demo-animation-folded>
+        <br />
+        <demo-animation-slide></demo-animation-slide>
     </div>
 </template>
 <script>
