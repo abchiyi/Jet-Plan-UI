@@ -1,22 +1,20 @@
 <template>
     <div>
-        <p>
-            <strong>{{ value }}</strong>
-        </p>
-        <input min="0" v-model="value" id="range" type="range" />
-        <slider v-model="value"></slider>
-        <slider v-model="value"></slider>
-        <slider v-model="value"></slider>
-        <slider v-model="value" disabled></slider>
-        <j-base-shape round border class="test"></j-base-shape>
+        <testDoc :component="Button"></testDoc>
     </div>
 </template>
 <script>
+import { Row } from '../../../packages/jet-plan-ui';
+import testDoc from '../../common/componentDocumentation.vue';
 export default {
     name: 'the-test-page',
+    components: {
+        testDoc,
+    },
     data() {
         return {
             value: 0,
+            Button: Row,
         };
     },
     methods: {

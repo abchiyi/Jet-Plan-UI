@@ -218,3 +218,12 @@ export function propInit (_type, _default) {
 export function propInitBoolean (default_value) {
     return propInit(Boolean, default_value)
 }
+
+export function validatorRange (range) {
+    return function (value) {
+        if (value !== undefined) {
+            return range.indexOf(value.toLowerCase()) !== -1
+        }
+        return range
+    }
+}
