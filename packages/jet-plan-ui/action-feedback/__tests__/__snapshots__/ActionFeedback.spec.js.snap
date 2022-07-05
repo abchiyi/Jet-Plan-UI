@@ -1,26 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ActionFeedback.vue Style test 1`] = `
-<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;">Submit<transition-group-stub></transition-group-stub>
+<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 2`] = `
-<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;">Submit<transition-group-stub></transition-group-stub>
+<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 3`] = `
-<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;">Submit<transition-group-stub></transition-group-stub>
+<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 4`] = `
-<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: var(--mask); --color-hover: var(--mask); --mask-opacity: 0.5;">Submit<transition-group-stub></transition-group-stub>
+<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;
 
 exports[`ActionFeedback.vue Style test 5`] = `
-<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--color-focus: #5a7fa2; --color-hover: #a3b3d4; --mask-opacity: 0.5;">Submit<transition-group-stub></transition-group-stub>
+<div class="j-base-action j-action-feedback" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" coloractive="#263238" colorfocus="#5a7fa2" colorhover="#a3b3d4">Submit<transition-group-stub></transition-group-stub>
 </div>
 `;

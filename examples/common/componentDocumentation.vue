@@ -8,6 +8,10 @@ export default {
             type: Object,
             required: true,
         },
+        description: {
+            type: Object,
+            required: true,
+        },
     },
     data() {
         return {};
@@ -54,6 +58,7 @@ export default {
         return h('div', {}, [
             h(docProps, {
                 parseProps: this.parseProps,
+                description: this.description,
             }),
         ]);
     },

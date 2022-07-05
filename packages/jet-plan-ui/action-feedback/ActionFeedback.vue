@@ -1,8 +1,5 @@
 <script>
 import { propInit, propInitBoolean } from '../tool/lib';
-function propColor(defaultColor) {
-    return propInit(String, defaultColor);
-}
 import baseAction from './baseAction.vue';
 import mask from './ActionFeedbackMask.vue';
 import { h, TransitionGroup } from 'vue';
@@ -13,12 +10,6 @@ export default {
         focus: propInitBoolean(false),
         hover: propInitBoolean(false),
         active: propInitBoolean(false),
-        opacity: propInit([String, Number], 0.5),
-
-        // custom color
-        colorActive: propColor('var(--mask)'),
-        colorFocus: propColor('var(--mask)'),
-        colorHover: propColor('var(--mask)'),
     },
     data() {
         return {
@@ -37,13 +28,6 @@ export default {
                 this.data_focus && this.focus ? 'focus' : '',
                 this.data_active && this.active ? 'active' : '',
             ];
-        },
-        styles() {
-            return {
-                '--color-focus': this.colorFocus,
-                '--color-hover': this.colorHover,
-                '--mask-opacity': this.opacity,
-            };
         },
         // Render
         renderDefault() {
@@ -76,7 +60,7 @@ export default {
                 data: {
                     opacity: this.opacity,
                     el: this.$refs.self,
-                    color: this.colorActive,
+                    color: 'var(--mask)',
                     event: event,
                 },
                 key: this.key++,
@@ -114,7 +98,6 @@ export default {
             baseAction,
             {
                 class: [...this.classes],
-                style: this.styles,
 
                 onActive_from: this.handlerActive,
                 onActive_to: this.handlerActive,
@@ -160,15 +143,15 @@ export default {
 
 /* Keyboard focus */
 .j-action-feedback.focus::after {
-    background-color: var(--color-focus);
+    background-color: var(--mask);
 }
 /* Mouse hover */
 .j-action-feedback.hover::after {
-    background-color: var(--color-hover);
+    background-color: var(--mask);
 }
 .j-action-feedback.focus::after,
 .j-action-feedback.hover::after {
-    opacity: var(--mask-opacity);
+    opacity: 0.5;
 }
 
 @supports (-webkit-tap-highlight-color: #ffffff00) {
