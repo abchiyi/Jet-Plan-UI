@@ -24,7 +24,7 @@
 <script>
 import pdn from '../../../common/mix/popDemoName';
 import DemoAnimationFade from './DemoAnimationFade.vue';
-import DemoAnimationSlide from './DemoAnimationSlide.vue';
+import DemoAnimationSlide from './DemoAnimationSlide';
 import DemoAnimationFolded from './DemoAnimationFolded.vue';
 
 export default {

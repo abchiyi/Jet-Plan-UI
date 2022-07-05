@@ -32,13 +32,7 @@ export default {
                 }
             }
             function parseValidator(prop) {
-                if (prop.validator !== undefined) {
-                    try {
-                        return prop.validator();
-                    } catch (TypeError) {
-                        return 'rangeUndefined';
-                    }
-                }
+                return prop.validator();
             }
 
             const PROPS = this.component.props;
@@ -48,7 +42,13 @@ export default {
                 TEMP_PROPS[key] = {};
                 TEMP_PROPS[key].default = prop.default;
                 TEMP_PROPS[key].type = parseType(prop.type);
-                TEMP_PROPS[key].range = parseValidator(prop);
+                try {
+                    TEMP_PROPS[key].range = parseValidator(prop);
+                } catch (error) {
+                    if (typeof prop.validator == 'function') {
+                        console.warn(`Prop:${key} - validator need back value`);
+                    }
+                }
                 TEMP_PROPS[key].required = Boolean(prop.required);
             }
             return TEMP_PROPS;

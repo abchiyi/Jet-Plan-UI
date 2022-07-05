@@ -4,10 +4,9 @@
         <p>组件库支持完全引入和部分引入</p>
         <hr />
         <h2>完整引入</h2>
-        <j-code-box
-            can-copy
+        <demo-box
+            title="main.js"
             :code="`
-
 import { resolveComponent, createApp, h } from 'vue'
 
 // 导入组件库和主题
@@ -25,10 +24,7 @@ createApp(BASE_COMPONENT)
     .use(ui)
     .mount('#app')
         `"
-        >
-            <template v-slot:icon-copy>
-                <i class="bi bi-clipboard"></i> </template
-        ></j-code-box>
+        />
         <h3>部分引入</h3>
         <!-- TODO  部分引入-->
     </div>
