@@ -5,9 +5,9 @@
         <hr />
         <div id="doc">
             <!-- j-col -->
-            <doc-item name="<j-col> :" title-is="h2">
+            <doc-item name="<j-col> :" tag="h2">
                 <li id="props">
-                    <doc-item title-is="h3" name="Props:">
+                    <doc-item tag="h3" name="Props:">
                         <li id="props-j-col-tag">
                             <p>
                                 <high-lighter>tag</high-lighter>
@@ -62,9 +62,9 @@
                 </li>
             </doc-item>
             <!-- j-row -->
-            <doc-item name="<j-row> :" title-is="h2">
+            <doc-item name="<j-row> :" tag="h2">
                 <li>
-                    <doc-item title-is="h3" name="Props:">
+                    <doc-item tag="h3" name="Props:">
                         <li id="props-j-row-tag">
                             <p>
                                 <high-lighter>tag</high-lighter>

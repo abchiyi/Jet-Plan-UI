@@ -15,9 +15,9 @@
                     <template v-slot:text> 切换色彩 </template>
                     <j-switch id="color-switch" v-model="dark" />
                 </j-control-bar>
-                <j-cube v-auto-color :class="['light']" :dark="dark"
-                    >Test Text</j-cube
-                >
+                <j-cube v-auto-color class="light" :dark="dark">
+                    Test Text
+                </j-cube>
             </div>
         </demo-box>
     </article>
@@ -50,7 +50,7 @@ div{
 };
 </script>
 <style>
-.j-cube.light {
+/* .j-cube.light {
     color: inherit;
-}
+} */
 </style>

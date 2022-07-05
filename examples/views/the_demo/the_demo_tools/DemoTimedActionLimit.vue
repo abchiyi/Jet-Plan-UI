@@ -1,9 +1,9 @@
 <template>
     <article id="time-action-limit">
-        <doc-item name="TimedActionLimit:" title-is="h2" no-dot no-padding>
+        <doc-item name="TimedActionLimit:" tag="h2" no-dot no-padding>
             <p>限制单位时间内所能执行操作的次数。</p>
             <hr />
-            <doc-item name="Args:" title-is="h3">
+            <doc-item name="Args:" tag="h3">
                 <li>
                     <high-lighter>timeout:Number</high-lighter>
                     动作等待时间，单位为ms。
@@ -21,7 +21,7 @@
                 </li>
             </doc-item>
 
-            <doc-item name="Methods:" title-is="h3">
+            <doc-item name="Methods:" tag="h3">
                 <li>
                     <high-lighter>.action(callback)</high-lighter>
                     将需要执行的函数作为参数传入，即可对该函数进行单位时间执行次数限制。
@@ -37,7 +37,7 @@
             </doc-item>
         </doc-item>
 
-        <doc-item name="示例:" title-is="h2" no-padding no-dote>
+        <doc-item name="示例:" tag="h2" no-padding no-dote>
             <p>
                 在下方 Demo 中限制为
                 2s内可执行2次操作,你需要连续点击它来对比两种模式的差异

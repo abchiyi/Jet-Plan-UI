@@ -44,6 +44,5 @@ export default {
 .j-cube.dark {
     background-color: var(--secondary);
     color: inherit;
-    font-weight: bolder;
 }
 </style>

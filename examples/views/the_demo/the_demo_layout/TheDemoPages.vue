@@ -4,7 +4,7 @@
         <p>mousseUI 提供一些预设的页面布局来进行快速页面设置</p>
         <hr />
         <div id="p1-doc">
-            <doc-item title-is="h2" name="预设1：">
+            <doc-item tag="h2" name="预设1：">
                 <li id="describes-p1">
                     <p>上中下布局+侧栏，兼容移动设备</p>
                     <p>在移动设备宽度下侧栏由停靠转为浮动</p>

@@ -1,10 +1,10 @@
 <template>
     <article id="shadow">
-        <doc-item name="v-shadow:" title-is="h2">
+        <doc-item name="v-shadow:" tag="h2">
             <li>
                 <p>
                     <high-lighter>:arg</high-lighter>
-                    : range - top | nottom | left | right
+                    : range - top | button | left | right
                 </p>
             </li>
             <li>
@@ -15,11 +15,7 @@
                 设置阴影强度,建议1~30,最大值可超过30
             </li>
         </doc-item>
-        <j-control-bar
-            :active="false"
-            for-id="demo-checkbox"
-            :reverse="toReverse"
-        >
+        <j-control-bar :active="false" for-id="demo-checkbox">
             <template v-slot:text>Checkbox</template>
             <j-slider max="30" v-model="value" />
         </j-control-bar>
@@ -34,7 +30,7 @@
 </template>
 <script>
 export default {
-    name: 'v-shaow',
+    name: 'v-shadow',
     data: () => {
         return {
             code: `

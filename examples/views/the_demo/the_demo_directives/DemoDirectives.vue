@@ -6,7 +6,7 @@
 
         <demo-directives-focus />
         <br />
-        <demo-directives-scroll-to />
+        <!-- <demo-directives-scroll-to /> -->
         <br />
         <demo-directives-shadow />
         <br />
@@ -18,7 +18,7 @@
 <script>
 import pdn from '../../../common/mix/popDemoName';
 import DemoDirectivesFocus from './DemoDirectivesFocus.vue';
-import DemoDirectivesScrollTo from './DemoDirectivesScrollTo.vue';
+// import DemoDirectivesScrollTo from './DemoDirectivesScrollTo.vue';
 import DemoDirectivesShadow from './DemoDirectivesShadow.vue';
 import DemoDirectivesReScreenSize from './DemoDirectivesReScreenSize.vue';
 import DemoDirectivesAutoColor from './DemoDirectivesAutoColor.vue';
@@ -27,7 +27,7 @@ export default {
     name: 'the-demo-directives',
     components: {
         DemoDirectivesFocus,
-        DemoDirectivesScrollTo,
+        // DemoDirectivesScrollTo,
         DemoDirectivesShadow,
         DemoDirectivesAutoColor,
         DemoDirectivesReScreenSize,

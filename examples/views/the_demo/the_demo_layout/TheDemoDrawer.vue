@@ -4,7 +4,7 @@
         <p>可从屏幕四个方向展开，用于侧栏，菜单栏以及对话框。</p>
         <p>抽屉组件仅提供基于边框的定位，组件具体位置需手动指定</p>
         <hr />
-        <doc-item name="Props:" title-is="h2">
+        <doc-item name="Props:" tag="h2">
             <li>
                 <p>
                     <high-lighter>j-drawer</high-lighter>
@@ -20,7 +20,7 @@
                 <p>控制展开方向</p>
             </li>
         </doc-item>
-        <doc-item name="Slots:" title-is="h2">
+        <doc-item name="Slots:" tag="h2">
             <li><high-lighter>default</high-lighter> - 仅有默认插槽</li>
         </doc-item>
         <h2>示例</h2>

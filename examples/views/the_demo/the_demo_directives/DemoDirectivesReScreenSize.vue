@@ -1,6 +1,6 @@
 <template>
     <article id="re-screen-size">
-        <doc-item name="v-re-screen-size:" title-is="h2">
+        <doc-item name="v-re-screen-size:" tag="h2">
             <li>
                 <p>
                     <high-lighter>="value"</high-lighter>
@@ -23,7 +23,7 @@
                     : type - Object
                 </p>
                 <p>包含了当前视窗尺寸信息的对象</p>
-                <doc-item name="reSizeObj:" title-is="h3">
+                <doc-item name="reSizeObj:" tag="h3">
                     <template v-slot:title>
                         <p>reSizeObj 包含信息</p>
                     </template>

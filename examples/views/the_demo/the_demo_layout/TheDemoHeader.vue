@@ -4,7 +4,7 @@
         <p>页头浮动栏,始终悬浮于内容上方的透明容器</p>
         <hr />
         <div id="doc">
-            <doc-item title-is="h2" name="<j-header>:">
+            <doc-item tag="h2" name="<j-header>:">
                 <li id="slots">
                     <doc-item name="Slots:">
                         <li id="slots-default">

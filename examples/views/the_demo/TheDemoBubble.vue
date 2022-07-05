@@ -140,7 +140,7 @@
             </li>
         </doc-item>
 
-        <doc-item name="Slots:" title-is="h2">
+        <doc-item name="Slots:" tag="h2">
             <template v-slot:title>
                 <hr />
             </template>

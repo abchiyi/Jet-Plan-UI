@@ -1,20 +1,15 @@
 <template>
     <div>
-        <testDoc :component="Button"></testDoc>
+        <h1 v-focus="log">Test</h1>
     </div>
 </template>
 <script>
-import { ActionFeedback } from '../../../packages/jet-plan-ui';
-import testDoc from '../../common/componentDocumentation.vue';
 export default {
     name: 'the-test-page',
-    components: {
-        testDoc,
-    },
+    components: {},
     data() {
         return {
             value: 0,
-            Button: ActionFeedback,
         };
     },
     methods: {

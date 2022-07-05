@@ -4,7 +4,7 @@
         <p>全屏阴影遮罩</p>
         <hr />
         <div id="doc">
-            <doc-item title-is="h2" name="<full-screen-mask>:">
+            <doc-item tag="h2" name="<full-screen-mask>:">
                 <li><p>组件无接口</p></li>
             </doc-item>
         </div>

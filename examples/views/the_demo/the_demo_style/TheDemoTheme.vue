@@ -17,7 +17,7 @@
         <doc-item
             id="theme-install-use"
             name="使用主题"
-            title-is="h2"
+            tag="h2"
             noPadding
             noDot
         >
@@ -91,7 +91,7 @@ ui.$jetTheme.install(
             </li>
         </doc-item>
         <!-- 创建主题 -->
-        <doc-item id="theme-create" name="创建主题" title-is="h2" noPadding>
+        <doc-item id="theme-create" name="创建主题" tag="h2" noPadding>
             <template v-slot:title>
                 <p>在这里讲述了如何快速定制属于你的主题</p>
                 <hr />
@@ -224,7 +224,7 @@ ui.$jetTheme.installTheme(
         <doc-item
             id="theme-auto-dark-mode"
             name="创建自动深色模式"
-            title-is="h2"
+            tag="h2"
             noPadding
         >
             <template v-slot:title>

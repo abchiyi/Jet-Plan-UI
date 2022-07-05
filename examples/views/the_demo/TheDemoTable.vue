@@ -4,7 +4,7 @@
         <p>用于各种表格数据的展示</p>
         <hr />
 
-        <doc-item name="Props:" title-is="h2">
+        <doc-item name="Props:" tag="h2">
             <li id="table-data">
                 <p><high-lighter>data</high-lighter>: type: object, required</p>
                 <p>

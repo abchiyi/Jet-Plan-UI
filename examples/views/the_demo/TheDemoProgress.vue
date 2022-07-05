@@ -4,7 +4,7 @@
         <doc-item
             id="describes"
             name="<j-progress>:"
-            title-is="h1"
+            tag="h1"
             no-dot
             no-padding
         >
@@ -13,7 +13,7 @@
         <hr />
 
         <!-- Api -->
-        <doc-item name="Props:" title-is="h2">
+        <doc-item name="Props:" tag="h2">
             <li id="prop-value">
                 <p>
                     <high-lighter>value</high-lighter>

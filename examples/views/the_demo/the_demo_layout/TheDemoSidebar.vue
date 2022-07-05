@@ -5,7 +5,7 @@
         <p>用于在屏幕两侧展示可折叠内容</p>
         <hr />
         <div id="doc">
-            <doc-item title-is="h2" name="<j-sidebar>：">
+            <doc-item tag="h2" name="<j-sidebar>：">
                 <li id="props">
                     <doc-item name="props:">
                         <li id="prop-mode-value">

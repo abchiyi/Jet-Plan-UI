@@ -1,21 +1,16 @@
 <template>
     <article id="focus">
-        <doc-item name="v-focus:" title-is="h2">
-            <template v-slot:title>
-                <p>判断操作是否聚焦于某个元素。</p>
-                <hr />
-            </template>
-            <li id="v-focus-value">
-                <doc-item name="Value：">
+        <doc-item name="v-focus:" tag="h2">
+            <p>判断操作是否聚焦于某个元素。</p>
+            <hr />
+            <doc-item name="Value:">
+                <ul>
                     <li>
-                        <p>
-                            <high-lighter>="value"</high-lighter>
-                            : type - Function
-                        </p>
+                        <p><high-lighter> ="Function"</high-lighter></p>
                         <p>接受一个无参数回调函数，会在点击元素外时执行回调</p>
                     </li>
-                </doc-item>
-            </li>
+                </ul>
+            </doc-item>
         </doc-item>
         <demo-box title="v-focus" :code="code">
             <j-row X="center">
@@ -26,12 +21,43 @@
                             value = true;
                         }
                     "
-                    style="width: 150px; padding: 0 10px"
+                    style="width: 200px; padding: 0 10px"
                 >
                     {{ value ? 'NowClickOutside' : 'NowClickMe' }}
                 </j-cube>
             </j-row>
         </demo-box>
+        <demo-box
+            title="Html"
+            code='
+<div
+    style="height=100px;width=100px;background=red;"
+    @click="onClick"
+    v-focus="onblur"
+    >
+    <p>Test</p>
+</div>'
+        />
+        <demo-box
+            title="Script"
+            code="
+export default{
+    data(){
+        return {
+            value:false
+        }
+    },
+    methods:{
+        onClick(){
+            this.value=true;
+        },
+        onblur(){
+            this.value=false;
+        }
+    }
+}
+        "
+        />
     </article>
 </template>
 <script>
@@ -41,6 +67,7 @@ export default {
         return {
             code: `
 // Script
+let value;
 function onblur () {
     this.value = false;
 };

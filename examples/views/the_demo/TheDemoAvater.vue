@@ -3,7 +3,7 @@
         <h1>Avater</h1>
         <p>用于图形, 图标，头像</p>
         <hr />
-        <doc-item name="Props:" title-is="h2">
+        <doc-item name="Props:" tag="h2">
             <li id="avater-border">
                 <p>
                     <high-lighter>border</high-lighter>: type - Boolean, default
@@ -33,7 +33,7 @@
                 <p>设置组件背景色</p>
             </li>
         </doc-item>
-        <doc-item name="Slots:" title-is="h2">
+        <doc-item name="Slots:" tag="h2">
             <li>
                 <p><high-lighter>default</high-lighter>: 仅有默认插槽</p>
             </li>
