@@ -45,7 +45,8 @@ Only one child node is allowed !
 ${this.$refs.showDemo.innerHTML}
         `);
         }
-
+    },
+    created() {
         if (!this.isDemo) {
             this.codeControl = false;
             this.value = true;
