@@ -12,7 +12,7 @@
                 </ul>
             </doc-item>
         </doc-item>
-        <demo-box title="v-focus" :code="code">
+        <demo-box title="v-focus">
             <j-row X="center">
                 <j-cube
                     v-focus="onblur"
@@ -65,17 +65,6 @@ export default {
     name: 'demo-directives-focus',
     data: () => {
         return {
-            code: `
-// Script
-let value;
-function onblur () {
-    this.value = false;
-};
-//Html
-<j-cube v-focus="onblur" @click="() => {value = true}" 1>
-    {{ value ? 'NowClickOutside' : 'NowClickMe' }}
-</j-cube>
-`,
             value: false,
         };
     },
