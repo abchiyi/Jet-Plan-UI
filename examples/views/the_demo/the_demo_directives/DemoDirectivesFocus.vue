@@ -6,7 +6,11 @@
             <doc-item name="Value:">
                 <ul>
                     <li>
-                        <p><high-lighter> ="Function"</high-lighter></p>
+                        <p>
+                            <high-lighter>
+                                ="function()=>{CallBack}"</high-lighter
+                            >
+                        </p>
                         <p>接受一个无参数回调函数，会在点击元素外时执行回调</p>
                     </li>
                 </ul>
