@@ -24,18 +24,27 @@ export default {
             return [h('h2', null, ['Props:']), h('hr')];
         },
         renderProps() {
+            function handleTypeStyle(value) {
+                switch (typeof value) {
+                    case 'string':
+                        return `"${value}"`;
+                    default:
+                        return value;
+                }
+            }
+
+            function elP(content) {
+                return h('p', null, content);
+            }
             const props = Object.keys(this.parseProps).map((key) => {
                 const prop = this.parseProps[key];
                 return h('li', null, [
-                    // Name
                     h('strong', null, key + ':'),
-                    // Type
-                    h('p', null, `Type - ${handleType(prop.type)}`),
-                    // Required
-                    prop.required ? h('p', null, `Required: True`) : '',
-                    // Range
-                    prop.range
-                        ? h('p', null, `Range - ${handleRange(prop.range)}`)
+                    elP(`Type - ${handleType(prop.type)}`),
+                    prop.required ? elP('Required: True') : '',
+                    prop.range ? elP(`Range - ${handleRange(prop.range)}`) : '',
+                    prop.default
+                        ? elP(`Default - ${handleTypeStyle(prop.default)}`)
                         : '',
                 ]);
             });
@@ -57,7 +66,7 @@ export default {
 
 <style>
 .doc ul > li {
-    margin-top: 1em;
+    margin-top: 1.8em;
 }
 
 .doc li::marker {

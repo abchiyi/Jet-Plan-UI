@@ -4,7 +4,7 @@
     </div>
 </template>
 <script>
-import { Row } from '../../../packages/jet-plan-ui';
+import { ActionFeedback } from '../../../packages/jet-plan-ui';
 import testDoc from '../../common/componentDocumentation.vue';
 export default {
     name: 'the-test-page',
@@ -14,7 +14,7 @@ export default {
     data() {
         return {
             value: 0,
-            Button: Row,
+            Button: ActionFeedback,
         };
     },
     methods: {
