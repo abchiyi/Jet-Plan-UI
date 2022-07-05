@@ -43,7 +43,7 @@ export default {
                     elP(`Type - ${handleType(prop.type)}`),
                     prop.required ? elP('Required: True') : '',
                     prop.range ? elP(`Range - ${handleRange(prop.range)}`) : '',
-                    prop.default
+                    prop.default != undefined
                         ? elP(`Default - ${handleTypeStyle(prop.default)}`)
                         : '',
                 ]);
