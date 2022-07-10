@@ -38,12 +38,11 @@ export default {
             }
             const props = Object.keys(this.parseProps).map((key) => {
                 const prop = this.parseProps[key];
-                function getPropDescription() {
+                function getPropDescription(description) {
                     try {
-                        return this.description.props[key];
+                        return elP(description.props[key]);
                     } catch (error) {
                         console.warn(`Prop :'${key}' - need description`);
-                        return '';
                     }
                 }
 
@@ -55,7 +54,7 @@ export default {
                     prop.default != undefined
                         ? elP(`Default - ${handleTypeStyle(prop.default)}`)
                         : '',
-                    getPropDescription(),
+                    getPropDescription(this.description),
                 ]);
             });
 
