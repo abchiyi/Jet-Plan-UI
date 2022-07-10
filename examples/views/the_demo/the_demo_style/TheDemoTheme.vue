@@ -10,7 +10,7 @@
 
         <h2>主题切换器：</h2>
         <demo-box code="<j-all-theme />" expand title="theme-switcher">
-            <j-all-theme @setTheme="log" />
+            <j-all-theme @setTheme="onSetTheme" />
         </demo-box>
 
         <!-- 安装&使用主题 -->
@@ -267,8 +267,8 @@ export default {
     name: 'the-demo-style',
     mixins: [pdn],
     methods: {
-        log(e) {
-            console.log(e);
+        onSetTheme(themeName) {
+            this.$jetAlert.info(`主题设置为 - ${themeName}`, 2000);
         },
     },
 };
