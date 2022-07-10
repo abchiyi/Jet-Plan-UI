@@ -1,5 +1,5 @@
 <template>
-    <div v-auto-color class="j-avater" :style="styles" :class="classes">
+    <div v-auto-color class="j-avatar" :style="styles" :class="classes">
         <div class="content">
             <slot></slot>
         </div>
@@ -9,7 +9,7 @@
 <script>
 import { AutoColor } from '../tool/directives';
 export default {
-    name: 'j-avater',
+    name: 'j-avatar',
     props: {
         border: {
             type: Boolean,
@@ -46,40 +46,40 @@ export default {
 </script>
 
 <style >
-.j-avater,
-.j-avater * {
+.j-avatar,
+.j-avatar * {
     transition: 0.5s var(--ease-in-out), outline-width 0s;
 }
 
-.j-avater {
+.j-avatar {
     background: var(--color);
     min-height: var(--size);
     min-width: var(--size);
     display: inline-block;
 }
 
-.j-avater .content {
+.j-avatar .content {
     justify-content: center;
     align-items: center;
     height: var(--size);
     display: flex;
 }
 
-.j-avater.border {
+.j-avatar.border {
     outline: 2px solid var(--border);
 }
 
-.j-avater img,
-.j-avater {
+.j-avatar img,
+.j-avatar {
     border-radius: var(--m-radius);
 }
 
-.j-avater.circle img,
-.j-avater.circle {
+.j-avatar.circle img,
+.j-avatar.circle {
     border-radius: var(--size);
 }
 
-.j-avater img {
+.j-avatar img {
     height: var(--size);
     width: var(--size);
 }
