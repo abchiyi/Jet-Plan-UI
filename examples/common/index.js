@@ -9,6 +9,7 @@ import DocItem from './DocItem.vue'
 import buttonGithub from './button_github.vue'
 import buttonGitee from './button_gitee.vue'
 import componentDocumentation from "./componentDocumentation.vue"
+import infoText from './infoText.vue'
 
 function setCookie (name, value) {
     let Days = 30
@@ -57,7 +58,8 @@ const components = {
     DocItem,
     buttonGithub,
     buttonGitee,
-    componentDocumentation
+    componentDocumentation,
+    infoText
 }
 export {
     redColorModeCookie,

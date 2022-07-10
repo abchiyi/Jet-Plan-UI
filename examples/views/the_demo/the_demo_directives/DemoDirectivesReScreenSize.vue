@@ -1,71 +1,71 @@
 <template>
-    <article id="re-screen-size">
+    <article v-re-screen-size="log" id="re-screen-size">
         <doc-item name="v-re-screen-size:" tag="h2">
-            <li>
-                <p>
-                    <high-lighter>="value"</high-lighter>
-                    : type - Function(el,reSizeObj)
-                </p>
-                <p>
-                    接受一个有参数回调函数，当屏幕尺寸发生变动时（旋转屏幕或调节窗口大小），函数将会被调用
-                </p>
-            </li>
-            <li id="re-screen-size-value-callback-el">
-                <p>
-                    <high-lighter>el</high-lighter>
-                    : type - Element
-                </p>
-                <p>指令所在的元素</p>
-            </li>
-            <li id="re-screen-size-value-callback-reSizeObj">
-                <p>
-                    <high-lighter>reSizeObj</high-lighter>
-                    : type - Object
-                </p>
-                <p>包含了当前视窗尺寸信息的对象</p>
-                <doc-item name="reSizeObj:" tag="h3">
-                    <template v-slot:title>
-                        <p>reSizeObj 包含信息</p>
-                    </template>
-                    <li id="resize-obj-width">
-                        <p>
-                            <high-lighter>width</high-lighter>
-                            : type - Number
-                        </p>
-                        <p>当前屏幕可视宽度，单位为 “px”</p>
-                    </li>
-                    <li id="resize-obj-col">
-                        <p>
-                            <high-lighter>col</high-lighter>
-                            : type - Obj
-                        </p>
+            <ul>
+                <li>
+                    <p><strong>Value:</strong></p>
+                    <p>
+                        <high-lighter>
+                            ="function(el,value)=>{CallBack}"
+                        </high-lighter>
+                    </p>
+                    <p>
+                        接受一个有参数回调函数，当屏幕尺寸发生变动时（旋转屏幕或调节窗口大小），函数将会被调用
+                    </p>
+                </li>
+            </ul>
+            <h3 class="text-hint">参数详解：</h3>
+            <j-code-box
+                code='
+// CallBack Function
+(el, Value)=>{
+    el // 元素节点
+    value // 屏幕参数信息
 
-                        <p>
-                            包含所有屏幕宽度范围的对象，对应屏幕宽度的属性将会被设置为true
-                        </p>
-                        <p>
-                            类似这样：
-                            <j-code-box
-                                code="{xs: false, sm: false, md: false, lg: false, xl: true}"
-                            />
-                        </p>
-                    </li>
-                    <li id="resize-obj-active-col">
-                        <p>
-                            <high-lighter>activeCol</high-lighter>
-                            : type - String, range - [ "xs", "sm", "md",
-                            "lg","xl"]
-                        </p>
-                        <p>当前屏幕宽度所属范围</p>
-                    </li>
-                </doc-item>
-            </li>
+    console.log(value)
+}
+
+>>---------Console----------
+>>  {
+        "activeCol": "xl", // 当前所处的屏幕宽度范围.
+        "width": 1407, // 当前屏幕宽度/px
+        "height": 1002, // 当前屏幕高度/px
+        "col": { // 当前所处的屏幕宽度范围
+            "xs": false,
+            "sm": false,
+            "md": false,
+            "lg": false,
+            "xl": true
+        }
+        // 验证屏幕宽度是否在指定的范围中
+        function contains(
+            Array, // 包含宽度字符的序列，例如 ["xl", "lg"]
+            (Boolean)=>{CallBack} // 当前屏幕宽度在以上序列中时回调值为 true
+        )
+    }
+                    '
+            />
         </doc-item>
         <demo-box
-            title="v-re-screen-size"
-            :code="code"
-            :expand="true"
-        ></demo-box>
+            title="Html"
+            code='<div v-re-screen-size="callBack">Test</div>'
+        />
+        <demo-box
+            title="Script"
+            code="
+export default{
+    methods:{
+        callBack(el,value){
+            console.log(el)
+            console.log(value)
+        }
+    }
+}
+        "
+        />
+        <info-text
+            >尝试改变屏幕宽度你将能看见关于屏幕宽度的提示，在控制台中能看见相应的输出</info-text
+        >
     </article>
 </template>
 <script>
@@ -73,16 +73,18 @@ export default {
     name: 're-screen-size',
     data: () => {
         return {
-            code: `// javascript
-function test(el,screenSizeInfo){
-    console.log(el);
-    console.log(screenSizeInfo);
-};
-// HTML
-<body>
-    <div v-reScreenSize=screenSizeInfo ></div>
-</body>`,
+            oldCol: undefined,
         };
+    },
+    methods: {
+        log(el, value) {
+            el;
+            if (this.oldCol != value.activeCol) {
+                this.$jetAlert.info(`Screen Col - ${value.activeCol}`, 1500);
+                console.log(value);
+            }
+            this.oldCol = value.activeCol;
+        },
     },
 };
 </script>
