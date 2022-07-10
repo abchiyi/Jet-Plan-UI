@@ -3,7 +3,6 @@ const NAME = 'j-slider';
 import { h } from 'vue';
 import { getOffset } from '../tool/lib/dom';
 import { TimedActionLimit } from '../tool/lib';
-// import { bubble } from '../bubble';
 function touchEventCompatible(event) {
     if (event.type.indexOf('touch') != -1) {
         return event.touches[0];
@@ -13,9 +12,14 @@ function touchEventCompatible(event) {
 export default {
     name: NAME,
     mounted() {
+        // 计算拨杆尺寸，设置限位
         this.thumbSize = getOffset(this.$refs.thumb);
         this.nowPosition = this.thumbSize.elWidth / 2;
-        this.updateModelValuePercentage(this.modelValue);
+
+        // 计算默认值保证初始加载时拨杆处于正确位置
+        this.valueToPercentage(this.modelValue);
+
+        // 设置动画启停模式
         this.TAL.setCooledAlarm(() => {
             this.transitionOn();
         });
@@ -36,19 +40,19 @@ export default {
     },
     props: {
         modelValue: {
-            type: [Number, String],
+            type: [Number],
             required: true,
         },
         min: {
-            type: [Number, String],
+            type: [Number],
             default: 0,
         },
         max: {
-            type: [Number, String],
+            type: [Number],
             default: 100,
         },
         step: {
-            type: [Number, String],
+            type: [Number],
             default: 0.1,
         },
         disabled: {
@@ -57,63 +61,39 @@ export default {
         },
     },
     methods: {
-        trackStart(event) {
-            this.transitionOn();
-            this.updatePosition(touchEventCompatible(event));
+        debug() {
+            const { max, min, step } = this;
+            console.log(`Min:${min},Max:${max},Step:${step}`);
+            console.log(`Range:${max - min}`);
+            console.log(this.percentage * 100 + '%');
+            console.log(this.value);
         },
-        trackMove(event) {
-            this.transitionOff();
-            this.updatePosition(touchEventCompatible(event));
-        },
-        trackEnd() {
-            document.removeEventListener('mousemove', this.transitionOff);
-            document.removeEventListener('mousemove', this.trackMove);
-            document.removeEventListener('mouseup', this.trackEnd);
 
-            document.removeEventListener('touchmove', this.transitionOff);
-            document.removeEventListener('touchmove', this.trackMove);
-            document.removeEventListener('touchend', this.trackEnd);
-            document.removeEventListener('touchcancel', this.trackEnd);
-            this.transitionOn();
-            // this.TAL.reSetConter();
-        },
-        updatePosition(event) {
-            this.percentage = this.updateClickPositionPercentage(event);
-        },
-        updateClickPositionPercentage(event) {
+        // Calc
+        positionToPercentage(event) {
             const { $el } = this;
             const elSize = getOffset($el);
             // 计算点击位置相对于滑动条百分比&限位
             const cpp = (event.pageX - elSize.size.left) / elSize.elWidth;
-            let percentage = cpp > 1 ? 1 : cpp < 0 ? 0 : cpp;
-            return percentage;
+            this.percentage = cpp > 1 ? 1 : cpp < 0 ? 0 : cpp;
         },
-        updateModelValuePercentage(modelValue) {
+        valueToPercentage(modelValue) {
             const { max, min } = this;
-            let percentage = modelValue / (max - min);
+            const range = max - min;
+            let percentage = modelValue / range - min / range;
             percentage = percentage > 1 ? 1 : percentage < 0 ? 0 : percentage;
             this.percentage = percentage;
         },
-        updateThumbPosition() {
-            const { $el } = this;
-            const elSize = getOffset($el);
-            // 滑动条两端限位，避免拨杆超出边界
-            const thumbRadius = this.thumbSize.elWidth / 2;
-            const MAX = elSize.elWidth - thumbRadius;
-            const MIN = thumbRadius;
-            //计算拨杆当前位置
-            let x = elSize.elWidth * this.percentage;
-            this.nowPosition = x < MIN ? MIN : x > MAX ? MAX : x;
-        },
         updateValue() {
             const { max, min, step } = this;
-            let value = this.percentage * (max - min);
+            let value = this.percentage * (max - min) + min;
             value = Math.round(value / step) * step + 0 * min;
             value = parseFloat(value.toFixed(5));
-
             value = value > max ? max : value < min ? min : value;
             this.value = value;
         },
+
+        // Logic
         transitionOn() {
             this.useTransition = true;
         },
@@ -135,6 +115,39 @@ export default {
             document.addEventListener('touchcancel', this.trackEnd);
             event.preventDefault();
             this.trackStart(event);
+        },
+        trackStart(event) {
+            this.transitionOn();
+            this.positionToPercentage(touchEventCompatible(event));
+        },
+        trackMove(event) {
+            this.transitionOff();
+            this.positionToPercentage(touchEventCompatible(event));
+        },
+        trackEnd() {
+            document.removeEventListener('mousemove', this.transitionOff);
+            document.removeEventListener('mousemove', this.trackMove);
+            document.removeEventListener('mouseup', this.trackEnd);
+
+            document.removeEventListener('touchmove', this.transitionOff);
+            document.removeEventListener('touchmove', this.trackMove);
+            document.removeEventListener('touchend', this.trackEnd);
+            document.removeEventListener('touchcancel', this.trackEnd);
+            this.transitionOn();
+            // this.TAL.reSetConter();
+        },
+
+        // Style
+        updateThumbPosition() {
+            const { $el } = this;
+            const elSize = getOffset($el);
+            // 滑动条两端限位，避免拨杆超出边界
+            const thumbRadius = this.thumbSize.elWidth / 2;
+            const MAX = elSize.elWidth - thumbRadius;
+            const MIN = thumbRadius;
+            //计算拨杆当前位置
+            let x = elSize.elWidth * this.percentage;
+            this.nowPosition = x < MIN ? MIN : x > MAX ? MAX : x;
         },
     },
     computed: {
@@ -159,8 +172,7 @@ export default {
             this.$emit('update:modelValue', v);
         },
         modelValue(v) {
-            this.value = v;
-            this.updateModelValuePercentage(this.modelValue);
+            if (v != this.value) this.valueToPercentage(this.modelValue);
             this.TAL.action(() => {});
             this.timeOutID = setTimeout(() => {
                 this.TAL.reSetConter();
