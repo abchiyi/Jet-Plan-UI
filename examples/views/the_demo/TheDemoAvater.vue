@@ -1,131 +1,106 @@
 <template>
     <div>
-        <h1>Avater</h1>
+        <h1>Avatar</h1>
         <p>用于图形, 图标，头像</p>
         <hr />
-        <doc-item name="Props:" tag="h2">
-            <li id="avater-border">
-                <p>
-                    <high-lighter>border</high-lighter>: type - Boolean, default
-                    - false
-                </p>
-                <p>关闭/开启 边框</p>
-            </li>
-            <li id="avater-circle">
-                <p>
-                    <high-lighter>circle</high-lighter>: type - Boolean, default
-                    - true
-                </p>
-                <p>切换 圆形/圆角矩形</p>
-            </li>
-            <li id="avater-size">
-                <p>
-                    <high-lighter>size</high-lighter>: type - String|Boolean,
-                    default - 2
-                </p>
-                <p>控制组件尺寸，默认为组件字体尺寸 2倍，即2em</p>
-            </li>
-            <li id="avater-color">
-                <p>
-                    <high-lighter>color</high-lighter>: type - String, default -
-                    'var(--foreground)'
-                </p>
-                <p>设置组件背景色</p>
-            </li>
-        </doc-item>
-        <doc-item name="Slots:" tag="h2">
-            <li>
-                <p><high-lighter>default</high-lighter>: 仅有默认插槽</p>
-            </li>
-        </doc-item>
 
         <h2>示例：</h2>
-        <hr />
         <j-control-bar for-id="c-switch-to-circle">
-            <template v-slot:text> 切换外形为矩形 </template>
+            <template v-slot:text> 切换外形为圆形 </template>
             <j-switch id="c-switch-to-circle" v-model="toCircle" />
         </j-control-bar>
         <j-control-bar for-id="c-switch-border">
             <template v-slot:text> 启用边框 </template>
             <j-switch id="c-switch-border" v-model="border" />
         </j-control-bar>
-        <demo-box
-            title="Avater"
-            expand
-            code='
-<div class="demo-item text-hint">
-    <span>图标</span>
-    <j-avater>
-        <i class="bi bi-files"></i>
-    </j-avater>
-</div>
-<div class="demo-item text-hint">
-    <span>图片</span>
-    <j-avater>
-        <img
-            src="../../../public/pexels-creative-vix-9754.jpg"
-            alt="avater-bg"
-        />
-    </j-avater>
-</div>
-<div class="demo-item text-hint">
-    <span>文字</span>
-    <j-avater>A</j-avater>
-</div>
-<div class="demo-item text-hint">
-    <span>文字-多字符</span>
-    <j-avater>
-        <span style="padding: 0 10px"> Abc123 </span>
-    </j-avater>
-</div>'
-        >
+        <j-control-bar for-id="slider-size">
+            <template v-slot:text> 尺寸 </template>
+            <j-slider id="slider-size" :min="2" :max="8" v-model="size" />
+            <j-button text id="show-size"> {{ size }} em</j-button>
+        </j-control-bar>
+        <demo-box title="Avatar" expand :code="code">
             <j-row warp>
                 <div class="demo-item text-hint">
                     <span>图标</span>
-                    <j-avater
-                        color="#263238"
+                    <j-avatar
+                        id="avatar-ico"
                         :border="border"
                         :circle="toCircle"
+                        :size="size"
                     >
                         <i class="bi bi-files"></i>
-                    </j-avater>
+                    </j-avatar>
                 </div>
                 <div class="demo-item text-hint">
                     <span>图片</span>
-                    <j-avater :border="border" :circle="toCircle">
+                    <j-avatar :border="border" :circle="toCircle" :size="size">
                         <img
                             src="../../../public/pexels-creative-vix-9754.jpg"
-                            alt="avater-bg"
+                            alt="avatar-bg"
                         />
-                    </j-avater>
+                    </j-avatar>
                 </div>
                 <div class="demo-item text-hint">
                     <span>文字</span>
-                    <j-avater
-                        color="#ff4d28"
+                    <j-avatar
+                        id="avatar-a"
                         :border="border"
                         :circle="toCircle"
-                        >A</j-avater
+                        :size="size"
                     >
+                        A
+                    </j-avatar>
                 </div>
                 <div class="demo-item text-hint">
                     <span>文字-多字符</span>
-                    <j-avater :border="border" :circle="toCircle">
+                    <j-avatar
+                        id="avatar-text"
+                        :border="border"
+                        :circle="toCircle"
+                        :size="size"
+                    >
                         <span style="padding: 0 10px"> Abc123 </span>
-                    </j-avater>
+                    </j-avatar>
                 </div>
             </j-row>
         </demo-box>
+
+        <component-documentation
+            :component="Avatar"
+            :description="AvatarDescription"
+        />
+
+        <doc-item name="Slots:" tag="h2">
+            <ul>
+                <li>
+                    <p><strong>default</strong></p>
+                    <p>仅有默认插槽</p>
+                </li>
+            </ul>
+        </doc-item>
     </div>
 </template>
 
 <script>
+import { Avatar } from '@ui';
 export default {
-    name: 'the-demo-avater',
+    name: 'the-demo-avatar',
     data() {
         return {
+            Avatar: Avatar,
+            AvatarDescription: {
+                props: {
+                    border: '说明：启用边框',
+                    circle: '说明：设置外观为圆形',
+                    size: '说明：设置最小高度/宽度，单位/em',
+                },
+            },
             toCircle: true,
             border: false,
+            size: 2.5,
+            code: `
+
+            `,
         };
     },
 };
@@ -137,5 +112,20 @@ export default {
 }
 .demo-item > span {
     margin: 5px;
+}
+
+#show-size {
+    width: 4rem;
+    text-align: center;
+}
+
+#avatar-ico {
+    background: #3498db;
+}
+#avatar-a {
+    background: #1abc9c;
+}
+#avatar-text {
+    background: #c0392b;
 }
 </style>
