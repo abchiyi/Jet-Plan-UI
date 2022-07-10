@@ -108,8 +108,9 @@ export default {
         updateValue() {
             const { max, min, step } = this;
             let value = this.percentage * (max - min);
-            value = Math.round(value / step) * step + min;
+            value = Math.round(value / step) * step + 0 * min;
             value = parseFloat(value.toFixed(5));
+
             value = value > max ? max : value < min ? min : value;
             this.value = value;
         },
