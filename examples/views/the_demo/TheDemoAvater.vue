@@ -100,6 +100,52 @@ export default {
             size: 2.5,
             code: `
 
+<!-- 图标  -->
+<j-avatar
+    id="avatar-ico"
+    :border="border"
+    :circle="toCircle"
+    :size="size"
+>
+    // Bootstrap ico
+    <i class="bi bi-files"></i>
+</j-avatar>
+
+<!-- 图片  -->
+<j-avatar :border="border" :circle="toCircle" :size="size">
+    <img src="./xxx.img" alt="avatar-img" />
+</j-avatar>
+
+<!-- 文本  -->
+<j-avatar
+    id="avatar-a"
+    :border="border"
+    :circle="toCircle"
+    :size="size"
+>
+    A
+</j-avatar>
+<j-avatar
+    id="avatar-text"
+    :border="border"
+    :circle="toCircle"
+    :size="size"
+>
+    <span style="padding: 0 10px"> Abc123 </span>
+</j-avatar>
+
+<style>
+#avatar-ico {
+    background: #3498db;
+}
+#avatar-a {
+    background: #1abc9c;
+}
+#avatar-text {
+    background: #c0392b;
+}
+</style>
+
             `,
         };
     },
