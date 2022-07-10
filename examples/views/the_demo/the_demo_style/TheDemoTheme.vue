@@ -10,7 +10,7 @@
 
         <h2>主题切换器：</h2>
         <demo-box code="<j-all-theme />" expand title="theme-switcher">
-            <j-all-theme />
+            <j-all-theme @setTheme="log" />
         </demo-box>
 
         <!-- 安装&使用主题 -->
@@ -266,6 +266,11 @@ export default {
     components: { DocItem },
     name: 'the-demo-style',
     mixins: [pdn],
+    methods: {
+        log(e) {
+            console.log(e);
+        },
+    },
 };
 </script>
 
