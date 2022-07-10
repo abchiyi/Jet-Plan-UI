@@ -24,8 +24,6 @@ export default {
         renderPropsTitle() {
             return [h(this.titleTagProps, null, ['Props:']), h('hr')];
         },
-    },
-    computed: {
         parseProps() {
             function parseType(types) {
                 let tempType = [];
@@ -43,30 +41,36 @@ export default {
                 return prop.validator();
             }
 
-            const PROPS = this.component.props;
-            const TEMP_PROPS = {};
-            for (let key in PROPS) {
-                const prop = PROPS[key];
-                TEMP_PROPS[key] = {};
-                TEMP_PROPS[key].default = prop.default;
-                TEMP_PROPS[key].type = parseType(prop.type);
-                try {
-                    TEMP_PROPS[key].range = parseValidator(prop);
-                } catch (error) {
-                    if (typeof prop.validator == 'function') {
-                        console.warn(`Prop:${key} - validator need back value`);
+            try {
+                const PROPS = this.component.props;
+                const TEMP_PROPS = {};
+                for (let key in PROPS) {
+                    const prop = PROPS[key];
+                    TEMP_PROPS[key] = {};
+                    TEMP_PROPS[key].default = prop.default;
+                    TEMP_PROPS[key].type = parseType(prop.type);
+                    try {
+                        TEMP_PROPS[key].range = parseValidator(prop);
+                    } catch (error) {
+                        if (typeof prop.validator == 'function') {
+                            console.warn(
+                                `Prop:${key} - validator need back value`
+                            );
+                        }
                     }
+                    TEMP_PROPS[key].required = Boolean(prop.required);
                 }
-                TEMP_PROPS[key].required = Boolean(prop.required);
+                return TEMP_PROPS;
+            } catch (error) {
+                return {};
             }
-            return TEMP_PROPS;
         },
     },
     render() {
         return h('div', {}, [
             this.renderPropsTitle(),
             h(docProps, {
-                parseProps: this.parseProps,
+                parseProps: this.parseProps(),
                 description: this.description,
             }),
         ]);

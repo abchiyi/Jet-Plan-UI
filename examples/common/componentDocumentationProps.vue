@@ -17,11 +17,9 @@ export default {
     props: {
         parseProps: {
             type: Object,
-            required: true,
         },
         description: {
             type: Object,
-            required: true,
         },
     },
     methods: {
@@ -40,10 +38,15 @@ export default {
             }
             const props = Object.keys(this.parseProps).map((key) => {
                 const prop = this.parseProps[key];
-                const description = this.description.props[key];
-                if (!description) {
-                    console.warn(`Prop :'${key}' - need description`);
+                function getPropDescription() {
+                    try {
+                        return this.description.props[key];
+                    } catch (error) {
+                        console.warn(`Prop :'${key}' - need description`);
+                        return '';
+                    }
                 }
+
                 return h('li', null, [
                     h('strong', null, key + ':'),
                     elP(`Type - ${handleType(prop.type)}`),
@@ -52,7 +55,7 @@ export default {
                     prop.default != undefined
                         ? elP(`Default - ${handleTypeStyle(prop.default)}`)
                         : '',
-                    description ? elP(description) : '',
+                    getPropDescription(),
                 ]);
             });
 
