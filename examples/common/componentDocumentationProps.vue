@@ -39,11 +39,9 @@ export default {
             const props = Object.keys(this.parseProps).map((key) => {
                 const prop = this.parseProps[key];
                 function getPropDescription(description) {
-                    try {
-                        return elP(description.props[key]);
-                    } catch (error) {
-                        console.warn(`Prop :'${key}' - need description`);
-                    }
+                    return description.props[key]
+                        ? elP(description.props[key])
+                        : console.warn(`Prop :'${key}' - need description`);
                 }
 
                 return h('li', null, [
