@@ -23,10 +23,6 @@ export default {
             type: [Number, String],
             default: '2',
         },
-        color: {
-            type: String,
-            default: '',
-        },
     },
     computed: {
         classes() {
@@ -35,7 +31,6 @@ export default {
         styles() {
             return {
                 '--size': this.size + 'em',
-                '--color': this.color ? this.color : 'var(--foreground)',
             };
         },
     },
@@ -46,16 +41,13 @@ export default {
 </script>
 
 <style >
-.j-avatar,
-.j-avatar * {
-    transition: 0.5s var(--ease-in-out), outline-width 0s;
-}
-
 .j-avatar {
-    background: var(--color);
+    font-size: calc(var(--size) / 2);
+    background: var(--foreground);
     min-height: var(--size);
     min-width: var(--size);
     display: inline-block;
+    margin: 5px;
 }
 
 .j-avatar .content {
@@ -66,7 +58,7 @@ export default {
 }
 
 .j-avatar.border {
-    outline: 2px solid var(--border);
+    outline: 0.2em solid var(--border);
 }
 
 .j-avatar img,
