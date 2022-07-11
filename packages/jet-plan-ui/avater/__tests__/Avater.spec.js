@@ -2,16 +2,16 @@ import {
     mount
 } from '@vue/test-utils'
 
-import Avater from '../Avater.vue'
+import Avatar from '../Avatar.vue'
 
-function cssAttrsStringToObj(str) {
+function cssAttrsStringToObj (str) {
     if (str) {
         const temp = {}
-        const attrs = str.split(';');
+        const attrs = str.split(';')
         for (let n = 0; n < attrs.length; n++) {
             if (attrs[n].trim()) {
                 let [key, value] = attrs[n].split(':')
-                temp[key.trim()] = value.trim();
+                temp[key.trim()] = value.trim()
             }
         }
         return temp
@@ -21,15 +21,15 @@ function cssAttrsStringToObj(str) {
 
 }
 
-function getStyle(wrapper, attr) {
+function getStyle (wrapper, attr) {
     return cssAttrsStringToObj(
         wrapper.attributes('style')
     )[attr]
 }
 
-describe('Avater', () => {
+describe('Avatar', () => {
     it("Document test", async () => {
-        const wrapper = mount(Avater);
+        const wrapper = mount(Avatar)
         expect(wrapper.html()).toMatchSnapshot()
 
         await wrapper.setProps({
@@ -52,35 +52,35 @@ describe('Avater', () => {
     })
 
     it('Class', async () => {
-        const wrapper = mount(Avater);
+        const wrapper = mount(Avatar)
 
         expect(wrapper.classes()).toContain(
-            Avater.name
+            Avatar.name
         )
 
         expect(wrapper.classes()).toContain(
-            'j-avater'
+            'j-avatar'
         )
         expect(wrapper.classes()).toContain(
             'circle'
         )
         await wrapper.setProps({
             border: true
-        });
+        })
         expect(wrapper.classes()).toContain(
             'border'
         )
         await wrapper.setProps({
             border: true,
             circle: false
-        });
+        })
         expect(wrapper.classes()).not.toContain(
             'circle'
         )
     })
 
     it('Style value', async () => {
-        const wrapper = mount(Avater);
+        const wrapper = mount(Avatar)
 
         const defaultSize = {
             size: '2em'
@@ -102,13 +102,5 @@ describe('Avater', () => {
                 wrapper.attributes('style')
             )['--size']
         ).toContain('4em')
-
-        const color = {
-            color: '#61ff73'
-        }
-        await wrapper.setProps(color)
-
-        expect(
-            getStyle(wrapper, '--color')).toContain(color.color)
     })
 })

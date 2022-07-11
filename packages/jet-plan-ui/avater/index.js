@@ -1,4 +1,4 @@
-import Avatar from './Avater.vue'
+import Avatar from './Avatar.vue'
 
 export {
     Avatar
