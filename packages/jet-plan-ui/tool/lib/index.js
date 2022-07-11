@@ -209,10 +209,10 @@ export function reTextColor (el) {
 }
 
 export function propInit (_type, _default) {
-    return {
-        type: _type,
-        default: _default,
-    }
+    const prop = {}
+    if (_type != undefined) prop.type = _type
+    if (_default != undefined) prop.default = _default
+    return prop
 }
 
 export function propInitBoolean (default_value) {
