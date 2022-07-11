@@ -21,12 +21,6 @@ function cssAttrsStringToObj (str) {
 
 }
 
-function getStyle (wrapper, attr) {
-    return cssAttrsStringToObj(
-        wrapper.attributes('style')
-    )[attr]
-}
-
 describe('Avatar', () => {
     it("Document test", async () => {
         const wrapper = mount(Avatar)
