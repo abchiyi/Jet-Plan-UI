@@ -74,32 +74,32 @@
             </p>
             <j-card>
                 <j-row id="flex-y" warp spaceMode="between">
-                    <span>
+                    <div class="radio-xy">
                         <j-radio id="y-top" value="top" v-model="y" />
-                        <label for="y-top">Y top</label>
-                    </span>
-                    <span>
+                        <label for="y-top"><span>Y top</span> </label>
+                    </div>
+                    <div class="radio-xy">
                         <j-radio id="y-center" value="center" v-model="y" />
-                        <label for="y-center">Y middle</label>
-                    </span>
-                    <span>
+                        <label for="y-center"><span>Y middle</span></label>
+                    </div>
+                    <div class="radio-xy">
                         <j-radio id="y-bottom" value="bottom" v-model="y" />
-                        <label for="y-bottom">Y bottom</label>
-                    </span>
+                        <label for="y-bottom"><span>Y bottom</span></label>
+                    </div>
                 </j-row>
                 <j-row id="flex-x" warp spaceMode="between">
-                    <span>
+                    <div class="radio-xy">
                         <j-radio id="x-start" value="start" v-model="x" />
-                        <label for="x-start">X Start</label>
-                    </span>
-                    <span>
+                        <label for="x-start"><span>X Start</span></label>
+                    </div>
+                    <div class="radio-xy">
                         <j-radio id="x-center" value="center" v-model="x" />
-                        <label for="x-center">X Center</label>
-                    </span>
-                    <span>
+                        <label for="x-center"><span>X Center</span></label>
+                    </div>
+                    <div class="radio-xy">
                         <j-radio id="x-end" value="end" v-model="x" />
-                        <label for="x-end">X end</label>
-                    </span>
+                        <label for="x-end"><span>X end</span></label>
+                    </div>
                 </j-row>
             </j-card>
             <demo-box title="X YStart" :code="code3" expand>
@@ -215,6 +215,12 @@ width: 100%;
 </script>
 
 <style scoped>
+.radio-xy {
+    vertical-align: middle;
+    user-select: none;
+    width: 120px;
+}
+
 #flex-x > span > *,
 #flex-y > span > * {
     vertical-align: middle;
