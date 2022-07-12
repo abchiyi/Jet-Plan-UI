@@ -44,6 +44,7 @@ import { Row, Col } from '../../gird';
 import { Mask } from '../../mask';
 import Header from '../Header.vue';
 import Sidebar from '../Sidebar.vue';
+import { propInitBoolean } from '../../tool/lib';
 export default {
     name: 'j-page',
     components: {
@@ -54,18 +55,8 @@ export default {
         Sidebar,
     },
     props: {
-        modelValue: {
-            type: Boolean,
-            default: false,
-        },
-        autoSidebar: {
-            type: Boolean,
-            default: false,
-        },
-    },
-    model: {
-        prop: 'modeValue',
-        event: 'update:modelValue',
+        modelValue: propInitBoolean(false),
+        autoSidebar: propInitBoolean(false),
     },
     data() {
         return {
