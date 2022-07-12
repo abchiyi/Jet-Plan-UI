@@ -2,45 +2,21 @@
     <j-card class="j-demo-box">
         <j-row class="demo-box-header" Y="center" space-mode="between">
             <span class="demo-title text-hint">{{ title }}</span>
-            <j-bubble
-                :message="value ? '收起Code' : '展开Code'"
-                position="top-start"
-            >
-                <j-button
-                    aria-label="Expand Code/展开代码"
-                    text
-                    v-if="codeControl && code"
-                    hover
-                    active
-                    @click="expand_"
-                >
-                    <i class="bi bi-code-slash"></i>
-                </j-button>
-            </j-bubble>
         </j-row>
         <div ref="showDemo" class="demo-box-demo">
             <div v-if="isDemo">
                 <slot></slot>
             </div>
         </div>
-        <j-transition-folded>
-            <j-code-box
-                v-if="code"
-                can-copy
-                :id="codeID"
-                :code="code"
-                v-show="value"
-            >
-                <template v-slot:icon-copy>
-                    <i class="bi bi-files"></i>
-                </template>
-            </j-code-box>
-        </j-transition-folded>
+        <j-code-box v-if="code" :code="code" can-copy>
+            <template v-slot:icon-copy>
+                <i class="bi bi-files"></i>
+            </template>
+        </j-code-box>
     </j-card>
 </template>
 
 <script>
-import { scrollTo } from '@ui/tool/lib/dom';
 export default {
     name: 'demo-box',
     mounted() {
@@ -50,12 +26,6 @@ Only one child node is allowed !
 
 ${this.$refs.showDemo.innerHTML}
         `);
-        }
-    },
-    created() {
-        if (!this.isDemo) {
-            this.codeControl = false;
-            this.value = true;
         }
     },
     props: {
@@ -72,26 +42,7 @@ ${this.$refs.showDemo.innerHTML}
             default: 'Title is required',
         },
     },
-    data() {
-        return {
-            value: this.expand,
-            codeControl: true,
-        };
-    },
-    methods: {
-        expand_() {
-            this.value = !this.value;
-            if (this.value) {
-                setTimeout(() => {
-                    scrollTo(`#${this.codeID}`, 200);
-                }, 300);
-            }
-        },
-    },
     computed: {
-        codeID() {
-            return this.title + '-code';
-        },
         isDemo() {
             return Boolean(this.$slots.default);
         },
