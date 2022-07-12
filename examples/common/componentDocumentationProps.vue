@@ -40,7 +40,11 @@ export default {
                 const prop = this.parseProps[key];
                 function getPropDescription(description) {
                     return description.props[key]
-                        ? elP(description.props[key])
+                        ? h(
+                              'p',
+                              { class: ['font-mono'] },
+                              description.props[key]
+                          )
                         : console.warn(`Prop :'${key}' - need description`);
                 }
 
