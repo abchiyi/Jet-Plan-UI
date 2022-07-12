@@ -9,22 +9,13 @@
         <hr />
         <j-control-bar for-id="to-reverse">
             <template v-slot:text>反向排列元素</template>
-            <j-switch
-                id="to-reverse"
-                v-model="toReverse"
-            />
+            <j-switch id="to-reverse" v-model="toReverse" />
         </j-control-bar>
         <j-control-bar for-id="no-background">
             <template v-slot:text>关闭背景</template>
-            <j-switch
-                id="no-background"
-                v-model="noBackground"
-            />
+            <j-switch id="no-background" v-model="noBackground" />
         </j-control-bar>
-        <demo-box
-            title="control-bar"
-            :code="code"
-        >
+        <demo-box title="control-bar" :code="code">
             <div id="demo-default">
                 <j-control-bar
                     :no-background="noBackground"
@@ -32,10 +23,7 @@
                     :reverse="toReverse"
                 >
                     <template v-slot:text>Switch</template>
-                    <j-switch
-                        id="demo-switch"
-                        v-model="value"
-                    />
+                    <j-switch id="demo-switch" v-model="value" />
                 </j-control-bar>
                 <j-control-bar
                     :no-background="noBackground"
@@ -43,10 +31,7 @@
                     :reverse="toReverse"
                 >
                     <template v-slot:text>Checkbox</template>
-                    <j-checkbox
-                        id="demo-checkbox"
-                        v-model="value"
-                    />
+                    <j-checkbox id="demo-checkbox" v-model="value" />
                 </j-control-bar>
                 <j-control-bar
                     :no-background="noBackground"
@@ -75,44 +60,8 @@
             </div>
         </demo-box>
 
-        <doc-item
-            name="Props:"
-            tag="h2"
-        >
-            <hr>
-            <ul>
-                <li id="prop-for-id">
-                    <p>
-                        <high-lighter>for-id</high-lighter>
-                        type - String, required - true
-                    </p>
-                    <p>
-                        被控制组件的
-                        <high-lighter>id</high-lighter>
-                        ,这个值是必须的
-                    </p>
-                </li>
-                <li id="prop-reverse">
-                    <p>
-                        <high-lighter>reverse</high-lighter>
-                        type - Boolean, default - false
-                    </p>
-                    <p>反向排列内部元素</p>
-                </li>
-                <li id="prop-no-background">
-                    <p>
-                        <high-lighter>no-background</high-lighter>
-                        type - Boolean, default - false
-                    </p>
-                    <p>不设置背景</p>
-                </li>
-            </ul>
-
-        </doc-item>
-        <doc-item
-            name="Slots:"
-            tag="h2"
-        >
+        <component-documentation v-bind="componentDoc" />
+        <doc-item name="Slots:" tag="h2">
             <ul>
                 <li id="slot-text">
                     <p>
@@ -131,7 +80,8 @@
     </div>
 </template>
 <script>
-import pdn from '../../../common/mix/popDemoName'
+import pdn from '../../../common/mix/popDemoName';
+import { ControlBar } from '@ui';
 export default {
     mixins: [pdn],
 
@@ -159,10 +109,20 @@ let noBackground = false
             value: false,
             valueRadio: [],
             toReverse: false,
-            noBackground: false
-        }
+            noBackground: false,
+            componentDoc: {
+                component: ControlBar,
+                description: {
+                    props: {
+                        noBackground: '说明：不显示背景。',
+                        forId: '说明：被控制组件的 id。',
+                        reverse: '说明：反向排列元素。',
+                    },
+                },
+            },
+        };
     },
-}
+};
 </script>
 <style>
 </style>
