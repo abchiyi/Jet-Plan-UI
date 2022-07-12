@@ -1,7 +1,15 @@
 // TODO 支持在各个宽度下自定义css
 <script>
-import { propInit, propInitBoolean } from '../../tool/lib';
+import { propInit, propInitBoolean, validatorRange } from '../../tool/lib';
 import { h } from 'vue';
+
+function propInitCol() {
+    const range = [];
+    for (let n = 0; n <= 24; n++) {
+        range.push(n);
+    }
+    return propInit(Number, undefined, validatorRange(range));
+}
 function notUndefined(value, string) {
     if (value !== undefined) {
         return string;
@@ -18,17 +26,17 @@ export default {
     name: 'j-col',
     props: {
         tag: propInit(String, 'div'),
-        col: propInit(Number),
-        xs: propInit(Number),
-        sm: propInit(Number),
-        md: propInit(Number),
-        lg: propInit(Number),
-        xl: propInit(Number),
-        offset: propInit(Number),
-        offsetXs: propInit(Number),
-        offsetSm: propInit(Number),
-        offsetMd: propInit(Number),
-        offsetLg: propInit(Number),
+        col: propInitCol(),
+        xs: propInitCol(),
+        sm: propInitCol(),
+        md: propInitCol(),
+        lg: propInitCol(),
+        xl: propInitCol(),
+        offset: propInitCol(),
+        offsetXs: propInitCol(),
+        offsetSm: propInitCol(),
+        offsetMd: propInitCol(),
+        offsetLg: propInitCol(),
         relativeToScreen: propInitBoolean(false),
     },
     methods: {
