@@ -116,7 +116,6 @@
                 </j-row>
             </demo-box>
         </doc-item>
-        <h2>子元素起始轴</h2>
 
         <!-- 文档 -->
         <div id="doc">
