@@ -4,64 +4,7 @@
         <p>mousseUI 提供一些预设的页面布局来进行快速页面设置</p>
         <hr />
         <div id="p1-doc">
-            <doc-item tag="h2" name="预设1：">
-                <li id="describes-p1">
-                    <p>上中下布局+侧栏，兼容移动设备</p>
-                    <p>在移动设备宽度下侧栏由停靠转为浮动</p>
-                </li>
-                <li id="p1-props">
-                    <doc-item name="props">
-                        <li id="props-model-value">
-                            <p>
-                                <high-lighter>modelValue</high-lighter>
-                                : type - Boolean
-                            </p>
-                            <p>用于绑定值，控制侧边栏开/关</p>
-                        </li>
-                    </doc-item>
-                </li>
-                <li id="p1-event">
-                    <doc-item name="Event:">
-                        <li id="event-update-model-value">
-                            <p>
-                                <high-lighter>
-                                    @update-model-value
-                                </high-lighter>
-                                : type - Boolean
-                            </p>
-                            <p>更新绑定值</p>
-                        </li>
-                    </doc-item>
-                </li>
-                <li id="p1-slots">
-                    <doc-item name="Slots">
-                        <li id="p1-slots-header">
-                            <p>
-                                <high-lighter>:header</high-lighter>
-                                - 顶部浮动栏插槽
-                            </p>
-                        </li>
-                        <li id="p1-slots-default">
-                            <p>
-                                <high-lighter>:default</high-lighter>
-                                - 正文插槽
-                            </p>
-                        </li>
-                        <li id="p1-slots-footer">
-                            <p>
-                                <high-lighter>:footer</high-lighter>
-                                - 页脚插槽
-                            </p>
-                        </li>
-                        <li id="p1-slots-sidebar">
-                            <p>
-                                <high-lighter>:sidebar</high-lighter>
-                                - 侧栏插槽
-                            </p>
-                        </li>
-                    </doc-item>
-                </li>
-            </doc-item>
+            <h2>预设1：</h2>
             <demo-box id="p1-demo" :code="code" :expand="true" title="预设1">
                 <j-row X="center">
                     <j-row
@@ -90,6 +33,54 @@
                     </j-row>
                 </j-row>
             </demo-box>
+            <doc-item tag="h2" name="预设1：">
+                <ul>
+                    <li id="describes-p1">
+                        <p>上中下布局+侧栏，兼容移动设备</p>
+                        <p>在移动设备宽度下侧栏由停靠转为浮动</p>
+                    </li>
+                    <li id="p1-props">
+                        <doc-item name="props">
+                            <p>
+                                <high-lighter>modelValue</high-lighter>
+                                : type - Boolean
+                            </p>
+                            <p>用于绑定值，控制侧边栏开/关</p>
+                        </doc-item>
+                    </li>
+                    <li id="p1-event">
+                        <doc-item name="Event:">
+                            <p>
+                                <high-lighter>
+                                    @update-model-value
+                                </high-lighter>
+                                : type - Boolean
+                            </p>
+                            <p>更新绑定值</p>
+                        </doc-item>
+                    </li>
+                    <li id="p1-slots">
+                        <doc-item name="Slots">
+                            <p>
+                                <high-lighter>:header</high-lighter>
+                                - 顶部浮动栏插槽
+                            </p>
+                            <p>
+                                <high-lighter>:default</high-lighter>
+                                - 正文插槽
+                            </p>
+                            <p>
+                                <high-lighter>:footer</high-lighter>
+                                - 页脚插槽
+                            </p>
+                            <p>
+                                <high-lighter>:sidebar</high-lighter>
+                                - 侧栏插槽
+                            </p>
+                        </doc-item>
+                    </li>
+                </ul>
+            </doc-item>
         </div>
     </div>
 </template>
