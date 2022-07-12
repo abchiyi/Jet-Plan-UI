@@ -208,10 +208,11 @@ export function reTextColor (el) {
     }
 }
 
-export function propInit (_type, _default) {
+export function propInit (_type, _default, validator) {
     const prop = {}
     if (_type != undefined) prop.type = _type
     if (_default != undefined) prop.default = _default
+    if (validator != undefined) prop.validator = validator
     return prop
 }
 
@@ -222,8 +223,18 @@ export function propInitBoolean (default_value) {
 export function validatorRange (range) {
     return function (value) {
         if (value !== undefined) {
-            return range.indexOf(value.toLowerCase()) !== -1
+            switch (typeof value) {
+                case 'string':
+                    return range.indexOf(value.toLowerCase()) !== -1
+                case 'number':
+                    return range.indexOf(value) !== -1
+            }
         }
-        return range
+        switch (typeof range[0]) {
+            case 'number':
+                return `${range[0]}~${range[range.length - 1]}`
+            default:
+                return range
+        }
     }
 }
