@@ -89,23 +89,23 @@ export default {
     data: () => {
         return {
             code: `
-//Javascript
-let value = false;
-let valueRadio = [];
-let toReverse = false,
-let noBackground = false
-
-
-// HTML
-<div id="demo-default">
-<j-control-bar
-    for-id="demo-switch"
-    :reverse="toReverse"
-    :no-background="noBackground"
->
+<j-control-bar for-id="demo-switch">
     <template v-slot:text>Switch</template>
-        <j-switch id="demo-switch" v-model="value" />
-</j-control-bar>`,
+    <j-switch id="demo-switch" />
+</j-control-bar>
+
+// 无背景
+<j-control-bar noBackground for-id="demo-switch">
+    <template v-slot:text>Switch</template>
+    <j-switch id="demo-switch" />
+</j-control-bar>
+
+// 反向排列
+<j-control-bar reverse for-id="demo-switch">
+    <template v-slot:text>Switch</template>
+    <j-switch id="demo-switch" />
+</j-control-bar>
+`,
             value: false,
             valueRadio: [],
             toReverse: false,
