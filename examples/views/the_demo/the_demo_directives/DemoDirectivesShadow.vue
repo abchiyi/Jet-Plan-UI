@@ -15,7 +15,7 @@
         </doc-item>
         <j-control-bar :active="false" for-id="demo-checkbox">
             <template v-slot:text>Checkbox</template>
-            <j-slider max="30" v-model="value" />
+            <j-slider :max="30" v-model="value" />
         </j-control-bar>
         <demo-box title="v-shadow">
             <j-row X="center">
@@ -54,7 +54,7 @@ export default {
     name: 'v-shadow',
     data: () => {
         return {
-            value: '10',
+            value: 10,
         };
     },
 };
