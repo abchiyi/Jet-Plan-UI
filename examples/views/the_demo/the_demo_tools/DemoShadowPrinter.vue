@@ -1,44 +1,52 @@
 <template>
-  <article id="demo-shadow-painter">
-    <h2>ShadowPainter</h2>
-    <p>输出一个和 UI 界面统一样式的 css 阴影配置字符串</p>
-    <doc-item no-dot name="参数">
-      <li>
-        <p>
-          <high-lighter>direction:String</high-lighter>
-          top | bottom | left | right。 设置阴影的方向
-        </p>
-      </li>
-      <li>
-        <p>
-          <high-lighter>intensity:Number</high-lighter>
-          大于0的任意数字。设置阴影的强度
-        </p>
-      </li>
-      <li>
-        <p>
-          <high-lighter>color:String</high-lighter>
-          任意 css 支持的色彩编码。设置阴影色彩，不指定则使用默认阴影色彩
-        </p>
-      </li>
-    </doc-item>
+    <article id="demo-shadow-painter">
+        <h2>ShadowPainter</h2>
+        <p>输出一个和 UI 界面统一样式的 css 阴影配置字符串</p>
+        <hr />
 
-    <demo-box title="shadowPainter" :code="code" expand>
-      <j-row X="center">
-        <j-cube class="demo-box" v-shadow:bottom="value">
-          Intensity:{{ value }}
-        </j-cube>
-      </j-row>
-    </demo-box>
-  </article>
+        <doc-item name="参数">
+            <p class="text-hint">
+                shadowPrinter( [ direction, intensity, [ color ] ] )
+            </p>
+            <ul>
+                <li>
+                    <p><strong>direction:</strong></p>
+                    <p>type - String</p>
+                    <p>range - top | bottom | left | right。</p>
+                    <p>设置阴影的方向</p>
+                </li>
+                <li>
+                    <p><strong>intensity:</strong></p>
+                    <p>type - Number</p>
+                    <p>设置阴影的强度，建议值 0 ~ 30 的任意数字。</p>
+                </li>
+                <li>
+                    <p><strong>color:</strong></p>
+                    <p>type - String</p>
+                    <p>
+                        任意 css
+                        支持的色彩编码/名称。设置阴影色彩，不指定则使用主题所设置阴影色彩
+                    </p>
+                </li>
+            </ul>
+        </doc-item>
+
+        <demo-box title="shadowPainter" :code="code">
+            <j-row X="center">
+                <j-cube class="demo-box" v-shadow:bottom="value">
+                    Intensity:{{ value }}
+                </j-cube>
+            </j-row>
+        </demo-box>
+    </article>
 </template>
 <script>
 export default {
-  name: 'demo-shadow-painter',
-  data: () => {
-    return {
-      value: 15,
-      code: `import { shadowPainter } from 'mousseUI/tool'
+    name: 'demo-shadow-painter',
+    data: () => {
+        return {
+            value: 15,
+            code: `import { shadowPainter } from 'mousseUI/tool'
 // 渲染一个组件
 export default {
     render(){
@@ -51,16 +59,16 @@ export default {
     }
 }
       `,
-    };
-  },
+        };
+    },
 };
 </script>
 <style>
 .demo-box {
-  background: var(--foreground) !important;
-  color: var(--text) !important;
-  height: 200px;
-  width: 150px;
-  border: unset;
+    background: var(--foreground) !important;
+    color: var(--text) !important;
+    height: 200px;
+    width: 150px;
+    border: unset;
 }
 </style>
