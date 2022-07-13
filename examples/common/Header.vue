@@ -1,71 +1,71 @@
 <template>
-  <j-row class="navbar" Y="center" spaceMode="between" reverse>
-    <!-- 选项 -->
-    <j-row X="center" id="header-options">
-      <j-button text hover>About</j-button>
-      <button-gitee text />
-      <button-github text />
+    <j-row class="navbar" Y="center" spaceMode="between" reverse>
+        <!-- 选项 -->
+        <j-row X="center" id="header-options">
+            <j-button aria-label="about/关于" text hover>About</j-button>
+            <button-gitee text />
+            <button-github text />
+        </j-row>
+        <j-col :lg="0" :xl="0">
+            <!-- 侧栏开关 -->
+            <j-button text title="menu" @click.stop="click">
+                <i style="font-size: 1.8em" class="bi bi-list"></i>
+            </j-button>
+        </j-col>
     </j-row>
-    <j-col :lg="0" :xl="0">
-      <!-- 侧栏开关 -->
-      <j-button text title="menu" @click.stop="click">
-        <i style="font-size: 1.8em" class="bi bi-list"></i>
-      </j-button>
-    </j-col>
-  </j-row>
 </template>
 
 <script>
 export default {
-  name: 'demo-header',
-  props: {
-    modelValue: {
-      type: Boolean,
+    name: 'demo-header',
+    props: {
+        modelValue: {
+            type: Boolean,
+        },
+        title: {
+            default: 'Mousse UI',
+            type: String,
+        },
     },
-    title: {
-      default: 'Mousse UI',
-      type: String,
+    data() {
+        return {
+            darkModeTransitionSwitch: true,
+            darkMode: false,
+        };
     },
-  },
-  data() {
-    return {
-      darkModeTransitionSwitch: true,
-      darkMode: false,
-    };
-  },
-  methods: {
-    click() {
-      this.$emit('update:modelValue', this.modelValue ? false : true);
+    methods: {
+        click() {
+            this.$emit('update:modelValue', this.modelValue ? false : true);
+        },
+        switchMode() {
+            this.darkModeTransitionSwitch = false;
+        },
+        darkModeSwitch() {
+            setTimeout(() => {
+                this.darkModeTransitionSwitch = true;
+                this.darkMode = !this.darkMode;
+            }, 400);
+        },
     },
-    switchMode() {
-      this.darkModeTransitionSwitch = false;
+    watch: {
+        darkMode(b) {
+            this.$jetTheme.darkMode = b;
+        },
     },
-    darkModeSwitch() {
-      setTimeout(() => {
-        this.darkModeTransitionSwitch = true;
-        this.darkMode = !this.darkMode;
-      }, 400);
+    model: {
+        prop: 'modeValue',
+        event: 'update:modelValue',
     },
-  },
-  watch: {
-    darkMode(b) {
-      this.$jetTheme.darkMode = b;
-    },
-  },
-  model: {
-    prop: 'modeValue',
-    event: 'update:modelValue',
-  },
 };
 </script>
 <style scoped>
 .navbar {
-  height: 72px;
-  width: 100%;
+    height: 72px;
+    width: 100%;
 }
 
 .navbar > #darkmode-switch {
-  height: 16px;
-  width: 18.6px;
+    height: 16px;
+    width: 18.6px;
 }
 </style>
