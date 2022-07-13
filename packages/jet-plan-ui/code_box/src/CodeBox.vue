@@ -48,7 +48,7 @@ import 'highlight.js/styles/atom-one-dark.css';
 import 'highlight.js/lib/common';
 import hljsVuePlugin from '@highlightjs/vue-plugin';
 
-import { bubble as JBubble } from '../../bubble';
+import { Bubble as JBubble } from '../../bubble';
 export default {
     name: 'j-code-box',
     props: {
