@@ -4,67 +4,63 @@
         <p>可从屏幕四个方向展开，用于侧栏，菜单栏以及对话框。</p>
         <p>抽屉组件仅提供基于边框的定位，组件具体位置需手动指定</p>
         <hr />
-        <doc-item name="Props:" tag="h2">
-            <li>
-                <p>
-                    <high-lighter>j-drawer</high-lighter>
-                    - type: Boolean, required: true
-                </p>
-                <p>控制抽屉是否展开</p>
-            </li>
-            <li>
-                <p>
-                    <high-lighter>from</high-lighter>
-                    - type: String, required: true, range: left|right|top|bottom
-                </p>
-                <p>控制展开方向</p>
-            </li>
-        </doc-item>
-        <doc-item name="Slots:" tag="h2">
-            <li><high-lighter>default</high-lighter> - 仅有默认插槽</li>
-        </doc-item>
-        <h2>示例</h2>
-        <j-control-bar for-id="expand-switch">
-            <template v-slot:text>展开抽屉</template>
-            <div>
-                <j-button
-                    @click="
-                        () => {
-                            expand = !expand;
-                        }
-                    "
-                    id="expand-switch"
-                >
-                    {{ expand ? '收起' : '展开' }}
-                </j-button>
-            </div>
-        </j-control-bar>
 
-        <j-control-bar
-            :for-id="`radio-${i}`"
-            v-bind:key="i"
-            v-for="i in ['top', 'bottom', 'left', 'right']"
-        >
-            <template v-slot:text>{{ `从${text[i]}展开` }}</template>
-            <j-radio :id="`radio-${i}`" v-model="openOn" :value="i" />
-        </j-control-bar>
-
-        <j-drawer id="demo-drawer" :from="openOn" :expand="expand">
-            <j-cube>
-                <span style="font-size: 14px"> Test Cube </span>
-            </j-cube>
-        </j-drawer>
-        <demo-box title="j-drawer" :code="code" expand> </demo-box>
+        <doc-item name="示例：" tag="h2">
+            <j-button
+                id="expand-button"
+                row
+                primary
+                @click="
+                    () => {
+                        expand = !expand;
+                    }
+                "
+            >
+                {{ expand ? '收起' : '展开' }}抽屉
+            </j-button>
+            <j-control-bar
+                :for-id="`radio-${i}`"
+                v-bind:key="i"
+                v-for="i in ['top', 'bottom', 'left', 'right']"
+            >
+                <template v-slot:text>{{ `从${text[i]}展开` }}</template>
+                <j-radio :id="`radio-${i}`" v-model="openOn" :value="i" />
+            </j-control-bar>
+            <j-drawer id="demo-drawer" :from="openOn" :expand="expand">
+                <j-cube :class="demoCubeClass">
+                    <span style="font-size: 14px"> Test Cube </span>
+                </j-cube>
+            </j-drawer>
+            <demo-box
+                title="Html"
+                code='
+<j-drawer from="right" expand="true">
+    <p>Test</p>
+</j-drawer>
+'
+            />
+        </doc-item>
+        <component-documentation v-bind="componentDoc" />
     </article>
 </template>
 
 <script>
+import { Drawer } from '@ui';
 import popDemoName from '../../../common/mix/popDemoName';
 export default {
     name: 'the-demo-drawers',
     mixins: [popDemoName],
     data() {
         return {
+            componentDoc: {
+                component: Drawer,
+                description: {
+                    props: {
+                        expand: '说明：开启/关闭。',
+                        from: '说明：从指定位置展开。',
+                    },
+                },
+            },
             openOn: 'right',
             expand: false,
             text: {
@@ -73,59 +69,30 @@ export default {
                 left: '左侧',
                 right: '右侧',
             },
-            code: `
-// !注意 以下 Code 中 以 'j-' 开头的均为 Jet-UI 组件, 请确保已引入所有已使用的组件。
-
-//JavaScript
-
-let openOn =  'right';
-let expand =  false;
-let text =  {top: '顶部',bottom: '底部',left: '左侧',right: '右侧',};
-
-// HTML
-
-<!-- 展开控制 -->
-<j-control-bar for-id="expand-switch">
-    <template v-slot:text>展开抽屉</template>
-    <div>
-    <j-button
-        @click="
-        () => {
-            expand = !expand;
-        }
-        "
-        id="expand-switch"
-    >
-        {{ expand ? '收起' : '展开' }}
-    </j-button>
-    </div>
-</j-control-bar>
-
-<!-- 位置选择 -->
-<j-control-bar
-    :for-id="\`radio-\${i}\`"
-    v-bind:key="i"
-    v-for="i in ['top', 'bottom', 'left', 'right']"
->
-    <template v-slot:text>{{ \`从\${text[i]}展开\` }}</template>
-    <j-radio :id="\`radio-\${i}\`" v-model="openOn" :value="i" />
-</j-control-bar>
-
-<!-- 抽屉组件 -->
-<j-drawer id="demo-drawer" :from="openOn" :expand="expand">
-    <m-row spaceMode="between">
-    <h1>drawer</h1>
-    <h1>drawer</h1>
-    </m-row>
-</j-drawer>
-      `,
         };
+    },
+    computed: {
+        demoCubeClass() {
+            return ['demo-cube', 'on-' + this.openOn];
+        },
     },
 };
 </script>
 
 <style>
+#expand-button {
+    font-size: 1.2rem;
+}
 #demo-drawer {
     z-index: 99;
+}
+
+.demo-cube.on-top,
+.demo-cube.on-bottom {
+    width: 100%;
+}
+.demo-cube.on-left,
+.demo-cube.on-right {
+    height: 100%;
 }
 </style>

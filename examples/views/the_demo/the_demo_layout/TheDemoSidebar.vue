@@ -1,41 +1,8 @@
-
 <template>
     <div id="the-demo-sidebar">
         <h1>侧边栏</h1>
         <p>用于在屏幕两侧展示可折叠内容</p>
         <hr />
-        <div id="doc">
-            <doc-item tag="h2" name="<j-sidebar>：">
-                <li id="props">
-                    <doc-item name="props:">
-                        <li id="prop-mode-value">
-                            <p>
-                                <high-lighter>modelValue</high-lighter>
-                                :type - Boolean, default - false
-                            </p>
-                            <p>用于参数绑定，控制侧栏开关</p>
-                        </li>
-                        <li id="propo-dock">
-                            <p>
-                                <high-lighter>dock</high-lighter>
-                                :type - Boolean, default - false
-                            </p>
-                            <p>
-                                设置为 true
-                                将停靠于设置位置，点击非侧栏中内容时将不响应关闭动作
-                            </p>
-                        </li>
-                        <li id="prop-right">
-                            <p>
-                                <high-lighter>right</high-lighter>
-                                :type - Boolean, default - false
-                            </p>
-                            <p>设置侧栏在屏幕左/右，默认左侧</p>
-                        </li>
-                    </doc-item>
-                </li>
-            </doc-item>
-        </div>
         <div @click.stop>
             <j-control-bar for-id="demo-sidebar-switch">
                 <template v-slot:text>开启侧栏</template>
@@ -49,7 +16,17 @@
                 />
             </j-control-bar>
         </div>
-        <demo-box title="<j-sidebar>" :code="code" :expand="true"></demo-box>
+        <h2>示例：</h2>
+        <demo-box
+            title="Html"
+            code="
+<j-sidebar :expand='true' >
+<!-- 定位于右侧 -->
+<j-sidebar right :expand='true' >
+"
+            :expand="true"
+        ></demo-box>
+
         <j-sidebar
             v-focus="close"
             style="width: 320px"
@@ -58,25 +35,34 @@
         >
             测试内容
         </j-sidebar>
+        <component-documentation v-bind="componentDoc" />
+        <!-- 阻止击事件冒泡以正常关闭演示侧栏 -->
     </div>
 </template>
 <script>
+import { Sidebar } from '@ui';
 export default {
     name: 'the-demo-sidebar',
     data: () => {
         return {
             code: `
 //Javascript
-let demoShowSidebar =  true;
-let displayInRight = true;
+
 // HTML
-<j-switch id="demo-sideber-display-in-right" v-model="displayInRight" />
-<j-switch id="demo-sideber-switch" v-model="demoShowSidebar" />
-<j-sidebar :right="displayInRight" v-model="demoShowSidebar">
+
 测试内容
 </j-sidebar>`,
             demoShowSidebar: false,
             displayInRight: true,
+            componentDoc: {
+                component: Sidebar,
+                description: {
+                    props: {
+                        expand: '说明：开启侧边栏。',
+                        right: '说明：开启后在右侧。',
+                    },
+                },
+            },
         };
     },
 

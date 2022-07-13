@@ -1,15 +1,11 @@
 <template>
     <div>
-        <h2>工具</h2>
+        <h1>工具</h1>
         <p>这里是一些内置的工具函数&类，以及一些指令的函数版本。</p>
         <hr />
-        <br />
+
         <demo-tal />
-        <hr />
-        <br />
         <demo-scroll-to />
-        <br />
-        <hr />
         <demo-shadow-painter />
     </div>
 </template>
