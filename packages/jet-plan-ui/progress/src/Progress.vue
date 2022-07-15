@@ -16,11 +16,20 @@
 </template>
 
 <script>
-import { propInit, propInitBoolean } from '../../tool/lib';
+import { propInit, propInitBoolean, validatorRange } from '../../tool/lib';
+
+function propInitRange() {
+    const range = [];
+    for (let n = 0; n <= 100; n++) {
+        range.push(n);
+        range.push('' + n);
+    }
+    return propInit([Number, String], undefined, validatorRange(range));
+}
 export default {
     name: 'j-progress',
     props: {
-        value: propInit([Number, String], 0),
+        value: propInitRange(),
         failed: propInitBoolean(false),
         pause: propInitBoolean(false),
         height: propInit(String, '8px'),
