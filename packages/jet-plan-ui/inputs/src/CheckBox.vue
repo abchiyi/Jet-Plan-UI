@@ -45,6 +45,7 @@
     </label>
 </template>
 <script>
+import { propInit, validatorRange } from '../../tool/lib';
 export default {
     name: 'j-checkbox',
     computed: {
