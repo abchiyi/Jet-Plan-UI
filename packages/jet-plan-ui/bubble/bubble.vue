@@ -31,6 +31,7 @@
 import baseAction from '../action-feedback/baseAction.vue';
 import { Row as JRow } from '../gird/index';
 import { Shadow, ReScreenSize } from '../tool/directives';
+import { propInit, validatorRange, propInitBoolean } from '../tool/lib';
 import { TransitionSlide } from '../animations';
 import { TimedActionLimit } from '../tool/lib';
 import { getOffset } from '../tool/lib/dom';
@@ -48,33 +49,26 @@ export default {
         message: {
             required: true,
         },
-        position: {
-            type: String,
-            required: true,
-            validator: (v) => {
-                return (
-                    [
-                        'top',
-                        'top-end',
-                        'top-start',
-                        'bottom',
-                        'bottom-end',
-                        'bottom-start',
-                        'left',
-                        'left-top',
-                        'left-bottom',
-                        'right',
-                        'right-top',
-                        'right-bottom',
-                    ].indexOf(v) !== -1
-                );
-            },
-        },
-
-        show: {
-            type: [Boolean, undefined],
-            default: undefined,
-        },
+        position: propInit(
+            String,
+            undefined,
+            validatorRange([
+                'top',
+                'top-end',
+                'top-start',
+                'bottom',
+                'bottom-end',
+                'bottom-start',
+                'left',
+                'left-top',
+                'left-bottom',
+                'right',
+                'right-top',
+                'right-bottom',
+            ]),
+            true
+        ),
+        show: propInitBoolean(false),
     },
     computed: {
         classes() {

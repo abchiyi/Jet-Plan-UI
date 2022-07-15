@@ -3,120 +3,134 @@
         <h1>Bubble</h1>
         <p>悬浮显示简短提示</p>
         <hr />
-        <h2>示例：</h2>
-        <demo-box
-            title="bubble"
-            expand
-            code='
+
+        <doc-item name="示例：" tag="h2">
+            <p class="text-hint">选择气泡悬浮位置</p>
+            <j-card>
+                <j-row spaceMode="between" class="text-hint group top">
+                    <label class="radio-bubble-position" for="top">
+                        <j-radio v-model="position" id="top" value="top" />
+                        <p>top</p>
+                    </label>
+                    <label class="radio-bubble-position" for="top-start">
+                        <j-radio
+                            v-model="position"
+                            id="top-start"
+                            value="top-start"
+                        />
+                        <p>top-start</p>
+                    </label>
+                    <label class="radio-bubble-position" for="top-end">
+                        <j-radio
+                            v-model="position"
+                            id="top-end"
+                            value="top-end"
+                        />
+                        <p>top-end</p>
+                    </label>
+                </j-row>
+                <j-row spaceMode="between" class="text-hint group bottom">
+                    <label class="radio-bubble-position" for="bottom">
+                        <j-radio
+                            v-model="position"
+                            id="bottom"
+                            value="bottom"
+                        />
+                        <p>bottom</p>
+                    </label>
+                    <label class="radio-bubble-position" for="bottom-start">
+                        <j-radio
+                            v-model="position"
+                            id="bottom-start"
+                            value="bottom-start"
+                        />
+                        <p>bottom-start</p>
+                    </label>
+                    <label class="radio-bubble-position" for="bottom-end">
+                        <j-radio
+                            v-model="position"
+                            id="bottom-end"
+                            value="bottom-end"
+                        />
+                        <p>bottom-end</p>
+                    </label>
+                </j-row>
+                <j-row spaceMode="between" class="text-hint group left">
+                    <label class="radio-bubble-position" for="left">
+                        <j-radio v-model="position" id="left" value="left" />
+                        <p>left</p>
+                    </label>
+                    <label class="radio-bubble-position" for="left-top">
+                        <j-radio
+                            v-model="position"
+                            id="left-top"
+                            value="left-top"
+                        />
+                        <p>left-top</p>
+                    </label>
+                    <label class="radio-bubble-position" for="left-bottom">
+                        <j-radio
+                            v-model="position"
+                            id="left-bottom"
+                            value="left-bottom"
+                        />
+                        <p>left-bottom</p>
+                    </label>
+                </j-row>
+                <j-row spaceMode="between" class="text-hint group right">
+                    <label class="radio-bubble-position" for="right">
+                        <j-radio v-model="position" id="right" value="right" />
+                        <p>right</p>
+                    </label>
+                    <label class="radio-bubble-position" for="right-top">
+                        <j-radio
+                            v-model="position"
+                            id="right-top"
+                            value="right-top"
+                        />
+                        <p>right-top</p>
+                    </label>
+                    <label class="radio-bubble-position" for="right-bottom">
+                        <j-radio
+                            v-model="position"
+                            id="right-bottom"
+                            value="right-bottom"
+                        />
+                        <p>right-bottom</p>
+                    </label>
+                </j-row>
+            </j-card>
+            <p class="text-hint">请将鼠标悬浮于元素上方并保持</p>
+
+            <demo-box
+                title="<j-Bubble>"
+                expand
+                code='
 <j-bubble message="Hello this is text" :position="position">
     <p>Bubble Test</p>
 </j-bubble>
         '
-        >
-            <h3>选择气泡悬浮位置</h3>
-            <hr />
-            <j-row spaceMode="between" class="text-hint group top">
-                <label for="top">
-                    <j-radio v-model="position" id="top" value="top" />
-                    <p>top</p>
-                </label>
-                <label for="top-start">
-                    <j-radio
-                        v-model="position"
-                        id="top-start"
-                        value="top-start"
-                    />
-                    <p>top-start</p>
-                </label>
-                <label for="top-end">
-                    <j-radio v-model="position" id="top-end" value="top-end" />
-                    <p>top-end</p>
-                </label>
-            </j-row>
-            <j-row spaceMode="between" class="text-hint group bottom">
-                <label for="bottom">
-                    <j-radio v-model="position" id="bottom" value="bottom" />
-                    <p>bottom</p>
-                </label>
-                <label for="bottom-start">
-                    <j-radio
-                        v-model="position"
-                        id="bottom-start"
-                        value="bottom-start"
-                    />
-                    <p>bottom-start</p>
-                </label>
-                <label for="bottom-end">
-                    <j-radio
-                        v-model="position"
-                        id="bottom-end"
-                        value="bottom-end"
-                    />
-                    <p>bottom-end</p>
-                </label>
-            </j-row>
-            <j-row spaceMode="between" class="text-hint group left">
-                <label for="left">
-                    <j-radio v-model="position" id="left" value="left" />
-                    <p>left</p>
-                </label>
-                <label for="left-top">
-                    <j-radio
-                        v-model="position"
-                        id="left-top"
-                        value="left-top"
-                    />
-                    <p>left-top</p>
-                </label>
-                <label for="left-bottom">
-                    <j-radio
-                        v-model="position"
-                        id="left-bottom"
-                        value="left-bottom"
-                    />
-                    <p>left-bottom</p>
-                </label>
-            </j-row>
-            <j-row spaceMode="between" class="text-hint group right">
-                <label for="right">
-                    <j-radio v-model="position" id="right" value="right" />
-                    <p>right</p>
-                </label>
-                <label for="right-top">
-                    <j-radio
-                        v-model="position"
-                        id="right-top"
-                        value="right-top"
-                    />
-                    <p>right-top</p>
-                </label>
-                <label for="right-bottom">
-                    <j-radio
-                        v-model="position"
-                        id="right-bottom"
-                        value="right-bottom"
-                    />
-                    <p>right-bottom</p>
-                </label>
-            </j-row>
+            >
+                <j-row spaceMode="between" Y="center">
+                    <j-bubble
+                        message="Hello this is Button"
+                        :position="position"
+                    >
+                        <j-button>Bubble Test</j-button>
+                    </j-bubble>
 
-            <h3>Bubble 示例</h3>
-            <p>请将鼠标悬浮于元素上方并保持</p>
-            <hr />
-            <j-row spaceMode="between" Y="center">
-                <j-bubble message="Hello this is Button" :position="position">
-                    <j-button>Bubble Test</j-button>
-                </j-bubble>
+                    <j-bubble message="Hello this is cube" :position="position">
+                        <j-cube />
+                    </j-bubble>
 
-                <j-bubble message="Hello this is cube" :position="position">
-                    <j-cube />
-                </j-bubble>
+                    <j-bubble message="Hello this is text" :position="position">
+                        <p>Bubble Test</p>
+                    </j-bubble>
+                </j-row>
+            </demo-box>
+        </doc-item>
 
-                <j-bubble message="Hello this is text" :position="position">
-                    <p>Bubble Test</p>
-                </j-bubble>
-            </j-row>
-        </demo-box>
+        <component-documentation v-bind="componentDoc" />
 
         <h2>Props:</h2>
         <hr />
@@ -163,11 +177,18 @@
 </template>
 
 <script>
+import { Bubble } from '@ui';
 export default {
     name: 'the-demo-bubble',
     data() {
         return {
             position: 'top',
+            componentDoc: {
+                component: Bubble,
+                description: {
+                    props: {},
+                },
+            },
         };
     },
 };
@@ -191,5 +212,9 @@ export default {
 
 .group {
     font-size: 12px;
+}
+
+.radio-bubble-position {
+    width: 100px;
 }
 </style>
