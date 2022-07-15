@@ -46,7 +46,10 @@ export default {
                     }
                     return [
                         h('strong', null, prop.name + ':'),
-                        elP(`Type - ${handleType(prop.type)}`, prop.type),
+                        elP(
+                            `Type - ${handleType(prop.type)}`,
+                            prop.type.length
+                        ),
                         elP('Required: True', prop.required),
                         elP(`Range - ${handleRange(prop.range)}`, prop.range),
                         elP(
