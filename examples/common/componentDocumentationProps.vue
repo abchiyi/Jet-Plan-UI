@@ -56,7 +56,7 @@ export default {
                             `Default - ${handleTypeStyle(prop.default)}`,
                             prop.default
                         ),
-                        description(),
+                        description(prop.description),
                     ];
                 })
             );

@@ -186,7 +186,11 @@ export default {
             componentDoc: {
                 component: Bubble,
                 description: {
-                    props: {},
+                    props: {
+                        message: '说明：要显示的信息。',
+                        position: '说明：气泡默认浮出位置。',
+                        show: '说明：控制气泡浮出不依赖鼠标/触摸事件触发。',
+                    },
                 },
             },
         };
