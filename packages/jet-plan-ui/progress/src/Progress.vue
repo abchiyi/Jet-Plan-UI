@@ -56,11 +56,8 @@ export default {
 
 <style scoped>
 .progress {
-    --background-color: #bdc3c7;
     --c1: #5fc2ff;
     --c2: #3498db;
-    --failed: #e74c3c;
-    --complete: #2ecc71;
     /* --height: 8px; */
 }
 
@@ -89,7 +86,7 @@ export default {
 .progress::after {
     content: '';
     display: block;
-    transition: 0.5s cubic-bezier(0, 1, 1, 1);
+    transition: 0.3s var(--ease-out);
 }
 
 /* 伪类元素未脱离文本流,其自身会被挤出主体框,使用位移移动到正确的位置 */
@@ -101,7 +98,7 @@ export default {
 .progress {
     margin: 5px 0;
     /* overflow: hidden; */
-    background-color: var(--background-color);
+    background-color: var(--border);
 }
 
 /* 进度条滚动部分 */
@@ -137,10 +134,10 @@ export default {
 
 /* 状态遮罩 */
 .progress.complete::after {
-    background: var(--complete);
+    background: var(--success);
 }
 .progress.failed::after {
-    background: var(--failed);
+    background: var(--error);
 }
 
 .circle {
