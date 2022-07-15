@@ -126,13 +126,12 @@ export default {
             type: String,
             required: true,
         },
-        size: {
-            type: String,
-            default: 'em',
-            validator: (v) => {
-                return ['s', 'm', 'l', 'em', 'rem'].indexOf(v) !== -1;
-            },
-        },
+        size: propInit(
+            String,
+            'em',
+            validatorRange(['s', 'm', 'l', 'em', 'rem'])
+        ),
+
         disabled: {
             type: Boolean,
             default: false,
