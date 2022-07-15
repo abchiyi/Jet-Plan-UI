@@ -1,6 +1,6 @@
 <template>
     <div :class="classes" :style="styles">
-        <svg viewBox="0 0 160 160">
+        <svg v-if="ring" viewBox="0 0 160 160">
             <g stroke-width="20">
                 <g class="background">
                     <circle cx="80" cy="80" r="80" stroke="none" />
@@ -100,7 +100,7 @@ export default {
 /* 进度条 */
 .progress {
     margin: 5px 0;
-    overflow: hidden;
+    /* overflow: hidden; */
     background-color: var(--background-color);
 }
 
