@@ -32,7 +32,7 @@ export default {
             }
 
             function elP(content, if_v) {
-                if (if_v) {
+                if (if_v !== undefined) {
                     return h('p', null, content);
                 }
             }

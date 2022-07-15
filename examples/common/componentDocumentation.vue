@@ -46,7 +46,7 @@ export default {
             }
 
             function ifValue(newObj, value, key) {
-                if (value) {
+                if (value != undefined) {
                     newObj[key] = value;
                 }
             }
@@ -73,7 +73,6 @@ export default {
                 }
 
                 function getDefaultValue() {
-                    console.log(Object.keys(PROP));
                     if (
                         Object.keys(PROP).indexOf('default') !== -1 &&
                         PROP.default == undefined
