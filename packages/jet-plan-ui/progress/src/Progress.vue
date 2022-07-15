@@ -16,29 +16,15 @@
 </template>
 
 <script>
+import { propInit, propInitBoolean } from '../../tool/lib';
 export default {
     name: 'j-progress',
     props: {
-        value: {
-            type: [Number, String],
-            default: 0,
-        },
-        failed: {
-            type: Boolean,
-            default: false,
-        },
-        pause: {
-            type: Boolean,
-            default: false,
-        },
-        height: {
-            type: String,
-            default: '8px',
-        },
-        ring: {
-            type: Boolean,
-            default: false,
-        },
+        value: propInit([Number, String], 0),
+        failed: propInitBoolean(false),
+        pause: propInitBoolean(false),
+        height: propInit(String, '8px'),
+        ring: propInitBoolean(false),
     },
     computed: {
         // 计算输入数字绝对值,最大100
