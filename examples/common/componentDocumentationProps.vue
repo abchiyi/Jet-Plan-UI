@@ -37,29 +37,24 @@ export default {
                 }
             }
 
-            return h(
-                'ul',
-                null,
-                this.parseProps.map((prop) => {
-                    function description(description) {
-                        return h('p', { class: ['font-mono'] }, description);
-                    }
-                    return [
-                        h('strong', null, prop.name + ':'),
-                        elP(
-                            `Type - ${handleType(prop.type)}`,
-                            prop.type.length
-                        ),
-                        elP('Required: True', prop.required),
-                        elP(`Range - ${handleRange(prop.range)}`, prop.range),
-                        elP(
-                            `Default - ${handleTypeStyle(prop.default)}`,
-                            prop.default
-                        ),
-                        description(prop.description),
-                    ];
-                })
-            );
+            const propsItem = this.parseProps.map((prop) => {
+                function description(description) {
+                    return h('p', { class: ['font-mono'] }, description);
+                }
+                return h('li', null, [
+                    h('strong', null, prop.name + ':'),
+                    elP(`Type - ${handleType(prop.type)}`, prop.type.length),
+                    elP('Required: True', prop.required),
+                    elP(`Range - ${handleRange(prop.range)}`, prop.range),
+                    elP(
+                        `Default - ${handleTypeStyle(prop.default)}`,
+                        prop.default
+                    ),
+                    description(prop.description),
+                ]);
+            });
+
+            return h('ul', null, propsItem);
         },
     },
     render() {

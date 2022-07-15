@@ -33,7 +33,12 @@ export default {
                 if (types) {
                     return types instanceof Array
                         ? types.map((type) => {
-                              return typeof type();
+                              switch (type) {
+                                  case undefined:
+                                      return 'undefined';
+                                  default:
+                                      return typeof type();
+                              }
                           })
                         : [typeof PROP.type()];
                 }
@@ -46,7 +51,6 @@ export default {
                 }
             }
 
-            // 解析数据
             return Object.keys(this.component.props).map((propName) => {
                 function parseValidator(prop) {
                     if (prop.validator) {
@@ -68,11 +72,17 @@ export default {
                     console.warn(`Prop :'${propName}' - need description`);
                 }
 
+                function getDefaultValue() {
+                    if (Object.keys(PROP).indexOf('default') !== -1) {
+                        return 'undefined';
+                    }
+                    return PROP.default;
+                }
+
                 const PROP = this.component.props[propName];
                 const TEMP_PROP = {};
-
                 TEMP_PROP.name = propName;
-                ifValue(TEMP_PROP, PROP.default, 'default');
+                ifValue(TEMP_PROP, getDefaultValue(PROP), 'default');
                 ifValue(TEMP_PROP, parseType(PROP), 'type');
                 ifValue(TEMP_PROP, PROP.required, 'required');
                 ifValue(TEMP_PROP, parseValidator(PROP), 'range');
