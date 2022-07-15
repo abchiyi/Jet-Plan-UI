@@ -10,6 +10,7 @@ import buttonGithub from './button_github.vue'
 import buttonGitee from './button_gitee.vue'
 import componentDocumentation from "./componentDocumentation.vue"
 import infoText from './infoText.vue'
+import warningText from './Warning-text.vue'
 
 function setCookie (name, value) {
     let Days = 30
@@ -59,7 +60,8 @@ const components = {
     buttonGithub,
     buttonGitee,
     componentDocumentation,
-    infoText
+    infoText,
+    warningText
 }
 export {
     redColorModeCookie,
