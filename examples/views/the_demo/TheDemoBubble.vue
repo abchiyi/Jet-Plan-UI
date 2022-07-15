@@ -131,36 +131,17 @@
         </doc-item>
 
         <component-documentation v-bind="componentDoc" />
-
-        <h2>Props:</h2>
-        <hr />
-        <doc-item name="message:">
-            <li>type: {String}</li>
-            <li>
-                <p>required</p>
-                <p>提示信息内容</p>
-            </li>
-        </doc-item>
-        <doc-item name="position:">
-            <li>type:{String}</li>
-            <li>required</li>
-            <li>
-                range:
-                <p>top | top-end |top-start</p>
-                <p>bottom | bottom-end | bottom-start</p>
-                <p>left' | left-top | left-bottom</p>
-                <p>right | right-top | right-bottom</p>
-                <p>用于设置悬浮位置</p>
-            </li>
-        </doc-item>
+        <warning-text>
+            ' position ' 中定义的位置并不是绝对的，气泡会根据 'position'
+            中的值来自动避开屏幕边缘。
+        </warning-text>
 
         <doc-item name="Slots:" tag="h2">
-            <template v-slot:title>
-                <hr />
-            </template>
-            <li>
-                <p>仅有默认插槽</p>
-            </li>
+            <ul>
+                <li>
+                    <p>仅有默认插槽</p>
+                </li>
+            </ul>
         </doc-item>
 
         <h2>其他功能：</h2>
