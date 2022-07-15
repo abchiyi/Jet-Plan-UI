@@ -1,17 +1,20 @@
 <script>
 import { h } from 'vue';
+import { propInit } from '@ui/tool/lib';
 import docProps from './componentDocumentationProps.vue';
+
+function defaultData() {
+    return {
+        props: {},
+    };
+}
+
 export default {
     name: 'component-documentation',
     props: {
-        component: {
-            type: Object,
-            required: true,
-        },
-        description: {
-            type: Object,
-            required: true,
-        },
+        component: propInit(Object, defaultData(), null, true),
+        description: propInit(Object, defaultData(), null, true),
+
         titleTagProps: {
             type: String,
             default: 'h2',
@@ -25,45 +28,62 @@ export default {
             return [h(this.titleTagProps, null, ['Props:']), h('hr')];
         },
         parseProps() {
-            function parseType(types) {
-                let tempType = [];
-                if (types instanceof Array) {
-                    for (let key in types) {
-                        let a = typeof types[key]();
-                        tempType.push(a);
-                    }
-                    return tempType;
-                } else {
-                    return [typeof types()];
+            function parseType(PROP) {
+                const types = PROP.type;
+                if (types) {
+                    return types instanceof Array
+                        ? types.map((type) => {
+                              return typeof type();
+                          })
+                        : [typeof PROP.type()];
                 }
-            }
-            function parseValidator(prop) {
-                return prop.validator();
+                return [];
             }
 
-            try {
-                const PROPS = this.component.props;
-                const TEMP_PROPS = {};
-                for (let key in PROPS) {
-                    const prop = PROPS[key];
-                    TEMP_PROPS[key] = {};
-                    TEMP_PROPS[key].default = prop.default;
-                    TEMP_PROPS[key].type = parseType(prop.type);
-                    try {
-                        TEMP_PROPS[key].range = parseValidator(prop);
-                    } catch (error) {
-                        if (typeof prop.validator == 'function') {
+            function ifValue(newObj, value, key) {
+                if (value) {
+                    newObj[key] = value;
+                }
+            }
+
+            // 解析数据
+            return Object.keys(this.component.props).map((propName) => {
+                function parseValidator(prop) {
+                    if (prop.validator) {
+                        try {
+                            return prop.validator();
+                        } catch (error) {
                             console.warn(
-                                `Prop:${key} - validator need back value`
+                                `Prop:${propName} - validator need back value`
                             );
                         }
                     }
-                    TEMP_PROPS[key].required = Boolean(prop.required);
                 }
-                return TEMP_PROPS;
-            } catch (error) {
-                return {};
-            }
+
+                function getDescription(description) {
+                    const _description = description.props[propName];
+                    if (_description) {
+                        return _description;
+                    }
+                    console.warn(`Prop :'${propName}' - need description`);
+                }
+
+                const PROP = this.component.props[propName];
+                const TEMP_PROP = {};
+
+                TEMP_PROP.name = propName;
+                ifValue(TEMP_PROP, PROP.default, 'default');
+                ifValue(TEMP_PROP, parseType(PROP), 'type');
+                ifValue(TEMP_PROP, PROP.required, 'required');
+                ifValue(TEMP_PROP, parseValidator(PROP), 'range');
+                ifValue(
+                    TEMP_PROP,
+                    getDescription(this.description),
+                    'description'
+                );
+
+                return TEMP_PROP;
+            });
         },
     },
     render() {

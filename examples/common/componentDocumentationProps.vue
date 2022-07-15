@@ -12,13 +12,11 @@ function handleRange(range) {
     }
     return 'None';
 }
+
 export default {
     name: 'component-documentation-doc',
     props: {
         parseProps: {
-            type: Object,
-        },
-        description: {
             type: Object,
         },
     },
@@ -33,34 +31,32 @@ export default {
                 }
             }
 
-            function elP(content) {
-                return h('p', null, content);
-            }
-            const props = Object.keys(this.parseProps).map((key) => {
-                const prop = this.parseProps[key];
-                function getPropDescription(description) {
-                    return description.props[key]
-                        ? h(
-                              'p',
-                              { class: ['font-mono'] },
-                              description.props[key]
-                          )
-                        : console.warn(`Prop :'${key}' - need description`);
+            function elP(content, if_v) {
+                if (if_v) {
+                    return h('p', null, content);
                 }
+            }
 
-                return h('li', null, [
-                    h('strong', null, key + ':'),
-                    elP(`Type - ${handleType(prop.type)}`),
-                    prop.required ? elP('Required: True') : '',
-                    prop.range ? elP(`Range - ${handleRange(prop.range)}`) : '',
-                    prop.default != undefined
-                        ? elP(`Default - ${handleTypeStyle(prop.default)}`)
-                        : '',
-                    getPropDescription(this.description),
-                ]);
-            });
-
-            return h('ul', null, props);
+            return h(
+                'ul',
+                null,
+                this.parseProps.map((prop) => {
+                    function description(description) {
+                        return h('p', { class: ['font-mono'] }, description);
+                    }
+                    return [
+                        h('strong', null, prop.name + ':'),
+                        elP(`Type - ${handleType(prop.type)}`, prop.type),
+                        elP('Required: True', prop.required),
+                        elP(`Range - ${handleRange(prop.range)}`, prop.range),
+                        elP(
+                            `Default - ${handleTypeStyle(prop.default)}`,
+                            prop.default
+                        ),
+                        description(),
+                    ];
+                })
+            );
         },
     },
     render() {
