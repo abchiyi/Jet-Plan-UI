@@ -73,7 +73,11 @@ export default {
                 }
 
                 function getDefaultValue() {
-                    if (Object.keys(PROP).indexOf('default') !== -1) {
+                    console.log(Object.keys(PROP));
+                    if (
+                        Object.keys(PROP).indexOf('default') !== -1 &&
+                        PROP.default == undefined
+                    ) {
                         return 'undefined';
                     }
                     return PROP.default;
