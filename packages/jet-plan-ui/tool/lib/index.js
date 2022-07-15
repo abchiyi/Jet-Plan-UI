@@ -208,11 +208,12 @@ export function reTextColor (el) {
     }
 }
 
-export function propInit (_type, _default, validator) {
+export function propInit (_type, _default, validator, required) {
     const prop = {}
     if (_type != undefined) prop.type = _type
     if (_default != undefined) prop.default = _default
     if (validator != undefined) prop.validator = validator
+    if (required != undefined) prop.required = required
     return prop
 }
 
