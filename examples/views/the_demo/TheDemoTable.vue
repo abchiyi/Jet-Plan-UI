@@ -4,17 +4,6 @@
         <p>用于各种表格数据的展示</p>
         <hr />
 
-        <doc-item name="Props:" tag="h2">
-            <li id="table-data">
-                <p><high-lighter>data</high-lighter>: type: object, required</p>
-                <p>
-                    表格数据对象，读取属性
-                    <high-lighter>list</high-lighter>
-                    来渲染条目
-                </p>
-            </li>
-        </doc-item>
-
         <h2>示例：</h2>
         <hr />
         <demo-box
@@ -74,10 +63,13 @@ const data = {
         >
             <j-table :data="user"></j-table>
         </demo-box>
+
+        <component-documentation v-bind="componentDoc" />
     </div>
 </template>
 
 <script>
+import { Table } from '@ui';
 export default {
     name: 'the-demo-table',
     data() {
@@ -127,6 +119,14 @@ export default {
                         '日期/date': '2048/12/12',
                     },
                 ],
+            },
+            componentDoc: {
+                component: Table,
+                description: {
+                    props: {
+                        data: '说明：表格数据，读取属性 list 来渲染条目。',
+                    },
+                },
             },
         };
     },
