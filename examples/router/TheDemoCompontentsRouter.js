@@ -89,6 +89,9 @@ export default [
         }, {
             name: 'Switch',
             to: "#switch"
+        }, {
+            name: 'Slider',
+            to: "#slider"
         }
         ],
         component: () => import('../views/the_demo/the_demo_inputs/TheDemoInputs.vue')

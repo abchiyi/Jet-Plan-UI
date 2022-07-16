@@ -11,6 +11,7 @@
         <theinputs-checkbox id="checkbox" />
         <theinputs-radio id="radio" />
         <theinputs-switch id="switch" />
+        <Slider id="slider" />
     </div>
 </template>
 <script>
@@ -19,6 +20,7 @@ import TheinputsCheckbox from './TheInputs-Checkbox.vue';
 import TheinputsSwitch from './TheInputs-Switch.vue';
 import TheinputsRadio from './TheInputs-Radio.vue';
 import TheInputsInput from './TheInputs-input.vue';
+import Slider from './TheDemoSlider.vue';
 export default {
     mixins: [pdn],
     name: 'the-demo-inputs',
@@ -27,6 +29,7 @@ export default {
         TheinputsSwitch,
         TheinputsRadio,
         TheInputsInput,
+        Slider,
     },
 };
 </script>
