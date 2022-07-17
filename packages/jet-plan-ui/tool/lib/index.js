@@ -1,3 +1,5 @@
+import { getOffset } from './dom'
+
 export class TimedActionLimit {
     constructor (timeout, limit = 1, waitCoolingDown = true) {
         if (!timeout) {
@@ -238,4 +240,58 @@ export function validatorRange (range) {
                 return range
         }
     }
+}
+
+export function scrollBehaviorOfAnchor (id, top) {
+    let position
+    const _id = id.replace('#', '')
+
+    const EL_HEIGHT = getOffset(document.getElementById(_id)).size.height
+    const SCREEN_HEIGHT = window.screen.height
+
+    // 当元素接近屏幕高度时，贴近视窗顶部，否则居中。
+    if (EL_HEIGHT <= SCREEN_HEIGHT * 0.75) {
+        position = (SCREEN_HEIGHT - EL_HEIGHT) / 2
+    } else {
+        position = top ? top : 0
+    }
+    console.log(
+        {
+            el: id,
+            behavior: 'smooth',
+            top: position
+        }
+    )
+    return {
+        el: id,
+        behavior: 'smooth',
+        top: position
+    }
+}
+
+export function scrollBehaviorOfVueRouter (newRouterTimeOut, top) {
+    return function (to, from, savedPosition) {
+        return new Promise((resolve) => {
+            if (to.hash) {
+                // 模拟锚点行为
+                resolve(scrollBehaviorOfAnchor(to.hash, top))
+            } else {
+                // 等待页面过渡再滚动
+                setTimeout(() => {
+                    if (savedPosition) {
+                        // 使用翻页键时
+                        resolve(savedPosition)
+                    } else {
+                        // 新链接
+                        resolve({
+                            top: 0,
+                            left: 0
+                        })
+                    }
+                }, newRouterTimeOut)
+
+            }
+        })
+    }
+
 }
