@@ -5,7 +5,7 @@ import {
     TransitionFade, TransitionFolded,
     TransitionScale, TransitionSlide
 } from './animations'
-import { Avatar } from './avater'
+import { Avatar } from './avatar'
 import { Bubble } from "./bubble"
 import { Card } from "./card"
 import { CodeBox } from "./code_box"
@@ -15,7 +15,7 @@ import {
     Page, Header, Sidebar, ControlBar, FullScreenMask, Drawer
 } from "./layout"
 import { Mask } from "./mask"
-import { Progress } from "./progress"
+import { Loading } from "./loading"
 import { Table } from "./table"
 import { AllTheme, Theme as $jetTheme } from "./theme"
 
@@ -40,7 +40,7 @@ export {
     CheckBox, Button, Switch, Radio, Input, Slider,
     Page, Header, Sidebar, ControlBar, FullScreenMask, Drawer,
     Mask,
-    Progress,
+    Loading,
     Table,
     AllTheme,
 }
@@ -62,7 +62,7 @@ const COMPONENTS = [
     CheckBox, Button, Switch, Radio, Input, Slider,
     Page, Header, Sidebar, ControlBar, FullScreenMask, Drawer,
     Mask,
-    Progress,
+    Loading,
     Table,
     AllTheme,
 ]

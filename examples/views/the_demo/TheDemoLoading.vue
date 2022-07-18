@@ -1,7 +1,7 @@
 <template>
-    <div id="the-demo-progressbar">
+    <div id="the-demo-loading">
         <!-- header -->
-        <doc-item id="describes" name="Progress:" tag="h1" no-dot no-padding>
+        <doc-item id="describes" name="Loading:" tag="h1" no-dot no-padding>
             <p>用于展示加载进度</p>
             <hr />
         </doc-item>
@@ -117,7 +117,7 @@ export default {
 </template>
 
 <script>
-import { Progress } from '@ui';
+import { Loading } from '@ui';
 import pdn from '../../common/mix/popDemoName';
 export default {
     mixins: [pdn],
@@ -125,7 +125,7 @@ export default {
     data() {
         return {
             componentDoc: {
-                component: Progress,
+                component: Loading,
                 description: {
                     props: {
                         value: '说明：进度条百分比。',

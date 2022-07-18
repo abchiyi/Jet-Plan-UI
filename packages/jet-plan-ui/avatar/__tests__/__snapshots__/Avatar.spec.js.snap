@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Avatar Document test 1`] = `
+<div class="j-avatar circle" style="--size: 2em; transition: 1ms ease-in-out;">
+  <div class="content"></div>
+</div>
+`;
+
+exports[`Avatar Document test 2`] = `
+<div class="j-avatar border circle" style="--size: 2em; transition: 1ms ease-in-out;">
+  <div class="content"></div>
+</div>
+`;
+
+exports[`Avatar Document test 3`] = `
+<div class="j-avatar border" style="--size: 2em; transition: 1ms ease-in-out;">
+  <div class="content"></div>
+</div>
+`;
+
+exports[`Avatar Document test 4`] = `
+<div class="j-avatar border" style="--size: 2em; transition: 1ms ease-in-out;" color="#61ff73">
+  <div class="content"></div>
+</div>
+`;

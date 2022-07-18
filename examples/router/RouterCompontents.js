@@ -1,10 +1,10 @@
 export default [
 
     {
-        name: "Avater",
-        path: "/avater",
+        name: "Avatar",
+        path: "/avatar",
         component: () => import(
-            '../views/the_demo/TheDemoAvater.vue')
+            '../views/the_demo/TheDemoAvatar.vue')
     },
     {
         name: "Alert",
@@ -35,15 +35,15 @@ export default [
             '../views/the_demo/TheDemoCard.vue')
     },
     {
-        name: "codebox",
-        path: "/codebox",
+        name: "CodeBox",
+        path: "/CodeBox",
         component: () => import(
-            '../views/the_demo/TheDemoCodebox.vue')
+            '../views/the_demo/TheDemoCodeBox.vue')
     },
     {
-        name: 'Progressbar',
-        path: '/progressbar',
-        component: () => import('../views/the_demo/TheDemoProgress.vue')
+        name: 'Loading',
+        path: '/loading',
+        component: () => import('../views/the_demo/TheDemoLoading.vue')
     },
     {
         name: 'Test',
