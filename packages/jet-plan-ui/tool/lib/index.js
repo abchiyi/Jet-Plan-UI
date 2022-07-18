@@ -255,13 +255,6 @@ export function scrollBehaviorOfAnchor (id, top) {
     } else {
         position = top ? top : 0
     }
-    console.log(
-        {
-            el: id,
-            behavior: 'smooth',
-            top: position
-        }
-    )
     return {
         el: id,
         behavior: 'smooth',
