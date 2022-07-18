@@ -6,11 +6,11 @@ import {
 import { scrollBehaviorOfVueRouter } from "@ui/tool/lib"
 
 // TheDemo page 中的内容
-import TheDemoCompontentsRouter from './TheDemoCompontentsRouter'
-import TheDemoStart from './TheDemoStart'
-import TheDemoStyle from './TheDemoStyle'
-import TheDemoTool from './TheDemoTool'
-import TheDemoLayout from './TheDemoLayout'
+import TheDemoCompontentsRouter from './RouterCompontents'
+import TheDemoStart from './RouterStart'
+import TheDemoStyle from './RouterStyle'
+import TheDemoTool from './RouterTool'
+import TheDemoLayout from './RouterLayout'
 
 const defaultPage = TheDemoStart[0].path
 
