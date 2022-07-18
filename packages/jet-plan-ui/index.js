@@ -21,7 +21,7 @@ import { AllTheme, Theme as $jetTheme } from "./theme"
 
 // Directives
 import {
-    ReScreenSize, AutoColor, ScrollTo, Shadow, Focus
+    ReScreenSize, AutoColor, Shadow, Focus
 } from "./tool/directives"
 
 export {
@@ -68,7 +68,7 @@ const COMPONENTS = [
 ]
 
 const DIRECTIVES = [
-    ReScreenSize, AutoColor, ScrollTo, Shadow, Focus
+    ReScreenSize, AutoColor, Shadow, Focus
 ]
 
 import { installComponent, installDirective } from './tool/lib'

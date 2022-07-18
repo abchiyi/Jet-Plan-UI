@@ -26,13 +26,13 @@
                     >
                         <j-button
                             style="padding-left: 2.5rem; margin: unset"
-                            v-scroll-to:120="i.to"
                             v-for="i in item.index"
                             :key="i"
                             active
                             hover
                             text
                             row
+                            @click="goAnchor(i.to)"
                         >
                             {{ i.name }}
                         </j-button>
@@ -52,6 +52,11 @@ export default {
     },
     props: {
         paths: Object,
+    },
+    methods: {
+        goAnchor(id) {
+            this.$router.push(id);
+        },
     },
 };
 </script>

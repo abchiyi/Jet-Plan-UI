@@ -17,10 +17,6 @@ export default [{
         to: '#focus'
     },
     {
-        name: 'ScrollTo',
-        to: '#scroll-to'
-    },
-    {
         name: 'shadow',
         to: '#shadow'
     },
@@ -41,10 +37,6 @@ export default [{
     index: [{
         name: 'TimeActionLimit',
         to: '#time-action-limit'
-    },
-    {
-        name: 'scrollTo',
-        to: '#demo-scroll-to'
     },
     {
         name: "shadowPainter",

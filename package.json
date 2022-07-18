@@ -32,9 +32,7 @@
         "eslint": "^7.32.0",
         "eslint-plugin-vue": "^8.0.3",
         "highlight.js": "11.4.0",
-        "jest": "^27.0.5",
-        "jquery": "^3.6.0",
-        "jquery.easing": "^1.4.1"
+        "jest": "^27.0.5"
     },
     "eslintConfig": {
         "root": true,
@@ -49,16 +47,18 @@
             "parser": "@babel/eslint-parser"
         },
         "rules": {},
-        "overrides": [{
-            "files": [
-                "**/__tests__/*.{j,t}s?(x)",
-                "**/__test__/*.{j,t}s?(x)",
-                "**/**/*.spec.{j,t}s?(x)"
-            ],
-            "env": {
-                "jest": true
+        "overrides": [
+            {
+                "files": [
+                    "**/__tests__/*.{j,t}s?(x)",
+                    "**/__test__/*.{j,t}s?(x)",
+                    "**/**/*.spec.{j,t}s?(x)"
+                ],
+                "env": {
+                    "jest": true
+                }
             }
-        }]
+        ]
     },
     "browserslist": [
         "> 1%",

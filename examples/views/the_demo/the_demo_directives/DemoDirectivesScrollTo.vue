@@ -23,19 +23,19 @@
             中指定的距离屏幕顶部的高度。
         </p>
         <div id="scroll-controll">
-            <j-button row tag="a" v-scroll-to:120="`#cube1`">
+            <router-link to="#cube1">
                 滚动至大于屏幕高度元素,定义顶部距离视窗200px
-            </j-button>
-            <j-button row tag="a" v-scroll-to="`#cube2`">
-                滚动至小于屏幕高度元素
-            </j-button>
-            <j-button row tag="a" v-scroll-to="`#cube3`">
+            </router-link>
+            <br />
+            <router-link to="#cube2"> 滚动至小于屏幕高度元素 </router-link>
+            <br />
+            <router-link to="#cube3">
                 滚动至大于屏幕高度元素,未定义顶部距离视窗位置
-            </j-button>
+            </router-link>
         </div>
         <demo-box title="v-scroll-to" :code="code">
             <j-row X="center">
-                <j-col style="width: 100px">
+                <j-col style="width: 100px; z-index: 10">
                     <j-cube
                         id="cube2"
                         v-scroll-to="`#scroll-controll`"

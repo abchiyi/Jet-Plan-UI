@@ -12,14 +12,12 @@
 <script>
 import pdn from '../../../common/mix/popDemoName';
 import demoTal from './DemoTimedActionLimit.vue';
-import demoScrollTo from './DemoScrollTo.vue';
 import demoShadowPainter from './DemoShadowPrinter.vue';
 export default {
     mixins: [pdn],
     name: 'the-demo-tools',
     components: {
         demoTal,
-        demoScrollTo,
         demoShadowPainter,
     },
     data: () => {
