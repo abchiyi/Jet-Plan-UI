@@ -4,5 +4,6 @@ export default {
         focus: '说明: 启用 focus 效果',
         hover: '说明: 启用 hover 效果',
         active: '说明: 启用 active 效果',
+        hoverDelay: '说明: 设置 "hover" 效果应用延时。单位/ms',
     }
 }

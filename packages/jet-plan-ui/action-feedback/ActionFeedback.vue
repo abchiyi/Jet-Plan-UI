@@ -10,6 +10,7 @@ export default {
         focus: propInitBoolean(false),
         hover: propInitBoolean(false),
         active: propInitBoolean(false),
+        hoverDelay: propInit(Number, 80),
     },
     data() {
         return {
@@ -90,7 +91,16 @@ export default {
             this.data_active = event.active;
         },
         handlerHover(event) {
-            if (this.hover) this.data_hover = event.active;
+            if (this.hover) {
+                if (event.active) {
+                    this.$hover_timeout_id = setTimeout(() => {
+                        this.data_hover = true;
+                    }, this.hoverDelay);
+                } else {
+                    clearTimeout(this.$hover_timeout_id);
+                    this.data_hover = false;
+                }
+            }
         },
     },
     render() {
@@ -127,7 +137,7 @@ export default {
 
 .j-action-feedback,
 .j-action-feedback::after {
-    transition: 0.3s var(--ease-out-slow);
+    transition: 0.2s var(--ease-out-slow);
 }
 
 .j-action-feedback::after {
