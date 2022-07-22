@@ -149,7 +149,7 @@ export default {
     stroke-width: 1;
 }
 
-/*--------------- Acitive --------------- */
+/*--------------- Active --------------- */
 .j-switch.wider .lever > .lever-fill {
     width: 15px;
 }
