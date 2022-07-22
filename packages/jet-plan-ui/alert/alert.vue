@@ -1,5 +1,5 @@
 <template>
-    <div :class="classes">
+    <j-drawer from="right" expand :class="classes">
         <transition-group name="alert">
             <alert-item
                 v-for="item in data.alerts"
@@ -11,10 +11,11 @@
                 {{ item.content }}
             </alert-item>
         </transition-group>
-    </div>
+    </j-drawer>
 </template>
 
 <script>
+import { Drawer as jDrawer } from '../layout';
 import alertItem from './alertItem.vue';
 const NAME = 'j-alert';
 export default {
@@ -27,15 +28,15 @@ export default {
     },
     components: {
         alertItem,
+        jDrawer,
     },
     computed: {
         classes() {
-            return [NAME, 'j-hidden-scrollbar'];
+            return [NAME];
         },
     },
     methods: {
         wangToClose(v) {
-            // this.$emit('remove', v);
             this.data.remove(v);
         },
     },
@@ -45,15 +46,10 @@ export default {
 <style>
 .j-alert {
     box-sizing: border-box;
-    position: fixed;
-    height: 100vh;
     width: 280px;
-    right: 0;
-    bottom: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
     padding: 3vh 0;
     pointer-events: none;
+    bottom: unset;
 }
 
 .alert-enter-from,

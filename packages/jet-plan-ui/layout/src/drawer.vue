@@ -36,7 +36,6 @@ export default {
 
 <style>
 .j-drawers {
-    overflow-y: scroll;
     position: fixed;
     bottom: 0;
     right: 0;
