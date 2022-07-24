@@ -83,6 +83,14 @@ const Theme = reactive({
         } else {
             console.warn(`$jetTheme.setTheme
     Not found theme :${name}`)
+
+            let allThemeName = Object.keys(this.allThemes).toString()
+            console.log(allThemeName)
+            allThemeName.replace(/,/, '\n')
+
+            console.log(
+                `AllThemes:\n${allThemeName}`
+            )
         }
     }
 })
