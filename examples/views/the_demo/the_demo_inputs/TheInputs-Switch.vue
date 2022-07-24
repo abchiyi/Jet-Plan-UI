@@ -9,6 +9,7 @@
                         {{ value ? 'on' : 'off' }}
                     </label>
                 </div>
+                <br />
                 <div>
                     <j-switch
                         id="demo-switch-disabled"
