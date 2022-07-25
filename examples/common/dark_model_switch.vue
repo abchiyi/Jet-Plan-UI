@@ -1,14 +1,16 @@
 <template>
-    <span class="dms-ico">
+    <j-button tag="label" for="dark-mode-switch">
         <j-switch v-model="value" id="dark-mode-switch" />
-        <j-transition-fade mode="out-in">
-            <i v-if="value" class="bi bi-moon"></i>
-            <i
-                v-else-if="value === false"
-                class="bi bi-brightness-high-fill"
-            ></i>
-        </j-transition-fade>
-    </span>
+        <span class="dms-ico">
+            <j-transition-fade mode="out-in">
+                <i v-if="value" class="bi bi-moon"></i>
+                <i
+                    v-else-if="value === false"
+                    class="bi bi-brightness-high-fill"
+                ></i>
+            </j-transition-fade>
+        </span>
+    </j-button>
 </template>
 
 <script>
@@ -37,3 +39,13 @@ export default {
     },
 };
 </script>
+<style scoped>
+.dms-ico {
+    text-align: center;
+    width: 1.2rem;
+}
+
+#dark-mode-switch {
+    pointer-events: none !important;
+}
+</style>
