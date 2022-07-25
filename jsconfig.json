@@ -4,18 +4,7 @@
         "module": "esnext",
         "baseUrl": "./",
         "moduleResolution": "node",
-        // "paths": {
-        //     "@/*": [
-        //         "examples/*"
-        //     ],
-        //     "@ui/*": [
-        //         "packages/jet-plan-ui/*"
-        //     ],
-        //     "@theme/*": [
-        //         "packages/jet-plan-ui-theme/*"
-        //     ]
-        // },
-        "vueCompilerOptions.experimentalDisableTemplateSupport": false,
+        "jsx": "preserve",
         "lib": [
             "esnext",
             "dom",
