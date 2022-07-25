@@ -11,6 +11,7 @@ import buttonGitee from './button_gitee.vue'
 import componentDocumentation from "./componentDocumentation.vue"
 import infoText from './infoText.vue'
 import warningText from './Warning-text.vue'
+import darkModeSwitch from './dark_model_switch.vue'
 
 function setCookie (name, value) {
     let Days = 30
@@ -61,7 +62,8 @@ const components = {
     buttonGitee,
     componentDocumentation,
     infoText,
-    warningText
+    warningText,
+    darkModeSwitch
 }
 export {
     redColorModeCookie,
@@ -76,7 +78,8 @@ export {
     Cube,
     ExpandMennu,
     DemoPageHaveIndex,
-    DocItem
+    DocItem,
+    darkModeSwitch
 }
 export default {
     install (Vue) {
