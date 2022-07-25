@@ -1,13 +1,13 @@
 <template>
     <div
         :class="classes"
-        @click="change"
-        @mousedown="toWider"
-        @mouseup="cancellation"
-        @mouseout="cancellation"
-        @touchstart="toWider"
-        @touchend="cancellation"
-        @touchcancel="cancellation"
+        @click.prevent="change"
+        @mousedown.prevent="toWider"
+        @mouseup.prevent="cancellation"
+        @mouseout.prevent="cancellation"
+        @touchstart.prevent="toWider"
+        @touchend.prevent="cancellation"
+        @touchcancel.prevent="cancellation"
     >
         <svg ref="self" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 16">
             <rect class="background" rx="8" />
