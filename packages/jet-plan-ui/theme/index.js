@@ -36,6 +36,20 @@ function use (theme) {
         themToString(theme)
 }
 
+export function searchColor (colorName) {
+    // 拆分色彩名&色彩序号
+    const indexRe = /A?\d{3}/
+    const color = colorName.split(indexRe)
+    const index = colorName.match(indexRe)
+
+    if (color && index) {
+        return Colors[color[0]][index[0]]
+    } else if (color) {
+        return Colors[color[0]][500]
+    }
+}
+
+
 // 主题应用元素
 const EL = getThemeStyleEl("jet-plan-ui-theme-color")
 
@@ -96,6 +110,7 @@ const Theme = reactive({
 })
 
 // 导入基本样式
+import Colors from './colors'
 import './src/css'
 
 import {
@@ -118,5 +133,6 @@ export default {
 }
 export {
     AllTheme,
+    Colors,
     Theme,
 }
