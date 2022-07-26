@@ -36,6 +36,14 @@ function themeToCssCode (theme) {
 
     function toCssProperty (key, value) {
         // 转换为 css 键值对
+        if (key instanceof Array) {
+            const cssKey = key.map(
+                string => { return changeCaseKebab(string) }
+            ).join('-')
+
+            return `--${cssKey}:${value}`
+
+        }
         return `--${changeCaseKebab(key)}:${value}`
     }
 
@@ -43,10 +51,11 @@ function themeToCssCode (theme) {
         if (colors) {
             return Object.keys(colors).map(
                 key => {
-                    if (isHEX(colors[key])) {
-                        return `--${type}-${key}:${colors[key]}`
+                    const color = colors[key]
+                    if (isHEX(color)) {
+                        return toCssProperty([type, key], color)
                     }
-                    return `--${type}-${key}:${searchColor(colors[key])}`
+                    return toCssProperty([type, key], searchColor(color))
                 }
             )
         }

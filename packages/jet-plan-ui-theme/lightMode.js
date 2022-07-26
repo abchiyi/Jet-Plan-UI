@@ -26,7 +26,7 @@ export default {
         // backgroundDisabled: '',
     },
     border: {
-        "light-ex": 'grey100',
+        lightEx: 'grey100',
         dark: 'grey300',
         light: 'grey200',
         disabled: 'grey200'
@@ -36,8 +36,8 @@ export default {
         light: 'teal100',
         disabled: 'grey400'
     },
-    'page-background': 'grey100',
-    'frosted-glass': '#ffffffb3',
+    pageBackground: 'grey100',
+    frostedGlass: '#ffffffb3',
     shadow: "grey300",
     white: 'white',
     black: 'black',
