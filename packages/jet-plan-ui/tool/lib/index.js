@@ -290,6 +290,7 @@ export function scrollBehaviorOfVueRouter (newRouterTimeOut, top) {
 }
 
 export function changeCaseKebab (string) {
+    // TODO 优化匹配模式
     const iterator = string.matchAll(/[A-Z][a-z]|\d+/g)
 
     let stringArray = string.split('')
