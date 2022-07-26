@@ -288,3 +288,28 @@ export function scrollBehaviorOfVueRouter (newRouterTimeOut, top) {
     }
 
 }
+
+export function changeCaseKebab (string) {
+    const iterator = string.matchAll(/[A-Z][a-z]|\d+/g)
+
+    let stringArray = string.split('')
+
+    function replace () {
+        const value = iterator.next()
+        // const index = value.value.index
+        if (!value.done) {
+            const index = value.value.index
+            if (index !== 0) {
+                stringArray[index] = '-' + stringArray[index].toLowerCase()
+            } else {
+                stringArray[index] = stringArray[index].toLowerCase()
+            }
+            replace()
+        } else {
+            return
+        }
+    }
+    replace()
+
+    return stringArray.join('')
+}

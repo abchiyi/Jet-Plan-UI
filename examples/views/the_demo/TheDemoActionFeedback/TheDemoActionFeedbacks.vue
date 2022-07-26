@@ -153,9 +153,9 @@ export default {
 <style scoped>
 .demo-item {
     border-radius: var(--m-radius);
-    background: var(--foreground);
+    background: var(--white);
     box-sizing: border-box;
-    color: var(--text);
+    color: var(--text-dark);
     height: 100px;
     width: 100px;
     margin: 10px;

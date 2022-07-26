@@ -55,7 +55,7 @@ ${this.$refs.showDemo.innerHTML}
     padding: 20px;
 }
 .demo-box-demo > *:nth-child(1) {
-    background-color: var(--background);
+    background-color: var(--page-background);
     border-radius: var(--m-radius);
     padding: 1rem 2rem;
 }

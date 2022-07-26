@@ -36,7 +36,7 @@ export default {
 }
 
 .j-input {
-    background-color: var(--foreground);
+    background-color: var(--white);
     border-radius: 0.28em;
     padding: 0.4em;
     color: inherit;

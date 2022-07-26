@@ -10,7 +10,7 @@
         @click="click"
     />
     <label :for="id" :class="classes">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+        <svg viewBox="0 0 16 16">
             <path
                 class="background"
                 d="M4,0h8a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z"
@@ -38,6 +38,10 @@
                         class="check"
                         d="M281.784,416c-4.9,5.277-3.769,5.654-6.784,1.884"
                         transform="translate(-270.392 -409.717)"
+                        stroke-dasharray="30px"
+                        stroke-linecap="round"
+                        stroke-width="2"
+                        fill="none"
                     />
                 </g>
             </transition>
@@ -108,7 +112,7 @@ export default {
                 'shape j-check-box',
                 this.size,
                 this.checked ? 'checked' : '',
-                // this.sectionSelected && !this.checked ? "section-selected" : "",
+                this.sectionSelected && !this.checked ? 'section-selected' : '',
                 this.disabled ? 'disabled' : '',
             ];
         },
@@ -221,50 +225,60 @@ label > * {
     cursor: pointer;
     margin: 0 2px;
 }
-
+/* ---------- No Check ---------- */
 .j-check-box .background {
-    fill: var(--border);
-    opacity: 0.6;
+    fill: var(--border-dark);
 }
 
 .j-check-box .mask {
-    fill: var(--background);
+    fill: var(--border-light-ex);
 }
 
-.j-check-box .dot {
-    fill: var(--primary);
-}
+/* ---------- Checked ---------- */
 
-.j-check-box .check {
-    stroke-dasharray: 30px;
-    stroke-linecap: round;
-    stroke: var(--text-light);
-    stroke-width: 2;
-    fill: none;
-}
-
-/* Checked */
-.j-check-box.checked .mask,
 .j-check-box.checked .background {
-    fill: var(--primary);
+    fill: var(--primary-light);
+}
+.j-check-box.checked .mask {
+    fill: var(--primary-dark);
+}
+.j-check-box.checked .check {
+    stroke: var(--white);
 }
 
-/* Disabled */
+/* ---------- Check Dot ---------- */
+.j-check-box .dot {
+    fill: var(--primary-dark);
+}
+
+/* ---------- Disabled ---------- */
+
+/* dot */
+.j-check-box.section-selected.disabled .mask {
+    fill: var(--border-light-ex);
+}
+.j-check-box.section-selected.disabled .dot {
+    fill: var(--primary-disabled);
+}
+
+/* no check */
 .j-check-box.disabled {
     cursor: not-allowed;
 }
-.j-check-box.disabled .background {
-    fill: var(--border);
-}
+
 .j-check-box.disabled .mask {
-    fill: var(--disabled);
+    fill: var(--primary-disabled);
 }
-.j-check-box.disabled .dot {
-    fill: var(--text-light);
-    opacity: 0.5;
+
+/* checked */
+.j-check-box.disabled.checked .background {
+    fill: var(--border-dark);
 }
-.j-check-box.disabled .check {
-    opacity: 0.5;
+.j-check-box.disabled.checked .mask {
+    fill: var(--border-light-ex);
+}
+.j-check-box.disabled.checked .check {
+    stroke: var(--primary-disabled);
 }
 
 /* Animation */

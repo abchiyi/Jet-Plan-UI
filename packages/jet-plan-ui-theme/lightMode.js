@@ -1,37 +1,44 @@
-const BACKGROUND = {
-    foreground: "#ffffff",
-    border: "#c8c8c8",
-    background: "#e1e1e1",
-    disabled: "#aaaaaa",
-}
+// const BACKGROUND = {
+//     disabled: "#aaaaaa",
+// }
 
-const TEXTCOLOR = {
-    "text-disabled": "#5C5C5C4d",
-    "text-hint": "#848484",
-    text: "#505050",
-}
+// const BASECOLOR = {
+//     success: "#4cd966",
+//     warning: "#ecb02c",
+//     error: "#f33f2e",
+//     info: "#0d75ec",
+// }
 
-const BASECOLOR = {
-    secondary: "#eeeeee",
-    primary: "#1687a7",
-    success: "#4cd966",
-    warning: "#ecb02c",
-    error: "#f33f2e",
-    info: "#0d75ec",
-}
-
-const OTHERS = {
-    frosted_glass: BACKGROUND.foreground + "b3",
-    card: BACKGROUND.foreground,
-    shadow: "#00000033",
-    mask: "#27272760",
-    "text-light": "#FCFCFC",
-    "text-dark": TEXTCOLOR.text,
-}
-
+// const OTHERS = {
+//     card: BACKGROUND.foreground,
+//     mask: "#27272760",
+// }
 export default {
-    ...BACKGROUND,
-    ...TEXTCOLOR,
-    ...BASECOLOR,
-    ...OTHERS,
+
+    text: {
+        light: 'grey100',
+        dark: 'grey800',
+        disabled: 'grey300'
+    },
+    shape: {
+        // mask: '',
+        // background: '',
+        // backgroundDisabled: '',
+    },
+    border: {
+        "light-ex": 'grey100',
+        dark: 'grey300',
+        light: 'grey200',
+        disabled: 'grey200'
+    },
+    primary: {
+        dark: 'teal',
+        light: 'teal100',
+        disabled: 'grey400'
+    },
+    'page-background': 'grey100',
+    'frosted-glass': '#ffffffb3',
+    shadow: "grey300",
+    white: 'white',
+    black: 'black',
 }

@@ -51,7 +51,7 @@ export default {
             return {
                 border:
                     this.border != 0
-                        ? `${this.border}px solid var(--border)`
+                        ? `${this.border}px solid var(--border-dark)`
                         : '',
             };
         },

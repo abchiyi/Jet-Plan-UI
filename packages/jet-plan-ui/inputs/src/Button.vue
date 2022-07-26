@@ -102,7 +102,7 @@ a.j-button {
 
 .j-button {
     transition: all 0.3s var(--ease-out);
-    background-color: var(--secondary);
+    background-color: var(--border-dark);
     border-radius: var(--m-radius);
     box-sizing: border-box;
     display: inline-block;
@@ -136,7 +136,7 @@ a.j-button {
 }
 /* Button Mode Only*/
 .j-button.button.primary {
-    background-color: var(--primary);
+    background-color: var(--primary-dark);
 }
 /* Text Button */
 /*------------ Default ----------*/
@@ -146,11 +146,11 @@ a.j-button {
 }
 /*------------ Primary ----------*/
 .j-button.text-button.primary {
-    color: var(--primary);
+    color: var(--primary-dark);
 }
 /* ------------ disabled ---------- */
 .j-button.primary.disabled {
-    background: var(--border);
+    background: var(--border-dark);
 }
 
 .j-button.text-button.disabled {

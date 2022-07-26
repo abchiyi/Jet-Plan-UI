@@ -58,7 +58,7 @@
                     <p>按钮内部的：</p>
                     <j-button
                         @click="success = !success"
-                        style="background: var(--foreground)"
+                        style="background: var(--white)"
                     >
                         <j-progress
                             style="font-size: 20px"

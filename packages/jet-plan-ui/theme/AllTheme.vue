@@ -36,7 +36,7 @@ export default {
 
 <style>
 .all-theme {
-    background: var(--foreground);
+    background: var(--white);
     border-radius: 8px;
     padding: 20px;
     padding-bottom: 5px;

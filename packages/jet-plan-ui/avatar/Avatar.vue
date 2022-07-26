@@ -43,7 +43,7 @@ export default {
 <style >
 .j-avatar {
     font-size: calc(var(--size) / 2);
-    background: var(--foreground);
+    background: var(--white);
     min-height: var(--size);
     min-width: var(--size);
     display: inline-block;
@@ -58,7 +58,7 @@ export default {
 }
 
 .j-avatar.border {
-    outline: 0.2em solid var(--border);
+    outline: 0.2em solid var(--border-dark);
 }
 
 .j-avatar img,

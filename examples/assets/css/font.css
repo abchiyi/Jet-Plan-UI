@@ -25,7 +25,7 @@
 
 /* 辅助文本 */
 .text-hint {
-    color: var(--text-hint);
+    color: var(--text-light);
     font-weight: bold;
     font-size: 14px;
 }

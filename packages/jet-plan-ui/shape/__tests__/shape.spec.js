@@ -21,7 +21,7 @@ describe("Component j-shape", () => {
         await wrapper.setProps({
             border: '2'
         })
-        expect(wrapper.vm.style.border).toEqual("2px solid var(--border)")
+        expect(wrapper.vm.style.border).toEqual("2px solid var(--border-dark)")
     })
     it('Prop Round', async () => {
         const wrapper = mount(baseShape)

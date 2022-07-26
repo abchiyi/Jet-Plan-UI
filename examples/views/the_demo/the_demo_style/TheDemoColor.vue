@@ -89,8 +89,8 @@ export default {
 
 <style>
 .cube {
-    box-sizing: border-box var(--border);
-    border: 3px solid var(--border);
+    box-sizing: border-box var(--border-dark);
+    border: 3px solid var(--border-dark);
     border-radius: var(--m-radius);
     font-weight: 400;
     font-size: 12px;

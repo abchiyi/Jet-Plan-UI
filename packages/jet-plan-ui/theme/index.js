@@ -1,3 +1,18 @@
+// 导入基本样式
+import './src/css'
+
+import {
+    installComponent, changeCaseKebab
+} from '../tool/lib'
+
+// 导入色彩配置文件
+import Colors from './colors'
+
+import AllTheme from './AllTheme.vue'
+import {
+    reactive
+} from "vue"
+
 function getThemeStyleEl (elId) {
     let styleEl = document.getElementById(elId)
     if (styleEl) return styleEl
@@ -7,13 +22,68 @@ function getThemeStyleEl (elId) {
     return styleEl
 }
 
-function themToString (colors) {
-    let themeStringArray = Object.keys(colors).map((key) => {
-        if (Object.hasOwnProperty.call(colors, key)) {
-            return `--${key}:${colors[key]}`
+function themeToCssCode (theme) {
+
+    // TODO 在文档中告知仅可使用 HEX(16进制) 格式色彩编码
+    function isHEX (string) {
+        if (string.search(/^#.+/) !== -1) {
+            return true
         }
-    })
-    return `:root{${themeStringArray.join(";")}}`
+        return false
+    }
+
+    function toCssProperty (key, value) {
+        // 转换为 css 键值对
+        return `--${changeCaseKebab(key)}:${value}`
+    }
+
+    function toCssValueArray (colors, type) {
+        if (colors) {
+            return Object.keys(colors).map(
+                key => {
+                    if (isHEX(colors[key])) {
+                        return `--${type}-${key}:${colors[key]}`
+                    }
+                    return `--${type}-${key}:${searchColor(colors[key])}`
+                }
+            )
+        }
+        return []
+    }
+    function toCssValue (key) {
+        const color = theme[key]
+        if (isHEX(color)) {
+            return toCssProperty(key, color)
+        }
+        return toCssProperty(key, searchColor(color))
+    }
+
+    let cssString = []
+
+    Object.keys(theme).forEach(
+        (key) => {
+            switch (true) {
+                case key == 'name':
+                    cssString.push(`--${key}:${theme[key]}`)
+                    break
+                case typeof theme[key] == 'string':
+                    // 主题配置关键字为非对象时直接写入到列表
+                    cssString.push(
+                        toCssValue(key)
+                    )
+                    break
+                default:
+                    //主题配置为对象时
+                    cssString = cssString.concat(
+                        toCssValueArray(theme[key], key)
+                    )
+                    break
+            }
+            toCssValueArray
+        }
+    )
+
+    return `:root{${cssString.join(";")}}`
 }
 
 function use (theme) {
@@ -27,24 +97,27 @@ function use (theme) {
 
         delete light.auto
 
-        return `${themToString(light)}\n@media (prefers-color-scheme: dark) {${themToString(dark)}}`
+        return `${themeToCssCode(light)}\n@media (prefers-color-scheme: dark) {${themeToCssCode(dark)}}`
     }
-
 
     EL.innerHTML = theme.auto ?
         autoDarkMode(theme) :
-        themToString(theme)
+        themeToCssCode(theme)
 }
 
 export function searchColor (colorName) {
     // 拆分色彩名&色彩序号
-    const indexRe = /A?\d{3}/
+    const indexRe = /A?\d+/
     const color = colorName.split(indexRe)
     const index = colorName.match(indexRe)
 
+    if (!colorName) return
     if (color && index) {
         return Colors[color[0]][index[0]]
     } else if (color) {
+        if (typeof Colors[colorName] == 'string') {
+            return Colors[colorName]
+        }
         return Colors[color[0]][500]
     }
 }
@@ -93,6 +166,7 @@ const Theme = reactive({
     setTheme (name) {
         if (this.allThemes[name]) {
             this.theme = this.allThemes[name]
+
             use(this.theme)
         } else {
             console.warn(`$jetTheme.setTheme
@@ -109,18 +183,7 @@ const Theme = reactive({
     }
 })
 
-// 导入基本样式
-import Colors from './colors'
-import './src/css'
 
-import {
-    installComponent
-} from '../tool/lib'
-
-import AllTheme from './AllTheme.vue'
-import {
-    reactive
-} from "vue"
 
 export default {
     install (Vue) {

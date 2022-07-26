@@ -107,7 +107,7 @@ export default {
 .progress {
     margin: 5px 0;
     /* overflow: hidden; */
-    background-color: var(--border);
+    background-color: var(--border-dark);
 }
 
 /* 进度条滚动部分 */
@@ -158,7 +158,7 @@ export default {
 }
 
 .circle .background {
-    stroke: var(--border);
+    stroke: var(--border-dark);
     fill: none;
 }
 

@@ -183,10 +183,10 @@ export default {
     fill: v-bind('showTheme.background');
 }
 .background-border {
-    fill: var(--border);
+    fill: var(--border-dark);
 }
 .used .background-border {
-    fill: var(--primary);
+    fill: var(--primary-dark);
 }
 .border {
     stroke: v-bind('showTheme.border');

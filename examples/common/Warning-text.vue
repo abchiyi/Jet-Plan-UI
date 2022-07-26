@@ -17,7 +17,7 @@ export default {
 <style>
 .warning-text {
     border-radius: var(--m-radius);
-    background: var(--secondary);
+    background: var(--border-dark);
     min-height: 60px;
     padding-left: 0.5rem;
 }

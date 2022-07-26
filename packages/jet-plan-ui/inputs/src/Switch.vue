@@ -122,7 +122,6 @@ export default {
         -webkit-tap-highlight-color: #ffffff00;
     }
 }
-/*--------------- Default --------------- */
 .j-switch {
     height: var(--HEIGHT);
     width: var(--WIDTH);
@@ -133,20 +132,26 @@ export default {
 }
 
 .j-switch .background {
-    fill: var(--border);
     width: 26px;
     height: 16px;
-    opacity: 0.6;
-}
-
-.j-switch .mask {
-    fill: var(--border);
 }
 
 .j-switch .lever {
-    fill: var(--foreground);
     transform: translate(3px, 3px);
     stroke-width: 1;
+}
+
+/*--------------- off --------------- */
+.j-switch .background {
+    fill: var(--border-dark);
+}
+
+.j-switch .mask {
+    fill: var(--border-light-ex);
+}
+
+.j-switch .lever {
+    fill: var(--border-dark);
 }
 
 /*--------------- Active --------------- */
@@ -155,19 +160,19 @@ export default {
 }
 .j-switch.wider.on .lever > .lever-fill {
     width: 15px;
-    transform: translate(-5px, 0px);
+    transform: translate(-5px, 0);
 }
 
 /*--------------- ON --------------- */
-.j-switch.on .background,
+.j-switch.on .background {
+    fill: var(--primary-light);
+}
 .j-switch.on .mask {
-    fill: var(--primary);
+    fill: var(--primary-dark);
 }
 
-.j-switch.on .background {
-    opacity: 0.4;
-}
 .j-switch.on .lever {
+    fill: white;
     transform: translate(13px, 3px);
 }
 
@@ -178,17 +183,22 @@ export default {
 
 /*--------------- Disabled --------------- */
 
+/* off */
+.j-switch.disabled .mask {
+    fill: var(--border-light);
+}
+
+/* on */
 .j-switch.disabled.on .background {
-    fill: var(--border);
-    opacity: unset;
+    fill: var(--border-dark);
 }
 
 .j-switch.disabled.on .mask {
-    fill: var(--disabled);
+    fill: var(--primary-disabled);
 }
 
-.j-switch.disabled .lever {
-    opacity: 0.5;
+.j-switch.disabled.on .lever {
+    fill: var(--border-disabled);
 }
 
 /* 切换指针为禁用 */

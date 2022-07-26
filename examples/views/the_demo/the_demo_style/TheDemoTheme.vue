@@ -277,7 +277,7 @@ export default {
 }
 
 .color {
-    border: 3px solid var(--border);
+    border: 3px solid var(--border-dark);
     border-radius: var(--m-radius);
     height: 50px;
     width: 50px;

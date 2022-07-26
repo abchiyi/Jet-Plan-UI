@@ -12,9 +12,9 @@ export default {
 
 <style>
 code.high-lighter {
-    background-color: var(--border);
+    background-color: var(--border-dark);
     border-radius: var(--s-radius);
-    color: var(--text-hint);
+    color: var(--text-light);
     display: inline-block;
     padding: 0 6px;
 }

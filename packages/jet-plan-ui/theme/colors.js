@@ -291,6 +291,6 @@ export default {
         "800": "#37474F",
         "900": "#263238"
     },
-    "Black": "#000000",
-    "White": "#FFFFFF"
+    "black": "#000000",
+    "white": "#FFFFFF"
 }

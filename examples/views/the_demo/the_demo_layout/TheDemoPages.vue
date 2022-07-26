@@ -135,7 +135,7 @@ let expandSidebar = true;
 #p1 {
     transition: all 0.4s var(--ease-in-out);
     border-radius: var(--m-radius);
-    background: var(--foreground);
+    background: var(--white);
     box-sizing: border-box;
     overflow: hidden;
     width: 400px;
@@ -162,13 +162,13 @@ let expandSidebar = true;
 
 #p1 #p1-sidebar {
     border-radius: var(--m-radius);
-    background: var(--primary);
+    background: var(--primary-dark);
     height: 100%;
 }
 
 #p1-header {
     border-radius: var(--m-radius);
-    background: var(--primary);
+    background: var(--primary-dark);
     height: 20%;
 }
 
@@ -180,7 +180,7 @@ let expandSidebar = true;
 
 #p1-footer > div,
 #p1-main > div {
-    background: var(--background);
+    background: var(--page-background);
     box-sizing: border-box;
     padding: 10px;
     height: 100%;
@@ -191,14 +191,14 @@ let expandSidebar = true;
     border-radius: var(--m-radius) var(--m-radius) 0 0;
 }
 #p1-footer > div {
-    border-top: solid 1px var(--border);
+    border-top: solid 1px var(--border-dark);
     border-radius: 0 0 var(--m-radius) var(--m-radius);
 }
 #p1-main > div > *:nth-child(3),
 #p1-main > div > *:nth-child(2),
 #p1-main > div > *:nth-child(1) {
     border-radius: var(--m-radius);
-    background: var(--text-hint);
+    background: var(--text-light);
     margin-top: 5px;
     height: 8px;
 }

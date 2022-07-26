@@ -65,8 +65,8 @@ export default {
 </script>
 <style>
 .demo-box {
-    background: var(--foreground) !important;
-    color: var(--text) !important;
+    background: var(--white) !important;
+    color: var(--text-dark) !important;
     height: 200px;
     width: 150px;
     border: unset;

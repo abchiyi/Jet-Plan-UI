@@ -1,18 +1,7 @@
 <template>
-    <div
-        @click="click"
-        :class="classes"
-    >
-        <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-        >
-            <rect
-                class="background"
-                width="16"
-                height="16"
-                rx="8"
-            />
+    <div @click="click" :class="classes">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+            <rect class="background" width="16" height="16" rx="8" />
             <rect
                 class="mask"
                 width="12"
@@ -21,12 +10,7 @@
                 transform="translate(2 2)"
             />
             <g class="dot">
-                <rect
-                    width="6"
-                    height="6"
-                    rx="3"
-                    transform="translate(5 5)"
-                />
+                <rect width="6" height="6" rx="3" transform="translate(5 5)" />
             </g>
         </svg>
     </div>
@@ -45,23 +29,23 @@
 export default {
     name: 'j-radio',
     methods: {
-        click () {
+        click() {
             if (!this.disabled) {
-                this.$emit('update:modelValue', this.value)
+                this.$emit('update:modelValue', this.value);
             }
         },
     },
     computed: {
-        select () {
-            return this.modelValue === this.value
+        select() {
+            return this.modelValue === this.value;
         },
-        classes () {
+        classes() {
             return [
                 'shape j-radio',
                 this.size,
                 this.select ? 'select' : '',
                 this.disabled ? 'disabled' : '',
-            ]
+            ];
         },
     },
     props: {
@@ -79,7 +63,7 @@ export default {
             type: String,
             default: 's',
             validator: (v) => {
-                return ['s', 'm', 'l'].indexOf(v) !== -1
+                return ['s', 'm', 'l'].indexOf(v) !== -1;
             },
         },
         disabled: {
@@ -87,21 +71,21 @@ export default {
             default: false,
         },
     },
-    data () {
+    data() {
         return {
             localvalue: this.modelValue,
-        }
+        };
     },
     watch: {
-        modelValue (d) {
-            this.localvalue = d
+        modelValue(d) {
+            this.localvalue = d;
         },
-        localvalue (d) {
-            this.$emit('update:modelValue', d)
-            this.$emit('change', this.select)
+        localvalue(d) {
+            this.$emit('update:modelValue', d);
+            this.$emit('change', this.select);
         },
     },
-}
+};
 </script>
 
 <style>
@@ -122,29 +106,29 @@ export default {
 }
 
 .j-radio .background {
-    opacity: 0.6;
-    fill: var(--border);
+    fill: var(--border-dark);
 }
 
 .j-radio .mask {
-    fill: var(--background);
+    fill: var(--border-light-ex);
 }
 
 .j-radio .dot {
     transition: 0.3s cubic-bezier(0.3, 0.6, 0.15, 1.3);
     transform-origin: center;
-    fill: var(--text-light);
+    fill: var(--white);
     transform: scale(0);
 }
 
 /*--------------- Select --------------- */
-.j-radio.select .mask,
 .j-radio.select .background {
-    fill: var(--primary);
+    fill: var(--primary-light);
+}
+.j-radio.select .mask {
+    fill: var(--primary-dark);
 }
 
 .j-radio.select .dot {
-    fill: var(--text-light);
     transform: scale(1);
 }
 
@@ -154,14 +138,17 @@ export default {
 }
 
 .j-radio.disabled .mask {
-    fill: var(--disabled);
+    fill: var(--primary-disabled);
 }
-
+/* select */
+.j-radio.disabled.select .mask {
+    fill: var(--border-light-ex);
+}
 .j-radio.disabled.select .background {
-    fill: var(--border);
+    fill: var(--border-dark);
 }
 
 .j-radio.disabled.select .dot {
-    opacity: 0.5;
+    fill: var(--primary-disabled);
 }
 </style>

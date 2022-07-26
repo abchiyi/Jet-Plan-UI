@@ -223,7 +223,7 @@ export default {
     }
 }
 .j-slider {
-    background-color: var(--border);
+    background-color: var(--border-dark);
     border-radius: 0.5rem;
     position: relative;
     user-select: none;
@@ -237,7 +237,7 @@ export default {
 }
 
 .j-slider .track {
-    background-color: var(--primary);
+    background-color: var(--primary-dark);
     width: var(--track-fill-width);
     border-radius: 0.5rem;
     user-select: none;
@@ -256,8 +256,8 @@ export default {
     width: 1rem;
 }
 .j-slider .thumb {
-    border: solid 3.5px var(--border);
-    background-color: var(--foreground);
+    border: solid 3.5px var(--border-dark);
+    background-color: var(--white);
     box-sizing: border-box;
     border-radius: 1rem;
     height: 1rem;
@@ -265,7 +265,7 @@ export default {
 }
 .j-slider.disabled .thumb {
     border: solid 3.5px var(--disabled);
-    /* background-color: var(--border); */
+    /* background-color: var(--border-dark); */
 }
 
 /* 过渡动画 */

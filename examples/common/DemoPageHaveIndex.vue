@@ -76,7 +76,7 @@ export default {
 }
 .item.expand {
     border-radius: var(--m-radius);
-    background: var(--background);
+    background: var(--page-background);
 }
 
 #links,

@@ -160,7 +160,7 @@ export default {
 }
 
 .j-code-box .line-number {
-    border-right: 2px dashed var(--text-hint);
+    border-right: 2px dashed var(--text-light);
     margin-right: 1em;
     background: var(--hljs-bgcolor);
     box-sizing: border-box;
@@ -189,7 +189,7 @@ export default {
 
 .line-number,
 .copy {
-    color: var(--text-hint);
+    color: var(--text-light);
 }
 
 /* 如果启用 Copy 按钮 */

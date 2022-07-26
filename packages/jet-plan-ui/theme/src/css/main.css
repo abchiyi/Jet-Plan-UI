@@ -27,8 +27,8 @@
 }
 
 body {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: var(--page-background);
+    color: var(--text-dark);
     min-height: 100vh;
     margin: 0;
     padding: 0;
@@ -39,14 +39,14 @@ body {
 }
 
 .frosted-glass {
-    background-color: var(--foreground);
+    background-color: var(--white);
 }
 
 @supports (backdrop-filter: blur(15px)) {
 
     /* 磨砂玻璃 */
     .frosted-glass {
-        background-color: var(--frosted_glass);
+        background-color: var(--frosted-glass);
         backdrop-filter: blur(15px);
     }
 }

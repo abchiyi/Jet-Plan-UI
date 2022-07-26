@@ -33,7 +33,7 @@ export default {
     width: 100px;
     height: 100px;
     border-radius: var(--m-radius);
-    background-color: var(--primary);
+    background-color: var(--primary-dark);
     /* 文本设置 */
     color: #fff;
     /* transition: 0.4s ease-in-out; */
@@ -42,7 +42,7 @@ export default {
     font-size: 1.3em;
 }
 .j-cube.dark {
-    background-color: var(--secondary);
+    background-color: var(--border-dark);
     color: inherit;
 }
 </style>
