@@ -1,35 +1,37 @@
 <template>
-    <div
-        :class="classes"
-        @click="change"
-        @mousedown="toWider"
-        @mouseup="cancellation"
-        @mouseout="cancellation"
-        @touchstart="toWider"
-        @touchend="cancellation"
-        @touchcancel="cancellation"
-    >
-        <svg ref="self" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 16">
-            <rect class="background" rx="8" />
-            <rect
-                class="mask"
-                width="22"
-                height="12"
-                rx="6"
-                transform="translate(2 2)"
-            />
-            <g class="lever">
-                <rect class="lever-fill" width="10" height="10" rx="5" s />
-            </g>
-        </svg>
-    </div>
-    <input
-        :id="id"
-        v-show="false"
-        type="checkbox"
-        :disabled="disabled"
-        v-model="scopedValue"
-    />
+    <span>
+        <input
+            v-model="scopedValue"
+            class="input-hidden"
+            :disabled="disabled"
+            type="checkbox"
+            :id="id"
+        />
+        <div
+            :class="classes"
+            @click="change"
+            @mousedown="toWider"
+            @mouseup="cancellation"
+            @mouseout="cancellation"
+            @touchstart="toWider"
+            @touchend="cancellation"
+            @touchcancel="cancellation"
+        >
+            <svg ref="self" viewBox="0 0 26 16">
+                <rect class="background" rx="8" />
+                <rect
+                    class="mask"
+                    width="22"
+                    height="12"
+                    rx="6"
+                    transform="translate(2 2)"
+                />
+                <g class="lever">
+                    <rect class="lever-fill" width="10" height="10" rx="5" s />
+                </g>
+            </svg>
+        </div>
+    </span>
 </template>
 <script>
 import { propInit, validatorRange } from '../../tool/lib';
@@ -155,6 +157,12 @@ export default {
 .j-switch.wider.on .lever > .lever-fill {
     width: 15px;
     transform: translate(-5px, 0);
+}
+
+/*--------------- Focus --------------- */
+span > input[type='checkbox']:focus-visible + .j-switch {
+    outline: 2px solid var(--info);
+    border-radius: 4px;
 }
 
 /*--------------- ON --------------- */

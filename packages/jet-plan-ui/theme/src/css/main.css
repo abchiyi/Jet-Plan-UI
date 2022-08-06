@@ -141,3 +141,12 @@ strong {
 .j-hidden-scrollbar {
     -ms-overflow-style: none;
 }
+
+.input-hidden {
+    outline: unset;
+    border: unset;
+    padding: 0;
+    margin: 0;
+    height: 0;
+    width: 0;
+}
