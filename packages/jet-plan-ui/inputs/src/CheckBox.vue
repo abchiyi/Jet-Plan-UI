@@ -1,52 +1,55 @@
 <template>
-    <input
-        v-show="false"
-        :id="id"
-        :name="name"
-        :value="value"
-        type="checkbox"
-        :disabled="disabled"
-        v-model="localvalue"
-        @click="click"
-    />
-    <label :for="id" :class="classes">
-        <svg viewBox="0 0 16 16">
-            <path
-                class="background"
-                d="M4,0h8a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z"
-            />
-            <rect
-                class="mask"
-                width="12"
-                height="12"
-                rx="3"
-                transform="translate(2 2)"
-            />
-            <transition name="dot">
-                <g class="dot" v-show="sectionSelected">
-                    <rect
-                        width="8"
-                        height="8"
-                        rx="2"
-                        transform="translate(4 4)"
-                    />
-                </g>
-            </transition>
-            <transition name="check">
-                <g v-show="checked">
+    <span>
+        <input
+            v-model="localvalue"
+            :disabled="disabled"
+            type="checkbox"
+            :value="value"
+            @click="click"
+            :name="name"
+            :id="id"
+        />
+        <label :for="id">
+            <div :class="classes">
+                <svg viewBox="0 0 16 16">
                     <path
-                        class="check"
-                        d="M281.784,416c-4.9,5.277-3.769,5.654-6.784,1.884"
-                        transform="translate(-270.392 -409.717)"
-                        stroke-dasharray="30px"
-                        stroke-linecap="round"
-                        stroke-width="2"
-                        fill="none"
+                        class="background"
+                        d="M4,0h8a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z"
                     />
-                </g>
-            </transition>
-        </svg>
-    </label>
+                    <rect
+                        class="mask"
+                        width="12"
+                        height="12"
+                        rx="3"
+                        transform="translate(2 2)"
+                    />
+                    <transition name="dot">
+                        <g class="dot" v-show="sectionSelected">
+                            <rect
+                                width="8"
+                                height="8"
+                                rx="2"
+                                transform="translate(4 4)"
+                            />
+                        </g>
+                    </transition>
+                    <transition name="check">
+                        <g v-show="checked">
+                            <path
+                                class="check"
+                                d="M281.784,416c-4.9,5.277-3.769,5.654-6.784,1.884"
+                                transform="translate(-270.392 -409.717)"
+                                stroke-dasharray="30px"
+                                stroke-linecap="round"
+                                stroke-width="2"
+                                fill="none"
+                            />
+                        </g>
+                    </transition>
+                </svg>
+            </div>
+        </label>
+    </span>
 </template>
 <script>
 import { propInit, validatorRange } from '../../tool/lib';
@@ -225,6 +228,13 @@ label > * {
     cursor: pointer;
     margin: 0 2px;
 }
+
+/*--------------- Focus --------------- */
+span > input[type='checkbox']:focus-visible + label > .j-check-box {
+    outline: 2px solid var(--info);
+    border-radius: 4px;
+}
+
 /* ---------- No Check ---------- */
 .j-check-box .background {
     fill: var(--border);
