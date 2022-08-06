@@ -10,10 +10,9 @@ import "./assets"
 // JetUI
 import ui from "@ui"
 import themeDefault, {
-    jetPlanLight,
-    jetPlanDark
-}
-    from "@theme"
+    // jetPlanLight,
+    // jetPlanDark
+} from "@theme"
 
 // 导入通知控制器
 import {
@@ -30,23 +29,23 @@ import common, {
 // 安装主题
 ui.$jetTheme.install(themeDefault)
 
-// 从现有主题拓展并安装
-ui.$jetTheme.installTheme(
-    "bright_pink", {
-    primary: '#e47878',
-    background: "#e3ecff",
-},
-    jetPlanLight
-)
-ui.$jetTheme.installTheme(
-    "night_blue", {
-    text: "#a0a59b",
-    primary: '#3c35ff',
-    background: '#24282f',
-    foreground: '#141920'
-},
-    jetPlanDark
-)
+// // 从现有主题拓展并安装
+// ui.$jetTheme.installTheme(
+//     "bright_pink", {
+//     primary: '#e47878',
+//     background: "#e3ecff",
+// },
+//     jetPlanLight
+// )
+// ui.$jetTheme.installTheme(
+//     "night_blue", {
+//     text: "#a0a59b",
+//     primary: '#3c35ff',
+//     background: '#24282f',
+//     foreground: '#141920'
+// },
+//     jetPlanDark
+// )
 
 // 从‘Cookie’读取主题配置
 ui.$jetTheme.setTheme(

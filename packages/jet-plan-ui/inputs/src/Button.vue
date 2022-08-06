@@ -102,7 +102,7 @@ a.j-button {
 
 .j-button {
     transition: all 0.3s var(--ease-out);
-    background-color: var(--border-dark);
+    background-color: var(--border-light);
     border-radius: var(--m-radius);
     box-sizing: border-box;
     display: inline-block;
@@ -113,18 +113,24 @@ a.j-button {
     user-select: none;
     color: var(--base-text-color);
     cursor: pointer;
-    font-size: 0.8rem;
     white-space: nowrap;
+    box-shadow: var(--shadow);
 }
 
 .j-button {
-    /* margin: 0 0 0 2px; */
     margin: calc(1em * 0.15);
 }
-/*------------ disabled ----------*/
-.j-button.disabled {
-    color: var(--text-disabled);
-    cursor: not-allowed;
+
+/* p span */
+span > .j-button.text-button,
+p > .j-button.text-button {
+    padding-top: unset;
+    padding-bottom: unset;
+}
+
+/*------------ active ----------*/
+.j-button.active {
+    box-shadow: unset;
 }
 
 /*------------ OneLine ----------*/
@@ -134,34 +140,31 @@ a.j-button {
     display: block;
     width: 100%;
 }
-/* Button Mode Only*/
-.j-button.button.primary {
-    background-color: var(--primary-dark);
-}
+
 /* Text Button */
 /*------------ Default ----------*/
 .j-button.text-button {
     background: unset;
     padding: 6px 8px;
 }
-/*------------ Primary ----------*/
-.j-button.text-button.primary {
-    color: var(--primary-dark);
-}
-/* ------------ disabled ---------- */
-.j-button.primary.disabled {
-    background: var(--border-dark);
-}
 
-.j-button.text-button.disabled {
-    color: var(--text-disabled);
+/*------------ Primary ----------*/
+.j-button.primary {
+    background-color: var(--primary);
+}
+.j-button.text-button.primary {
+    color: var(--primary);
     background: unset;
 }
 
-/* p span */
-span > .j-button.text-button,
-p > .j-button.text-button {
-    padding-top: unset;
-    padding-bottom: unset;
+/*------------ disabled ----------*/
+.j-button.disabled {
+    background-color: var(--border-light);
+    color: var(--text-disabled);
+    cursor: not-allowed;
+}
+.j-button.text-button.disabled {
+    color: var(--text-disabled);
+    background: unset;
 }
 </style>

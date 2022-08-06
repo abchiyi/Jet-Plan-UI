@@ -1,13 +1,13 @@
 <template>
     <div
         :class="classes"
-        @click.prevent="change"
-        @mousedown.prevent="toWider"
-        @mouseup.prevent="cancellation"
-        @mouseout.prevent="cancellation"
-        @touchstart.prevent="toWider"
-        @touchend.prevent="cancellation"
-        @touchcancel.prevent="cancellation"
+        @click="change"
+        @mousedown="toWider"
+        @mouseup="cancellation"
+        @mouseout="cancellation"
+        @touchstart="toWider"
+        @touchend="cancellation"
+        @touchcancel="cancellation"
     >
         <svg ref="self" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 26 16">
             <rect class="background" rx="8" />
@@ -116,12 +116,6 @@ export default {
 };
 </script>
 <style>
-/* 隐藏选中框 */
-@supports (-webkit-tap-highlight-color: #ffffff00) {
-    .j-switch {
-        -webkit-tap-highlight-color: #ffffff00;
-    }
-}
 .j-switch {
     height: var(--HEIGHT);
     width: var(--WIDTH);
@@ -143,15 +137,15 @@ export default {
 
 /*--------------- off --------------- */
 .j-switch .background {
-    fill: var(--border-dark);
+    fill: var(--border-light);
 }
 
 .j-switch .mask {
-    fill: var(--border-light-ex);
+    fill: var(--border-dark);
 }
 
 .j-switch .lever {
-    fill: var(--border-dark);
+    fill: var(--white);
 }
 
 /*--------------- Active --------------- */
@@ -168,7 +162,7 @@ export default {
     fill: var(--primary-light);
 }
 .j-switch.on .mask {
-    fill: var(--primary-dark);
+    fill: var(--primary);
 }
 
 .j-switch.on .lever {
@@ -183,14 +177,9 @@ export default {
 
 /*--------------- Disabled --------------- */
 
-/* off */
-.j-switch.disabled .mask {
-    fill: var(--border-light);
-}
-
 /* on */
 .j-switch.disabled.on .background {
-    fill: var(--border-dark);
+    fill: var(--border);
 }
 
 .j-switch.disabled.on .mask {
@@ -198,9 +187,16 @@ export default {
 }
 
 .j-switch.disabled.on .lever {
-    fill: var(--border-disabled);
+    fill: var(--border);
 }
 
+/* off */
+.j-switch.disabled.off .background {
+    fill: var(--border-light);
+}
+.j-switch.disabled.off .mask {
+    fill: var(--border);
+}
 /* 切换指针为禁用 */
 .j-switch.disabled {
     cursor: not-allowed;

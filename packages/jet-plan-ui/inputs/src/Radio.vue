@@ -106,11 +106,11 @@ export default {
 }
 
 .j-radio .background {
-    fill: var(--border-dark);
+    fill: var(--border);
 }
 
 .j-radio .mask {
-    fill: var(--border-light-ex);
+    fill: var(--border-dark);
 }
 
 .j-radio .dot {
@@ -125,7 +125,7 @@ export default {
     fill: var(--primary-light);
 }
 .j-radio.select .mask {
-    fill: var(--primary-dark);
+    fill: var(--primary);
 }
 
 .j-radio.select .dot {
@@ -137,18 +137,14 @@ export default {
     cursor: not-allowed;
 }
 
-.j-radio.disabled .mask {
-    fill: var(--primary-disabled);
-}
 /* select */
-.j-radio.disabled.select .mask {
-    fill: var(--border-light-ex);
+.j-radio.disabled .background {
+    fill: var(--border-light);
 }
-.j-radio.disabled.select .background {
-    fill: var(--border-dark);
+.j-radio.disabled .mask {
+    fill: var(--border);
 }
-
-.j-radio.disabled.select .dot {
-    fill: var(--primary-disabled);
+.j-radio.disabled .dot {
+    fill: var(--white);
 }
 </style>

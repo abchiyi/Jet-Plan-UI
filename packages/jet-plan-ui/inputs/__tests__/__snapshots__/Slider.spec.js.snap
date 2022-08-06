@@ -1,11 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Slider Node map 1`] = `
-<div style="--track-fill-width: undefinedpx;" class="j-slider" ontouchstart="function () { [native code] }" message="hello" position="top">
-  <div class="track">
-    <div class="thumb-shell" position="top" message="0">
-      <div class="thumb"></div>
+<div style="--track-fill-width: undefinedpx;" class="j-slider shell" ontouchstart="function () { [native code] }" message="hello" position="top"><input type="hidden" value="0">
+  <div class="background">
+    <div class="mask">
+      <div class="thumb-shell" position="top" message="0">
+        <div class="thumb" style="box-shadow: 
+    0 3px
+    4.5px
+    0.30000000000000004px
+    var(--material-shadow);"></div>
+      </div>
     </div>
-  </div><input type="hidden" value="0">
+  </div>
+  <div class="track"></div>
 </div>
 `;

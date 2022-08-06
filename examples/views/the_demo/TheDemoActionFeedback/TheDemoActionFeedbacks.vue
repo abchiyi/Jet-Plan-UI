@@ -35,6 +35,7 @@
                         :active="active"
                         :hover="hover"
                         :focus="focus"
+                        :tabindex="n"
                     >
                         <j-row style="height: 100%" warp X="center" Y="center">
                             <span> ClickMe </span>

@@ -10,22 +10,18 @@
                 <j-row warp id="buttons-button">
                     <j-button primary>Primary</j-button>
                     <j-button>Button</j-button>
-                    <j-button primary disabled> Primary disabled</j-button>
                     <j-button disabled> disabled</j-button>
                 </j-row>
                 <h3>文本按钮</h3>
                 <j-row warp id="buttons-button-text">
                     <j-button primary text>Text Button Primary</j-button>
                     <j-button text>Text Button</j-button>
-                    <j-button primary text disabled>
-                        Text Button Primary disabled
-                    </j-button>
                     <j-button text disabled>Text Button Disabled</j-button>
                 </j-row>
                 <h3>单行按钮</h3>
                 <div id="buttons-row">
-                    <j-button row>Button One Row</j-button>
-                    <j-button text row>Text Button One Row</j-button>
+                    <j-button row>Button</j-button>
+                    <j-button text row>Text Button </j-button>
                 </div>
             </demo-box>
         </doc-item>
@@ -56,7 +52,6 @@ export default {
 <j-button Primary>primary</j-button>
 <j-button>Button</j-button>
 <j-button disabled>Button disabled</j-button>
-<j-button primary text>Text Button Primary</j-button>
 <j-button text>Text Button</j-button>
 <j-button text disabled>Text Button Disabled</j-button>
 <j-button row>Button One Row</j-button>
@@ -67,7 +62,4 @@ export default {
 </script>
 
 <style>
-.j-button.aa {
-    width: 400px;
-}
 </style>

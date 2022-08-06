@@ -227,11 +227,11 @@ label > * {
 }
 /* ---------- No Check ---------- */
 .j-check-box .background {
-    fill: var(--border-dark);
+    fill: var(--border);
 }
 
 .j-check-box .mask {
-    fill: var(--border-light-ex);
+    fill: var(--border-dark);
 }
 
 /* ---------- Checked ---------- */
@@ -240,45 +240,47 @@ label > * {
     fill: var(--primary-light);
 }
 .j-check-box.checked .mask {
-    fill: var(--primary-dark);
+    fill: var(--primary);
 }
 .j-check-box.checked .check {
     stroke: var(--white);
 }
 
 /* ---------- Check Dot ---------- */
-.j-check-box .dot {
-    fill: var(--primary-dark);
+.j-check-box.section-selected .mask {
+    fill: var(--primary-light);
+}
+.j-check-box.section-selected .dot {
+    fill: var(--primary);
 }
 
 /* ---------- Disabled ---------- */
 
 /* dot */
+.j-check-box.section-selected.disabled .background {
+    fill: var(--border-light);
+}
 .j-check-box.section-selected.disabled .mask {
-    fill: var(--border-light-ex);
+    fill: var(--border);
 }
 .j-check-box.section-selected.disabled .dot {
-    fill: var(--primary-disabled);
+    fill: var(--white);
 }
 
 /* no check */
+.j-check-box.disabled .background {
+    fill: var(--border-light);
+}
+.j-check-box.disabled .mask {
+    fill: var(--border);
+}
 .j-check-box.disabled {
     cursor: not-allowed;
 }
 
-.j-check-box.disabled .mask {
-    fill: var(--primary-disabled);
-}
-
 /* checked */
-.j-check-box.disabled.checked .background {
-    fill: var(--border-dark);
-}
-.j-check-box.disabled.checked .mask {
-    fill: var(--border-light-ex);
-}
 .j-check-box.disabled.checked .check {
-    stroke: var(--primary-disabled);
+    stroke: var(--white);
 }
 
 /* Animation */

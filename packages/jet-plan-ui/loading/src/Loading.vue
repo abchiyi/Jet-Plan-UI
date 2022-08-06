@@ -16,23 +16,22 @@
 </template>
 
 <script>
-import { propInit, propInitBoolean, validatorRange } from '../../tool/lib';
-
-function propInitRange() {
-    const range = [];
-    for (let n = 0; n <= 100; n++) {
-        range.push(n);
-        range.push('' + n);
-    }
-    return propInit([Number, String], undefined, validatorRange(range));
-}
+import {
+    propInit,
+    propInitBoolean,
+    validatorRangeNumber,
+} from '../../tool/lib';
 export default {
     name: 'j-progress',
     props: {
-        value: propInitRange(),
+        value: propInit(
+            [Number, String],
+            undefined,
+            validatorRangeNumber(0, 100)
+        ),
         failed: propInitBoolean(false),
         pause: propInitBoolean(false),
-        height: propInit(String, '8px'),
+        // height: propInit(String, '8px'),
         ring: propInitBoolean(false),
     },
     computed: {
@@ -46,7 +45,7 @@ export default {
         styles: function () {
             let style = {};
             style['--percentage'] = this.percentage + '%';
-            style['--height'] = this.height;
+            // style['--height'] = this.height;
             return style;
         },
         classes: function () {
@@ -63,44 +62,36 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .progress {
-    --c1: #5fc2ff;
-    --c2: #3498db;
-    /* --height: 8px; */
+    --BORDER-WIDTH: 0.125rem;
+    --HEIGHT: 0.5em;
 }
 
-/* 更小的进度条 */
-.smal {
-    --height: 4px;
-}
-
-.progress.pause {
-    --c1: #ffca58;
-    --c2: #ecb02c;
+.progress {
+    overflow: hidden;
 }
 
 /* 基础圆角外形 */
-.progress::before,
 .progress::after,
+.progress::before,
 .progress {
-    height: var(--height);
-    border-radius: calc(var(--height) / 2);
+    border-radius: calc(var(--HEIGHT) / 2);
+    height: var(--HEIGHT);
 }
 
 /* 预先绘制透明的伪类元素以便应用色彩过渡动画 */
-
-.circle .progressbar,
-.progress::before,
-.progress::after {
+/* .circle .progressbar, */
+.progress::after,
+.progress::before {
     content: '';
     display: block;
-    transition: 0.3s var(--ease-out);
+    /* transition: 0.3s var(--ease-out); */
 }
 
 /* 伪类元素未脱离文本流,其自身会被挤出主体框,使用位移移动到正确的位置 */
 .progress::after {
-    transform: translateY(calc(var(--height) * -1));
+    transform: translateY(calc(var(--HEIGHT) * -1));
 }
 
 /* 进度条 */
@@ -110,6 +101,7 @@ export default {
     background-color: var(--border-dark);
 }
 
+/* ---------- 动画 ---------- */
 /* 进度条滚动部分 */
 .progress::before {
     background: linear-gradient(
@@ -119,34 +111,46 @@ export default {
         var(--c1) 59%,
         var(--c2) 60%
     );
-    background-size: calc(var(--height) * 2) var(--height);
+    background-size: calc(var(--HEIGHT) * 2) var(--HEIGHT);
     display: block;
     animation: rolling 60s linear infinite;
-    transition: 0.3s cubic-bezier(0.5, 0.5, 0, 1.2);
+    /* transition: 0.3s cubic-bezier(0.5, 0.5, 0, 1.2); */
 }
 @keyframes rolling {
     100% {
-        background-position: calc(var(--height) * 400);
+        background-position: calc(var(--HEIGHT) * 400);
     }
 }
 
-/* 暂停 */
-
-.progress.pause::before {
-    animation-play-state: paused;
-}
-
+/* ---------- track 位置 ---------- */
 .progress::after,
 .progress::before {
     width: var(--percentage);
 }
 
-/* 状态遮罩 */
-.progress.complete::after {
-    background: var(--success);
+/* ---------- Colors ---------- */
+/* 边框 */
+.progress {
+    outline: var(--BORDER-WIDTH) solid var(--border-light);
 }
-.progress.failed::after {
+/* 背景 */
+.progress::before {
+    background: var(--info);
+}
+
+/* ----- 状态遮罩 ----- */
+
+/* 暂停 */
+.progress.pause::before {
+    background: var(--warning);
+}
+/* 失败 */
+.progress.failed::before {
     background: var(--error);
+}
+/* 完成 */
+.progress.complete::before {
+    background: var(--success);
 }
 
 .circle {

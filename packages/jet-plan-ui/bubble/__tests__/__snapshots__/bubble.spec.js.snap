@@ -9,7 +9,7 @@ exports[`Babble Node map 1`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -25,7 +25,7 @@ exports[`Babble Node map 2`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -41,7 +41,7 @@ exports[`Babble Node map 3`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -57,7 +57,7 @@ exports[`Babble Node map 4`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -73,7 +73,7 @@ exports[`Babble Node map 5`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -89,7 +89,7 @@ exports[`Babble Node map 6`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -105,7 +105,7 @@ exports[`Babble Node map 7`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -121,7 +121,7 @@ exports[`Babble Node map 8`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -137,7 +137,7 @@ exports[`Babble Node map 9`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -153,7 +153,7 @@ exports[`Babble Node map 10`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -169,7 +169,7 @@ exports[`Babble Node map 11`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -185,7 +185,7 @@ exports[`Babble Node map 12`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>
@@ -201,7 +201,7 @@ exports[`Babble Node map 13`] = `
     0 4px
     6px
     0.4px
-    var(--shadow);">hello</div>
+    var(--material-shadow);">hello</div>
       </transition-stub>
     </div>
   </div>

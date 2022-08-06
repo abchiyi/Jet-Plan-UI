@@ -314,3 +314,15 @@ export function changeCaseKebab (string) {
 
     return stringArray.join('')
 }
+
+export function validatorRangeNumber (min, max) {
+    return function (value) {
+        if (value !== undefined) {
+            if (min >= value <= max) {
+                return true
+            }
+            return false
+        }
+        return `${min}~${max}`
+    }
+}

@@ -1,4 +1,5 @@
 <script>
+// TODO 修正 'TAB' 按键 选中时的样式应用问题
 import { propInit, propInitBoolean } from '../tool/lib';
 import baseAction from './baseAction.vue';
 import mask from './ActionFeedbackMask.vue';
@@ -59,7 +60,7 @@ export default {
         createMask(event) {
             return {
                 data: {
-                    opacity: this.opacity,
+                    opacity: 1,
                     el: this.$refs.self,
                     color: 'var(--mask)',
                     event: event,
@@ -129,13 +130,12 @@ export default {
 </script>
 <style>
 .j-action-feedback {
-    outline: solid 3px #00000000;
+    transition: outline 0.2s var(--ease-out);
     position: relative;
-    transition: unset;
     overflow: hidden;
+    outline: unset;
 }
 
-.j-action-feedback,
 .j-action-feedback::after {
     transition: 0.2s var(--ease-out-slow);
 }
@@ -144,7 +144,6 @@ export default {
     pointer-events: none;
     position: absolute;
     content: '';
-    opacity: 0;
     bottom: 0;
     right: 0;
     left: 0;
@@ -152,21 +151,11 @@ export default {
 }
 
 /* Keyboard focus */
-.j-action-feedback.focus::after {
-    background-color: var(--mask);
+.j-action-feedback.focus {
+    outline: 2px solid var(--info);
 }
 /* Mouse hover */
 .j-action-feedback.hover::after {
     background-color: var(--mask);
-}
-.j-action-feedback.focus::after,
-.j-action-feedback.hover::after {
-    opacity: 0.5;
-}
-
-@supports (-webkit-tap-highlight-color: #ffffff00) {
-    .j-action-feedback {
-        -webkit-tap-highlight-color: #ffffff00;
-    }
 }
 </style>

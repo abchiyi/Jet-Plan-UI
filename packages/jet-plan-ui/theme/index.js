@@ -52,10 +52,11 @@ function themeToCssCode (theme) {
             return Object.keys(colors).map(
                 key => {
                     const color = colors[key]
+                    key = key == 'default' ? type : [type, key]
                     if (isHEX(color)) {
-                        return toCssProperty([type, key], color)
+                        return toCssProperty(key, color)
                     }
-                    return toCssProperty([type, key], searchColor(color))
+                    return toCssProperty(key, searchColor(color))
                 }
             )
         }

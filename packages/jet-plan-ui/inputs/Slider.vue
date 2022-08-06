@@ -1,7 +1,7 @@
 <script>
 const NAME = 'j-slider';
 import { h } from 'vue';
-import { getOffset } from '../tool/lib/dom';
+import { getOffset, shadowPainter } from '../tool/lib/dom';
 import { TimedActionLimit } from '../tool/lib';
 function touchEventCompatible(event) {
     if (event.type.indexOf('touch') != -1) {
@@ -71,8 +71,7 @@ export default {
 
         // Calc
         positionToPercentage(event) {
-            const { $el } = this;
-            const elSize = getOffset($el);
+            const elSize = getOffset(this.$refs.track);
             // 计算点击位置相对于滑动条百分比&限位
             const cpp = (event.pageX - elSize.size.left) / elSize.elWidth;
             this.percentage = cpp > 1 ? 1 : cpp < 0 ? 0 : cpp;
@@ -193,86 +192,145 @@ export default {
                 position: 'top',
                 message: this.value,
             },
-            h('div', { class: 'thumb' })
+            h('div', {
+                class: 'thumb',
+                style: {
+                    boxShadow: shadowPainter('bottom', 3),
+                },
+            })
         );
-        const TRACK = h(
+        const MASK = h(
             'div',
-            {
-                class: ['track', ...this.classTrack],
-            },
-            THUMB
+            { class: ['background'] },
+            h(
+                'div',
+                {
+                    class: ['mask', ...this.classTrack],
+                },
+                THUMB
+            )
         );
+
+        const TRACK = h('div', { class: ['track'], ref: 'track' });
         return h(
             'div',
             {
                 style: this.style,
-                class: [NAME, ...this.classes],
+                class: [NAME, 'shell', ...this.classes],
                 onmousedown: this.handleMouseDown,
                 ontouchstart: this.handleTouchStart,
             },
-            [TRACK, INPUT]
+            [INPUT, MASK, TRACK]
         );
     },
 };
 </script>
 
 <style>
-@supports (-webkit-tap-highlight-color: #ffffff00) {
-    .j-slider {
-        -webkit-tap-highlight-color: #ffffff00;
-    }
-}
+/* VALUES */
 .j-slider {
-    background-color: var(--border-dark);
-    border-radius: 0.5rem;
-    position: relative;
-    user-select: none;
-    margin: 0.8rem 0;
-    cursor: pointer;
-    height: 0.5rem;
-    width: 200px;
-}
-.j-slider.disabled {
-    cursor: not-allowed;
+    --HEIGHT: 0.25rem;
+    --BORDER-WIDTH: 0.125rem;
+    --THUMB-DIAMETER: 0.75rem;
+    --THUMB-RADIUS: calc(var(--THUMB-DIAMETER) / 2);
 }
 
-.j-slider .track {
-    background-color: var(--primary-dark);
-    width: var(--track-fill-width);
-    border-radius: 0.5rem;
-    user-select: none;
-    height: 0.5rem;
-    transform: translate3d(0, 0, 0);
+/* BORDER */
+.j-slider .thumb,
+.j-slider .background {
+    outline: solid var(--BORDER-WIDTH);
 }
-.j-slider.disabled .track {
-    background-color: var(--disabled);
+
+.j-slider > * {
+    user-select: none;
+}
+
+.j-slider.shell {
+    display: inline-block;
+    position: relative;
+    width: 200px;
+}
+
+.j-slider .mask,
+.j-slider .thumb {
+    pointer-events: unset;
+}
+
+.j-slider .background {
+    background-color: var(--border-dark);
+    border-radius: var(--HEIGHT);
+    height: var(--HEIGHT);
+    position: relative;
+    cursor: pointer;
+}
+
+.j-slider .mask {
+    background-color: var(--primary);
+    transform: translate3d(0, 0, 0);
+    width: var(--track-fill-width);
+    border-radius: var(--HEIGHT);
+    height: var(--HEIGHT);
+    position: absolute;
 }
 
 .j-slider .thumb-shell {
-    right: calc(-100% + 0.5rem);
+    top: calc((var(--THUMB-DIAMETER) - var(--HEIGHT)) / 2 * -1);
+    right: calc(-100% + var(--THUMB-DIAMETER) / 2);
+    height: var(--THUMB-DIAMETER);
+    width: var(--THUMB-DIAMETER);
     position: relative;
-    top: -0.25rem;
-    height: 1rem;
-    width: 1rem;
 }
 .j-slider .thumb {
-    border: solid 3.5px var(--border-dark);
+    border-radius: var(--THUMB-DIAMETER);
     background-color: var(--white);
-    box-sizing: border-box;
-    border-radius: 1rem;
-    height: 1rem;
-    width: 1rem;
-}
-.j-slider.disabled .thumb {
-    border: solid 3.5px var(--disabled);
-    /* background-color: var(--border-dark); */
+    height: var(--THUMB-DIAMETER);
+    width: var(--THUMB-DIAMETER);
 }
 
-/* 过渡动画 */
+/* TRACK 用于追踪点击&滑动位置以计算百分比,
+ *避免使用 '.shell' 进行追踪造成的空位滑动
+ **/
 .j-slider .track {
-    transition: 0.4s var(--ease-out);
+    right: var(--THUMB-RADIUS);
+    left: var(--THUMB-RADIUS);
+    height: var(--HEIGHT);
+    position: absolute;
+    top: 0;
 }
-.j-slider .track.move {
+
+/* ----- animation ----- */
+
+.j-slider .mask {
+    transition: width 0.4s var(--ease-out);
+}
+.j-slider .mask.move {
     transition: unset;
+}
+
+/* ----- colors ----- */
+
+/* default */
+.j-slider .background {
+    background-color: var(--border-dark);
+    outline-color: var(--border);
+}
+.j-slider .thumb {
+    outline-color: var(--border);
+}
+
+/* disabled */
+.j-slider.disabled {
+    cursor: not-allowed;
+}
+.j-slider.disabled .background {
+    outline-color: var(--border-light);
+    background-color: var(--border);
+}
+.j-slider.disabled .mask {
+    background-color: var(--border-dark);
+}
+
+.j-slider.disabled .thumb {
+    outline-color: var(--border-light);
 }
 </style>

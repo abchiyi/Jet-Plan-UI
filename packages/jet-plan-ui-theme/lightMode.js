@@ -1,44 +1,47 @@
-// const BACKGROUND = {
-//     disabled: "#aaaaaa",
-// }
-
-// const BASECOLOR = {
-//     success: "#4cd966",
-//     warning: "#ecb02c",
-//     error: "#f33f2e",
-//     info: "#0d75ec",
-// }
-
-// const OTHERS = {
-//     card: BACKGROUND.foreground,
-//     mask: "#27272760",
-// }
 export default {
-
     text: {
         light: 'grey100',
-        dark: 'grey800',
-        disabled: 'grey300'
+        default: 'grey700',
+        dark: 'grey700',
+
+        hint: "grey500",
+        disabled: '#0000003e',
     },
-    shape: {
-        // mask: '',
-        // background: '',
-        // backgroundDisabled: '',
+    material: {
+        primary: 'teal',
+        shadow: '#0000002e',
+        shadowPrimary: "#004d405e"
     },
     border: {
-        lightEx: 'grey100',
-        dark: 'grey300',
+        default: "grey300",
         light: 'grey200',
-        disabled: 'grey200'
+        dark: 'grey400',
     },
     primary: {
-        dark: 'teal',
+        default: "teal",
         light: 'teal100',
-        disabled: 'grey400'
+        disabled: 'grey',
+    },
+    success: {
+        default: 'light_greenA700',
+        light: "greenA100"
+    },
+    error: {
+        default: "red",
+        light: "red100"
+    },
+    info: {
+        default: "blue",
+        light: "blue100"
+    },
+    warning: {
+        default: "amber",
+        light: "amber200"
     },
     pageBackground: 'grey100',
     frostedGlass: '#ffffffb3',
     shadow: "grey300",
     white: 'white',
     black: 'black',
+    mask: '#bdbdbd4d'
 }

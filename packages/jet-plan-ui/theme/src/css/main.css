@@ -1,7 +1,7 @@
 /* 导入bootstrap-icon */
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css");
 
-/* Base Settins */
+/* Base Setting */
 * {
     /* 可继承属性 */
     color: inherit;
@@ -113,8 +113,7 @@ h6 {
 /* 隐藏选中框 */
 @supports (-webkit-tap-highlight-color: #ffffff00) {
 
-    .j-radio,
-    label {
+    * {
         -webkit-tap-highlight-color: #ffffff00;
     }
 }

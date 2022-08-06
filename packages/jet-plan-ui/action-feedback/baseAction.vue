@@ -26,7 +26,6 @@ export default {
     data() {
         return {
             onTouch: {
-                // ontouchstart: this.handlerTouchStartEvent,
                 ontouchstart: this.handlerTouchEvent,
                 ontouchcancel: this.handlerTouchEvent,
                 ontouchend: this.handlerTouchEvent,

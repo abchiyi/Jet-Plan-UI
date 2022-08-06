@@ -1,6 +1,5 @@
 <template>
     <div id="the-demo-loading">
-        <!-- header -->
         <doc-item id="describes" name="Loading:" tag="h1" no-dot no-padding>
             <p>用于展示加载进度</p>
             <hr />
@@ -8,8 +7,8 @@
 
         <doc-item name="示例:" tag="h2">
             <j-control-bar for-id="demo-progress-to-succuss">
-                <template v-slot:text>完成进度条</template>
-                <j-switch id="demo-progress-to-succuss" v-model="success" />
+                <template v-slot:text>百分比</template>
+                <j-slider v-model="value" :max="100" />
             </j-control-bar>
             <j-control-bar for-id="demo-progress-to-failed">
                 <template v-slot:text>失败进度条</template>
@@ -19,12 +18,13 @@
                 <template v-slot:text> 暂停 </template>
                 <j-switch id="demo-progress-to-pause" v-model="pause" />
             </j-control-bar>
+
             <demo-box title="Progress">
                 <div id="demo-content">
                     <p>常规:</p>
                     <j-progress
                         :failed="failed"
-                        :value="number"
+                        :value="value"
                         :pause="pause"
                     />
                     <p>环形:</p>
@@ -32,7 +32,7 @@
                         Font size - 16px
                         <j-progress
                             :failed="failed"
-                            :value="number"
+                            :value="value"
                             :pause="pause"
                             ring
                         />
@@ -41,7 +41,7 @@
                         Font size 24px
                         <j-progress
                             :failed="failed"
-                            :value="number"
+                            :value="value"
                             :pause="pause"
                             ring
                         />
@@ -50,7 +50,7 @@
                         Font size 32px
                         <j-progress
                             :failed="failed"
-                            :value="number"
+                            :value="value"
                             :pause="pause"
                             ring
                         />
@@ -63,14 +63,15 @@
                         <j-progress
                             style="font-size: 20px"
                             :failed="failed"
-                            :value="number"
+                            :value="value"
                             :pause="pause"
                             ring
                         />
-                        <span style="margin-left: 10px"> {{ +number }}% </span>
+                        <span style="margin-left: 10px"> {{ +value }}% </span>
                     </j-button>
                 </div>
             </demo-box>
+
             <demo-box
                 title="Js"
                 code="
@@ -85,6 +86,7 @@ export default {
 }
 "
             />
+
             <demo-box
                 title="Html"
                 code='
@@ -131,35 +133,30 @@ export default {
                         value: '说明：进度条百分比。',
                         failed: '说明：更改样式状态为‘失败/错误’。',
                         pause: '说明：更改样式状态为‘暂停’。',
-                        height: '说明：修改条形进度条高度。',
                         ring: '说明：显示为环形进度条。',
                     },
                 },
             },
-            code: `
-
-
-                `,
             intervalID: null,
             success: false,
             failed: false,
             pause: false,
-            number: 50,
+            value: 50,
         };
     },
     watch: {
         success() {
             if (this.success) {
                 this.intervalID = setInterval(() => {
-                    this.number++;
+                    this.value++;
                 }, 99);
             } else {
-                this.number = 50;
+                this.value = 50;
                 clearInterval(this.intervalID);
             }
         },
-        number() {
-            if (this.number >= 100) {
+        value() {
+            if (this.value >= 100) {
                 clearInterval(this.intervalID);
             }
         },
