@@ -107,9 +107,6 @@ export default {
 
                 onHover_from: this.handlerHover,
                 onHover_to: this.handlerHover,
-
-                onFocus_from: this.handlerFocus,
-                onFocus_to: this.handlerFocus,
             },
             {
                 default: () => [this.renderDefault, this.renderMask],

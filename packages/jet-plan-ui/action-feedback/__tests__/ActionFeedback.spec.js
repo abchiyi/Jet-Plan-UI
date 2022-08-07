@@ -88,15 +88,7 @@ describe('ActionFeedback.vue', () => {
         await wrapper.setProps({
             focus: true
         })
-        await wrapper.vm.handlerFocus({
-            active: true
-        })
-        expect(wrapper.classes()).toContain(`focus`)
 
-        await wrapper.vm.handlerFocus({
-            active: false
-        })
-        expect(wrapper.classes()).not.toContain(`focus`)
 
     })
 })
