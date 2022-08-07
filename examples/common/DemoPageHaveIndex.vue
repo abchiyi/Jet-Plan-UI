@@ -13,8 +13,9 @@
             >
                 <!-- Link -->
                 <router-link-a
-                    :href="item.href"
                     style="padding-left: 1.5rem; margin: unset"
+                    :href="item.href"
+                    focus
                 >
                     {{ item.name }}
                 </router-link-a>
@@ -29,6 +30,7 @@
                             v-for="i in item.index"
                             :key="i"
                             active
+                            focus
                             hover
                             text
                             row

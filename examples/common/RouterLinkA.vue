@@ -38,6 +38,6 @@ export default {
     font-size: 1rem;
 }
 .router-link-a.active {
-    color: var(--primary-dark);
+    color: var(--primary);
 }
 </style>
