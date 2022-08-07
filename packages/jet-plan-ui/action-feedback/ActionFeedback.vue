@@ -8,7 +8,6 @@ export default {
     name: 'j-action-feedback',
     props: {
         name: propInit(String, 'j'),
-        focus: propInitBoolean(false),
         hover: propInitBoolean(false),
         active: propInitBoolean(false),
         hoverDelay: propInit(Number, 80),
@@ -17,7 +16,6 @@ export default {
         return {
             data_active: false,
             data_hover: false,
-            data_focus: false,
             masks: [],
             key: 0,
         };
@@ -27,7 +25,6 @@ export default {
             return [
                 `${this.name}-action-feedback`,
                 this.data_hover && this.hover ? 'hover' : '',
-                this.data_focus && this.focus ? 'focus' : '',
                 this.data_active && this.active ? 'active' : '',
             ];
         },
@@ -71,11 +68,6 @@ export default {
         removeMask() {
             this.masks = [];
         },
-        handlerFocus(event) {
-            if (this.focus) {
-                this.data_focus = event.active;
-            }
-        },
         handlerActive(event) {
             if (event.active) {
                 // 遮罩在自定义类名中不启用
@@ -118,8 +110,6 @@ export default {
 
                 onFocus_from: this.handlerFocus,
                 onFocus_to: this.handlerFocus,
-
-                ref: 'self',
             },
             {
                 default: () => [this.renderDefault, this.renderMask],
@@ -150,10 +140,6 @@ export default {
     top: 0;
 }
 
-/* Keyboard focus */
-.j-action-feedback.focus {
-    outline: 2px solid var(--info);
-}
 /* Mouse hover */
 .j-action-feedback.hover::after {
     background-color: var(--mask);

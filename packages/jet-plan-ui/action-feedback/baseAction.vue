@@ -5,12 +5,6 @@ const name = 'j-base-action';
 
 export default {
     name: name,
-    mounted() {
-        document.addEventListener('click', this.focusHandler);
-    },
-    unmounted() {
-        document.removeEventListener('click', this.focusHandler);
-    },
     props: {
         tag: propInit(String, 'div'),
     },
@@ -33,14 +27,7 @@ export default {
             isTouch: false,
         };
     },
-    emits: [
-        'active_from',
-        'active_to',
-        'hover_from',
-        'hover_to',
-        'focus_from',
-        'focus_to',
-    ],
+    emits: ['active_from', 'active_to', 'hover_from', 'hover_to'],
     methods: {
         activeFrom(event) {
             this.$emit('active_from', event);
@@ -53,19 +40,6 @@ export default {
         },
         hoverTo(event) {
             this.$emit('hover_to', event);
-        },
-        focusHandler(event) {
-            if (this.$refs.self.contains(event.target)) {
-                this.$emit('focus_from', {
-                    active: true,
-                    event: event,
-                });
-            } else {
-                this.$emit('focus_to', {
-                    active: false,
-                    event: event,
-                });
-            }
         },
         handlerMouseEvent(event) {
             if (!this.isTouch) {
@@ -132,8 +106,6 @@ export default {
                 // Hover
                 onmouseenter: this.handlerHover,
                 onmouseleave: this.handlerHover,
-                // Ref
-                ref: 'self',
             },
             {
                 default: () => [this.renderSlotDefault],
@@ -142,6 +114,3 @@ export default {
     },
 };
 </script>
-
-<style>
-</style>

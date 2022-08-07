@@ -17,11 +17,6 @@
 
                     <j-switch id="re-hover" v-model="hover" />
                 </j-control-bar>
-                <j-control-bar for-id="switch-focus">
-                    <template v-slot:text>启用 :focus 效果</template>
-
-                    <j-switch id="switch-focus" v-model="focus" />
-                </j-control-bar>
             </div>
         </div>
         <!-- Demo -->
@@ -34,7 +29,6 @@
                         :key="n"
                         :active="active"
                         :hover="hover"
-                        :focus="focus"
                         :tabindex="n"
                     >
                         <j-row style="height: 100%" warp X="center" Y="center">
@@ -89,7 +83,6 @@
     name="test"
     active
     hover
-    focus
 >
 </j-action-feedback>
                 '
@@ -115,10 +108,6 @@
 .test-action-feedback.hover{
     background:green;
 }
-/* 点击元素聚焦时 */
-.test-action-feedback.focus{
-    background:pink;
-}
                 "
             />
         </doc-item>
@@ -140,9 +129,8 @@ export default {
             description: description,
             active: true,
             hover: true,
-            focus: false,
             code: `
-<j-action-feedback active hover focus style='height:100px;width:100px' >
+<j-action-feedback active hover style='height:100px;width:100px' >
     ClickMe
 </j-action-feedback>
                 `,
