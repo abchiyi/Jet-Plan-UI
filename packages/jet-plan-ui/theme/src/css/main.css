@@ -143,10 +143,13 @@ strong {
 }
 
 .input-hidden {
-    outline: unset;
-    border: unset;
-    padding: 0;
-    margin: 0;
-    height: 0;
-    width: 0;
+    position: absolute !important;
+    display: inline !important;
+    outline: unset !important;
+    padding: unset !important;
+    border: unset !important;
+    margin: unset !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
 }
