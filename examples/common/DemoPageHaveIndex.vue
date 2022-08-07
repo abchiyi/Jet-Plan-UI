@@ -26,7 +26,7 @@
                         v-show="$route.path == item.href && item.index.length"
                     >
                         <j-button
-                            style="padding-left: 2.5rem; margin: unset"
+                            style="padding-left: 2.5rem"
                             v-for="i in item.index"
                             :key="i"
                             active
