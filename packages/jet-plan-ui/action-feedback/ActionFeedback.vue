@@ -117,7 +117,6 @@ export default {
 </script>
 <style>
 .j-action-feedback {
-    transition: outline 0.2s var(--ease-out);
     position: relative;
     overflow: hidden;
     outline: unset;

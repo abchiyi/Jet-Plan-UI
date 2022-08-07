@@ -134,8 +134,8 @@ p > .j-button.text-button {
 }
 
 /*------------ focus ----------*/
-.j-button.focus:focus {
-    outline: 2px solid var(--info);
+.j-button.focus:focus::after {
+    background-color: var(--mask);
 }
 
 /*------------ active ----------*/
