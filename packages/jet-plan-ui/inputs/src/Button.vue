@@ -47,6 +47,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        focus: {
+            type: Boolean,
+            default: true,
+        },
     },
     computed: {
         classes() {
@@ -54,6 +58,7 @@ export default {
             if (this.primary) classes.push('primary');
             if (this.disabled) classes.push('disabled');
             if (this.row) classes.push('row');
+            if (this.focus) classes.push('focus');
             classes.push(this.text ? 'text-button' : 'button');
 
             return classes;
@@ -126,6 +131,11 @@ span > .j-button.text-button,
 p > .j-button.text-button {
     padding-top: unset;
     padding-bottom: unset;
+}
+
+/*------------ focus ----------*/
+.j-button.focus:focus {
+    outline: 2px solid var(--info);
 }
 
 /*------------ active ----------*/

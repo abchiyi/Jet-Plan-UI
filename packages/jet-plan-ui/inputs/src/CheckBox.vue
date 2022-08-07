@@ -2,6 +2,7 @@
     <span>
         <input
             v-model="localvalue"
+            class="input-hidden"
             :disabled="disabled"
             type="checkbox"
             :value="value"
@@ -249,9 +250,11 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 .j-check-box.checked .background {
     fill: var(--primary-light);
 }
+
 .j-check-box.checked .mask {
     fill: var(--primary);
 }
+
 .j-check-box.checked .check {
     stroke: var(--white);
 }
@@ -260,6 +263,7 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 .j-check-box.section-selected .mask {
     fill: var(--primary-light);
 }
+
 .j-check-box.section-selected .dot {
     fill: var(--primary);
 }
@@ -270,9 +274,11 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 .j-check-box.section-selected.disabled .background {
     fill: var(--border-light);
 }
+
 .j-check-box.section-selected.disabled .mask {
     fill: var(--border);
 }
+
 .j-check-box.section-selected.disabled .dot {
     fill: var(--white);
 }
@@ -281,9 +287,11 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 .j-check-box.disabled .background {
     fill: var(--border-light);
 }
+
 .j-check-box.disabled .mask {
     fill: var(--border);
 }
+
 .j-check-box.disabled {
     cursor: not-allowed;
 }
@@ -304,27 +312,34 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 .check-enter-active {
     animation: path-in 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.2);
 }
+
 .check-leave-active {
     animation: path-out 0.4s var(--ease-out);
 }
+
 @keyframes path-in {
     0% {
         stroke-dashoffset: -30;
     }
+
     40% {
         stroke-dashoffset: 0;
     }
+
     60% {
         stroke-dashoffset: -1;
     }
+
     100% {
         stroke-dashoffset: 0;
     }
 }
+
 @keyframes path-out {
     0% {
         stroke-dashoffset: 0;
     }
+
     100% {
         stroke-dashoffset: 32;
     }
@@ -338,6 +353,7 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 .dot-enter-active {
     animation: dot-in 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.3);
 }
+
 .dot-leave-active {
     animation: dot-out 0.4s cubic-bezier(0.3, 0.6, 0.15, 1.3);
 }
@@ -347,20 +363,25 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
         transform: scale(0);
         opacity: 0;
     }
+
     30% {
         opacity: 1;
     }
+
     100% {
         opacity: 1;
     }
 }
+
 @keyframes dot-out {
     0% {
         opacity: 1;
     }
+
     70% {
         opacity: 0;
     }
+
     100% {
         transform: scale(0);
         opacity: 0;

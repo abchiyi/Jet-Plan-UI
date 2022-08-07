@@ -1,29 +1,35 @@
 <template>
-    <div @click="click" :class="classes">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-            <rect class="background" width="16" height="16" rx="8" />
-            <rect
-                class="mask"
-                width="12"
-                height="12"
-                rx="6"
-                transform="translate(2 2)"
-            />
-            <g class="dot">
-                <rect width="6" height="6" rx="3" transform="translate(5 5)" />
-            </g>
-        </svg>
-    </div>
-
-    <input
-        :id="id"
-        :name="name"
-        v-show="false"
-        :value="value"
-        type="radio"
-        :disabled="disabled"
-        v-model="localvalue"
-    />
+    <span>
+        <input
+            :id="id"
+            :name="name"
+            :value="value"
+            type="radio"
+            :disabled="disabled"
+            v-model="localvalue"
+            class="input-hidden"
+        />
+        <label :for="id" @click="click" :class="classes">
+            <svg viewBox="0 0 16 16">
+                <rect class="background" width="16" height="16" rx="8" />
+                <rect
+                    class="mask"
+                    width="12"
+                    height="12"
+                    rx="6"
+                    transform="translate(2 2)"
+                />
+                <g class="dot">
+                    <rect
+                        width="6"
+                        height="6"
+                        rx="3"
+                        transform="translate(5 5)"
+                    />
+                </g>
+            </svg>
+        </label>
+    </span>
 </template>
 <script>
 export default {
@@ -124,6 +130,7 @@ export default {
 .j-radio.select .background {
     fill: var(--primary-light);
 }
+
 .j-radio.select .mask {
     fill: var(--primary);
 }
@@ -141,9 +148,11 @@ export default {
 .j-radio.disabled .background {
     fill: var(--border-light);
 }
+
 .j-radio.disabled .mask {
     fill: var(--border);
 }
+
 .j-radio.disabled .dot {
     fill: var(--white);
 }
