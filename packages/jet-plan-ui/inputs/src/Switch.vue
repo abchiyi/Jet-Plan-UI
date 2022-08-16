@@ -1,5 +1,5 @@
 <template>
-    <span>
+    <div :class="classes" style="display: inline-block">
         <input
             v-model="scopedValue"
             class="input-hidden"
@@ -7,9 +7,8 @@
             type="checkbox"
             :id="id"
         />
-        <div
-            :class="classes"
-            @click="change"
+        <label
+            :for="id"
             @mousedown="toWider"
             @mouseup="cancellation"
             @mouseout="cancellation"
@@ -30,59 +29,42 @@
                     <rect class="lever-fill" width="10" height="10" rx="5" s />
                 </g>
             </svg>
-        </div>
-    </span>
+        </label>
+    </div>
 </template>
 <script>
-import { propInit, validatorRange } from '../../tool/lib';
+import { propInit, propInitBoolean, validatorRange } from '../../tool/lib';
 import './css/shape.css';
 export default {
     name: 'j-switch',
     props: {
-        modelValue: {
-            type: Boolean,
-            default: false,
-        },
-        disabled: {
-            type: Boolean,
-            default: false,
-        },
         size: propInit(String, 'm', validatorRange(['s', 'm', 'l'])),
-        id: {
-            required: true,
-        },
+        id: propInit(undefined, undefined, undefined, true),
+        modelValue: propInitBoolean(false),
+        disabled: propInitBoolean(false),
+    },
+    mounted() {
+        // id 检查
+        if (!this.id) {
+            console.error(
+                `Component 'j-switch' require a unique id or they will not work properly! ↓↓↓↓↓`
+            );
+            console.error(this.$el);
+        }
     },
     data() {
         return {
             wider: false,
             intervalCode: [],
-            first_load: null,
             scopedValue: this.modelValue,
         };
     },
-    model: {
-        prop: 'modeValue',
-        event: 'update:modelValue',
-    },
     computed: {
         classes() {
-            return [
-                'shape j-switch',
-                this.size,
-                this.wider ? 'wider' : '',
-                this.disabled ? 'disabled' : '',
-                this.modelValue ? 'on' : 'off',
-                this.first_load ? 'first-load' : '',
-            ];
+            return ['shape j-switch', this.size, this.wider ? 'wider' : ''];
         },
     },
     methods: {
-        change() {
-            if (!this.disabled) {
-                this.$emit('update:modelValue', this.modelValue ? false : true);
-                if (this.first_load) this.first_load = false;
-            }
-        },
         toWider() {
             // 在按下100ms后设置拨杆拉宽参数为true
             let inervalCode = setInterval(() => {
@@ -103,12 +85,9 @@ export default {
             }
         },
     },
-    created() {
-        this.first_load = true;
-    },
+
     watch: {
         modelValue(v) {
-            if (this.first_load) this.first_load = false;
             this.scopedValue = v;
         },
         scopedValue(v) {
@@ -119,6 +98,7 @@ export default {
 </script>
 <style>
 .j-switch {
+    vertical-align: middle;
     height: var(--HEIGHT);
     width: var(--WIDTH);
     display: inline-block;
@@ -137,6 +117,24 @@ export default {
     stroke-width: 1;
 }
 
+/*--------------- Active --------------- */
+
+/* off */
+.j-switch.wider .lever > .lever-fill {
+    width: 15px;
+}
+/* on */
+.j-switch.wider > input:checked + label .lever-fill {
+    width: 15px;
+    transform: translate(-5px, 0);
+}
+
+/*--------------- Focus --------------- */
+span > input[type='checkbox']:focus-visible + .j-switch {
+    outline: 2px solid var(--info);
+    border-radius: 4px;
+}
+
 /*--------------- off --------------- */
 .j-switch .background {
     fill: var(--border-light);
@@ -150,30 +148,16 @@ export default {
     fill: var(--white);
 }
 
-/*--------------- Active --------------- */
-.j-switch.wider .lever > .lever-fill {
-    width: 15px;
-}
-.j-switch.wider.on .lever > .lever-fill {
-    width: 15px;
-    transform: translate(-5px, 0);
-}
-
-/*--------------- Focus --------------- */
-span > input[type='checkbox']:focus-visible + .j-switch {
-    outline: 2px solid var(--info);
-    border-radius: 4px;
-}
-
 /*--------------- ON --------------- */
-.j-switch.on .background {
+.j-switch > input:checked + label .background {
     fill: var(--primary-light);
 }
-.j-switch.on .mask {
+
+.j-switch > input:checked + label .mask {
     fill: var(--primary);
 }
 
-.j-switch.on .lever {
+.j-switch > input:checked + label .lever {
     fill: white;
     transform: translate(13px, 3px);
 }
@@ -186,27 +170,26 @@ span > input[type='checkbox']:focus-visible + .j-switch {
 /*--------------- Disabled --------------- */
 
 /* on */
-.j-switch.disabled.on .background {
+.j-switch > input:disabled:checked + label .background {
     fill: var(--border);
 }
-
-.j-switch.disabled.on .mask {
+.j-switch > input:disabled:checked + label .mask {
     fill: var(--primary-disabled);
 }
-
-.j-switch.disabled.on .lever {
+.j-switch > input:disabled:checked + label .lever {
     fill: var(--border);
 }
 
 /* off */
-.j-switch.disabled.off .background {
+.j-switch > input:disabled + label .background {
     fill: var(--border-light);
 }
-.j-switch.disabled.off .mask {
+.j-switch > input:disabled + label .mask {
     fill: var(--border);
 }
+
 /* 切换指针为禁用 */
-.j-switch.disabled {
+.j-switch > input:disabled + label {
     cursor: not-allowed;
 }
 </style>

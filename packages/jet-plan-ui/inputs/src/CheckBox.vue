@@ -1,9 +1,10 @@
+<!-- FIXME 初始值逻辑修正 -->
 <template>
-    <span>
+    <span class="j-checkbox-shell" :class="classes">
         <input
-            v-model="localvalue"
-            class="input-hidden"
+            v-model="localValue"
             :disabled="disabled"
+            class="input-hidden"
             type="checkbox"
             :value="value"
             @click="click"
@@ -11,44 +12,42 @@
             :id="id"
         />
         <label :for="id">
-            <div :class="classes">
-                <svg viewBox="0 0 16 16">
-                    <path
-                        class="background"
-                        d="M4,0h8a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z"
-                    />
-                    <rect
-                        class="mask"
-                        width="12"
-                        height="12"
-                        rx="3"
-                        transform="translate(2 2)"
-                    />
-                    <transition name="dot">
-                        <g class="dot" v-show="sectionSelected">
-                            <rect
-                                width="8"
-                                height="8"
-                                rx="2"
-                                transform="translate(4 4)"
-                            />
-                        </g>
-                    </transition>
-                    <transition name="check">
-                        <g v-show="checked">
-                            <path
-                                class="check"
-                                d="M281.784,416c-4.9,5.277-3.769,5.654-6.784,1.884"
-                                transform="translate(-270.392 -409.717)"
-                                stroke-dasharray="30px"
-                                stroke-linecap="round"
-                                stroke-width="2"
-                                fill="none"
-                            />
-                        </g>
-                    </transition>
-                </svg>
-            </div>
+            <svg viewBox="0 0 16 16">
+                <path
+                    class="background"
+                    d="M4,0h8a4,4,0,0,1,4,4v8a4,4,0,0,1-4,4H4a4,4,0,0,1-4-4V4A4,4,0,0,1,4,0Z"
+                />
+                <rect
+                    class="mask"
+                    width="12"
+                    height="12"
+                    rx="3"
+                    transform="translate(2 2)"
+                />
+                <transition name="dot">
+                    <g class="dot" v-show="sectionSelected">
+                        <rect
+                            width="8"
+                            height="8"
+                            rx="2"
+                            transform="translate(4 4)"
+                        />
+                    </g>
+                </transition>
+                <transition name="check">
+                    <g v-show="checked">
+                        <path
+                            class="check"
+                            d="M281.784,416c-4.9,5.277-3.769,5.654-6.784,1.884"
+                            transform="translate(-270.392 -409.717)"
+                            stroke-dasharray="30px"
+                            stroke-linecap="round"
+                            stroke-width="2"
+                            fill="none"
+                        />
+                    </g>
+                </transition>
+            </svg>
         </label>
     </span>
 </template>
@@ -115,9 +114,7 @@ export default {
             return [
                 'shape j-check-box',
                 this.size,
-                this.checked ? 'checked' : '',
                 this.sectionSelected && !this.checked ? 'section-selected' : '',
-                this.disabled ? 'disabled' : '',
             ];
         },
     },
@@ -152,7 +149,7 @@ export default {
     },
     data() {
         return {
-            localvalue: [],
+            localValue: [],
         };
     },
     methods: {
@@ -205,17 +202,13 @@ export default {
     },
     watch: {
         checked(v) {
-            v ? this.localvalue.push(this.value) : (this.localvalue = []);
+            v ? this.localValue.push(this.value) : (this.localValue = []);
         },
     },
 };
 </script>
 
 <style>
-label > * {
-    display: inline-block;
-}
-
 /* 基本样式 */
 .j-check-box,
 .j-check-box > * {
@@ -230,8 +223,16 @@ label > * {
     margin: 0 2px;
 }
 
+.j-check-box .dot {
+    fill: var(--primary);
+}
+
+.j-check-box > label {
+    display: flex;
+}
+
 /*--------------- Focus --------------- */
-span > input[type='checkbox']:focus-visible + label > .j-check-box {
+.j-check-box > input[type='checkbox']:focus-visible + label {
     outline: 2px solid var(--info);
     border-radius: 4px;
 }
@@ -247,15 +248,13 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 
 /* ---------- Checked ---------- */
 
-.j-check-box.checked .background {
+.j-check-box > input:checked + label .background {
     fill: var(--primary-light);
 }
-
-.j-check-box.checked .mask {
+.j-check-box > input:checked + label .mask {
     fill: var(--primary);
 }
-
-.j-check-box.checked .check {
+.j-check-box > input:checked + label .check {
     stroke: var(--white);
 }
 
@@ -264,48 +263,29 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
     fill: var(--primary-light);
 }
 
-.j-check-box.section-selected .dot {
-    fill: var(--primary);
-}
-
 /* ---------- Disabled ---------- */
 
-/* dot */
-.j-check-box.section-selected.disabled .background {
+/* section-selected */
+.j-check-box > input:disabled + label .background {
     fill: var(--border-light);
 }
 
-.j-check-box.section-selected.disabled .mask {
+.j-check-box > input:disabled + label .mask {
     fill: var(--border);
 }
 
-.j-check-box.section-selected.disabled .dot {
+.j-check-box > input:disabled + label .dot {
     fill: var(--white);
 }
 
-/* no check */
-.j-check-box.disabled .background {
-    fill: var(--border-light);
-}
-
-.j-check-box.disabled .mask {
-    fill: var(--border);
-}
-
-.j-check-box.disabled {
-    cursor: not-allowed;
-}
-
 /* checked */
-.j-check-box.disabled.checked .check {
+.j-check-box > input:checked:disabled + label .check {
     stroke: var(--white);
 }
 
-/* Animation */
-
+/* ---------- Animation ---------- */
 .j-check-box .background,
-.j-check-box .mask,
-.j-check-box .dot {
+.j-check-box .mask {
     transition: fill 0.3s var(--ease-out);
 }
 
@@ -327,7 +307,7 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
     }
 
     60% {
-        stroke-dashoffset: -1;
+        stroke-dashoffset: -0.5;
     }
 
     100% {
@@ -337,14 +317,17 @@ span > input[type='checkbox']:focus-visible + label > .j-check-box {
 
 @keyframes path-out {
     0% {
+        stroke: var(--white);
         stroke-dashoffset: 0;
     }
 
     100% {
+        stroke: var(--white);
         stroke-dashoffset: 32;
     }
 }
 
+/* dot */
 .dot-leave-active,
 .dot-enter-active {
     transform-origin: center;
