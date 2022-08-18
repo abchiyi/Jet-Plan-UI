@@ -53,21 +53,27 @@
 </template>
 <script>
 import { propInit, validatorRange } from '../../tool/lib';
+function isArray(value) {
+    return value instanceof Array;
+}
 export default {
     name: 'j-checkbox',
+    created() {
+        // 同步初始值
+        if (this.checked) {
+            this.localValue.push(this.value);
+        }
+    },
     computed: {
-        handleCheckAll() {
-            if (
-                this.validatIsAArray(this.value) &&
-                this.validatIsAArray(this.modelValue)
-            ) {
+        modelCheckAll() {
+            if (isArray(this.value) && isArray(this.modelValue)) {
                 return true;
             }
             return false;
         },
         sectionSelected() {
             if (!this.checked) {
-                if (this.handleCheckAll) {
+                if (this.modelCheckAll) {
                     for (let key in this.modelValue) {
                         if (this.value.indexOf(this.modelValue[key]) !== -1) {
                             return true;
@@ -80,11 +86,11 @@ export default {
         },
         checked() {
             //检查所有值是否存在列表中
-            if (this.handleCheckAll) {
+            if (this.modelCheckAll) {
                 return this.eq;
             }
             // 绑定数组
-            if (this.validatIsAArray(this.modelValue)) {
+            if (isArray(this.modelValue)) {
                 return this.modelValue.indexOf(this.value) !== -1;
             }
             // 绑定数值
@@ -156,7 +162,7 @@ export default {
         click() {
             // 'disabled' prop 启用时,不响应点击.
             if (!this.disabled) {
-                if (this.handleCheckAll) {
+                if (this.modelCheckAll) {
                     // 全选控制
                     if (this.checked) {
                         this.$emit('update:modelValue', []);
@@ -185,7 +191,7 @@ export default {
             return newArray;
         },
         check(value) {
-            if (this.validatIsAArray(value)) {
+            if (isArray(value)) {
                 let newArray = value;
                 if (this.checked) {
                     newArray.splice(newArray.indexOf(this.value), 1);
@@ -195,9 +201,6 @@ export default {
                 return newArray;
             }
             return !value;
-        },
-        validatIsAArray(v) {
-            return typeof v == 'object' && typeof v.length == 'number';
         },
     },
     watch: {
