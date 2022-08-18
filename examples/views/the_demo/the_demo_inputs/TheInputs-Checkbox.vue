@@ -54,10 +54,10 @@ export default {
             },
             disabled: false,
             data: ['Checkbox1', 'Checkbox2', 'Checkbox3'],
-            showData: [],
+            showData: ['Checkbox1'],
             code: `// javaScript
 let data: ["Checkbox1", "Checkbox2", "Checkbox3"],
-let showData: [];
+let showData: ["Checkbox1"];
 
 // Html
 <body>
