@@ -1,4 +1,4 @@
-<!-- FIXME 初始值逻辑修正 -->
+<!-- FIXME  -->
 <template>
     <span class="j-checkbox-shell" :class="classes">
         <input
