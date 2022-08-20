@@ -162,13 +162,13 @@ let expandSidebar = true;
 
 #p1 #p1-sidebar {
     border-radius: var(--m-radius);
-    background: var(--primary-dark);
+    background: var(--primary);
     height: 100%;
 }
 
 #p1-header {
     border-radius: var(--m-radius);
-    background: var(--primary-dark);
+    background: var(--primary);
     height: 20%;
 }
 

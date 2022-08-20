@@ -33,7 +33,7 @@ export default {
     width: 100px;
     height: 100px;
     border-radius: var(--m-radius);
-    background-color: var(--primary-dark);
+    background-color: var(--primary);
     /* 文本设置 */
     color: #fff;
     /* transition: 0.4s ease-in-out; */

@@ -186,7 +186,7 @@ export default {
     fill: var(--border-dark);
 }
 .used .background-border {
-    fill: var(--primary-dark);
+    fill: var(--primary);
 }
 .border {
     stroke: v-bind('showTheme.border');
