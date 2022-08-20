@@ -235,6 +235,10 @@ export default {
     --THUMB-RADIUS: calc(var(--THUMB-DIAMETER) / 2);
 }
 
+.j-slider {
+    cursor: pointer;
+}
+
 /* BORDER */
 .j-slider .thumb,
 .j-slider .background {
@@ -261,7 +265,6 @@ export default {
     border-radius: var(--HEIGHT);
     height: var(--HEIGHT);
     position: relative;
-    cursor: pointer;
 }
 
 .j-slider .mask {
