@@ -134,6 +134,9 @@ export default {
             document.removeEventListener('touchcancel', this.trackEnd);
             this.transitionOn();
             // this.TAL.reSetConter();
+
+            // 追踪结束时根据绑定值计算最后位置
+            this.valueToPercentage(this.modelValue);
         },
 
         // Style
