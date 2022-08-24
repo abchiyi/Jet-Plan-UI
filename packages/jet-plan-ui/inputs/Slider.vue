@@ -1,8 +1,10 @@
 <script>
 const NAME = 'j-slider';
 import { h } from 'vue';
-import { getOffset, shadowPainter } from '../tool/lib/dom';
-import { TimedActionLimit } from '../tool/lib';
+import { getOffset } from '../tool/lib/dom';
+import { TimedActionLimit, propInitBoolean } from '../tool/lib';
+import { Row } from '../gird';
+import { Bubble } from '../bubble';
 function touchEventCompatible(event) {
     if (event.type.indexOf('touch') != -1) {
         return event.touches[0];
@@ -12,10 +14,6 @@ function touchEventCompatible(event) {
 export default {
     name: NAME,
     mounted() {
-        // 计算拨杆尺寸，设置限位
-        this.thumbSize = getOffset(this.$refs.thumb);
-        this.nowPosition = this.thumbSize.elWidth / 2;
-
         // 计算默认值保证初始加载时拨杆处于正确位置
         this.valueToPercentage(this.modelValue);
 
@@ -31,8 +29,8 @@ export default {
     data() {
         return {
             nowPosition: undefined,
-            thumbSize: undefined,
             useTransition: true,
+            thumbSize: 0,
             value: 0,
             percentage: undefined,
             TAL: new TimedActionLimit(100, 2),
@@ -52,13 +50,14 @@ export default {
             default: 100,
         },
         step: {
-            type: [Number],
+            type: [Number, Array],
             default: 0.1,
         },
         disabled: {
             type: Boolean,
             default: false,
         },
+        bubble: propInitBoolean(false),
     },
     methods: {
         debug() {
@@ -68,28 +67,99 @@ export default {
             console.log(this.percentage * 100 + '%');
             console.log(this.value);
         },
+        getValue() {
+            /**
+             * @desc 兼容指定步长模式
+             */
+            if (this.step instanceof Array) {
+                const MAX =
+                    this.step.length > 1
+                        ? this.step[this.step.length - 1]
+                        : this.max;
+
+                return {
+                    step: 0.1,
+                    max: MAX,
+                    min: this.step[0],
+                };
+            }
+
+            return this;
+        },
 
         // Calc
         positionToPercentage(event) {
-            const elSize = getOffset(this.$refs.track);
+            const elSize = getOffset(this.$el);
             // 计算点击位置相对于滑动条百分比&限位
             const cpp = (event.pageX - elSize.size.left) / elSize.elWidth;
             this.percentage = cpp > 1 ? 1 : cpp < 0 ? 0 : cpp;
         },
         valueToPercentage(modelValue) {
-            const { max, min } = this;
+            this.percentage = this.__valueToPercentage(modelValue);
+        },
+        __valueToPercentage(value) {
+            const { max, min } = this.getValue();
             const range = max - min;
-            let percentage = modelValue / range - min / range;
+            let percentage = value / range - min / range;
             percentage = percentage > 1 ? 1 : percentage < 0 ? 0 : percentage;
-            this.percentage = percentage;
+            return percentage;
         },
         updateValue() {
-            const { max, min, step } = this;
+            const { max, min, step } = this.getValue();
+
+            // XXX
+            function findCloseNum(arr, num) {
+                var index = 0; // 保存最接近数值在数组中的索引
+                var d_value = Number.MAX_VALUE; // 保存差值绝对值，默认为最大数值
+
+                for (var i = 0; i < arr.length; i++) {
+                    var new_d_value = Math.abs(arr[i] - num); // 新差值
+                    if (new_d_value <= d_value) {
+                        // 如果新差值绝对值小于等于旧差值绝对值，保存新差值绝对值和索引
+                        if (new_d_value === d_value && arr[i] < arr[index]) {
+                            // 如果数组中两个数值跟目标数值差值一样，取大
+                            continue;
+                        }
+                        index = i;
+                        d_value = new_d_value;
+                    }
+                }
+
+                return arr[index]; // 返回最接近的数值
+            }
+
             let value = this.percentage * (max - min) + min;
             value = Math.round(value / step) * step + 0 * min;
             value = parseFloat(value.toFixed(5));
             value = value > max ? max : value < min ? min : value;
-            this.value = value;
+
+            if (this.step instanceof Array) {
+                const targetNum = findCloseNum(this.step, value);
+                targetNum;
+                switch (true) {
+                    // 等于最小值时
+                    case value == this.step[0]:
+                        this.value = this.step[0];
+                        break;
+
+                    default:
+                        this.value = targetNum;
+                        break;
+                }
+            } else {
+                this.value = value;
+            }
+        },
+
+        // Style
+        updateThumbPosition() {
+            const elSize = getOffset(this.$refs.background);
+            // 滑动条两端限位，避免拨杆超出边界, 并隐藏两端
+            let MAX = elSize.elWidth;
+            let MIN = 0;
+            //计算拨杆当前位置
+            let x = elSize.elWidth * this.percentage;
+            this.nowPosition = x < MIN ? MIN : x > MAX ? MAX : x;
         },
 
         // Logic
@@ -138,19 +208,6 @@ export default {
             // 追踪结束时根据绑定值计算最后位置
             this.valueToPercentage(this.modelValue);
         },
-
-        // Style
-        updateThumbPosition() {
-            const { $el } = this;
-            const elSize = getOffset($el);
-            // 滑动条两端限位，避免拨杆超出边界
-            const thumbRadius = this.thumbSize.elWidth / 2;
-            const MAX = elSize.elWidth - thumbRadius;
-            const MIN = thumbRadius;
-            //计算拨杆当前位置
-            let x = elSize.elWidth * this.percentage;
-            this.nowPosition = x < MIN ? MIN : x > MAX ? MAX : x;
-        },
     },
     computed: {
         style() {
@@ -186,44 +243,56 @@ export default {
             type: 'hidden',
             value: this.value,
         });
-        const THUMB = h(
-            'div',
-            {
-                class: 'thumb-shell',
-                ref: 'thumb',
 
-                position: 'top',
-                message: this.value,
-            },
-            h('div', {
-                class: 'thumb',
-                style: {
-                    boxShadow: shadowPainter('bottom', 3),
-                },
-            })
-        );
-        const MASK = h(
+        const BACKGROUND = h(
             'div',
             { class: ['background'] },
-            h(
-                'div',
-                {
-                    class: ['mask', ...this.classTrack],
-                },
-                THUMB
-            )
+
+            // Slider
+            h('div', {
+                class: ['slider', ...this.classTrack],
+            })
         );
 
-        const TRACK = h('div', { class: ['track'], ref: 'track' });
+        const BUBBLE_SHELL = h(
+            'div',
+            { class: ['bubble-shell'], ref: 'track' },
+            [
+                h(Bubble, {
+                    class: 'bubble-anchor',
+                    show: this.bubble && !this.useTransition,
+                    message: this.value,
+                    position: 'top',
+                }),
+            ]
+        );
+
+        const SLOT_CONTENT = h(
+            Row,
+            {
+                class: ['slot-content'],
+                ref: 'track',
+                Y: 'center',
+            },
+
+            {
+                default: () => {
+                    if (this.$slots.default) {
+                        return this.$slots.default();
+                    }
+                },
+            }
+        );
         return h(
             'div',
             {
-                style: this.style,
-                class: [NAME, 'shell', ...this.classes],
-                onmousedown: this.handleMouseDown,
+                class: [NAME, ...this.classes],
                 ontouchstart: this.handleTouchStart,
+                onmousedown: this.handleMouseDown,
+                style: this.style,
+                ref: 'background',
             },
-            [INPUT, MASK, TRACK]
+            [INPUT, BACKGROUND, BUBBLE_SHELL, SLOT_CONTENT]
         );
     },
 };
@@ -232,35 +301,50 @@ export default {
 <style>
 /* VALUES */
 .j-slider {
-    --HEIGHT: 0.25rem;
-    --BORDER-WIDTH: 0.125rem;
-    --THUMB-DIAMETER: 0.75rem;
+    --HEIGHT: 1em;
+    --THUMB-DIAMETER: calc(1.4 * var(--HEIGHT));
     --THUMB-RADIUS: calc(var(--THUMB-DIAMETER) / 2);
-}
-
-.j-slider {
-    cursor: pointer;
-}
-
-/* BORDER */
-.j-slider .thumb,
-.j-slider .background {
-    outline: solid var(--BORDER-WIDTH);
 }
 
 .j-slider > * {
     user-select: none;
 }
 
-.j-slider.shell {
+.j-slider {
     display: inline-block;
     position: relative;
+    cursor: pointer;
     width: 200px;
 }
 
-.j-slider .mask,
-.j-slider .thumb {
+/* ----- Bubble ----- */
+.j-slider .slot-content,
+.j-slider .bubble-shell {
+    height: var(--HEIGHT);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+.j-slider .bubble-anchor {
+    transform: translateX(var(--track-fill-width));
+    height: var(--HEIGHT);
+    outline: solid 1px;
+    /* width: 0; */
+}
+
+.j-slider .j-bubble .j-row {
+    height: var(--HEIGHT);
+}
+
+.j-slider .slider {
     pointer-events: unset;
+}
+
+.j-slider .slot-content {
+    color: var(--text-light);
+    padding: 0 0.3em;
 }
 
 .j-slider .background {
@@ -268,48 +352,23 @@ export default {
     border-radius: var(--HEIGHT);
     height: var(--HEIGHT);
     position: relative;
+    overflow: hidden;
 }
 
-.j-slider .mask {
+.j-slider .slider {
     background-color: var(--primary);
     transform: translate3d(0, 0, 0);
     width: var(--track-fill-width);
-    border-radius: var(--HEIGHT);
     height: var(--HEIGHT);
     position: absolute;
 }
-
-.j-slider .thumb-shell {
-    top: calc((var(--THUMB-DIAMETER) - var(--HEIGHT)) / 2 * -1);
-    right: calc(-100% + var(--THUMB-DIAMETER) / 2);
-    height: var(--THUMB-DIAMETER);
-    width: var(--THUMB-DIAMETER);
-    position: relative;
-}
-.j-slider .thumb {
-    border-radius: var(--THUMB-DIAMETER);
-    background-color: var(--white);
-    height: var(--THUMB-DIAMETER);
-    width: var(--THUMB-DIAMETER);
-}
-
-/* TRACK 用于追踪点击&滑动位置以计算百分比,
- *避免使用 '.shell' 进行追踪造成的空位滑动
- **/
-.j-slider .track {
-    right: var(--THUMB-RADIUS);
-    left: var(--THUMB-RADIUS);
-    height: var(--HEIGHT);
-    position: absolute;
-    top: 0;
-}
-
 /* ----- animation ----- */
 
-.j-slider .mask {
+.j-slider .bubble-anchor,
+.j-slider .slider {
     transition: width 0.4s var(--ease-out);
 }
-.j-slider .mask.move {
+.j-slider .slider.move {
     transition: unset;
 }
 
@@ -320,23 +379,17 @@ export default {
     background-color: var(--border-dark);
     outline-color: var(--border);
 }
-.j-slider .thumb {
-    outline-color: var(--border);
-}
 
 /* disabled */
 .j-slider.disabled {
+    color: var(--text-disabled);
     cursor: not-allowed;
 }
 .j-slider.disabled .background {
     outline-color: var(--border-light);
     background-color: var(--border);
 }
-.j-slider.disabled .mask {
+.j-slider.disabled .slider {
     background-color: var(--border-dark);
-}
-
-.j-slider.disabled .thumb {
-    outline-color: var(--border-light);
 }
 </style>
