@@ -188,10 +188,14 @@ export default {
         trackStart(event) {
             this.transitionOn();
             this.positionToPercentage(touchEventCompatible(event));
+
+            this.$emit('ontrack-start', this);
         },
         trackMove(event) {
             this.transitionOff();
             this.positionToPercentage(touchEventCompatible(event));
+
+            this.$emit('ontrack-move', this);
         },
         trackEnd() {
             document.removeEventListener('mousemove', this.transitionOff);
@@ -207,6 +211,8 @@ export default {
 
             // 追踪结束时根据绑定值计算最后位置
             this.valueToPercentage(this.modelValue);
+
+            this.$emit('ontrack-end', this);
         },
     },
     computed: {
@@ -222,10 +228,18 @@ export default {
             return [this.disabled ? 'disabled' : ''];
         },
     },
+    emits: [
+        'update:modelValue',
+        'percentage',
+        'ontrack-start',
+        'ontrack-move',
+        'ontrack-end',
+    ],
     watch: {
-        percentage() {
+        percentage(v) {
             this.updateThumbPosition();
             this.updateValue();
+            this.$emit('percentage', v * 100 + '%');
         },
         value(v) {
             this.$emit('update:modelValue', v);
@@ -330,8 +344,6 @@ export default {
 .j-slider .bubble-anchor {
     transform: translateX(var(--track-fill-width));
     height: var(--HEIGHT);
-    outline: solid 1px;
-    /* width: 0; */
 }
 
 .j-slider .j-bubble .j-row {

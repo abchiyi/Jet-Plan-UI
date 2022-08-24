@@ -1,12 +1,9 @@
 <template>
     <div>
-        <h1 v-focus="log">Test</h1>
-        <j-checkbox id="1" v-model="value1" />
-        <j-checkbox id="2" v-model="value" />
-        <j-checkbox id="3" v-model="value" />
-        <j-checkbox id="4" disabled v-model="value" />
-
-        <input v-model="value1" type="checkbox" v-on:change="log" />
+        <h1>{{ value }} -- {{ value1 }}</h1>
+        <j-bubble :message="value" position="top">
+            <j-slider @percentage="log" v-model="value" />
+        </j-bubble>
     </div>
 </template>
 <script>
@@ -15,13 +12,14 @@ export default {
     components: {},
     data() {
         return {
-            value: false,
+            value: 1,
             value1: true,
         };
     },
     methods: {
         log(v) {
             console.log(v);
+            this.value1 = v;
         },
     },
     computed: {},
