@@ -20,11 +20,20 @@ export function getOffset (el) {
         }
     }
 
+    function getEl () {
+        if (el.$el) {
+            return el.$el
+        }
+        return el
+    }
+
+    const EL = getEl()
+
     // 获取元素内部不含边框相对页面的实际距离
-    const elScreenBounding = el.getBoundingClientRect()
-    const windowScrool = getWindowScroll()
-    const scrollTop = windowScrool.y || el.scrollTop
-    const scrollLeft = windowScrool.x || el.scrollLeft
+    const elScreenBounding = EL.getBoundingClientRect()
+    const windowScroll = getWindowScroll()
+    const scrollTop = windowScroll.y || EL.scrollTop
+    const scrollLeft = windowScroll.x || EL.scrollLeft
 
     const elWidth = elScreenBounding.right - elScreenBounding.left
     const elHeight = elScreenBounding.bottom - elScreenBounding.top
@@ -33,8 +42,8 @@ export function getOffset (el) {
         // XXX不适合的属性名称
         elWidth: elWidth,
         elHeight: elHeight,
-        y: elScreenBounding.top + scrollTop - el.clientTop,
-        x: elScreenBounding.left + scrollLeft - el.clientLeft
+        y: elScreenBounding.top + scrollTop - EL.clientTop,
+        x: elScreenBounding.left + scrollLeft - EL.clientLeft
     }
 }
 
