@@ -4,7 +4,6 @@ import { h } from 'vue';
 import { getOffset } from '../tool/lib/dom';
 import { TimedActionLimit, propInitBoolean } from '../tool/lib';
 import { Row } from '../gird';
-import { Bubble } from '../bubble';
 function touchEventCompatible(event) {
     if (event.type.indexOf('touch') != -1) {
         return event.touches[0];
@@ -268,19 +267,6 @@ export default {
             })
         );
 
-        const BUBBLE_SHELL = h(
-            'div',
-            { class: ['bubble-shell'], ref: 'track' },
-            [
-                h(Bubble, {
-                    class: 'bubble-anchor',
-                    show: this.bubble && !this.useTransition,
-                    message: this.value,
-                    position: 'top',
-                }),
-            ]
-        );
-
         const SLOT_CONTENT = h(
             Row,
             {
@@ -306,7 +292,7 @@ export default {
                 style: this.style,
                 ref: 'background',
             },
-            [INPUT, BACKGROUND, BUBBLE_SHELL, SLOT_CONTENT]
+            [INPUT, BACKGROUND, SLOT_CONTENT]
         );
     },
 };
@@ -331,23 +317,13 @@ export default {
     width: 200px;
 }
 
-/* ----- Bubble ----- */
-.j-slider .slot-content,
-.j-slider .bubble-shell {
+/* ----- Slot ----- */
+.j-slider .slot-content {
     height: var(--HEIGHT);
     position: absolute;
     right: 0;
     left: 0;
     top: 0;
-}
-
-.j-slider .bubble-anchor {
-    transform: translateX(var(--track-fill-width));
-    height: var(--HEIGHT);
-}
-
-.j-slider .j-bubble .j-row {
-    height: var(--HEIGHT);
 }
 
 .j-slider .slider {
