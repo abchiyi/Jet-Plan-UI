@@ -111,6 +111,9 @@ export default {
         },
     },
 
+    created() {
+        this.showBubble = this.show;
+    },
     data() {
         return {
             showBubble: false,
