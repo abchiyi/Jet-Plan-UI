@@ -2,7 +2,7 @@
 const NAME = 'j-slider';
 import { h } from 'vue';
 import { getOffset } from '../tool/lib/dom';
-import { TimedActionLimit, propInitBoolean } from '../tool/lib';
+import { TimedActionLimit } from '../tool/lib';
 import { Row } from '../gird';
 function touchEventCompatible(event) {
     if (event.type.indexOf('touch') != -1) {
@@ -56,7 +56,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        bubble: propInitBoolean(false),
     },
     methods: {
         debug() {
