@@ -1,209 +1,183 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Babble Node map 1`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 2`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 3`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 4`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 5`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 6`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 7`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 8`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 9`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 10`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 11`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 12`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
 
 exports[`Babble Node map 13`] = `
-<div class="j-row" style="display: inline-block;">
-  <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-    <div class="j-row">
-      <transition-stub>
-        <div class="bubble top font-mono frosted-glass" tag="div" style="box-shadow: 
+<div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
+  <div class="j-row">
+    <transition-stub>
+      <div class="bubble bottom start font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
     var(--material-shadow);">hello</div>
-      </transition-stub>
-    </div>
+    </transition-stub>
   </div>
 </div>
 `;
