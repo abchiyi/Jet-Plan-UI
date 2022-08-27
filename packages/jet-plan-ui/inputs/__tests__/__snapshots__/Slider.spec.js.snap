@@ -1,27 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Slider Node map 1`] = `
-<div class="j-slider" ontouchstart="function () { [native code] }" style="--track-fill-width: undefinedpx;" message="hello" position="top"><input type="hidden" value="0">
-  <div class="background">
-    <div class="slider"></div>
-  </div>
-  <div class="bubble-shell">
-    <div class="j-row bubble-anchor" style="display: inline-block;">
-      <div class="j-base-action j-bubble" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }">
-        <div class="j-row">
-          <transition-stub>
-            <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
+<div class="j-base-action j-bubble j-slider" ontouchstart="function () { [native code] }" ontouchcancel="function () { [native code] }" ontouchend="function () { [native code] }" style="--bubble-position: NaNpx;">
+  <div class="j-row"><input type="hidden">
+    <div class="j-track-bar" ontouchstart="function () { [native code] }" style="--track-fill-width: undefinedpx;">
+      <div class="background">
+        <div class="slider"></div>
+      </div>
+      <div class="j-row slot-content">
+        <!---->
+      </div>
+    </div>
+    <transition-stub>
+      <div class="bubble top font-mono frosted-glass" tag="div" style="display: none; box-shadow: 
     0 4px
     6px
     0.4px
-    var(--material-shadow);">0</div>
-          </transition-stub>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="j-row slot-content">
-    <!---->
+    var(--material-shadow);">hello</div>
+    </transition-stub>
   </div>
 </div>
 `;
