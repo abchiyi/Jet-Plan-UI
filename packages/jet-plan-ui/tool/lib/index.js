@@ -326,3 +326,16 @@ export function validatorRangeNumber (min, max) {
         return `${min}~${max}`
     }
 }
+
+
+/**
+ * @method
+ * @param {number} min 最小值
+ * @param {number} max 最大值
+ * @param {number} targetNumber 输入值
+ * @return {number} 返回介于 min，max（含min，max）之间的数值
+ * @desc 限制输出数值范围
+ */
+export function numericLimits (min, max, targetNumber) {
+    return targetNumber < min ? min : targetNumber > max ? max : targetNumber
+}
