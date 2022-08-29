@@ -154,9 +154,6 @@ export default {
                 '--bubble-position': this.bubblePosition,
             }
         },
-        classes () {
-            return [this.disabled ? 'disabled' : '']
-        },
 
         bubblePosition () {
             const elWidth = this.bubbleSize.elWidth
@@ -206,6 +203,8 @@ export default {
             onPercentageChange: v => this.percentage = v,
             percentage: this.percentage,
 
+            disabled: this.disabled,
+
             onTrackStart: this.start,
             onTrackMove: this.move,
             onTrackEnd: this.end
@@ -214,7 +213,7 @@ export default {
         return h(
             Bubble,
             {
-                class: [NAME, ...this.classes],
+                class: [NAME],
                 style: this.style,
 
                 message: this.modelValue,
