@@ -1,9 +1,9 @@
 <script>
 // TODO 修正 'TAB' 按键 选中时的样式应用问题
-import { propInit, propInitBoolean } from '../tool/lib';
-import baseAction from './baseAction.vue';
-import mask from './ActionFeedbackMask.vue';
-import { h, TransitionGroup } from 'vue';
+import { propInit, propInitBoolean } from '../tool/lib'
+import baseAction from './baseAction.vue'
+import mask from './ActionFeedbackMask.vue'
+import { h, TransitionGroup } from 'vue'
 export default {
     name: 'j-action-feedback',
     props: {
@@ -12,32 +12,32 @@ export default {
         active: propInitBoolean(false),
         hoverDelay: propInit(Number, 80),
     },
-    data() {
+    data () {
         return {
             data_active: false,
             data_hover: false,
             masks: [],
             key: 0,
-        };
+        }
     },
     computed: {
-        classes() {
+        classes () {
             return [
                 `${this.name}-action-feedback`,
                 this.data_hover && this.hover ? 'hover' : '',
                 this.data_active && this.active ? 'active' : '',
-            ];
+            ]
         },
         // Render
-        renderDefault() {
-            const slot = this.$slots.default;
+        renderDefault () {
+            const slot = this.$slots.default
             if (slot) {
-                return slot();
+                return slot()
             }
-            return 'Submit';
+            return 'Submit'
         },
-        renderMask() {
-            let key = 0;
+        renderMask () {
+            let key = 0
             return h(
                 TransitionGroup,
                 { name: 'mask' },
@@ -47,14 +47,14 @@ export default {
                             return h(mask, {
                                 data: attrs.data,
                                 key: key++,
-                            });
+                            })
                         }),
                 }
-            );
+            )
         },
     },
     methods: {
-        createMask(event) {
+        createMask (event) {
             return {
                 data: {
                     opacity: 1,
@@ -63,40 +63,40 @@ export default {
                     event: event,
                 },
                 key: this.key++,
-            };
+            }
         },
-        removeMask() {
-            this.masks = [];
+        removeMask () {
+            this.masks = []
         },
-        handlerActive(event) {
+        handlerActive (event) {
             if (event.active) {
                 // 遮罩在自定义类名中不启用
                 if (this.name == 'j') {
-                    let e = event.event;
+                    let e = event.event
                     if (this.active && (e.button === 0 || e.touches)) {
-                        this.masks.push(this.createMask(e));
+                        this.masks.push(this.createMask(e))
                     }
                 }
             } else {
-                this.removeMask();
+                this.removeMask()
             }
 
-            this.data_active = event.active;
+            this.data_active = event.active
         },
-        handlerHover(event) {
+        handlerHover (event) {
             if (this.hover) {
                 if (event.active) {
                     this.$hover_timeout_id = setTimeout(() => {
-                        this.data_hover = true;
-                    }, this.hoverDelay);
+                        this.data_hover = true
+                    }, this.hoverDelay)
                 } else {
-                    clearTimeout(this.$hover_timeout_id);
-                    this.data_hover = false;
+                    clearTimeout(this.$hover_timeout_id)
+                    this.data_hover = false
                 }
             }
         },
     },
-    render() {
+    render () {
         return h(
             baseAction,
             {
@@ -111,9 +111,9 @@ export default {
             {
                 default: () => [this.renderDefault, this.renderMask],
             }
-        );
+        )
     },
-};
+}
 </script>
 <style>
 .j-action-feedback {
