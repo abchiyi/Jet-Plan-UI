@@ -118,8 +118,12 @@ export default {
 <style>
 .j-action-feedback {
     position: relative;
-    overflow: hidden;
     outline: unset;
+}
+
+.j-action-feedback::after,
+.j-action-feedback * {
+    border-radius: inherit !important;
 }
 
 .j-action-feedback::after {
