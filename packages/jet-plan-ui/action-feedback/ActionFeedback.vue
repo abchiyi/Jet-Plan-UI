@@ -10,7 +10,7 @@ export default {
         name: propInit(String, 'j'),
         hover: propInitBoolean(false),
         active: propInitBoolean(false),
-        hoverDelay: propInit(Number, 80),
+        hoverDelay: propInit(Number, 0),
     },
     data () {
         return {
@@ -122,8 +122,8 @@ export default {
 }
 
 .j-action-feedback::after,
-.j-action-feedback * {
-    border-radius: inherit !important;
+.j-action-feedback .j-mask {
+    border-radius: inherit;
 }
 
 .j-action-feedback::after {
