@@ -1,4 +1,14 @@
 export function getOffset (el) {
+    if (!el) return {
+        size: 0,
+        // XXX不适合的属性名称
+        elWidth: 0,
+        elHeight: 0,
+        y: 0,
+        x: 0
+    }
+
+
     function getWindowScroll () {
         // FullSupport
         const supportPageOffset = window.pageXOffset !== undefined
