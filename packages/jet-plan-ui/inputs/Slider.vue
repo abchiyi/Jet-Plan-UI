@@ -1,26 +1,24 @@
 <script>
 const NAME = 'j-slider'
-import { h, nextTick } from 'vue'
+import { h } from 'vue'
 import { TrackBar } from "../baseComponents"
 import { Bubble } from '../bubble'
-import { getOffset } from '../tool/lib/dom'
+import { getOffset, shadowPainter } from '../tool/lib/dom'
+import { numericLimits, findCloseNum } from '../tool/lib'
+
 export default {
     name: NAME,
-    mounted () {
-        // 计算默认值保证初始加载时拨杆处于正确位置
-        this.valueToPercentage(this.modelValue)
-    },
     data () {
         return {
             percentage: 0,
-
-            sliderTrackPosition: 0,
-            bubbleEl: undefined,
-            showBubble: false,
-            bubbleSize: {},
-            value: 0,
-            idForTimeOut: undefined,
+            active: false,
         }
+    },
+    mounted () {
+        let percentageOld = this.percentage
+        this.percentage = percentageOld - 0.1
+
+        this.valueToPercentage(this.modelValue)
     },
     props: {
         modelValue: {
@@ -45,7 +43,73 @@ export default {
         },
     },
     methods: {
-        getValue () {
+        // kef focus change
+        inputChange (event) {
+            const VALUE = event.target.value
+            const VALUE_OLD = this.modelValue
+
+            // 当指定步长序列时
+            if (this.step instanceof Array) {
+                const targetNum = findCloseNum(this.step, VALUE)
+                const INDEX_NOW = this.step.indexOf(targetNum)
+                const index = VALUE > VALUE_OLD ? INDEX_NOW + 1 : INDEX_NOW - 1
+                this.$emit("update:modelValue",
+                    this.step[
+                    numericLimits(0, this.step.length - 1, index)
+                    ]
+                )
+            } else {
+                this.$emit("update:modelValue", VALUE * 1)
+            }
+        },
+        // Calc
+        valueToPercentage (modelValue) {
+            this.percentage = this.__valueToPercentage(modelValue)
+        },
+        __valueToPercentage (value) {
+            const { max, min } = this.args
+            const range = max - min
+            let percentage = value / range - min / range
+            percentage = percentage > 1 ? 1 : percentage < 0 ? 0 : percentage
+            return percentage
+        },
+        percentageToValue () {
+            const { max, min, step } = this.args
+
+            let value = this.percentage * (max - min) + min
+            value = Math.round(value / step) * step
+            value = parseFloat(value.toFixed(5))
+            value = value > max ? max : value < min ? min : value
+
+            if (this.step instanceof Array) {
+                const targetNum = findCloseNum(this.step, value)
+                this.$emit("update:modelValue", targetNum)
+            } else {
+                this.$emit("update:modelValue", value)
+            }
+        }
+    },
+    computed: {
+        style () {
+            return {
+                '--thumb-position': this.thumbPosition,
+            }
+        },
+        class () {
+            return [
+                this.disabled ? 'disabled' : ''
+            ]
+        },
+        thumbPosition () {
+            const SLIDER_WIDTH = getOffset(this.$refs.trackBar).elWidth
+            const THUMB_DIAMETER = getOffset(this.$refs.thumb).elWidth
+            const thumbRadius = THUMB_DIAMETER * 0.5
+            const MIN = thumbRadius * -1
+            const MAX = SLIDER_WIDTH + thumbRadius
+            const thumb_position = SLIDER_WIDTH * this.percentage - thumbRadius
+            return numericLimits(MIN, MAX, thumb_position) + 'px'
+        },
+        args () {
             /**
              * @desc 兼容指定步长模式
              */
@@ -64,174 +128,145 @@ export default {
 
             return this
         },
-        // Calc
-        valueToPercentage (modelValue) {
-            this.percentage = this.__valueToPercentage(modelValue)
-        },
-        __valueToPercentage (value) {
-            const { max, min } = this.getValue()
-            const range = max - min
-            let percentage = value / range - min / range
-            percentage = percentage > 1 ? 1 : percentage < 0 ? 0 : percentage
-            return percentage
-        },
-        percentageToValue () {
-            const { max, min, step } = this.getValue()
-
-            // XXX
-            function findCloseNum (arr, num) {
-                var index = 0 // 保存最接近数值在数组中的索引
-                var d_value = Number.MAX_VALUE // 保存差值绝对值，默认为最大数值
-
-                for (var i = 0; i < arr.length; i++) {
-                    var new_d_value = Math.abs(arr[i] - num) // 新差值
-                    if (new_d_value <= d_value) {
-                        // 如果新差值绝对值小于等于旧差值绝对值，保存新差值绝对值和索引
-                        if (new_d_value === d_value && arr[i] < arr[index]) {
-                            // 如果数组中两个数值跟目标数值差值一样，取大
-                            continue
-                        }
-                        index = i
-                        d_value = new_d_value
-                    }
-                }
-
-                return arr[index] // 返回最接近的数值
-            }
-
-            let value = this.percentage * (max - min) + min
-            value = Math.round(value / step) * step + 0 * min
-            value = parseFloat(value.toFixed(5))
-            value = value > max ? max : value < min ? min : value
-
-            if (this.step instanceof Array) {
-                const targetNum = findCloseNum(this.step, value)
-                this.$emit("update:modelValue", targetNum)
-            } else {
-                this.$emit("update:modelValue", value)
-            }
-        },
-
-
-
-
-        async start (event) {
-            this.percentageToValue()
-
-            // this.$nextTick(() => {
-            await nextTick()
-            this.sliderTrackPosition = event.nowPosition
-            this.showBubble = true
-            // })
-        },
-        async move (event) {
-            this.percentageToValue()
-            await nextTick()
-
-            // this.$nextTick(() => {
-            clearTimeout(this.idForTimeOut) // 防止连续点击气泡闪烁
-            this.sliderTrackPosition = event.nowPosition
-            this.bubbleSize = getOffset(this.bubbleEl)
-            // })
-        },
-        async end (event) {
-            this.valueToPercentage(this.modelValue)
-
-            await nextTick()
-
-            // this.$nextTick(() => {
-            this.sliderTrackPosition = event.nowPosition
-            clearTimeout(this.idForTimeOut) // 防止连续点击气泡闪烁
-            this.idForTimeOut = setTimeout(() => {
-                this.showBubble = false
-            }, 1000)
-            // })
-        },
-    },
-    computed: {
-        style () {
-            return {
-                '--bubble-position': this.bubblePosition,
-            }
-        },
-
-        bubblePosition () {
-            const elWidth = this.bubbleSize.elWidth
-            const MAX = 200 - elWidth
-            const MIN = 0
-            const p = this.sliderTrackPosition - elWidth / 2
-            return (p < MIN ? MIN : p > MAX ? MAX : p) + 'px'
-        },
     },
     watch: {
         modelValue (v) {
-            if (!this.showBubble) {
-                this.valueToPercentage(v)
-            }
+            // 在交互过程中不使用 modelValue 来更新百分比值
+            if (!this.active) this.valueToPercentage(v)
         },
         percentage () {
             this.percentageToValue()
         },
-
-        bubbleEl (v) {
-            if (v) {
-                const el = this.bubbleEl
-
-                el.style.transition = 'unset'
-                el.style.display = 'inherit'
-                el.style.opacity = '0'
-
-                this.bubbleSize = getOffset(this.bubbleEl)
-
-                el.style.transition = ''
-                el.style.opacity = ''
-            }
-        },
-
+        active (v) {
+            // 交互结束时重新计算百分比以更新拨杆位置
+            if (!v) this.valueToPercentage(this.modelValue)
+        }
     },
     emits: [
         'update:modelValue',
         'percentage',
     ],
     render () {
-        const INPUT = h('input', {
-            value: this.modelValue,
-            type: 'hidden',
+        const THUMB = h(Bubble, {
+            class: 'thumb',
+            style: {
+                boxShadow: shadowPainter('bottom', 2)
+
+            },
+
+            message: this.modelValue,
+            show: this.active,
+            position: 'top',
+            ref: 'thumb'
         })
 
         const TRACK_BAR = h(TrackBar, {
-            onPercentageChange: v => this.percentage = v,
-            percentage: this.percentage,
+            ref: 'trackBar',
 
             disabled: this.disabled,
 
-            onTrackStart: this.start,
-            onTrackMove: this.move,
-            onTrackEnd: this.end
+            percentage: this.percentage,
+            "onUpdate:percentage": (v) => {
+                this.percentage = v
+            },
+            onActive: v => this.active = v,
+        }, {
+            default: () => THUMB
         })
 
-        return h(
-            Bubble,
+        const SLIDER_BACKGROUND = h(
+            'div',
             {
-                class: [NAME],
-                style: this.style,
-
-                message: this.modelValue,
-                position: 'top',
-
-                onBubbleShow: (el) => this.bubbleEl = el,
-                show: this.showBubble
+                class: ['background'],
             },
             {
-                default: () => [INPUT, TRACK_BAR]
+                default: () => [TRACK_BAR]
             }
         )
+
+        const INPUT = h('input', {
+            onChange: this.inputChange,
+            class: ['input-hidden'],
+            disabled: this.disabled,
+            value: this.modelValue,
+
+            step: this.args.step,
+            max: this.args.max,
+            min: this.args.min,
+
+            id: this.$.uid,
+            type: 'range',
+        })
+        const SLIDER_SHELL = h('label', {
+            for: this.$.uid,
+            class: ['slider-shell']
+        }, SLIDER_BACKGROUND)
+
+
+        return h('span', {
+            class: [NAME, this.class],
+            style: this.style,
+
+        }, INPUT, SLIDER_SHELL)
     },
 }
 </script>
 
 <style>
-.j-slider.j-bubble .bubble {
-    left: var(--bubble-position)
+.j-slider {
+    font-size: 0.25rem;
+    --THUMB-SIZE: 4em;
+    --THUMB-RADIUS: calc(var(--THUMB-SIZE) / 2);
+    display: inline-block;
+    min-width: 100px;
+}
+
+.j-slider .slider-shell {
+    padding: calc(var(--THUMB-RADIUS) - 0.25em) 0.25em;
+    border-radius: var(--s-radius);
+    display: block;
+}
+
+.j-slider .slider-shell>.background {
+    background:
+        linear-gradient(90deg, var(--primary) 50%, var(--border-dark) 50%);
+    padding: 0 var(--THUMB-RADIUS);
+    box-sizing: border-box;
+    border-radius: 1em;
+}
+
+.j-slider .thumb {
+    transform: translateX(var(--thumb-position));
+    transition: 0.4s var(--ease-out);
+    border-radius: var(--THUMB-SIZE);
+    height: var(--THUMB-SIZE);
+    width: var(--THUMB-SIZE);
+    background: var(--white);
+    position: absolute;
+    left: 0;
+}
+
+/* ---------- Move ---------- */
+
+.j-slider .move .thumb {
+    transition: unset;
+}
+
+/* ---------- Focus ---------- */
+
+.j-slider input:focus-visible+.slider-shell {
+    outline: 2px solid var(--info);
+}
+
+
+/* ---------- Disabled ---------- */
+
+.j-slider.disabled .slider-shell>.background {
+    background:
+        linear-gradient(90deg, var(--border-dark) 50%, var(--border) 50%);
+}
+
+.j-slider .disabled .thumb {
+    background: var(--border-light);
 }
 </style>
