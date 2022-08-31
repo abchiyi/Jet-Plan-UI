@@ -1,22 +1,19 @@
 <script>
 const NAME = 'j-track-bar'
-import { h } from 'vue'
-import { getOffset } from '../tool/lib/dom'
-import { TimedActionLimit } from '../tool/lib'
 import { Row } from '../gird'
-function touchEventCompatible (event) {
-    if (event.type.indexOf('touch') != -1) {
-        return event.touches[0]
-    }
-    return event
-}
+import { h, nextTick } from 'vue'
+import { numericLimits, Bumper } from '../tool/lib'
+import { getOffset } from '../tool/lib/dom'
+
 export default {
     name: NAME,
     data () {
         return {
-            TAL: new TimedActionLimit(100, 2),
             nowPosition: undefined,
+            Bumper: new Bumper(50),
             useTransition: true,
+            $_percentage: null,
+            eventActive: false
         }
     },
     props: {
@@ -31,7 +28,7 @@ export default {
         percentage: {
             type: Number,
             required: true,
-        },
+        }
     },
     computed: {
         style () {
@@ -39,11 +36,11 @@ export default {
                 '--track-fill-width': this.nowPosition + 'px',
             }
         },
-        classTrack () {
-            return [!this.useTransition ? 'move' : '']
-        },
         classes () {
-            return [this.disabled ? 'disabled' : '']
+            return [
+                this.disabled ? 'disabled' : '',
+                !this.useTransition ? 'move' : ''
+            ]
         },
     },
     emits: [
@@ -52,23 +49,29 @@ export default {
         'trackEnd',
         'percentageChange',
         'update:percentage',
+        'active'
     ],
     methods: {
         // Calc
         positionToPercentage (event) {
+            // 计算点击位置相对于滑动条百分比
             const elSize = getOffset(this)
-            // 计算点击位置相对于滑动条百分比&限位
-            const cpp = (event.pageX - elSize.size.left) / elSize.elWidth
-            return cpp > 1 ? 1 : cpp < 0 ? 0 : cpp
+            return numericLimits(
+                0, 1,
+                (event.pageX - elSize.size.left) / elSize.elWidth
+            )
         },
         // Style
         updateSliderPosition (percentage) {
+            this.Bumper.action() // 监控样式更新频率
+
             // 滑动条两端限位，避免超出边界
-            const elSize = getOffset(this)
-            let MAX = elSize.elWidth
-            let MIN = 0
-            let x = elSize.elWidth * percentage
-            this.nowPosition = x < MIN ? MIN : x > MAX ? MAX : x
+            const maxWidth = getOffset(this).elWidth
+            this.nowPosition = numericLimits(
+                0,
+                maxWidth,
+                maxWidth * percentage
+            )
         },
 
         // Logic
@@ -80,72 +83,78 @@ export default {
         },
         handleMouseDown (event) {
             if (this.disabled || this.displayOnly) return
-            document.addEventListener('mousemove', this.transitionOff)
             document.addEventListener('mousemove', this.trackMove)
             document.addEventListener('mouseup', this.trackEnd)
             this.trackStart(event)
         },
         handleTouchStart (event) {
             if (this.disabled || this.displayOnly) return
-            document.addEventListener('touchmove', this.transitionOff)
             document.addEventListener('touchmove', this.trackMove)
             document.addEventListener('touchend', this.trackEnd)
             document.addEventListener('touchcancel', this.trackEnd)
             event.preventDefault()
             this.trackStart(event)
         },
-        trackStart (event, noEvent) {
-            this.transitionOn()
+        async trackStart (event, noEvent) {
+            // 组件被事件激活时
+            this.eventActive = true
 
+            // 兼容触摸事件&点击事件
+            function touchEventCompatible (event) {
+                if (event.type.indexOf('touch') != -1) {
+                    return event.touches[0]
+                }
+                return event
+            }
+
+            // 计算点击位置百分比
             const percentage = this.positionToPercentage(
                 touchEventCompatible(event)
             )
 
-            // this.updateSliderPosition(percentage)
-            this.$emit('update:percentage', percentage)
-            this.$emit('percentageChange', percentage)
+            // 更新样式
+            this.updateSliderPosition(percentage)
+            await nextTick()
 
-            if (!noEvent) {
-                this.$nextTick(() => {
-                    this.$emit('trackStart', this)
-                })
-            }
+            // 同步外部值
+            this.$emit('update:percentage', percentage)
+            // 被move调用时不发出事件 'trackStart'
+            if (!noEvent) this.$emit('trackStart', this)
         },
-        trackMove (event) {
-            this.transitionOff()
+        async trackMove (event) {
             this.trackStart(event, true)
-            this.$nextTick(() => {
-                this.$emit('trackMove', this)
-            })
+            await nextTick()
+
+            this.$emit('trackMove', this)
         },
         trackEnd () {
-            document.removeEventListener('mousemove', this.transitionOff)
             document.removeEventListener('mousemove', this.trackMove)
             document.removeEventListener('mouseup', this.trackEnd)
 
-            document.removeEventListener('touchmove', this.transitionOff)
             document.removeEventListener('touchmove', this.trackMove)
             document.removeEventListener('touchend', this.trackEnd)
             document.removeEventListener('touchcancel', this.trackEnd)
-            this.transitionOn()
 
-            // 追踪结束时根据绑定值计算最后位置
-            // this.updateSliderPosition(this.percentage)
-
-            this.$nextTick(() => {
-                this.$emit('trackEnd', this)
-            })
+            this.eventActive = false
+            this.$emit('trackEnd', this)
         },
         // render
         renderDefault () {
+
+            const SLIDER = h('div',
+                {
+                    class: ['slider'],
+                },
+                this.renderSlotSlider()
+            )
+
             const BACKGROUND = h(
                 'div',
                 { class: ['background'] },
-
-                // Slider
-                h('div', {
-                    class: ['slider', ...this.classTrack],
-                })
+                [
+                    SLIDER,
+                    this.renderSlotBackground()
+                ]
             )
 
             const SLOT_CONTENT = h(
@@ -173,25 +182,38 @@ export default {
                 },
                 [BACKGROUND, SLOT_CONTENT]
             )
+        },
+        renderSlotSlider () {
+            const SLOT = this.$slots.slider
+            if (SLOT) return SLOT()
+        },
+        renderSlotBackground () {
+            const SLOT = this.$slots.background
+            if (SLOT) return SLOT()
         }
     },
     watch: {
         percentage (v) {
-            this.updateSliderPosition(v)
+            // 仅在值被动变化时进行样式更新
+            if (!this.eventActive) this.updateSliderPosition(v)
+        },
+        eventActive (v) {
+            // 当组件被手动输入激活时
+            this.$emit('active', v)
         }
+    },
+    created () {
+        // 设置动画启停模式，当百分比发生快速变动时禁用动画以流畅追踪用户操作
+        this.Bumper.setAlarmCooled(() => {
+            this.transitionOn()
+        })
+        this.Bumper.setAlarmOverHeat(() => {
+            this.transitionOff()
+        })
     },
     mounted () {
         // 计算默认值保证初始加载时拨杆处于正确位置
         this.updateSliderPosition(this.percentage)
-
-        // 设置动画启停模式
-        this.TAL.setCooledAlarm(() => {
-            this.transitionOn()
-        })
-        this.TAL.setOverheatAlarm(() => {
-            this.transitionOff()
-            clearTimeout(this.timeOutID)
-        })
     },
     render () {
         return this.renderDefault()
@@ -212,10 +234,10 @@ export default {
 }
 
 .j-track-bar {
-    display: inline-block;
     position: relative;
     cursor: pointer;
-    width: 200px;
+    display: block;
+    width: 100%;
 }
 
 /* ----- Slot ----- */
@@ -232,7 +254,7 @@ export default {
 }
 
 .j-track-bar .slot-content {
-    color: var(--text-light);
+    /* color: var(--text-light); */
     padding: 0 0.3em;
 }
 
@@ -259,7 +281,7 @@ export default {
     transition: width 0.4s var(--ease-out);
 }
 
-.j-track-bar .slider.move {
+.j-track-bar.move .slider {
     transition: unset;
 }
 
@@ -278,7 +300,6 @@ export default {
 }
 
 .j-track-bar.disabled .background {
-    outline-color: var(--border-light);
     background-color: var(--border);
 }
 
