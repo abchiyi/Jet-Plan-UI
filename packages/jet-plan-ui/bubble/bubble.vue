@@ -21,7 +21,7 @@
                     tag="div"
                     v-shadow:bottom="4"
                 >
-                    {{ message }}
+                    {{  message  }}
                 </div>
             </transition-slide>
         </j-row>
@@ -115,6 +115,16 @@ export default {
 
     created () {
         this.showBubble = this.show
+    },
+    mounted () {
+        document.addEventListener('mousemove', () => {
+            this.autoCheckPosition(this)
+            this.edgeAvoidance()
+        })
+        document.addEventListener('touchmove', () => {
+            this.autoCheckPosition(this)
+            this.edgeAvoidance()
+        })
     },
     data () {
         return {
