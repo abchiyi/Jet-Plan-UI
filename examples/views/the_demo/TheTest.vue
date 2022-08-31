@@ -1,29 +1,33 @@
 <template>
     <div>
-        <h1>{{ value }} -- {{ value1 }}</h1>
-        <j-bubble :message="value" position="top">
-            <j-slider @percentage="log" v-model="value" />
-        </j-bubble>
+        <h1>{{  value  }}</h1>
+        <j-slider
+            v-model="value"
+            :step="[10, 20, 30]"
+        />
+        <j-slider
+            v-model="value"
+            :max="30"
+            :min="10"
+        />
     </div>
 </template>
 <script>
 export default {
     name: 'the-test-page',
     components: {},
-    data() {
+    data () {
         return {
-            value: 1,
-            value1: true,
-        };
+            value: 30,
+        }
     },
     methods: {
-        log(v) {
-            console.log(v);
-            this.value1 = v;
+        log (v) {
+            console.log(v)
         },
     },
     computed: {},
-};
+}
 </script>
 
 <style>
