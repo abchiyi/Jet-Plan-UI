@@ -339,3 +339,71 @@ export function validatorRangeNumber (min, max) {
 export function numericLimits (min, max, targetNumber) {
     return targetNumber < min ? min : targetNumber > max ? max : targetNumber
 }
+
+export class Bumper {
+    constructor (timeOut, limit = 1) {
+        this.timeOut = timeOut
+        this.idTimeOut = null
+
+        this.conterMax = limit
+        this.conter = 0
+
+        this.alarmOverheat = () => { }
+        this.alarmCooled = () => { }
+    }
+
+    setAlarmOverHeat (callback) {
+        this.alarmOverheat = callback
+    }
+
+    setAlarmCooled (callback) {
+        this.alarmCooled = callback
+    }
+
+
+    action () {
+        clearTimeout(this.idTimeOut)
+        this.conter++
+        this.conter > this.conterMax
+            ? this.alarmOverheat()
+            : this.alarmCooled()
+
+        this.idTimeOut = setTimeout(() => {
+            this.reSetConter()
+            this.alarmCooled()
+        }, this.timeOut)
+    }
+
+    reSetConter () {
+        this.conter = 0
+    }
+
+}
+/**
+ * 在数组中查找与目标值最接近的值
+ * @param {*} array 查询数组
+ * @param {*} targetNumber 目标值
+ * @returns Number
+ */
+
+export function findCloseNum (array, targetNumber) {
+    let arraySorted = array.sort()
+    let differValue = Number.MAX_VALUE
+    let index = 0
+
+    for (let key in arraySorted) {
+        const differValueNew = Math.abs(arraySorted[key] - targetNumber)
+
+        if (differValueNew <= differValue) {
+            const oldNumber = arraySorted[index]
+            const newNumber = arraySorted[key]
+
+            if (dispatchEvent == differValue && newNumber < oldNumber) continue
+
+            differValue = differValueNew
+            index = key
+        }
+    }
+
+    return arraySorted[index] // 返回最接近的数值
+}
