@@ -1,3 +1,5 @@
+import { ref, onMounted, onUnmounted } from 'vue'
+
 export function getOffset (el) {
     if (!el) return {
         size: 0,
@@ -102,4 +104,52 @@ export function chekcDirection (direction) {
         }
     }
 
+}
+
+export function useMouseDirection () {
+    // 被组合式函数封装和管理的状态
+    const x = ref(0)
+    const y = ref(0)
+
+    const xDirection = ref(0)
+    const yDirection = ref(0)
+
+    const xOld = ref(0)
+    const yOld = ref(0)
+
+
+
+    function touchEventCompatible (event) {
+        if (event.type.indexOf('touch') != -1) {
+            return event.touches[0]
+        }
+        return event
+    }
+
+    // 组合式函数可以随时更改其状态。
+    function update (event) {
+        event = touchEventCompatible(event)
+        x.value = event.pageX
+        y.value = event.pageY
+
+        xDirection.value = x.value > xOld.value ? 'right' : 'left'
+        yDirection.value = y.value > yOld.value ? 'bottom' : 'top'
+
+        setTimeout(() => {
+            xOld.value = event.pageX
+            yOld.value = event.pageY
+        }, 30)
+
+
+    }
+
+    // 鼠标
+    onMounted(() => window.addEventListener('mousemove', update))
+    onUnmounted(() => window.removeEventListener('mousemove', update))
+    // 触摸
+    onMounted(() => window.addEventListener('touchmove', update))
+    onUnmounted(() => window.removeEventListener('touchmove', update))
+
+    // 通过返回值暴露所管理的状态
+    return { xDirection, yDirection }
 }
