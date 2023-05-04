@@ -34,7 +34,7 @@ jobs:
           # build
           cd  ~/resource_temp
           npm install --force
-          npm run build:lib
+          npm run build:doc
           echo 'build comp'
 
           echo 'to push'
