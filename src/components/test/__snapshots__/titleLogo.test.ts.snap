@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`titleLogo > snap shot 1`] = `
+"<a data-v-1f3068c3=\\"\\" class=\\"j-base-action j-action-feedback shape j-button text-button link-button\\" ontouchstart=\\"function () { [native code] }\\" ontouchcancel=\\"function () { [native code] }\\" ontouchend=\\"function () { [native code] }\\" href=\\"/\\" aria-label=\\"前往主页\\"><img data-v-1f3068c3=\\"\\" src=\\"/logo-mini.svg\\" alt=\\"logo\\"> JetPlanUI <transition-stub name=\\"mask\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <!---->
+  </transition-stub></a>"
+`;

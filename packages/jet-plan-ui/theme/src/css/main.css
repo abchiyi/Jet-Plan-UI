@@ -1,0 +1,157 @@
+/* 导入bootstrap-icon */
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css");
+
+@import url('./hiddenInput.css');
+@import url('./shape.css');
+
+/* Base Setting */
+* {
+    /* 可继承属性 */
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    /* transition: color 0.2s var(--ease-out); */
+    /* transition: background 0.4s var(--ease-out); */
+}
+
+:root {
+    font-size: 16px;
+    /* 圆角 */
+    --s-radius: 4px;
+    --m-radius: 8px;
+    --l-radius: 16px;
+    --p-radius: 1rem;
+
+    /* Cubic bezier function */
+    --ease-in-out: cubic-bezier(0.5, 0, 0.2, 1);
+    --ease-out: cubic-bezier(0.2, 0.5, 0, 1);
+    --ease-out-slow: cubic-bezier(0.8, 0.4, 0.4, 1);
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text-dark);
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.text-disabled {
+    color: var(--text-disabled);
+}
+
+.frosted-glass {
+    background-color: var(--background);
+}
+
+@supports (backdrop-filter: blur(15px)) {
+
+    /* 磨砂玻璃 */
+    .frosted-glass {
+        background-color: var(--frosted-glass);
+        backdrop-filter: blur(15px);
+    }
+}
+
+label {
+    cursor: pointer;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.h1,
+h1 {
+    font-weight: bold;
+    font-size: 2rem;
+    margin-top: 3rem;
+}
+
+.h2,
+h2 {
+    font-size: 1.8rem;
+    margin-top: 2.6rem;
+}
+
+.h3,
+h3 {
+    font-size: 1.6rem;
+    margin-top: 2.2rem;
+}
+
+.h4,
+h4 {
+    font-size: 1.4rem;
+    margin-top: 1.8rem;
+}
+
+.h5,
+h5 {
+    font-size: 1.2rem;
+    margin-top: 1.4rem;
+}
+
+.h6,
+h6 {
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 1.4rem;
+}
+
+
+/* 隐藏选中框 */
+@supports (-webkit-tap-highlight-color: #ffffff00) {
+
+    * {
+        -webkit-tap-highlight-color: #ffffff00;
+    }
+}
+
+strong {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+/* Firefox  */
+@supports (scrollbar-width: none) {
+    .j-hidden-scrollbar {
+        overflow: -moz-scrollbars-none;
+        scrollbar-width: none;
+    }
+}
+
+/* chrome and Safari */
+.j-hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* IE 10+ */
+.j-hidden-scrollbar {
+    -ms-overflow-style: none;
+}
+
+.input-hidden {
+    position: absolute !important;
+    display: inline !important;
+    outline: unset !important;
+    padding: unset !important;
+    border: unset !important;
+    margin: unset !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+}

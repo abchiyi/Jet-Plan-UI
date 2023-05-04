@@ -1,0 +1,103 @@
+@import url('./viewElZ-indexSet.css');
+@import url('./font.css');
+
+strong>em {
+    font-size: 1rem;
+    color: var(--text-hint);
+}
+
+.base-page strong {
+    font-size: 1rem;
+}
+
+li>code,
+p>code {
+    background: var(--border-light);
+    font-family: 'sarasa mono';
+    border-radius: 4px;
+    padding: 0 0.3em;
+}
+
+/* code,
+div.code {
+    white-space: pre;
+} */
+
+/* demo */
+.demo-cube {
+    background: var(--info-colors-primary);
+    color: var(--text-light);
+    border-radius: 4px;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: sarasa mono;
+}
+
+.demo-cube.light {
+    background: var(--info-colors-primary-light);
+}
+
+.demo {
+    outline: solid 2px var(--border-light);
+    background: var(--background-light);
+    border-radius: 8px;
+    padding: 1rem;
+}
+
+.demo .demo {
+    outline: unset;
+    padding: unset;
+}
+
+.demo+.demo {
+    margin-top: 2rem;
+}
+
+.demo.space-between,
+.demo .y-center,
+.demo .x-center,
+.demo.y-center,
+.demo.x-center {
+    display: flex;
+}
+
+.demo .y-center,
+.demo.y-center {
+    align-items: center;
+}
+
+.demo .x-center,
+.demo.x-center {
+    justify-content: center;
+}
+
+.demo.space-between {
+    justify-content: space-between;
+}
+
+.demo p:nth-child(1) {
+    margin-top: unset;
+}
+
+.markdown-body h2 {
+    border-top: 1px solid var(--border-light);
+    padding-top: 1em;
+}
+
+.markdown-body ol,
+.markdown-body ul {
+    padding-left: 1em;
+}
+
+
+h3 {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+h4 {
+    font-size: 1.3rem;
+}

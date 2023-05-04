@@ -1,0 +1,10 @@
+// Vitest Snapshot v1
+
+exports[`Test AlertController  > Method: sendMessage 1`] = `
+{
+  "content": "Test1",
+  "key": 1,
+  "timeout": 50,
+  "type": "success",
+}
+`;

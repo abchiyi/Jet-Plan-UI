@@ -1,0 +1,46 @@
+name: Mirror to Doc Repo
+
+on:
+  release:
+    types: [created]
+
+jobs:
+    git-mirror:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Configure Private Key
+              env:
+                  SSH_PRIVATE_KEY: ${{ secrets.JETUIDOC_RSA_PRIVATE_KEY }}
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+                  chmod 600 ~/.ssh/id_rsa
+                  echo "StrictHostKeyChecking no" >> ~/.ssh/config
+            - name: build and push
+              env:
+                  SOURCE_REPO: 'https://github.com/abchiyi/Jet-Plan-UI.git'
+                  DESTINATION_REPO: 'git@github.com:jetplanui/jetplanui.github.io.git'
+              run: |
+                  git config --global user.email "meme_me2019@outlook.com"
+                  git config --global user.name "abchiyi"
+                  git clone "$SOURCE_REPO" ~/resource_temp
+
+                  mkdir ~/resource_temp/dist
+                  cd ~/resource_temp/dist
+                  git clone "$DESTINATION_REPO" .
+
+                  echo 'to build'
+                  # build
+                  cd  ~/resource_temp
+                  npm install --force
+                  python -u ./setup.py
+                  npm run build
+                  echo 'build comp'
+
+                  echo 'to push'
+                  # commit & push
+                  cd ~/resource_temp/dist
+                  git add .
+                  git commit -am 'update-doc'
+                  git push
+                  echo 'push comp'

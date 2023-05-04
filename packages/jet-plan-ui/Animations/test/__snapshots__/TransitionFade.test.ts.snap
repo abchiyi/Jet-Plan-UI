@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`TransitionFadeTest > Slot:default 1`] = `"<transition-stub name=\\"j-transition-fade\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">Default slot</transition-stub>"`;

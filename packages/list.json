@@ -1,0 +1,74 @@
+[
+  {
+    "compName": "ActionFeedback",
+    "compZhName": "交互反馈组件",
+    "compDesc": "用于交互视觉反馈",
+    "compClassName": "j-action-feedback"
+  },
+  {
+    "compName": "Grid",
+    "compZhName": "栅格定位组件",
+    "compDesc": "基于 flexbox 的24栏网格系统",
+    "compClassName": "j-grid"
+  },
+  {
+    "compName": "Animations",
+    "compZhName": "动画组件",
+    "compDesc": "预封装动画",
+    "compClassName": "j-animations"
+  },
+  {
+    "compName": "CodeBox",
+    "compZhName": "代码框",
+    "compDesc": "展示代码",
+    "compClassName": "j-code-box"
+  },
+  {
+    "compName": "Button",
+    "compZhName": "按钮",
+    "compDesc": "按钮组件",
+    "compClassName": "j-button"
+  },
+  {
+    "compName": "TrackBar",
+    "compZhName": "追踪条",
+    "compDesc": "展示进度或输入一个范围内的值",
+    "compClassName": "j-track-bar"
+  },
+  {
+    "compName": "Switch",
+    "compZhName": "开关",
+    "compDesc": "开关组件",
+    "compClassName": "j-switch"
+  },
+  {
+    "compName": "Radio",
+    "compZhName": "单选按钮",
+    "compDesc": "单选按钮",
+    "compClassName": "j-radio"
+  },
+  {
+    "compName": "Checkbox",
+    "compZhName": "复选按钮",
+    "compDesc": "复选按钮",
+    "compClassName": "j-checkbox"
+  },
+  {
+    "compName": "Range",
+    "compZhName": "滑动输入组件",
+    "compDesc": "滑动输入",
+    "compClassName": "j-range"
+  },
+  {
+    "compName": "Drawer",
+    "compZhName": "抽屉组件",
+    "compDesc": "在屏幕边缘折叠内容",
+    "compClassName": "j-drawer"
+  },
+  {
+    "compName": "Alert",
+    "compZhName": "消息提示组件",
+    "compDesc": "传递简短的消息通知",
+    "compClassName": "j-alert"
+  }
+]

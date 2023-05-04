@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`TransitionFoldedTest > Slot:default 1`] = `"<transition-stub name=\\"j-transition-folded\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">Default slot</transition-stub>"`;

@@ -1,0 +1,6 @@
+{
+  "extends": ["development"],
+  "hints": {
+    "compat-api/css": "off" //已配置 autoprefixer
+  }
+}

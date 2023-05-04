@@ -1,0 +1,205 @@
+// Vitest Snapshot v1
+
+exports[`vitePluginMdReTagTest > replaceCodeBox 1`] = `
+"# h1
+
+## h2
+
+### h3
+
+## h2-2
+
+### h3-2
+
+#### h4
+
+##### h5
+
+###### h6
+
+<script setup lang=\\"ts\\">
+import { Transition } from \\"vue\\";
+</script>
+
+\`\`\`xml
+<script>
+    import { defineComponent, h } from \\"vue\\";
+    import { theme } from 'theme.js'
+    export default defineComponent({
+        setup(){
+            return {
+                background: theme.toMap().background,
+                theme,
+            }
+        },
+        render(
+            return h('div',{
+                class:\\"demo\\",
+                style: {
+                    color: theme.toMap().text.light， // 应用 css 变量
+                }
+            })
+        )
+    })
+</script>
+<style>
+:root{
+    background:red
+}
+</style>
+\`\`\`
+
+<!-- 缩进测试 -->
+- ## 标题
+
+    \`\`\`ts
+    console.log('test code')
+    \`\`\`
+"
+`;
+
+exports[`vitePluginMdReTagTest > 为 'h' 标签生成锚点 1`] = `
+"<h1 id=\\"h1\\">h1</h1>
+
+<h2 id=\\"h2\\">h2</h2>
+
+<h3 id=\\"h3\\">h3</h3>
+
+<h2 id=\\"h2-2\\">h2-2</h2>
+
+<h3 id=\\"h3-2\\">h3-2</h3>
+
+<h4 id=\\"h4\\">h4</h4>
+
+<h5 id=\\"h5\\">h5</h5>
+
+<h6 id=\\"h6\\">h6</h6>
+
+<script setup lang=\\"ts\\">
+import { Transition } from \\"vue\\";
+</script>
+
+\`\`\`xml
+<script>
+    import { defineComponent, h } from \\"vue\\";
+    import { theme } from 'theme.js'
+    export default defineComponent({
+        setup(){
+            return {
+                background: theme.toMap().background,
+                theme,
+            }
+        },
+        render(
+            return h('div',{
+                class:\\"demo\\",
+                style: {
+                    color: theme.toMap().text.light， // 应用 css 变量
+                }
+            })
+        )
+    })
+</script>
+<style>
+:root{
+    background:red
+}
+</style>
+\`\`\`
+
+<!-- 缩进测试 -->
+- ## 标题
+
+    \`\`\`ts
+    console.log('test code')
+    \`\`\`
+"
+`;
+
+exports[`vitePluginMdReTagTest > 为 'h' 标签生成锚点 2`] = `
+"test page
+测试在没有标题的情况
+"
+`;
+
+exports[`vitePluginMdReTagTest > 为 'h' 标签生成锚点 3`] = `
+"<h1 id=\\"快速开始\\">快速开始</h1>
+
+<h2 id=\\"安装组件库\\">安装组件库</h2>
+
+<h2 id=\\"注册组件\\">注册组件</h2>
+"
+`;
+
+exports[`vitePluginMdReTagTest > 从 .md 文本生成 Toc 数据 1`] = `
+[
+  {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [],
+            "level": 3,
+            "text": "h3",
+          },
+        ],
+        "level": 2,
+        "text": "h2",
+      },
+      {
+        "children": [
+          {
+            "children": [
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "level": 6,
+                        "text": "h6",
+                      },
+                    ],
+                    "level": 5,
+                    "text": "h5",
+                  },
+                ],
+                "level": 4,
+                "text": "h4",
+              },
+            ],
+            "level": 3,
+            "text": "h3-2",
+          },
+        ],
+        "level": 2,
+        "text": "h2-2",
+      },
+    ],
+    "level": 1,
+    "text": "h1",
+  },
+]
+`;
+
+exports[`vitePluginMdReTagTest > 从 .md 文本生成 Toc 数据 2`] = `[]`;
+
+exports[`vitePluginMdReTagTest > 从 .md 文本生成 Toc 数据 3`] = `
+[
+  {
+    "children": [
+      {
+        "children": [],
+        "level": 2,
+        "text": "安装组件库",
+      },
+      {
+        "children": [],
+        "level": 2,
+        "text": "注册组件",
+      },
+    ],
+    "level": 1,
+    "text": "快速开始",
+  },
+]
+`;

@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`toGithubIcoButton > MatchSnapshot 1`] = `
+"<a class=\\"j-base-action j-action-feedback shape j-button text-button\\" ontouchstart=\\"function () { [native code] }\\" ontouchcancel=\\"function () { [native code] }\\" ontouchend=\\"function () { [native code] }\\" href=\\"https://github.com/abchiyi/Jet-Plan-UI\\" rel=\\"noopener noreferrer\\" aria-label=\\"前往github\\" target=\\"_blank\\"><i class=\\"bi bi-github\\"></i>
+  <transition-stub name=\\"mask\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <!---->
+  </transition-stub>
+</a>"
+`;

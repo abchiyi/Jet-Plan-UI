@@ -1,0 +1,7 @@
+// Vitest Snapshot v1
+
+exports[`Button:test > SnapShots 1`] = `
+"<button class=\\"j-base-action j-action-feedback shape j-button button\\" ontouchstart=\\"function () { [native code] }\\" ontouchcancel=\\"function () { [native code] }\\" ontouchend=\\"function () { [native code] }\\">slot default<transition-stub name=\\"mask\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">
+    <!---->
+  </transition-stub></button>"
+`;

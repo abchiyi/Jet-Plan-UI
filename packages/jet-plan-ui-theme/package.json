@@ -1,0 +1,14 @@
+{
+  "name": "jet-plan-ui-theme",
+  "description": "Jet plan UI for vue3",
+  "author": "abchiyi <meme_me2019@outlook.com>",
+  "private": false,
+  "main": "index.js",
+  "dependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ],
+  "version": "4.2.2--alpha"
+}

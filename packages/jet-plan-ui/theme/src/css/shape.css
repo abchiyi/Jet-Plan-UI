@@ -1,0 +1,14 @@
+/* 定义组件基础样式变量 */
+.shape {
+    --BASE-LENGTH: calc(1em / 8);
+    --OFF-SET: var(--BASE-LENGTH);
+    --SHADOW: 0.08;
+    --SIZE: 1em
+}
+
+.shape.j-radio,
+.shape.j-button,
+.shape.j-switch {
+    --HEIGHT: calc(var(--BASE-LENGTH) * 8);
+    --WIDTH: calc(var(--BASE-LENGTH) * 13);
+}

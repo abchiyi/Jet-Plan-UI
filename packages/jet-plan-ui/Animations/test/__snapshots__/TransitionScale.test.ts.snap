@@ -1,0 +1,3 @@
+// Vitest Snapshot v1
+
+exports[`TransitionScaleTest > Slot:default 1`] = `"<transition-stub name=\\"j-transition-scale\\" appear=\\"false\\" persisted=\\"false\\" css=\\"true\\">Default slot</transition-stub>"`;

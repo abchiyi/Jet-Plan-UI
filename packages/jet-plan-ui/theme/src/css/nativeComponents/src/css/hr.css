@@ -1,0 +1,7 @@
+hr {
+    outline: solid 1px var(--border-dark);
+    margin: 0.5em auto;
+    border: unset;
+    opacity: 0.5;
+    width: 95%;
+}
