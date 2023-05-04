@@ -40,7 +40,7 @@ jobs:
           cd  ~/Code
           npm install --force
           npm run build-only
-          rm-rf ./.git
+          rm -rf ./.git
           echo 'build comp'
 
           echo '----- To push -----'
