@@ -29,9 +29,7 @@ jobs:
           git clone "$SOURCE_REPO" ~/JetUICode
 
           echo '----- Clone JetUIDoc -----'
-          mkdir ~/Doc
-          cd ~/Doc
-          git clone "$DESTINATION_REPO" .
+          git clone "$DESTINATION_REPO" ~/Doc .
 
 
           echo '----- To build -----'
