@@ -26,8 +26,8 @@ jobs:
           git config --global user.name "abchiyi"
 
           echo '----- Clone JetUICode -----'
-          mkdir ~/JetUICode
-          cd ~/JetUICode
+          mkdir ~/Code
+          cd ~/Code
           git clone "$SOURCE_REPO" .
 
           echo '----- Clone JetUIDoc -----'
@@ -37,14 +37,14 @@ jobs:
 
 
           echo '----- To build -----'
-          cd  ~/JetUIDoc
+          cd  ~/Code
           npm install --force
           npm run build-only
           rm-rf ./.git
           echo 'build comp'
 
           echo '----- To push -----'
-          cp ~/JetUIDoc/* ~/Doc
+          cp ~/Code/* ~/Doc
           cd ~/Doc
           git add .
           git commit -am 'update-doc'
