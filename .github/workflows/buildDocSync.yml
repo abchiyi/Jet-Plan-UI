@@ -26,10 +26,14 @@ jobs:
           git config --global user.name "abchiyi"
 
           echo '----- Clone JetUICode -----'
-          git clone "$SOURCE_REPO" ~/JetUICode
+          mkdir ~/JetUICode
+          cd ~/JetUICode
+          git clone "$SOURCE_REPO" .
 
           echo '----- Clone JetUIDoc -----'
-          git clone "$DESTINATION_REPO" ~/Doc .
+          mkdir ~/Doc
+          cd ~/Doc
+          git clone "$DESTINATION_REPO" .
 
 
           echo '----- To build -----'
