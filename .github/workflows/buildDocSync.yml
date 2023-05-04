@@ -24,25 +24,27 @@ jobs:
         run: |
           git config --global user.email "meme_me2019@outlook.com"
           git config --global user.name "abchiyi"
-          git clone "$SOURCE_REPO" ~/resource_temp
 
-          mkdir ~/resource_temp/dist
-          cd ~/resource_temp/dist
+          echo '----- Clone JetUICode -----'
+          git clone "$SOURCE_REPO" ~/JetUICode
+
+          echo '----- Clone JetUIDoc -----'
+          mkdir ~/Doc
+          cd ~/Doc
           git clone "$DESTINATION_REPO" .
 
-          echo 'to build'
-          # build
-          cd  ~/resource_temp
+
+          echo '----- To build -----'
+          cd  ~/JetUIDoc
           npm install --force
           npm run build-only
+          rm-rf ./.git
           echo 'build comp'
 
-          echo 'to push'
-          # commit & push
-          cd ~/resource_temp/dist
-          ls ./
+          echo '----- To push -----'
+          cp ~/JetUIDoc/* ~/Doc
+          cd ~/Doc
           git add .
-          git status
           git commit -am 'update-doc'
           git push
-          echo 'push comp'
+          echo '----- Push comp -----'
