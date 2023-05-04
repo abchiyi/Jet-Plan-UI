@@ -40,6 +40,7 @@ jobs:
           echo 'to push'
           # commit & push
           cd ~/resource_temp/dist
+          ls ./
           git add .
           git status
           git commit -am 'update-doc'
