@@ -4,7 +4,7 @@
     <j-row id="title-group" Y="bottom" warp>
       <!-- LOGO -->
       <j-col id="left" :col="12" :sm="24" :xs="24">
-        <img id="big-logo" src="/LOGO.svg" alt="logo" width="250" />
+        <img id="big-logo" src="/logo.svg" alt="logo" width="250" />
       </j-col>
       <!-- 标题 -->
       <j-col id="right" :col="12" :sm="24" :xs="24">
