@@ -41,6 +41,7 @@ jobs:
           # commit & push
           cd ~/resource_temp/dist
           git add .
+          git status
           git commit -am 'update-doc'
           git push
           echo 'push comp'
