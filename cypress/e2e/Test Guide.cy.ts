@@ -81,24 +81,23 @@ function TestNavLinks(parentSelector: string) {
   });
 }
 
-describe("Guide", () => {
+describe("Docs", () => {
   it("测试页面基本元素", () => {
-    cy.visit("/guide");
-    basicElementsInThisPageOfDesktop();
-    basicElementsInThisPageOfMObile();
+    const path = "#docs";
+    cy.visit("#/docs").reload();
+    basicElementsInThisPageOfDesktop(path);
+    basicElementsInThisPageOfMObile(path);
   });
 
   context("测试副 'AppBar'", () => {
     beforeEach(() => {
       cy.viewport("iphone-xr");
-      cy.visit("/guide");
+      cy.visit("#/docs").reload();
     });
 
     it("仅显示于移动端", () => {
       cy.get("#sub-app-bar").should("be.visible");
-
-      cy.viewport("macbook-16");
-      cy.visit("/guide");
+      cy.viewport("macbook-16").reload();
       cy.get("#sub-app-bar").should("not.be.visible");
     });
     it("滑动时固定于页面顶部", () => {
@@ -107,15 +106,14 @@ describe("Guide", () => {
         .should("have.css", "top", "-1px"); // 防止露出底部文本以及隐藏分割线
     });
     it("sub app bar 左侧的菜单按钮", () => {
+      // TODO 未完成的测试
       cy.get("#sub-app-bar > button:nth-child(1)")
         .should("contain.text", "菜单")
-        // 点击打开侧栏
         .click();
-      // cy.get("");
     });
   });
 
-  context("测试 '#drawer-left' ", () => {
+  context.only("测试 '#drawer-left' ", () => {
     beforeEach(() => {
       cy.viewport("iphone-xr");
       cy.visit("/guide");

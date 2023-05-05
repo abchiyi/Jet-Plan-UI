@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from "vue-router";
+import { createRouter, createWebHashHistory } from "vue-router";
 import type { RouterOptions } from "vue-router";
 
 import components from "./routerComponents";
@@ -31,20 +31,11 @@ const routes: RouterOptions["routes"] = [
     path: "/docs",
     redirect: Start[0],
     component: () => import("@/view/theDoc.vue"),
-    children: [
-      ...components,
-      ...Start,
-      ...Tool,
-      {
-        name: "关于",
-        path: "about",
-        component: () => import("../../README.md"),
-      },
-    ],
+    children: [...components, ...Start, ...Tool],
   },
   {
     path: "/about",
-    component: () => import("../../README.md"),
+    component: () => import("../view/theAbout.md"),
   },
   {
     // XXX 创建真正的的 component-list
@@ -55,7 +46,7 @@ const routes: RouterOptions["routes"] = [
 
 // Router config
 export default createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
   scrollBehavior(to, from) {
     // 返回顶部

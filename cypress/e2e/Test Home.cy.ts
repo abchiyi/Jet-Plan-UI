@@ -7,27 +7,28 @@ import {
 function linkTest() {
   // logo 下方有一个快速开始按钮
   routerLinkTest({
-    selector: "a[href='/guide/quick-start']",
-    path: "/guide/quick-start",
+    selector: "a[href='#/docs/quick-start']",
+    path: "#/docs/quick-start",
     ariaLabel: "快速开始",
     text: "快速开始",
     goBack: false,
     click: false,
   });
 
-  cy.get("a[href='/guide/quick-start']").click();
-  locationIs("/guide/quick-start");
+  cy.get("a[href='#/docs/quick-start']").click();
+  locationIs("#/docs/quick-start");
 
   // 当链接不完整时重定向到"快速开始"页
-  cy.visit("/guide");
-  locationIs("/guide/quick-start");
+  cy.visit("#/docs");
+  cy.reload();
+  locationIs("#/docs/quick-start");
 
-  cy.visit("/");
+  cy.visit("#/");
   // 在快速开始按钮旁边有一个 ‘安装’ 按钮
   routerLinkTest({
-    selector: "a[href='/guide/quick-start'] + a",
+    selector: "a[href='#/docs/quick-start'] + a",
     ariaLabel: "安装",
-    path: "/install",
+    path: "#/install",
     text: "安装",
     goBack: true,
     click: true,
@@ -48,7 +49,7 @@ describe("jet-plan-ui doc test", () => {
     // 主页中 logo 和 标题以及功能按钮是紧贴在一起的
     // logo 居右
     cy.get("#title-group > #left")
-      .should("have.css", "justify-content", "end")
+      .should("have.css", "justify-content", "flex-end")
       .should("have.css", "display", "flex");
 
     // 标题&按钮组居左

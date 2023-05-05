@@ -18,7 +18,7 @@ describe("Test linkButton", () => {
         plugins: [router],
       },
     });
-    expect(wrapper.find("a").attributes().href).toBe(path);
+    expect(wrapper.find("a").attributes().href).toBe("#/");
     expect(wrapper.find("a").exists()).toBeTruthy();
     expect(wrapper.text()).toBe("default slot");
   });

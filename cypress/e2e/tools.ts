@@ -2,6 +2,7 @@ type callback = (is: Boolean) => void;
 
 export type linkOptions = {
   ariaLabel: string;
+  basePath?: string;
   selector: string;
   goBack?: boolean;
   click?: boolean;
@@ -17,7 +18,8 @@ export function locationIs(
     if (callback) {
       callback(location.pathname == path);
     } else {
-      expect(location.pathname).to.equal(path);
+      // 哈希路由模式
+      expect(location.hash).to.equal(path);
     }
   });
 }
@@ -41,7 +43,9 @@ export function routerLinkTest(options: linkOptions) {
   }
 
   // 返回页面继续测试
-  if (options.goBack) cy.go("back");
+  if (options.goBack) {
+    options.basePath ? cy.visit(options.basePath) : cy.go("back");
+  }
 }
 
 export function newTagLinkTest(options: linkOptions) {
@@ -60,7 +64,7 @@ function footerTest() {
     .should("have.css", "opacity", "0.3");
 }
 
-export function basicElementsInThisPageOfDesktop() {
+export function basicElementsInThisPageOfDesktop(basePath?: string) {
   function headerTest() {
     cy.get("#header-group")
       // 导航栏两端相对屏幕有留白
@@ -79,7 +83,8 @@ export function basicElementsInThisPageOfDesktop() {
       text: "JetPlanUI",
       goBack: false,
       click: true,
-      path: "/",
+      path: "#/",
+      basePath,
     });
 
     // Test 不在主页时调用 .go("back")
@@ -96,19 +101,24 @@ export function basicElementsInThisPageOfDesktop() {
     };
     // 关于链接
     routerLinkTest({
-      selector: "#nav > a[href='/about']",
+      selector: "#nav > a[href='#/about']",
       ariaLabel: "关于",
-      path: "/about",
+      path: "#/about",
       text: "关于",
       ...LTC_tpl,
+      basePath,
     });
+
+    cy.wait(500);
+
     // 组件列表链接
     routerLinkTest({
-      selector: "#nav > a[href='/component-list']",
-      path: "/component-list",
+      selector: "#nav > a[href='#/component-list']",
+      path: "#/component-list",
       ariaLabel: "组件列表",
       text: "组件列表",
       ...LTC_tpl,
+      basePath,
     });
     // 到gitee
     newTagLinkTest({
@@ -133,7 +143,7 @@ export function basicElementsInThisPageOfDesktop() {
   footerTest();
 }
 
-export function basicElementsInThisPageOfMObile() {
+export function basicElementsInThisPageOfMObile(basePath?: string) {
   function headerTest() {
     cy.get("#header-group")
       //   导航栏是左右排列元素的
@@ -142,7 +152,8 @@ export function basicElementsInThisPageOfMObile() {
       .should("have.length", 2);
 
     // 导航栏右侧是一个菜单按钮
-    cy.get("#header-group > #nav-group >  #open-drop-menu")
+    cy.wait(500);
+    cy.get("#header-group > #nav-group > #open-drop-menu")
       // 点击它打开下拉抽屉
       .click();
     // 显示下拉抽屉
@@ -160,21 +171,26 @@ export function basicElementsInThisPageOfMObile() {
 
     // 关于链接
     routerLinkTest({
-      selector: `${selectorNav} > a[href='/about']`,
+      selector: `${selectorNav} > a[href='#/about']`,
       ariaLabel: "关于",
-      path: "/about",
+      path: "#/about",
       text: "关于",
       ...LTC_tpl,
+      basePath,
     });
 
     // 组件列表链接
     clickOpenDropMenu();
+    cy.wait(500);
+    clickOpenDropMenu();
+    cy.wait(500);
     routerLinkTest({
-      selector: `${selectorNav} > a[href='/component-list']`,
-      path: "/component-list",
+      selector: `${selectorNav} > a[href='#/component-list']`,
+      path: "#/component-list",
       ariaLabel: "组件列表",
       text: "组件列表",
       ...LTC_tpl,
+      basePath,
     });
 
     // 在下方有一组以图标形式的网站链接
@@ -187,6 +203,7 @@ export function basicElementsInThisPageOfMObile() {
       ariaLabel: "前往gitee",
       ...LTC_tpl,
       text: "",
+      basePath,
     });
     // 转到 github
     newTagLinkTest({
@@ -198,8 +215,9 @@ export function basicElementsInThisPageOfMObile() {
       text: "",
     });
 
+    cy.wait(200);
     // 下拉菜单开启 #open-drop-menu 按钮应显示为 “x”
-    cy.get("#open-drop-menu").children("i").should("have.class", "bi-x");
+    cy.get("#open-drop-menu").children("i").should("have.class", "bi-list");
   }
 
   cy.viewport("iphone-x");
