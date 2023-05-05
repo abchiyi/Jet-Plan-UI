@@ -34,9 +34,10 @@ jobs:
           mkdir ~/Doc
           cd ~/Doc
           git clone "$DESTINATION_REPO" .
-          cp -r ./.git ~/
+          cd ~/Doc
+          cp -rf ./.git ~/
           rm -rf ./*
-          cp ~/.git ~/Doc
+          cp -rf ~/.git ~/Doc
 
 
           echo '----- To build -----'
