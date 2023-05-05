@@ -48,7 +48,7 @@ jobs:
           echo 'build comp'
 
           echo '----- To push -----'
-          cp -r -f ~/Code/* ~/Doc/
+          cp -r -f ~/Code/docs* ~/Doc/docs
           cd ~/Doc
           git add .
           git commit -am 'update-doc'
