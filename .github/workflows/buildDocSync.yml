@@ -29,6 +29,8 @@ jobs:
           mkdir ~/Code
           cd ~/Code
           git clone "$SOURCE_REPO" .
+          cd ~/Code/src/assets
+          git clone https://github.com/abchiyi/font.git
 
           echo '----- Clone JetUIDoc -----'
           mkdir ~/Doc
