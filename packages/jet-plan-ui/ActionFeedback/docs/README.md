@@ -22,13 +22,13 @@ import DemoActionLabel from './DemoActionLabel.vue'
 例如将其渲染为一个 `label`，使用 `<label>` 的特性来优化 `<input>` 的操作范围
 
 ```xml
-    <j-action-feedback tag='label'>...</j-action-feedback>
-     以上组件渲染结果如下⬇️
-    <label>
-    ...
-    <!----> // active 层
-    ::after // hover 层
-    </label>
+<j-action-feedback tag='label'>...</j-action-feedback>
+  以上组件渲染结果如下⬇️
+<label>
+...
+<!----> // active 层
+::after // hover 层
+</label>
 ```
 
 **示例**:
