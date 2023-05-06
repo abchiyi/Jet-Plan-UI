@@ -111,14 +111,14 @@ export default defineComponent({
 .preview-demo-code .demo-view-box {
   box-shadow: v-bind(shadow);
   border-radius: 8px;
+  position: relative;
   padding: 0.5rem;
   outline: unset;
+  z-index: 1;
 }
 .code-shell {
   margin-top: -1rem;
   padding-top: 1rem;
-  position: relative;
-  z-index: -1;
 }
 .preview-demo-code .code-title {
   color: var(--text-hint);
