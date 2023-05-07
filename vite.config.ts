@@ -27,10 +27,11 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
-      views: _resolve("./src/view"),
+      "jet-plan-ui": _resolve("./packages/jet-plan-ui"),
       packages: _resolve("./packages"),
-      src: _resolve("./src"),
+      views: _resolve("./src/view"),
       public: _resolve("./public"),
+      src: _resolve("./src"),
     },
   },
   css: {
