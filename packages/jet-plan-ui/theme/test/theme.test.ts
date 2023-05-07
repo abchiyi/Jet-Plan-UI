@@ -132,17 +132,18 @@ describe("Test ReactiveThemeSystem", () => {
 
   test(".getTheme:测试获取主题执行色彩转换", async () => {
     const rawTheme = {
+      ...jetLight,
       name: "rawTheme",
       color: "red",
       color2: {
+        ...jetDark,
         default: "pink",
         light: "ffffff",
       },
-    } as unknown;
+    };
 
     expect(
-      newReactiveThemeSystem(styleElId, rawTheme as baseTheme).getTheme().value
-        .color
+      newReactiveThemeSystem(styleElId, rawTheme).getTheme().value.color
     ).toBe("#F44336");
   });
 });

@@ -15,6 +15,6 @@ describe("titleLogo", () => {
   });
 
   test("link to HomePage", () => {
-    expect(wrapper.attributes().href).toBe("/");
+    expect(wrapper.attributes().href).toBe("#/");
   });
 });

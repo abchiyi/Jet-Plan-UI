@@ -1,10 +1,10 @@
 <script lang="ts">
 import { JET_THEME } from "../../theme";
 
-import { computed, h } from "vue";
+import { computed, defineComponent, h } from "vue";
 import { getInputEl } from "../../tool";
 
-export default {
+export default defineComponent({
   name: "j-switch",
   setup() {
     return {
@@ -100,7 +100,7 @@ export default {
 
     return SWITCH_SHELL;
   },
-};
+});
 </script>
 <style>
 .j-switch {

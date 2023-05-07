@@ -30,7 +30,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix",
     "gen": "node ./script/genNewComp/index.js",
     "build-only": "vite build",
-    "build:lib": "run-p type-check && vite build --config ./buildLib.config.ts",
+    "build:lib": "run-p type-check && vite build --config ./vite.config.lib.ts",
     "build:doc": "run-p type-check build-only&& node script/copyDir.js"
   },
   "peerDependencies": {

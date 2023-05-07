@@ -1,4 +1,4 @@
-// import baseConfig from "./base.config";
+// 编译 lib 配置文件
 import baseConfig from "./vite.config";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
@@ -32,5 +32,5 @@ export default defineConfig({
       },
     },
   },
-  plugins: [vue(), dts()],
+  plugins: [vue(), dts({ tsConfigFilePath: "./tsconfig.vitest.json" })],
 });
