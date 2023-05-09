@@ -1,6 +1,9 @@
 import { expect, describe, test } from "vitest";
 import { mount, shallowMount } from "@vue/test-utils";
 import Bubble from "../src/index.vue";
+import baseActionVue from "packages/jet-plan-ui/ActionFeedback/src/baseAction.vue";
+import { Row } from "packages/jet-plan-ui/Grid";
+import { TransitionSlider } from "packages/jet-plan-ui/Animations";
 
 describe("Bubble", () => {
   const positionData = [
@@ -55,5 +58,20 @@ describe("Bubble", () => {
       .ClassBubble;
     expect(classBubble).include(START);
     expect(classBubble).include(POS);
+  });
+
+  test("Dom", () => {
+    const wrapper = mount(Bubble);
+    const baseAction = wrapper.findComponent(baseActionVue);
+    expect(baseAction.exists()).toBeTruthy();
+    const row = baseAction.findComponent(Row);
+    expect(row.exists()).toBeTruthy();
+    const slider = row.findComponent(TransitionSlider);
+    expect(slider.exists()).toBeTruthy();
+  });
+
+  test.each(positionData)("Function:positionReverse", v => {
+    const [position] = v.split("-");
+    expect(shallowMount(Bubble).vm.positionReverse(v)).toEqual(v);
   });
 });

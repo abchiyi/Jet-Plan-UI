@@ -1,9 +1,8 @@
-<template>
-  <div class="j-bubble">我是浮动气泡组件</div>
-</template>
-
 <script lang="ts">
-import { defineComponent, type PropType } from "vue";
+import baseAction from "../../ActionFeedback/src/baseAction.vue";
+import { TransitionSlider } from "../../Animations";
+import { Row } from "../../Grid";
+import { defineComponent, h, type PropType } from "vue";
 export default defineComponent({
   name: "j-bubble",
   props: {
@@ -32,6 +31,22 @@ export default defineComponent({
       const [start, position] = Array.from(this.position?.split("-"));
       return [start, position];
     },
+  },
+  render() {
+    return h(
+      baseAction,
+      { class: "j-bubble" },
+      {
+        default: () =>
+          h(
+            Row,
+            { X: "center", Y: "center" },
+            {
+              default: () => [this.$slots.default?.(), h(TransitionSlider)],
+            }
+          ),
+      }
+    );
   },
 });
 </script>
