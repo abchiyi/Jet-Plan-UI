@@ -61,7 +61,7 @@ describe("Bubble", () => {
     expect(classBubble).include(POS);
   });
 
-  test("Dom", () => {
+  test("Dom", async () => {
     const wrapper = mount(Bubble);
     const baseAction = wrapper.findComponent(baseActionVue);
     expect(baseAction.exists()).toBeTruthy();
@@ -69,6 +69,7 @@ describe("Bubble", () => {
     expect(row.exists()).toBeTruthy();
     const slider = row.findComponent(TransitionSlider);
     expect(slider.exists()).toBeTruthy();
+    await wrapper.setData({ showBubble: true });
     const bubble = slider.find(".bubble");
     expect(bubble.exists()).toBeTruthy();
   });
@@ -79,7 +80,7 @@ describe("Bubble", () => {
     if (v) {
       expect(wrapper.find(".bubble").isVisible()).toBeTruthy();
     } else {
-      expect(wrapper.find(".bubble").isVisible()).toBeFalsy();
+      expect(wrapper.find(".bubble").exists()).toBeFalsy();
     }
   });
 

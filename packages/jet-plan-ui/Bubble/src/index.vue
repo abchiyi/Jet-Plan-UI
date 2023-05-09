@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cons } from "fp-ts/lib/ReadonlyNonEmptyArray";
 import baseAction from "../../ActionFeedback/src/baseAction.vue";
 import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
@@ -56,7 +55,6 @@ export default defineComponent({
   render() {
     const Bubble = h("div", {
       class: this.ClassBubble,
-      style: { display: !this.showBubble ? "none" : "" },
     });
     return h(
       baseAction,
@@ -73,7 +71,7 @@ export default defineComponent({
                   TransitionSlider,
                   { position: this.positionReverse },
                   {
-                    default: () => Bubble,
+                    default: () => (this.showBubble ? Bubble : undefined),
                   }
                 ),
               ],
@@ -87,5 +85,11 @@ export default defineComponent({
 
 <style scoped>
 .j-bubble {
+}
+
+.bubble {
+  background: red;
+  height: 100px;
+  width: 100px;
 }
 </style>
