@@ -1,4 +1,5 @@
 <script lang="ts">
+import { cons } from "fp-ts/lib/ReadonlyNonEmptyArray";
 import baseAction from "../../ActionFeedback/src/baseAction.vue";
 import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
@@ -31,8 +32,6 @@ export default defineComponent({
       const [start, position] = Array.from(this.position?.split("-"));
       return [start, position];
     },
-  },
-  methods: {
     positionReverse() {
       const [position] = this.position.split("-");
       switch (position) {
@@ -44,6 +43,8 @@ export default defineComponent({
           return "right";
         case "right":
           return "left";
+        default: // 默认块解决类型分析问题，实际运行将不会被执行
+          return "top";
       }
     },
   },

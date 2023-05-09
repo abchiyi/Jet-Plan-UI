@@ -70,11 +70,11 @@ describe("Bubble", () => {
     expect(slider.exists()).toBeTruthy();
   });
 
-  test.each(positionData)("Function:positionReverse", position => {
+  test.each(positionData)("Computed:positionReverse", position => {
     const [v] = position.split("-");
     const reverseData = shallowMount(Bubble, {
       props: { position },
-    }).vm.positionReverse();
+    }).vm.positionReverse;
 
     switch (v) {
       case "top":
