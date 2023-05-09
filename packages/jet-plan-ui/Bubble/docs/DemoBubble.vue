@@ -1,5 +1,8 @@
 <template>
   <div>
-    <j-bubble />
+    <j-bubble :position="'top'" />
   </div>
 </template>
+<script lang="ts" setup>
+import jBubble from "../src/index.vue";
+</script>

@@ -3,9 +3,36 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, type PropType } from "vue";
 export default defineComponent({
   name: "j-bubble",
+  props: {
+    position: {
+      type: String as PropType<
+        | "top"
+        | "top-end"
+        | "top-start"
+        | "bottom"
+        | "bottom-end"
+        | "bottom-start"
+        | "left"
+        | "left-top"
+        | "left-bottom"
+        | "right"
+        | "right-top"
+        | "right-bottom"
+      >,
+      default: "top",
+    },
+
+    show: Boolean,
+  },
+  computed: {
+    ClassBubble() {
+      const [start, position] = Array.from(this.position?.split("-"));
+      return [start, position];
+    },
+  },
 });
 </script>
 
