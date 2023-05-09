@@ -70,8 +70,25 @@ describe("Bubble", () => {
     expect(slider.exists()).toBeTruthy();
   });
 
-  test.each(positionData)("Function:positionReverse", v => {
-    const [position] = v.split("-");
-    expect(shallowMount(Bubble).vm.positionReverse(v)).toEqual(v);
+  test.each(positionData)("Function:positionReverse", position => {
+    const [v] = position.split("-");
+    const reverseData = shallowMount(Bubble, {
+      props: { position },
+    }).vm.positionReverse();
+
+    switch (v) {
+      case "top":
+        expect(reverseData).toBe("bottom");
+        break;
+      case "bottom":
+        expect(reverseData).toBe("top");
+        break;
+      case "left":
+        expect(reverseData).toBe("right");
+        break;
+      case "right":
+        expect(reverseData).toBe("left");
+        break;
+    }
   });
 });

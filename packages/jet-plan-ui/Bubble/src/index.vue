@@ -32,6 +32,11 @@ export default defineComponent({
       return [start, position];
     },
   },
+  methods: {
+    positionReverse() {
+      return this.position.split("-")[0];
+    },
+  },
   render() {
     return h(
       baseAction,
