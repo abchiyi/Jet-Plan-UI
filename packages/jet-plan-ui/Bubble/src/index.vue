@@ -30,7 +30,7 @@ export default defineComponent({
   computed: {
     ClassBubble() {
       const [start, position] = Array.from(this.position?.split("-"));
-      return [start, position];
+      return ["bubble", start, position];
     },
     positionReverse() {
       const [position] = this.position.split("-");

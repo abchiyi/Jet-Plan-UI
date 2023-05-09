@@ -56,6 +56,7 @@ describe("Bubble", () => {
 
     const classBubble = shallowMount(Bubble, { props: { position } }).vm
       .ClassBubble;
+    expect(classBubble).include("bubble");
     expect(classBubble).include(START);
     expect(classBubble).include(POS);
   });
