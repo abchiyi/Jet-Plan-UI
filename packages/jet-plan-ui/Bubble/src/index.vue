@@ -58,7 +58,10 @@ export default defineComponent({
             Row,
             { X: "center", Y: "center" },
             {
-              default: () => [this.$slots.default?.(), h(TransitionSlider)],
+              default: () => [
+                this.$slots.default?.(),
+                h(TransitionSlider, { position: this.positionReverse }),
+              ],
             }
           ),
       }
