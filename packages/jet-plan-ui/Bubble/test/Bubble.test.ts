@@ -69,6 +69,18 @@ describe("Bubble", () => {
     expect(row.exists()).toBeTruthy();
     const slider = row.findComponent(TransitionSlider);
     expect(slider.exists()).toBeTruthy();
+    const bubble = slider.find(".bubble");
+    expect(bubble.exists()).toBeTruthy();
+  });
+
+  test.each([0, 1])("Dom:Bubble 显示与否受到属性 showBubble 控制", async v => {
+    const wrapper = mount(Bubble);
+    await wrapper.setData({ showBubble: Boolean(v) });
+    if (v) {
+      expect(wrapper.find(".bubble").isVisible()).toBeTruthy();
+    } else {
+      expect(wrapper.find(".bubble").isVisible()).toBeFalsy();
+    }
   });
 
   test.each(positionData)("Computed:positionReverse", position => {

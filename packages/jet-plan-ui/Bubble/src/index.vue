@@ -27,6 +27,11 @@ export default defineComponent({
 
     show: Boolean,
   },
+  data() {
+    return {
+      showBubble: false,
+    };
+  },
   computed: {
     ClassBubble() {
       const [start, position] = Array.from(this.position?.split("-"));
@@ -49,6 +54,10 @@ export default defineComponent({
     },
   },
   render() {
+    const Bubble = h("div", {
+      class: this.ClassBubble,
+      style: { display: !this.showBubble ? "none" : "" },
+    });
     return h(
       baseAction,
       { class: "j-bubble" },
@@ -60,7 +69,13 @@ export default defineComponent({
             {
               default: () => [
                 this.$slots.default?.(),
-                h(TransitionSlider, { position: this.positionReverse }),
+                h(
+                  TransitionSlider,
+                  { position: this.positionReverse },
+                  {
+                    default: () => Bubble,
+                  }
+                ),
               ],
             }
           ),
