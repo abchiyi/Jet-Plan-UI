@@ -34,7 +34,17 @@ export default defineComponent({
   },
   methods: {
     positionReverse() {
-      return this.position.split("-")[0];
+      const [position] = this.position.split("-");
+      switch (position) {
+        case "top":
+          return "bottom";
+        case "bottom":
+          return "top";
+        case "left":
+          return "right";
+        case "right":
+          return "left";
+      }
     },
   },
   render() {
