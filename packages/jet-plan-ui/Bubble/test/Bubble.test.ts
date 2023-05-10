@@ -124,7 +124,7 @@ describe("Bubble", () => {
     const wrapper = shallowMount(Bubble);
     expect(wrapper.vm.showBubble).toBeFalsy();
     await wrapper.vm.displayBubble();
-    await sleep(200);
+    await sleep(350);
     expect(wrapper.vm.showBubble).toBeTruthy();
   });
 
@@ -132,7 +132,7 @@ describe("Bubble", () => {
     const wrapper = shallowMount(Bubble);
     await wrapper.setData({ showBubble: true });
     await wrapper.vm.hideBubble();
-    await sleep(200);
+    await sleep(50);
     expect(wrapper.vm.showBubble).toBeFalsy();
   });
 });

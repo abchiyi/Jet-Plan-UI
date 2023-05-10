@@ -31,8 +31,8 @@ export default defineComponent({
   data() {
     return {
       showBubble: false,
-      BumperDisplay: new Bumper(200),
-      BumperHide: new Bumper(200),
+      BumperDisplay: new Bumper(350),
+      BumperHide: new Bumper(50),
     };
   },
   mounted() {
