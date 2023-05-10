@@ -52,6 +52,14 @@ export default defineComponent({
       }
     },
   },
+  methods: {
+    displayBubble() {
+      this.showBubble = true;
+    },
+    hideBubble() {
+      this.showBubble = false;
+    },
+  },
   render() {
     const Bubble = h(
       "div",

@@ -115,4 +115,18 @@ describe("Bubble", () => {
       expect(wrapper.find(".bubble").text()).toBe("message");
     }
   );
+
+  test("Function:displayBubble", async () => {
+    const wrapper = shallowMount(Bubble);
+    expect(wrapper.vm.showBubble).toBeFalsy();
+    await wrapper.vm.displayBubble();
+    expect(wrapper.vm.showBubble).toBeTruthy();
+  });
+
+  test("Function:hideBubble", async () => {
+    const wrapper = shallowMount(Bubble);
+    await wrapper.setData({ showBubble: true });
+    await wrapper.vm.hideBubble();
+    expect(wrapper.vm.showBubble).toBeFalsy();
+  });
 });
