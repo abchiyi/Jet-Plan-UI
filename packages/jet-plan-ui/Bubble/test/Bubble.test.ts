@@ -4,6 +4,7 @@ import Bubble from "../src/index.vue";
 import baseActionVue from "packages/jet-plan-ui/ActionFeedback/src/baseAction.vue";
 import { Row } from "packages/jet-plan-ui/Grid";
 import { TransitionSlider } from "packages/jet-plan-ui/Animations";
+import { h, isVNode } from "vue";
 
 describe("Bubble", () => {
   const positionData = [
@@ -105,4 +106,13 @@ describe("Bubble", () => {
         break;
     }
   });
+
+  test.each(["message", () => h("div", null, "message")])(
+    "Slots:bubble",
+    async bubble => {
+      const wrapper = mount(Bubble, { slots: { bubble } });
+      await wrapper.setData({ showBubble: true });
+      expect(wrapper.find(".bubble").text()).toBe("message");
+    }
+  );
 });

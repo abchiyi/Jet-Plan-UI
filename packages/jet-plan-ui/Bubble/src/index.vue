@@ -53,9 +53,13 @@ export default defineComponent({
     },
   },
   render() {
-    const Bubble = h("div", {
-      class: this.ClassBubble,
-    });
+    const Bubble = h(
+      "div",
+      {
+        class: this.ClassBubble,
+      },
+      this.$slots.bubble?.()
+    );
     return h(
       baseAction,
       { class: "j-bubble" },
