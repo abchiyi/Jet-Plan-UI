@@ -6,6 +6,10 @@ import { Row } from "packages/jet-plan-ui/Grid";
 import { TransitionSlider } from "packages/jet-plan-ui/Animations";
 import { h, isVNode } from "vue";
 
+function sleep(delay: number) {
+  return new Promise(resolve => setTimeout(resolve, delay));
+}
+
 describe("Bubble", () => {
   const positionData = [
     "top",
@@ -120,6 +124,7 @@ describe("Bubble", () => {
     const wrapper = shallowMount(Bubble);
     expect(wrapper.vm.showBubble).toBeFalsy();
     await wrapper.vm.displayBubble();
+    await sleep(200);
     expect(wrapper.vm.showBubble).toBeTruthy();
   });
 
@@ -127,6 +132,7 @@ describe("Bubble", () => {
     const wrapper = shallowMount(Bubble);
     await wrapper.setData({ showBubble: true });
     await wrapper.vm.hideBubble();
+    await sleep(200);
     expect(wrapper.vm.showBubble).toBeFalsy();
   });
 });

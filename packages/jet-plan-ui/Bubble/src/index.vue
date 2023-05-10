@@ -3,6 +3,7 @@ import baseAction from "../../ActionFeedback/src/baseAction.vue";
 import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
 import { defineComponent, h, type PropType } from "vue";
+import { Bumper } from "../../tool";
 export default defineComponent({
   name: "j-bubble",
   props: {
@@ -30,7 +31,14 @@ export default defineComponent({
   data() {
     return {
       showBubble: false,
+      BumperDisplay: new Bumper(200),
+      BumperHide: new Bumper(200),
     };
+  },
+  mounted() {
+    // 设置气泡展示&消失演示避免闪烁
+    this.BumperDisplay.setAlarmCooled(() => (this.showBubble = true));
+    this.BumperHide.setAlarmCooled(() => (this.showBubble = false));
   },
   computed: {
     ClassBubble() {
@@ -55,10 +63,10 @@ export default defineComponent({
   },
   methods: {
     displayBubble() {
-      this.showBubble = true;
+      this.BumperDisplay.action();
     },
     hideBubble() {
-      this.showBubble = false;
+      this.BumperHide.action();
     },
   },
   render() {
