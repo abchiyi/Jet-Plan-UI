@@ -268,3 +268,7 @@ export function setValue<T extends object>(obj: T, key: keyof T, value: any) {
   obj[key] = value;
   return obj;
 }
+
+export function getKeys<T>(obj: T) {
+  return Object(obj).keys() as Array<keyof T>;
+}

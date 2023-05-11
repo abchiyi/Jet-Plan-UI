@@ -3,7 +3,7 @@ import baseAction from "../../ActionFeedback/src/baseAction.vue";
 import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
 import { defineComponent, h, type PropType } from "vue";
-import { Bumper } from "../../tool";
+import { Bumper, getOffset } from "../../tool";
 export default defineComponent({
   name: "j-bubble",
   props: {
@@ -33,6 +33,7 @@ export default defineComponent({
       showBubble: false,
       BumperDisplay: new Bumper(350),
       BumperHide: new Bumper(50),
+      newPosition: this.position,
     };
   },
   mounted() {
@@ -42,11 +43,10 @@ export default defineComponent({
   },
   computed: {
     ClassBubble() {
-      const [start, position] = Array.from(this.position?.split("-"));
-      return ["bubble", start, position];
+      return ["bubble", ...this.newPosition.split("-")];
     },
     positionReverse() {
-      const [position] = this.position.split("-");
+      const [position] = this.newPosition.split("-");
       switch (position) {
         case "top":
           return "bottom";
@@ -67,6 +67,87 @@ export default defineComponent({
     },
     hideBubble() {
       this.BumperHide.action();
+    },
+    edgeAvoidance() {
+      // 计算元素的每条边距离屏幕边缘是否小于预设值
+      const nearEdgeOfScreen = (() => {
+        const marginMax = 50;
+        let elSize = getOffset(this.$el);
+        return {
+          top: elSize.size.top <= marginMax,
+          left: elSize.size.left <= marginMax,
+          right: window.innerWidth - elSize.size.right <= marginMax,
+          bottom: window.innerHeight - elSize.size.bottom <= marginMax,
+        };
+      })();
+
+      let [position, start] = this.position.split("-");
+
+      function findNewPosition() {
+        switch (true) {
+          case "top" != position && !nearEdgeOfScreen.top:
+            return "top";
+          case "bottom" != position && !nearEdgeOfScreen.bottom:
+            return "bottom";
+          case "left" != position && !nearEdgeOfScreen.left:
+            return "left";
+          case "right" != position && !nearEdgeOfScreen.right:
+            return "right";
+        }
+        return "canter";
+      }
+
+      function NewStart() {
+        switch (true) {
+          case nearEdgeOfScreen.left:
+            return "start";
+          case nearEdgeOfScreen.right:
+            return "end";
+          case nearEdgeOfScreen.left && nearEdgeOfScreen.right:
+            return "";
+        }
+        return start;
+      }
+
+      function NewPosition() {
+        switch (true) {
+          case "top" == position && nearEdgeOfScreen.top:
+            if (!nearEdgeOfScreen.bottom) {
+              return "bottom";
+            } else {
+              return findNewPosition();
+            }
+          case "bottom" == position && nearEdgeOfScreen.bottom:
+            if (!nearEdgeOfScreen.top) {
+              return "top";
+            } else {
+              return findNewPosition();
+            }
+          case "left" == position && nearEdgeOfScreen.left:
+            if (!nearEdgeOfScreen.right) {
+              return "right";
+            } else {
+              return findNewPosition();
+            }
+          case "right" == position && nearEdgeOfScreen.right:
+            if (!nearEdgeOfScreen.left) {
+              return "left";
+            } else {
+              return findNewPosition();
+            }
+          default:
+            return position;
+        }
+      }
+
+      this.newPosition = (
+        start ? `${NewPosition()}-${NewStart()}` : NewPosition()
+      ) as any;
+    },
+  },
+  watch: {
+    position(v) {
+      this.newPosition = v;
     },
   },
   render() {

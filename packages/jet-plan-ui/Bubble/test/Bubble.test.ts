@@ -56,14 +56,21 @@ describe("Bubble", () => {
     expect(shallowMount(Bubble, { props: { show: v } }).vm.show).toEqual(v);
   });
 
-  test.each([...positionData])("Computed:ClassBubble", position => {
-    const [START, POS] = position.split("-");
+  test.each([...positionData])("Computed:ClassBubble", async position => {
+    const [POS, START] = position.split("-");
 
     const classBubble = shallowMount(Bubble, { props: { position } }).vm
       .ClassBubble;
-    expect(classBubble).include("bubble");
-    expect(classBubble).include(START);
-    expect(classBubble).include(POS);
+    expect(classBubble, position).include("bubble");
+    expect(classBubble, position).include(POS);
+    if (START) expect(classBubble, position).include(START);
+
+    if (position == "top") {
+      const wrapper = shallowMount(Bubble, { props: { position } });
+      await wrapper.setData({ newPosition: "bottom-start" });
+      expect(wrapper.vm.ClassBubble).include("bottom");
+      expect(wrapper.vm.ClassBubble).include("start");
+    }
   });
 
   test("Dom", async () => {
@@ -89,7 +96,7 @@ describe("Bubble", () => {
     }
   });
 
-  test.each(positionData)("Computed:positionReverse", position => {
+  test.each(positionData)("Computed:positionReverse", async position => {
     const [v] = position.split("-");
     const reverseData = shallowMount(Bubble, {
       props: { position },
@@ -108,6 +115,11 @@ describe("Bubble", () => {
       case "right":
         expect(reverseData).toBe("left");
         break;
+    }
+    if (position == "top") {
+      const wrapper = shallowMount(Bubble, { props: { position } });
+      await wrapper.setData({ newPosition: "right" });
+      expect(wrapper.vm.positionReverse).toBe("left");
     }
   });
 
@@ -134,5 +146,13 @@ describe("Bubble", () => {
     await wrapper.vm.hideBubble();
     await sleep(50);
     expect(wrapper.vm.showBubble).toBeFalsy();
+  });
+  test("Data:newPosition 其值与 prop:position 同步更新", async position => {
+    const wrapper = shallowMount(Bubble, { props: { position: "top" } });
+
+    for (let index = 0; index < positionData.length; index++) {
+      await wrapper.setProps({ position: positionData[index] });
+      expect(wrapper.vm.newPosition).toBe(positionData[index]);
+    }
   });
 });
