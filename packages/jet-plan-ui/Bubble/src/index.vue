@@ -3,7 +3,7 @@ import baseAction from "../../ActionFeedback/src/baseAction.vue";
 import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
 import { defineComponent, h, type PropType } from "vue";
-import { Bumper, getOffset } from "../../tool";
+import { Bumper, getOffset, getEl } from "../../tool";
 export default defineComponent({
   name: "j-bubble",
   props: {
@@ -25,7 +25,10 @@ export default defineComponent({
       default: "top",
     },
 
-    show: Boolean,
+    show: {
+      type: Boolean,
+      default: undefined,
+    },
   },
 
   data() {
@@ -41,6 +44,8 @@ export default defineComponent({
     // 设置气泡展示&消失演示避免闪烁
     this.BumperDisplay.setAlarmCooled(() => (this.showBubble = true));
     this.BumperHide.setAlarmCooled(() => (this.showBubble = false));
+
+    this.setEvent();
   },
   computed: {
     ClassBubble() {
@@ -146,6 +151,19 @@ export default defineComponent({
         start ? `${NewPosition()}-${NewStart()}` : NewPosition()
       ) as any;
     },
+    /**
+     * 在 this.show 不为 undefined 时不设置事件触发气泡显示
+     */
+    setEvent() {
+      const el = getEl(this, "j-bubble");
+      if (this.show == undefined) {
+        el.addEventListener("mouseenter", this.displayBubble);
+        el.addEventListener("mouseleave", this.hideBubble);
+      } else {
+        el.removeEventListener("mouseenter", this.displayBubble);
+        el.removeEventListener("mouseleave", this.hideBubble);
+      }
+    },
   },
   watch: {
     position(v) {
@@ -153,6 +171,7 @@ export default defineComponent({
     },
     show(v) {
       // 使用 Prop 'show' 控制气泡是否显示
+      this.setEvent();
       v ? this.displayBubble() : this.hideBubble();
     },
   },
@@ -168,8 +187,6 @@ export default defineComponent({
       baseAction,
       {
         class: "j-bubble",
-        onmouseenter: this.displayBubble,
-        onmouseleave: this.hideBubble,
       },
       {
         default: () =>
