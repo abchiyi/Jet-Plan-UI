@@ -73,6 +73,8 @@ export default defineComponent({
       this.BumperDisplay.action();
     },
     hideBubble() {
+      // 取消执行延迟任务
+      clearTimeout(this.BumperDisplay.idTimeOut);
       this.BumperHide.action();
     },
     edgeAvoidance() {
