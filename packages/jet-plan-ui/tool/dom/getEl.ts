@@ -10,7 +10,7 @@ import { warn, type CreateComponentPublicInstance } from "vue";
 export default function getEl(
   component: object,
   name: "getEl",
-  warningMessage: true
+  warningMessage = true
 ): HTMLElement {
   const Component = component as CreateComponentPublicInstance;
   const $El = Component.$el as HTMLElement | undefined;
