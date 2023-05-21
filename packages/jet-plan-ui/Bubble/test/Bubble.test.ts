@@ -52,8 +52,18 @@ describe("Bubble", () => {
     }
   });
 
-  test.each([true, false, undefined])("Props:show", v => {
-    expect(shallowMount(Bubble, { props: { show: v } }).vm.show).toEqual(v);
+  test.each([true, false, undefined])("Props:show", async v => {
+    const wrapper = mount(Bubble, { props: { show: v } });
+    expect(wrapper.vm.show).toEqual(wrapper.vm.showBubble);
+    expect(wrapper.vm.show).toEqual(v);
+
+    if (v !== undefined) {
+      expect(wrapper.find(".bubble").exists()).toBe(v);
+      // 测试其在 prop 'show' 的值发生变化时是否正确显示
+      await wrapper.setProps({ show: !v });
+      await sleep(400);
+      expect(wrapper.find(".bubble").exists(), `Value is ${!v}`).toBe(!v);
+    }
   });
 
   test.each([...positionData])("Computed:ClassBubble", async position => {

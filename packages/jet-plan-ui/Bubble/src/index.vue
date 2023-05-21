@@ -30,7 +30,8 @@ export default defineComponent({
 
   data() {
     return {
-      showBubble: false,
+      // 初始值同步自 prop show 以确保气泡正常显示
+      showBubble: this.show,
       BumperDisplay: new Bumper(350),
       BumperHide: new Bumper(50),
       newPosition: this.position,
@@ -63,6 +64,7 @@ export default defineComponent({
   },
   methods: {
     displayBubble() {
+      this.edgeAvoidance();
       this.BumperDisplay.action();
     },
     hideBubble() {
@@ -148,6 +150,10 @@ export default defineComponent({
   watch: {
     position(v) {
       this.newPosition = v;
+    },
+    show(v) {
+      // 使用 Prop 'show' 控制气泡是否显示
+      v ? this.displayBubble() : this.hideBubble();
     },
   },
   render() {
