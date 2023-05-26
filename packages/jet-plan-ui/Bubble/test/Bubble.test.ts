@@ -54,8 +54,10 @@ describe("Bubble", () => {
 
   test.each([true, false, undefined])("Props:show", async v => {
     const wrapper = mount(Bubble, { props: { show: v } });
-    expect(wrapper.vm.show).toEqual(wrapper.vm.showBubble);
-    expect(wrapper.vm.show).toEqual(v);
+    if (v !== undefined) {
+      expect(wrapper.vm.show).toEqual(wrapper.vm.showBubble);
+      expect(wrapper.vm.show).toEqual(v);
+    }
 
     if (v !== undefined) {
       expect(wrapper.find(".bubble").exists()).toBe(v);

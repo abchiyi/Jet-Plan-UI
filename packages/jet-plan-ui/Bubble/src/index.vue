@@ -14,15 +14,15 @@ export default defineComponent({
     },
 
     show: {
-      type: Object as PropType<boolean | "unset">,
-      default: "unset",
+      type: [Boolean, String] as PropType<boolean | "unset">,
+      default: (() => "unset")(),
     },
   },
 
   data() {
     return {
       // 初始值同步自 prop show 以确保气泡正常显示
-      showBubble: this.show,
+      showBubble: this.show === "unset" ? false : this.show,
       BumperDisplay: new Bumper(350),
       BumperHide: new Bumper(50),
       newPosition: this.position,
@@ -149,7 +149,7 @@ export default defineComponent({
      */
     setEvent() {
       const el = getEl(this, "j-bubble");
-      if (this.show == undefined) {
+      if (this.show === "unset") {
         el.addEventListener("mouseenter", this.displayBubble);
         el.addEventListener("mouseleave", this.hideBubble);
       } else {
