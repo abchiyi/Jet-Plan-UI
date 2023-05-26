@@ -107,13 +107,16 @@ export default defineComponent({
       }
 
       function NewStart() {
-        switch (true) {
-          case nearEdgeOfScreen.left:
-            return "start";
-          case nearEdgeOfScreen.right:
-            return "end";
-          case nearEdgeOfScreen.left && nearEdgeOfScreen.right:
-            return "";
+        // 仅在横轴方向执行转换,气泡在左右布局下不会超出元素上下边界
+        if (["top", "bottom"].indexOf(position) !== -1) {
+          switch (true) {
+            case nearEdgeOfScreen.left:
+              return "start";
+            case nearEdgeOfScreen.right:
+              return "end";
+            case nearEdgeOfScreen.left && nearEdgeOfScreen.right:
+              return "";
+          }
         }
         return start;
       }
