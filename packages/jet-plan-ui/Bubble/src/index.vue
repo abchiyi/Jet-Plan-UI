@@ -4,30 +4,18 @@ import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
 import { defineComponent, h, type PropType } from "vue";
 import { Bumper, getOffset, getEl } from "../../tool";
+import type { Position } from ".";
 export default defineComponent({
   name: "j-bubble",
   props: {
     position: {
-      type: String as PropType<
-        | "top"
-        | "top-end"
-        | "top-start"
-        | "bottom"
-        | "bottom-end"
-        | "bottom-start"
-        | "left"
-        | "left-top"
-        | "left-bottom"
-        | "right"
-        | "right-top"
-        | "right-bottom"
-      >,
+      type: String as PropType<Position>,
       default: "top",
     },
 
     show: {
-      type: Boolean,
-      default: undefined,
+      type: Object as PropType<boolean | "unset">,
+      default: "unset",
     },
   },
 
