@@ -2,7 +2,9 @@
   <div class="demo-bubble">
     <bubble class="demo-cube" :position="Props.position" :show="Props.show">
       <template #bubble>Message !</template>
-      <div class="demo-cube"></div>
+      <div class="demo-cube">
+        {{ Props.position }}
+      </div>
     </bubble>
   </div>
 </template>

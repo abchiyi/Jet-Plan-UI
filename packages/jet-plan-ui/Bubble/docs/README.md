@@ -1,5 +1,6 @@
 <script setup>
 import componentDemo from './DemoBubble.vue'
+import positionSelector from './positionSelector.vue'
 </script>
 
 # 浮动气泡
@@ -8,9 +9,11 @@ import componentDemo from './DemoBubble.vue'
 
 ## 示例
 
-<preview-demo-code comp-name="Bubble" demo-name="DemoBubble">
-  <component-demo />
-</preview-demo-code>
+<position-selector v-slot='prop'>
+  <preview-demo-code comp-name="Bubble" demo-name="DemoBubble">
+    <component-demo v-bind='prop' />
+  </preview-demo-code>
+ </position-selector>
 
 ## Props:
 
