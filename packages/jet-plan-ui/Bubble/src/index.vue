@@ -58,12 +58,22 @@ export default defineComponent({
   methods: {
     displayBubble() {
       this.edgeAvoidance();
-      this.BumperDisplay.action();
+      // 使用 prop 'show' 控制时不使用延时
+      if (this.show === "unset") {
+        this.BumperDisplay.action();
+      } else {
+        this.showBubble = true;
+      }
     },
     hideBubble() {
-      // 取消执行延迟任务
-      clearTimeout(this.BumperDisplay.idTimeOut);
-      this.BumperHide.action();
+      // 使用 prop 'show' 控制时不使用延时
+      if (this.show === "unset") {
+        // 取消执行延迟任务
+        clearTimeout(this.BumperDisplay.idTimeOut);
+        this.BumperHide.action();
+      } else {
+        this.showBubble = false;
+      }
     },
     edgeAvoidance() {
       // 计算元素的每条边距离屏幕边缘是否小于预设值
