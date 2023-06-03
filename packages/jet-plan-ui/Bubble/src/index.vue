@@ -3,7 +3,7 @@ import baseAction from "../../ActionFeedback/src/baseAction.vue";
 import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
 import { defineComponent, h, type PropType } from "vue";
-import { Bumper, getOffset, getEl } from "../../tool";
+import { Bumper, getOffset, getEl, type CustomRender } from "../../tool";
 import type { Position } from ".";
 export default defineComponent({
   name: "j-bubble",
@@ -16,6 +16,10 @@ export default defineComponent({
     show: {
       type: [Boolean, String] as PropType<boolean | "unset">,
       default: (() => "unset")(),
+    },
+
+    customRender: {
+      type: Function as PropType<CustomRender>,
     },
   },
 

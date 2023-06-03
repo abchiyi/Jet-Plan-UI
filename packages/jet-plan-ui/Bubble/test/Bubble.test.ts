@@ -3,8 +3,11 @@ import { mount, shallowMount } from "@vue/test-utils";
 import Bubble from "../src/index.vue";
 import baseActionVue from "packages/jet-plan-ui/ActionFeedback/src/baseAction.vue";
 import { Row } from "packages/jet-plan-ui/Grid";
-import { TransitionSlider } from "packages/jet-plan-ui/Animations";
-import { h, isVNode } from "vue";
+import {
+  TransitionFade,
+  TransitionSlider,
+} from "packages/jet-plan-ui/Animations";
+import { h, type VNode } from "vue";
 
 function sleep(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
@@ -159,7 +162,7 @@ describe("Bubble", () => {
     await sleep(50);
     expect(wrapper.vm.showBubble).toBeFalsy();
   });
-  test("Data:newPosition 其值与 prop:position 同步更新", async position => {
+  test("Data:newPosition 其值与 prop:position 同步更新", async () => {
     const wrapper = shallowMount(Bubble, { props: { position: "top" } });
 
     for (let index = 0; index < positionData.length; index++) {
@@ -167,4 +170,16 @@ describe("Bubble", () => {
       expect(wrapper.vm.newPosition).toBe(positionData[index]);
     }
   });
+  test.each([TransitionSlider, TransitionFade])(
+    "Prop:customRender",
+    transition => {
+      const wrapper = mount(Bubble, {
+        props: {
+          customRender: (v: VNode) => v,
+        },
+      });
+
+      expect(wrapper.findComponent(transition).exists()).toBeTruthy();
+    }
+  );
 });
