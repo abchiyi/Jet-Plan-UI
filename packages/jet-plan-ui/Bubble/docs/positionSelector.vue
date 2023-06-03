@@ -70,11 +70,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref, h, type ComputedRef, watch, type Ref } from "vue";
+import { computed, ref, h, type ComputedRef, watch } from "vue";
 import { ActionLabel } from "src/components";
 import { RTS } from "src/theme";
 import {
-  type customTransition,
   TransitionFolded,
   TransitionSlider,
   TransitionScale,

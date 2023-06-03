@@ -1,6 +1,6 @@
 export * from "./dom";
 export * from "./isColorCode";
-export * from "./index.d";
+export * from "./types.d";
 /**
  *  hex to rgb
  * @param hex hex字符串
@@ -275,7 +275,7 @@ export function getKeys<T>(obj: T) {
 }
 
 import type { VNode } from "vue";
-import type { RenderFunction } from "./index.d";
+import type { RenderFunction } from "./types";
 
 /**
  * 提供组件自定义渲染支持
