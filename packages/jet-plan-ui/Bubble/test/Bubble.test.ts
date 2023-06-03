@@ -7,7 +7,8 @@ import {
   TransitionFade,
   TransitionSlider,
 } from "packages/jet-plan-ui/Animations";
-import { h, type VNode } from "vue";
+import { h } from "vue";
+import { exec } from "child_process";
 
 function sleep(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
@@ -55,20 +56,19 @@ describe("Bubble", () => {
     }
   });
 
-  test.each([true, false, undefined])("Props:show", async v => {
-    const wrapper = mount(Bubble, { props: { show: v } });
-    if (v !== undefined) {
-      expect(wrapper.vm.show).toEqual(wrapper.vm.showBubble);
-      expect(wrapper.vm.show).toEqual(v);
-    }
+  test("Props:show", async () => {
+    const wrapper = mount(Bubble);
+    expect(wrapper.vm.showBubble).toBeFalsy();
+    expect(wrapper.find(".bubble").exists()).toBeFalsy();
 
-    if (v !== undefined) {
-      expect(wrapper.find(".bubble").exists()).toBe(v);
-      // 测试其在 prop 'show' 的值发生变化时是否正确显示
-      await wrapper.setProps({ show: !v });
-      await sleep(400);
-      expect(wrapper.find(".bubble").exists(), `Value is ${!v}`).toBe(!v);
-    }
+    await wrapper.setProps({ show: true });
+    expect(wrapper.vm.showBubble).toBeTruthy();
+    expect(wrapper.find(".bubble").exists()).toBeTruthy();
+
+    await wrapper.setProps({ show: undefined });
+    await sleep(100);
+    expect(wrapper.vm.showBubble).toBeFalsy();
+    expect(wrapper.find(".bubble").exists()).toBeFalsy();
   });
 
   test.each([...positionData])("Computed:ClassBubble", async position => {

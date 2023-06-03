@@ -185,7 +185,7 @@ export default defineComponent({
     show(v) {
       // 使用 Prop 'show' 控制气泡是否显示
       this.setEvent();
-      v ? this.displayBubble() : this.hideBubble();
+      v && v !== "unset" ? this.displayBubble() : this.hideBubble();
     },
   },
   render() {
