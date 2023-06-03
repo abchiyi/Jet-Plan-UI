@@ -1,7 +1,7 @@
 // Vitest Snapshot v1
 
 exports[`Test Radio > SnapShots 1`] = `
-"<label class=\\"shape j-radio\\"><svg viewBox=\\"0 0 16 16\\">
+"<label class=\\"shape j-radio\\"><input><svg viewBox=\\"0 0 16 16\\">
     <rect class=\\"background\\" height=\\"16\\" width=\\"16\\" rx=\\"8\\"></rect>
     <rect transform=\\"translate(2 2)\\" class=\\"mask\\" height=\\"12\\" width=\\"12\\" rx=\\"6\\"></rect>
     <g class=\\"dot\\">
