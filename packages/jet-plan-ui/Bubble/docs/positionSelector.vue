@@ -85,7 +85,7 @@ import {
 } from "jet-plan-ui";
 const colors = computed(() => RTS.getTheme());
 
-const transitionType = ref("Scale"); // 动画效果
+const transitionType = ref("Slider"); // 动画效果
 const bubblePosition = ref("top"); // 气泡显示位置
 const bubbleStart = ref("center"); // 气泡起始位置
 const bubbleShow = ref(false); // 手动开关
@@ -97,10 +97,14 @@ const transitions: { [key: string]: any } = {
   Fade: TransitionFade,
 };
 
-const transitionFunction: ComputedRef<RenderFunction> = computed(() => {
-  return vNode =>
-    h(transitions[transitionType.value], null, { default: () => vNode });
-});
+const transitionFunction: ComputedRef<RenderFunction | undefined> = computed(
+  () => {
+    return transitionType.value !== "Slider"
+      ? vNode =>
+          h(transitions[transitionType.value], null, { default: () => vNode })
+      : undefined;
+  }
+);
 
 function transformStart(v: string) {
   if (["top", "bottom"].indexOf(bubblePosition.value) === -1) {

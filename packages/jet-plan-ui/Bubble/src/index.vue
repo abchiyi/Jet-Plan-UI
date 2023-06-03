@@ -194,7 +194,7 @@ export default defineComponent({
       {
         class: this.ClassBubble,
       },
-      this.$slots.bubble?.()
+      h("div", { class: "bubble-inner" }, this.$slots.bubble?.())
     );
 
     return h(
@@ -239,16 +239,19 @@ export default defineComponent({
 .j-bubble .bubble {
   background: rgb(66, 66, 66);
   border-radius: var(--m-radius);
-  /* color: var(--base-text-color); */
+  color: var(--base-text-color);
   box-sizing: border-box;
   display: inline-block;
-  padding: 5px 10px;
   user-select: none;
   font-size: 0.8rem;
   white-space: nowrap;
   position: absolute;
   z-index: 1;
   pointer-events: none;
+}
+
+.j-bubble .bubble > .bubble-inner {
+  padding: 5px 10px;
 }
 
 .j-bubble .bottom.start,
