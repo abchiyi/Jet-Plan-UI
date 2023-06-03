@@ -1,6 +1,10 @@
 <template>
   <div class="demo demo-bubble">
-    <slot :transition="transitionFunction" :position="POS" :show="SHOW"></slot>
+    <slot
+      :customRender="transitionFunction"
+      :position="POS"
+      :show="SHOW"
+    ></slot>
   </div>
   <div class="demo xy-selector">
     <!-- Position -->
@@ -78,6 +82,7 @@ import {
   Switch,
   Radio,
   Row,
+  type RenderFunction,
 } from "jet-plan-ui";
 const colors = computed(() => RTS.getTheme());
 
@@ -93,13 +98,9 @@ const transitions: { [key: string]: any } = {
   Fade: TransitionFade,
 };
 
-const transitionFunction: ComputedRef<customTransition> = computed(() => {
+const transitionFunction: ComputedRef<RenderFunction> = computed(() => {
   return vNode =>
-    h(
-      transitions[transitionType.value],
-      { mode: "out-in" },
-      { default: () => vNode }
-    );
+    h(transitions[transitionType.value], null, { default: () => vNode });
 });
 
 function transformStart(v: string) {
