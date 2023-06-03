@@ -170,16 +170,14 @@ describe("Bubble", () => {
       expect(wrapper.vm.newPosition).toBe(positionData[index]);
     }
   });
-  test.each([TransitionSlider, TransitionFade])(
-    "Prop:customRender",
-    transition => {
-      const wrapper = mount(Bubble, {
-        props: {
-          customRender: (v: VNode) => v,
-        },
-      });
+  test.each([TransitionFade])("Prop:customRender", transition => {
+    const wrapper = mount(Bubble, {
+      props: {
+        customRender: (v: any) =>
+          h(transition, { position: "top" }, { default: () => v }),
+      },
+    });
 
-      expect(wrapper.findComponent(transition).exists()).toBeTruthy();
-    }
-  );
+    expect(wrapper.findComponent(transition).exists()).toBeTruthy();
+  });
 });

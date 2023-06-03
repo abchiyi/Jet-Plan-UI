@@ -273,3 +273,21 @@ export function setValue<T extends object>(obj: T, key: keyof T, value: any) {
 export function getKeys<T>(obj: T) {
   return Object(obj).keys() as Array<keyof T>;
 }
+
+import type { VNode } from "vue";
+import type { RenderFunction } from "./index.d";
+
+/**
+ * 提供组件自定义渲染支持
+ * @param vNode 允许自定义渲染的节点
+ * @param render 外部定义的渲染函数
+ * @param renderDefault 组件默认的渲染函数
+ * @returns VNode
+ */
+export function customRender(
+  vNode: VNode | undefined,
+  render: RenderFunction | undefined,
+  renderDefault: RenderFunction
+): VNode {
+  return render ? render(vNode) : renderDefault(vNode);
+}

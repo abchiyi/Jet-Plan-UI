@@ -4,4 +4,4 @@ import type { VNode } from "vue";
  * @param vNode:VNode 组件传入的可自定义渲染的部分
  * @returns VNode 将作为最终输出被渲染到页面中
  */
-export declare type CustomRender = (vNode: VNode) => VNode;
+export declare type RenderFunction = (vNode?: VNode) => VNode;

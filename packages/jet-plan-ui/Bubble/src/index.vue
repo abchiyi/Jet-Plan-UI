@@ -3,7 +3,13 @@ import baseAction from "../../ActionFeedback/src/baseAction.vue";
 import { TransitionSlider } from "../../Animations";
 import { Row } from "../../Grid";
 import { defineComponent, h, type PropType } from "vue";
-import { Bumper, getOffset, getEl, type CustomRender } from "../../tool";
+import {
+  Bumper,
+  getOffset,
+  getEl,
+  type RenderFunction,
+  customRender,
+} from "../../tool";
 import type { Position } from ".";
 export default defineComponent({
   name: "j-bubble",
@@ -19,7 +25,7 @@ export default defineComponent({
     },
 
     customRender: {
-      type: Function as PropType<CustomRender>,
+      type: Function as PropType<RenderFunction>,
     },
   },
 
@@ -190,6 +196,7 @@ export default defineComponent({
       },
       this.$slots.bubble?.()
     );
+
     return h(
       baseAction,
       {
@@ -203,12 +210,16 @@ export default defineComponent({
             {
               default: () => [
                 this.$slots.default?.(),
-                h(
-                  TransitionSlider,
-                  { position: this.positionReverse },
-                  {
-                    default: () => (this.showBubble ? Bubble : undefined),
-                  }
+
+                customRender(
+                  this.showBubble ? Bubble : undefined,
+                  this.customRender,
+                  vNode =>
+                    h(
+                      TransitionSlider,
+                      { position: this.positionReverse },
+                      { default: () => vNode }
+                    )
                 ),
               ],
             }
