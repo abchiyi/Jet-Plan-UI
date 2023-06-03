@@ -15,7 +15,7 @@ import positionSelector from './positionSelector.vue'
   </preview-demo-code>
  </position-selector>
 
-## Props:
+## Props
 
 - `position`:
 
