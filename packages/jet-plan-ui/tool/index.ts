@@ -1,5 +1,6 @@
 export * from "./dom";
 export * from "./isColorCode";
+export * from "./index.d";
 /**
  *  hex to rgb
  * @param hex hex字符串
