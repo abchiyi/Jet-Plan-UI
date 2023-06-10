@@ -2,9 +2,10 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": ["./**/*", "../support/**/*"],
   "compilerOptions": {
+    "ignoreDeprecations": "5.0",
     "isolatedModules": false,
-    "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress"]
+    "types": ["cypress"],
+    "target": "es5"
   }
 }

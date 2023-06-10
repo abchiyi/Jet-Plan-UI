@@ -1,7 +1,4 @@
 /// <reference types="vitest" />
-
-import { fileURLToPath, URL } from "node:url";
-
 import vitePluginInspect from "vite-plugin-inspect";
 import autoprefixer from "autoprefixer";
 import vue from "@vitejs/plugin-vue";
@@ -26,10 +23,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url)),
       "jet-plan-ui": _resolve("./packages/jet-plan-ui"),
-      packages: _resolve("./packages"),
-      views: _resolve("./src/view"),
+      packages: resolve("./packages"),
       public: _resolve("./public"),
       src: _resolve("./src"),
     },

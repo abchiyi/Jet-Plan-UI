@@ -1,3 +1,4 @@
 export * from "./dom";
 import getInputEl from "./getInputEl";
-export { getInputEl };
+import getEl from "./getEl";
+export { getInputEl, getEl };

@@ -47,5 +47,9 @@ export default [
     name: "Alert",
     path: "alert",
     component: () => import("packages/jet-plan-ui/Alert/docs/README.md"),
+  },{
+    name: "Bubble",
+    path: "bubble",
+    component: () => import("packages/jet-plan-ui/Bubble/docs/README.md"),
   }
 ]

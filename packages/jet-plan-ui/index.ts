@@ -14,6 +14,7 @@ import { CheckboxPlugin } from './Checkbox';
 import { RangePlugin } from './Range';
 import { DrawerPlugin } from './Drawer';
 import { AlertPlugin } from './Alert';
+import { BubblePlugin } from './Bubble';
 
 const UiPlugin: Plugin = {
   install(app: App) {
@@ -29,6 +30,7 @@ const UiPlugin: Plugin = {
     RangePlugin.install?.(app);
     DrawerPlugin.install?.(app);
     AlertPlugin.install?.(app);
+    BubblePlugin.install?.(app);
   },
 };
 
@@ -47,3 +49,4 @@ export * from './Checkbox'
 export * from './Range'
 export * from './Drawer'
 export * from './Alert'
+export * from './Bubble'

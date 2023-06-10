@@ -70,5 +70,11 @@
     "compZhName": "消息提示组件",
     "compDesc": "传递简短的消息通知",
     "compClassName": "j-alert"
+  },
+  {
+    "compName": "Bubble",
+    "compZhName": "浮动气泡",
+    "compDesc": "浮动消息气泡",
+    "compClassName": "j-bubble"
   }
 ]

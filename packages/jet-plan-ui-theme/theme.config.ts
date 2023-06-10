@@ -1,4 +1,4 @@
-import { defineTheme } from "packages/jet-plan-ui/theme";
+import { defineTheme } from "jet-plan-ui";
 
 export const jetLight = defineTheme({
   name: "JetLight",
