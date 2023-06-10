@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 import { Drawer, shadowPainter } from "jet-plan-ui";
-import { RTS } from "@/theme";
+import { RTS } from "src/theme";
 const props = defineProps<{
   expand: boolean;
   from: "top" | "left" | "right" | "bottom";

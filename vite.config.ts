@@ -28,8 +28,6 @@ export default defineConfig({
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
       "jet-plan-ui": _resolve("./packages/jet-plan-ui"),
-      packages: _resolve("./packages"),
-      views: _resolve("./src/view"),
       public: _resolve("./public"),
       src: _resolve("./src"),
     },

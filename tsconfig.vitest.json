@@ -1,9 +1,9 @@
 {
-  "extends": "./tsconfig.app.json",
-  "exclude": [],
+  "extends": "./tsconfig.json",
+  "exclude": ["**/test/**/*"],
   "compilerOptions": {
+    "ignoreDeprecations": "5.0",
     "composite": true,
-    "lib": [],
     "types": ["node", "jsdom"]
   }
 }

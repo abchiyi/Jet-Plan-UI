@@ -8,8 +8,8 @@
   <slot></slot>
 </template>
 <script lang="ts">
-import { Switch as JSwitch } from "packages/jet-plan-ui/Switch";
-import { ActionLabel } from "@/components";
+import { Switch as JSwitch } from "jet-plan-ui";
+import { ActionLabel } from "src/components";
 import { defineComponent } from "vue";
 
 export default defineComponent({
