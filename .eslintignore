@@ -1,2 +1,4 @@
 script/*
 dist/*
+# 自动生成文件，无需格式化
+routerComponents.ts
