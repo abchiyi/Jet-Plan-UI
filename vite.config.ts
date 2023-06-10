@@ -1,7 +1,4 @@
 /// <reference types="vitest" />
-
-import { fileURLToPath, URL } from "node:url";
-
 import vitePluginInspect from "vite-plugin-inspect";
 import autoprefixer from "autoprefixer";
 import vue from "@vitejs/plugin-vue";
