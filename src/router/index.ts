@@ -30,17 +30,17 @@ const routes: RouterOptions["routes"] = [
   {
     path: "/docs",
     redirect: Start[0],
-    component: () => import("@/view/theDoc.vue"),
+    component: () => import("src/view/theDoc.vue"),
     children: [...components, ...Start, ...Tool],
   },
   {
     path: "/about",
-    component: () => import("../view/theAbout.md"),
+    component: () => import("src/view/theAbout.md"),
   },
   {
     // XXX 创建真正的的 component-list
     path: "/component-list",
-    component: () => import("@/view/theAbout.md"),
+    component: () => import("src/view/theAbout.md"),
   },
 ];
 

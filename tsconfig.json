@@ -13,9 +13,10 @@
     "lib": ["esnext", "dom"],
     "skipLibCheck": true,
     "paths": {
-      "src/*": ["./src/*"],
+      "jet-plan-ui": ["./packages/jet-plan-ui/index.ts"],
       "jet-plan-ui/*": ["./packages/jet-plan-ui/*"],
-      "jet-plan-ui": ["./packages/jet-plan-ui/index.ts"]
+      "packages": ["./packages/*"],
+      "src/*": ["./src/*"]
     }
   },
   "include": [
