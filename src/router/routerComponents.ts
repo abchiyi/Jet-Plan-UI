@@ -51,5 +51,9 @@ export default [
     name: "Bubble",
     path: "bubble",
     component: () => import("packages/jet-plan-ui/Bubble/docs/README.md"),
+  },{
+    name: "Avatar",
+    path: "avatar",
+    component: () => import("packages/jet-plan-ui/Avatar/docs/README.md"),
   }
 ]

@@ -76,5 +76,11 @@
     "compZhName": "浮动气泡",
     "compDesc": "浮动消息气泡",
     "compClassName": "j-bubble"
+  },
+  {
+    "compName": "Avatar",
+    "compZhName": "头像",
+    "compDesc": "用于展示头像",
+    "compClassName": "j-avatar"
   }
 ]
