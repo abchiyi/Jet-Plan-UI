@@ -142,4 +142,5 @@ export function autoTextColor(el: HTMLElement) {
       }
     }
   }
+  return "";
 }
