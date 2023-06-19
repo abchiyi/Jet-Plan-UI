@@ -9,6 +9,19 @@ describe("Avatar", () => {
 
   test("Computed:Classes", async () => {
     const wrapper = shallowMount(Avatar);
-    expect(wrapper.vm.classes).toEqual(["j-avatar"]);
+    expect(wrapper.vm.classes).include("j-avatar");
+
+    expect(wrapper.vm.classes).include("circle");
+    await wrapper.setProps({ circle: false });
+    expect(wrapper.vm.classes).not.include("circle");
+  });
+
+  test.each([false, "Test"])("Slot:default", async (v: any) => {
+    const wrapper = mount(Avatar, v ? { slots: { default: v } } : undefined);
+    if (v) {
+      expect(wrapper.text()).toBe("Test");
+    } else {
+      expect(wrapper.text()).toBe("");
+    }
   });
 });
