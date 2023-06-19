@@ -1,5 +1,6 @@
 <script setup>
 import componentDemo from './Demo{{ compName }}.vue'
+import componentDemoControl from './Demo{{ compName }}Control.vue'
 </script>
 
 # {{ compZhName }}
@@ -8,7 +9,8 @@ import componentDemo from './Demo{{ compName }}.vue'
 
 ## 示例
 
-
-<preview-demo-code comp-name="{{ compName }}" demo-name="Demo{{ compName }}">
-  <component-demo />
-</preview-demo-code>
+<component-demo-control v-slot="props" >
+  <preview-demo-code comp-name="{{ compName }}" demo-name="Demo{{ compName }}">
+    <component-demo v-bind="props" />
+  </preview-demo-code>
+</component-demo-control>
