@@ -8,6 +8,7 @@
 
 <script lang="ts">
 import { JET_THEME } from "jet-plan-ui/theme";
+import { Bumper, autoTextColor } from "jet-plan-ui/tool";
 import { defineComponent } from "vue";
 export default defineComponent({
   name: "j-avatar",
@@ -22,6 +23,21 @@ export default defineComponent({
       colorBackground: JET_THEME.Theme.background.light,
     };
   },
+  data() {
+    return {
+      colorText: "",
+      Bumper: new Bumper(20),
+    };
+  },
+  mounted() {
+    this.Bumper.setAlarmCooled(() => {
+      this.colorText = autoTextColor(this.$el);
+    });
+    this.Bumper.action();
+  },
+  updated() {
+    this.Bumper.action();
+  },
   computed: {
     classes() {
       return ["j-avatar", this.circle ? "circle" : ""];
@@ -33,6 +49,7 @@ export default defineComponent({
 <style>
 .j-avatar {
   background: v-bind("colorBackground");
+  color: v-bind(colorText);
   display: inline-block;
   position: relative;
   font-size: 1.5rem;
