@@ -12,6 +12,7 @@ import { ActionFeedback } from "jet-plan-ui";
   justify-content: space-between;
   align-items: center;
   display: flex;
+  user-select: none;
 }
 
 .action-label > * {
