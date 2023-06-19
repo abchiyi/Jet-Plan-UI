@@ -101,3 +101,47 @@ h3 {
 h4 {
     font-size: 1.3rem;
 }
+
+/* css for control.vue */
+.demo .action-label {
+    background: var(--background-dark);
+    padding: 0.8em 0.5em;
+    outline: unset;
+    margin: unset;
+    width: 100%;
+}
+
+.demo .action-label+.action-label {
+    margin-left: 0.5em;
+}
+
+.demo .j-row+.j-row {
+    margin-top: 0.5rem;
+}
+
+.demo strong {
+    font-family: "sarasa mono";
+    font-size: 12px;
+}
+
+.demo p>strong {
+    color: var(--text-hint);
+    font-size: 0.6rem;
+}
+
+.demo p {
+    margin-bottom: 0.2rem;
+}
+
+.demo>.j-row>.j-button {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    font-family: "sarasa mono", Consolas, "Courier New", Courier, FreeMono,
+        monospace;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+}
+
+.demo .j-button+.j-button {
+    margin-left: 0.5rem;
+}

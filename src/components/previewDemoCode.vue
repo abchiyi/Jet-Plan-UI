@@ -147,4 +147,8 @@ export default defineComponent({
   padding-bottom: 6px;
   padding: 6px 0;
 }
+.preview-demo-code.demo .j-row > .show-code {
+  padding: unset;
+  margin: unset;
+}
 </style>
