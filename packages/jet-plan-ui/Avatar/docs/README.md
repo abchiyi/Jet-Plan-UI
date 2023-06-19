@@ -1,5 +1,6 @@
 <script setup>
 import componentDemo from './DemoAvatar.vue'
+import demoAvatarControl from './DemoAvatarControl.vue'
 </script>
 
 # 头像
@@ -8,9 +9,11 @@ import componentDemo from './DemoAvatar.vue'
 
 ## 示例
 
-<preview-demo-code comp-name="Avatar" demo-name="DemoAvatar">
-  <component-demo />
-</preview-demo-code>
+<demo-avatar-control  v-slot="props" >
+  <preview-demo-code comp-name="Avatar" demo-name="DemoAvatar">
+    <component-demo v-bind="props" />
+  </preview-demo-code>
+</demo-avatar-control>
 
 ## Props
 
@@ -27,3 +30,7 @@ import componentDemo from './DemoAvatar.vue'
 - `default`:
 
   默认插槽，要展示的内容插入其中。
+
+## 特性
+
+Avatar 组件具有文本色彩自适应功能，能根据当前组件背景色自动突出文本色彩。
