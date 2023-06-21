@@ -148,7 +148,7 @@ export default defineComponent({
   padding: 6px 0;
 }
 .preview-demo-code.demo .j-row > .show-code {
-  padding: unset;
-  margin: unset;
+  margin: calc(1em * 0.15);
+  padding: 6px 8px;
 }
 </style>
