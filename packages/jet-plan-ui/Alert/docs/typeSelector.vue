@@ -1,8 +1,8 @@
 <template>
-  <div class="demo no-padding demo-alert">
+  <div class="demo demo-alert">
     <slot :transition="transitionFunction" :alertController="AC"></slot>
   </div>
-  <div class="demo xy-selector">
+  <div class="demo padding control">
     <!-- Type -->
     <p><strong>Message type</strong></p>
     <Row Y="center" spaceMode="between">

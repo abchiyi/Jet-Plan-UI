@@ -4,13 +4,8 @@ import demoFade from './DemoFade.vue'
 import demoScale from './DemoScale.vue'
 import demoFolded from './DemoFolded.vue'
 import demoSlider from './DemoSlider.vue'
-import AnimatedSwitch from './AnimatedSwitch.vue'
-import { ref } from "vue"
-const Fade = ref(true)
-const Scale = ref(true)
-const Folded= ref(true)
-const Slider = ref(true)
-const SliderFade = ref(true)
+import ControlSlider from './ControlSlider.vue'
+import ControlAnimation from './ControlAnimation.vue'
 </script>
 <!-- 加载 demo 组件 end -->
 
@@ -23,32 +18,35 @@ const SliderFade = ref(true)
 
 ## Fade
 
-<AnimatedSwitch v-model="Fade" />
-<preview-demo-code comp-name="Animations" demo-name="DemoFade">
-  <demo-fade :show-demo="Fade" />
-</preview-demo-code>
+<control-animation v-slot="props" >
+  <preview-demo-code comp-name="Animations" demo-name="DemoFade">
+    <demo-fade v-bind="props" />
+  </preview-demo-code>
+</control-animation>
 
 ## Scale
 
-<AnimatedSwitch v-model="Scale" />
-<preview-demo-code comp-name="Animations" demo-name="DemoScale">
-  <demo-scale :show-demo="Scale" />
-</preview-demo-code>
+<control-animation v-slot="props" >
+  <preview-demo-code comp-name="Animations" demo-name="DemoScale">
+    <demo-scale v-bind="props" />
+  </preview-demo-code>
+</control-animation>
 
 ## Folded
 
-<AnimatedSwitch v-model="Folded" />
-<preview-demo-code comp-name="Animations" demo-name="DemoFolded">
-  <demo-folded :show-demo="Folded" />
-</preview-demo-code>
+<control-animation v-slot="props" >
+  <preview-demo-code comp-name="Animations" demo-name="DemoFolded">
+    <demo-folded v-bind="props" />
+  </preview-demo-code>
+</control-animation>
 
 ## Slider
 
-<AnimatedSwitch v-model="SliderFade" :text="`${SliderFade?'':'不'}使用Fade效果`" />
-<AnimatedSwitch v-model="Slider" />
-<preview-demo-code comp-name="Animations" demo-name="DemoSlider">
-  <demo-slider :show-demo="Slider" :use-fade="SliderFade" />
-</preview-demo-code>
+<control-slider v-slot="props">
+  <preview-demo-code comp-name="Animations" demo-name="DemoSlider">
+    <demo-slider v-bind="props" />
+  </preview-demo-code>
+</control-slider>
 
 ### TransitionSliderProps
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="demo">
+  <div class="demo padding control">
     <Row Y="center" spaceMode="between">
       <ActionLabel v-for="item in FROM" :key="item">
         <Radio>

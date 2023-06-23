@@ -1,9 +1,9 @@
 <template>
-  <div class="demo no-padding demo-bubble">
+  <div class="demo">
     <!-- Todo bind attr -->
     <slot></slot>
   </div>
-  <div class="demo">
+  <div class="demo control padding">
     <!-- Todo title -->
     <p><strong>Todo Title</strong></p>
     <Row Y="center" spaceMode="between">

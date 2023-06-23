@@ -1,12 +1,12 @@
 <template>
-  <div class="demo no-padding demo-bubble">
+  <div class="demo demo-bubble">
     <slot
       :customRender="transitionFunction"
       :position="POS"
       :show="SHOW"
     ></slot>
   </div>
-  <div class="demo xy-selector">
+  <div class="demo control padding">
     <!-- Position -->
     <p><strong>Bubble position</strong></p>
     <Row Y="center" spaceMode="between">

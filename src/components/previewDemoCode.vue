@@ -112,7 +112,7 @@ export default defineComponent({
   box-shadow: v-bind(shadow);
   border-radius: 8px;
   position: relative;
-  padding: 1rem;
+  padding: 0.5rem;
   outline: unset;
   z-index: 1;
 }
