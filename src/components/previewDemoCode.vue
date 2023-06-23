@@ -112,7 +112,7 @@ export default defineComponent({
   box-shadow: v-bind(shadow);
   border-radius: 8px;
   position: relative;
-  padding: 0.5rem;
+  padding: 1rem;
   outline: unset;
   z-index: 1;
 }
@@ -146,5 +146,9 @@ export default defineComponent({
   transition: 0.3s ease-in-out;
   padding-bottom: 6px;
   padding: 6px 0;
+}
+.preview-demo-code.demo .j-row > .show-code {
+  margin: calc(1em * 0.15);
+  padding: 6px 8px;
 }
 </style>

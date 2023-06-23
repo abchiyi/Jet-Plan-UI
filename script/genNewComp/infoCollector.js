@@ -57,6 +57,24 @@ export default async function () {
     },
     {
       type: "input",
+      message:"输入组件类型 basic | from | Notice | navigation | others",
+      name: 'type',
+      default: "others",
+      validate(answer) {
+        const done = this.async()
+        const validate = [
+          'basic', "from", "notice", "navigation","others"
+        ].indexOf(answer) !== -1
+        if (!validate) {
+          done('请输入以上指定的类型')
+          return
+        } 
+        done(null,true)
+        
+      }
+    },
+    {
+      type: "input",
       message: "请输入组件的功能描述：",
       name: "compDesc",
       default: "默认：这是一个新组件",

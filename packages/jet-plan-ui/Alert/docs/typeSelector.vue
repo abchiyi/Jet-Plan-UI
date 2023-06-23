@@ -1,5 +1,5 @@
 <template>
-  <div class="demo demo-alert">
+  <div class="demo no-padding demo-alert">
     <slot :transition="transitionFunction" :alertController="AC"></slot>
   </div>
   <div class="demo xy-selector">
@@ -54,7 +54,6 @@
 <script lang="ts" setup>
 import { computed, ref, h, type ComputedRef, onMounted, type Ref } from "vue";
 import { ActionLabel } from "src/components";
-import { RTS } from "src/theme";
 import {
   type customTransition,
   TransitionFolded,
@@ -67,7 +66,6 @@ import {
   Range,
   Row,
 } from "jet-plan-ui";
-const colors = computed(() => RTS.getTheme());
 const transitions: { [key: string]: any } = {
   Folded: TransitionFolded,
   Scale: TransitionScale,
@@ -108,50 +106,3 @@ onMounted(() =>
   })
 );
 </script>
-<style scoped>
-.action-label {
-  background: v-bind("colors.value.background.dark");
-  padding: 0.8em 0.5em;
-  outline: unset;
-  margin: unset;
-  width: 100%;
-}
-
-.action-label + .action-label {
-  margin-left: 0.5em;
-}
-.j-row + .j-row {
-  margin-top: 0.5rem;
-}
-strong {
-  font-family: "sarasa mono";
-  font-size: 12px;
-}
-p > strong {
-  color: v-bind("colors.value.text.hint");
-  font-size: 0.6rem;
-}
-p {
-  margin-bottom: 0.2rem;
-}
-
-.j-button {
-  margin: 0.5rem 0;
-  font-size: 1rem;
-  font-family: "sarasa mono", Consolas, "Courier New", Courier, FreeMono,
-    monospace;
-  padding: 0.5rem 0;
-  border-radius: 8px;
-}
-
-.j-button + .j-button {
-  margin-left: 0.5rem;
-}
-
-.demo.demo-alert {
-  position: relative;
-  min-height: 82px;
-  padding: unset;
-  z-index: 0;
-}
-</style>

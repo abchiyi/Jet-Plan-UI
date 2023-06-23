@@ -161,6 +161,9 @@ export default defineComponent({
 });
 </script>
 <style>
+body {
+  overflow-y: scroll;
+}
 /* 变量设定 */
 .base-page {
   --CONTENT-WIDTH-MAIN: 760px;

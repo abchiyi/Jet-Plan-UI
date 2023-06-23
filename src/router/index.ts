@@ -42,6 +42,15 @@ const routes: RouterOptions["routes"] = [
     path: "/component-list",
     component: () => import("src/view/theAbout.md"),
   },
+  {
+    path: "/404",
+    name: "notFound",
+    component: () => import("src/view/theNotFound404.vue"),
+  },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/404",
+  },
 ];
 
 // Router config

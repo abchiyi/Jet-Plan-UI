@@ -29,6 +29,10 @@ function getTplFilePath(meta) {
       from: "./.template/docs/demo.vue.tpl",
       to: `../../packages/${PACKAGE_NAME}/${meta.compName}/docs/Demo${meta.compName}.vue`,
     },
+    demoControl: {
+      from: "./.template/docs/demoControl.vue.tpl",
+      to: `../../packages/${PACKAGE_NAME}/${meta.compName}/docs/Demo${meta.compName}Control.vue`,
+    },
     // src 目录
     vue: {
       from: "./.template/src/index.vue.tpl",
@@ -95,6 +99,7 @@ const routerTplReplacer = listFileContent => {
     routes: listFileContent.map(comp => {
       return `{
     name: "${comp.compName}",
+    type: "${comp.type?comp.type:'others'}",
     path: "${kebabCase(comp.compName)}",
     component: () => import("packages/${PACKAGE_NAME}/${
         comp.compName

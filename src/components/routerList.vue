@@ -4,42 +4,72 @@
     <j-button tag="h2" hover text block @click="itemExpand = !itemExpand">
       {{ PROPS.title }}
     </j-button>
-    <!-- Item -->
-    <TransitionFolded>
+
+    <!-- links -->
+
+    <!--PROPS.classify 为 false 渲染 -->
+    <TransitionFolded v-if="!PROPS.classify">
       <ul v-show="itemExpand">
-        <li v-for="item in Routers" :key="item.name">
-          <linkButton :aria-label="item.name" :to="item.path" hover text block>
-            {{ item.name }}
+        <li v-for="name in RouterName" :key="name">
+          <linkButton :aria-label="name" :to="{ name }" hover text block>
+            {{ name }}
           </linkButton>
         </li>
       </ul>
+    </TransitionFolded>
+    <!--PROPS.classify 为 true 渲染 -->
+    <TransitionFolded v-if="PROPS.classify">
+      <div v-show="itemExpand">
+        <ul
+          v-for="linkType in Object.keys(routerClassify).sort()"
+          :key="linkType"
+        >
+          <strong class="sub-title text-hint">{{ linkType }}</strong>
+          <li v-for="name in routerClassify[linkType]" :key="name">
+            <linkButton :aria-label="name" :to="{ name }" hover text block>
+              {{ name }}
+            </linkButton>
+          </li>
+        </ul>
+      </div>
     </TransitionFolded>
   </div>
 </template>
 <script lang="ts" setup>
 import { Button as JButton, TransitionFolded } from "jet-plan-ui";
+import listData from "../../packages/list.json";
 import { linkButton } from "src/components";
 import { computed } from "vue";
 import { ref } from "vue";
 import type { RouteRecordRaw } from "vue-router";
 const PROPS = defineProps<{
   title: string;
+  classify?: boolean;
   routers: readonly RouteRecordRaw[];
 }>();
 
-const Routers = computed(() => {
-  if (PROPS.routers.length < 2) return PROPS.routers;
+// 使用命名方式路由导航
+const RouterName = computed(() => {
   const routers = PROPS.routers as RouteRecordRaw[];
-  const routerNames = routers.map(item => item.name).sort();
+  return routers.map(item => item.name).sort();
+});
 
-  let temp = [] as RouteRecordRaw[];
-  for (let key in routerNames) {
-    const item = routers.filter(item => item.name == routerNames[key]);
-    if (item.length) {
-      temp = temp.concat(item);
+const routerClassify = computed(() => {
+  const Temp = {} as { [key: string]: Array<string> };
+  if (!PROPS.classify) return Temp;
+  for (let key in RouterName.value) {
+    const name = RouterName.value[key] as string;
+    const D = listData.find(item => item.compName == name);
+    const linkType = D?.type ? D.type : "others";
+
+    if (Temp[linkType]) {
+      Temp[linkType] = Temp[linkType].concat([name]);
+    } else {
+      Temp[linkType] = [name];
     }
   }
-  return temp;
+
+  return Temp;
 });
 
 const itemExpand = ref(true);
@@ -69,5 +99,12 @@ ul .j-button {
   text-align: start;
   font-size: 14px;
   margin: unset;
+}
+.sub-title {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 1em 0 0.5em 0;
+  padding-left: 1.2rem;
+  display: block;
 }
 </style>
