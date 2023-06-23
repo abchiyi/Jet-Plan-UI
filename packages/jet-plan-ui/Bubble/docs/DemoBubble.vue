@@ -11,7 +11,7 @@
 <script lang="ts" setup>
 import { Bubble, type Position, type RenderFunction } from "jet-plan-ui";
 const Props = defineProps<{
-  customRender: RenderFunction;
+  customRender?: RenderFunction;
   position: Position;
   show: any;
 }>();
