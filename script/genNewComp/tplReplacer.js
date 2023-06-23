@@ -99,6 +99,7 @@ const routerTplReplacer = listFileContent => {
     routes: listFileContent.map(comp => {
       return `{
     name: "${comp.compName}",
+    type: "${comp.type?comp.type:'others'}",
     path: "${kebabCase(comp.compName)}",
     component: () => import("packages/${PACKAGE_NAME}/${
         comp.compName

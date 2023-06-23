@@ -1,5 +1,5 @@
 <template>
-  <div class="demo demo-alert">
+  <div class="demo no-padding demo-alert">
     <slot :transition="transitionFunction" :alertController="AC"></slot>
   </div>
   <div class="demo xy-selector">

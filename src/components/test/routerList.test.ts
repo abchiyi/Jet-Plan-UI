@@ -8,13 +8,18 @@ const component = defineComponent({});
 
 const componentRouter = [
   {
-    name: "Layout",
-    path: "/layout",
+    name: "ActionFeedback",
+    path: "action-feedback",
     component,
   },
   {
-    name: "Inputs",
-    path: "/inputs",
+    name: "Switch",
+    path: "switch",
+    component,
+  },
+  {
+    name: "Button",
+    path: "button",
     component,
   },
 ];
@@ -65,5 +70,31 @@ describe('Test "routerList"', () => {
         expect(el.attributes("aria-label")).toBe(item.name);
       }
     });
+  });
+
+  test("组件链接分类", async () => {
+    const wrapper = mount(routerList, {
+      props: {
+        title: "title",
+        classify: true,
+        routers: componentRouter,
+      },
+      global: {
+        plugins: [router],
+      },
+    });
+
+    expect(wrapper.vm.routerClassify).toEqual({
+      basic: ["ActionFeedback", "Button"],
+      from: ["Switch"],
+    });
+
+    await wrapper.setProps({
+      title: "title",
+      classify: false,
+      routers: componentRouter,
+    });
+
+    expect(wrapper.vm.routerClassify).toEqual({});
   });
 });

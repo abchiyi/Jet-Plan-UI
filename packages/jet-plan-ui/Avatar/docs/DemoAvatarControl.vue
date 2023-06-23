@@ -1,5 +1,5 @@
 <template>
-  <div class="demo demo-bubble">
+  <div class="demo no-padding demo-bubble">
     <slot :circle="circle"></slot>
   </div>
   <div class="demo xy-selector">

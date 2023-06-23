@@ -1,5 +1,6 @@
 [
   {
+    "type": "basic",
     "compName": "ActionFeedback",
     "compZhName": "交互反馈组件",
     "compDesc": "用于交互视觉反馈",
@@ -24,6 +25,7 @@
     "compClassName": "j-code-box"
   },
   {
+    "type": "basic",
     "compName": "Button",
     "compZhName": "按钮",
     "compDesc": "按钮组件",
@@ -36,6 +38,7 @@
     "compClassName": "j-track-bar"
   },
   {
+    "type": "from",
     "compName": "Switch",
     "compZhName": "开关",
     "compDesc": "开关组件",
