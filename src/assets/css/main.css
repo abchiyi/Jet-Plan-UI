@@ -145,3 +145,7 @@ h4 {
 .demo .j-button+.j-button {
     margin-left: 0.5rem;
 }
+
+.demo.no-padding {
+    padding: unset;
+}

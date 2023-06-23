@@ -1,5 +1,5 @@
 <template>
-  <div class="demo demo-bubble">
+  <div class="demo no-padding demo-bubble">
     <!-- Todo bind attr -->
     <slot></slot>
   </div>

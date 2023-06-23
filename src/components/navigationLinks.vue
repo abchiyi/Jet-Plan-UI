@@ -7,6 +7,7 @@
   <router-list
     :routers="componentRouter"
     class="links-component"
+    :classify="true"
     title="组件"
   />
 </template>
