@@ -1,7 +1,10 @@
 <template>
-  <div class="preview-demo-code demo">
-    <div class="demo demo-view-box">
-      <JRow X="end" class="head">
+  <div class="preview-demo-code">
+    <div class="demo padding demo-view-box">
+      <JRow Y="center" X="center" space-mode="between" class="head">
+        <p>
+          <strong>{{ compName }}</strong>
+        </p>
         <JButton
           class="show-code"
           text
@@ -110,9 +113,9 @@ export default defineComponent({
 }
 .preview-demo-code .demo-view-box {
   box-shadow: v-bind(shadow);
+  padding-top: 0.5rem;
   border-radius: 8px;
   position: relative;
-  padding: 0.5rem;
   outline: unset;
   z-index: 1;
 }
@@ -138,17 +141,23 @@ export default defineComponent({
 .j-button.show-code {
   color: var(--text-hint);
   font-size: 1.2rem;
+  padding: 2px 6px;
   margin: unset;
-  padding: 0 3px;
 }
 
-.demo-content {
-  transition: 0.3s ease-in-out;
-  padding-bottom: 6px;
-  padding: 6px 0;
+.demo .preview-demo-code .demo-content {
+  padding: 1rem;
 }
-.preview-demo-code.demo .j-row > .show-code {
-  margin: calc(1em * 0.15);
-  padding: 6px 8px;
+
+.demo .preview-demo-code .head {
+  padding: 0.5rem 1rem 0 1rem;
+}
+
+.demo .preview-demo-code .demo-view-box {
+  padding-top: unset;
+}
+
+.preview-demo-code .head > p {
+  margin: unset;
 }
 </style>

@@ -47,7 +47,7 @@ div.code {
 }
 
 .demo.padding {
-    padding: 0.5rem;
+    padding: 1rem;
 }
 
 .demo .demo {
@@ -55,6 +55,8 @@ div.code {
     padding: unset;
 }
 
+.demo+.preview-demo-code,
+.preview-demo-code+.demo,
 .demo+.demo {
     margin-top: 2rem;
 }

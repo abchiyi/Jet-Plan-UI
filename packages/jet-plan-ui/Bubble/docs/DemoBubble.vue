@@ -21,6 +21,5 @@ const Props = defineProps<{
   justify-content: center;
   align-items: center;
   display: flex;
-  padding: 20px;
 }
 </style>

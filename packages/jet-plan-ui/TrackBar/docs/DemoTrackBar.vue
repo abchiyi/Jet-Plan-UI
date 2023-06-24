@@ -1,10 +1,8 @@
 <template>
-  <div class="demo demo-track-bar">
-    <p class="title-value font-mono">
-      <strong>百分比：{{ (value * 100).toFixed(2) }}%</strong>
-    </p>
-    <TrackBar v-model:percentage="value" :disabled="props.disabled" />
-  </div>
+  <p class="title-value font-mono">
+    <strong>百分比：{{ (value * 100).toFixed(2) }}%</strong>
+  </p>
+  <TrackBar v-model:percentage="value" :disabled="props.disabled" />
 </template>
 <script lang="ts" setup>
 import { TrackBar } from "jet-plan-ui";
