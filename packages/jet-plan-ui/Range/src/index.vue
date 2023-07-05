@@ -130,7 +130,7 @@ export default defineComponent({
     return h(
       "div",
       {
-        class: [NAME, this.disabled ? "disabled" : ""],
+        class: [NAME, "input-hidden", this.disabled ? "disabled" : ""],
       },
       [SLIDER_SHELL, this.$slots.default?.()]
     );
