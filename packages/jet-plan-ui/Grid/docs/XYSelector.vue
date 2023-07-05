@@ -1,5 +1,7 @@
 import { ref } from 'vue';
 <template>
+  <slot :X="X" :Y="Y"></slot>
+
   <div class="demo control padding xy-selector">
     <Row Y="center" spaceMode="between">
       <ActionLabel v-for="item in ['start', 'center', 'end']" :key="item">
@@ -12,7 +14,7 @@ import { ref } from 'vue';
             title="item"
           />
         </Radio>
-        <strong>X{{ item.toUpperCase() }}</strong>
+        <span>X{{ item.toUpperCase() }}</span>
       </ActionLabel>
     </Row>
     <Row Y="center" spaceMode="between">
@@ -26,12 +28,10 @@ import { ref } from 'vue';
             title="item"
           />
         </Radio>
-        <strong>Y{{ item.toUpperCase() }}</strong>
+        <span>Y{{ item.toUpperCase() }}</span>
       </ActionLabel>
     </Row>
   </div>
-
-  <slot :X="X" :Y="Y"></slot>
 </template>
 
 <script lang="ts" setup>

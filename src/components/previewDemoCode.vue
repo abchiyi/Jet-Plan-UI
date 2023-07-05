@@ -1,7 +1,9 @@
 <template>
   <div class="preview-demo-code">
     <div class="demo demo-view-box">
-      <JRow Y="center" X="end" class="head">
+      <JRow Y="center" space-mode="between" class="head">
+        <p class="sub-text">{{ compName }}</p>
+
         <JButton
           @click="() => (showCode = !showCode)"
           class="show-code"
