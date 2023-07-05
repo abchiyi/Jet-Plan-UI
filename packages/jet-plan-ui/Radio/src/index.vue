@@ -56,7 +56,7 @@ export default defineComponent({
     const RADIO_SHELL = h(
       "label",
       {
-        class: ["shape ", "j-radio"],
+        class: ["shape ", "j-radio", "input-hidden"],
       },
       [INPUT, WALLPAPER]
     );
