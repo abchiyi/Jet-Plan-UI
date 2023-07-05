@@ -5,7 +5,7 @@
   <div class="demo control padding">
     <p><strong>Set size</strong></p>
     <Row Y="center" spaceMode="between">
-      <ActionLabel>
+      <ActionLabel :active="false">
         <strong>{{ size }} px</strong>
         <Range>
           <input
