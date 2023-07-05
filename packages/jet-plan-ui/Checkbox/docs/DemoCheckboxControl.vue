@@ -1,12 +1,14 @@
 <template>
   <div class="demo">
-    <slot :size="`${size}px`"></slot>
+    <slot :size="`${size}px`" :disabled="disabled"></slot>
   </div>
   <div class="demo control padding">
-    <p><strong>Set size</strong></p>
+    <p class="sub-title">Set size</p>
     <Row Y="center" spaceMode="between">
       <ActionLabel :active="false">
-        <strong>{{ size }} px</strong>
+        <p>
+          <span>{{ size }} px</span>
+        </p>
         <Range>
           <input
             name="checkbox-size"
@@ -19,12 +21,24 @@
         </Range>
       </ActionLabel>
     </Row>
+    <p class="sub-title">Disabled component</p>
+    <Row Y="center" spaceMode="between">
+      <ActionLabel>
+        <p>
+          <span>{{ !disabled ? "Active" : "Disabled" }}</span>
+        </p>
+        <Switch>
+          <input type="checkbox" v-model="disabled" />
+        </Switch>
+      </ActionLabel>
+    </Row>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ActionLabel } from "src/components";
-import { Row, Range } from "jet-plan-ui";
+import { Row, Range, Switch } from "jet-plan-ui";
 import { ref } from "vue";
+const disabled = ref(false);
 const size = ref(24);
 </script>

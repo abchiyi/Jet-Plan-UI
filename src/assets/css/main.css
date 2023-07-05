@@ -124,8 +124,10 @@ h4 {
     margin-top: 0.5rem;
 }
 
-.demo.control strong,
+.demo.control p>span,
+.demo.control span,
 .demo.control p.sub-title,
+.demo.control p.sub-text,
 .demo.control .action-label>p {
     font-family: "sarasa mono";
     color: var(--text-hint);
@@ -133,7 +135,6 @@ h4 {
 }
 
 .demo.control p.sub-title {
-    color: inherit;
     font-weight: bolder;
 }
 
