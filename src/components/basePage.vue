@@ -8,6 +8,7 @@
           <!-- 导航菜单按钮 -->
           <j-button
             @click="toOpenDropMenu"
+            title="open-drop-menu"
             id="open-drop-menu"
             v-show="Mobile"
             text
@@ -52,10 +53,14 @@
 
     <j-drawer :expand="drawerTopOpen" id="drawer-top" from="top" opacity>
       <ul id="nav-link-group-drop-menu">
-        <link-button to="/about" aria-label="关于">关于</link-button>
-        <link-button to="/component-list" aria-label="组件列表">
-          组件列表
-        </link-button>
+        <li>
+          <link-button to="/about" aria-label="关于">关于</link-button>
+        </li>
+        <li>
+          <link-button to="/component-list" aria-label="组件列表">
+            组件列表
+          </link-button>
+        </li>
       </ul>
       <hr />
       <div id="social-links">
@@ -209,7 +214,7 @@ body {
 #nav-link-group-drop-menu {
   padding: unset;
 }
-#nav-link-group-drop-menu > * {
+#nav-link-group-drop-menu .j-button {
   margin: 0.5rem auto;
   list-style: unset;
   font-size: 1rem;

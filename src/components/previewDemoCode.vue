@@ -1,15 +1,16 @@
 <template>
   <div class="preview-demo-code">
-    <div class="demo padding demo-view-box">
+    <div class="demo demo-view-box">
       <JRow Y="center" X="center" space-mode="between" class="head">
         <p>
           <strong>{{ compName }}</strong>
         </p>
         <JButton
+          @click="() => (showCode = !showCode)"
           class="show-code"
+          title="view code"
           text
           hover
-          @click="() => (showCode = !showCode)"
         >
           <i class="bi bi-code"></i>
         </JButton>
@@ -113,7 +114,6 @@ export default defineComponent({
 }
 .preview-demo-code .demo-view-box {
   box-shadow: v-bind(shadow);
-  padding-top: 0.5rem;
   border-radius: 8px;
   position: relative;
   outline: unset;
@@ -145,16 +145,13 @@ export default defineComponent({
   margin: unset;
 }
 
-.demo .preview-demo-code .demo-content {
-  padding: 1rem;
-}
-
-.demo .preview-demo-code .head {
+.preview-demo-code .head {
   padding: 0.5rem 1rem 0 1rem;
 }
 
-.demo .preview-demo-code .demo-view-box {
-  padding-top: unset;
+.preview-demo-code .demo-content {
+  padding: 1rem;
+  padding-top: 0.5rem;
 }
 
 .preview-demo-code .head > p {

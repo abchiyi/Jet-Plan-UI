@@ -2,7 +2,12 @@
   <ActionFeedback tag="label" active>
     <div>
       <Switch>
-        <input type="checkbox" v-model="value" />
+        <input
+          type="checkbox"
+          v-model="value"
+          name="demo-switch"
+          title="demo-switch"
+        />
       </Switch>
       <strong>{{ value ? "ON" : "OFF" }}</strong>
     </div>

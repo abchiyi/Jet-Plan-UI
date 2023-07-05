@@ -1,10 +1,16 @@
 import { ref } from 'vue';
 <template>
-  <div class="demo xy-selector">
+  <div class="demo control padding xy-selector">
     <Row Y="center" spaceMode="between">
       <ActionLabel v-for="item in ['start', 'center', 'end']" :key="item">
         <Radio>
-          <input type="radio" :value="item" v-model="X" />
+          <input
+            v-model="X"
+            :value="item"
+            type="radio"
+            name="item"
+            title="item"
+          />
         </Radio>
         <strong>X{{ item.toUpperCase() }}</strong>
       </ActionLabel>
@@ -12,7 +18,13 @@ import { ref } from 'vue';
     <Row Y="center" spaceMode="between">
       <ActionLabel v-for="item in ['top', 'center', 'bottom']" :key="item">
         <Radio>
-          <input type="radio" :value="item" v-model="Y" />
+          <input
+            type="radio"
+            :value="item"
+            v-model="Y"
+            name="item"
+            title="item"
+          />
         </Radio>
         <strong>Y{{ item.toUpperCase() }}</strong>
       </ActionLabel>

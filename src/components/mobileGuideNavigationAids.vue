@@ -7,7 +7,7 @@
     v-show="Mobile"
     Y="center"
   >
-    <j-button class="button-menu" @click="clickMenu" text>
+    <j-button class="button-menu" @click="clickMenu" text title="menu button">
       <i class="bi bi-list"></i>
       菜单
     </j-button>
@@ -17,24 +17,34 @@
     <slot name="drawer"></slot>
   </j-drawer>
   <!-- drawer mask -->
-  <div
-    v-show="drawerLeftExpand"
-    @click="drawerLeftExpand = false"
-    id="drawer-mask"
-  ></div>
+  <transition-fade>
+    <div
+      v-show="drawerLeftExpand"
+      @click="drawerLeftExpand = false"
+      id="drawer-mask"
+    ></div>
+  </transition-fade>
 </template>
 <script lang="ts">
-import { Row as JRow, Button as JButton, Drawer as JDrawer } from "jet-plan-ui";
+import {
+  Row as JRow,
+  Button as JButton,
+  Drawer as JDrawer,
+  TransitionFade,
+} from "jet-plan-ui";
 import { shadowPainter } from "jet-plan-ui/tool";
 import { inject, defineComponent } from "vue";
+import { RTS } from "src/theme";
 export default defineComponent({
   components: {
     JRow,
     JButton,
     JDrawer,
+    TransitionFade,
   },
   setup() {
     return {
+      ColorMask: RTS.getTheme().value.mask.default,
       Mobile: inject<string>("Mobile"),
     };
   },
@@ -69,11 +79,17 @@ export default defineComponent({
 }
 
 #drawer-mask {
-  backdrop-filter: blur(2px);
+  background: v-bind("ColorMask");
   position: fixed;
   height: 100vh;
   width: 100vw;
   left: 0;
   top: 0;
+}
+
+@supports (backdrop-filter: blur(2px)) {
+  #drawer-mask {
+    backdrop-filter: blur(2px);
+  }
 }
 </style>

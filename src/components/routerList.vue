@@ -20,17 +20,19 @@
     <!--PROPS.classify 为 true 渲染 -->
     <TransitionFolded v-if="PROPS.classify">
       <div v-show="itemExpand">
-        <ul
+        <div
           v-for="linkType in Object.keys(routerClassify).sort()"
           :key="linkType"
         >
-          <strong class="sub-title text-hint">{{ linkType }}</strong>
-          <li v-for="name in routerClassify[linkType]" :key="name">
-            <linkButton :aria-label="name" :to="{ name }" hover text block>
-              {{ name }}
-            </linkButton>
-          </li>
-        </ul>
+          <p class="sub-title text-hint">{{ linkType }}</p>
+          <ul>
+            <li v-for="name in routerClassify[linkType]" :key="name">
+              <linkButton :aria-label="name" :to="{ name }" hover text block>
+                {{ name }}
+              </linkButton>
+            </li>
+          </ul>
+        </div>
       </div>
     </TransitionFolded>
   </div>

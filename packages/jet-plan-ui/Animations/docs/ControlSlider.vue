@@ -5,7 +5,12 @@
       <ActionLabel>
         <p>Click to {{ value ? "hidden" : "show" }}</p>
         <Switch>
-          <input type="checkbox" v-model="value" />
+          <input
+            type="checkbox"
+            v-model="value"
+            name="demo-switch-animation"
+            title="demo-switch-animation"
+          />
         </Switch>
       </ActionLabel>
     </Row>
@@ -13,7 +18,12 @@
       <ActionLabel>
         <p>{{ valueFade ? "Use" : "No" }} Fade</p>
         <Switch>
-          <input type="checkbox" v-model="valueFade" />
+          <input
+            type="checkbox"
+            v-model="valueFade"
+            name="demo-switch-use-fade"
+            title="demo-switch-use-fade"
+          />
         </Switch>
       </ActionLabel>
     </Row>

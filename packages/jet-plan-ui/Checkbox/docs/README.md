@@ -1,5 +1,6 @@
 <script setup>
 import componentDemo from './DemoCheckbox.vue'
+import demoCheckboxControl from './DemoCheckboxControl.vue'
 </script>
 
 # 复选按钮
@@ -8,9 +9,11 @@ import componentDemo from './DemoCheckbox.vue'
 
 ## 示例
 
-<preview-demo-code comp-name="Checkbox" demo-name="DemoCheckbox">
-  <component-demo />
-</preview-demo-code>
+<demo-checkbox-control v-slot='props'>
+  <preview-demo-code comp-name="Checkbox" demo-name="DemoCheckbox">
+    <component-demo v-bind='props' />
+  </preview-demo-code>
+</demo-checkbox-control>
 
 ## Props
 

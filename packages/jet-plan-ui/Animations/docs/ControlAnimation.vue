@@ -5,7 +5,12 @@
       <ActionLabel>
         <p>Click to {{ value ? "hidden" : "show" }}</p>
         <Switch>
-          <input type="checkbox" v-model="value" />
+          <input
+            type="checkbox"
+            v-model="value"
+            name="demo-switch-animation"
+            title="demo-switch-animation"
+          />
         </Switch>
       </ActionLabel>
     </Row>
