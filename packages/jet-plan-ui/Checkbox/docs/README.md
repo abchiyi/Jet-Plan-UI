@@ -21,7 +21,7 @@ import demoCheckAllControl from './DemoCheckAllControl.vue'
 
 ## 使用全选功能
 
-组件支持一键全选所设置范围内的 `input[type='checkbox']` 元素
+通过设置组件的 `name` 属性将组件切换至全选模式将能够控制其他 `name` 属性相同的`input[type='checkbox']` 元素。
 
 <preview-demo-code comp-name="Checkbox" demo-name="DemoCheckAll">
   <demo-check-all/>

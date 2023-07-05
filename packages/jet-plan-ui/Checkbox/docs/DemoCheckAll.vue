@@ -3,7 +3,7 @@
     <div class="demo-content">
       <!-- Check All -->
       <ActionFeedback active hover>
-        <Checkbox name="checkbox">
+        <Checkbox name="check-box">
           <input :disabled="disabled" type="checkbox" id="check-all" />
         </Checkbox>
         <label class="sub-text" for="check-all">check all</label>
@@ -20,7 +20,7 @@
           <input
             :disabled="disabled"
             type="checkbox"
-            name="checkbox"
+            name="check-box"
             v-model="value"
             :value="item"
             :id="item"
@@ -54,5 +54,8 @@ const disabled = ref(false);
   border-radius: 4px;
   padding: 0.5rem;
   display: flex;
+}
+.demo-content label {
+  user-select: none;
 }
 </style>
