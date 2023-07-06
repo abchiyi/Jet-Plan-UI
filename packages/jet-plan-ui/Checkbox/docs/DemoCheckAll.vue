@@ -2,19 +2,20 @@
   <div class="demo x-center y-center">
     <div class="demo-content">
       <!-- Check All -->
-      <ActionFeedback active hover>
+      <ActionFeedback active hover tag="label">
         <Checkbox name="check-box">
           <input :disabled="disabled" type="checkbox" id="check-all" />
         </Checkbox>
-        <label class="sub-text" for="check-all">check all</label>
+        <span class="sub-text" for="check-all">check all</span>
       </ActionFeedback>
       <!-- Check box -->
       <ActionFeedback
-        active
-        hover
         v-for="item in ['checkbox1', 'checkbox2']"
         :key="item"
         :for="item"
+        tag="label"
+        active
+        hover
       >
         <Checkbox>
           <input
@@ -26,9 +27,9 @@
             :id="item"
           />
         </Checkbox>
-        <label class="sub-text" :for="item">
+        <span class="sub-text" :for="item">
           {{ item }}
-        </label>
+        </span>
       </ActionFeedback>
     </div>
   </div>
