@@ -1,34 +1,52 @@
 <template>
-  <p class="font-mono">Option:{{ value }}</p>
-  <p class="font-mono" v-for="item in ['1', '2', '3']" :key="item">
-    <label>
-      <Radio>
-        <input
-          :disabled="isDisabled(item)"
-          v-model="value"
-          :value="item"
-          name="radio"
-          type="radio"
-        />
-      </Radio>
-      <span>Option{{ item }} {{ isDisabled(item) ? " is disabled" : "" }}</span>
-    </label>
-  </p>
+  <div class="demo x-center y-center">
+    <div id="demo-radio-content" :style="{ fontSize: props.size }">
+      <p class="font-mono">Value:{{ value }}</p>
+      <ActionFeedback
+        v-for="item in ['1', '2', '3']"
+        :key="item"
+        tag="label"
+        active
+        hover
+      >
+        <Radio>
+          <input
+            :disabled="props.disabled"
+            v-model="value"
+            :value="item"
+            name="radio"
+            type="radio"
+          />
+        </Radio>
+        <span class="sub-text">Option{{ item }}</span>
+      </ActionFeedback>
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
-import { Radio } from "jet-plan-ui";
+import { Radio, ActionFeedback } from "jet-plan-ui";
 import { ref } from "vue";
 const value = ref("1");
-//** 计算何时禁用 Option 3 */
-function isDisabled(v: string) {
-  return ["2", "3"].indexOf(value.value) != -1 && v == "3";
-}
+const props = defineProps<{
+  disabled: boolean;
+  size: string;
+}>();
 </script>
 <style scoped>
-p:nth-child(1) {
-  font-size: 1.2rem;
+.j-action-feedback {
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 4px;
+  padding: 0.5rem;
+  display: flex;
+}
+.j-action-feedback + .j-action-feedback {
+  margin-top: 0.5rem;
 }
 p {
+  padding-left: 12px;
+}
+span {
   user-select: none;
 }
 </style>

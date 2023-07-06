@@ -1,5 +1,6 @@
 <script setup>
 import componentDemo from './DemoRadio.vue'
+import demoRadioControl   from './DemoRadioControl.vue'
 </script>
 
 # 单选按钮
@@ -8,8 +9,10 @@ import componentDemo from './DemoRadio.vue'
 
 ## 示例
 
-`Radio`组件实现依赖原生`input`元素，你仅需将`input`元素嵌套于组件内，组件即可正常工作。
+`Radio` 仅修改原生`input`元素外观，通过调整 `font-size` 的大小即可调整组件尺寸。
 
-<preview-demo-code comp-name="Radio" demo-name="DemoRadio">
-  <component-demo />
-</preview-demo-code>
+<demo-radio-control v-slot="props">
+  <preview-demo-code comp-name="Radio" demo-name="DemoRadio">
+    <component-demo v-bind="props"  />
+  </preview-demo-code>
+</demo-radio-control>
