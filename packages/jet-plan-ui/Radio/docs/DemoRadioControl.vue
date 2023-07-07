@@ -7,7 +7,7 @@
     <!-- Todo title -->
     <p class="sub-title">Set radio size</p>
     <Row Y="center" spaceMode="between">
-      <ActionLabel>
+      <ActionLabel :active="false">
         <p class="sub-text">{{ size }} px</p>
         <Range>
           <input
