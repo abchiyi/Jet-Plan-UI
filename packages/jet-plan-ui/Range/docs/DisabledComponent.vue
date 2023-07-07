@@ -1,15 +1,31 @@
 <template>
-  <ActionLabel>
-    禁用组件
-    <Switch>
-      <input type="checkbox" v-model="disabled" />
-    </Switch>
-  </ActionLabel>
-  <slot :disabled="disabled"></slot>
+  <div class="demo">
+    <!-- Todo bind attr -->
+    <slot :disabled="disabled"></slot>
+  </div>
+  <div class="demo control padding">
+    <p class="sub-title">Disable range</p>
+    <Row Y="center" spaceMode="between">
+      <ActionLabel :active="false">
+        <p class="sub-text">
+          Range is {{ disabled ? "disabled" : "active" }}px
+        </p>
+        <Switch>
+          <input
+            name="demo-range-disable"
+            id="demo-range-disable"
+            v-model="disabled"
+            type="checkbox"
+          />
+        </Switch>
+      </ActionLabel>
+    </Row>
+  </div>
 </template>
-<script setup lang="ts">
+
+<script lang="ts" setup>
 import { ActionLabel } from "src/components";
-import { Switch } from "jet-plan-ui";
+import { Switch, Row } from "jet-plan-ui";
 import { ref } from "vue";
 
 const disabled = ref(false);
