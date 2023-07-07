@@ -40,13 +40,6 @@ export default defineComponent({
     },
   },
   computed: {
-    /** 计算 Slider 位置 */
-    sliderPosition() {
-      // 滑动条两端限位，避免超出边界
-      const maxWidth = getOffset(this.$el).width;
-      return numericLimits(0, maxWidth, maxWidth * this.percentage) + "px";
-    },
-
     classes() {
       return [
         !this.useTransition ? "transition-off" : "",
@@ -151,6 +144,7 @@ export default defineComponent({
     const SLIDER = h(
       "div",
       {
+        style: { width: this.percentage * 100 + "%" },
         class: ["slider"],
       }
       // this.renderSlotSlider()
@@ -237,7 +231,6 @@ export default defineComponent({
 
 .j-track-bar .slider {
   transform: translate3d(0, 0, 0);
-  width: v-bind("sliderPosition");
   height: var(--HEIGHT);
   position: absolute;
 }
