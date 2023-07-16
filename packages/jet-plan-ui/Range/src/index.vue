@@ -18,6 +18,8 @@ export default defineComponent({
       percentage: 0,
       manual: false,
       firstLoad: 2,
+      thumbMouseDown: false,
+      thumbMouseEnter: false,
     };
   },
   methods: {
@@ -67,6 +69,9 @@ export default defineComponent({
       const thumb_position = SLIDER_WIDTH * this.percentage - thumbRadius;
       return numericLimits(MIN, MAX, thumb_position) + "px";
     },
+    thumbVfx() {
+      return this.thumbMouseDown || this.thumbMouseEnter ? true : false;
+    },
   },
   mounted() {
     this.valueToPercentage();
@@ -79,14 +84,21 @@ export default defineComponent({
     this.disabled = this.getInputEl().disabled;
   },
   render() {
-    const THUMB = h("div", {
-      class: "thumb",
-      style: {
-        // boxShadow: shadowPainter("bottom", 2, ""),
+    const THUMB = h(
+      "svg",
+      {
+        onmouseleave: () => (this.thumbMouseEnter = false),
+        onmouseenter: () => (this.thumbMouseEnter = true),
+        class: ["thumb", this.thumbVfx ? "vfx" : ""],
+        ref: "thumb",
       },
-
-      ref: "thumb",
-    });
+      [
+        h("g", null, [
+          h("ellipse", { class: "background", cx: 8, cy: 8, rx: 8, ry: 8 }),
+          h("ellipse", { class: "dot", cy: 8, cx: 8, rx: 4, ry: 4 }),
+        ]),
+      ]
+    );
 
     const TRACK_BAR = h(
       TrackBar,
@@ -94,8 +106,12 @@ export default defineComponent({
         "onUpdate:percentage": v => (this.percentage = v),
         class: [this.firstLoad ? "transition-off" : ""],
         onTrackMove: this.syncPercentageToInput,
-        onTrackEnd: () => (this.manual = false),
+        onTrackEnd: () => {
+          this.thumbMouseDown = false;
+          this.manual = false;
+        },
         onTrackStart: () => {
+          this.thumbMouseDown = true;
           this.manual = true;
           this.syncPercentageToInput();
         },
@@ -174,20 +190,33 @@ export default defineComponent({
 }
 
 .j-range .thumb {
-  border: v-bind("colors.infoColors.primary.default") solid 4px;
-  background: v-bind("colors.background.light");
   transform: translateX(v-bind(thumbPosition));
-  transition: 0.4s var(--ease-out);
-  border-radius: var(--THUMB-SIZE);
   height: var(--THUMB-SIZE);
   width: var(--THUMB-SIZE);
   box-sizing: border-box;
   position: absolute;
+  fill: none;
   left: 0;
 }
 
-.j-range:hover .thumb {
-  border-width: 2.5px;
+.j-range .thumb .dot {
+  fill: v-bind("colors.background.light");
+  fill-opacity: 1;
+}
+.j-range .thumb .background {
+  fill: v-bind("colors.infoColors.primary.default");
+  fill-opacity: 1;
+}
+
+.j-range .thumb.vfx .dot {
+  rx: 5;
+  ry: 5;
+}
+
+.j-range .thumb,
+.j-range .thumb *,
+.j-range .j-track-bar * {
+  transition: 0.4s var(--ease-out);
 }
 
 /* ---------- Move ---------- */
@@ -212,7 +241,7 @@ export default defineComponent({
   );
 }
 
-.j-range .disabled .thumb {
-  border: v-bind("colors.infoColors.primary.disabled") solid 4px;
+.j-range .disabled .thumb .background {
+  fill: v-bind("colors.infoColors.primary.disabled");
 }
 </style>
