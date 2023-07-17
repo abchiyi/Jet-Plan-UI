@@ -3,7 +3,13 @@
     <div id="demo-range-content">
       <p class="font-mono">Value: {{ value }}</p>
       <Range>
-        <input type="range" v-model.number="value" :disabled="PROP.disabled" />
+        <input
+          :disabled="PROP.disabled"
+          v-model.number="value"
+          type="range"
+          max="200"
+          min="20"
+        />
       </Range>
     </div>
   </div>

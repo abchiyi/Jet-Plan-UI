@@ -7,9 +7,7 @@
     <p class="sub-title">Disable range</p>
     <Row Y="center" spaceMode="between">
       <ActionLabel :active="false">
-        <p class="sub-text">
-          Range is {{ disabled ? "disabled" : "active" }}px
-        </p>
+        <p class="sub-text">Range is {{ disabled ? "disabled" : "active" }}</p>
         <Switch>
           <input
             name="demo-range-disable"
