@@ -4,6 +4,7 @@ import { computed, defineComponent, h } from "vue";
 import { JET_THEME } from "../../theme/theme";
 import { TrackBar } from "../../TrackBar";
 import { getInputEl } from "../../tool";
+import { an } from "vitest/dist/global-e98f203b";
 const NAME = "j-range";
 export default defineComponent({
   name: NAME,
@@ -20,6 +21,8 @@ export default defineComponent({
       firstLoad: 2,
       thumbMouseDown: false,
       thumbMouseEnter: false,
+      REF_trackBar: { $el: undefined },
+      REF_thumb: undefined,
     };
   },
   methods: {
@@ -59,9 +62,8 @@ export default defineComponent({
   computed: {
     /**根据 this.percentage 的值计算 thumb 的位置 */
     thumbPosition() {
-      const trackBar = this.$refs.trackBar as { $el: HTMLElement };
-      const SLIDER_WIDTH = getOffset(trackBar.$el).width;
-      const THUMB_DIAMETER = getOffset(this.$refs.thumb as HTMLElement).width;
+      const SLIDER_WIDTH = getOffset(this.REF_trackBar.$el).width;
+      const THUMB_DIAMETER = getOffset(this.REF_thumb).width;
 
       const thumbRadius = THUMB_DIAMETER * 0.5;
       const MIN = thumbRadius * -1;
@@ -75,6 +77,8 @@ export default defineComponent({
   },
   mounted() {
     this.valueToPercentage();
+    this.REF_trackBar = this.$refs.trackBar as any;
+    this.REF_thumb = this.$refs.thumb as any;
   },
   updated() {
     // 仅在非手动操作下进行更新
