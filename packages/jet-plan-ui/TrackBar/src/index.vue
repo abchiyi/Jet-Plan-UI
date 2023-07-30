@@ -146,13 +146,13 @@ export default defineComponent({
       {
         style: { width: this.percentage * 100 + "%" },
         class: ["slider"],
-      }
-      // this.renderSlotSlider()
+      },
+      this.$slots.slider?.()
     );
 
     const BACKGROUND = h("div", { class: ["background"] }, [
       SLIDER,
-      // this.renderSlotBackground(),
+      this.$slots.background?.(),
     ]);
 
     const SLOT_CONTENT = h(
@@ -179,7 +179,7 @@ export default defineComponent({
         onmousedown: this.handleMouseDown,
         // style: this.style,
       },
-      [BACKGROUND, SLOT_CONTENT]
+      [BACKGROUND, this.$slots.default ? SLOT_CONTENT : null]
     );
   },
 });

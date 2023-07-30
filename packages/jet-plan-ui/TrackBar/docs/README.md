@@ -58,3 +58,11 @@ import disabledTrackBar from './disabledTrackBar.vue'
 - `update:percentage`:
 
   在操作组件时触发，携带改变后的`percentage`的值。
+
+## Slots
+
+- default：内容将插入到组件表面
+
+- slider：内容将入到滑动条中
+
+- background：内容将插入到背景中
