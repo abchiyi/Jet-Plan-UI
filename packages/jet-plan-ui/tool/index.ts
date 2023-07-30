@@ -275,8 +275,6 @@ export function getKeys<T>(obj: T) {
 
 import type { VNode } from "vue";
 import type { RenderFunction } from "./types";
-import { HEX, RGB, RGBA, isColorCode } from "./isColorCode";
-import { log } from "console";
 
 /**
  * 提供组件自定义渲染支持
