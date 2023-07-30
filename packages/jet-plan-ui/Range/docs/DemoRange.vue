@@ -1,5 +1,8 @@
 <template>
-  <div class="demo x-center y-center">
+  <div
+    class="demo x-center y-center"
+    :style="{ fontSize: PROP.size ? PROP.size : '16px' }"
+  >
     <div id="demo-range-content">
       <p class="font-mono">Value: {{ value }}</p>
       <Range>
@@ -18,6 +21,6 @@
 import { Range } from "jet-plan-ui";
 import { ref } from "vue";
 
-const PROP = defineProps<{ disabled: boolean }>();
+const PROP = defineProps<{ disabled: boolean; size: string }>();
 const value = ref(50);
 </script>

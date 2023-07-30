@@ -1,10 +1,8 @@
 <script lang="ts">
-import { numericLimits, getOffset } from "../../tool";
 import { computed, defineComponent, h } from "vue";
 import { JET_THEME } from "../../theme/theme";
 import { TrackBar } from "../../TrackBar";
 import { getInputEl } from "../../tool";
-import { an } from "vitest/dist/global-e98f203b";
 const NAME = "j-range";
 export default defineComponent({
   name: NAME,
@@ -15,14 +13,12 @@ export default defineComponent({
   },
   data() {
     return {
+      thumbMouseEnter: false,
+      thumbMouseDown: false,
       disabled: false,
       percentage: 0,
       manual: false,
       firstLoad: 2,
-      thumbMouseDown: false,
-      thumbMouseEnter: false,
-      REF_trackBar: { $el: undefined },
-      REF_thumb: undefined,
     };
   },
   methods: {
@@ -60,25 +56,12 @@ export default defineComponent({
     },
   },
   computed: {
-    /**根据 this.percentage 的值计算 thumb 的位置 */
-    thumbPosition() {
-      const SLIDER_WIDTH = getOffset(this.REF_trackBar.$el).width;
-      const THUMB_DIAMETER = getOffset(this.REF_thumb).width;
-
-      const thumbRadius = THUMB_DIAMETER * 0.5;
-      const MIN = thumbRadius * -1;
-      const MAX = SLIDER_WIDTH + thumbRadius;
-      const thumb_position = SLIDER_WIDTH * this.percentage - thumbRadius;
-      return numericLimits(MIN, MAX, thumb_position) + "px";
-    },
     thumbVfx() {
       return this.thumbMouseDown || this.thumbMouseEnter ? true : false;
     },
   },
   mounted() {
     this.valueToPercentage();
-    this.REF_trackBar = this.$refs.trackBar as any;
-    this.REF_thumb = this.$refs.thumb as any;
   },
   updated() {
     // 仅在非手动操作下进行更新
@@ -91,10 +74,10 @@ export default defineComponent({
     const THUMB = h(
       "svg",
       {
+        viewBox: "0 0 16 16",
         onmouseleave: () => (this.thumbMouseEnter = false),
         onmouseenter: () => (this.thumbMouseEnter = true),
         class: ["thumb", this.thumbVfx ? "vfx" : ""],
-        ref: "thumb",
       },
       [
         h("g", null, [
@@ -104,11 +87,12 @@ export default defineComponent({
       ]
     );
 
+    const THUMB_SHELL = h("div", { class: "thumb-shell" }, THUMB);
+
     const TRACK_BAR = h(
       TrackBar,
       {
         "onUpdate:percentage": v => (this.percentage = v),
-        class: [this.firstLoad ? "transition-off" : ""],
         onTrackMove: this.syncPercentageToInput,
         onTrackEnd: () => {
           this.thumbMouseDown = false;
@@ -121,20 +105,12 @@ export default defineComponent({
         },
         percentage: this.percentage,
         disabled: this.disabled,
-        ref: "trackBar",
       },
       {
-        default: () => THUMB,
-      }
-    );
-
-    const SLIDER_BACKGROUND = h(
-      "div",
-      {
-        class: ["background"],
-      },
-      {
-        default: () => [TRACK_BAR],
+        slider: () => THUMB_SHELL,
+        background() {
+          return h("div", { class: "fake-bg" });
+        },
       }
     );
 
@@ -144,7 +120,7 @@ export default defineComponent({
         for: this.$.uid,
         class: ["slider-shell"],
       },
-      SLIDER_BACKGROUND
+      TRACK_BAR
     );
 
     return h(
@@ -152,25 +128,17 @@ export default defineComponent({
       {
         class: [NAME, "input-hidden", this.disabled ? "disabled" : ""],
       },
-      [SLIDER_SHELL, this.$slots.default?.()]
+      [this.$slots.default?.(), SLIDER_SHELL]
     );
-  },
-  watch: {
-    // 当firstLoad值为0时启用动画，手动操作直接设置为0，在update阶段将-1
-    manual() {
-      if (this.firstLoad) this.firstLoad = 0;
-    },
-    percentage() {
-      if (this.firstLoad) this.firstLoad--;
-    },
   },
 });
 </script>
 
 <style>
 .j-range {
-  font-size: 0.5rem;
-  --THUMB-SIZE: 2em;
+  /* font-size: 0.5rem; */
+  font-size: 1em;
+  --THUMB-SIZE: 1em;
   --THUMB-RADIUS: calc(var(--THUMB-SIZE) / 2);
   display: inline-block;
   min-width: 150px;
@@ -182,25 +150,9 @@ export default defineComponent({
   display: block;
 }
 
-.j-range .slider-shell > .background {
-  background: linear-gradient(
-    90deg,
-    v-bind("colors.infoColors.primary.default") 50%,
-    v-bind("colors.border.default") 50%
-  );
-  padding: 0 var(--THUMB-RADIUS);
-  box-sizing: border-box;
-  border-radius: 1em;
-}
-
 .j-range .thumb {
-  transform: translateX(v-bind(thumbPosition));
   height: var(--THUMB-SIZE);
   width: var(--THUMB-SIZE);
-  box-sizing: border-box;
-  position: absolute;
-  fill: none;
-  left: 0;
 }
 
 .j-range .thumb .dot {
@@ -217,10 +169,48 @@ export default defineComponent({
   ry: 5;
 }
 
-.j-range .thumb,
+.j-range * {
+  transition: unset;
+}
+
 .j-range .thumb *,
-.j-range .j-track-bar * {
+.j-range .j-track-bar {
   transition: 0.4s var(--ease-out);
+}
+
+/* slider & thumb */
+
+.j-range .j-track-bar .slider {
+  align-items: center;
+  background: unset;
+  display: flex;
+}
+
+.j-range .thumb-shell {
+  background: v-bind("colors.infoColors.primary.default");
+  min-width: var(--THUMB-SIZE);
+  justify-content: flex-end;
+  align-items: center;
+  border-radius: 1em;
+  display: flex;
+  height: 0.5em;
+  width: 100%;
+}
+
+/* background */
+
+.j-range .j-track-bar .background {
+  align-items: center;
+  background: unset;
+  display: flex;
+}
+
+.j-range .fake-bg {
+  /* box-shadow: inset 0px 1px 1px 0px v-bind("colors.shadow.dark"); */
+  background: v-bind("colors.border.default");
+  border-radius: 0.5em;
+  height: 0.5em;
+  width: 100%;
 }
 
 /* ---------- Move ---------- */
@@ -231,21 +221,17 @@ export default defineComponent({
 
 /* ---------- Focus ---------- */
 
-.j-range input:focus-visible + .slider-shell {
-  outline: 2px solid var(--info);
+.j-range input:focus + .slider-shell {
+  outline: 2px solid v-bind("colors.infoColors.info.default");
 }
 
 /* ---------- Disabled ---------- */
 
-.j-range.disabled .slider-shell > .background {
-  background: linear-gradient(
-    90deg,
-    v-bind("colors.infoColors.primary.disabled") 50%,
-    v-bind("colors.border.default") 50%
-  );
-}
-
 .j-range .disabled .thumb .background {
   fill: v-bind("colors.infoColors.primary.disabled");
+}
+
+.j-range .disabled .thumb-shell {
+  background: v-bind("colors.infoColors.primary.disabled");
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="demo">
     <!-- Todo bind attr -->
-    <slot :disabled="disabled"></slot>
+    <slot :disabled="disabled" :size="`${size}px`"></slot>
   </div>
   <div class="demo control padding">
     <p class="sub-title">Disable range</p>
@@ -18,13 +18,30 @@
         </Switch>
       </ActionLabel>
     </Row>
+    <p class="sub-title">Size</p>
+    <Row Y="center" spaceMode="between">
+      <ActionLabel :active="false">
+        <p class="sub-text">Range is {{ disabled ? "disabled" : "active" }}</p>
+        <Range>
+          <input
+            name="demo-range-size"
+            id="demo-range-size"
+            v-model="size"
+            type="range"
+            min="16"
+            max="48"
+          />
+        </Range>
+      </ActionLabel>
+    </Row>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ActionLabel } from "src/components";
-import { Switch, Row } from "jet-plan-ui";
+import { Switch, Row, Range } from "jet-plan-ui";
 import { ref } from "vue";
 
 const disabled = ref(false);
+const size = ref(16);
 </script>
