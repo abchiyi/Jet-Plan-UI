@@ -51,7 +51,11 @@ export const jetLight = defineTheme({
     default: "#bdbdbd4d",
   },
   frostedGlass: "#ffffffb3",
-  shadow: "grey300",
+  shadow: {
+    dark: "grey400",
+    light: "grey100",
+    default: "grey300",
+  },
 });
 
 export const jetDark = defineTheme({
@@ -105,7 +109,11 @@ export const jetDark = defineTheme({
     default: "#bdbdbd4d",
   },
   frostedGlass: "#424242b3",
-  shadow: "grey300",
+  shadow: {
+    dark: "grey400",
+    light: "grey100",
+    default: "grey300",
+  },
 });
 
 export const jetAuto = defineTheme({

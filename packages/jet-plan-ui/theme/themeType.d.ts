@@ -25,7 +25,7 @@ export declare interface baseTheme {
   frostedGlass: string;
   border: ThemeUnit;
   mask: ThemeUnit;
-  shadow: string;
+  shadow: ThemeUnit;
   AUTO?: { (): baseTheme };
 }
 
