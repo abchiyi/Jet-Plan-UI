@@ -242,12 +242,6 @@ export default defineComponent({
   transform: translateX(var(--THUMB-RADIUS));
 }
 
-/* ---------- Move ---------- */
-
-.j-range .transition-off .thumb {
-  transition: unset;
-}
-
 /* ---------- Focus ---------- */
 
 .j-range input:focus-visible + .slider-shell {
