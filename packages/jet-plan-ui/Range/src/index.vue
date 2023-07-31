@@ -206,7 +206,7 @@ export default defineComponent({
 }
 
 .j-range .fake-bg {
-  /* box-shadow: inset 0px 1px 1px 0px v-bind("colors.shadow.dark"); */
+  box-shadow: inset 0px 1px 1px 0px v-bind("colors.shadow");
   background: v-bind("colors.border.default");
   border-radius: 0.5em;
   height: 0.5em;
@@ -221,7 +221,7 @@ export default defineComponent({
 
 /* ---------- Focus ---------- */
 
-.j-range input:focus + .slider-shell {
+.j-range input:focus-visible + .slider-shell {
   outline: 2px solid v-bind("colors.infoColors.info.default");
 }
 
