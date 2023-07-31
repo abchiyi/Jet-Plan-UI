@@ -140,8 +140,13 @@ export default defineComponent({
   --THUMB-DIAMETER: 1em;
   --THUMB-RADIUS: calc(var(--THUMB-DIAMETER) / 2);
   display: inline-block;
-  user-select: none;
   min-width: 150px;
+}
+
+/* 禁止元素内容被选中 */
+.j-range,
+.j-range .j-track-bar * {
+  user-select: none;
 }
 
 .j-range .slider-shell {
@@ -156,8 +161,9 @@ export default defineComponent({
 }
 
 .j-range .thumb *,
-.j-range .j-track-bar {
-  transition: 0.4s var(--ease-out);
+.j-range .fake-bg::before,
+.j-range .thumb-shell {
+  transition: 0.3s var(--ease-out);
 }
 
 /* slider & thumb */
@@ -173,7 +179,6 @@ export default defineComponent({
   width: calc(100% - var(--THUMB-DIAMETER));
   flex-direction: row-reverse;
   align-items: center;
-  border-radius: 1em 0 0 1em;
   display: flex;
   height: 0.5em;
   width: 100%;
@@ -210,12 +215,11 @@ export default defineComponent({
 }
 
 .j-range .fake-bg {
-  box-shadow: inset 0px 1px 1px 0px v-bind("colors.shadow");
   background: v-bind("colors.border.default");
-  border-radius: 0.5em;
-  display: flex;
   justify-content: space-between;
+  border-radius: 0.5em;
   align-items: center;
+  display: flex;
   height: 0.5em;
   width: 100%;
 }
