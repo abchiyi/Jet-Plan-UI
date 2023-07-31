@@ -1,17 +1,14 @@
 <template>
-  <div
-    class="demo x-center y-center"
-    :style="{ fontSize: PROP.size ? PROP.size : '16px' }"
-  >
+  <div class="demo x-center y-center">
     <div id="demo-range-content">
       <p class="font-mono">Value: {{ value }}</p>
-      <Range>
+      <Range :style="{ fontSize: PROP.size ? PROP.size : '16px' }">
         <input
           :disabled="PROP.disabled"
           v-model.number="value"
           type="range"
-          max="200"
-          min="20"
+          max="100"
+          min="0"
         />
       </Range>
     </div>
