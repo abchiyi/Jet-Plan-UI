@@ -188,13 +188,20 @@ export default defineComponent({
 
 .j-range .thumb-shell {
   background: v-bind("colors.infoColors.primary.default");
-  min-width: var(--THUMB-SIZE);
-  justify-content: flex-end;
+  max-width: calc(100% - var(--THUMB-RADIUS));
+  min-width: var(--THUMB-RADIUS);
+  /* justify-content: flex-end; */
+  flex-direction: row-reverse;
   align-items: center;
-  border-radius: 1em;
+  border-radius: 1em 0 0 1em;
   display: flex;
   height: 0.5em;
   width: 100%;
+}
+
+.j-range .thumb {
+  transform: translateX(0.5em);
+  flex-shrink: 0;
 }
 
 /* background */

@@ -189,8 +189,6 @@ export default defineComponent({
 /* VALUES */
 .j-track-bar {
   --HEIGHT: 1em;
-  --THUMB-DIAMETER: calc(1.4 * var(--HEIGHT));
-  --THUMB-RADIUS: calc(var(--THUMB-DIAMETER) / 2);
 }
 
 .j-track-bar > * {
