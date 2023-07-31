@@ -136,37 +136,19 @@ export default defineComponent({
 
 <style>
 .j-range {
-  /* font-size: 0.5rem; */
   font-size: 1em;
-  --THUMB-SIZE: 1em;
-  --THUMB-RADIUS: calc(var(--THUMB-SIZE) / 2);
+  --THUMB-DIAMETER: 1em;
+  --THUMB-RADIUS: calc(var(--THUMB-DIAMETER) / 2);
   display: inline-block;
+  user-select: none;
   min-width: 150px;
 }
 
 .j-range .slider-shell {
-  padding: calc(var(--THUMB-RADIUS) - 0.25em) 0.25em;
+  padding: calc(0.1 * var(--THUMB-DIAMETER)) calc(0.6 * var(--THUMB-DIAMETER));
   border-radius: var(--s-radius);
+  box-sizing: border-box;
   display: block;
-}
-
-.j-range .thumb {
-  height: var(--THUMB-SIZE);
-  width: var(--THUMB-SIZE);
-}
-
-.j-range .thumb .dot {
-  fill: v-bind("colors.background.light");
-  fill-opacity: 1;
-}
-.j-range .thumb .background {
-  fill: v-bind("colors.infoColors.primary.default");
-  fill-opacity: 1;
-}
-
-.j-range .thumb.vfx .dot {
-  rx: 5;
-  ry: 5;
 }
 
 .j-range * {
@@ -188,9 +170,7 @@ export default defineComponent({
 
 .j-range .thumb-shell {
   background: v-bind("colors.infoColors.primary.default");
-  max-width: calc(100% - var(--THUMB-RADIUS));
-  min-width: var(--THUMB-RADIUS);
-  /* justify-content: flex-end; */
+  width: calc(100% - var(--THUMB-DIAMETER));
   flex-direction: row-reverse;
   align-items: center;
   border-radius: 1em 0 0 1em;
@@ -200,8 +180,24 @@ export default defineComponent({
 }
 
 .j-range .thumb {
+  height: var(--THUMB-DIAMETER);
+  width: var(--THUMB-DIAMETER);
   transform: translateX(0.5em);
   flex-shrink: 0;
+}
+
+.j-range .thumb .dot {
+  fill: v-bind("colors.background.light");
+  fill-opacity: 1;
+}
+.j-range .thumb .background {
+  fill: v-bind("colors.infoColors.primary.default");
+  fill-opacity: 1;
+}
+
+.j-range .thumb.vfx .dot {
+  rx: 5;
+  ry: 5;
 }
 
 /* background */
@@ -210,14 +206,36 @@ export default defineComponent({
   align-items: center;
   background: unset;
   display: flex;
+  overflow: unset;
 }
 
 .j-range .fake-bg {
   box-shadow: inset 0px 1px 1px 0px v-bind("colors.shadow");
   background: v-bind("colors.border.default");
   border-radius: 0.5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   height: 0.5em;
   width: 100%;
+}
+
+/* 背景装饰条 */
+.j-range .fake-bg::before,
+.j-range .fake-bg::after {
+  border-radius: var(--THUMB-RADIUS);
+  width: var(--THUMB-DIAMETER);
+  display: block;
+  height: 0.5em;
+  content: "";
+}
+.j-range .fake-bg::before {
+  background: v-bind("colors.infoColors.primary.default");
+  transform: translateX(calc(-1 * var(--THUMB-RADIUS)));
+}
+.j-range .fake-bg::after {
+  background: v-bind("colors.border.default");
+  transform: translateX(var(--THUMB-RADIUS));
 }
 
 /* ---------- Move ---------- */
@@ -233,6 +251,10 @@ export default defineComponent({
 }
 
 /* ---------- Disabled ---------- */
+.j-range .disabled .fake-bg::before {
+  background: v-bind("colors.infoColors.primary.disabled");
+  transform: translateX(calc(-1 * var(--THUMB-RADIUS)));
+}
 
 .j-range .disabled .thumb .background {
   fill: v-bind("colors.infoColors.primary.disabled");

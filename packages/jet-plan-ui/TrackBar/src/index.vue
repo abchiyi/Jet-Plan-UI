@@ -151,8 +151,8 @@ export default defineComponent({
     );
 
     const BACKGROUND = h("div", { class: ["background"] }, [
-      SLIDER,
       this.$slots.background?.(),
+      SLIDER,
     ]);
 
     const SLOT_CONTENT = h(
