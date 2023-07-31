@@ -160,10 +160,13 @@ export default defineComponent({
   transition: unset;
 }
 
-.j-range .thumb *,
 .j-range .fake-bg::before,
 .j-range .thumb-shell {
-  transition: fill 0.3s var(--ease-out), background 0.3s var(--ease-out);
+  transition: background 0.3s var(--ease-out);
+}
+
+.j-range .thumb * {
+  transition: 0.3s var(--ease-out);
 }
 
 /* slider & thumb */
