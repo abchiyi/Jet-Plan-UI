@@ -12,10 +12,10 @@ import { linkButton } from "src/components";
 .link-button {
   font-size: 1rem;
 }
-.link-button > img {
+.link-button img {
   height: 1.5rem;
 }
-.link-button > * {
+.link-button * {
   vertical-align: -0.35rem;
   display: inline-block;
 }
