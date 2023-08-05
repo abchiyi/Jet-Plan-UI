@@ -3,9 +3,11 @@ import { computed, defineComponent, h } from "vue";
 import { JET_THEME } from "../../theme/theme";
 import { TrackBar } from "../../TrackBar";
 import { getInputEl } from "../../tool";
+import { Bubble } from "jet-plan-ui";
 const NAME = "j-range";
 export default defineComponent({
   name: NAME,
+  props: { showValue: Boolean },
   setup() {
     return {
       colors: computed(() => JET_THEME.Theme),
@@ -13,30 +15,39 @@ export default defineComponent({
   },
   data() {
     return {
+      inputEl: undefined as unknown as HTMLInputElement,
       thumbMouseEnter: false,
       thumbMouseDown: false,
       disabled: false,
       percentage: 0,
       manual: false,
       firstLoad: 2,
+      inputValue: "0",
+      range: {
+        step: 0,
+        max: 0,
+        min: 0,
+      },
     };
   },
   methods: {
+    syncInputValue() {
+      this.inputValue = this.inputEl.value;
+    },
     getInputEl() {
       return getInputEl(this, "<j-range>");
     },
     getRange() {
-      const el = this.getInputEl();
-      return {
-        step: el.step ? Number(el.step) : 1,
-        max: el.max ? Number(el.max) : 100,
-        min: el.min ? Number(el.min) : 0,
+      this.range = {
+        step: this.inputEl.step ? Number(this.inputEl.step) : 1,
+        max: this.inputEl.max ? Number(this.inputEl.max) : 100,
+        min: this.inputEl.min ? Number(this.inputEl.min) : 0,
       };
     },
     /** 将 InputEl.value 转换为百分比并同步到 this.percentage */
     valueToPercentage() {
-      const value = Number(this.getInputEl().value);
-      const { max, min } = this.getRange();
+      const value = Number(this.inputEl.value);
+      const { max, min } = this.range;
       const range = max - min;
       let percentage = value / range - min / range;
 
@@ -44,13 +55,13 @@ export default defineComponent({
     },
     /** 将 this.percentage 转换为数值并同步到 Input 元素 */
     syncPercentageToInput() {
-      const { max, min, step } = this.getRange();
+      const { max, min, step } = this.range;
       let value = this.percentage * (max - min) + min;
       value = Math.round(value / step) * step;
       value = parseFloat(value.toFixed(5));
       value > max ? max : value < min ? min : value;
 
-      const el = this.getInputEl();
+      const el = this.inputEl;
       el.value = String(value);
       el.dispatchEvent(new InputEvent("input"));
     },
@@ -61,9 +72,14 @@ export default defineComponent({
     },
   },
   mounted() {
+    this.inputEl = this.getInputEl() as any;
+    this.getRange();
     this.valueToPercentage();
+    this.syncInputValue();
   },
   updated() {
+    this.getRange();
+    this.syncInputValue();
     // 仅在非手动操作下进行更新
     if (!this.manual) this.valueToPercentage();
 
@@ -87,7 +103,26 @@ export default defineComponent({
       ]
     );
 
-    const THUMB_SHELL = h("div", { class: "thumb-shell" }, THUMB);
+    const THUMB_BUBBLE = h(
+      Bubble,
+      {
+        class: ["monospace"],
+        show: this.thumbVfx && this.showValue,
+      },
+      {
+        default: () => THUMB,
+        // TODO 检测精度，并以该精度显示值
+        bubble: () =>
+          Number(this.inputValue).toFixed(
+            (() => {
+              const fixedPoint = this.range.step.toString().split(".")[1];
+              return fixedPoint ? fixedPoint.length : 0;
+            })()
+          ),
+      }
+    );
+
+    const SUB_SLIDER = h("div", { class: "sub-slider" }, THUMB_BUBBLE);
 
     const TRACK_BAR = h(
       TrackBar,
@@ -107,7 +142,7 @@ export default defineComponent({
         disabled: this.disabled,
       },
       {
-        slider: () => THUMB_SHELL,
+        slider: () => SUB_SLIDER,
         background() {
           return h("div", { class: "fake-bg" });
         },
@@ -160,8 +195,12 @@ export default defineComponent({
   transition: unset;
 }
 
+/* transition */
+.j-range .sub-slider .bubble {
+  transition: color 0.3s var(--ease-out);
+}
 .j-range .fake-bg::before,
-.j-range .thumb-shell {
+.j-range .sub-slider {
   transition: background 0.3s var(--ease-out);
 }
 
@@ -169,7 +208,7 @@ export default defineComponent({
   transition: 0.3s var(--ease-out);
 }
 
-/* slider & thumb */
+/* slider & thumb & bubble */
 
 .j-range .j-track-bar .slider {
   align-items: center;
@@ -177,7 +216,7 @@ export default defineComponent({
   display: flex;
 }
 
-.j-range .thumb-shell {
+.j-range .sub-slider {
   background: v-bind("colors.infoColors.primary.default");
   width: calc(100% - var(--THUMB-DIAMETER));
   flex-direction: row-reverse;
@@ -190,7 +229,6 @@ export default defineComponent({
 .j-range .thumb {
   height: var(--THUMB-DIAMETER);
   width: var(--THUMB-DIAMETER);
-  transform: translateX(0.5em);
   flex-shrink: 0;
 }
 
@@ -206,6 +244,21 @@ export default defineComponent({
 .j-range .thumb.vfx .dot {
   rx: 5;
   ry: 5;
+}
+
+.j-range .sub-slider .j-bubble {
+  transform: translateX(0.5em);
+}
+
+.j-range .sub-slider .bubble {
+  background: v-bind("colors.background.default");
+  border-radius: 0.25em;
+  margin-bottom: 0.25em;
+  font-size: inherit;
+}
+
+.j-range .sub-slider .bubble > .bubble-inner {
+  padding: 0 0.2em;
 }
 
 /* background */
@@ -261,7 +314,7 @@ export default defineComponent({
   fill: v-bind("colors.infoColors.primary.disabled");
 }
 
-.j-range .disabled .thumb-shell {
+.j-range .disabled .sub-slider {
   background: v-bind("colors.infoColors.primary.disabled");
 }
 </style>

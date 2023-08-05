@@ -17,3 +17,13 @@ import componentDemo from './DemoRange.vue'
     <component-demo v-bind="props" />
   </preview-demo-code>
 </disabled-component>
+
+## Props
+
+- `showValue`
+
+  type: `Boolean`
+
+  default:`false`
+
+  是否在操作组件时显示当前值

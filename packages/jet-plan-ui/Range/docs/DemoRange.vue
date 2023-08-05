@@ -1,8 +1,10 @@
 <template>
   <div class="demo x-center y-center">
     <div id="demo-range-content">
-      <p class="font-mono">Value: {{ value }}</p>
-      <Range :style="{ fontSize: PROP.size, width: PROP.width }">
+      <Range
+        :show-value="PROP.showValue"
+        :style="{ fontSize: PROP.size, width: PROP.width }"
+      >
         <input
           :disabled="PROP.disabled"
           v-model.number="value"
@@ -18,7 +20,12 @@
 import { Range } from "jet-plan-ui";
 import { ref } from "vue";
 
-const PROP = defineProps<{ disabled: boolean; size: string; width: string }>();
+const PROP = defineProps<{
+  showValue: boolean;
+  disabled: boolean;
+  width: string;
+  size: string;
+}>();
 const value = ref(30);
 </script>
 <style>
