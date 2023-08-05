@@ -44,6 +44,9 @@ div.code {
     outline: solid 2px var(--border-light);
     background: var(--background-light);
     border-radius: 8px;
+}
+
+.demo.padding {
     padding: 1rem;
 }
 
@@ -52,6 +55,8 @@ div.code {
     padding: unset;
 }
 
+.demo+.preview-demo-code,
+.preview-demo-code+.demo,
 .demo+.demo {
     margin-top: 2rem;
 }
@@ -103,7 +108,7 @@ h4 {
 }
 
 /* css for control.vue */
-.demo .action-label {
+.demo.control .action-label {
     background: var(--background-dark);
     padding: 0.8em 0.5em;
     outline: unset;
@@ -111,29 +116,35 @@ h4 {
     width: 100%;
 }
 
-.demo .action-label+.action-label {
+.demo.control .action-label+.action-label {
     margin-left: 0.5em;
 }
 
-.demo .j-row+.j-row {
+.demo.control .j-row+.j-row {
     margin-top: 0.5rem;
 }
 
-.demo strong {
+.demo .sub-text,
+.demo.control p>span,
+.demo.control span,
+.demo.control p.sub-title,
+.demo.control p.sub-text,
+.demo.control .action-label>p {
     font-family: "sarasa mono";
-    font-size: 12px;
-}
-
-.demo p>strong {
     color: var(--text-hint);
     font-size: 0.6rem;
 }
 
-.demo p {
+.demo.control p.sub-title {
+    font-weight: bolder;
+}
+
+.demo.control p,
+.demo.control strong {
     margin-bottom: 0.2rem;
 }
 
-.demo>.j-row>.j-button {
+.demo.control .j-button {
     margin: 0.5rem 0;
     font-size: 1rem;
     font-family: "sarasa mono", Consolas, "Courier New", Courier, FreeMono,
@@ -142,10 +153,6 @@ h4 {
     border-radius: 8px;
 }
 
-.demo .j-button+.j-button {
+.demo.control .j-button+.j-button {
     margin-left: 0.5rem;
-}
-
-.demo.no-padding {
-    padding: unset;
 }

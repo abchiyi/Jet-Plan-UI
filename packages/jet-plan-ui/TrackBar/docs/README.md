@@ -1,6 +1,6 @@
 <script setup>
 import componentDemo from './DemoTrackBar.vue'
-import disabledTrackBar from './disabledTrackBar.vue'
+import demoTrackBarControl from './DemoTrackBarControl.vue'
 </script>
 
 # 追踪条
@@ -9,11 +9,11 @@ import disabledTrackBar from './disabledTrackBar.vue'
 
 ## 示例
 
-<disabled-track-bar v-slot="props">
+<demo-track-bar-control v-slot="props">
   <preview-demo-code comp-name="TrackBar" demo-name="DemoTrackBar">
     <component-demo v-bind="props" />
   </preview-demo-code>
-</disabled-track-bar>
+</demo-track-bar-control>
 
 ## Props
 
@@ -58,3 +58,11 @@ import disabledTrackBar from './disabledTrackBar.vue'
 - `update:percentage`:
 
   在操作组件时触发，携带改变后的`percentage`的值。
+
+## Slots
+
+- default：内容将插入到组件表面
+
+- slider：内容将入到滑动条中
+
+- background：内容将插入到背景中

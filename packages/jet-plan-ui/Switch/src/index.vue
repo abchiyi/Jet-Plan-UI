@@ -23,7 +23,7 @@ export default defineComponent({
   },
   computed: {
     classes() {
-      return ["shape j-switch", this.wider ? "wider" : ""];
+      return ["shape j-switch", this.wider ? "wider" : "", "input-hidden"];
     },
   },
   methods: {

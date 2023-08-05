@@ -1,14 +1,14 @@
 <template>
-  <div class="demo no-padding demo-bubble">
+  <div class="demo demo-bubble">
     <slot
       :customRender="transitionFunction"
       :position="POS"
       :show="SHOW"
     ></slot>
   </div>
-  <div class="demo xy-selector">
+  <div class="demo control padding">
     <!-- Position -->
-    <p><strong>Bubble position</strong></p>
+    <p><span>Bubble position</span></p>
     <Row Y="center" spaceMode="between">
       <ActionLabel
         v-for="item in ['top', 'bottom', 'left', 'right']"
@@ -17,11 +17,11 @@
         <Radio>
           <input :value="item" type="radio" v-model="bubblePosition" />
         </Radio>
-        <strong>{{ item.toUpperCase() }}</strong>
+        <span>{{ item.toUpperCase() }}</span>
       </ActionLabel>
     </Row>
     <!-- Start -->
-    <p><strong>Bubble start</strong></p>
+    <p><span>Bubble start</span></p>
     <Row y="center" space-mode="between">
       <ActionLabel v-for="item in ['start', 'end', 'center']" :key="item">
         <Radio>
@@ -31,17 +31,17 @@
             v-model="bubbleStart"
           />
         </Radio>
-        <strong>{{ transformStart(item)?.toUpperCase() }}</strong>
+        <span>{{ transformStart(item)?.toUpperCase() }}</span>
       </ActionLabel>
     </Row>
     <!-- Show -->
-    <p><strong>Bubble Show</strong></p>
+    <p><span>Bubble Show</span></p>
     <Row y="center" space-mode="between">
       <ActionLabel>
         <Switch>
           <input type="checkbox" v-model="bubbleShowDisabled" />
         </Switch>
-        <strong>手动控制气泡</strong>
+        <span>手动控制气泡</span>
       </ActionLabel>
       <ActionLabel>
         <Switch>
@@ -51,19 +51,19 @@
             :disabled="!bubbleShowDisabled"
           />
         </Switch>
-        <strong>{{ SHOW.valueOf().toString().toLocaleUpperCase() }}</strong>
+        <span>{{ SHOW.valueOf().toString().toLocaleUpperCase() }}</span>
       </ActionLabel>
     </Row>
     <!-- Transition -->
     <p>
-      <strong>Transition {{ transitionType.toLocaleLowerCase() }}</strong>
+      <span>Transition {{ transitionType.toLocaleLowerCase() }}</span>
     </p>
     <Row Y="center" spaceMode="between">
       <ActionLabel v-for="item in Object.keys(transitions)" :key="item">
         <Radio>
           <input :value="item" type="radio" v-model="transitionType" />
         </Radio>
-        <strong>{{ item.toUpperCase() }}</strong>
+        <span>{{ item.toUpperCase() }}</span>
       </ActionLabel>
     </Row>
   </div>

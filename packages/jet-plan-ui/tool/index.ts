@@ -52,7 +52,7 @@ export function hexToRgb(hex: string, detailed: Boolean = false) {
  * @returns HEX 字符串，启用‘detailed’ 将回传一个包含色彩信息的对象
  */
 export function rgbToHex(rgb: string, detailed = false) {
-  function colorToHex(color: number) {
+  function toHex(color: number) {
     const hexadecimal = color.toString(16);
     return hexadecimal.length == 1 ? "0" + hexadecimal : hexadecimal;
   }
@@ -64,11 +64,10 @@ export function rgbToHex(rgb: string, detailed = false) {
   let counter = 0;
   rgba.forEach(v => {
     counter++;
-    v = v.replace(/^\s+|\s+$/gm, "");
     s.push(
       counter < 4
-        ? colorToHex(Math.abs(Number(v)))
-        : colorToHex(parseInt(`${Number(v) * 255}`))
+        ? toHex(Math.abs(Number(v)))
+        : toHex(parseInt(`${Number(v) * 255}`))
     );
   });
 

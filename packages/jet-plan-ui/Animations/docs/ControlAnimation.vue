@@ -1,25 +1,25 @@
 <template>
-  <div class="demo">
-    <slot :circle="circle"></slot>
-  </div>
+  <slot :value="value"></slot>
   <div class="demo control padding">
-    <!-- Position -->
-    <p class="sub-title">Use circle or rectangle</p>
     <Row Y="center" spaceMode="between">
       <ActionLabel>
-        <p>Click to {{ !circle ? "circle" : "rectangle" }}</p>
+        <p>Click to {{ value ? "hidden" : "show" }}</p>
         <Switch>
-          <input type="checkbox" v-model="circle" />
+          <input
+            type="checkbox"
+            v-model="value"
+            name="demo-switch-animation"
+            title="demo-switch-animation"
+          />
         </Switch>
       </ActionLabel>
     </Row>
-    <!-- Start -->
   </div>
 </template>
-
 <script lang="ts" setup>
 import { ActionLabel } from "src/components";
 import { Switch, Row } from "jet-plan-ui";
 import { ref } from "vue";
-const circle = ref(true);
+
+const value = ref(true);
 </script>

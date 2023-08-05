@@ -1,5 +1,5 @@
 <template>
-  <label class="j-checkbox-shell" :class="classes">
+  <label class="j-checkbox-shell input-hidden" :class="classes">
     <slot></slot>
     <svg viewBox="0 0 16 16">
       <path
@@ -144,9 +144,10 @@ export default defineComponent({
     // 组件挂载后为 inputElement 赋值，独立设置此常量为节省性能
     this.inputElement = getInputEl(this, "<j-checkbox>");
 
-    // 同步是否选中值
+    // 同步选中状态
     this.checked = this.inputElement.checked;
 
+    // 组件在全选控制模式下
     if (this.modelCheckAll) {
       const checkboxes = this.getAllCheckbox();
 
@@ -164,9 +165,12 @@ export default defineComponent({
       });
     }
 
-    // 在交互后应用动画
     this.inputElement.addEventListener("change", () => {
+      // 同步选中状态
+      this.checked = this.inputElement.checked;
+
       // 当处于全选控制模式下，第一次响应事件时将不会开启动画
+
       if (this.nameMode) {
         this.nameMode = false;
       } else {
@@ -178,9 +182,6 @@ export default defineComponent({
     this.oldDisabled = this.inputElement.disabled;
   },
   updated() {
-    // 同步是否选中值
-    this.checked = this.inputElement.checked;
-
     if (this.firstLoad) {
       if (this.oldDisabled != this.inputElement.disabled) {
         this.firstLoad = false;

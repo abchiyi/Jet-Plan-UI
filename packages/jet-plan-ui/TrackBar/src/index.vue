@@ -40,13 +40,6 @@ export default defineComponent({
     },
   },
   computed: {
-    /** 计算 Slider 位置 */
-    sliderPosition() {
-      // 滑动条两端限位，避免超出边界
-      const maxWidth = getOffset(this.$el).width;
-      return numericLimits(0, maxWidth, maxWidth * this.percentage) + "px";
-    },
-
     classes() {
       return [
         !this.useTransition ? "transition-off" : "",
@@ -151,14 +144,15 @@ export default defineComponent({
     const SLIDER = h(
       "div",
       {
+        style: { width: this.percentage * 100 + "%" },
         class: ["slider"],
-      }
-      // this.renderSlotSlider()
+      },
+      this.$slots.slider?.()
     );
 
     const BACKGROUND = h("div", { class: ["background"] }, [
+      this.$slots.background?.(),
       SLIDER,
-      // this.renderSlotBackground(),
     ]);
 
     const SLOT_CONTENT = h(
@@ -185,7 +179,7 @@ export default defineComponent({
         onmousedown: this.handleMouseDown,
         // style: this.style,
       },
-      [BACKGROUND, SLOT_CONTENT]
+      [BACKGROUND, this.$slots.default ? SLOT_CONTENT : null]
     );
   },
 });
@@ -195,8 +189,6 @@ export default defineComponent({
 /* VALUES */
 .j-track-bar {
   --HEIGHT: 1em;
-  --THUMB-DIAMETER: calc(1.4 * var(--HEIGHT));
-  --THUMB-RADIUS: calc(var(--THUMB-DIAMETER) / 2);
 }
 
 .j-track-bar > * {
@@ -237,7 +229,6 @@ export default defineComponent({
 
 .j-track-bar .slider {
   transform: translate3d(0, 0, 0);
-  width: v-bind("sliderPosition");
   height: var(--HEIGHT);
   position: absolute;
 }

@@ -1,5 +1,6 @@
 <template>
-  <ActionLabel class="demo" :active="false">
+  <slot :offset="offset"></slot>
+  <ActionLabel class="demo control padding" :active="false">
     <div>
       {{ offset }}
     </div>
@@ -7,7 +8,6 @@
       <input type="range" max="20" min="0" v-model.number="offset" />
     </JRange>
   </ActionLabel>
-  <slot :offset="offset"></slot>
 </template>
 <script lang="ts" setup>
 import { Range as JRange } from "jet-plan-ui";

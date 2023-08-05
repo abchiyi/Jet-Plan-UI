@@ -124,7 +124,7 @@ import DemoRow from './DemoRow.vue'
 
     default:`'div'`
 
-  - `col` | `xs` | `sm` | `md` | `lg` | `xl`:
+  - `col` , `xs` , `sm` , `md` , `lg` , `xl`:
 
     type: `Number`
 
@@ -132,7 +132,7 @@ import DemoRow from './DemoRow.vue'
 
     设置组件宽度占用几栏
 
-  - `offset` | `offsetXs` | `offsetSm` | `offsetMd` | `offsetXl`:
+  - `offset` , `offsetXs` , `offsetSm` , `offsetMd` , `offsetXl`:
 
     type: `Number`
 
@@ -144,7 +144,7 @@ import DemoRow from './DemoRow.vue'
 
     type: `Boolean`
 
-    range: `false`
+    default: `false`
 
     设置 1 栏的宽度是相对于屏幕亦或者是父组件的宽度
 

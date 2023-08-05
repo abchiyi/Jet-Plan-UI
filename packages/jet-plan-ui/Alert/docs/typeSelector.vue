@@ -1,10 +1,10 @@
 <template>
-  <div class="demo no-padding demo-alert">
+  <div class="demo demo-alert">
     <slot :transition="transitionFunction" :alertController="AC"></slot>
   </div>
-  <div class="demo xy-selector">
+  <div class="demo padding control">
     <!-- Type -->
-    <p><strong>Message type</strong></p>
+    <p><span>Message type</span></p>
     <Row Y="center" spaceMode="between">
       <ActionLabel
         v-for="item in ['info', 'success', 'warning', 'error']"
@@ -13,15 +13,15 @@
         <Radio>
           <input :value="item" type="radio" v-model="messageType" />
         </Radio>
-        <strong>{{ item.toUpperCase() }}</strong>
+        <span>{{ item.toUpperCase() }}</span>
       </ActionLabel>
     </Row>
     <!-- Time -->
-    <p><strong>Show Time</strong></p>
+    <p><span>Show Time</span></p>
     <Row Y="center" spaceMode="between">
       <ActionLabel>
         <p>
-          <strong>{{ ms }} ms</strong>
+          <span>{{ ms }} ms</span>
           to close
         </p>
         <Range>
@@ -32,14 +32,14 @@
 
     <!-- Custom Transition -->
     <p>
-      <strong>Transition{{ transitionType }}</strong>
+      <span>Transition{{ transitionType }}</span>
     </p>
     <Row Y="center" spaceMode="between">
       <ActionLabel v-for="item in Object.keys(transitions)" :key="item">
         <Radio>
           <input :value="item" type="radio" v-model="transitionType" />
         </Radio>
-        <strong>{{ item.toUpperCase() }}</strong>
+        <span>{{ item.toUpperCase() }}</span>
       </ActionLabel>
     </Row>
 

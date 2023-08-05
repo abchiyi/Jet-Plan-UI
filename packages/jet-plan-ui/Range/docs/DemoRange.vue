@@ -1,18 +1,39 @@
 <template>
-  <p class="font-mono">Value: {{ value }}</p>
-  <Range>
-    <input type="range" v-model.number="value" :disabled="PROP.disabled" />
-  </Range>
+  <div class="demo x-center y-center">
+    <div id="demo-range-content">
+      <Range
+        :show-value="PROP.showValue"
+        :style="{ fontSize: PROP.size, width: PROP.width }"
+      >
+        <input
+          :disabled="PROP.disabled"
+          v-model.number="value"
+          type="range"
+          max="100"
+          min="0"
+        />
+      </Range>
+    </div>
+  </div>
 </template>
 <script lang="ts" setup>
 import { Range } from "jet-plan-ui";
 import { ref } from "vue";
 
-const PROP = defineProps(["disabled"]);
-const value = ref(50);
+const PROP = defineProps<{
+  showValue: boolean;
+  disabled: boolean;
+  width: string;
+  size: string;
+}>();
+const value = ref(30);
 </script>
-<style scoped>
-p {
-  font-size: 1.2rem;
+<style>
+#demo-range-content {
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  height: 80px;
 }
 </style>

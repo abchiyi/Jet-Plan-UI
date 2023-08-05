@@ -1,26 +1,30 @@
 <template>
-  <p class="font-mono">Switch: {{ value ? "ON" : "OFF" }}</p>
-  <Switch>
-    <input type="checkbox" v-model="value" :disabled="disabled" />
-  </Switch>
-  <p class="font-mono">
-    <Switch>
-      <input type="checkbox" v-model="disabled" />
+  <div class="demo">
+    <Switch :style="{ fontSize: PROPS.size }">
+      <input
+        :disabled="disabled"
+        name="switchDemo"
+        id="switchDemo"
+        type="checkbox"
+        v-model="value"
+      />
     </Switch>
-    <span>Disabled Switch</span>
-  </p>
+  </div>
 </template>
 <script lang="ts" setup>
 import { Switch } from "jet-plan-ui";
 import { ref } from "vue";
-const disabled = ref(false);
+const PROPS = defineProps<{
+  disabled: boolean;
+  size: string;
+}>();
 const value = ref(false);
 </script>
 <style scoped>
-p:nth-child(1) {
-  font-size: 1.5rem;
-}
-p > * {
-  vertical-align: bottom;
+.demo {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 60px;
 }
 </style>

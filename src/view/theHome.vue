@@ -14,7 +14,8 @@
           <p>基于 Vue 3 的扁平化 UI 组件库</p>
           <div id="button-group">
             <linkButton primary to="/docs/quick-start" aria-label="快速开始">
-              快速开始 -->
+              快速开始
+              <span class="font-mono">--></span>
             </linkButton>
             <!-- TODO 跳转到 安装文档 -->
             <linkButton id="install" to="install" aria-label="安装">

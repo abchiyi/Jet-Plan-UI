@@ -2,28 +2,28 @@
   <div class="demo demo-slider">
     <j-row class="demo-row" X="center">
       <!-- Top -->
-      <TransitionSlider :opacity="PROPS.useFade" position="top">
-        <div class="demo-item" v-show="PROPS.showDemo">
+      <TransitionSlider :opacity="PROPS.valueFade" position="top">
+        <div class="demo-item" v-show="PROPS.value">
           <div class="demo-cube">To top</div>
         </div>
       </TransitionSlider>
       <!-- Right -->
-      <TransitionSlider :opacity="PROPS.useFade" position="right">
-        <div class="demo-item" v-show="PROPS.showDemo">
+      <TransitionSlider :opacity="PROPS.valueFade" position="right">
+        <div class="demo-item" v-show="PROPS.value">
           <div class="demo-cube">To right</div>
         </div>
       </TransitionSlider>
     </j-row>
     <j-row class="demo-row" X="center">
       <!-- Left -->
-      <TransitionSlider :opacity="PROPS.useFade" position="left">
-        <div class="demo-item" v-show="PROPS.showDemo">
+      <TransitionSlider :opacity="PROPS.valueFade" position="left">
+        <div class="demo-item" v-show="PROPS.value">
           <div class="demo-cube">To left</div>
         </div>
       </TransitionSlider>
       <!-- Bottom -->
-      <TransitionSlider :opacity="PROPS.useFade" position="bottom">
-        <div class="demo-item" v-show="PROPS.showDemo">
+      <TransitionSlider :opacity="PROPS.valueFade" position="bottom">
+        <div class="demo-item" v-show="PROPS.value">
           <div class="demo-cube">To bottom</div>
         </div>
       </TransitionSlider>
@@ -33,12 +33,15 @@
 <script lang="ts" setup>
 import { TransitionSlider } from "jet-plan-ui";
 const PROPS = defineProps({
-  showDemo: Boolean,
-  useFade: Boolean,
+  value: Boolean,
+  valueFade: Boolean,
 });
 </script>
 
 <style scoped>
+.j-row + .j-row {
+  margin: unset;
+}
 .demo-slider {
   height: 208px;
 }

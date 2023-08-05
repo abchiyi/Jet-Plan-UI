@@ -35,3 +35,9 @@ import positionSelector from './positionSelector.vue'
   default: `unset`
 
   控制气泡显示/隐藏。设置该属性时组件将不再响应鼠标事件。
+
+- `customRender`:
+
+  type: `Function (vNode?: VNode) => VNode`
+
+  自定义气泡组件渲染方式，例如用于更改默认的过渡动画。

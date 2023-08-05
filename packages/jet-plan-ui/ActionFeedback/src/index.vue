@@ -141,7 +141,7 @@ export default defineComponent({
 }
 
 /* Mask */
-.j-action-feedback span {
+.j-action-feedback .j-mask {
   transform: translate3d(0, 0, 0);
   opacity: var(--opacity);
   pointer-events: none;
