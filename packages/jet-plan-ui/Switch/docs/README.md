@@ -1,5 +1,6 @@
 <script setup>
 import componentDemo from './DemoSwitch.vue'
+import demoSwitchControl from './DemoSwitchControl.vue'
 </script>
 
 # Switch
@@ -8,6 +9,8 @@ import componentDemo from './DemoSwitch.vue'
 
 ## 示例
 
-<preview-demo-code comp-name="Switch" demo-name="DemoSwitch">
-  <component-demo />
-</preview-demo-code>
+<demo-switch-control v-slot="props" >
+  <preview-demo-code comp-name="Switch" demo-name="DemoSwitch">
+    <component-demo v-bind="props" />
+  </preview-demo-code>
+</demo-switch-control>
