@@ -9,8 +9,10 @@ import {
   getEl,
   type RenderFunction,
   customRender,
+  shadowPainter,
 } from "../../tool";
 import type { Position } from ".";
+import { JET_THEME } from "jet-plan-ui/theme";
 export default defineComponent({
   name: "j-bubble",
   props: {
@@ -28,7 +30,13 @@ export default defineComponent({
       type: Function as PropType<RenderFunction>,
     },
   },
-
+  setup() {
+    const colors = JET_THEME.Theme;
+    return {
+      bubbleShadow: shadowPainter("bottom", 3, colors.shadow),
+      bubbleBackground: colors.background.default,
+    };
+  },
   data() {
     return {
       // 初始值同步自 prop show 以确保气泡正常显示
@@ -230,24 +238,25 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<style>
 .j-bubble {
   display: inline-block;
   position: relative;
 }
 
 .j-bubble .bubble {
-  background: rgb(66, 66, 66);
+  background: v-bind("bubbleBackground");
+  box-shadow: v-bind("bubbleShadow");
   border-radius: var(--m-radius);
   color: var(--base-text-color);
   box-sizing: border-box;
   display: inline-block;
-  user-select: none;
-  font-size: 0.8rem;
+  pointer-events: none;
   white-space: nowrap;
   position: absolute;
+  user-select: none;
+  font-size: 0.8rem;
   z-index: 1;
-  pointer-events: none;
 }
 
 .j-bubble .bubble > .bubble-inner {
