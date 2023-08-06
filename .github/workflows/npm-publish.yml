@@ -12,8 +12,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: 16
-#       - run: npm ci
-#       - run: npm test
+  #       - run: npm ci
+  #       - run: npm test
 
   publish-npm:
     needs: build
@@ -24,15 +24,15 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - name: publish
+      - name: publish-JET-UI
         run: |
-            cd ./packages/jet-plan-ui
-            npm install
-            npm publish
-            cd ../jet-plan-ui-theme
-            npm install
-            npm publish
-#       - run: npm publish ./packages/jet-plan-ui-theme
-#       - run: npm publish ./packages/jet-plan-ui
+          npm install
+          npm publish
+
+      - name: publish-JET-UI-THEME
+        run: |
+          cd ../jet-plan-ui-theme
+          npm install
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
