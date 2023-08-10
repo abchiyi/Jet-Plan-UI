@@ -26,6 +26,7 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: publish-JET-UI
         run: |
+          python -u ./setup.py
           npm install
           npm publish
 

@@ -3,6 +3,7 @@ import baseConfig from "./vite.config";
 import vue from "@vitejs/plugin-vue";
 import { defineConfig } from "vite";
 import dts from "vite-plugin-dts";
+import libCss from "vite-plugin-libcss";
 
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
@@ -32,5 +33,9 @@ export default defineConfig({
       },
     },
   },
-  plugins: [vue(), dts({ tsConfigFilePath: "./tsconfig.vitest.json" })],
+  plugins: [
+    vue(),
+    libCss(),
+    dts({ tsConfigFilePath: "./tsconfig.vitest.json" }),
+  ],
 });

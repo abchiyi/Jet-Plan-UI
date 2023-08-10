@@ -2,7 +2,6 @@
   "extends": "./tsconfig.json",
   "exclude": ["**/test/**/*"],
   "compilerOptions": {
-    "ignoreDeprecations": "5.0",
     "composite": true,
     "types": ["node", "jsdom"]
   }

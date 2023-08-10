@@ -23,6 +23,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
+      "jet-plan-ui-theme": _resolve("./packages/jet-plan-ui-theme"),
       "jet-plan-ui": _resolve("./packages/jet-plan-ui"),
       packages: resolve("./packages"),
       public: _resolve("./public"),
