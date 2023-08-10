@@ -27,6 +27,7 @@ jobs:
       - name: publish-JET-UI
         run: |
           python -u ./setup.py
+          ls -a
           npm install
           npm publish
 
