@@ -26,14 +26,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: publish-JET-UI
         run: |
-          python -u setup.py
+          python -u ./setup.py
           npm install
           npm publish
 
-      - name: publish-JET-UI-THEME
-        run: |
-          cd ../jet-plan-ui-theme
-          npm install
-          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
