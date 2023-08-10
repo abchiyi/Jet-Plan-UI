@@ -28,6 +28,7 @@ jobs:
         run: |
           python -u .setup.py
           npm install
+          npm run build:lib
           npm publish
 
         env:
