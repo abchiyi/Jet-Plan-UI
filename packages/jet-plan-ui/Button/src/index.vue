@@ -56,18 +56,6 @@ export default defineComponent({
       default: false,
     },
   },
-  computed: {
-    classes() {
-      return [
-        "shape",
-        "j-button",
-        this.text ? "text-button" : "button",
-        this.disabled ? "disabled" : null,
-        this.primary ? "primary" : null,
-        this.block ? "block" : null,
-      ];
-    },
-  },
   methods: {
     calcTextColor() {
       // TODO// import { autoTextColor } from "../../tool/lib";
@@ -80,9 +68,17 @@ export default defineComponent({
     return h(
       ActionFeedback,
       {
-        class: this.classes,
+        class: [
+          "shape",
+          "j-button",
+          this.text ? "text-button" : "button",
+          this.disabled ? "disabled" : null,
+          this.primary ? "primary" : null,
+          this.block ? "block" : null,
+        ],
         tag: "button",
-        active: true,
+        active: !this.disabled,
+        hover: !this.disabled,
         ref: "self",
         style: {
           "--base-text-color": this.baseColor,
@@ -99,6 +95,7 @@ export default defineComponent({
 /*------------ Default ----------*/
 
 .j-button {
+  border: 0.125em v-bind("colors.border.default") solid;
   background: v-bind("colors.background.dark");
   transition: all 0.3s var(--ease-out);
   color: v-bind("colors.text.default");
@@ -111,24 +108,25 @@ export default defineComponent({
   padding: 5px 10px;
   user-select: none;
   cursor: pointer;
+  margin: 0.25em;
 }
 
-.j-button {
-  margin: calc(1em * 0.15);
+/*------------ Focus ----------*/
+
+.j-button:focus-visible {
+  outline: 0.2em v-bind("colors.infoColors.info.default") solid;
 }
 
 /*------------ disabled ----------*/
 
 .j-button.button.disabled {
-  background: v-bind("colors.background.default");
+  border-color: v-bind("colors.border.light");
   color: v-bind("colors.text.disabled");
   cursor: not-allowed;
 }
 
 /*------------ OneLine ----------*/
 .j-button.block {
-  margin-left: unset;
-  margin-right: unset;
   display: block;
   width: 100%;
 }
@@ -136,8 +134,9 @@ export default defineComponent({
 /* Button Mode Only*/
 /*------------ Primary ----------*/
 .j-button.primary {
-  background-color: v-bind("colors.infoColors.primary.default");
+  background-color: v-bind("colors.infoColors.primary.light");
   color: v-bind("colors.text.light");
+  border-color: v-bind("colors.infoColors.primary.default");
 }
 
 /* Text Button */
@@ -145,7 +144,7 @@ export default defineComponent({
 .j-button.text-button {
   background: unset;
   padding: 6px 8px;
-  outline: unset;
+  border: unset;
 }
 /*------------ Primary ----------*/
 .j-button.text-button.primary {
