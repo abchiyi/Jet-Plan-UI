@@ -103,7 +103,7 @@ export default defineComponent({
   display: inline-block;
   white-space: nowrap;
   position: relative;
-  border-radius: 4px;
+  border-radius: 0.25em;
   font-size: 0.8rem;
   padding: 5px 10px;
   user-select: none;
