@@ -115,9 +115,6 @@ export default defineComponent({
 /* Mouse hover */
 .j-action-feedback.hover:hover::after {
   background-color: var(--mask);
-}
-
-.j-action-feedback.hover::after {
   opacity: 0.5;
 }
 

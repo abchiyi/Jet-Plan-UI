@@ -37,6 +37,8 @@ import DemoActionLabel from './DemoActionLabel.vue'
   <DemoActionLabel/>
 </preview-demo-code>
 
+<!-- TODO 不完整的 props 文档 -->
+
 ## Props
 
 - `action`:
