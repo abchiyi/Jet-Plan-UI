@@ -4,7 +4,6 @@ import ActionFeedback from "../src/index.vue";
 import { defineComponent, h } from "vue";
 
 import BaseAction from "../src/baseAction.vue";
-import { nextTick } from "process";
 
 describe("ActionFeedbackPlugin", () => {
   test("Base Name", async () => {
