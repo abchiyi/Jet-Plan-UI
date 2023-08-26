@@ -2,16 +2,6 @@
 import baseAction from "./baseAction.vue";
 import { h, defineComponent, Transition } from "vue";
 
-class MaskStyleConfig extends Object {
-  background: string;
-  "--opacity": number;
-  constructor(background: string, opacity: number) {
-    super();
-    this.background = background;
-    this["--opacity"] = opacity;
-  }
-}
-
 const Mask = defineComponent({
   props: {
     styleConfig: {
