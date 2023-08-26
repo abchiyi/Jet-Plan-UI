@@ -28,7 +28,7 @@ export default defineComponent({
       default: "var(--mask)",
     },
     activeOpacity: {
-      type: Number,
+      type: [Number, String],
       default: 1,
     },
   },
