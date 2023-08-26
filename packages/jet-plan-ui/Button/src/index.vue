@@ -95,7 +95,6 @@ export default defineComponent({
 /*------------ Default ----------*/
 
 .j-button {
-  border: 0.125em v-bind("colors.border.default") solid;
   background: v-bind("colors.background.dark");
   transition: all 0.3s var(--ease-out);
   color: v-bind("colors.text.default");
@@ -120,7 +119,6 @@ export default defineComponent({
 /*------------ disabled ----------*/
 
 .j-button.button.disabled {
-  border-color: v-bind("colors.border.light");
   color: v-bind("colors.text.disabled");
   cursor: not-allowed;
 }
@@ -136,7 +134,6 @@ export default defineComponent({
 .j-button.primary {
   background-color: v-bind("colors.infoColors.primary.light");
   color: v-bind("colors.text.light");
-  border-color: v-bind("colors.infoColors.primary.default");
 }
 
 /* Text Button */
@@ -144,7 +141,6 @@ export default defineComponent({
 .j-button.text-button {
   background: unset;
   padding: 6px 8px;
-  border: unset;
 }
 /*------------ Primary ----------*/
 .j-button.text-button.primary {

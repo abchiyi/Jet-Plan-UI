@@ -26,47 +26,43 @@ const Mask = defineComponent({
     });
   },
 });
+
 export default defineComponent({
   name: "j-action-feedback",
   props: {
     name: { type: String, default: "j" }, //TODO 未添加
-    focus: { type: Boolean, default: false }, //TODO 未添加 focus 效果
     hover: { type: Boolean, default: false },
     active: { type: Boolean, default: false },
+    activeColor: {
+      type: String,
+      default: "var(--mask)",
+    },
+    activeOpacity: {
+      type: Number,
+      default: 1,
+    },
   },
   data() {
     return {
-      dataActive: false,
+      activated: false,
     };
   },
-  computed: {
-    classes() {
-      return [
-        "j-action-feedback",
-        this.dataActive ? "active" : "",
-        this.hover ? "hover" : "",
-        this.focus ? "focus" : "",
-      ];
-    },
-    // Render
-    renderDefault() {
-      const slot = this.$slots.default;
-      if (slot) {
-        return slot();
-      }
-      return "Submit";
-    },
-  },
   methods: {
-    /** 开关函数，当 prop active
-     * 不为 true 时，不处理数据 */
     handleAction(trigger: boolean) {
       if (!this.active) return;
-      this.dataActive = trigger;
+      this.activated = trigger;
+    },
+
+    genMaskConfig() {
+      return {
+        background: this.activeColor,
+        "--opacity": this.activeOpacity,
+      };
     },
   },
   render() {
-    const Active = this.dataActive;
+    const styleConfig = this.genMaskConfig();
+    const Active = this.activated;
     const MaskActive = (() => {
       return h(
         Transition,
@@ -74,10 +70,7 @@ export default defineComponent({
         {
           default() {
             if (!Active) return;
-            const styleConfig = new MaskStyleConfig("var(--mask)", 1);
-            return h(Mask, {
-              styleConfig: styleConfig,
-            });
+            return h(Mask, { styleConfig });
           },
         }
       );
@@ -86,7 +79,11 @@ export default defineComponent({
     return h(
       baseAction,
       {
-        class: [...this.classes],
+        class: [
+          "j-action-feedback",
+          this.hover ? "hover" : "",
+          this.activated ? "active" : "",
+        ],
         onActive_from: () => {
           this.handleAction(true);
         },

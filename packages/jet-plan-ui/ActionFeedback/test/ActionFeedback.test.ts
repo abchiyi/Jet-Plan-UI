@@ -4,6 +4,7 @@ import ActionFeedback from "../src/index.vue";
 import { defineComponent, h } from "vue";
 
 import BaseAction from "../src/baseAction.vue";
+import { nextTick } from "process";
 
 describe("ActionFeedbackPlugin", () => {
   test("Base Name", async () => {
@@ -79,5 +80,19 @@ describe("ActionFeedbackPlugin", () => {
     });
     await wrapper.setProps({ tag: component });
     expect(wrapper.getComponent(component)).toBeTruthy();
+  });
+
+  test("Method:genMaskConfig", async () => {
+    const wrapper = shallowMount(ActionFeedback);
+    expect(wrapper.vm.genMaskConfig()).toEqual({
+      background: "var(--mask)",
+      "--opacity": 1,
+    });
+
+    await wrapper.setProps({ activeColor: "red", activeOpacity: 0.8 });
+    expect(wrapper.vm.genMaskConfig()).toEqual({
+      background: "red",
+      "--opacity": 0.8,
+    });
   });
 });
