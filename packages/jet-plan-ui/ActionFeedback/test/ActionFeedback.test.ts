@@ -81,14 +81,19 @@ describe("ActionFeedbackPlugin", () => {
     expect(wrapper.getComponent(component)).toBeTruthy();
   });
 
-  test("Method:genMaskConfig", async () => {
+  test("Props:activeProps", async () => {
     const wrapper = shallowMount(ActionFeedback);
     expect(wrapper.vm.genMaskConfig()).toEqual({
-      background: "var(--mask)",
-      "--opacity": 1,
+      background: "var(--border-dark)",
+      "--opacity": 0.3,
     });
 
-    await wrapper.setProps({ activeColor: "red", activeOpacity: 0.8 });
+    await wrapper.setProps({
+      activeProps: {
+        background: "red",
+        opacity: 0.8,
+      },
+    });
     expect(wrapper.vm.genMaskConfig()).toEqual({
       background: "red",
       "--opacity": 0.8,

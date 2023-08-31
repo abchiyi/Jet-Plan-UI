@@ -1,6 +1,6 @@
 <script lang="ts">
 import baseAction from "./baseAction.vue";
-import { h, defineComponent, Transition } from "vue";
+import { h, defineComponent, Transition, PropType } from "vue";
 
 const Mask = defineComponent({
   props: {
@@ -17,19 +17,25 @@ const Mask = defineComponent({
   },
 });
 
+export declare interface MaskProps {
+  opacity: number | string;
+  background: string;
+}
+
 export default defineComponent({
   name: "j-action-feedback",
   props: {
     name: { type: String, default: "j" }, //TODO 未添加
     hover: { type: Boolean, default: false },
     active: { type: Boolean, default: false },
-    activeColor: {
-      type: String,
-      default: "var(--mask)",
-    },
-    activeOpacity: {
-      type: [Number, String],
-      default: 1,
+    activeProps: {
+      type: Object as PropType<MaskProps>,
+      default: (() => {
+        return {
+          background: "var(--border-dark)",
+          opacity: 0.3,
+        };
+      })(),
     },
   },
   data() {
@@ -45,8 +51,8 @@ export default defineComponent({
 
     genMaskConfig() {
       return {
-        background: this.activeColor,
-        "--opacity": this.activeOpacity,
+        background: this.activeProps.background,
+        "--opacity": this.activeProps.opacity,
       };
     },
   },
