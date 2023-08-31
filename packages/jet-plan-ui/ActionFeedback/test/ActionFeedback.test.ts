@@ -85,7 +85,7 @@ describe("ActionFeedbackPlugin", () => {
     const wrapper = shallowMount(ActionFeedback);
     expect(wrapper.vm.genMaskConfig()).toEqual({
       background: "var(--border-dark)",
-      "--opacity": 0.3,
+      "--opacity": 0.5,
     });
 
     await wrapper.setProps({

@@ -33,7 +33,7 @@ export default defineComponent({
       default: (() => {
         return {
           background: "var(--border-dark)",
-          opacity: 0.3,
+          opacity: 0.5,
         };
       })(),
     },
@@ -121,7 +121,7 @@ export default defineComponent({
 /* Mouse hover */
 .j-action-feedback.hover:hover::after {
   background-color: var(--mask);
-  opacity: 0.5;
+  opacity: 0.3;
 }
 
 @supports (-webkit-tap-highlight-color: #ffffff00) {
