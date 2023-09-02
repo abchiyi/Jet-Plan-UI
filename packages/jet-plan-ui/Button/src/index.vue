@@ -1,8 +1,9 @@
 <script lang="ts">
-import { h, defineComponent, computed } from "vue";
+import { h, defineComponent, computed, PropType } from "vue";
 import { ActionFeedback } from "../../ActionFeedback";
 // TODO// import { autoTextColor } from "../../tool/lib";
 import { JET_THEME } from "../../theme";
+
 export default defineComponent({
   name: "j-button",
   setup() {
@@ -55,6 +56,7 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    styleType: String as PropType<"primary" | "warning" | "danger" | "success">,
   },
   methods: {
     calcTextColor() {
@@ -71,6 +73,7 @@ export default defineComponent({
         class: [
           "shape",
           "j-button",
+          this.styleType,
           this.text ? "text-button" : "button",
           this.disabled ? "disabled" : null,
           this.primary ? "primary" : null,

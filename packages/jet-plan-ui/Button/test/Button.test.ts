@@ -1,9 +1,9 @@
 import { mount } from "@vue/test-utils";
 import { expect, describe, test } from "vitest";
-import component from "../src/index.vue";
+import Button from "../src/index.vue";
 describe("Button:test", () => {
   test("SnapShots", () => {
-    const wrapper = mount(component, {
+    const wrapper = mount(Button, {
       slots: {
         default: () => "slot default",
       },
@@ -13,7 +13,7 @@ describe("Button:test", () => {
   });
 
   test("Slot:default", () => {
-    const wrapper = mount(component, {
+    const wrapper = mount(Button, {
       slots: {
         default: "default slot",
       },
@@ -23,7 +23,7 @@ describe("Button:test", () => {
   });
 
   test("Class", async () => {
-    const wrapper = mount(component, {
+    const wrapper = mount(Button, {
       slots: {
         default: () => "slot default",
       },
@@ -52,5 +52,13 @@ describe("Button:test", () => {
     expect(wrapper.classes()).include("primary");
     expect(wrapper.classes()).include("disabled");
     expect(wrapper.classes()).includes("block");
+  });
+
+  const StyleTypes = ["primary", "warning", "danger", "success"];
+  test.each(StyleTypes)("Props:styleType", async styleType => {
+    const wrapper = mount(Button);
+    expect(wrapper.classes()).not.include(styleType);
+    await wrapper.setProps({ styleType });
+    expect(wrapper.classes()).include(styleType);
   });
 });
