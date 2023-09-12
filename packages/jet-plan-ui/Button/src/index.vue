@@ -136,6 +136,7 @@ export default defineComponent({
 .j-button.outline {
   color: var(--text);
   border: 1px solid var(--border-dark);
+  padding: 4px 9px;
 }
 
 /*------------ Focus ----------*/
@@ -306,6 +307,6 @@ p > .j-button.text {
 .outline,
 .text {
   background: unset;
-  padding: 6px 8px;
+  /* padding: 6px 8px; */
 }
 </style>
