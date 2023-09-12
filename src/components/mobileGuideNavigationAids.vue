@@ -7,7 +7,12 @@
     v-show="Mobile"
     Y="center"
   >
-    <j-button class="button-menu" @click="clickMenu" text title="menu button">
+    <j-button
+      class="button-menu"
+      title="menu button"
+      @click="clickMenu"
+      mode="text"
+    >
       <i class="bi bi-list"></i>
       菜单
     </j-button>

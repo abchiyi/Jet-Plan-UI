@@ -3,7 +3,7 @@
     <strong>目录</strong>
     <ul>
       <li v-for="item in TocChildren" :key="item.text">
-        <linkButton block text hover :to="`#${item.text}`">
+        <linkButton block mode="text" hover :to="`#${item.text}`">
           {{
             item.text.length > 10 ? item.text.slice(0, 10) + " ..." : item.text
           }}

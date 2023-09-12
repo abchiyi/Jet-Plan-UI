@@ -31,25 +31,16 @@ describe("Button:test", () => {
 
     expect(wrapper.classes()).include("shape");
     expect(wrapper.classes()).include("j-button");
-
     expect(wrapper.classes()).include("button");
-    expect(wrapper.classes()).not.include("text-button");
 
-    expect(wrapper.classes()).not.include("primary");
     expect(wrapper.classes()).not.include("disabled");
     expect(wrapper.classes()).not.include("block");
 
     await wrapper.setProps({
       disabled: true,
-      text: true,
-      primary: true,
       block: true,
     });
 
-    expect(wrapper.classes()).not.include("button");
-    expect(wrapper.classes()).include("text-button");
-
-    expect(wrapper.classes()).include("primary");
     expect(wrapper.classes()).include("disabled");
     expect(wrapper.classes()).includes("block");
   });
@@ -60,5 +51,11 @@ describe("Button:test", () => {
     expect(wrapper.classes()).not.include(styleType);
     await wrapper.setProps({ styleType });
     expect(wrapper.classes()).include(styleType);
+  });
+
+  const Mode = ["text", "button", "outline"];
+  test.each(Mode)("Props:mode", (mode: any) => {
+    const wrapper = mount(Button, { props: { mode } });
+    expect(wrapper.classes()).include(mode);
   });
 });

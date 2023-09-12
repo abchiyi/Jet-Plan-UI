@@ -45,7 +45,7 @@ export default defineComponent({
 
     const BUTTON = h(
       Button,
-      { onclick: this.close, text: true, hover: true },
+      { onclick: this.close, mode: "text", hover: true },
       {
         default: () => {
           const defaultContent = "Close";

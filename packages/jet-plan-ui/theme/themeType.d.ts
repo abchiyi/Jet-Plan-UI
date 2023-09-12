@@ -1,14 +1,17 @@
 interface ColorConfigInfo {
-  primary: ThemeUnit & {
-    disabled: string;
-  };
-  success: ThemeUnit;
-  warning: ThemeUnit;
-  error: ThemeUnit;
-  info: ThemeUnit;
+  primary: InfoColors;
+  success: InfoColors;
+  warning: InfoColors;
+  error: InfoColors;
+  info: InfoColors;
+}
+
+export default interface InfoColors extends ThemeUnit {
+  transparent: string;
 }
 
 interface ColorConfigText {
+  lightDisabled: string;
   disabled: string;
   default: string;
   light: string;

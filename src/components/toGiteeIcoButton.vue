@@ -4,8 +4,8 @@
     rel="noopener noreferrer"
     aria-label="前往gitee"
     target="_blank"
+    mode="text"
     tag="a"
-    text
   >
     <div style="width: 1em">
       <svg viewBox="0 0 24 24">

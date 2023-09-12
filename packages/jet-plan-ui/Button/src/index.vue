@@ -44,17 +44,13 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
-    text: {
-      type: Boolean,
-      default: false,
-    },
-    primary: {
-      type: Boolean,
-      default: false,
-    },
     block: {
       type: Boolean,
       default: false,
+    },
+    mode: {
+      type: String as PropType<"text" | "button" | "outline">,
+      default: "button",
     },
     styleType: String as PropType<"primary" | "warning" | "danger" | "success">,
   },
@@ -66,18 +62,42 @@ export default defineComponent({
       // }
     },
   },
+  computed: {
+    activeProps() {
+      function a(background: any) {
+        return {
+          opacity: 0.5,
+          background,
+        };
+      }
+
+      switch (true) {
+        case this.styleType == "primary":
+          return a(this.colors.infoColors.primary.dark);
+        case this.styleType == "danger":
+          return a(this.colors.infoColors.error.dark);
+        case this.styleType == "success":
+          return a(this.colors.infoColors.success.dark);
+        case this.styleType == "warning":
+          return a(this.colors.infoColors.warning.dark);
+
+        default:
+          return a(this.colors.border.dark);
+      }
+    },
+  },
   render() {
     return h(
       ActionFeedback,
       {
+        activeProps: this.activeProps,
         class: [
           "shape",
           "j-button",
+          this.mode,
           this.styleType,
-          this.text ? "text-button" : "button",
-          this.disabled ? "disabled" : null,
-          this.primary ? "primary" : null,
           this.block ? "block" : null,
+          this.disabled ? "disabled" : null,
         ],
         tag: "button",
         active: !this.disabled,
@@ -98,14 +118,14 @@ export default defineComponent({
 /*------------ Default ----------*/
 
 .j-button {
-  background: v-bind("colors.background.dark");
+  background: var(--border-light);
   transition: all 0.3s var(--ease-out);
-  color: v-bind("colors.text.default");
   box-sizing: border-box;
   display: inline-block;
+  border-radius: 0.25em;
   white-space: nowrap;
   position: relative;
-  border-radius: 0.25em;
+  color: var(--text);
   font-size: 0.8rem;
   padding: 5px 10px;
   user-select: none;
@@ -116,13 +136,13 @@ export default defineComponent({
 /*------------ Focus ----------*/
 
 .j-button:focus-visible {
-  outline: 0.2em v-bind("colors.infoColors.info.default") solid;
+  outline: 0.2em var(--info-colors-info) solid;
 }
 
 /*------------ disabled ----------*/
-
+.j-button.text.disabled,
 .j-button.button.disabled {
-  color: v-bind("colors.text.disabled");
+  color: var(--text-disabled);
   cursor: not-allowed;
 }
 
@@ -132,34 +152,116 @@ export default defineComponent({
   width: 100%;
 }
 
-/* Button Mode Only*/
-/*------------ Primary ----------*/
-.j-button.primary {
-  background-color: v-bind("colors.infoColors.primary.light");
-  color: v-bind("colors.text.light");
-}
-
-/* Text Button */
-/*------------ Default ----------*/
-.j-button.text-button {
-  background: unset;
-  padding: 6px 8px;
-}
-/*------------ Primary ----------*/
-.j-button.text-button.primary {
-  color: v-bind("colors.infoColors.primary.default");
-}
-
-/* ------------ disabled ---------- */
-.j-button.text-button.disabled {
-  color: v-bind("colors.text.disabled");
-  background: unset;
-}
-
 /* p span */
-span > .j-button.text-button,
-p > .j-button.text-button {
+span > .j-button.text,
+p > .j-button.text {
   padding-top: unset;
   padding-bottom: unset;
+}
+</style>
+
+<!-- Primary -->
+<style scoped>
+.primary {
+  background: var(--info-colors-primary);
+  color: var(--text-light);
+}
+.primary.disabled {
+  background-color: var(--info-colors-primary-light);
+  color: var(--text-light-disabled);
+}
+
+.primary.text {
+  color: var(--info-colors-primary-dark);
+}
+
+.primary.text.disabled {
+  color: var(--info-colors-primary-transparent);
+}
+
+.primary > .j-mask,
+.primary.hover:hover::after {
+  background: var(--info-colors-primary-dark);
+}
+</style>
+<!-- Warning -->
+<style scoped>
+.warning {
+  background: var(--info-colors-warning);
+  color: var(--text-light);
+}
+.warning.disabled {
+  background: var(--info-colors-warning-light);
+  color: var(--text-light-disabled);
+}
+
+.warning.text {
+  color: var(--info-colors-warning-dark);
+}
+
+.warning.text.disabled {
+  color: var(--info-colors-warning-transparent);
+}
+
+.warning.hover:hover::after,
+.warning > .j-mask {
+  background: var(--info-colors-warning-dark);
+}
+</style>
+<!-- success -->
+<style scoped>
+.success {
+  background: var(--info-colors-success);
+  color: var(--text-light);
+}
+.success.disabled {
+  background: var(--info-colors-success-light);
+  color: var(--text-light-disabled);
+}
+
+.success.text {
+  color: var(--info-colors-success-dark);
+}
+
+.success.text.disabled {
+  color: var(--info-colors-success-transparent);
+}
+
+.success > .j-mask,
+.success.hover:hover::after {
+  background: var(--info-colors-success-dark);
+}
+</style>
+<!-- danger -->
+<style scoped>
+.danger {
+  background: var(--info-colors-error);
+  color: var(--text-light);
+}
+.danger.disabled {
+  background: var(--info-colors-error-light);
+  color: var(--text-light-disabled);
+}
+
+.danger.text {
+  color: var(--info-colors-error-dark);
+}
+
+.danger.text.disabled {
+  color: var(--info-colors-error-transparent);
+}
+
+.danger.hover:hover::after,
+.danger > .j-mask {
+  background: var(--info-colors-error-dark);
+}
+</style>
+
+<!-- text button -->
+<style scoped>
+.text.disabled,
+.text {
+  background: unset;
+  padding: 6px 8px;
 }
 </style>

@@ -1,7 +1,13 @@
 <template>
   <div class="router-list">
     <!-- Title -->
-    <j-button tag="h2" hover text block @click="itemExpand = !itemExpand">
+    <j-button
+      @click="itemExpand = !itemExpand"
+      mode="text"
+      tag="h2"
+      hover
+      block
+    >
       {{ PROPS.title }}
     </j-button>
 
@@ -15,8 +21,8 @@
             :active-path="true"
             :aria-label="name"
             :to="{ name }"
+            mode="text"
             hover
-            text
             block
           >
             {{ name }}
@@ -38,8 +44,8 @@
                 :active-path="true"
                 :aria-label="name"
                 :to="{ name }"
+                mode="text"
                 hover
-                text
                 block
               >
                 {{ name }}

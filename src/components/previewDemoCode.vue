@@ -8,7 +8,7 @@
           @click="() => (showCode = !showCode)"
           class="show-code"
           title="view code"
-          text
+          mode="text"
           hover
         >
           <i class="bi bi-code"></i>

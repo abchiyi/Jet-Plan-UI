@@ -4,8 +4,8 @@
     rel="noopener noreferrer"
     aria-label="前往github"
     target="_blank"
+    mode="text"
     tag="a"
-    text
   >
     <i class="bi bi-github"></i>
   </j-button>

@@ -108,7 +108,7 @@ export default defineComponent({
             class: "copy-button hljs",
             onclick: this.copyCode,
             title: "copy code",
-            text: true,
+            mode: "text",
           },
           {
             default: () => {

@@ -2,7 +2,7 @@
 import { linkButton } from "src/components";
 </script>
 <template>
-  <link-button text to="/" aria-label="前往主页">
+  <link-button mode="text" to="/" aria-label="前往主页">
     <img src="/logo-mini.svg" alt="logo" />
     JetPlanUI
   </link-button>

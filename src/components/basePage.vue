@@ -11,7 +11,7 @@
             title="open-drop-menu"
             id="open-drop-menu"
             v-show="Mobile"
-            text
+            mode="text"
           >
             <i :class="['bi', drawerTopOpen ? 'bi-x' : 'bi-list']"></i>
           </j-button>
@@ -19,9 +19,11 @@
           <!-- 导航链接 -->
           <div id="nav" v-show="!Mobile">
             <!-- TODO dark mode switch -->
-            <link-button to="/about" aria-label="关于" text>关于</link-button>
+            <link-button to="/about" aria-label="关于" mode="text">
+              关于
+            </link-button>
 
-            <link-button to="/component-list" aria-label="组件列表" text>
+            <link-button to="/component-list" aria-label="组件列表" mode="text">
               组件列表
             </link-button>
 
