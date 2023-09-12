@@ -14,18 +14,42 @@
     <br />
     <strong class="text-hint">text button</strong>
     <div>
-      <Button text>Button</Button>
-      <Button text styleType="primary">Primary</Button>
-      <Button text styleType="warning">Warning</Button>
-      <Button text styleType="success">Success</Button>
-      <Button text styleType="danger">Danger</Button>
+      <Button mode="text">Button</Button>
+      <Button mode="text" styleType="primary">Primary</Button>
+      <Button mode="text" styleType="warning">Warning</Button>
+      <Button mode="text" styleType="success">Success</Button>
+      <Button mode="text" styleType="danger">Danger</Button>
     </div>
     <div>
-      <Button text disabled>Button disabled</Button>
-      <Button text disabled styleType="primary">Primary disabled</Button>
-      <Button text disabled styleType="warning">Warning disabled</Button>
-      <Button text disabled styleType="success">Success disabled</Button>
-      <Button text disabled styleType="danger">Danger disabled</Button>
+      <Button mode="text" disabled>Button disabled</Button>
+      <Button mode="text" disabled styleType="primary">Primary disabled</Button>
+      <Button mode="text" disabled styleType="warning">Warning disabled</Button>
+      <Button mode="text" disabled styleType="success">Success disabled</Button>
+      <Button mode="text" disabled styleType="danger">Danger disabled</Button>
+    </div>
+    <br />
+    <strong class="text-hint">outline</strong>
+    <div>
+      <Button mode="outline">Button</Button>
+      <Button mode="outline" styleType="primary">Primary</Button>
+      <Button mode="outline" styleType="warning">Warning</Button>
+      <Button mode="outline" styleType="success">Success</Button>
+      <Button mode="outline" styleType="danger">Danger</Button>
+    </div>
+    <div>
+      <Button mode="outline" disabled>Button disabled</Button>
+      <Button mode="outline" disabled styleType="primary">
+        Primary disabled
+      </Button>
+      <Button mode="outline" disabled styleType="warning">
+        Warning disabled
+      </Button>
+      <Button mode="outline" disabled styleType="success">
+        Success disabled
+      </Button>
+      <Button mode="outline" disabled styleType="danger">
+        Danger disabled
+      </Button>
     </div>
   </div>
 </template>

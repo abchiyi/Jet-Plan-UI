@@ -133,6 +133,11 @@ export default defineComponent({
   margin: 0.25em;
 }
 
+.j-button.outline {
+  color: var(--text);
+  border: 1px solid var(--border-dark);
+}
+
 /*------------ Focus ----------*/
 
 .j-button:focus-visible {
@@ -141,6 +146,7 @@ export default defineComponent({
 
 /*------------ disabled ----------*/
 .j-button.text.disabled,
+.j-button.outline.disabled,
 .j-button.button.disabled {
   color: var(--text-disabled);
   cursor: not-allowed;
@@ -171,12 +177,20 @@ p > .j-button.text {
   color: var(--text-light-disabled);
 }
 
+.outline.primary,
 .primary.text {
   color: var(--info-colors-primary-dark);
 }
 
+.outline.primary {
+  border-color: var(--info-colors-primary-dark);
+}
+.outline.primary.disabled,
 .primary.text.disabled {
   color: var(--info-colors-primary-transparent);
+}
+.outline.primary.disabled {
+  border-color: var(--info-colors-primary-transparent);
 }
 
 .primary > .j-mask,
@@ -194,13 +208,22 @@ p > .j-button.text {
   background: var(--info-colors-warning-light);
   color: var(--text-light-disabled);
 }
+.outline.warning {
+  border-color: var(--info-colors-warning-dark);
+}
 
+.outline.warning,
 .warning.text {
   color: var(--info-colors-warning-dark);
 }
 
+.outline.warning.disabled,
 .warning.text.disabled {
   color: var(--info-colors-warning-transparent);
+}
+
+.outline.warning.disabled {
+  border-color: var(--info-colors-warning-transparent);
 }
 
 .warning.hover:hover::after,
@@ -219,12 +242,22 @@ p > .j-button.text {
   color: var(--text-light-disabled);
 }
 
+.outline.success {
+  border-color: var(--info-colors-success-dark);
+}
+
+.outline.success,
 .success.text {
   color: var(--info-colors-success-dark);
 }
 
+.outline.success.disabled,
 .success.text.disabled {
   color: var(--info-colors-success-transparent);
+}
+
+.outline.success.disabled {
+  border-color: var(--info-colors-success-transparent);
 }
 
 .success > .j-mask,
@@ -242,13 +275,22 @@ p > .j-button.text {
   background: var(--info-colors-error-light);
   color: var(--text-light-disabled);
 }
+.outline.danger {
+  border-color: var(--info-colors-error-dark);
+}
 
+.outline.danger,
 .danger.text {
   color: var(--info-colors-error-dark);
 }
 
+.outline.danger.disabled,
 .danger.text.disabled {
   color: var(--info-colors-error-transparent);
+}
+
+.outline.danger.disabled {
+  border-color: var(--info-colors-error-transparent);
 }
 
 .danger.hover:hover::after,
@@ -257,9 +299,11 @@ p > .j-button.text {
 }
 </style>
 
-<!-- text button -->
+<!-- text & outline -->
 <style scoped>
+.outline.disabled,
 .text.disabled,
+.outline,
 .text {
   background: unset;
   padding: 6px 8px;
