@@ -1,35 +1,47 @@
 <template>
   <div class="j-loading" :class="classes">
-    <svg v-if="mode === 'circle'" :viewBox="circleParameters.viewBox">
-      <circle
-        class="background"
-        :stroke-width="circleParameters.strokeWidth"
-        :cx="circleParameters.cx"
-        :cy="circleParameters.cy"
-        :r="circleParameters.r"
-        fill="none"
+    <TransitionFade mode="out-in">
+      <svg v-if="mode === 'circle'" :viewBox="circleParameters.viewBox">
+        <circle
+          class="background"
+          :stroke-width="circleParameters.strokeWidth"
+          :cx="circleParameters.cx"
+          :cy="circleParameters.cy"
+          :r="circleParameters.r"
+          fill="none"
+        />
+        <circle
+          class="progressbar"
+          :stroke-dasharray="circleParameters.strokeDasharray"
+          :stroke-width="circleParameters.strokeWidth"
+          :stroke-dashoffset="percentageOfRing"
+          :cx="circleParameters.cx"
+          :cy="circleParameters.cy"
+          :r="circleParameters.r"
+          fill="none"
+        />
+      </svg>
+      <track-bar
+        :style="{ '--HEIGHT': lineWidth + 'px' }"
+        v-model:percentage="displayValue"
+        v-if="mode === 'bar'"
+        display-only
       />
-      <circle
-        class="progressbar"
-        :stroke-dasharray="circleParameters.strokeDasharray"
-        :stroke-width="circleParameters.strokeWidth"
-        :stroke-dashoffset="percentageOfRing"
-        :cx="circleParameters.cx"
-        :cy="circleParameters.cy"
-        :r="circleParameters.r"
-        fill="none"
-      />
-    </svg>
+    </TransitionFade>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { getEl } from "jet-plan-ui/tool";
+import { getEl, getOffset, TrackBar, TransitionFade } from "jet-plan-ui";
 import gsap from "gsap";
 
 export default defineComponent({
   name: "j-loading",
+  components: {
+    TrackBar,
+    TransitionFade,
+  },
   props: {
     mode: {
       type: String as PropType<"bar" | "circle">,
@@ -49,8 +61,6 @@ export default defineComponent({
   data() {
     return {
       displayValue: this.value,
-      displayLoadingDelay: false,
-      displayLoading: this.loading,
     };
   },
   computed: {
@@ -76,51 +86,103 @@ export default defineComponent({
     },
   },
   methods: {
-    LoadingStart() {
-      const HTMLCollection = getEl(this).getElementsByTagName("svg");
-      if (HTMLCollection.length) {
-        const rotate = (once?: Boolean) => {
-          gsap.to(HTMLCollection[0], {
-            ease: "linear",
-            duration: 0.5,
-            rotate: -360,
-            onComplete: () => {
-              gsap.set(HTMLCollection[0], {
-                rotate: 0,
-              });
-              if (this.loading && !once) rotate();
-            },
-          });
-        };
+    getSlider() {
+      const circle = getEl(this).getElementsByTagName("svg")[0];
+      const bar = getEl(this).getElementsByClassName("slider")[0];
+      return this.mode == "circle" ? circle : bar;
+    },
 
-        const T = gsap.timeline();
-        T.to(this, {
-          duration: 0.5,
-          displayValue: 0,
-          ease: "ease-out",
-          onStart: rotate,
-        });
-
-        T.to(this, {
-          displayValue: 0.7,
+    animationCircleStart() {
+      const slider = this.getSlider();
+      const rotate = (once?: Boolean) => {
+        gsap.to(slider, {
           ease: "linear",
           duration: 0.5,
-          yoyo: true,
-          repeat: -1,
-          onRepeat: () => {
-            if (this.loading) return;
-            T.set(this, { overwrite: true });
+          rotate: -360,
+          onComplete: () => {
+            gsap.set(slider, {
+              rotate: 0,
+            });
+            if (this.loading && !once) rotate();
           },
         });
-      }
+      };
+
+      const T = gsap.timeline();
+      T.to(this, {
+        duration: 0.5,
+        displayValue: 0,
+        ease: "ease-out",
+        onStart: rotate,
+      });
+
+      T.to(this, {
+        displayValue: 0.7,
+        ease: "linear",
+        duration: 0.5,
+        yoyo: true,
+        repeat: -1,
+        onRepeat: () => {
+          if (this.loading) return;
+          T.set(this, { overwrite: true });
+        },
+      });
     },
-    LoadingStop() {
+    animationCircleStop() {
       gsap.to(this, {
         displayValue: this.value,
         ease: "ease-out",
         overwrite: true,
         duration: 0.5,
       });
+    },
+    animationBarStart(run: Boolean = true) {
+      const slider = this.getSlider();
+      const move = () => {
+        const width = gsap.getProperty(getEl(this), "width");
+        const sliderWidth = getOffset(slider as any).width;
+        const duration = Number(width) / 130 <= 0.5 ? 0.5 : Number(width) / 130;
+
+        gsap.fromTo(
+          slider,
+          {
+            x: -1.2 * Number(sliderWidth),
+            ease: "linear",
+            duration,
+          },
+          {
+            ease: "linear",
+            duration,
+            x: width,
+            onComplete: () => {
+              if (this.loading && run) {
+                move();
+              } else {
+                gsap.set(slider, { x: -1.2 * Number(sliderWidth) });
+                gsap.to(slider, { x: 0 });
+              }
+            },
+          }
+        );
+      };
+
+      gsap.to(slider, {
+        x: gsap.getProperty(getEl(this), "width"),
+        duration: Number(gsap.getProperty(getEl(this), "width")) / 130,
+        ease: "linear",
+        onComplete: move,
+      });
+    },
+
+    LoadingStart() {
+      if (this.mode === "circle") {
+        this.animationCircleStart();
+      } else this.animationBarStart();
+    },
+    LoadingStop() {
+      if (this.mode === "circle") {
+        this.animationCircleStop();
+      }
     },
   },
   watch: {
@@ -129,6 +191,10 @@ export default defineComponent({
     },
     loading(value) {
       value ? this.LoadingStart() : this.LoadingStop();
+    },
+    mode() {
+      this.animationBarStart(false);
+      this.animationCircleStop();
     },
   },
 });
@@ -155,5 +221,17 @@ export default defineComponent({
   stroke: var(--info-colors-info);
   stroke-linecap: round;
   animation: aa 3s linear infinite;
+}
+</style>
+
+<!-- bar -->
+<style>
+.j-loading.bar {
+  height: unset;
+  width: 1em;
+}
+
+.j-loading.bar .slider {
+  border-radius: var(--HEIGHT);
 }
 </style>

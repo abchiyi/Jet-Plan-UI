@@ -25,7 +25,7 @@
       <ActionLabel :active="false">
         <p class="sub-text">Diameter {{ diameter }}</p>
         <Range>
-          <input id="loading-dimeter" v-model="diameter" type="range" />
+          <input id="loading-dimeter" min="1" v-model="diameter" type="range" />
         </Range>
       </ActionLabel>
     </Row>
@@ -58,7 +58,7 @@
       <ActionLabel :active="false">
         <p class="sub-text">Size {{ fontSize }}px</p>
         <Range>
-          <input type="range" min="16" max="100" v-model="fontSize" />
+          <input type="range" min="1" max="200" v-model="fontSize" />
         </Range>
       </ActionLabel>
     </Row>
@@ -80,7 +80,7 @@ import { ActionLabel } from "src/components";
 import { Row, Radio, Switch, Range } from "jet-plan-ui";
 import { ref } from "vue";
 
-const mode = ref("circle");
+const mode = ref("bar");
 const loading = ref(false);
 const fontSize = ref(100);
 const lineWidth = ref(15);
