@@ -16,6 +16,7 @@ import { DrawerPlugin } from './Drawer';
 import { AlertPlugin } from './Alert';
 import { BubblePlugin } from './Bubble';
 import { AvatarPlugin } from './Avatar';
+import { LoadingPlugin } from './Loading';
 
 const UiPlugin: Plugin = {
   install(app: App) {
@@ -33,6 +34,7 @@ const UiPlugin: Plugin = {
     AlertPlugin.install?.(app);
     BubblePlugin.install?.(app);
     AvatarPlugin.install?.(app);
+    LoadingPlugin.install?.(app);
   },
 };
 
@@ -53,3 +55,4 @@ export * from './Drawer'
 export * from './Alert'
 export * from './Bubble'
 export * from './Avatar'
+export * from './Loading'

@@ -282,14 +282,6 @@ body {
   height: 100%;
 }
 
-/* ----- 其他杂项 */
-
-/* 使图像对其文本 */
-.j-button img,
-.j-button svg {
-  vertical-align: -0.125em;
-}
-
 /* ----- 页头导航链接 */
 #nav > * {
   vertical-align: middle;

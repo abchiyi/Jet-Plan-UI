@@ -96,5 +96,12 @@
     "compZhName": "头像",
     "compDesc": "用于展示头像",
     "compClassName": "j-avatar"
+  },
+  {
+    "compName": "Loading",
+    "compZhName": "进度条",
+    "type": "others",
+    "compDesc": "展示加载进度或表示加载状态",
+    "compClassName": "j-loading"
   }
 ]

@@ -20,3 +20,8 @@
 <script lang="ts" setup>
 import { Button as JButton } from "jet-plan-ui";
 </script>
+<style scoped>
+svg {
+  vertical-align: -0.125em;
+}
+</style>
