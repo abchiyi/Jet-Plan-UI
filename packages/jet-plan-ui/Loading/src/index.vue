@@ -33,14 +33,18 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
-import { getEl, getOffset, TrackBar, TransitionFade } from "jet-plan-ui";
+import { TransitionFade } from "../../Animations";
+import { getEl, getOffset } from "../../tool";
+import { TrackBar } from "../../TrackBar";
+
 import gsap from "gsap";
+import { count } from "console";
 
 export default defineComponent({
   name: "j-loading",
   components: {
-    TrackBar,
     TransitionFade,
+    TrackBar,
   },
   props: {
     mode: {
@@ -92,43 +96,47 @@ export default defineComponent({
       return this.mode == "circle" ? circle : bar;
     },
 
+    rotate(circle: Element, once?: Boolean) {
+      gsap.to(circle, {
+        ease: "linear",
+        duration: 0.5,
+        rotate: 360,
+        onComplete: () => {
+          gsap.set(circle, {
+            rotate: 0,
+          });
+          if (this.loading && !once) this.rotate(circle);
+        },
+      });
+    },
+
     animationCircleStart() {
       const slider = this.getSlider();
-      const rotate = (once?: Boolean) => {
-        gsap.to(slider, {
-          ease: "linear",
-          duration: 0.5,
-          rotate: -360,
-          onComplete: () => {
-            gsap.set(slider, {
-              rotate: 0,
-            });
-            if (this.loading && !once) rotate();
-          },
-        });
-      };
-
       const T = gsap.timeline();
       T.to(this, {
         duration: 0.5,
         displayValue: 0,
         ease: "ease-out",
-        onStart: rotate,
+        onStart: () => this.rotate(slider),
       });
-
       T.to(this, {
-        displayValue: 0.7,
+        displayValue: 0.4,
         ease: "linear",
-        duration: 0.5,
+        duration: 0.7,
         yoyo: true,
         repeat: -1,
-        onRepeat: () => {
-          if (this.loading) return;
-          T.set(this, { overwrite: true });
-        },
       });
     },
     animationCircleStop() {
+      gsap.to(this, {
+        displayValue: this.value,
+        ease: "ease-out",
+        overwrite: true,
+        duration: 0.5,
+        onStart: () => this.rotate(this.getSlider()),
+      });
+    },
+    animationBarStop() {
       gsap.to(this, {
         displayValue: this.value,
         ease: "ease-out",
@@ -173,7 +181,6 @@ export default defineComponent({
         onComplete: move,
       });
     },
-
     LoadingStart() {
       if (this.mode === "circle") {
         this.animationCircleStart();
@@ -182,8 +189,13 @@ export default defineComponent({
     LoadingStop() {
       if (this.mode === "circle") {
         this.animationCircleStop();
+      } else {
+        this.animationBarStop();
       }
     },
+  },
+  mounted() {
+    if (this.loading) this.animationCircleStart();
   },
   watch: {
     value(value) {
@@ -194,7 +206,7 @@ export default defineComponent({
     },
     mode() {
       this.animationBarStart(false);
-      this.animationCircleStop();
+      this.animationBarStop();
     },
   },
 });
@@ -203,7 +215,6 @@ export default defineComponent({
 <style>
 .j-loading {
   display: inline-block;
-  font-size: 100px;
   height: 1em;
 }
 
