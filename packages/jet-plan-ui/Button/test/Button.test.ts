@@ -58,4 +58,12 @@ describe("Button:test", () => {
     const wrapper = mount(Button, { props: { mode } });
     expect(wrapper.classes()).include(mode);
   });
+
+  test("Loading mode", async () => {
+    const wrapper = mount(Button);
+    expect(wrapper.classes()).not.include("loading");
+
+    await wrapper.setProps({ loading: true });
+    expect(wrapper.classes()).include("loading");
+  });
 });

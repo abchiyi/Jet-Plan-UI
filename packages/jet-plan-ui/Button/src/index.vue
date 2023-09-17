@@ -53,6 +53,7 @@ export default defineComponent({
       default: "button",
     },
     styleType: String as PropType<"primary" | "warning" | "danger" | "success">,
+    loading: Boolean,
   },
   methods: {
     calcTextColor() {
@@ -97,6 +98,7 @@ export default defineComponent({
           this.mode,
           this.styleType,
           this.block ? "block" : null,
+          this.loading ? "loading" : "",
           this.disabled ? "disabled" : null,
         ],
         tag: "button",
