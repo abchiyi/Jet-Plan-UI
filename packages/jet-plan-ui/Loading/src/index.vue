@@ -38,7 +38,6 @@ import { getEl, getOffset } from "../../tool";
 import { TrackBar } from "../../TrackBar";
 
 import gsap from "gsap";
-import { count } from "console";
 
 export default defineComponent({
   name: "j-loading",
