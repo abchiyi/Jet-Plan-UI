@@ -57,12 +57,4 @@
 <script lang="ts" setup>
 import { Button } from "jet-plan-ui";
 </script>
-<style scoped>
-.j-button {
-  min-width: 80px;
-}
-
-.j-button.disabled {
-  min-width: 150px;
-}
-</style>
+<style scoped></style>

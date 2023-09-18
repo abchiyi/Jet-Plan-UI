@@ -319,8 +319,9 @@ p > .j-button.text {
 <!-- loading -->
 <style scoped>
 .j-button.loading {
-  justify-content: center;
   align-items: center;
-  display: flex;
+}
+.j-button.loading .j-loading {
+  vertical-align: -0.125em;
 }
 </style>
