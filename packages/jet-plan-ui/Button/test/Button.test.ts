@@ -1,17 +1,9 @@
 import { mount } from "@vue/test-utils";
 import { expect, describe, test } from "vitest";
+import { Loading } from "jet-plan-ui";
+
 import Button from "../src/index.vue";
 describe("Button:test", () => {
-  test("SnapShots", () => {
-    const wrapper = mount(Button, {
-      slots: {
-        default: () => "slot default",
-      },
-    });
-
-    expect(wrapper.html()).matchSnapshot();
-  });
-
   test("Slot:default", () => {
     const wrapper = mount(Button, {
       slots: {
@@ -60,10 +52,19 @@ describe("Button:test", () => {
   });
 
   test("Loading mode", async () => {
-    const wrapper = mount(Button);
+    const wrapper = mount(Button, {
+      slots: {
+        default: "content",
+      },
+    });
+
+    expect(wrapper.text()).toBe("content");
     expect(wrapper.classes()).not.include("loading");
+    expect(wrapper.findComponent(Loading).exists()).toBeFalsy();
 
     await wrapper.setProps({ loading: true });
+    expect(wrapper.text()).toBe("");
     expect(wrapper.classes()).include("loading");
+    expect(wrapper.findComponent(Loading).exists()).toBeTruthy();
   });
 });

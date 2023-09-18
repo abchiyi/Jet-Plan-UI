@@ -3,7 +3,7 @@ import { h, defineComponent, computed, PropType } from "vue";
 import { ActionFeedback } from "../../ActionFeedback";
 // TODO// import { autoTextColor } from "../../tool/lib";
 import { JET_THEME } from "../../theme";
-
+import { Loading } from "../../Loading";
 export default defineComponent({
   name: "j-button",
   setup() {
@@ -88,6 +88,8 @@ export default defineComponent({
     },
   },
   render() {
+    const LOADING = h(Loading, { loading: true, mode: "circle" });
+
     return h(
       ActionFeedback,
       {
@@ -110,7 +112,7 @@ export default defineComponent({
         },
       },
       {
-        default: () => [this.$slots.default?.()],
+        default: () => [this.loading ? LOADING : this.$slots.default?.()],
       }
     );
   },
@@ -128,11 +130,12 @@ export default defineComponent({
   white-space: nowrap;
   position: relative;
   color: var(--text);
-  font-size: 0.8rem;
+  min-height: 1.8em;
   padding: 5px 10px;
   user-select: none;
   cursor: pointer;
   margin: 0.25em;
+  font-size: 1em;
 }
 
 .j-button.outline {
@@ -310,5 +313,14 @@ p > .j-button.text {
 .text {
   background: unset;
   /* padding: 6px 8px; */
+}
+</style>
+
+<!-- loading -->
+<style scoped>
+.j-button.loading {
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 </style>

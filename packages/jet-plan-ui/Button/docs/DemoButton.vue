@@ -1,5 +1,6 @@
 <template>
   <div class="demo demo-button">
+    <Button loading>Button</Button>
     <Button>Button</Button>
     <Button styleType="primary">Primary</Button>
     <Button styleType="warning">Warning</Button>
