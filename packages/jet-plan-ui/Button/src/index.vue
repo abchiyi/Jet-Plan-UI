@@ -324,4 +324,10 @@ p > .j-button.text {
 .j-button.loading .j-loading {
   vertical-align: -0.125em;
 }
+
+.j-button.block.loading {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 </style>

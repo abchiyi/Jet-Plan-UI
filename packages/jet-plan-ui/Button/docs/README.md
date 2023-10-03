@@ -1,6 +1,5 @@
 <script setup>
 import DemoButton from './DemoButton.vue'
-import DemoButtonText from './DemoButtonText.vue'
 </script>
 
 # 按钮
@@ -15,13 +14,7 @@ import DemoButtonText from './DemoButtonText.vue'
     <DemoButton />
   </preview-demo-code>
 
-- ### 文本按钮
-
-  <preview-demo-code comp-name="Button" demo-name="DemoButtonText">
-    <demo-button-text />
-  </preview-demo-code>
-
-## Props
+ ## Props
 
 - `disabled`:
 
